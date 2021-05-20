@@ -6,6 +6,21 @@
 	<artifactId>Projet_YNH</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
+		<!-- les versions des dépendances -->
+		<spring.version>5.3.5</spring.version>
+		<hibernate.version>5.4.28.Final</hibernate.version>
+		<mysql.connector.version>8.0.23</mysql.connector.version>
+		<dbcp2.version>2.8.0</dbcp2.version>
+		<junit.version>5.7.1</junit.version>
+		<maven.version>4.0.1</maven.version>
+		<junit.plateform.version>1.7.0</junit.plateform.version>
+		<jstl.version>1.2</jstl.version>
+		<mockito-version>3.8.0</mockito-version>
+	</properties>
+
 	<build>
 	<finalName>Projet_YNH</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -49,4 +64,99 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencies>
+
+		<!-- dependances pour junit : -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-runner</artifactId>
+			<version>${junit.plateform.version}</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Pour maven Test : -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${maven.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- pour coupler Spring et Junit : -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- spring context : -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Object-Relational Mapping de spring : -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Pour spring MVC : -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- Pour la dataSource : -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>${dbcp2.version}</version>
+		</dependency>
+
+		<!-- le connector Mysql : -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+
+		<!-- hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- Pour utiliser la JSTL dans les JSP : -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${jstl.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Pour utilser Mockito : -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito-version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 </project>
