@@ -16,7 +16,7 @@
 		<junit.version>5.7.1</junit.version>
 		<maven.version>4.0.1</maven.version>
 		<junit.plateform.version>1.7.0</junit.plateform.version>
-		<jstl.version>1.2.0</jstl.version>
+		<jstl.version>1.2</jstl.version>
 		<mockito-version>3.8.0</mockito-version>
 	</properties>
 
@@ -142,12 +142,12 @@
 		</dependency>
 
 		<!-- Pour utiliser la JSTL dans les JSP : -->
-		<!-- <dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
 			<scope>provided</scope>
-		</dependency> -->
+		</dependency>
 
 		<!-- Pour utilser Mockito : -->
 		<dependency>
