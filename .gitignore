@@ -1,0 +1,7 @@
+### Eclipse ###
+.settings/
+
+### Maven ###
+target/
+
+### Ignorer le fichier de token sonar ###
