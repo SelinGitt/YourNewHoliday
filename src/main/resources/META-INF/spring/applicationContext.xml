@@ -8,13 +8,9 @@
 
 	<!-- Activation des annotations pour le contexte spring -->
 	<context:annotation-config />
-
+	
 	<!-- Load Hibernate related configuration -->
 	<import resource="hibernate-context.xml" />
-
 	<!-- Load Spring MVC related configuration -->
 	<import resource="dispatcher-servlet.xml" />
-
-
-
 </beans>
