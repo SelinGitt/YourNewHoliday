@@ -17,4 +17,24 @@
 		<property name="prefix" value="/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+
+	<!-- Configuration I18N -->
+
+	<!-- le bundle messageRessource -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="META-INF/spring/i18n/YNH" />
+	</bean>
+
+	<!-- la locale qui sera chargé par défaut (fr par défaut) -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="fr" />
+	</bean>
+
+	<!-- l'intercepteur pour changer de langue, selon le paramètre "language" -->
+	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"></property>
+		</bean>
+	</mvc:interceptors>
+
 </beans>
