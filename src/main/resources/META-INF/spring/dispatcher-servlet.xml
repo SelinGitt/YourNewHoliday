@@ -31,7 +31,7 @@
 
 	<!-- la locale qui sera chargé par défaut (fr par défaut) -->
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
-		<property name="defaultLocale" value="fr" />
+		<property name="defaultLocale" value="en" />
 	</bean>
 
 	<!-- l'intercepteur pour changer de langue, selon le paramètre "language" -->
