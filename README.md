@@ -52,7 +52,7 @@ Elle s'est chargée de la gestion des articles du site.
 * Java 11
 * Architecture 3-tiers
 * BD MySql 5
-* Serveur TomCat 9.0.X
+* Serveur Tomcat 9.0.X
 
 ### Outils de développement utilisés
 
