@@ -19,10 +19,10 @@
 		<jstl.version>1.2</jstl.version>
 		<mockito-version>3.8.0</mockito-version>
 	</properties>
-	
+
 	<!-- Sonar profile config -->
 	<profiles>
-		<!--  mvn sonar:sonar -->
+		<!-- mvn sonar:sonar -->
 		<profile>
 			<id>sonar</id>
 			<activation>
@@ -102,39 +102,39 @@
 					<failOnMissingWebXml>true</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-			
+
 			<!-- Sonnar plugin -->
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
-	        	<artifactId>sonar-maven-plugin</artifactId>
-	        	<version>3.7.0.1746</version>
-	      	</plugin>
-	      
-	      	<!-- Jacoco -->
-	      	<plugin>
-	        	<groupId>org.jacoco</groupId>
-	        	<artifactId>jacoco-maven-plugin</artifactId>
-	        	<version>0.8.7</version>
-	        	<executions>
-	            	<execution>
-	                	<goals>
-	                    	<goal>prepare-agent</goal>
-	                	</goals>
-	            	</execution>
-	            	<execution>
-	                	<id>report</id>
-	                	<phase>prepare-package</phase>
-	                	<goals>
-	                    	<goal>report</goal>
-	                	</goals>
-	            	</execution>
-	        	</executions>
-	      	</plugin>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
+			</plugin>
+
+			<!-- Jacoco -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
-	
+
 	<dependencies>
-	
+
 		<!-- dependances pour junit : -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
