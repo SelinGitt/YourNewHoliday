@@ -21,6 +21,47 @@
 		<mockito-version>3.8.0</mockito-version>
 	</properties>
 
+	<!-- Sonar profile config -->
+	<profiles>
+		<!-- mvn sonar:sonar -->
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- URL du sonar -->
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<!-- Credentials -->
+				<sonar.login>${sonar.token}</sonar.login>
+				<!-- Java version -->
+				<sonar.language>java</sonar.language>
+				<sonar.java.source>11</sonar.java.source>
+				<!-- SCM Disabled (Warning sur sonar) -->
+				<sonar.scm.disabled>true</sonar.scm.disabled>
+				<!-- Coverage -->
+				<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
+				<!-- Exclusions -->
+				<sonar.coverage.exclusions>
+					**/bean/**/*.java,
+					**/dto/**/*.java,
+					**/entity/**/*.java,
+					**/WebContent/**/*.*
+				</sonar.coverage.exclusions>
+				<sonar.exclusions>
+					**/css/**,
+					**/web.xml
+				</sonar.exclusions>
+				<!-- Source folder -->
+				<sonar.sources>
+					src/main/java,WebContent
+				</sonar.sources>
+				<!-- Test folder -->
+				<sonar.tests>src/test/java</sonar.tests>
+			</properties>
+		</profile>
+	</profiles>
+
 	<build>
 		<finalName>Projet_YNH</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -62,8 +103,37 @@
 					<failOnMissingWebXml>true</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+
+			<!-- Sonnar plugin -->
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.7.0.1746</version>
+			</plugin>
+
+			<!-- Jacoco -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
+
 	<dependencies>
 
 		<!-- dependances pour junit : -->
