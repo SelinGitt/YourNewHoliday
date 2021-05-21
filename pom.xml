@@ -134,6 +134,7 @@
 	</build>
 	
 	<dependencies>
+	
 		<!-- dependances pour junit : -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
