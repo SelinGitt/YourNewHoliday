@@ -5,7 +5,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title><spring:message code="layout.titre"/></title>
+<title><spring:message code="layout.titre" /></title>
 </head>
 <body>
     <header>
