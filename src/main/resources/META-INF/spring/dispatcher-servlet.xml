@@ -10,6 +10,10 @@
 
 	<!-- Activation des annotations Spring-MVC -->
 	<mvc:annotation-driven />
+	
+	<!-- pour que ces urls ne passent pas par le HandlerMapping -->
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
 
 	<!-- permet de retrouver une vue selon une String -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
