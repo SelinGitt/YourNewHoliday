@@ -2,7 +2,7 @@
 
 Readme sur l'appellation des éléments dans les .properties
 
-### Utilsation des trigrames 
+### Utilisation des trigrames 
 
 
 * **pdt** = Produit
@@ -47,5 +47,5 @@ exemple **PDT_00 :**
 
  **textes**
 
-* pdt00.label.nomdulabel
+* pdt00.label.nomLabel
 
