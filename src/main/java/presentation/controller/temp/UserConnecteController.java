@@ -16,9 +16,9 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 @Controller
 @RequestMapping("/user_session.do")
 public class UserConnecteController {
-    
+
     /**
-     * Affiche la jsp 
+     * Affiche la jsp
      *
      * @return nom de la jsp
      */
@@ -38,12 +38,12 @@ public class UserConnecteController {
         session.setAttribute("utilisateur", this.creerUtilisateur());
         return "user_session";
     }
-    
+
     /**
      * Supprimer l'utilisateur en session
      *
-     * @param session Session actuelle
-     * @return Nom de la jsp
+     * @param  session Session actuelle
+     * @return         Nom de la jsp
      */
     @GetMapping("/supprimer")
     public String supprimerUser(final HttpSession session) {
