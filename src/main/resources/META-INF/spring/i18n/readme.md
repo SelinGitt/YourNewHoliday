@@ -41,7 +41,7 @@ exemple **PDT_00 :**
  
 * pdt00.erreur.nomErreur
 
- **succès**
+ **validation**
  
 * pdt00.validation.nomValidation
 
