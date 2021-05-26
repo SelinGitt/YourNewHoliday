@@ -5,7 +5,8 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title></title>
+<link href="css/styles.css" rel="stylesheet">
+<title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
     <header>

@@ -5,10 +5,17 @@
 <tiles-definitions>
 	<!-- la définition du template -->
 	<definition name="base.definition" template="/jsp/template/layout.jsp">
+		<put-attribute name="title" value="" />
 		<put-attribute name="header" value="/jsp/template/header.jsp" />
 		<put-attribute name="menu" value="/jsp/template/menu.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/jsp/template/footer.jsp" />
+	</definition>
+
+	<!-- page jsp exemple -->
+	<definition name="exemple" extends="base.definition">
+		<put-attribute name="title" value="Tiles exemple" />
+		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
 	</definition>
 
 	<!-- Mettez la dénition de page ici -->
