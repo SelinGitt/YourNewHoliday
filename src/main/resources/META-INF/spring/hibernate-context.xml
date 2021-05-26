@@ -11,8 +11,6 @@
 			http://www.springframework.org/schema/context/spring-context.xsd
 			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
-	<!-- chargement des fichiers de propriétés -->
-
 	<!-- Declaration du TransactionManager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -23,7 +21,6 @@
 
 	<!-- Declaration de la dataSource -->
 	<jee:jndi-lookup jndi-name="jdbc/ynh" id="dataSource" expected-type="javax.sql.DataSource" lazy-init="true" />
-	
 
 	<!-- Factorisation des propriétés d'entityManagerFactory -->
 	<bean id="entityManagerFactoryAbstract" abstract="true"
