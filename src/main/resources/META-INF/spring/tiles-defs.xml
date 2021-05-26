@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<!-- la définition du template -->
+	<definition name="base.definition" template="/jsp/template/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/jsp/template/header.jsp" />
+		<put-attribute name="menu" value="/jsp/template/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/jsp/template/footer.jsp" />
+	</definition>
+
+	<!-- page jsp exemple -->
+	<definition name="exemple" extends="base.definition">
+		<put-attribute name="title" value="Tiles exemple" />
+		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
+	</definition>
+
+	<!-- Mettez la dénition de page ici -->
+	<!-- écran produit -->
+
+	<!-- écran panier -->
+
+	<!-- écran commande -->
+
+	<!-- écran utilisateur -->
+
+</tiles-definitions>

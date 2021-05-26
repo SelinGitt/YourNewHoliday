@@ -13,4 +13,7 @@
 	<import resource="hibernate-context.xml" />
 	<!-- Load Spring MVC related configuration -->
 	<import resource="dispatcher-servlet.xml" />
+
+	<!-- scan du package -->
+	<context:component-scan base-package="presentation" />
 </beans>
