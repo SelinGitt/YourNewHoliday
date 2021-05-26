@@ -26,10 +26,10 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Administrateur
  */
-//Permet de gérer le JUnit avec Spring 
+// Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)
 //Et de déclarer le fichier de conf à utiliser
-@ContextConfiguration("/META-INF/spring/applicationContext.xml")
+@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
 @Transactional(propagation = Propagation.REQUIRED)
 class ConnectionDBTest {
 
@@ -45,7 +45,7 @@ class ConnectionDBTest {
     @Test
     void testTesterDataSource() {
         assertNotNull(basicDataSource);
-        assertEquals("jdbc:mysql://localhost:3306/bdynh?serverTimezone=UTC", basicDataSource.getUrl());
+        assertEquals("jdbc:mysql://localhost:3306/bdynhtest?serverTimezone=UTC", basicDataSource.getUrl());
         assertEquals("com.mysql.cj.jdbc.Driver", basicDataSource.getDriverClassName());
         assertEquals("root", basicDataSource.getUsername());
         assertEquals("", basicDataSource.getPassword());
