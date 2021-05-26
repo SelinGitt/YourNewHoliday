@@ -1,2 +1,5 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <hr />
-<p>Footer</p>
+<p>
+    <spring:message code="exemple.footer.text" />
+</p>

@@ -4,8 +4,8 @@
 package presentation.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Classe représentant un exemple pour l'affichage d'une page sans style pour l'instant
@@ -21,7 +21,7 @@ public class ExempleController {
      *
      * @return String le nom de la définition de l'exemple
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public String afficheExemple() {
         return "exemple";
     }

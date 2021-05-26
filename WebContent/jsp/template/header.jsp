@@ -1,2 +1,5 @@
-<p>header (attention, il n'y a pas encore de style, l'affichage se fera les uns derrière les autres)</p>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<p>
+    <spring:message code="exemple.header.text" />
+</p>
 <hr />
