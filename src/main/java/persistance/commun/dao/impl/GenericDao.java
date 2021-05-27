@@ -12,11 +12,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commun.dao.IGenericDao;
+import pocLogBack.POCLogBack;
 
 /**
  * Classe implémentant IGenericDao
@@ -27,6 +30,9 @@ import persistance.commun.dao.IGenericDao;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public abstract class GenericDao<T> implements IGenericDao<T> {
+    
+    // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
+    final Logger logger = LoggerFactory.getLogger(POCLogBack.class);
 
     // l'entityManager instancier par spring sous forme de beanSpring
     @PersistenceContext(unitName = "puYnh")
@@ -63,6 +69,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
         final Root<T> rootEntry = criteriaQuery.from(this.entiteClass);
         final CriteriaQuery<T> allCriteria = criteriaQuery.select(rootEntry);
         final TypedQuery<T> allQuery = this.entityManager.createQuery(allCriteria);
+        this.logger.debug("Generic Dao {} findAll ", this.entiteClass.getName());
         return allQuery.getResultList();
     }
 
