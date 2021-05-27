@@ -1,6 +1,8 @@
 package service.utilisateur.util;
 
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.BeforeClass;
@@ -31,7 +33,7 @@ class UtilisateurMapperTest {
     void initDto() {
         utilisateurDto.setEmail("email_dto@test.fr");
         utilisateurDto.setReference("123abc");
-        utilisateurDto.setDateInscription(null);
+        utilisateurDto.setDateInscription(Date.from(Instant.now()));
         utilisateurDto.setNom("Jean");
         utilisateurDto.setPrenom("Michel");
         utilisateurDto.setEstActif(true);
@@ -43,7 +45,7 @@ class UtilisateurMapperTest {
     void initDo() {
         utilisateurDo.setEmail("email_do@test.fr");
         utilisateurDo.setReference("456def");
-        utilisateurDo.setDateInscription(null);
+        utilisateurDo.setDateInscription(Date.from(Instant.now()));
         utilisateurDo.setNom("Dupond");
         utilisateurDo.setPrenom("Brice");
         utilisateurDo.setEstActif(true);
