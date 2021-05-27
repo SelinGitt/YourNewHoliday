@@ -52,6 +52,12 @@
 					**/css/**,
 					**/web.xml
 				</sonar.exclusions>
+				<!-- Exclusions Duplicated Lines -->
+				<sonar.cpd.exclusions>
+					**/bean/**/*.java,
+					**/dto/**/*.java,
+					**/entity/**/*.java
+				</sonar.cpd.exclusions>
 				<!-- Source folder -->
 				<sonar.sources>
 					src/main/java,WebContent
@@ -245,7 +251,7 @@
 			<version>${mockito-version}</version>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<!-- Dépendance à ajouter pour Logback, importe 3 JARs (logback-classic, logback-core et slf4j-api) -->
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
