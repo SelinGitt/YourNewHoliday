@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:jee="http://www.springframework.org/schema/jee"
 	xsi:schemaLocation="
 			http://www.springframework.org/schema/beans 
 			http://www.springframework.org/schema/beans/spring-beans.xsd
 			http://www.springframework.org/schema/tx 
 			http://www.springframework.org/schema/tx/spring-tx.xsd
 			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context.xsd">
-
-	<!-- chargement des fichiers de propriétés -->
-	<context:property-placeholder location="classpath:META-INF/spring/bdynh.properties"
-		ignore-unresolvable="true" />
+			http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 	<!-- Declaration du TransactionManager -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -23,9 +20,8 @@
 	<tx:annotation-driven />
 
 	<!-- Declaration de la dataSource -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"
-		p:driverClassName="${bdynh.driver}" p:url="${bdynh.url}" p:username="${bdynh.user}" p:password="${bdynh.password}">
-	</bean>
+	<jee:jndi-lookup jndi-name="jdbc/ynh" id="dataSource" expected-type="javax.sql.DataSource"
+		lazy-init="true" />
 
 	<!-- Factorisation des propriétés d'entityManagerFactory -->
 	<bean id="entityManagerFactoryAbstract" abstract="true"
