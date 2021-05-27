@@ -74,10 +74,10 @@ public class UserConnecteController {
 
         utilisateurConnecteDto.setIdRole("1");
         utilisateurConnecteDto.setNomRole("Client");
-        utilisateurConnecteDto.setIdUtilisateur("25");
+        utilisateurConnecteDto.setIdUtilisateur("3");
         utilisateurConnecteDto.setNbProduitPanier("3");
-        utilisateurConnecteDto.setNom("Dupont");
-        utilisateurConnecteDto.setPrenom("Marc");
+        utilisateurConnecteDto.setNom("Lanister");
+        utilisateurConnecteDto.setPrenom("Cercey");
 
         return utilisateurConnecteDto;
     }
@@ -92,10 +92,10 @@ public class UserConnecteController {
 
         utilisateurConnecteDto.setIdRole("3");
         utilisateurConnecteDto.setNomRole("Administrateur");
-        utilisateurConnecteDto.setIdUtilisateur("74");
+        utilisateurConnecteDto.setIdUtilisateur("7");
         utilisateurConnecteDto.setNbProduitPanier("0");
-        utilisateurConnecteDto.setNom("Bartide");
-        utilisateurConnecteDto.setPrenom("Eric");
+        utilisateurConnecteDto.setNom("Marly");
+        utilisateurConnecteDto.setPrenom("Cyntia");
 
         return utilisateurConnecteDto;
     }
