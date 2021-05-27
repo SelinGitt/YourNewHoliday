@@ -5,10 +5,13 @@ package service.commande.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import persistance.commande.dao.ICommandeDao;
+import persistance.commande.dao.impl.CommandeDao;
 import presentation.commande.dto.CommandeDto;
 import service.commande.ICommandeService;
 
@@ -19,6 +22,8 @@ import service.commande.ICommandeService;
  */
 @Service
 public class CommandeService implements ICommandeService {
+
+    private final Logger logger = LoggerFactory.getLogger(CommandeService.class);
 
     @Autowired
     private ICommandeDao iCommandeDao;

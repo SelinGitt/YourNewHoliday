@@ -5,6 +5,8 @@ package persistance.commande.dao.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +23,8 @@ import persistance.commun.dao.impl.AbstractGenericDao;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public class CommandeDao extends AbstractGenericDao<CommandeDo> implements ICommandeDao {
+
+    private final Logger logger = LoggerFactory.getLogger(CommandeDao.class);
 
     /**
      * Constructeur
