@@ -3,6 +3,8 @@
  */
 package presentation.utilisateur.dto;
 
+import java.util.Date;
+
 /**
  * Classe représentant un utilisateur pour la vue
  *
@@ -10,13 +12,13 @@ package presentation.utilisateur.dto;
  */
 public class UtilisateurDto {
 
-    private String email;
-    private String password;
-    private String reference;
-    private String nom;
-    private String prenom;
-    private String dateInscription;
-    private String estActif;
+    private String  email;
+    private String  password;
+    private String  reference;
+    private String  nom;
+    private String  prenom;
+    private Date    dateInscription;
+    private Boolean estActif;
 
     /**
      * Getter for email
@@ -113,7 +115,7 @@ public class UtilisateurDto {
      *
      * @return the dateInscription
      */
-    public String getDateInscription() {
+    public Date getDateInscription() {
         return dateInscription;
     }
 
@@ -122,7 +124,7 @@ public class UtilisateurDto {
      *
      * @param dateInscription the dateInscription to set
      */
-    public void setDateInscription(final String dateInscription) {
+    public void setDateInscription(final Date dateInscription) {
         this.dateInscription = dateInscription;
     }
 
@@ -131,7 +133,7 @@ public class UtilisateurDto {
      *
      * @return the estActif
      */
-    public String getEstActif() {
+    public Boolean getEstActif() {
         return estActif;
     }
 
@@ -140,7 +142,7 @@ public class UtilisateurDto {
      *
      * @param estActif the estActif to set
      */
-    public void setEstActif(final String estActif) {
+    public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
     }
 
