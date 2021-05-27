@@ -9,7 +9,8 @@
             </h3>
     </div>
     <div id="headerStatut" class="headerCell">
-        connecté en tant que : <br /> statut profil :
+        <b>Connecté en tant que :</b> ${utilisateur.prenom } ${utilisateur.nom } <br /> <b>Statut profil :</b>
+        ${utilisateur.nomRole }
 
     </div>
     <div id="headerConnexion" class="headerCell">
