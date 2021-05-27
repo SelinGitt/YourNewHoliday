@@ -40,7 +40,6 @@ class ProduitMapperTest {
         assertEquals("REFTEST", produitDoCompare.getReference());
         assertEquals(40, produitDoCompare.getServices());
         assertEquals(4, produitDoCompare.getVersion());
-
     }
 
     /**

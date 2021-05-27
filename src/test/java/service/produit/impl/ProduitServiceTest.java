@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import service.produit.IProduitService;
 
 /**
- * Classe test de ProduitService
+ * Classe test de {@link ProduitService}
  *
  * @author Administrateur
  */
@@ -37,5 +37,4 @@ class ProduitServiceTest {
     void testListerProduits() {
         assertEquals(6, iProduitService.listerProduits().size());
     }
-
 }

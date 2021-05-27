@@ -16,7 +16,7 @@ import service.produit.IProduitService;
 import service.produit.ProduitMapper;
 
 /**
- * Classe représentant l'interface méthier {@link IProduitService}
+ * Classe représentant l'interface métier {@link IProduitService}
  *
  * @author Administrateur
  */
@@ -31,5 +31,4 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> listerProduits() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
     }
-
 }

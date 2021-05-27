@@ -22,8 +22,8 @@ public class ProduitMapper {
     /**
      * Permet de mapper un produitDto vers un produitDo
      *
-     * @param  produitDto le produit à mapper
-     * @return            Le produit mappé
+     * @param  produitDto le produitDto à mapper
+     * @return            Le produitDo mappé
      */
     public static ProduitDo mapToDo(final ProduitDto produitDto) {
         if (produitDto == null) {
@@ -42,11 +42,12 @@ public class ProduitMapper {
         produitDo.setCheminImage(produitDto.getCheminImage());
         produitDo.setServices(Integer.valueOf(produitDto.getServices()));
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
+        
         return produitDo;
     }
 
     /**
-     * Permet de mapper un produitDo en ProduitDto
+     * Permet de mapper un produitDo vers un ProduitDto
      *
      * @param  produitDo le produitDo à mapper
      * @return           le ProduitDto mappé
