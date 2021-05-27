@@ -16,5 +16,7 @@
 
 	<!-- scan du package -->
 	<context:component-scan base-package="presentation" />
+
+	<!-- scan du package persistance -->
 	<context:component-scan base-package="persistance" />
 </beans>
