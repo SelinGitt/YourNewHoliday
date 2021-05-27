@@ -30,9 +30,9 @@ import pocLogBack.POCLogBack;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public abstract class GenericDao<T> implements IGenericDao<T> {
-    
+
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    final Logger logger = LoggerFactory.getLogger(POCLogBack.class);
+    final Logger          logger = LoggerFactory.getLogger(POCLogBack.class);
 
     // l'entityManager instancier par spring sous forme de beanSpring
     @PersistenceContext(unitName = "puYnh")
@@ -47,7 +47,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     /**
      * Constructeur par défaut
      */
-    public GenericDao() {
+    protected GenericDao() {
         super();
     }
 
@@ -56,7 +56,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
      *
      * @param entiteClass le type de l'objet sur lequel on va effectuer le CRUD
      */
-    public GenericDao(final Class<T> entiteClass) {
+    protected GenericDao(final Class<T> entiteClass) {
         super();
         this.entiteClass = entiteClass;
     }
@@ -69,7 +69,8 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
         final Root<T> rootEntry = criteriaQuery.from(this.entiteClass);
         final CriteriaQuery<T> allCriteria = criteriaQuery.select(rootEntry);
         final TypedQuery<T> allQuery = this.entityManager.createQuery(allCriteria);
-        this.logger.debug("Generic Dao {} findAll ", this.entiteClass.getName());
+        // ajout du message pour le debug
+        this.logger.debug("Generic Dao {} findAll ", this.entiteClass.getSimpleName());
         return allQuery.getResultList();
     }
 
