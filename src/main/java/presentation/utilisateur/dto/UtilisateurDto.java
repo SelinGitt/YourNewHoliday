@@ -3,6 +3,7 @@
  */
 package presentation.utilisateur.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -10,15 +11,19 @@ import java.util.Date;
  *
  * @author Meliodas-sama
  */
-public class UtilisateurDto {
+public class UtilisateurDto implements Serializable {
 
-    private String  email;
-    private String  password;
-    private String  reference;
-    private String  nom;
-    private String  prenom;
-    private Date    dateInscription;
-    private Boolean estActif;
+    /**
+     * Generated serial version UID
+     */
+    private static final long serialVersionUID = -928259738873683816L;
+    private String            email;
+    private String            password;
+    private String            reference;
+    private String            nom;
+    private String            prenom;
+    private Date              dateInscription;
+    private Boolean           estActif;
 
     /**
      * Getter for email
