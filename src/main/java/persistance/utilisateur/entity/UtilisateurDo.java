@@ -21,7 +21,7 @@ public class UtilisateurDo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int     id;
+    private Integer id;
 
     @Column(nullable = false, length = 15, unique = true)
     private String  reference;
@@ -42,7 +42,7 @@ public class UtilisateurDo {
     private Date    dateInscription;
 
     @Column(name = "est_desactive")
-    private boolean estActif;
+    private Boolean estActif;
 
     /**
      * Constructor
