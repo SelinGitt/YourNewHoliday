@@ -36,7 +36,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     /**
      * Il faut stocker le type de la classe générique
      */
-    private Class<T>      entite;
+    private Class<T>      entiteClass;
 
     /**
      * Constructeur par défaut
@@ -48,19 +48,19 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     /**
      * Constructeur paramétré
      *
-     * @param entite le type de l'objet sur lequel on va effectuer le CRUD
+     * @param entiteClass le type de l'objet sur lequel on va effectuer le CRUD
      */
-    public GenericDao(final Class<T> entite) {
+    public GenericDao(final Class<T> entiteClass) {
         super();
-        this.entite = entite;
+        this.entiteClass = entiteClass;
     }
 
     @Override
     public List<T> findAll() {
         // la requête findAll avec un critère
         final CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
-        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.entite);
-        final Root<T> rootEntry = criteriaQuery.from(this.entite);
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.entiteClass);
+        final Root<T> rootEntry = criteriaQuery.from(this.entiteClass);
         final CriteriaQuery<T> allCriteria = criteriaQuery.select(rootEntry);
         final TypedQuery<T> allQuery = this.entityManager.createQuery(allCriteria);
         return allQuery.getResultList();
