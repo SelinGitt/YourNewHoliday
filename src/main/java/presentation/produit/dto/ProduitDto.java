@@ -21,13 +21,13 @@ public class ProduitDto {
 
     private String destination;
 
-    private String prix_unitaire;
+    private String prixUnitaire;
 
     private String hebergement;
 
-    private String mise_en_vente;
+    private String miseEnVente;
 
-    private String chemin_de_l_image;
+    private String cheminImage;
 
     private String services;
 
@@ -140,21 +140,21 @@ public class ProduitDto {
     }
 
     /**
-     * Getter for prix_unitaire
+     * Getter for prixUnitaire
      *
-     * @return the prix_unitaire
+     * @return the prixUnitaire
      */
-    public String getPrix_unitaire() {
-        return prix_unitaire;
+    public String getPrixUnitaire() {
+        return prixUnitaire;
     }
 
     /**
-     * Setter for prix_unitaire
+     * Setter for prixUnitaire
      *
-     * @param prix_unitaire the prix_unitaire to set
+     * @param prixUnitaire the prixUnitaire to set
      */
-    public void setPrix_unitaire(final String prix_unitaire) {
-        this.prix_unitaire = prix_unitaire;
+    public void setPrixUnitaire(final String prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
     /**
@@ -176,39 +176,39 @@ public class ProduitDto {
     }
 
     /**
-     * Getter for mise_en_vente
+     * Getter for miseEnVente
      *
-     * @return the mise_en_vente
+     * @return the miseEnVente
      */
-    public String getMise_en_vente() {
-        return mise_en_vente;
+    public String getMiseEnVente() {
+        return miseEnVente;
     }
 
     /**
-     * Setter for mise_en_vente
+     * Setter for miseEnVente
      *
-     * @param mise_en_vente the mise_en_vente to set
+     * @param miseEnVente the miseEnVente to set
      */
-    public void setMise_en_vente(final String mise_en_vente) {
-        this.mise_en_vente = mise_en_vente;
+    public void setMiseEnVente(final String miseEnVente) {
+        this.miseEnVente = miseEnVente;
     }
 
     /**
-     * Getter for chemin_de_l_image
+     * Getter for cheminImage
      *
-     * @return the chemin_de_l_image
+     * @return the cheminImage
      */
-    public String getChemin_de_l_image() {
-        return chemin_de_l_image;
+    public String getCheminImage() {
+        return cheminImage;
     }
 
     /**
-     * Setter for chemin_de_l_image
+     * Setter for cheminImage
      *
-     * @param chemin_de_l_image the chemin_de_l_image to set
+     * @param cheminImage the cheminImage to set
      */
-    public void setChemin_de_l_image(final String chemin_de_l_image) {
-        this.chemin_de_l_image = chemin_de_l_image;
+    public void setCheminImage(final String cheminImage) {
+        this.cheminImage = cheminImage;
     }
 
     /**

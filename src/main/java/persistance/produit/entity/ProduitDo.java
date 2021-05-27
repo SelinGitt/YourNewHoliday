@@ -3,6 +3,7 @@
  */
 package persistance.produit.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,13 +33,16 @@ public class ProduitDo {
 
     private String  destination;
 
-    private Double  prix_unitaire;
+    @Column(name = "prix_unitaire")
+    private Double  prixUnitaire;
 
     private String  hebergement;
 
-    private Boolean mise_en_vente;
+    @Column(name = "mise_en_vente")
+    private Boolean miseEnVente;
 
-    private String  chemin_de_l_image;
+    @Column(name = "chemin_de_l_image")
+    private String  cheminImage;
 
     private Integer services;
 
@@ -151,21 +155,21 @@ public class ProduitDo {
     }
 
     /**
-     * Getter for prix_unitaire
+     * Getter for prixUnitaire
      *
-     * @return the prix_unitaire
+     * @return the prixUnitaire
      */
-    public Double getPrix_unitaire() {
-        return prix_unitaire;
+    public Double getPrixUnitaire() {
+        return prixUnitaire;
     }
 
     /**
-     * Setter for prix_unitaire
+     * Setter for prixUnitaire
      *
-     * @param prix_unitaire the prix_unitaire to set
+     * @param prixUnitaire the prixUnitaire to set
      */
-    public void setPrix_unitaire(final Double prix_unitaire) {
-        this.prix_unitaire = prix_unitaire;
+    public void setPrixUnitaire(final Double prixUnitaire) {
+        this.prixUnitaire = prixUnitaire;
     }
 
     /**
@@ -187,39 +191,39 @@ public class ProduitDo {
     }
 
     /**
-     * Getter for mise_en_vente
+     * Getter for miseEnVente
      *
-     * @return the mise_en_vente
+     * @return the miseEnVente
      */
-    public Boolean getMise_en_vente() {
-        return mise_en_vente;
+    public Boolean getMiseEnVente() {
+        return miseEnVente;
     }
 
     /**
-     * Setter for mise_en_vente
+     * Setter for miseEnVente
      *
-     * @param mise_en_vente the mise_en_vente to set
+     * @param miseEnVente the miseEnVente to set
      */
-    public void setMise_en_vente(final Boolean mise_en_vente) {
-        this.mise_en_vente = mise_en_vente;
+    public void setMiseEnVente(final Boolean miseEnVente) {
+        this.miseEnVente = miseEnVente;
     }
 
     /**
-     * Getter for chemin_de_l_image
+     * Getter for cheminImage
      *
-     * @return the chemin_de_l_image
+     * @return the cheminImage
      */
-    public String getChemin_de_l_image() {
-        return chemin_de_l_image;
+    public String getCheminImage() {
+        return cheminImage;
     }
 
     /**
-     * Setter for chemin_de_l_image
+     * Setter for cheminImage
      *
-     * @param chemin_de_l_image the chemin_de_l_image to set
+     * @param cheminImage the cheminImage to set
      */
-    public void setChemin_de_l_image(final String chemin_de_l_image) {
-        this.chemin_de_l_image = chemin_de_l_image;
+    public void setCheminImage(final String cheminImage) {
+        this.cheminImage = cheminImage;
     }
 
     /**
