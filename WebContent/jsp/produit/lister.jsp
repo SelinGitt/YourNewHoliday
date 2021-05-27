@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Lister produits</title>
+<title>Liste des séjours</title>
 </head>
 <body>
 <p>
