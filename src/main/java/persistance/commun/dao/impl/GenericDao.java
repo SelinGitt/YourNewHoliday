@@ -1,0 +1,71 @@
+/**
+ * 
+ */
+package persistance.commun.dao.impl;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import persistance.commun.dao.IGenericDao;
+
+/**
+ * Classe implémentant IGenericDao
+ *
+ * @author     Ilaitsivery Jacques MADIOMANANA
+ * @param  <T> Le type à utiliser pour la classe
+ */
+@Repository
+@Transactional(propagation = Propagation.MANDATORY)
+public abstract class GenericDao<T> implements IGenericDao<T> {
+
+    // l'entityManager instancier par spring sous forme de beanSpring
+    @PersistenceContext(unitName = "puYnh")
+    private EntityManager entityManager;
+
+    // le type de l'objet sur le quelle on fait le CRUD
+    /**
+     * Il faut stocker le type de la classe générique
+     */
+    private Class<T>      entite;
+
+    /**
+     * Constructeur par défaut
+     */
+    public GenericDao() {
+        super();
+    }
+
+    /**
+     * Constructeur paramétré
+     *
+     * @param entite le type de l'objet sur lequel on va effectuer le CRUD
+     */
+    public GenericDao(final Class<T> entite) {
+        super();
+        this.entite = entite;
+    }
+
+    @Override
+    public List<T> findAll() {
+        // la requête findAll avec un critère
+        final CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.entite);
+        final Root<T> rootEntry = criteriaQuery.from(this.entite);
+        final CriteriaQuery<T> allCriteria = criteriaQuery.select(rootEntry);
+        final TypedQuery<T> allQuery = this.entityManager.createQuery(allCriteria);
+        return allQuery.getResultList();
+    }
+
+    // les autres méthodes du CRUD à ajouter
+
+}
