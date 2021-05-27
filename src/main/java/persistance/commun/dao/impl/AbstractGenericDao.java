@@ -30,7 +30,7 @@ import persistance.commun.dao.IGenericDao;
 public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    protected final Logger  logger = LoggerFactory.getLogger(AbstractGenericDao.class);
+    private final Logger    logger = LoggerFactory.getLogger(AbstractGenericDao.class);
 
     // l'entityManager instancier par spring sous forme de beanSpring
     @PersistenceContext(unitName = "puYnh")
