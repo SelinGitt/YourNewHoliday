@@ -8,7 +8,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commun.dao.IGenericDao;
-import pocLogBack.POCLogBack;
 
 /**
  * Classe implémentant IGenericDao
@@ -29,10 +27,10 @@ import pocLogBack.POCLogBack;
  */
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public abstract class GenericDao<T> implements IGenericDao<T> {
+public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    final Logger          logger = LoggerFactory.getLogger(POCLogBack.class);
+    final Logger          logger = LoggerFactory.getLogger(AbstractGenericDao.class);
 
     // l'entityManager instancier par spring sous forme de beanSpring
     @PersistenceContext(unitName = "puYnh")
@@ -47,7 +45,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     /**
      * Constructeur par défaut
      */
-    protected GenericDao() {
+    protected AbstractGenericDao() {
         super();
     }
 
@@ -56,7 +54,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
      *
      * @param entiteClass le type de l'objet sur lequel on va effectuer le CRUD
      */
-    protected GenericDao(final Class<T> entiteClass) {
+    protected AbstractGenericDao(final Class<T> entiteClass) {
         super();
         this.entiteClass = entiteClass;
     }
@@ -64,7 +62,7 @@ public abstract class GenericDao<T> implements IGenericDao<T> {
     @Override
     public List<T> findAll() {
         // la requête findAll avec un critère
-        final CriteriaBuilder criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        final var criteriaBuilder = this.entityManager.getCriteriaBuilder();
         final CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(this.entiteClass);
         final Root<T> rootEntry = criteriaQuery.from(this.entiteClass);
         final CriteriaQuery<T> allCriteria = criteriaQuery.select(rootEntry);

@@ -40,7 +40,7 @@ class ProduitDaoTest {
     private IProduitDao iProduitDao;
 
     /**
-     * Test method for {@link persistance.commun.dao.impl.GenericDao#findAll()}.
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findAll()}.
      */
     @Test
     void testFindAll() {

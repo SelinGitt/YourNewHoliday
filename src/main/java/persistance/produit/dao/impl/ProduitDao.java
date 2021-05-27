@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import persistance.commun.dao.impl.GenericDao;
+import persistance.commun.dao.impl.AbstractGenericDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
 
@@ -18,7 +18,7 @@ import persistance.produit.entity.ProduitDo;
  */
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
-public class ProduitDao extends GenericDao<ProduitDo> implements IProduitDao {
+public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProduitDao {
 
     /**
      * Constructeur par défaut
