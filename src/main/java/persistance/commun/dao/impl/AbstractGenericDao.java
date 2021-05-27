@@ -30,17 +30,17 @@ import persistance.commun.dao.IGenericDao;
 public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    final Logger          logger = LoggerFactory.getLogger(AbstractGenericDao.class);
+    protected final Logger  logger = LoggerFactory.getLogger(AbstractGenericDao.class);
 
     // l'entityManager instancier par spring sous forme de beanSpring
     @PersistenceContext(unitName = "puYnh")
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     // le type de l'objet sur le quelle on fait le CRUD
     /**
      * Il faut stocker le type de la classe générique
      */
-    private Class<T>      entiteClass;
+    private Class<T>        entiteClass;
 
     /**
      * Constructeur par défaut
