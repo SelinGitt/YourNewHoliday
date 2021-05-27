@@ -1,7 +1,7 @@
 /**
  * 
  */
-package presentation.utilisateur;
+package presentation.utilisateur.dto;
 
 /**
  * Classe représentant un utilisateur pour la vue
