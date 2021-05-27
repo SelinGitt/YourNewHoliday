@@ -26,6 +26,9 @@ public class ProduitMapper {
      * @return            Le produit mappé
      */
     public static ProduitDo mapToDo(final ProduitDto produitDto) {
+        if (produitDto == null) {
+            return null;
+        }
         final var produitDo = new ProduitDo();
         produitDo.setIdProduitOriginal(Integer.valueOf(produitDto.getIdProduitOriginal()));
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
@@ -49,6 +52,9 @@ public class ProduitMapper {
      * @return           le ProduitDto mappé
      */
     public static ProduitDto mapToDto(final ProduitDo produitDo) {
+        if (produitDo == null) {
+            return null;
+        }
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
         produitDto.setVersion(String.valueOf(produitDo.getVersion()));

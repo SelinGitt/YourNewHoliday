@@ -3,7 +3,11 @@
  */
 package service.produit;
 
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -22,8 +26,29 @@ class ProduitMapperTest {
      */
     @Test
     void testMapToDo() {
+
         final var produitDto = initProduitDto();
-        final var produitDo = initEqualsProduitDo();
+        final var produitDoCompare = ProduitMapper.mapToDo(produitDto);
+        assertEquals("D:\test", produitDoCompare.getCheminImage());
+        assertEquals("Description de test", produitDoCompare.getDescription());
+        assertEquals("Destination de test", produitDoCompare.getDestination());
+        assertEquals("Hebergement de test", produitDoCompare.getHebergement());
+        assertEquals(111, produitDoCompare.getIdProduitOriginal());
+        assertEquals("nom de test", produitDoCompare.getNom());
+        assertTrue(produitDoCompare.getMiseEnVente());
+        assertEquals(144.44, produitDoCompare.getPrixUnitaire());
+        assertEquals("REFTEST", produitDoCompare.getReference());
+        assertEquals(40, produitDoCompare.getServices());
+        assertEquals(4, produitDoCompare.getVersion());
+
+    }
+
+    /**
+     * Test method for {@link service.produit.ProduitMapper#mapToDo(presentation.produit.dto.ProduitDto)}.
+     */
+    @Test
+    void testWithDtoNull() {
+        assertNull(ProduitMapper.mapToDo(null));
     }
 
     /**
@@ -31,7 +56,27 @@ class ProduitMapperTest {
      */
     @Test
     void testMapToDto() {
-        fail("Not yet implemented");
+        final var produitDo = initProduitDo();
+        final var produitDtoCompare = ProduitMapper.mapToDto(produitDo);
+        assertEquals("D:\test", produitDtoCompare.getCheminImage());
+        assertEquals("Description de test", produitDtoCompare.getDescription());
+        assertEquals("Destination de test", produitDtoCompare.getDestination());
+        assertEquals("Hebergement de test", produitDtoCompare.getHebergement());
+        assertEquals("111", produitDtoCompare.getIdProduitOriginal());
+        assertEquals("nom de test", produitDtoCompare.getNom());
+        assertEquals("true", produitDtoCompare.getMiseEnVente());
+        assertEquals("144.44", produitDtoCompare.getPrixUnitaire());
+        assertEquals("REFTEST", produitDtoCompare.getReference());
+        assertEquals("40", produitDtoCompare.getServices());
+        assertEquals("4", produitDtoCompare.getVersion());
+    }
+
+    /**
+     * Test method for {@link service.produit.ProduitMapper#mapToDto(persistance.produit.entity.ProduitDo)}.
+     */
+    @Test
+    void testMapToDtoWithNull() {
+        assertNull(ProduitMapper.mapToDto(null));
     }
 
     /**
@@ -39,7 +84,9 @@ class ProduitMapperTest {
      */
     @Test
     void testMapToListDto() {
-        fail("Not yet implemented");
+        final var produitDo1 = initProduitDo();
+        final var produitDo2 = initProduitDo();
+        assertEquals(2, ProduitMapper.mapToListDto(Arrays.asList(produitDo1, produitDo2)).size());
     }
 
     private ProduitDto initProduitDto() {
@@ -58,7 +105,7 @@ class ProduitMapperTest {
         return produitDto;
     }
 
-    private ProduitDo initEqualsProduitDo() {
+    private ProduitDo initProduitDo() {
         final var produitDo = new ProduitDo();
         produitDo.setCheminImage("D:\test");
         produitDo.setDescription("Description de test");
