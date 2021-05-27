@@ -19,6 +19,7 @@ public class UtilisateurConnecteDto implements Serializable {
     private static final long serialVersionUID = -2043241208068422853L;
 
     private String            idRole;
+    private String            nomRole;
     private String            idUtilisateur;
     private String            nom;
     private String            prenom;
@@ -45,8 +46,26 @@ public class UtilisateurConnecteDto implements Serializable {
      *
      * @param idRole the idRole to set
      */
-    public void setIdRole(String idRole) {
+    public void setIdRole(final String idRole) {
         this.idRole = idRole;
+    }
+
+    /**
+     * Getter for nomRole
+     *
+     * @return the nomRole
+     */
+    public String getNomRole() {
+        return nomRole;
+    }
+
+    /**
+     * Setter for nomRole
+     *
+     * @param nomRole the nomRole to set
+     */
+    public void setNomRole(final String nomRole) {
+        this.nomRole = nomRole;
     }
 
     /**
@@ -63,7 +82,7 @@ public class UtilisateurConnecteDto implements Serializable {
      *
      * @param idUtilisateur the idUtilisateur to set
      */
-    public void setIdUtilisateur(String idUtilisateur) {
+    public void setIdUtilisateur(final String idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
 
@@ -81,7 +100,7 @@ public class UtilisateurConnecteDto implements Serializable {
      *
      * @param nom the nom to set
      */
-    public void setNom(String nom) {
+    public void setNom(final String nom) {
         this.nom = nom;
     }
 
@@ -99,7 +118,7 @@ public class UtilisateurConnecteDto implements Serializable {
      *
      * @param prenom the prenom to set
      */
-    public void setPrenom(String prenom) {
+    public void setPrenom(final String prenom) {
         this.prenom = prenom;
     }
 
@@ -117,8 +136,17 @@ public class UtilisateurConnecteDto implements Serializable {
      *
      * @param nbProduitPanier the nbProduitPanier to set
      */
-    public void setNbProduitPanier(String nbProduitPanier) {
+    public void setNbProduitPanier(final String nbProduitPanier) {
         this.nbProduitPanier = nbProduitPanier;
+    }
+
+    /**
+     * Getter for serialversionuid
+     *
+     * @return the serialversionuid
+     */
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
 
 }
