@@ -18,6 +18,7 @@ public class UtilisateurMapper {
      * Constructor
      */
     private UtilisateurMapper() {
+        // Empty CTR, on cache le CTR public
     }
 
     /**
@@ -34,7 +35,7 @@ public class UtilisateurMapper {
         utilisateurDto.setDateInscription(utilisateurDo.getDateInscription());
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
-        utilisateurDto.setEstActif(utilisateurDo.isEstActif());
+        utilisateurDto.setEstActif(utilisateurDo.getEstActif());
 
         return utilisateurDto;
     }
@@ -65,6 +66,6 @@ public class UtilisateurMapper {
      * @return                   Mapped List UtilisateurDto
      */
     public static List<UtilisateurDto> mapperToListDto(final List<UtilisateurDo> utilisateurDoList) {
-        return (utilisateurDoList.stream().map(UtilisateurMapper::mapperToDto).collect(Collectors.toList()));
+        return utilisateurDoList.stream().map(UtilisateurMapper::mapperToDto).collect(Collectors.toList());
     }
 }

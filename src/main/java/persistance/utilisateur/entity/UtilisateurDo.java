@@ -56,7 +56,7 @@ public class UtilisateurDo {
      *
      * @return the id
      */
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -65,7 +65,7 @@ public class UtilisateurDo {
      *
      * @param id the id to set
      */
-    public void setId(final int id) {
+    public void setId(final Integer id) {
         this.id = id;
     }
 
@@ -182,7 +182,7 @@ public class UtilisateurDo {
      *
      * @return the estActif
      */
-    public boolean isEstActif() {
+    public Boolean getEstActif() {
         return estActif;
     }
 
@@ -191,7 +191,7 @@ public class UtilisateurDo {
      *
      * @param estActif the estActif to set
      */
-    public void setEstActif(final boolean estActif) {
+    public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
     }
 
