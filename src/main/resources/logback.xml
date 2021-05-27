@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<configuration debug="true">
+
+	<!-- Affichage en console -->
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Appender permettant l'écriture dans un fichier : RollingFileAppender -->
+
+	<!-- Propriété d'emplacement et de nom de fichier -->
+	<property name="FILELOG" value="C:/YNH/logs/app.log" />
+
+	<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- Fichier de log -->
+		<file>${FILELOG}</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>C:/temp/logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<!-- taille max des fichiers à archiver, peut évoluer -->
+			<maxFileSize>10MB</maxFileSize>
+			<!-- taille totale des fichiers archivés, peut évoluer -->
+			<totalSizeCap>1GB</totalSizeCap>
+			<!-- durée en jours durant laquelle sont conservés les fichiers, peut évoluer -->
+			<maxHistory>60</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<!-- pour définir le nombre de caractères N d'un élément d'affichage, par exemple le level "%level", écrire "%-Nlevel", 
+				ici N = 5 pour le level -->
+			<pattern>%d %-5level %-32c{1.} [%-23t] %m%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Déclaration du logger pour la couche Service -->
+	<logger name="service" level="debug" additivity="false">
+		<appender-ref ref="FILE-ROLLING" />
+	</logger>
+
+	<!-- Déclaration du logger pour la couche Presentation -->
+	<logger name="presentation" level="debug" additivity="false">
+		<appender-ref ref="FILE-ROLLING" />
+	</logger>
+
+	<!-- Déclaration du logger pour la couche Persistance -->
+	<logger name="persistance" level="debug" additivity="false">
+		<appender-ref ref="FILE-ROLLING" />
+	</logger>
+
+	<!-- Déclaration du logger pour le package de Test -->
+	<!-- A Supprimer ensuite ! -->
+	<logger name="pocLogBack" level="debug" additivity="false">
+		<appender-ref ref="FILE-ROLLING" />
+	</logger>
+
+	<!-- Gère les logs de LogBack -->
+	<logger name="ch.qos" level="warn">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- Gère les logs de Spring -->
+	<logger name="org.springframework" level="warn">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- Gère les logs de Hibernate -->
+	<logger name="org.hibernate" level="warn">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<!-- Root : logger par défaut, indispensable et unique -->
+	<root level="info">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>
