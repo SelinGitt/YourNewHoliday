@@ -9,9 +9,9 @@
 <br />
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
-        <table class="containerVoyage">
+        <table class="containerVoyage" >
             <tr>
-                <td colspan="2"><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="100%" /></td>
+                <td colspan="2" class="limitSize"><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="75%" alt="Maroc" /></td>
             </tr>
             <tr>
                 <td>${produitDto.nom}</td>

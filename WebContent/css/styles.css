@@ -46,18 +46,27 @@ h1.title {
 
 .container {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px;
 	border: 1px solid #ff0000;
 }
 
-table.containerVoyage {
+.containerVoyage {
 	display: flex;
-	justify-content: center; 
+	justify-content: center;
 	border: 1px solid #000000;
- 	margin:10px;
-	flex:25%;
+	margin: 10px;
+	flex: 25%;
+
 }
+td.limitSize{
+	width:100em;
+}
+.containerVoyage:nth-child(3n) {
+	break-after: always;
+}
+
 /* PDT01 */
 
 /* PDT02 */
