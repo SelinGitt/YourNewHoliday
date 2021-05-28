@@ -7,7 +7,8 @@
         <a href=""> <spring:message code="glb.footer.lien.con" />
         </a>
     </div>
-    <!-- lien de redirection vers la page mentions légales vide pour l'instant "mentions_legales.do" quand le controlleur sera créé -->
+    <!-- lien de redirection vers la page mentions légales vide pour l'instant 
+         "mentions_legales.do" quand le controlleur sera créé -->
     <div>
         <a href=""> <spring:message code="glb.footer.lien.mlg" />
         </a>
