@@ -28,11 +28,11 @@ public class ListerController {
      *
      * @return liste de produits pour le model et la vue associée
      */
-        @GetMapping
-        public ModelAndView lister() {
-            final ModelAndView modelAndView = new ModelAndView();
-            modelAndView.setViewName("listerProduits");
-            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduits());
-            return modelAndView;
-        }
+    @GetMapping
+    public ModelAndView lister() {
+        final ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("listerProduits");
+        modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
+        return modelAndView;
+    }
 }
