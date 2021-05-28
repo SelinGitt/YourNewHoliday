@@ -31,7 +31,7 @@ public class CommandeMappeur {
         final CommandeDto commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(String.valueOf(commandeDo.getPrixTotal()));
+        commandeDto.setPrixTotal(commandeDo.getPrixTotal().toString());
         if (commandeDo.getDate() != null) {
             final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
 

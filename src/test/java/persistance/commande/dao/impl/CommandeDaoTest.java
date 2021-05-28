@@ -49,6 +49,11 @@ class CommandeDaoTest {
     @Autowired
     private ICommandeDao iCommandeDao;
 
+    @Test
+    void testICommandeDao() {
+        assertNotNull(this.iCommandeDao);
+    }
+
     /**
      * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByRef(java.lang.String)}.
      */

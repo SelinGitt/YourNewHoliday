@@ -6,6 +6,7 @@ package service.commande.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -38,7 +39,7 @@ class CommandeMappeurTest {
         commandeDo.setReference("ABC9");
         final Date date = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1970");
         commandeDo.setDate(date);
-        commandeDo.setPrixTotal(200);
+        commandeDo.setPrixTotal(BigDecimal.valueOf(200));
 
         final CommandeDto commandeDto = CommandeMappeur.mapperToDto(commandeDo);
 
