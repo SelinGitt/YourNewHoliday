@@ -42,7 +42,7 @@ public class ListeCommandeCMD00Controller {
         final List<CommandeDto> listCommande = this.iCommandeService
                 .listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
         modelAndView.setViewName("listerCommande");
-        modelAndView.getModelMap().addAttribute("listCommande", listCommande);
+        modelAndView.getModelMap().addAttribute("listeCommande", listCommande);
         return modelAndView;
     }
 
