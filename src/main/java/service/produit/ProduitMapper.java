@@ -3,6 +3,7 @@
  */
 package service.produit;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,7 +64,8 @@ public class ProduitMapper {
         produitDto.setNom(produitDo.getNom());
         produitDto.setDescription(produitDo.getDescription());
         produitDto.setDestination(produitDo.getDestination());
-        produitDto.setPrixUnitaire(String.valueOf(produitDo.getPrixUnitaire()));
+        final var decimalFormat = new DecimalFormat("#.00");
+        produitDto.setPrixUnitaire(decimalFormat.format(produitDo.getPrixUnitaire()));
         produitDto.setHebergement(produitDo.getHebergement());
         produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
         produitDto.setCheminImage(produitDo.getCheminImage());
