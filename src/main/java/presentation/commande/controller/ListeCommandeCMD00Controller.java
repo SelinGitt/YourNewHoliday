@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,24 +28,27 @@ import service.commande.ICommandeService;
 @RequestMapping("/listerCommande.do")
 public class ListeCommandeCMD00Controller {
 
-	@Autowired
-	private ICommandeService iCommandeService;
+    private final Logger     logger = LoggerFactory.getLogger(ListeCommandeCMD00Controller.class);
 
-	/**
-	 * Permet d'accéder à la page listerCommande do et de l'hydrater
-	 *
-	 * @param  session contient la session de l'utilisateur
-	 * @return         ModelAndView le modèle qui sera utiliser par la vue
-	 */
-	@GetMapping
-	public ModelAndView listerCommande(final HttpSession session) {
-		final var modelAndView = new ModelAndView();
-		final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-		final List<CommandeDto> listCommande = this.iCommandeService
-				.listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
-		modelAndView.setViewName("listeCommande");
-		modelAndView.getModelMap().addAttribute("listCommande", listCommande);
-		return modelAndView;
-	}
+    @Autowired
+    private ICommandeService iCommandeService;
+
+    /**
+     * Permet d'accéder à la page listerCommande do et de l'hydrater
+     *
+     * @param  session contient la session de l'utilisateur
+     * @return         ModelAndView le modèle qui sera utiliser par la vue
+     */
+    @GetMapping
+    public ModelAndView listerCommande(final HttpSession session) {
+        final var modelAndView = new ModelAndView();
+        final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
+        this.logger.debug("lister Commande utilisateur : {} ", String.valueOf(utilisateurConnecte.getIdUtilisateur()));
+        final List<CommandeDto> listCommande = this.iCommandeService
+                .listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
+        modelAndView.setViewName("listerCommande");
+        modelAndView.getModelMap().addAttribute("listCommande", listCommande);
+        return modelAndView;
+    }
 
 }
