@@ -1,5 +1,7 @@
 package service.utilisateur.impl;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,5 +28,11 @@ class UtilisateurServiceTest {
     @Autowired
     private IUtilisateurService iUtilisateurService;
 
-    // Pas de test pour le moment
+    /**
+     * Test pour {@link service.utilisateur.IUtilisateurService#findAllUtilisateurs()}
+     */
+    @Test
+    void testFindAll() {
+        Assertions.assertEquals(7, this.iUtilisateurService.findAllUtilisateurs().size());
+    }
 }
