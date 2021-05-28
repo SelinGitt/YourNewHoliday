@@ -101,7 +101,7 @@ public class UtilisateurMapper {
         try {
             return new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (final ParseException exception) {
-            logger.info(exception.getMessage());
+            logger.warn(exception.getMessage());
         }
         return new Date();
     }
