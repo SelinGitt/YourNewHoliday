@@ -1,11 +1,11 @@
 package presentation.controller.temp;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
@@ -20,28 +20,31 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 public class UserConnecteController {
 
 	/**
+	 * L'utilisateur en session
+	 */
+	public static final String UTILISATEUR = "utilisateur";
+
+	/**
 	 * Permet de mettre en session un utilisateur client, un admin ou de le supprimer pour vos test
 	 *
 	 * @param  request Requête actuelle
-	 * @return Le ModelAndView de la méthode
+	 * @return         Le ModelAndView de la méthode
 	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView choixAction(final HttpServletRequest request) {
-		final ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("user_session");
+	@GetMapping
+	public String choixAction(final HttpSession session, final HttpServletRequest request) {
 		final String action = request.getParameter("action");
 		if (action != null) {
 			if (action.equals("create_client")) {
-				modelAndView.getModelMap().addAttribute("utilisateur", this.creerUtilisateurClient());
+				session.setAttribute(UTILISATEUR, this.creerUtilisateurClient());
 			}
 			if (action.equals("create_admin")) {
-				modelAndView.getModelMap().addAttribute("utilisateur", this.creerUtilisateurAdmin());
+				session.setAttribute(UTILISATEUR, this.creerUtilisateurAdmin());
 			}
 			if (action.equals("supprimer")) {
-				modelAndView.getModelMap().remove("utilisateur");
+				session.removeAttribute(UTILISATEUR);
 			}
 		}
-		return modelAndView;
+		return "user_session";
 	}
 
 	/**
@@ -79,5 +82,4 @@ public class UserConnecteController {
 
 		return utilisateurConnecteDto;
 	}
-
 }
