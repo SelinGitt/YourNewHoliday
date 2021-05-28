@@ -1,5 +1,6 @@
 package presentation.controller.temp;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,55 +13,38 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
  * Controller temporaire pour mettre des données utilisateur en session <br>
  * A supprimer dès que la page connexion est dispo !
  *
- * @author Valentin
+ * @author Valentin/NathanR
  */
 @Controller
 @RequestMapping("/user_session.do")
 public class UserConnecteController {
 
     /**
-     * Affiche la jsp
-     *
-     * @return nom de la jsp
+     * L'utilisateur en session
+     */
+    public static final String UTILISATEUR = "utilisateur";
+
+    /**
+     * Permet de mettre en session un utilisateur client, un admin ou de le supprimer pour vos test
+     * 
+     * @param  session Session actuelle
+     * @param  request Requête actuelle
+     * @return         Le nom de la jsp à afficher
      */
     @GetMapping
-    public String voirJsp() {
-        return "user_session";
-    }
-
-    /**
-     * Permet de mettre en session un utilisateur client pour vos test
-     *
-     * @param  session Session actuelle
-     * @return         Nom de la jsp a charger
-     */
-    @GetMapping("/create_client")
-    public String mettreUserClientEnSession(final HttpSession session) {
-        session.setAttribute("utilisateur", this.creerUtilisateurClient());
-        return "user_session";
-    }
-
-    /**
-     * Permet de mettre en session un utilisateur administrateur pour vos test
-     *
-     * @param  session Session actuelle
-     * @return         Nom de la jsp a charger
-     */
-    @GetMapping("/create_admin")
-    public String mettreUserAdminEnSession(final HttpSession session) {
-        session.setAttribute("utilisateur", this.creerUtilisateurAdmin());
-        return "user_session";
-    }
-
-    /**
-     * Supprimer l'utilisateur en session
-     *
-     * @param  session Session actuelle
-     * @return         Nom de la jsp
-     */
-    @GetMapping("/supprimer")
-    public String supprimerUser(final HttpSession session) {
-        session.removeAttribute("utilisateur");
+    public String choixAction(final HttpSession session, final HttpServletRequest request) {
+        final String action = request.getParameter("action");
+        if (action != null) {
+            if (action.equals("create_client")) {
+                session.setAttribute(UTILISATEUR, this.creerUtilisateurClient());
+            }
+            if (action.equals("create_admin")) {
+                session.setAttribute(UTILISATEUR, this.creerUtilisateurAdmin());
+            }
+            if (action.equals("supprimer")) {
+                session.removeAttribute(UTILISATEUR);
+            }
+        }
         return "user_session";
     }
 
@@ -99,5 +83,4 @@ public class UserConnecteController {
 
         return utilisateurConnecteDto;
     }
-
 }
