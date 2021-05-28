@@ -8,11 +8,10 @@
 </div>
 <br />
 <div class="container">
-
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage">
             <tr>
-                <td><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="75%" /></td>
+                <td colspan="2"><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="100%" /></td>
             </tr>
             <tr>
                 <td>${produitDto.nom}</td>
@@ -25,7 +24,6 @@
                 <td>${produitDto.description}</td>
             </tr>
         </table>
-
     </c:forEach>
 </div>
 <br />
