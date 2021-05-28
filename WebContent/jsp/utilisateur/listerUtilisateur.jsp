@@ -2,45 +2,42 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!-- Test de style va être bouger après -->
+<%-- Test de style va être bouger après --%>
 <style>
+#titreGestion {
+	text-align: center;
+	color: rgb(134, 213, 242);
+}
 
-    #titreGestion{
-    text-align: center;
-    color : rgb(134,213,242);
-    }
-    
-     #listeUser {
-    	border-collapse: collapse;
-        border : 1px solid black; 
-    	overflow-y: scroll;
-        width : 100%;
-    }
-    
-     th{
-    font-weight: lighter;
-    border-bottom: 1px solid black;
-    padding : 7px 0;
-    }
-    
-    tbody,td {
-         border-bottom: 1px solid black;
-         text-align: center;
-         font-weight: bold;
-         padding: 9px 0;
-    }
-    
-    #image{
-         width: 40px;
-         height: 40px;
-    }
-    
-    #imageNonActif{
-    width: 25px;
-    height: auto;
-    }
-    
-   
+#listeUser {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+th {
+	font-weight: lighter;
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+tbody, td {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+#image {
+	width: 40px;
+	height: 40px;
+}
+
+#imageNonActif {
+	width: 25px;
+	height: auto;
+}
 </style>
 
 <h2 id="titreGestion">
