@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurDto;
 
@@ -16,6 +19,8 @@ import presentation.utilisateur.dto.UtilisateurDto;
  * @author Valentin
  */
 public class UtilisateurMapper {
+
+    static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
 
     /**
      * Constructor
@@ -79,7 +84,7 @@ public class UtilisateurMapper {
      * @return      Date formater au format String
      */
     private static String formatDateToString(final Date date) {
-        final var pattern = "dd/MM/YYYY";
+        final var pattern = "dd/MM/yyyy";
         final var simpleDateFormat = new SimpleDateFormat(pattern);
 
         return simpleDateFormat.format(date);
@@ -96,7 +101,7 @@ public class UtilisateurMapper {
         try {
             return new SimpleDateFormat("dd/MM/yyyy").parse(date);
         } catch (final ParseException exception) {
-            exception.printStackTrace();
+            logger.info(exception.getMessage());
         }
         return new Date();
     }
