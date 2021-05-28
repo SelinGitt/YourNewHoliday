@@ -58,7 +58,6 @@ public class ProduitMapper {
             return null;
         }
         final var decimalFormat = new DecimalFormat("#.00");
-
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
         produitDto.setVersion(String.valueOf(produitDo.getVersion()));
