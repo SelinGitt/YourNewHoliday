@@ -1,5 +1,10 @@
 package persistance.utilisateur.dao.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -10,6 +15,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.UtilisateurDo;
 
 /**
  * JUnit class pour {@link persistance.utilisateur.dao.impl.UtilisateurDao}
@@ -30,5 +36,14 @@ class UtilisateurDaoTest {
     @Autowired
     private IUtilisateurDao iUtilisateurDao;
 
-    // Pas de test pour le moment
+    /**
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findAll()}.
+     */
+    @Test
+    void testFindAll() {
+        // On récupère les données
+        final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAll();
+        // On teste la conformitée du nombre de données
+        assertEquals(7, listUtilisateur.size());
+    }
 }
