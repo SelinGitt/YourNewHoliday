@@ -21,7 +21,7 @@ public class UtilisateurDo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idUtilisateur;
 
     @Column(nullable = false, length = 15, unique = true)
     private String  reference;
@@ -52,21 +52,21 @@ public class UtilisateurDo {
     }
 
     /**
-     * Getter for id
+     * Getter for idUtilisateur
      *
-     * @return the id
+     * @return the idUtilisateur
      */
-    public Integer getId() {
-        return id;
+    public Integer getIdUtilisateur() {
+        return idUtilisateur;
     }
 
     /**
-     * Setter for id
+     * Setter for idUtilisateur
      *
-     * @param id the id to set
+     * @param idUtilisateur the idUtilisateur to set
      */
-    public void setId(final Integer id) {
-        this.id = id;
+    public void setIdUtilisateur(Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     /**
@@ -83,7 +83,7 @@ public class UtilisateurDo {
      *
      * @param reference the reference to set
      */
-    public void setReference(final String reference) {
+    public void setReference(String reference) {
         this.reference = reference;
     }
 
@@ -101,7 +101,7 @@ public class UtilisateurDo {
      *
      * @param email the email to set
      */
-    public void setEmail(final String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -119,7 +119,7 @@ public class UtilisateurDo {
      *
      * @param nom the nom to set
      */
-    public void setNom(final String nom) {
+    public void setNom(String nom) {
         this.nom = nom;
     }
 
@@ -137,7 +137,7 @@ public class UtilisateurDo {
      *
      * @param prenom the prenom to set
      */
-    public void setPrenom(final String prenom) {
+    public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
@@ -155,7 +155,7 @@ public class UtilisateurDo {
      *
      * @param mdpHash the mdpHash to set
      */
-    public void setMdpHash(final String mdpHash) {
+    public void setMdpHash(String mdpHash) {
         this.mdpHash = mdpHash;
     }
 
@@ -173,7 +173,7 @@ public class UtilisateurDo {
      *
      * @param dateInscription the dateInscription to set
      */
-    public void setDateInscription(final Date dateInscription) {
+    public void setDateInscription(Date dateInscription) {
         this.dateInscription = dateInscription;
     }
 
@@ -191,8 +191,7 @@ public class UtilisateurDo {
      *
      * @param estActif the estActif to set
      */
-    public void setEstActif(final Boolean estActif) {
+    public void setEstActif(Boolean estActif) {
         this.estActif = estActif;
     }
-
 }
