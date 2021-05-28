@@ -11,19 +11,19 @@
         <li>Nombre de produit dans le panier : ${utilisateur.nbProduitPanier}</li>
     </ul>
     
-    <a href="/Projet_YNH/user_session.do/create_client">
+    <a href="/Projet_YNH/user_session.do?action=create_client">
         <spring:message code="usr.session.creer.client"/>
     </a>
     
     <br>
     
-    <a href="/Projet_YNH/user_session.do/create_admin">
+    <a href="/Projet_YNH/user_session.do?action=create_admin">
         <spring:message code="usr.session.creer.admin"/>
     </a>
     
     <br>
   
-    <a href="/Projet_YNH/user_session.do/supprimer">
+    <a href="/Projet_YNH/user_session.do?action=supprimer">
         <spring:message code="usr.session.supprimer"/>
     </a>
     
