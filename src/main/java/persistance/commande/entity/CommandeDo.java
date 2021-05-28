@@ -1,9 +1,12 @@
 package persistance.commande.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,89 +17,111 @@ import javax.persistence.Table;
 @Table(name = "commande")
 public class CommandeDo {
 
-	@Id
-	@Column(name = "idProduit")
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCommande")
+    private Integer    id;
 
-	@Column(name = "reference")
-	private String reference;
+    @Column(name = "reference")
+    private String     reference;
 
-	@Column(name = "prix_avec_remise")
-	private Number prixTotal;
+    @Column(name = "prix_avec_remise")
+    private BigDecimal prixTotal;
 
-	@Column(name = "date")
-	private Date date;
+    @Column(name = "date_commande")
+    private Date       date;
 
-	/**
-	 * Getter for id
-	 *
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
+    @Column(name = "idUtilisateur")
+    private Integer    idUtilisateur;
 
-	/**
-	 * Setter for id
-	 *
-	 * @param id the id to set
-	 */
-	public void setId(final Integer id) {
-		this.id = id;
-	}
+    /**
+     * Getter for id
+     *
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
 
-	/**
-	 * Getter for reference
-	 *
-	 * @return the reference
-	 */
-	public String getReference() {
-		return reference;
-	}
+    /**
+     * Setter for id
+     *
+     * @param id the id to set
+     */
+    public void setId(final Integer id) {
+        this.id = id;
+    }
 
-	/**
-	 * Setter for reference
-	 *
-	 * @param reference the reference to set
-	 */
-	public void setReference(final String reference) {
-		this.reference = reference;
-	}
+    /**
+     * Getter for reference
+     *
+     * @return the reference
+     */
+    public String getReference() {
+        return reference;
+    }
 
-	/**
-	 * Getter for prixTotal
-	 *
-	 * @return the prixTotal
-	 */
-	public Number getPrixTotal() {
-		return prixTotal;
-	}
+    /**
+     * Setter for reference
+     *
+     * @param reference the reference to set
+     */
+    public void setReference(final String reference) {
+        this.reference = reference;
+    }
 
-	/**
-	 * Setter for prixTotal
-	 *
-	 * @param prixTotal the prixTotal to set
-	 */
-	public void setPrixTotal(final Number prixTotal) {
-		this.prixTotal = prixTotal;
-	}
+    /**
+     * Getter for prixTotal
+     *
+     * @return the prixTotal
+     */
+    public BigDecimal getPrixTotal() {
+        return prixTotal;
+    }
 
-	/**
-	 * Getter for date
-	 *
-	 * @return the date
-	 */
-	public Date getDate() {
-		return date;
-	}
+    /**
+     * Setter for prixTotal
+     *
+     * @param prixTotal the prixTotal to set
+     */
+    public void setPrixTotal(final BigDecimal prixTotal) {
+        this.prixTotal = prixTotal;
+    }
 
-	/**
-	 * Setter for date
-	 *
-	 * @param date the date to set
-	 */
-	public void setDate(final Date date) {
-		this.date = date;
-	}
+    /**
+     * Getter for date
+     *
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Setter for date
+     *
+     * @param date the date to set
+     */
+    public void setDate(final Date date) {
+        this.date = date;
+    }
+
+    /**
+     * Getter for idUtilisateur
+     *
+     * @return the idUtilisateur
+     */
+    public Integer getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    /**
+     * Setter for idUtilisateur
+     *
+     * @param idUtilisateur the idUtilisateur to set
+     */
+    public void setIdUtilisateur(final Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
+    }
 
 }

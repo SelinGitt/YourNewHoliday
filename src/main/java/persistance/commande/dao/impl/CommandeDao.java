@@ -5,6 +5,11 @@ package persistance.commande.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -35,14 +40,40 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
 
     @Override
     public CommandeDo findByRef(final String reference) {
-        // TODO Auto-generated method stub
-        return null;
+        // la requête findByRef avec un critère
+        final var criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        final CriteriaQuery<CommandeDo> criteriaQuery = criteriaBuilder.createQuery(CommandeDo.class);
+        final Root<CommandeDo> rootEntry = criteriaQuery.from(CommandeDo.class);
+        final CriteriaQuery<CommandeDo> allCriteria = criteriaQuery.select(rootEntry);
+        // on indique le type de paramètre que l'on veut chercher
+        final ParameterExpression<String> parameter = criteriaBuilder.parameter(String.class);
+        // on crée la clause where avec le paramètre
+        final CriteriaQuery<CommandeDo> allWhere = allCriteria.where(criteriaBuilder.equal(rootEntry.get("reference"), parameter));
+        final TypedQuery<CommandeDo> allQuery = this.entityManager.createQuery(allWhere);
+        // on fournit à la requête la valeur du paramètre que l'on cherche
+        allQuery.setParameter(parameter, reference);
+        // ajout du message pour le debug
+        this.logger.debug("findByRef {} ", String.valueOf(reference));
+        return allQuery.getSingleResult();
     }
 
     @Override
     public List<CommandeDo> findByUserId(final Integer userId) {
-        // TODO Auto-generated method stub
-        return null;
+        // la requête findByUserID avec un critère
+        final var criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        final CriteriaQuery<CommandeDo> criteriaQuery = criteriaBuilder.createQuery(CommandeDo.class);
+        final Root<CommandeDo> rootEntry = criteriaQuery.from(CommandeDo.class);
+        final CriteriaQuery<CommandeDo> allCriteria = criteriaQuery.select(rootEntry);
+        // on indique le type de paramètre que l'on veut chercher
+        final ParameterExpression<Integer> parameter = criteriaBuilder.parameter(Integer.class);
+        // on crée la clause where avec le paramètre
+        final CriteriaQuery<CommandeDo> allWhere = allCriteria.where(criteriaBuilder.equal(rootEntry.get("idUtilisateur"), parameter));
+        final TypedQuery<CommandeDo> allQuery = this.entityManager.createQuery(allWhere);
+        // on fournit à la requête la valeur du paramètre que l'on cherche
+        allQuery.setParameter(parameter, userId);
+        // ajout du message pour le debug
+        this.logger.debug("findByUserID {} ", String.valueOf(userId));
+        return allQuery.getResultList();
     }
 
 }
