@@ -19,7 +19,9 @@
                     <div class="commandeReferenceCMD00">
                         <spring:message code="listeCommande.reference.text" />${commande.reference}</div>
                     <div class="commandePrixTotalCMD00">
-                        <spring:message code="listeCommande.prixTotal.text" />${commande.prixTotal}</div>
+                        <spring:message code="listeCommande.prixTotal.text" />${commande.prixTotal}<spring:message
+                            code="glb.devise" />
+                    </div>
                     <div class="commandeDateCMD00">
                         <spring:message code="listeCommande.date.text" />${commande.date}</div>
                 </div>
