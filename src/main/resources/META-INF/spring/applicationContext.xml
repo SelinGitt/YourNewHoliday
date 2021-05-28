@@ -19,4 +19,7 @@
 
 	<!-- scan du package persistance -->
 	<context:component-scan base-package="persistance" />
+	
+	<!-- scan du package service -->
+	<context:component-scan base-package="service" />
 </beans>
