@@ -19,67 +19,68 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 @RequestMapping("/user_session.do")
 public class UserConnecteController {
 
-	/**
-	 * L'utilisateur en session
-	 */
-	public static final String UTILISATEUR = "utilisateur";
+    /**
+     * L'utilisateur en session
+     */
+    public static final String UTILISATEUR = "utilisateur";
 
-	/**
-	 * Permet de mettre en session un utilisateur client, un admin ou de le supprimer pour vos test
-	 *
-	 * @param  request Requête actuelle
-	 * @return         Le ModelAndView de la méthode
-	 */
-	@GetMapping
-	public String choixAction(final HttpSession session, final HttpServletRequest request) {
-		final String action = request.getParameter("action");
-		if (action != null) {
-			if (action.equals("create_client")) {
-				session.setAttribute(UTILISATEUR, this.creerUtilisateurClient());
-			}
-			if (action.equals("create_admin")) {
-				session.setAttribute(UTILISATEUR, this.creerUtilisateurAdmin());
-			}
-			if (action.equals("supprimer")) {
-				session.removeAttribute(UTILISATEUR);
-			}
-		}
-		return "user_session";
-	}
+    /**
+     * Permet de mettre en session un utilisateur client, un admin ou de le supprimer pour vos test
+     * 
+     * @param  session Session actuelle
+     * @param  request Requête actuelle
+     * @return         Le nom de la jsp à afficher
+     */
+    @GetMapping
+    public String choixAction(final HttpSession session, final HttpServletRequest request) {
+        final String action = request.getParameter("action");
+        if (action != null) {
+            if (action.equals("create_client")) {
+                session.setAttribute(UTILISATEUR, this.creerUtilisateurClient());
+            }
+            if (action.equals("create_admin")) {
+                session.setAttribute(UTILISATEUR, this.creerUtilisateurAdmin());
+            }
+            if (action.equals("supprimer")) {
+                session.removeAttribute(UTILISATEUR);
+            }
+        }
+        return "user_session";
+    }
 
-	/**
-	 * Methode pour créer un {@link presentation.utilisateur.dto.UtilisateurConnecteDto} Client
-	 *
-	 * @return UtilisateurConnecteDto créer
-	 */
-	private UtilisateurConnecteDto creerUtilisateurClient() {
-		final var utilisateurConnecteDto = new UtilisateurConnecteDto();
+    /**
+     * Methode pour créer un {@link presentation.utilisateur.dto.UtilisateurConnecteDto} Client
+     *
+     * @return UtilisateurConnecteDto créer
+     */
+    private UtilisateurConnecteDto creerUtilisateurClient() {
+        final var utilisateurConnecteDto = new UtilisateurConnecteDto();
 
-		utilisateurConnecteDto.setIdRole("1");
-		utilisateurConnecteDto.setNomRole("Client");
-		utilisateurConnecteDto.setIdUtilisateur("3");
-		utilisateurConnecteDto.setNbProduitPanier("3");
-		utilisateurConnecteDto.setNom("Lanister");
-		utilisateurConnecteDto.setPrenom("Cercey");
+        utilisateurConnecteDto.setIdRole("1");
+        utilisateurConnecteDto.setNomRole("Client");
+        utilisateurConnecteDto.setIdUtilisateur("3");
+        utilisateurConnecteDto.setNbProduitPanier("3");
+        utilisateurConnecteDto.setNom("Lanister");
+        utilisateurConnecteDto.setPrenom("Cercey");
 
-		return utilisateurConnecteDto;
-	}
+        return utilisateurConnecteDto;
+    }
 
-	/**
-	 * Methode pour créer un {@link presentation.utilisateur.dto.UtilisateurConnecteDto} Administrateur
-	 *
-	 * @return UtilisateurConnecteDto créer
-	 */
-	private UtilisateurConnecteDto creerUtilisateurAdmin() {
-		final var utilisateurConnecteDto = new UtilisateurConnecteDto();
+    /**
+     * Methode pour créer un {@link presentation.utilisateur.dto.UtilisateurConnecteDto} Administrateur
+     *
+     * @return UtilisateurConnecteDto créer
+     */
+    private UtilisateurConnecteDto creerUtilisateurAdmin() {
+        final var utilisateurConnecteDto = new UtilisateurConnecteDto();
 
-		utilisateurConnecteDto.setIdRole("3");
-		utilisateurConnecteDto.setNomRole("Administrateur");
-		utilisateurConnecteDto.setIdUtilisateur("7");
-		utilisateurConnecteDto.setNbProduitPanier("0");
-		utilisateurConnecteDto.setNom("Marly");
-		utilisateurConnecteDto.setPrenom("Cyntia");
+        utilisateurConnecteDto.setIdRole("3");
+        utilisateurConnecteDto.setNomRole("Administrateur");
+        utilisateurConnecteDto.setIdUtilisateur("7");
+        utilisateurConnecteDto.setNbProduitPanier("0");
+        utilisateurConnecteDto.setNom("Marly");
+        utilisateurConnecteDto.setPrenom("Cyntia");
 
-		return utilisateurConnecteDto;
-	}
+        return utilisateurConnecteDto;
+    }
 }
