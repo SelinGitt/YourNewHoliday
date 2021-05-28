@@ -42,7 +42,7 @@ public class ProduitMapper {
         produitDo.setCheminImage(produitDto.getCheminImage());
         produitDo.setServices(Integer.valueOf(produitDto.getServices()));
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
-        
+
         return produitDo;
     }
 
