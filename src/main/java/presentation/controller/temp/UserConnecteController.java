@@ -13,28 +13,17 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
  * Controller temporaire pour mettre des données utilisateur en session <br>
  * A supprimer dès que la page connexion est dispo !
  *
- * @author Valentin
+ * @author Valentin/NathanR
  */
 @Controller
 @RequestMapping("/user_session.do")
 public class UserConnecteController {
 
-	//	/**
-	//	 * Affiche la jsp
-	//	 *
-	//	 * @return nom de la jsp
-	//	 */
-	//	@GetMapping
-	//	public String voirJsp() {
-	//		return "user_session";
-	//	}
-
 	/**
 	 * Permet de mettre en session un utilisateur client, un admin ou de le supprimer pour vos test
 	 *
-	 * @param  session Session actuelle
 	 * @param  request Requête actuelle
-	 * @return         Nom de la jsp a charger
+	 * @return Le ModelAndView de la méthode
 	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView choixAction(final HttpServletRequest request) {
