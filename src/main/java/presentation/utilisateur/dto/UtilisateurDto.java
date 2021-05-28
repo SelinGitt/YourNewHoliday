@@ -4,7 +4,6 @@
 package presentation.utilisateur.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Classe représentant un utilisateur pour la vue
@@ -14,15 +13,15 @@ import java.util.Date;
 public class UtilisateurDto implements Serializable {
 
     /**
-     * Generated serial version UID
+     * Generated Serial UID
      */
-    private static final long serialVersionUID = -928259738873683816L;
+    private static final long serialVersionUID = -3046775841427597976L;
     private String            email;
     private String            password;
     private String            reference;
     private String            nom;
     private String            prenom;
-    private Date              dateInscription;
+    private String            dateInscription;
     private Boolean           estActif;
 
     /**
@@ -120,7 +119,7 @@ public class UtilisateurDto implements Serializable {
      *
      * @return the dateInscription
      */
-    public Date getDateInscription() {
+    public String getDateInscription() {
         return dateInscription;
     }
 
@@ -129,7 +128,7 @@ public class UtilisateurDto implements Serializable {
      *
      * @param dateInscription the dateInscription to set
      */
-    public void setDateInscription(final Date dateInscription) {
+    public void setDateInscription(final String dateInscription) {
         this.dateInscription = dateInscription;
     }
 
