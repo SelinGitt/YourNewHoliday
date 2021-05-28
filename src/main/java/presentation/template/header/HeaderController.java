@@ -25,7 +25,6 @@ public class HeaderController {
         modelAndView.setViewName("header");
         final File logo = new File("WebContent/img/template/header/logoYNH.png");
         modelAndView.getModelMap().addAttribute("logo", logo);
-        //        modelAndView.getModelMap().addAttribute("utilisateurConnecteDTO", new utilisateurConnecteDTO());
         return modelAndView;
     }
 }
