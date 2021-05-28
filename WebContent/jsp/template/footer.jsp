@@ -15,7 +15,7 @@
     <!-- langues -->
     <div>
         <!-- texte indiquant les drapeaux permettant de changer de langue -->
-        <span><spring:message code="glb.footer.texte.langue" /></span>        
+        <span><spring:message code="glb.footer.texte.langue" /></span>
         <!-- image du drapeau français permettant de basculer le site en français. -->
         <img class="footer-lang" src="img/template/footer/france.svg" alt="drapeau français" />
         <!-- image du drapeau anglais permettant de basculer le site en anglais.-->
