@@ -1,5 +1,7 @@
 package persistance.utilisateur.dao.impl;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
@@ -45,5 +47,18 @@ class UtilisateurDaoTest {
         final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAll();
         // On teste la conformitée du nombre de données
         assertEquals(7, listUtilisateur.size());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByEmail()}.
+     */
+    @Test
+    void testFindByEmail() {
+        //On essaie avec une adresse email présente en base de données
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByEmail("baratheon.robert@hotmail.com");
+        assertNotNull(utilisateurDo);
+        assertEquals("ClientCLIENT123", utilisateurDo.getReference());
+        //On essaie avec une adresse email absente en base de données
+        assertNull(iUtilisateurDao.findByEmail("emailNonExistant@hotmail.com"));
     }
 }
