@@ -57,6 +57,8 @@ public class ProduitMapper {
         if (produitDo == null) {
             return null;
         }
+        final var decimalFormat = new DecimalFormat("#.00");
+
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
         produitDto.setVersion(String.valueOf(produitDo.getVersion()));
@@ -64,7 +66,6 @@ public class ProduitMapper {
         produitDto.setNom(produitDo.getNom());
         produitDto.setDescription(produitDo.getDescription());
         produitDto.setDestination(produitDo.getDestination());
-        final var decimalFormat = new DecimalFormat("#.00");
         produitDto.setPrixUnitaire(decimalFormat.format(produitDo.getPrixUnitaire()));
         produitDto.setHebergement(produitDo.getHebergement());
         produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
