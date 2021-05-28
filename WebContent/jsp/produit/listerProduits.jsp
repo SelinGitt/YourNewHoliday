@@ -12,7 +12,7 @@
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage">
             <tr>
-                <td class="image"><img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" /></td>
+                <td><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="75%" /></td>
             </tr>
             <tr>
                 <td>${produitDto.nom}</td>
