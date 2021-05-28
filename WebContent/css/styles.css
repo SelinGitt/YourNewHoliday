@@ -70,10 +70,12 @@ div.commandeWrapperCMD00 {
 	overflow-y: auto;
 }
 
+/* style pour une page sans commande */
 div.commandeVideCMD00 {
 	text-align: center;
 }
 
+/* factorisation des css communs */
 h5.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
 	width: 700px;
