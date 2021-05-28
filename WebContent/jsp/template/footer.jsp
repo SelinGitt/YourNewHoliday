@@ -21,11 +21,11 @@
     <div>
         <!-- texte indiquant les drapeaux permettant de changer de langue -->
         <span><spring:message code="glb.footer.texte.langue" /></span>
-        <!-- regroupement des images sous balise picture -->
+        <!-- regroupement des images sous la balise picture -->
         <picture> 
-            <!-- image du drapeau français permettant de basuler le site en français --> 
+            <!-- image du drapeau français permettant de basculer le site en français --> 
             <img class="footer-lang" src="img/template/footer/france.svg" alt="drapeau français" />
-            <!-- image du drapeau anglais permettatnt de basuler le site en anglais -->
+            <!-- image du drapeau anglais permettant de basculer le site en anglais -->
             <img class="footer-lang" src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /> 
         </picture>
     </div>
