@@ -30,7 +30,10 @@
 	<!-- écran panier -->
 
 	<!-- écran commande -->
-
+	<definition name="listerCommande" extends="base.definition">
+		<put-attribute name="title" value="liste Des Commandes" />
+		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
+	</definition>
 	<!-- écran utilisateur -->
 
 </tiles-definitions>

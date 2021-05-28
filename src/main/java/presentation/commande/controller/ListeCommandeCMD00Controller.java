@@ -26,24 +26,24 @@ import service.commande.ICommandeService;
 @RequestMapping("/listerCommande.do")
 public class ListeCommandeCMD00Controller {
 
-    @Autowired
-    private ICommandeService iCommandeService;
+	@Autowired
+	private ICommandeService iCommandeService;
 
-    /**
-     * Permet d'accéder à la page listerCommande do et de l'hydrater
-     *
-     * @param  session contient la session de l'utilisateur
-     * @return         ModelAndView le modèle qui sera utiliser par la vue
-     */
-    @GetMapping
-    public ModelAndView listerCommande(final HttpSession session) {
-        final var modelAndView = new ModelAndView();
-        final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-        final List<CommandeDto> listCommande = this.iCommandeService
-                .listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
-        modelAndView.setViewName("listerCommande");
-        modelAndView.getModelMap().addAttribute("listCommande", listCommande);
-        return modelAndView;
-    }
+	/**
+	 * Permet d'accéder à la page listerCommande do et de l'hydrater
+	 *
+	 * @param  session contient la session de l'utilisateur
+	 * @return         ModelAndView le modèle qui sera utiliser par la vue
+	 */
+	@GetMapping
+	public ModelAndView listerCommande(final HttpSession session) {
+		final var modelAndView = new ModelAndView();
+		final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
+		final List<CommandeDto> listCommande = this.iCommandeService
+				.listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
+		modelAndView.setViewName("listeCommande");
+		modelAndView.getModelMap().addAttribute("listCommande", listCommande);
+		return modelAndView;
+	}
 
 }
