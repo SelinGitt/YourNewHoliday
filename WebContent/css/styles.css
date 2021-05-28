@@ -55,26 +55,58 @@
 
 /* FEATURE TEAM COMMANDE */
 /* CMD00 */
-h2.commande {
+h2.commandeCMD00 {
 	color: blue;
 	text-align: center;
 }
 
-h5.commande {
+/* sous titre */
+h5.commandeCMD00 {
 	color: blue;
-	border: 3px solid black;
 }
 
-table.commande {
-	width: 500px;
-	border: 3px solid black;
-	padding: 10px;
+/* wrapper de la grille */
+div.commandeWrapperCMD00 {
 	overflow-y: auto;
 }
 
-table tr.commande {
-	margin: 5px;
+div.commandeVideCMD00 {
+	text-align: center;
+}
+
+h5.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
+	width: 700px;
+	padding: 10px;
+}
+
+/* création de la grille */
+div.commandeLineCMD00 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	border: 3px solid black;
+	margin: 5px;
+}
+
+/* colonne 1 */
+div.commandeReferenceCMD00 {
+	grid-column: 1;
+}
+
+/* colonne 2 */
+div.commandePrixTotalCMD00 {
+	grid-column: 2;
+}
+
+/* colonne 3 */
+div.commandeDateCMD00 {
+	grid-column: 3;
+}
+
+/* espace entre la bordure et le texte */
+div.commandeReferenceCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+	padding: 5px;
 }
 
 /* CMD04 */
