@@ -4,22 +4,50 @@
 
 <!-- Test de style va être bouger après -->
 <style>
-    table {
-    	border-collapse: collapse; 
-    	overflow-y: scroll;
+
+    #titreGestion{
+    text-align: center;
+    color : rgb(134,213,242);
     }
     
-    tbody, td {
-    	border: 1px solid black;
-    	padding: 10px;
+     #listeUser {
+    	border-collapse: collapse;
+        border : 1px solid black; 
+    	overflow-y: scroll;
+        width : 100%;
     }
+    
+     th{
+    font-weight: lighter;
+    border-bottom: 1px solid black;
+    padding : 7px 0;
+    }
+    
+    tbody,td {
+         border-bottom: 1px solid black;
+         text-align: center;
+         font-weight: bold;
+         padding: 9px 0;
+    }
+    
+    #image{
+         width: 40px;
+         height: 40px;
+    }
+    
+    #imageNonActif{
+    width: 25px;
+    height: auto;
+    }
+    
+   
 </style>
 
 <h2 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h2>
 
-<table aria-describedby="titreGestion">
+<table id="listeUser" aria-describedby="titreGestion">
     <thead>
         <tr>
             <th><spring:message code="usr01.th.ref" /></th>
@@ -45,15 +73,24 @@
 
                 <td>${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
 
-                <td>{utilisateurDto.dateInscription}</td>
+                <td>${utilisateurDto.dateInscription}</td>
 
                 <td></td>
 
-                <td>${utilisateurDto.estActif}</td>
+                <td><c:choose>
+                        <c:when test="${utilisateurDto.estActif}">
+                            <img id="image" alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
+                                class="checkboxVert">
+                        </c:when>
+                        <c:otherwise>
+                            <img id="imageNonActif" alt="" src="img/utilisateur/listerUtilisateur/checkboxVide.png"
+                                class="checkboxVide">
+                        </c:otherwise>
+                    </c:choose></td>
 
-                <td></td>
+                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle"></td>
 
-                <td></td>
+                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer"></td>
             </tr>
         </c:forEach>
     </tbody>
