@@ -6,6 +6,25 @@
 /* MENU */
 
 /* FOOTER */
+#footer-container {
+	/* flex contenair*/
+	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+	display: flex;
+	/* gestion des items de façon horizontale */
+	flex-direction: row;
+	/* répartition horizontale */
+	justify-content: space-around;
+	/* alignement verticale des items */
+	align-items: center;
+}
+
+.footer-lang {
+	/* alignement du texte "langue" et des images */
+	vertical-align: middle;
+	/* définition de la hauteur et de la largeur des images */
+	height: 50px;
+	width: 50px;
+}
 
 /* FEATURE TEAM USER */
 /* USR00 */
@@ -57,4 +76,5 @@ table tr.commande {
 	margin: 5px;
 	border: 3px solid black;
 }
+
 /* CMD04 */
