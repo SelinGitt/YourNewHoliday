@@ -8,32 +8,47 @@ import java.util.stream.Collectors;
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 
-/*
- * Classe mapper pour la Commande
+/**
+ * Classe Mapper pour la commande
+ *
+ * @author Hanan Anghari
  */
 public class CommandeMappeur {
-	private CommandeMappeur() {
-		// emprty
-	}
+    private CommandeMappeur() {
+        // emprty
+    }
 
-	/*
-	 * Métode permettant de mapper un CommandeDo en CommandeDto
-	 */
-	public static CommandeDto mapperToDto(final CommandeDo commandeDo) {
-		if (commandeDo == null) {
-			return null;
-		}
-		final CommandeDto commandeDto = new CommandeDto();
-		commandeDto.setId(commandeDo.getId().toString());
-		commandeDto.setReference(commandeDo.getReference());
-		commandeDto.setPrixTotal(commandeDo.getPrixTotal().toString());
-		Format formatter = new SimpleDateFormat("dd-MM-yyyy");
-		commandeDto.setDate(formatter.format(commandeDto.getDate()));
-		return commandeDto;
-	}
+    /**
+     * Permet de mapper une commandeDto en commande Do
+     *
+     * @param  commandeDo la commande à mapper
+     * @return            la commande mappé
+     */
+    public static CommandeDto mapperToDto(final CommandeDo commandeDo) {
+        if (commandeDo == null) {
+            return null;
+        }
+        final CommandeDto commandeDto = new CommandeDto();
+        commandeDto.setId(String.valueOf(commandeDo.getId()));
+        commandeDto.setReference(commandeDo.getReference());
+        commandeDto.setPrixTotal(String.valueOf(commandeDo.getPrixTotal()));
+        if (commandeDo.getDate() != null) {
+            final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-	public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeProduitDo) {
-		return listeProduitDo.stream().map(CommandeMappeur::mapperToDto).collect(Collectors.toList());
+            commandeDto.setDate(formatter.format(commandeDo.getDate()));
+        }
 
-	}
+        return commandeDto;
+    }
+
+    /**
+     * Permet de mapper une liste de commandeDo
+     *
+     * @param  listeCommandeDo la liste à mapper
+     * @return                 la liste mappée
+     */
+    public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
+        return listeCommandeDo.stream().map(CommandeMappeur::mapperToDto).collect(Collectors.toList());
+
+    }
 }
