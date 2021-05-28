@@ -1,5 +1,6 @@
 package service;
 
+import java.math.RoundingMode;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -31,7 +32,7 @@ public class CommandeMappeur {
         final CommandeDto commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(commandeDo.getPrixTotal().toString());
+        commandeDto.setPrixTotal(String.valueOf(commandeDo.getPrixTotal().setScale(2, RoundingMode.FLOOR)));
         if (commandeDo.getDate() != null) {
             final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
 
