@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -16,7 +18,8 @@ import javax.persistence.Table;
 public class CommandeDo {
 
     @Id
-    @Column(name = "idProduit")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCommande")
     private Integer    id;
 
     @Column(name = "reference")
@@ -25,8 +28,11 @@ public class CommandeDo {
     @Column(name = "prix_avec_remise")
     private BigDecimal prixTotal;
 
-    @Column(name = "date")
+    @Column(name = "date_commande")
     private Date       date;
+
+    @Column(name = "idUtilisateur")
+    private Integer    idUtilisateur;
 
     /**
      * Getter for id
@@ -98,6 +104,24 @@ public class CommandeDo {
      */
     public void setDate(final Date date) {
         this.date = date;
+    }
+
+    /**
+     * Getter for idUtilisateur
+     *
+     * @return the idUtilisateur
+     */
+    public Integer getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    /**
+     * Setter for idUtilisateur
+     *
+     * @param idUtilisateur the idUtilisateur to set
+     */
+    public void setIdUtilisateur(final Integer idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
 }
