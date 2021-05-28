@@ -2,22 +2,38 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<table>
+<h2 id="titreGestion">GESTION CLIENTS</h2>
+
+<table aria-describedby="titreGestion">
     <thead>
         <tr>
-            <th>Réf. Client</th>
+            <th>
+                <spring:message code="usr01.th.ref" />
+            </th>
 
-            <th>Nom/Prénom</th>
+            <th>
+                <spring:message code="usr01.th.nom" />
+            </th>
 
-            <th>Date d'inscriptio</th>
+            <th>
+                <spring:message code="usr01.th.date" />
+            </th>
 
-            <th>Type de profil</th>
+            <th>
+                <spring:message code="usr01.th.profil" />
+            </th>
 
-            <th>Actif</th>
+            <th>
+                <spring:message code="usr01.th.actif" />
+            </th>
 
-            <th>Editer</th>
+            <th>
+                <spring:message code="usr01.th.editer" />
+            </th>
 
-            <th>Supprimer</th>
+            <th>
+                <spring:message code="usr01.th.supprimer" />
+            </th>
         </tr>
     </thead>
 
@@ -30,13 +46,13 @@
 
                 <td>${utilisateurDto.dateInscription}</td>
 
-                <td>RANG</td>
+                <td></td>
 
                 <td>${utilisateurDto.estActif}</td>
 
-                <td>EDITER_IMG</td>
+                <td></td>
 
-                <td>SPPRIMER_IMG</td>
+                <td></td>
             </tr>
         </c:forEach>
     </tbody>
