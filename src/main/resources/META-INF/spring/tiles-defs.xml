@@ -17,11 +17,12 @@
 		<put-attribute name="title" value="Tiles exemple" />
 		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
 	</definition>
-	
-	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp sera supprimer -->
+
+	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
+		supprimés -->
 	<definition name="user_session" extends="base.definition">
-		<put-attribute name="title" value="Utilisateur en session"/>
-		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp"/>
+		<put-attribute name="title" value="Utilisateur en session" />
+		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp" />
 	</definition>
 
 	<!-- Mettez la dénition de page ici -->
