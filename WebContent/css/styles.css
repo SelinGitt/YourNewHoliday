@@ -20,9 +20,29 @@
 
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
-h1.title{
+h1.title {
 	text-align: center;
 	color: #66C5EB;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+	border: 1px solid #ff0000;
+
+}
+
+table.containerVoyage {
+	display: flex;
+	justify-content: center; 
+	border: 1px solid #000000;
+ 	margin:10px;
+	flex:25%;
+}
+.image{
+	width:25%;
+	height:25%;
 }
 /* PDT01 */
 

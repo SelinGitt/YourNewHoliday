@@ -7,20 +7,26 @@
     </h1>
 </div>
 <br />
-<table>
-    <tbody>
-        <c:forEach items="${listeProduitDto}" var="produitDto">
+<div class="container">
+
+    <c:forEach items="${listeProduitDto}" var="produitDto">
+        <table class="containerVoyage">
+            <tr>
+                <td class="image"><img src="https://www.publicdomainpictures.net/pictures/320000/velka/background-image.png" /></td>
+            </tr>
             <tr>
                 <td>${produitDto.nom}</td>
-                <td>${produitDto.miseEnVente}</td>
                 <td>${produitDto.prixUnitaire}</td>
+            </tr>
             <tr>
                 <td>${produitDto.reference}</td>
+            </tr>
             <tr>
                 <td>${produitDto.description}</td>
             </tr>
-        </c:forEach>
-    </tbody>
-</table>
+        </table>
+
+    </c:forEach>
+</div>
 <br />
 
