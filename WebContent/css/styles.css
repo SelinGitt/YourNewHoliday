@@ -53,20 +53,31 @@ h1.title {
 }
 
 .containerVoyage {
+	display: inline-flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 10px;
+	max-width: 30%;
+}
+
+td.price {
+	/* 	display: flex; */
+	padding: 0;
+	max-width: 1%;
+	text-align: right;
+}
+
+td.img {
 	display: flex;
 	justify-content: center;
-	border: 1px solid #000000;
-	margin: 10px;
-	flex: 25%;
-
-}
-td.limitSize{
-	width:100em;
-}
-.containerVoyage:nth-child(3n) {
-	break-after: always;
+	align-self: stretch;
+	padding: 0;
 }
 
+td.name {
+	display: flex;
+	width: 32%;
+}
 /* PDT01 */
 
 /* PDT02 */

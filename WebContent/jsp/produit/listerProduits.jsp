@@ -9,13 +9,15 @@
 <br />
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
-        <table class="containerVoyage" >
+        <table class="containerVoyage">
             <tr>
-                <td colspan="2" class="limitSize"><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" width="75%" alt="Maroc" /></td>
+                <th colspan="2"><img
+                    src="https://s1.1zoom.me/b3053/688/Morocco_Mosque_Coast_Ocean_Casablanca_Mesquita_de_565803_1920x1080.jpg"
+                    alt="Maroc" style="max-width: 100%" /></th>
             </tr>
             <tr>
-                <td>${produitDto.nom}</td>
-                <td>${produitDto.prixUnitaire}</td>
+                <td class="name">${produitDto.nom}</td>
+                <td class="price">${produitDto.prixUnitaire}</td>
             </tr>
             <tr>
                 <td>${produitDto.reference}</td>
