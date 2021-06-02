@@ -42,20 +42,20 @@
 	width: 100%;
 }
 
-#thUSR01 {
+.thUSR01 {
 	font-weight: lighter;
 	border-bottom: 1px solid black;
 	padding: 7px 0;
 }
 
-#bodyUSR01 {
+.bodyUSR01 {
 	border-bottom: 1px solid black;
 	text-align: center;
 	font-weight: bold;
 	padding: 9px 0;
 }
 
-#imageUSR01 {
+.imageUSR01 {
 	width: 40px;
 	height: 40px;
 }

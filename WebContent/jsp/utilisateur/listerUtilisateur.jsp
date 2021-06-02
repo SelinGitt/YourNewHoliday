@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<link rel="stylesheet" href="css/style.css">
 <h2 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h2>
@@ -9,37 +8,37 @@
 <table id="listeUser" aria-describedby="titreGestion">
     <thead>
         <tr>
-            <th id="thUSR01"><spring:message code="usr01.th.ref" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.ref" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.nom" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.nom" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.date" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.date" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.profil" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.profil" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.actif" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.actif" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.editer" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.editer" /></th>
 
-            <th id="thUSR01"><spring:message code="usr01.th.supprimer" /></th>
+            <th class="thUSR01"><spring:message code="usr01.th.supprimer" /></th>
         </tr>
     </thead>
 
-    <tbody id="bodyUSR01">
+    <tbody class="bodyUSR01">
         <c:forEach items="${listeUtilisateur}" var="utilisateurDto">
             <tr>
-                <td id="bodyUSR01">${utilisateurDto.reference}</td>
+                <td class="bodyUSR01">${utilisateurDto.reference}</td>
 
-                <td id="bodyUSR01">${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
+                <td class="bodyUSR01">${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
 
-                <td id="bodyUSR01">${utilisateurDto.dateInscription}</td>
+                <td class="bodyUSR01">${utilisateurDto.dateInscription}</td>
 
-                <td id="bodyUSR01"></td>
+                <td class="bodyUSR01"></td>
 
-                <td id="bodyUSR01"><c:choose>
+                <td class="bodyUSR01"><c:choose>
                         <c:when test="${utilisateurDto.estActif}">
-                            <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
-                                class="checkboxVert">
+                            <img alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
+                                class="checkboxVert imageUSR01">
                         </c:when>
                         <c:otherwise>
                             <img id="imageNonActif" alt="" src="img/utilisateur/listerUtilisateur/checkboxVide.png"
@@ -47,15 +46,15 @@
                         </c:otherwise>
                     </c:choose></td>
 
-                <td id="bodyUSR01">
+                <td class="bodyUSR01">
                     <a href="javascript:void()">
-                        <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle">
+                        <img alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle imageUSR01">
                     </a>
                 </td>
 
-                <td id="bodyUSR01">
+                <td class="bodyUSR01">
                     <a href="javascript:void()">
-                        <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer">
+                        <img alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer imageUSR01">
                     </a>
                 </td>
             </tr>
