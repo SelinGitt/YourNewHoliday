@@ -1,5 +1,11 @@
 @charset "UTF-8";
 /* Factorisation du fichier */
+h1 {
+	text-align: center;
+	color: #66C5EB;
+	font-size: 40px;
+}
+
 
 /* HEADER */
 
@@ -30,12 +36,6 @@
 /* USR00 */
 
 /* USR01 */
-#titreGestion {
-	text-align: center;
-	color: #66C5EB;
-	font-size: 40px;
-}
-
 #listeUser {
 	border-collapse: collapse;
 	border: 1px solid black;

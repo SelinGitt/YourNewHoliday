@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<h2 id="titreGestion">
+<h1 id="titreGestion">
     <spring:message code="usr01.titre" />
-</h2>
+</h1>
 
 <table id="listeUser" aria-describedby="titreGestion">
     <thead>
