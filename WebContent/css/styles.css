@@ -56,13 +56,13 @@
 /* FEATURE TEAM COMMANDE */
 /* CMD00 */
 h2.commandeCMD00 {
-	color: blue;
+	color: #66C5EB;
 	text-align: center;
 }
 
 /* sous titre */
-h5.commandeCMD00 {
-	color: blue;
+legend.commandeCMD00 {
+	color: #66C5EB;
 }
 
 /* wrapper de la grille */
@@ -76,7 +76,7 @@ div.commandeVideCMD00 {
 }
 
 /* factorisation des css communs */
-h5.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
 	width: 700px;
 	padding: 10px;

@@ -53,7 +53,7 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         // on fournit à la requête la valeur du paramètre que l'on cherche
         allQuery.setParameter(parameter, reference);
         // ajout du message pour le debug
-        this.logger.debug("findByRef {} ", String.valueOf(reference));
+        this.logger.debug("findByRef {} ", reference);
         return allQuery.getSingleResult();
     }
 
@@ -72,7 +72,7 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         // on fournit à la requête la valeur du paramètre que l'on cherche
         allQuery.setParameter(parameter, userId);
         // ajout du message pour le debug
-        this.logger.debug("findByUserID {} ", String.valueOf(userId));
+        this.logger.debug("findByUserID {} ", userId);
         return allQuery.getResultList();
     }
 

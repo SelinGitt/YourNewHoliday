@@ -43,7 +43,7 @@ public class ListeCommandeCMD00Controller {
     public ModelAndView listerCommande(final HttpSession session) {
         final var modelAndView = new ModelAndView();
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-        this.logger.debug("lister Commande utilisateur : {} ", String.valueOf(utilisateurConnecte.getIdUtilisateur()));
+        this.logger.debug("lister Commande utilisateur : {} ", utilisateurConnecte.getIdUtilisateur());
         final List<CommandeDto> listCommande = this.iCommandeService
                 .listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
         modelAndView.setViewName("listerCommande");

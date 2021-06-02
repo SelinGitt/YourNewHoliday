@@ -6,7 +6,6 @@ package persistance.commande.dao.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -63,7 +62,7 @@ class CommandeDaoTest {
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
         assertEquals("ABC1", commandeDo.getReference());
-        assertTrue(BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()) == 0);
+        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
         assertEquals(2, commandeDo.getIdUtilisateur());
         Date dateTest = null;
         try {
