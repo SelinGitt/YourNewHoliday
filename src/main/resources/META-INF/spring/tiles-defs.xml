@@ -24,7 +24,7 @@
 		<put-attribute name="title" value="Utilisateur en session" />
 		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp" />
 	</definition>
-
+	
 	<!-- Mettez la dénition de page ici -->
 	<!-- écran produit -->
 
@@ -33,5 +33,11 @@
 	<!-- écran commande -->
 
 	<!-- écran utilisateur -->
+
+	<!-- page jsp USR_07 -->
+	<definition name="usr07" extends="base.definition">
+		<put-attribute name="title" value="USR07" />
+		<put-attribute name="body" value="/jsp/page/usr07.jsp" />
+	</definition>
 
 </tiles-definitions>
