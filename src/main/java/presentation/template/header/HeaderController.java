@@ -3,12 +3,9 @@
  */
 package presentation.template.header;
 
-import java.io.File;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Controller pour l'affichage du header
@@ -19,12 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/header.do")
 public class HeaderController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public ModelAndView afficherHeader() {
-        final ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("header");
-        final File logo = new File("WebContent/img/template/header/logoYNH.png");
-        modelAndView.getModelMap().addAttribute("logo", logo);
-        return modelAndView;
+    /**
+     * Permet de retourner la JSP à afficher
+     *
+     * @return : Le nom de la jsp à afficher
+     */
+    @GetMapping
+    public String afficherHeader() {
+        return "header";
     }
 }

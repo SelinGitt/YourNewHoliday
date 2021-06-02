@@ -1,32 +1,39 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div id="header">
     <div id="headerLogo" class="headerCell">
-        <img src="img/template/header/logoYNH.png" class="logoHeader">
+        <a href=""> <img src="img/template/header/logoYNH.png" class="logoHeader" alt="logo">
+        </a>
     </div>
-    <div id="headerNom" class="headerCell" weight=300px>
+    <div id="headerNom" class="headerCell">
         <h1>
-            YOUR NEW HOLIDAYS
-            </h3>
+            <spring:message code="header.nom" />
+        </h1>
     </div>
     <div id="headerStatut" class="headerCell">
-        <b>Connecté en tant que :</b> ${utilisateur.prenom } ${utilisateur.nom } <br /> <b>Statut profil :</b>
-        ${utilisateur.nomRole }
+        <strong><spring:message code="header.id" /></strong> ${utilisateur.prenom } ${utilisateur.nom } <br /> <strong><spring:message
+                code="header.statut" /></strong> ${utilisateur.nomRole }
 
     </div>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
-            <img src="img/template/header/deconnexion.png" class="logoHeader">
+            <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader" alt="icône déconnexion">
+            </a>
         </div>
         <div class="headerSousCell">
-            <h3>Déconnexion</h3>
+            <h3>
+                <spring:message code="header.deconnexion" />
+            </h3>
         </div>
     </div>
     <div id="headerPanier" class="headerCell">
         <div class="headerSousCell">
-            <img src="img/template/header/panierVide.png" class="logoHeader">
+            <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader" alt="icône panier vide">
+            </a>
         </div>
         <div class="headerSousCell">
-            <h3>Panier</h3>
+            <h3>
+                <spring:message code="header.panier" />
+            </h3>
         </div>
     </div>
 </div>
