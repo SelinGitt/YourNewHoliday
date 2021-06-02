@@ -3,6 +3,13 @@
  */
 package persistance.produit.dao.impl;
 
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.ParameterExpression;
+import javax.persistence.criteria.Root;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,4 +35,19 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         super(ProduitDo.class);
     }
 
+    @Override
+    public List<ProduitDo> findAllProduitsEnVente() {
+        // la requête findAll avec un critère
+        final var criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<ProduitDo> criteriaQuery = criteriaBuilder.createQuery(ProduitDo.class);
+        final Root<ProduitDo> rootEntry = criteriaQuery.from(ProduitDo.class);
+        final ParameterExpression<Boolean> miseEnVente = criteriaBuilder.parameter(Boolean.class);
+        // Création du select avec la condition "where"
+        final var selectCriteriaQuery = criteriaQuery.select(rootEntry);
+        selectCriteriaQuery.where(criteriaBuilder.equal(rootEntry.get("miseEnVente"), miseEnVente));
+        // Création de la typedQuery
+        final TypedQuery<ProduitDo> allMiseEnVenteQuery = entityManager.createQuery(criteriaQuery);
+        allMiseEnVenteQuery.setParameter(miseEnVente, true);
+        return allMiseEnVenteQuery.getResultList();
+    }
 }
