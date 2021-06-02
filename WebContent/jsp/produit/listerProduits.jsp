@@ -7,6 +7,7 @@
     </h1>
 </div>
 <br />
+<div class=searchBar><input type="search" placeholder="<spring:message code="pdt00.searchbar"/>"><button>OK</button></div>
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage">
