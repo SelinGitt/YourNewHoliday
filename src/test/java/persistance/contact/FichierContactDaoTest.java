@@ -3,9 +3,9 @@
  */
 package persistance.contact;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -43,7 +43,7 @@ class FichierContactDaoTest {
         //aller dans propriété sur test-contact.html => recuperer le repertoire
         final String nomFichier = "E:/Java/source/ynh/src/test/resources/contact/test-contact.html";
         assertNotNull(iFichier.trouverFichierContact(nomFichier));
-        assertEquals("test", iFichier.trouverFichierContact(nomFichier));
+        assertEquals("<h1>test@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>", iFichier.trouverFichierContact(nomFichier));
 
         //verifier avec un fichier non exsitant
         final String nomFichierFaux = "C:/non/existant.html";

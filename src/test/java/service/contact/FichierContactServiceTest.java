@@ -3,38 +3,50 @@
  */
 package service.contact;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import persistance.contact.IFichierContactDao;
+import service.contact.impl.FichierContactService;
 
 /**
  * Classe représentant le test de FichierContactService
  *
  * @author Alexandre
  */
-//Permet de gérer le JUnit avec Spring
-@ExtendWith(SpringExtension.class)
-//Et de déclarer le fichier de conf à utiliser
-@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
-//Pour initialiser la base de données avec les bonnes données 
-@WebAppConfiguration("WebContent")
+
 class FichierContactServiceTest {
 
-    @Autowired
-    private IFichierContactService iFichier;
+    @InjectMocks
+    private IFichierContactService iFichier = new FichierContactService();
+
+    // Mock to be injected
+    @Mock
+    private IFichierContactDao     fichierContactDao;
+
+    @BeforeEach
+    private void setup() {
+        // initialisation des mocks
+        MockitoAnnotations.openMocks(this);
+    }
 
     /**
      * Test method for {@link service.contact.impl.FichierContactService#trouverFichierContact()}.
      */
     @Test
     void testTrouverFichierContact() {
+        Mockito.when(iFichier.trouverFichierContact())
+                .thenReturn("<h1>test@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //on verifie simplement qu'il est non nul l'essentiel des tests sont gerer 
         //dans FichierContactDaoTest
-        assertNotNull(iFichier.trouverFichierContact());
+        assertEquals("<h1>test@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>", iFichier.trouverFichierContact());
+        assertNotNull(iFichier);
     }
 }
