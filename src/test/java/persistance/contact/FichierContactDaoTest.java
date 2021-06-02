@@ -38,9 +38,10 @@ class FichierContactDaoTest {
     @Test
     void testTrouverFichierContact() {
 
-        //les test marcheron a la condition d'avoir le html dans le repertoire indiquer
-        //pour le test le fichier sera directement dans le projet
-        final String nomFichier = "G:/Git/ynh/src/test/resources/contact/test-contact.html";
+        //les tests marcheront a la condition d'avoir le fichier html dans le repertoire indiquer
+        //pour le test le fichier sera directement dans le projet : 
+        //aller dans propriété sur test-contact.html => recuperer le repertoire
+        final String nomFichier = "E:/Java/source/ynh/src/test/resources/contact/test-contact.html";
         assertNotNull(iFichier.trouverFichierContact(nomFichier));
         assertEquals("test", iFichier.trouverFichierContact(nomFichier));
 

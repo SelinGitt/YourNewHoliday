@@ -1,7 +1,7 @@
 /**
  * 
  */
-package service.Contact;
+package service.contact;
 
 /**
  * Classe représentant l'interface fichierContactService

@@ -1,13 +1,13 @@
 /**
  * 
  */
-package service.Contact.impl;
+package service.contact.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import persistance.contact.IFichierContactDao;
-import service.Contact.IFichierContactService;
+import service.contact.IFichierContactService;
 
 /**
  * Classe représentant le service de fichierContact

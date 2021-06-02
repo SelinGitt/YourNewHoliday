@@ -3,7 +3,6 @@
  */
 package service.contact;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -12,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import service.Contact.IFichierContactService;
 
 /**
  * Classe représentant le test de FichierContactService
@@ -32,12 +29,12 @@ class FichierContactServiceTest {
     private IFichierContactService iFichier;
 
     /**
-     * Test method for {@link service.Contact.impl.FichierContactService#trouverFichierContact()}.
+     * Test method for {@link service.contact.impl.FichierContactService#trouverFichierContact()}.
      */
     @Test
     void testTrouverFichierContact() {
-
+        //on verifie simplement qu'il est non nul l'essentiel des tests sont gerer 
+        //dans FichierContactDaoTest
         assertNotNull(iFichier.trouverFichierContact());
-        assertEquals("erzrtrdfrggre", iFichier.trouverFichierContact());
     }
 }
