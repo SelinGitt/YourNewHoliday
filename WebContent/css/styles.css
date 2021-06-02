@@ -11,6 +11,7 @@ html, body, header, aside, section, footer {
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
+	overflow: hidden;
 }
 
 /* factorisation du header et du footer */
@@ -18,7 +19,6 @@ header, footer {
 	display: block;
 	width: 100%;
 	height: 10vh;
-	overflow: hidden;
 }
 
 /* factorisation du style du aside et section */
@@ -31,23 +31,16 @@ aside, section {
 /* taille du aside */
 aside {
 	width: 20%;
-	overflow: hidden;
 }
 
 /* taille de la section */
 section {
 	width: 80%;
-	overflow-y: auto;
 }
 
 /* footer élémination du float fait pour aside et section */
 footer {
 	clear: both;
-}
-
-/* test overflow */
-.testOverflow {
-	height: 3000%;
 }
 
 /* HEADER */
