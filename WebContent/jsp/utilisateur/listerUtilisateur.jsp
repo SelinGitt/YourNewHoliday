@@ -1,45 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<%-- Test de style va être bouger après --%>
-<style>
-#titreGestion {
-	text-align: center;
-	color: rgb(134, 213, 242);
-}
-
-#listeUser {
-	border-collapse: collapse;
-	border: 1px solid black;
-	overflow-y: scroll;
-	width: 100%;
-}
-
-th {
-	font-weight: lighter;
-	border-bottom: 1px solid black;
-	padding: 7px 0;
-}
-
-tbody, td {
-	border-bottom: 1px solid black;
-	text-align: center;
-	font-weight: bold;
-	padding: 9px 0;
-}
-
-#image {
-	width: 40px;
-	height: 40px;
-}
-
-#imageNonActif {
-	width: 25px;
-	height: auto;
-}
-</style>
-
+<link rel="stylesheet" href="css/style.css">
 <h2 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h2>
@@ -47,36 +9,36 @@ tbody, td {
 <table id="listeUser" aria-describedby="titreGestion">
     <thead>
         <tr>
-            <th><spring:message code="usr01.th.ref" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.ref" /></th>
 
-            <th><spring:message code="usr01.th.nom" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.nom" /></th>
 
-            <th><spring:message code="usr01.th.date" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.date" /></th>
 
-            <th><spring:message code="usr01.th.profil" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.profil" /></th>
 
-            <th><spring:message code="usr01.th.actif" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.actif" /></th>
 
-            <th><spring:message code="usr01.th.editer" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.editer" /></th>
 
-            <th><spring:message code="usr01.th.supprimer" /></th>
+            <th id="thUSR01"><spring:message code="usr01.th.supprimer" /></th>
         </tr>
     </thead>
 
-    <tbody>
+    <tbody id="bodyUSR01">
         <c:forEach items="${listeUtilisateur}" var="utilisateurDto">
             <tr>
-                <td>${utilisateurDto.reference}</td>
+                <td id="bodyUSR01">${utilisateurDto.reference}</td>
 
-                <td>${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
+                <td id="bodyUSR01">${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
 
-                <td>${utilisateurDto.dateInscription}</td>
+                <td id="bodyUSR01">${utilisateurDto.dateInscription}</td>
 
-                <td></td>
+                <td id="bodyUSR01"></td>
 
-                <td><c:choose>
+                <td id="bodyUSR01"><c:choose>
                         <c:when test="${utilisateurDto.estActif}">
-                            <img id="image" alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
+                            <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
                                 class="checkboxVert">
                         </c:when>
                         <c:otherwise>
@@ -85,9 +47,9 @@ tbody, td {
                         </c:otherwise>
                     </c:choose></td>
 
-                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle"></td>
+                <td id="bodyUSR01"><img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle"></td>
 
-                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer"></td>
+                <td id="bodyUSR01"><img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer"></td>
             </tr>
         </c:forEach>
     </tbody>
