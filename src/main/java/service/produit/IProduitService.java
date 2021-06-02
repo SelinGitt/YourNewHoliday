@@ -15,13 +15,6 @@ import presentation.produit.dto.ProduitDto;
 public interface IProduitService {
 
     /**
-     * Permet de lister les produits
-     *
-     * @return une liste de produits
-     */
-    List<ProduitDto> listerProduits();
-
-    /**
      * Permet de lister les produits en vente
      *
      * @return la liste des produits en vente

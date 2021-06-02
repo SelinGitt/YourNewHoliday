@@ -31,15 +31,6 @@ class ProduitServiceTest {
     private IProduitService iProduitService;
 
     /**
-     * Test method for {@link service.produit.impl.ProduitService#listerProduits()}.
-     */
-    @Test
-    void testListerProduits() {
-        //Test de la taille de la liste de tous les produits
-        assertEquals(6, iProduitService.listerProduits().size());
-    }
-
-    /**
      * Test method for {@link service.produit.impl.ProduitService#listerProduitsEnVente()}.
      */
     @Test

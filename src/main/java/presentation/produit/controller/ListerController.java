@@ -17,7 +17,7 @@ import service.produit.IProduitService;
  * @author Administrateur
  */
 @Controller
-@RequestMapping(value = {"/lister.do", "/"})
+@RequestMapping(value = {"/listerProduits.do", "/"})
 public class ListerController {
 
     @Autowired
