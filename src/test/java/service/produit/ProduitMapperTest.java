@@ -64,7 +64,7 @@ class ProduitMapperTest {
         assertEquals("111", produitDtoCompare.getIdProduitOriginal());
         assertEquals("nom de test", produitDtoCompare.getNom());
         assertEquals("true", produitDtoCompare.getMiseEnVente());
-        assertEquals("144.44", produitDtoCompare.getPrixUnitaire());
+        assertEquals("144,44", produitDtoCompare.getPrixUnitaire());
         assertEquals("REFTEST", produitDtoCompare.getReference());
         assertEquals("40", produitDtoCompare.getServices());
         assertEquals("4", produitDtoCompare.getVersion());
