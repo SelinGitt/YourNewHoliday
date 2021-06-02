@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.commun.dao.impl.AbstractGenericDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.UtilisateurDo;
-import pocLogBack.POCLogBack;
 
 /**
  * Classe UtilisateurDo
@@ -23,7 +22,7 @@ import pocLogBack.POCLogBack;
 @Transactional(propagation = Propagation.MANDATORY)
 public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements IUtilisateurDao {
 
-    static final Logger logger = LoggerFactory.getLogger(POCLogBack.class);
+    static final Logger logger = LoggerFactory.getLogger(UtilisateurDao.class);
 
     /**
      * Constructeur par défaut
@@ -41,7 +40,7 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
             final UtilisateurDo utilisateurDo = (UtilisateurDo) query.getSingleResult();
             return utilisateurDo;
         } catch (final NoResultException exception) {
-            logger.warn("Utilisateur avec l'email {} non trouvé en base.", email, exception);
+            logger.info("Utilisateur avec l'email {} non trouvé en base de données.", email, exception);
             return null;
         }
     }
