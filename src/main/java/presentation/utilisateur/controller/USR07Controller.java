@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
@@ -41,10 +40,10 @@ public class USR07Controller {
      */
     @GetMapping
     public ModelAndView voirUSR07() {
-        final ModelAndView var = new ModelAndView();
-        var.setViewName("usr07");
-        var.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
-        return var;
+        final var modelAndView = new ModelAndView();
+        modelAndView.setViewName("usr07");
+        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
+        return modelAndView;
     }
 
     /**
@@ -59,9 +58,9 @@ public class USR07Controller {
     public String loggerUtilisateur(final UtilisateurDto utilisateurDto, final BindingResult result, final HttpSession session) {
 
         //On authentifie l'utilisateur grâce à ses informations de connexion
-        final UtilisateurConnecteDto var = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
         //On le passe en session
-        session.setAttribute(UTILISATEUR, var);
+        session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
         return "usr07";
     }

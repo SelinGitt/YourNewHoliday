@@ -38,20 +38,20 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDo findByEmail(final String email) {
-        final UtilisateurDo var = iUtilisateurDao.findByEmail(email);
-        if (var != null) {
-            return var;
+        final var utilisateurDo = iUtilisateurDao.findByEmail(email);
+        if (utilisateurDo != null) {
+            return utilisateurDo;
         }
         return null;
     }
 
     @Override
     public UtilisateurConnecteDto authentify(final String email, final String password) {
-        final UtilisateurDo var = findByEmail(email);
-        if (var != null) {
-            final String passwordCheck = var.getMdpHash();
+        final var utilisateurDo = findByEmail(email);
+        if (utilisateurDo != null) {
+            final String passwordCheck = utilisateurDo.getMdpHash();
             if (passwordCheck.equals(password)) {
-                return UtilisateurMapper.mapperToConnecteDto(var);
+                return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
             logger.info("Erreur d'authentification, les mots de passe correspondent pas.");
         }
