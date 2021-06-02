@@ -84,6 +84,9 @@ td.name {
 	justify-content: flex-end;
 	align-content: flex-end;
 	align-items: flex-end;
+}
+
+.searchBarInside {
 	border-radius: 30px;
 	border: 2px solid grey;
 }
