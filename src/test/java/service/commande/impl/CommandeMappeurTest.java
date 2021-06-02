@@ -49,7 +49,7 @@ class CommandeMappeurTest {
         assertEquals("20", commandeDto.getId());
         assertEquals("ABC9", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
-        assertEquals("200.40", commandeDto.getPrixTotal());
+        assertEquals("200,40", commandeDto.getPrixTotal());
         final CommandeDto commandeDtoNull = CommandeMappeur.mapperToDto(null);
         assertNull(commandeDtoNull);
 

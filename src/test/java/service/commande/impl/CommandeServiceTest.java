@@ -54,7 +54,7 @@ class CommandeServiceTest {
         assertEquals("1", commandeDto.getId());
         assertEquals("ABC1", commandeDto.getReference());
         assertEquals("09/02/2021" , commandeDto.getDate());
-        assertEquals("1200.00",commandeDto.getPrixTotal());
+        assertEquals("1200,00",commandeDto.getPrixTotal());
 
     }
 
