@@ -27,7 +27,10 @@
 
 	<!-- Mettez la dénition de page ici -->
 	<!-- écran produit -->
-
+	<definition name="listerProduits" extends="base.definition">
+		<put-attribute name="title" value="Liste des séjours"/>
+		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp"/>
+	</definition>
 	<!-- écran panier -->
 
 	<!-- écran commande -->
