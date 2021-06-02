@@ -25,7 +25,7 @@ import persistance.produit.entity.ProduitDo;
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-//Permet de gérer le JUnit avec Spring
+// Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)
 //Et de déclarer le fichier de conf à utiliser
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
@@ -50,4 +50,14 @@ class ProduitDaoTest {
         assertEquals(6, listProduit.size());
     }
 
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findAllProduitsEnVente()}.
+     */
+    @Test
+    void testFindAllProduitsEnVente() {
+        // On récupère la liste des produits en vente
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
+        // Test de la taille de la liste des produits en vente
+        assertEquals(4, listeProduitDoEnVente.size());
+    }
 }
