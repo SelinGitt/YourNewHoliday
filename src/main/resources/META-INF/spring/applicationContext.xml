@@ -19,4 +19,7 @@
 
 	<!-- scan du package persistance -->
 	<context:component-scan base-package="persistance" />
+
+	<!-- scan PROVISOIRE de la couche SERVICE -->
+	<context:component-scan base-package="service" />
 </beans>
