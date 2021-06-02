@@ -104,12 +104,13 @@ div.commandePrixTotalCMD00 {
 	grid-column: 2;
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 5px;
+	grid-gap: 1px;
 }
 
 /* colonne 2.1 */
 div.commandePrixTotalTextCMD00 {
 	grid-column: 1;
+	width: 65%;
 }
 
 /* colonne 2.2 */
@@ -117,6 +118,7 @@ div.commandePrixTotalValueCMD00 {
 	grid-column: 2;
 	text-align: right;
 	font-weight: bold;
+	width: 58%;
 }
 
 /* colonne 3 */
