@@ -3,33 +3,40 @@
  */
 package presentation.produit.dto;
 
+import java.io.Serializable;
+
 /**
  * Classe représentant un produit pour la vue
  *
  * @author Administrateur
  */
-public class ProduitDto {
-    private String idProduitOriginal;
+public class ProduitDto implements Serializable {
+    /**
+     * Serial Version UID généré aléatoirement
+     */
+    private static final long serialVersionUID = 1558323774288567048L;
 
-    private String version;
+    private String            idProduitOriginal;
 
-    private String reference;
+    private String            version;
 
-    private String nom;
+    private String            reference;
 
-    private String description;
+    private String            nom;
 
-    private String destination;
+    private String            description;
 
-    private String prixUnitaire;
+    private String            destination;
 
-    private String hebergement;
+    private String            prixUnitaire;
 
-    private String miseEnVente;
+    private String            hebergement;
 
-    private String cheminImage;
+    private String            miseEnVente;
 
-    private String services;
+    private String            cheminImage;
+
+    private String            services;
 
     /**
      * Getter for idProduitOriginal
