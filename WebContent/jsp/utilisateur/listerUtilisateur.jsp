@@ -47,9 +47,17 @@
                         </c:otherwise>
                     </c:choose></td>
 
-                <td id="bodyUSR01"><img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle"></td>
+                <td id="bodyUSR01">
+                    <a href="javascript:void()">
+                        <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle">
+                    </a>
+                </td>
 
-                <td id="bodyUSR01"><img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer"></td>
+                <td id="bodyUSR01">
+                    <a href="javascript:void()">
+                        <img id="imageUSR01" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer">
+                    </a>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
