@@ -10,31 +10,34 @@
 </head>
 <body>
 
-    <h1 align="center">
+    <h1>
         <spring:message code="usr07.titre" />
     </h1>
 
-    <div align="center">
-        <form:form methode="POST" modelAttribute="utilisateurDto" action="usr07.do">
-            <table>
-                <tr>
-                    <td><spring:message code="usr07.label.email" /></td>
-                    <td><form:input path="email" /></td>
-                </tr>
-                <tr>
-                    <td><spring:message code="usr07.label.password" /></td>
-                    <td><form:input path="password" /></td>
-                </tr>
-            </table>
-            <button class="boutonValiderUSR07" onclick="submit">
-                <spring:message code="usr07.label.valider" />
-            </button>
-            <button class="boutonResetUSR07" type="reset">
-                <spring:message code="usr07.label.reset" />
-            </button>
-        </form:form>
-        <!-- La ligne suivante est temporaire et sert à vérifier que l'utilisateur est bien passé en session -->
-        ${utilisateur.nom}
-    </div>
+    <form:form methode="POST" modelAttribute="utilisateurDto" action="usr07.do">
+        <table>
+            <caption></caption>
+            <tr>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr>
+                <td><spring:message code="usr07.label.email" /></td>
+                <td><form:input path="email" /></td>
+            </tr>
+            <tr>
+                <td><spring:message code="usr07.label.password" /></td>
+                <td><form:input path="password" /></td>
+            </tr>
+        </table>
+        <button class="boutonValiderUSR07" onclick="submit">
+            <spring:message code="usr07.label.valider" />
+        </button>
+        <button class="boutonResetUSR07" type="reset">
+            <spring:message code="usr07.label.reset" />
+        </button>
+    </form:form>
+    <%-- La ligne suivante est temporaire et sert à vérifier que l'utilisateur est bien passé en session --%>
+    ${utilisateur.nom}
 </body>
 </html>

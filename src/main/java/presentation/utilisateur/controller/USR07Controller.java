@@ -8,8 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
@@ -38,12 +39,12 @@ public class USR07Controller {
      * 
      * @return : un model pour le binding et la vue associée
      */
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public ModelAndView voirUSR07() {
-        final ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("usr07");
-        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
-        return modelAndView;
+        final ModelAndView var = new ModelAndView();
+        var.setViewName("usr07");
+        var.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
+        return var;
     }
 
     /**
@@ -54,14 +55,14 @@ public class USR07Controller {
      * @param  session        : session actuelle
      * @return                la page PDT00 avec l'UtilisateurConnecteDto en session
      */
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public String loggerUtilisateur(final UtilisateurDto utilisateurDto, final BindingResult result, final HttpSession session) {
 
         //On authentifie l'utilisateur grâce à ses informations de connexion
-        final UtilisateurConnecteDto utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
+        final UtilisateurConnecteDto var = iUtilisateurService.authentify(utilisateurDto.getEmail(),
                 utilisateurDto.getPassword());
         //On le passe en session
-        session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
+        session.setAttribute(UTILISATEUR, var);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
         return "usr07";
     }
