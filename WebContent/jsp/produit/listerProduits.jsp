@@ -9,11 +9,11 @@
 <br />
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
-        <table class="containerVoyage">
+        <table class="containerVoyage" aria-label="Produit" >
             <tr>
                 <th colspan="2"><img
                     src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" alt="Maroc"
-                    style="max-width: 100%" /></th>
+                    class="img" /></th>
             </tr>
             <tr class="lineRow">
                 <td class="name">${produitDto.nom}</td>

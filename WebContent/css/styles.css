@@ -67,11 +67,12 @@ td.price {
 	padding: 0;
 }
 
-td.img {
+.img {
 	display: flex;
 	justify-content: center;
 	align-self: stretch;
 	padding: 0;
+	max-width: 100%;
 }
 
 td.name {
