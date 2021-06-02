@@ -77,8 +77,7 @@ div.commandeVideCMD00 {
 
 /* factorisation des css communs */
 fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
-	border: 3px solid black;
-	width: 700px;
+	width: 750px;
 	padding: 10px;
 }
 
@@ -87,8 +86,12 @@ div.commandeLineCMD00 {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 10px;
-	border: 3px solid black;
 	margin: 5px;
+}
+
+/* factorisation des bordures */
+fieldset.commandeCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+	border: 3px solid black;
 }
 
 /* colonne 1 */
@@ -99,6 +102,21 @@ div.commandeReferenceCMD00 {
 /* colonne 2 */
 div.commandePrixTotalCMD00 {
 	grid-column: 2;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 5px;
+}
+
+/* colonne 2.1 */
+div.commandePrixTotalTextCMD00 {
+	grid-column: 1;
+}
+
+/* colonne 2.2 */
+div.commandePrixTotalValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+	font-weight: bold;
 }
 
 /* colonne 3 */
