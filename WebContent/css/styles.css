@@ -82,6 +82,10 @@ td.name {
 .searchBar {
 	display: flex;
 	justify-content: flex-end;
+	align-content: flex-end;
+	align-items: flex-end;
+	border-radius: 30px;
+	border: 2px solid grey;
 }
 
 tr.lineRow {
