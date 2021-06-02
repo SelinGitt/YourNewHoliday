@@ -15,7 +15,7 @@ import service.utilisateur.IUtilisateurService;
  * @author Valentin
  */
 @Controller
-@RequestMapping("/lister-utilisateur.do")
+@RequestMapping("/listerUtilisateur.do")
 public class ListerUtilisateurController {
 
     @Autowired
