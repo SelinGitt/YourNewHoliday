@@ -20,7 +20,7 @@ import presentation.utilisateur.dto.UtilisateurDto;
  */
 public class UtilisateurMapper {
 
-    static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
+    private static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
 
     /**
      * Constructor
