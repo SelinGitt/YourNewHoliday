@@ -37,7 +37,7 @@
 	<!-- page jsp USR_07 -->
 	<definition name="usr07" extends="base.definition">
 		<put-attribute name="title" value="USR07" />
-		<put-attribute name="body" value="/jsp/page/usr07.jsp" />
+		<put-attribute name="body" value="/jsp/utilisateur/usr07.jsp" />
 	</definition>
 
 </tiles-definitions>
