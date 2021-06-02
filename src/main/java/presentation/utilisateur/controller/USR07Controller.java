@@ -20,7 +20,7 @@ import service.utilisateur.IUtilisateurService;
 /**
  * Controller de la vue USR07
  *
- * @author Administrateur
+ * @author Damien D.
  */
 @Controller
 @RequestMapping("/usr07.do")
@@ -59,8 +59,7 @@ public class USR07Controller {
     public String loggerUtilisateur(final UtilisateurDto utilisateurDto, final BindingResult result, final HttpSession session) {
 
         //On authentifie l'utilisateur grâce à ses informations de connexion
-        final UtilisateurConnecteDto var = iUtilisateurService.authentify(utilisateurDto.getEmail(),
-                utilisateurDto.getPassword());
+        final UtilisateurConnecteDto var = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
         //On le passe en session
         session.setAttribute(UTILISATEUR, var);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
