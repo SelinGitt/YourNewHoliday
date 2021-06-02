@@ -87,8 +87,14 @@ td.name {
 }
 
 .searchBarInside {
-	border-radius: 30px;
+	outline: none; 
+	border-radius : 30px;
 	border: 2px solid grey;
+	border-radius: 30px;
+}
+
+.searchBarOk {
+	cursor: pointer;
 }
 
 tr.lineRow {
