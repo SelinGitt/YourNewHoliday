@@ -61,9 +61,8 @@ h1.title {
 }
 
 td.price {
-	/* 	display: flex; */
+	/*display: flex;*/
 	padding: 0;
-	max-width: 1%;
 	text-align: right;
 }
 
