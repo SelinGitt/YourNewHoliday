@@ -37,24 +37,24 @@
 
                 <td class="bodyUSR01"><c:choose>
                         <c:when test="${utilisateurDto.estActif}">
-                            <img alt="" src="img/utilisateur/listerUtilisateur/checkboxVert.jpg"
+                            <img alt="" src="img/commun/checkboxVert.jpg"
                                 class="checkboxVert imageUSR01">
                         </c:when>
                         <c:otherwise>
-                            <img id="imageNonActif" alt="" src="img/utilisateur/listerUtilisateur/checkboxVide.png"
+                            <img id="imageNonActif" alt="" src="img/commun/checkboxVide.png"
                                 class="checkboxVide">
                         </c:otherwise>
                     </c:choose></td>
 
                 <td class="bodyUSR01">
                     <a href="javascript:void()">
-                        <img alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle imageUSR01">
+                        <img alt="" src="img/commun/editer.png" class="poubelle imageUSR01">
                     </a>
                 </td>
 
                 <td class="bodyUSR01">
                     <a href="javascript:void()">
-                        <img alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer imageUSR01">
+                        <img alt="" src="img/commun/poubelle.jpg" class="editer imageUSR01">
                     </a>
                 </td>
             </tr>
