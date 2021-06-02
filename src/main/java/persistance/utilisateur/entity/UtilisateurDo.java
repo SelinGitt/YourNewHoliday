@@ -65,7 +65,7 @@ public class UtilisateurDo {
      *
      * @param idUtilisateur the idUtilisateur to set
      */
-    public void setIdUtilisateur(Integer idUtilisateur) {
+    public void setIdUtilisateur(final Integer idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
     }
 
@@ -83,7 +83,7 @@ public class UtilisateurDo {
      *
      * @param reference the reference to set
      */
-    public void setReference(String reference) {
+    public void setReference(final String reference) {
         this.reference = reference;
     }
 
@@ -101,7 +101,7 @@ public class UtilisateurDo {
      *
      * @param email the email to set
      */
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -119,7 +119,7 @@ public class UtilisateurDo {
      *
      * @param nom the nom to set
      */
-    public void setNom(String nom) {
+    public void setNom(final String nom) {
         this.nom = nom;
     }
 
@@ -137,7 +137,7 @@ public class UtilisateurDo {
      *
      * @param prenom the prenom to set
      */
-    public void setPrenom(String prenom) {
+    public void setPrenom(final String prenom) {
         this.prenom = prenom;
     }
 
@@ -155,7 +155,7 @@ public class UtilisateurDo {
      *
      * @param mdpHash the mdpHash to set
      */
-    public void setMdpHash(String mdpHash) {
+    public void setMdpHash(final String mdpHash) {
         this.mdpHash = mdpHash;
     }
 
@@ -173,7 +173,7 @@ public class UtilisateurDo {
      *
      * @param dateInscription the dateInscription to set
      */
-    public void setDateInscription(Date dateInscription) {
+    public void setDateInscription(final Date dateInscription) {
         this.dateInscription = dateInscription;
     }
 
@@ -191,7 +191,7 @@ public class UtilisateurDo {
      *
      * @param estActif the estActif to set
      */
-    public void setEstActif(Boolean estActif) {
+    public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
     }
 }

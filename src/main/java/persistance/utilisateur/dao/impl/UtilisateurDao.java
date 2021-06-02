@@ -22,7 +22,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
 @Transactional(propagation = Propagation.MANDATORY)
 public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements IUtilisateurDao {
 
-    static final Logger logger = LoggerFactory.getLogger(UtilisateurDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(UtilisateurDao.class);
 
     /**
      * Constructeur par défaut
