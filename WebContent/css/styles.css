@@ -42,6 +42,7 @@
 h1.title {
 	text-align: center;
 	color: #66C5EB;
+	font-size: 40px;
 }
 
 .container {
@@ -60,28 +61,38 @@ h1.title {
 	max-width: 30%;
 }
 
-td.price {
-	/*display: flex;*/
+.price {
+	display: flex;
+	flex: 2 1 auto;
+	justify-content: flex-end;
 	padding: 0;
-	text-align: right;
 }
 
-td.img {
+.img {
 	display: flex;
 	justify-content: center;
-	align-self: stretch;
 	padding: 0;
+	max-width: 100%;
 }
 
 td.name {
 	display: flex;
-	width: 32%;
 }
 
 .searchBar {
 	display: flex;
 	justify-content: flex-end;
 }
+
+tr.lineRow {
+	display: flex;
+}
+
+td.description {
+	display: flex;
+	max-width: 75%
+}
+
 /* PDT01 */
 
 /* PDT02 */

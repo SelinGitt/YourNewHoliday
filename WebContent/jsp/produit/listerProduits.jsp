@@ -10,24 +10,22 @@
 <div class=searchBar><input type="search" placeholder="<spring:message code="pdt00.searchbar"/>"><button>OK</button></div>
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
-        <table class="containerVoyage">
+        <table class="containerVoyage" aria-label="Produit" >
             <tr>
                 <th colspan="2"><img
                     src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" alt="Maroc"
-                    style="max-width: 100%" /></th>
+                    class="img" /></th>
             </tr>
-            <tr>
+            <tr class="lineRow">
                 <td class="name">${produitDto.nom}</td>
-                <td class="price">${produitDto.prixUnitaire}€</td>
+                <td class="price">${produitDto.prixUnitaire} €</td>
             </tr>
             <tr>
                 <td>${produitDto.reference}</td>
             </tr>
             <tr>
-                <td style="display: flex; max-width: 75%">${produitDto.description}</td>
+                <td class="description">${produitDto.description}</td>
             </tr>
         </table>
     </c:forEach>
 </div>
-<br />
-
