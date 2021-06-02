@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import service.utilisateur.IUtilisateurService;
 
@@ -28,9 +29,10 @@ public class ListerUtilisateurController {
      * @return         Nom de la jsp a charger
      */
     @GetMapping
-    public String listerUtilisateurs(final HttpServletRequest request) {
-        request.setAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
-
-        return "listerUtilisateur";
+    public ModelAndView listerUtilisateurs(final HttpServletRequest request) {
+        final ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("listerUtilisateur");
+        modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
+        return modelAndView;
     }
 }
