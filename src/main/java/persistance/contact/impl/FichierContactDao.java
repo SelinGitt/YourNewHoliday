@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import persistance.contact.IFichierContactDao;
-import pocLogBack.POCLogBack;
 
 /**
  * Classe représentant le dao de fichierContactDao
@@ -22,7 +21,7 @@ import pocLogBack.POCLogBack;
 @Repository
 public class FichierContactDao implements IFichierContactDao {
 
-    static final Logger logger = LoggerFactory.getLogger(POCLogBack.class);
+    static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
 
     @Override
     public String trouverFichierContact(final String nomFichier) {
@@ -38,7 +37,8 @@ public class FichierContactDao implements IFichierContactDao {
             }
         } catch (final IOException exception) {
             //si exception 
-            logger.debug("IoEception Error");
+            String erreur = "IoEception Error" + exception.getMessage();
+            logger.error(erreur);
         }
         contenuHtml = strBuilder.toString();
         return contenuHtml;
