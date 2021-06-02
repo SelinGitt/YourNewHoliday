@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date_commande` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `prix_total_ante_remise` decimal(15,2) NOT NULL,
   `prix_avec_remise` decimal(15,2) NOT NULL,
+  `quantiteTotale` int(11) NOT NULL,
   `idUtilisateur` int(11) NOT NULL,
   PRIMARY KEY (`idCommande`),
   UNIQUE KEY `reference` (`reference`),
