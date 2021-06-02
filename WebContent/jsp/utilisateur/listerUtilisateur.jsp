@@ -85,9 +85,17 @@ tbody, td {
                         </c:otherwise>
                     </c:choose></td>
 
-                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle"></td>
+                <td>
+                    <a href="javascript:void()">
+                        <img id="image" alt="" src="img/utilisateur/listerUtilisateur/editer.png" class="poubelle">
+                    </a>
+                </td>
 
-                <td><img id="image" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer"></td>
+                <td>
+                    <a href="javascript:void()">
+                        <img id="image" alt="" src="img/utilisateur/listerUtilisateur/poubelle.jpg" class="editer">
+                    </a>
+                </td>
             </tr>
         </c:forEach>
     </tbody>
