@@ -36,7 +36,6 @@
 
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
-
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
 
