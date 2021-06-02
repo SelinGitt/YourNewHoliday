@@ -32,7 +32,8 @@
 /* USR01 */
 #titreGestion {
 	text-align: center;
-	color: rgb(134, 213, 242);
+	color: #66C5EB;
+	font-size: 40px;
 }
 
 #listeUser {
