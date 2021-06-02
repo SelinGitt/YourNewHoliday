@@ -30,7 +30,7 @@ public class ListerUtilisateurController {
      */
     @GetMapping
     public ModelAndView listerUtilisateurs(final HttpServletRequest request) {
-        final ModelAndView modelAndView = new ModelAndView();
+        final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerUtilisateur");
         modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
         return modelAndView;
