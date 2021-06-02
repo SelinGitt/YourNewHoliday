@@ -38,7 +38,7 @@ public class ProduitDo {
 
     private String  hebergement;
 
-    @Column(name = "mise_en_vente")
+    @Column(name = "mise_en_vente", columnDefinition = "TINYINT", length = 1)
     private Boolean miseEnVente;
 
     @Column(name = "chemin_de_l_image")
