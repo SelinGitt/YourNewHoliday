@@ -15,15 +15,15 @@
                     src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" alt="Maroc"
                     style="max-width: 100%" /></th>
             </tr>
-            <tr>
+            <tr class="lineRow">
                 <td class="name">${produitDto.nom}</td>
-                <td class="price">${produitDto.prixUnitaire}€</td>
+                <td class="price">${produitDto.prixUnitaire} €</td>
             </tr>
             <tr>
                 <td>${produitDto.reference}</td>
             </tr>
             <tr>
-                <td style="display: flex; max-width: 75%">${produitDto.description}</td>
+                <td class="description">${produitDto.description}</td>
             </tr>
         </table>
     </c:forEach>
