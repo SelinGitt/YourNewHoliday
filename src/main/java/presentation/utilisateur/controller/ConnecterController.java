@@ -38,13 +38,13 @@ public class ConnecterController {
     /**
      * Permet d'afficher la vue de login
      * 
-     * @param  utilisateurDto : utilisateurDto utilisé par la vue pour authentifier
-     * @return                : un model pour le binding et la vue associée
+     * @return : un model pour le binding et la vue associée
      */
     @GetMapping
-    public ModelAndView voirUSR07(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
+    public ModelAndView voirConnecter() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("connecter");
+        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
         return modelAndView;
     }
 
@@ -65,12 +65,6 @@ public class ConnecterController {
         session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
         return "connecter";
-    }
-
-    @ModelAttribute("utilisateurDto")
-    private UtilisateurDto utilisateur() {
-        final var utilisateurDto = new UtilisateurDto();
-        return utilisateurDto;
     }
 
     @ModelAttribute("utilisateurConnecteDto")
