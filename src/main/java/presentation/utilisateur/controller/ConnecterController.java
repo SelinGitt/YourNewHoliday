@@ -3,15 +3,13 @@
  */
 package presentation.utilisateur.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
@@ -25,6 +23,7 @@ import service.utilisateur.IUtilisateurService;
  */
 @Controller
 @RequestMapping("/connecter.do")
+@SessionAttributes("utilisateur")
 public class ConnecterController {
 
     /**
@@ -52,19 +51,19 @@ public class ConnecterController {
      * Permet de mettre logger un utilisateur en session
      *
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
-     * @param  result         : le résultat du binding
-     * @param  session        : session actuelle
-     * @return                la page PDT00 avec l'UtilisateurConnecteDto en session
+     * @return                ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
-    public String loggerUtilisateur(final UtilisateurDto utilisateurDto, final BindingResult result, final HttpSession session) {
+    public ModelAndView loggerUtilisateur(final UtilisateurDto utilisateurDto) {
 
-        //On authentifie l'utilisateur grâce à ses informations de connexion
-        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
-        //On le passe en session
-        session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
-        //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
-        return "connecter";
+        final var modelAndView = new ModelAndView();
+
+        modelAndView.getModelMap().addAttribute(UTILISATEUR,
+                iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword()));
+
+        modelAndView.setViewName("connecter");
+
+        return modelAndView;
     }
 
     @ModelAttribute("utilisateurConnecteDto")
