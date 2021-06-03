@@ -3,6 +3,7 @@
  */
 package presentation.panier.dto;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,8 +14,11 @@ import presentation.produit.dto.ProduitDto;
  *
  * @author NathanB
  */
-public class PanierDto {
-
+public class PanierDto implements Serializable {
+    /**
+     * Serial Version UID généré automatiquement 
+     */
+    private static final long serialVersionUID = 1L;
     private Map<ProduitDto, Integer> mapPanier;
     private Integer                  nombRereference;
 
