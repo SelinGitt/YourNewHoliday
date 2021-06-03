@@ -20,4 +20,12 @@ public interface IProduitService {
      * @return la liste des produits en vente
      */
     List<ProduitDto> listerProduitsEnVente();
+
+    /**
+     * Permet de lister tous les produits
+     *
+     * @return la liste de tous les produits
+     */
+    List<ProduitDto> listerAllProduit();
+
 }
