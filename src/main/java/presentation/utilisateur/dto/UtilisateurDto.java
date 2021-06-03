@@ -4,7 +4,6 @@
 package presentation.utilisateur.dto;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Classe représentant un utilisateur pour la vue
@@ -14,16 +13,15 @@ import java.util.Date;
 public class UtilisateurDto implements Serializable {
 
     /**
-     * Generated serial version UID
+     * Generated Serial UID
      */
-    private static final long serialVersionUID = -9088276324507198365L;
-    private String            idUtilisateur;
+    private static final long serialVersionUID = -3046775841427597976L;
     private String            email;
     private String            password;
     private String            reference;
     private String            nom;
     private String            prenom;
-    private Date              dateInscription;
+    private String            dateInscription;
     private Boolean           estActif;
 
     /**
@@ -121,7 +119,7 @@ public class UtilisateurDto implements Serializable {
      *
      * @return the dateInscription
      */
-    public Date getDateInscription() {
+    public String getDateInscription() {
         return dateInscription;
     }
 
@@ -130,7 +128,7 @@ public class UtilisateurDto implements Serializable {
      *
      * @param dateInscription the dateInscription to set
      */
-    public void setDateInscription(final Date dateInscription) {
+    public void setDateInscription(final String dateInscription) {
         this.dateInscription = dateInscription;
     }
 
@@ -150,24 +148,6 @@ public class UtilisateurDto implements Serializable {
      */
     public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
-    }
-
-    /**
-     * Getter for idUtilisateur
-     *
-     * @return the idUtilisateur
-     */
-    public String getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    /**
-     * Setter for idUtilisateur
-     *
-     * @param idUtilisateur the idUtilisateur to set
-     */
-    public void setIdUtilisateur(final String idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
     }
 
 }

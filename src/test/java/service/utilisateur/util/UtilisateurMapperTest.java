@@ -2,7 +2,9 @@ package service.utilisateur.util;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -27,7 +29,7 @@ class UtilisateurMapperTest {
 
         utilisateurDto.setEmail("email_dto@test.fr");
         utilisateurDto.setReference("123abc");
-        utilisateurDto.setDateInscription(Date.from(Instant.now()));
+        utilisateurDto.setDateInscription("12/04/2021");
         utilisateurDto.setNom("Jean");
         utilisateurDto.setPrenom("Michel");
         utilisateurDto.setEstActif(true);
@@ -38,7 +40,7 @@ class UtilisateurMapperTest {
 
         Assertions.assertEquals(utilisateurDto.getEmail(), utilisateurDoMapper.getEmail());
         Assertions.assertEquals(utilisateurDto.getReference(), utilisateurDoMapper.getReference());
-        Assertions.assertEquals(utilisateurDto.getDateInscription(), utilisateurDoMapper.getDateInscription());
+        Assertions.assertEquals("Mon Apr 12 00:00:00 CEST 2021", utilisateurDoMapper.getDateInscription().toString());
         Assertions.assertEquals(utilisateurDto.getNom(), utilisateurDoMapper.getNom());
         Assertions.assertEquals(utilisateurDto.getPrenom(), utilisateurDoMapper.getPrenom());
         Assertions.assertEquals(utilisateurDto.getEstActif(), utilisateurDoMapper.getEstActif());
@@ -53,7 +55,7 @@ class UtilisateurMapperTest {
 
         utilisateurDo.setEmail("email_do@test.fr");
         utilisateurDo.setReference("456def");
-        utilisateurDo.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
         utilisateurDo.setNom("Dupond");
         utilisateurDo.setPrenom("Brice");
         utilisateurDo.setEstActif(true);
@@ -64,7 +66,7 @@ class UtilisateurMapperTest {
 
         Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDtoMapper.getEmail());
         Assertions.assertEquals(utilisateurDo.getReference(), utilisateurDtoMapper.getReference());
-        Assertions.assertEquals(utilisateurDo.getDateInscription(), utilisateurDtoMapper.getDateInscription());
+        Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateInscription());
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDtoMapper.getNom());
         Assertions.assertEquals(utilisateurDo.getPrenom(), utilisateurDtoMapper.getPrenom());
         Assertions.assertEquals(utilisateurDo.getEstActif(), utilisateurDtoMapper.getEstActif());

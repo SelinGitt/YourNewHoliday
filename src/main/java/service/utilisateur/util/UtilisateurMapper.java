@@ -1,7 +1,13 @@
 package service.utilisateur.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
@@ -14,6 +20,8 @@ import presentation.utilisateur.dto.UtilisateurDto;
  * @author Valentin
  */
 public class UtilisateurMapper {
+
+    private static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
 
     /**
      * Constructor
@@ -33,7 +41,7 @@ public class UtilisateurMapper {
 
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
-        utilisateurDto.setDateInscription(utilisateurDo.getDateInscription());
+        utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
         utilisateurDto.setEstActif(utilisateurDo.getEstActif());
@@ -52,7 +60,7 @@ public class UtilisateurMapper {
 
         utilisateurDo.setReference(utilisateurDto.getReference());
         utilisateurDo.setEmail(utilisateurDto.getEmail());
-        utilisateurDo.setDateInscription(utilisateurDto.getDateInscription());
+        utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
         utilisateurDo.setEstActif(utilisateurDto.getEstActif());
@@ -91,5 +99,33 @@ public class UtilisateurMapper {
         utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
+
+    /**
+     * Permet de formater une date au format dd/mm/yyyy
+     *
+     * @param  date Date a formater
+     * @return      Date formater au format String
+     */
+    private static String formatDateToString(final Date date) {
+        final var pattern = "dd/MM/yyyy";
+        final var simpleDateFormat = new SimpleDateFormat(pattern);
+
+        return simpleDateFormat.format(date);
+    }
+
+    /**
+     * Permet de formater un string en date
+     *
+     * @param  date           Date a formater
+     * @return                Date formater au format Date
+     * @throws ParseException Throw quand on parse la date
+     */
+    private static Date formatStringToDate(final String date) {
+        try {
+            return new SimpleDateFormat("dd/MM/yyyy").parse(date);
+        } catch (final ParseException exception) {
+            logger.warn(exception.getMessage());
+        }
+        return new Date();
     }
 }

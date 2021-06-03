@@ -1,40 +1,63 @@
 package service.utilisateur.impl;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.GregorianCalendar;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+<<<<<<< HEAD
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.utilisateur.IUtilisateurService;
+=======
+import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.UtilisateurDo;
+>>>>>>> develop
 
 /**
  * JUnit test classe pour {@link service.utilisateur.impl.UtilisateurService}
  *
  * @author Valentin
  */
-//Permet de gérer le JUnit avec Spring
-@ExtendWith(SpringExtension.class)
-//Et de déclarer le fichier de conf à utiliser
-@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
-//Pour initialiser la base de données avec les bonnes données 
-@Sql("/sql/DML.sql")
-@WebAppConfiguration("WebContent")
 class UtilisateurServiceTest {
 
-    @Autowired
-    private IUtilisateurService iUtilisateurService;
+    @Mock
+    private IUtilisateurDao    dao;
+
+    @InjectMocks
+    private UtilisateurService utilisateurService;
+
+    @BeforeEach
+    void initMock() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     /**
-     * Test pour {@link service.utilisateur.IUtilisateurService#findAllUtilisateurs()}
+     * Test pour {@link service.utilisateur.IUtilisateurService#findAllUtilisateurs()}, retourne liste vide
      */
     @Test
     void testFindAll() {
-        Assertions.assertEquals(7, this.iUtilisateurService.findAllUtilisateurs().size());
+        Mockito.when(this.dao.findAll()).thenReturn(Collections.emptyList());
+        Assertions.assertEquals(0, this.utilisateurService.findAllUtilisateurs().size());
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.IUtilisateurService#findAllUtilisateurs()}, retourne 1 utilisateur
+     */
+    @Test
+    void testFindAll2() {
+        final UtilisateurDo userDo = new UtilisateurDo();
+
+        userDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+
+        Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(userDo));
+        Assertions.assertEquals(1, this.utilisateurService.findAllUtilisateurs().size());
     }
 
     /**

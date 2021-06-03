@@ -14,7 +14,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.UtilisateurDo;
 
 /**
- * Classe UtilisateurDo
+ * Classe UtilisateurDao
  *
  * @author Valentin
  */
