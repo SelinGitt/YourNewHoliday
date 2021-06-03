@@ -14,7 +14,8 @@ public class ProduitDto implements Serializable {
     /**
      * Serial Version UID généré aléatoirement
      */
-    private static final long serialVersionUID = 1558323774288567048L;
+    private static final long serialVersionUID = 1L;  
+   
 
     private String            idProduitOriginal;
 
