@@ -30,4 +30,5 @@ public interface ICommandeDao extends IGenericDao<CommandeDo> {
      * @return        List<CommandeDo> la liste des commandes trouvées
      */
     List<CommandeDo> findByUserId(final Integer userId);
+
 }

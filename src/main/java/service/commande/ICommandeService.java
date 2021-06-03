@@ -17,8 +17,8 @@ public interface ICommandeService {
     /**
      * Permet de trouver une commande à partir de sa référence
      *
-     * @param  reference la référence
-     * @return           CommandeDto la commande
+     * @param  reference la référence de la commande qu'on cherche
+     * @return           CommandeDto la commandeDto qu'on a trouvée
      */
     CommandeDto trouverCommandeParReference(final String reference);
 

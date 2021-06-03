@@ -32,7 +32,7 @@ import persistance.commande.entity.CommandeDo;
 /**
  * Classe représentant les tests JUnits de CommandeDao
  *
- * @author Administrateur
+ * @author Hanan Anghari
  */
 //Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)

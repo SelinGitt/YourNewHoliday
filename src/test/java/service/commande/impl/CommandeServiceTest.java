@@ -27,48 +27,46 @@ import service.commande.ICommandeService;
 //Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)
 //Et de déclarer le fichier de conf à utiliser
-@ContextConfiguration(locations = { "/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml" })
+@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
 //Pour initialiser la base de données avec les bonnes données 
 @Sql("/sql/DML.sql")
 @WebAppConfiguration("WebContent")
 class CommandeServiceTest {
 
-	@Autowired
-	private ICommandeService commandeService;
+    @Autowired
+    private ICommandeService commandeService;
 
-	/**
-	 * Test method for {@link service.commande.impl.CommandeService}
-	 */
-	@Test
-	void testAutowired() {
-		assertNotNull(commandeService);
-	}
+    /**
+     * Test method for {@link service.commande.impl.CommandeService}
+     */
+    @Test
+    void testAutowired() {
+        assertNotNull(commandeService);
+    }
 
-	/**
-	 * Test method for
-	 * {@link service.commande.impl.CommandeService#trouverCommandeParReference(java.lang.String)}.
-	 */
-	@Test
-	void testTrouverCommandeParReference() throws ParseException {
-		final CommandeDto commandeDto = commandeService.trouverCommandeParReference("ABC1");
-		assertNotNull(commandeDto);
-		assertEquals("1", commandeDto.getId());
-		assertEquals("ABC1", commandeDto.getReference());
-		assertEquals("09/02/2021", commandeDto.getDate());
-		final double doubleDto = 1200.00;
-		final String nombre = String.format("%,.2f", doubleDto);
-		assertEquals(nombre, commandeDto.getPrixTotal());
+    /**
+     * Test method for {@link service.commande.impl.CommandeService#trouverCommandeParReference(java.lang.String)}.
+     */
+    @Test
+    void testTrouverCommandeParReference() throws ParseException {
+        final CommandeDto commandeDto = commandeService.trouverCommandeParReference("ABC1");
+        assertNotNull(commandeDto);
+        assertEquals("1", commandeDto.getId());
+        assertEquals("ABC1", commandeDto.getReference());
+        assertEquals("09/02/2021", commandeDto.getDate());
+        final double doubleDto = 1200.00;
+        final String nombre = String.format("%,.2f", doubleDto);
+        assertEquals(nombre, commandeDto.getPrixTotal());
 
-	}
+    }
 
-	/**
-	 * Test method for
-	 * {@link service.commande.impl.CommandeService#listerCommandesUtilisateur(java.lang.Integer)}.
-	 */
-	@Test
-	void testListerCommandesUtilisateur() {
+    /**
+     * Test method for {@link service.commande.impl.CommandeService#listerCommandesUtilisateur(java.lang.Integer)}.
+     */
+    @Test
+    void testListerCommandesUtilisateur() {
 
-		assertEquals(2, commandeService.listerCommandesUtilisateur(2).size());
-	}
+        assertEquals(2, commandeService.listerCommandesUtilisateur(2).size());
+    }
 
 }
