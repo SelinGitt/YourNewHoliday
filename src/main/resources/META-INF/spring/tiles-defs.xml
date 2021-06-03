@@ -36,5 +36,9 @@
 	<!-- écran commande -->
 
 	<!-- écran utilisateur -->
+	<definition name="listerUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Liste Utilisateur"/>
+		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp"/>
+	</definition>
 
 </tiles-definitions>
