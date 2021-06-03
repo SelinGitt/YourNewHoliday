@@ -7,13 +7,13 @@
     </h1>
 </div>
 <br />
-<div class=searchBar><input class=searchBarInside type="search" placeholder="<spring:message code="pdt00.searchbar"/>"><button class=searchBarOk>OK</button></div>
+<div class=searchBar><input class="searchBarInside" type="search" placeholder='<spring:message code='pdt00.searchbar'/>'><button class=searchBarOk>OK</button></div>
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage" aria-label="Produit" >
             <tr>
                 <th colspan="2"><img
-                    src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg" alt="Maroc"
+                    src="${produitDto.cheminImage}" alt="${produitDto.nom}"
                     class="img" /></th>
             </tr>
             <tr class="lineRow">
