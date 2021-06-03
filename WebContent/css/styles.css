@@ -118,12 +118,6 @@ h1 {
 
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
-h1.title {
-	text-align: center;
-	color: #66C5EB;
-	font-size: 40px;
-}
-
 .container {
 	display: flex;
 	flex-wrap: wrap;

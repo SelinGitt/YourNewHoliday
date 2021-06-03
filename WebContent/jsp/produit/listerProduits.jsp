@@ -2,12 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
-    <h1 class="title">
+    <h1>
         <spring:message code="pdt00.titre" />
     </h1>
 </div>
 <br />
-<div class=searchBar><input class="searchBarInside" type="search" placeholder='<spring:message code='pdt00.searchbar'/>'><button class=searchBarOk>OK</button></div>
+<div class=searchBar><input class="searchBarInside" type="search" placeholder="<spring:message code='pdt00.searchbar'/>"><button class=searchBarOk>OK</button></div>
 <div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage" aria-label="Produit" >
