@@ -45,8 +45,6 @@ class UtilisateurDaoTest {
         // On teste la conformitée du nombre de données
         Assertions.assertEquals(7, listUtilisateur.size());
 
-        for (final UtilisateurDo user : listUtilisateur) {
-            Assertions.assertNotNull(user.getRole());
-        }
+        listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
     }
 }
