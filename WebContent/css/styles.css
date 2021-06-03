@@ -8,9 +8,13 @@ html, body {
 
 /* enlève les marges et les bordures pour les containers de chaque type*/
 html, body, header, aside, section, footer {
+	box-sizing: border-box;
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
+}
+
+html, body, header, aside, footer {
 	overflow: hidden;
 }
 
@@ -36,6 +40,8 @@ aside {
 /* taille de la section */
 section {
 	width: 80%;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 /* footer élémination du float fait pour aside et section */
@@ -43,22 +49,9 @@ footer {
 	clear: both;
 }
 
-/* class pour le corps afin de faire apparaître l'ascenseur où vous le désirer */
-.ascenseur {
-	height: 75%;
-	overflow-y: auto;
-}
-
 /* text responsive */
 .text-responsive {
 	font-size: 1.15em;
-}
-
-/* dans le cas d'un zoom à environ 125% d'un écran de taille 1920 de largeur */
-@media screen and (max-width: 1536px) {
-	.ascenseur {
-		height: 65%;
-	}
 }
 
 /* titre */

@@ -7,7 +7,7 @@
     </h1>
 </div>
 <br />
-<div class="container ascenseur">
+<div class="container">
     <c:forEach items="${listeProduitDto}" var="produitDto">
         <table class="containerVoyage" aria-label="Produit">
             <tr>
