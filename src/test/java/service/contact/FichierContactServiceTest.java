@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import persistance.contact.IFichierContactDao;
+import persistance.contact.impl.FichierContactDao;
 import service.contact.impl.FichierContactService;
 
 /**
@@ -21,15 +21,15 @@ import service.contact.impl.FichierContactService;
  *
  * @author Alexandre
  */
-
 class FichierContactServiceTest {
 
     @InjectMocks
-    private IFichierContactService iFichier = new FichierContactService();
+    private FichierContactService fichierContactService;
 
     // Mock to be injected
+
     @Mock
-    private IFichierContactDao     fichierContactDao;
+    private FichierContactDao     fichierContactDao;
 
     @BeforeEach
     private void setup() {
@@ -42,11 +42,14 @@ class FichierContactServiceTest {
      */
     @Test
     void testTrouverFichierContact() {
-        Mockito.when(iFichier.trouverFichierContact())
-                .thenReturn("<h1>test@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
-        //on verifie simplement qu'il est non nul l'essentiel des tests sont gerer 
-        //dans FichierContactDaoTest
-        assertEquals("<h1>test@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>", iFichier.trouverFichierContact());
-        assertNotNull(iFichier);
+
+        Mockito.when(fichierContactDao.trouverFichierContact(Mockito.anyString()))
+                .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
+        //si non null
+        assertNotNull(fichierContactService);
+        //si egale a
+        assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
+                fichierContactService.trouverFichierContact());
+
     }
 }

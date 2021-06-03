@@ -21,15 +21,14 @@ import persistance.contact.IFichierContactDao;
 @Repository
 public class FichierContactDao implements IFichierContactDao {
 
-    static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
 
     @Override
     public String trouverFichierContact(final String nomFichier) {
-        final StringBuilder strBuilder = new StringBuilder();
-        String contenuHtml = "";
+        final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
-        final File file = new File(nomFichier);
-        try (final Scanner scanner = new Scanner(file)) {
+        final var file = new File(nomFichier);
+        try (final var scanner = new Scanner(file)) {
             //passe le contenu du fichier html dans la string contenuHtml
             while (scanner.hasNext()) {
                 final String line = scanner.nextLine();
@@ -37,19 +36,9 @@ public class FichierContactDao implements IFichierContactDao {
             }
         } catch (final IOException exception) {
             //si exception 
-            final StringBuilder strBuilderError = new StringBuilder();
-            String contenuError = "";
-            //on recupere les elements du tableau exception.getStackTrace
-            final StackTraceElement[] array = exception.getStackTrace();
-            for (StackTraceElement stack : array) {
-                strBuilderError.append(stack);
-            }
-            contenuError = strBuilderError.toString();
-            final String erreur = "IOException Error" + contenuError;
-            logger.error(erreur);
+            logger.error("IOException Error", exception);
         }
-        contenuHtml = strBuilder.toString();
-        return contenuHtml;
+        return strBuilder.toString();
     }
 
 }

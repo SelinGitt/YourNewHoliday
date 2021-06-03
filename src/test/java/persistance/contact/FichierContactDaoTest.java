@@ -45,7 +45,7 @@ class FichierContactDaoTest {
         assertNotNull(iFichier.trouverFichierContact(nomFichier));
         assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichierContact(nomFichier));
 
-        //verifier avec un fichier non exsitant
+        //verifier avec un fichier non exisitant
         final String nomFichierFaux = "C:/non/existant.html";
         assertThrows(AssertionError.class, () -> {
             assertNull(iFichier.trouverFichierContact(nomFichierFaux));
