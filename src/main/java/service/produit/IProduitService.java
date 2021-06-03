@@ -27,5 +27,4 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
-
 }

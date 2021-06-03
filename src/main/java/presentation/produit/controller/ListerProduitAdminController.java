@@ -17,12 +17,12 @@ import service.produit.IProduitService;
  * @author Administrateur
  */
 @Controller
-@RequestMapping(value = "listerProduitAdmin.do")
+@RequestMapping(value = "/listerProduitsAdmin.do")
 public class ListerProduitAdminController {
 
     @Autowired
     private IProduitService iProduitService;
-    
+
     /**
      * Permet de traiter une requête de type GET
      *
@@ -31,8 +31,8 @@ public class ListerProduitAdminController {
     @GetMapping
     public ModelAndView listerAllProduit() {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("listerProduitAdmin");
+        modelAndView.setViewName("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.listerAllProduit());
-        return modelAndView;    
+        return modelAndView;
     }
 }

@@ -6,12 +6,11 @@ h1 {
 	font-size: 40px;
 }
 
-
 /* HEADER */
 #header {
 	width: 100%;
 	height: 8vh;
-	display:flex;
+	display: flex;
 }
 
 #headerLogo {
@@ -29,7 +28,7 @@ h1 {
 
 #headerStatut {
 	width: 35%;
-	top:20%;
+	top: 20%;
 }
 
 #headerConnexion {
@@ -168,6 +167,29 @@ td.description {
 }
 
 /* PDT01 */
+#listeProduit {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thPDT01 {
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyPDT01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imagePDT01 {
+	width: 40px;
+	height: 40px;
+}
 
 /* PDT02 */
 
