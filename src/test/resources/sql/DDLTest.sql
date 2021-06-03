@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `bdynhtest`
 --
-CREATE DATABASE IF NOT EXISTS `bdynhtest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS `bdynhtest`;
+CREATE DATABASE `bdynhtest` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bdynhtest`;
 -- --------------------------------------------------------
 
