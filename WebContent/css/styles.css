@@ -43,6 +43,29 @@ footer {
 	clear: both;
 }
 
+/* class pour le corps afin de faire apparaître l'ascenseur où vous le désirer */
+.ascenseur {
+	height: 75%;
+	overflow-y: auto;
+}
+
+/* titre responsive */
+.title-responsive {
+	font-size: 2.5em;
+}
+
+/* text responsive */
+.text-responsive {
+	font-size: 1.15em;
+}
+
+/* dans le cas d'un zoom à environ 125% d'un écran de taille 1920 de largeur */
+@media screen and (max-width: 1536px) {
+	.ascenseur {
+		height: 65%;
+	}
+}
+
 /* HEADER */
 #header {
 	width: 100%;
@@ -54,8 +77,13 @@ footer {
 	width: 70px;
 }
 
+.logoHeader-ynh {
+	width: 100%;
+	height: auto;
+}
+
 .logoHeader {
-	width: 70px;
+	width: 75%;
 	height: auto;
 }
 
@@ -92,6 +120,12 @@ footer {
 /* MENU */
 
 /* FOOTER */
+/* image responsive */
+.footer-responsive {
+	width: 12.5%;
+	height: auto;
+}
+
 #footer-container {
 	/* flex contenair*/
 	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -102,14 +136,12 @@ footer {
 	justify-content: space-around;
 	/* alignement verticale des items */
 	align-items: center;
+	height: auto;
 }
 
 .footer-lang {
 	/* alignement du texte "langue" et des images */
 	vertical-align: middle;
-	/* définition de la hauteur et de la largeur des images */
-	height: 50px;
-	width: 50px;
 }
 
 /* FEATURE TEAM USER */
@@ -128,7 +160,6 @@ footer {
 h1.title {
 	text-align: center;
 	color: #66C5EB;
-	font-size: 40px;
 }
 
 .container {
@@ -137,8 +168,6 @@ h1.title {
 	justify-content: center;
 	padding: 20px;
 	border: 1px solid #ff0000;
-	height: 100%;
-	overflow-y: auto;
 }
 
 .containerVoyage {
