@@ -33,7 +33,7 @@
 
                 <td class="bodyUSR01">${utilisateurDto.dateInscription}</td>
 
-                <td class="bodyUSR01"></td>
+                <td class="bodyUSR01">${utilisateurDto.role.libelle}</td>
 
                 <td class="bodyUSR01"><c:choose>
                         <c:when test="${utilisateurDto.estActif}">
