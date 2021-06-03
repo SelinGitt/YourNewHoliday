@@ -99,6 +99,7 @@ public class UtilisateurMapper {
         utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
+    }
 
     /**
      * Permet de formater une date au format dd/mm/yyyy

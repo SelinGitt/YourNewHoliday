@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
-import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
@@ -37,17 +36,8 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public UtilisateurDo findByEmail(final String email) {
-        final var utilisateurDo = iUtilisateurDao.findByEmail(email);
-        if (utilisateurDo != null) {
-            return utilisateurDo;
-        }
-        return null;
-    }
-
-    @Override
     public UtilisateurConnecteDto authentify(final String email, final String password) {
-        final var utilisateurDo = findByEmail(email);
+        final var utilisateurDo = iUtilisateurDao.findByEmail(email);
         if (utilisateurDo != null) {
             final String passwordCheck = utilisateurDo.getMdpHash();
             if (passwordCheck.equals(password)) {

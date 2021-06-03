@@ -14,7 +14,7 @@
         <spring:message code="usr07.titre" />
     </h1>
 
-    <form:form methode="POST" modelAttribute="utilisateurDto" action="usr07.do">
+    <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do">
         <table>
             <caption></caption>
             <tr>
@@ -37,7 +37,5 @@
             <spring:message code="usr07.label.reset" />
         </button>
     </form:form>
-    <%-- La ligne suivante est temporaire et sert à vérifier que l'utilisateur est bien passé en session --%>
-    ${utilisateur.nom}
 </body>
 </html>

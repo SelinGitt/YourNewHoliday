@@ -2,7 +2,6 @@ package service.utilisateur;
 
 import java.util.List;
 
-import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 
@@ -19,14 +18,6 @@ public interface IUtilisateurService {
      * @return List d'UtilisateurDo ou EmptyList
      */
     List<UtilisateurDto> findAllUtilisateurs();
-
-    /**
-     * Permet de renvoyer un UtilisateurDO à l'aide de son email
-     *
-     * @param  email : l'email de l'utilisateur
-     * @return       un UtilisateurDO
-     */
-    UtilisateurDo findByEmail(final String email);
 
     /**
      * Permet d'authentifier un utilisateur à l'aide de son email et de son mot de passe

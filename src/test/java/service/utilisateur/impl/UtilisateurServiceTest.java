@@ -12,13 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-<<<<<<< HEAD
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
-import service.utilisateur.IUtilisateurService;
-=======
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.UtilisateurDo;
->>>>>>> develop
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
 /**
  * JUnit test classe pour {@link service.utilisateur.impl.UtilisateurService}
@@ -61,30 +57,43 @@ class UtilisateurServiceTest {
     }
 
     /**
-     * Test pour {@link service.utilisateur.impl.UtilisateurService#findByEmail()}
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
      */
     @Test
-    void testFindByEmail() {
-        //Test avec un email présent en base de données
-        Assertions.assertEquals("ClientCLIENT123", iUtilisateurService.findByEmail("baratheon.robert@hotmail.com").getReference());
-        //Test avec un email absent en base de données
-        Assertions.assertNull(iUtilisateurService.findByEmail("emailNonExistant@hotmail.com"));
+    void testAuthentifyOK() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setEmail("email");
+        utilisateurDo.setMdpHash("password");
+        utilisateurDo.setNom("nom");
+
+        final String email = "email";
+        final String password = "password";
+
+        final UtilisateurConnecteDto utilisateurConnecteDto = new UtilisateurConnecteDto();
+        utilisateurConnecteDto.setNom("nom");
+
+        Mockito.when(this.dao.findByEmail("email")).thenReturn(utilisateurDo);
+        Assertions.assertNotNull(this.utilisateurService.authentify(email, password));
+        Assertions.assertEquals(utilisateurConnecteDto.getNom(), this.utilisateurService.authentify(email, password).getNom());
     }
 
     /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
      */
     @Test
-    void testAuthentify() {
-        final UtilisateurConnecteDto utilisateurConnecteDto1 = iUtilisateurService.authentify("baratheon.robert@hotmail.com",
-                "TestConnexionNonEncoreHashe");
-        Assertions.assertNotNull(utilisateurConnecteDto1);
-        final UtilisateurConnecteDto utilisateurConnecteDto2 = iUtilisateurService.authentify("emailAbsent@hotmail.com",
-                "TestConnexionNonEncoreHashe");
-        Assertions.assertNull(utilisateurConnecteDto2);
-        final UtilisateurConnecteDto utilisateurConnecteDto3 = iUtilisateurService.authentify("baratheon.robert@hotmail.com",
-                "Mauvais Mot de passe");
-        Assertions.assertNull(utilisateurConnecteDto3);
+    void testAuthentifyKO() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setEmail("email");
+        utilisateurDo.setMdpHash("password");
+        utilisateurDo.setNom("nom");
 
+        final String email = "wrong email";
+        final String password = "password";
+
+        final UtilisateurConnecteDto utilisateurConnecteDto = new UtilisateurConnecteDto();
+        utilisateurConnecteDto.setNom("nom");
+
+        Mockito.when(this.dao.findByEmail("email")).thenReturn(utilisateurDo);
+        Assertions.assertNull(this.utilisateurService.authentify(email, password));
     }
 }

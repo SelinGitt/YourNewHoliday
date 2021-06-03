@@ -19,13 +19,13 @@ import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
 /**
- * Controller de la vue USR07
+ * Controller de la vue USR07 pour se Connecter en session
  *
  * @author Damien D.
  */
 @Controller
-@RequestMapping("/usr07.do")
-public class USR07Controller {
+@RequestMapping("/connecter.do")
+public class ConnecterController {
 
     /**
      * L'utilisateur en session
@@ -44,7 +44,7 @@ public class USR07Controller {
     @GetMapping
     public ModelAndView voirUSR07(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("usr07");
+        modelAndView.setViewName("connecter");
         return modelAndView;
     }
 
@@ -64,7 +64,7 @@ public class USR07Controller {
         //On le passe en session
         session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
-        return "usr07";
+        return "connecter";
     }
 
     @ModelAttribute("utilisateurDto")
