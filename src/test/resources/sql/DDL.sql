@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `bdynh`
 --
-CREATE DATABASE IF NOT EXISTS `bdynh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS `bdynh`;
+CREATE DATABASE `bdynh` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `bdynh`;
 -- --------------------------------------------------------
 
@@ -37,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `date_commande` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `prix_total_ante_remise` decimal(15,2) NOT NULL,
   `prix_avec_remise` decimal(15,2) NOT NULL,
+  `quantiteTotale` int(11) NOT NULL,
   `idUtilisateur` int(11) NOT NULL,
   PRIMARY KEY (`idCommande`),
   UNIQUE KEY `reference` (`reference`),
