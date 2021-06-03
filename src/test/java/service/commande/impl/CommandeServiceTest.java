@@ -6,8 +6,6 @@ package service.commande.impl;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.text.ParseException;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import presentation.commande.dto.CommandeDto;
 import service.commande.ICommandeService;
 
 /**
@@ -42,22 +39,6 @@ class CommandeServiceTest {
     @Test
     void testAutowired() {
         assertNotNull(commandeService);
-    }
-
-    /**
-     * Test method for {@link service.commande.impl.CommandeService#trouverCommandeParReference(java.lang.String)}.
-     */
-    @Test
-    void testTrouverCommandeParReference() throws ParseException {
-        final CommandeDto commandeDto = commandeService.trouverCommandeParReference("ABC1");
-        assertNotNull(commandeDto);
-        assertEquals("1", commandeDto.getId());
-        assertEquals("ABC1", commandeDto.getReference());
-        assertEquals("09/02/2021", commandeDto.getDate());
-        final double doubleDto = 1200.00;
-        final String nombre = String.format("%,.2f", doubleDto);
-        assertEquals(nombre, commandeDto.getPrixTotal());
-
     }
 
     /**

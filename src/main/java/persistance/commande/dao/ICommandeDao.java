@@ -16,14 +16,6 @@ import persistance.commun.dao.IGenericDao;
 public interface ICommandeDao extends IGenericDao<CommandeDo> {
 
     /**
-     * Permet de retourner une commande selon sa référence
-     *
-     * @param  reference la référence de la commande
-     * @return           CommandeDo la commande trouvé, null sinon
-     */
-    CommandeDo findByRef(final String reference);
-
-    /**
      * Permet de retourner la liste des commandes d'un utilisateurs
      *
      * @param  userId l'identifiant de l'utilisateur

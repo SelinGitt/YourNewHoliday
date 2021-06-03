@@ -26,9 +26,9 @@ import service.commande.ICommandeService;
  */
 @Controller
 @RequestMapping("/listerCommande.do")
-public class ListeCommandeCMD00Controller {
+public class ListeCommandeController {
 
-    private final Logger     logger = LoggerFactory.getLogger(ListeCommandeCMD00Controller.class);
+    private final Logger     logger = LoggerFactory.getLogger(ListeCommandeController.class);
 
     @Autowired
     private ICommandeService iCommandeService;

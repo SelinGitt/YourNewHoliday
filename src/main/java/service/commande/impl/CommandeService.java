@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
 import presentation.commande.dto.CommandeDto;
-import service.commande.CommandeMappeur;
+import service.commande.CommandeMapper;
 import service.commande.ICommandeService;
 
 /**
@@ -31,15 +31,9 @@ public class CommandeService implements ICommandeService {
     private ICommandeDao iCommandeDao;
 
     @Override
-    public CommandeDto trouverCommandeParReference(final String reference) {
-        logger.info("Recherche de la commande avec la réference {}", reference);
-        return CommandeMappeur.mapperToDto(iCommandeDao.findByRef(reference));
-    }
-
-    @Override
     public List<CommandeDto> listerCommandesUtilisateur(final Integer idUser) {
         logger.info("la liste  des commandes utilisateur avec  idUser {}", idUser);
-        return CommandeMappeur.mapperListDoToDto(iCommandeDao.findByUserId(idUser));
+        return CommandeMapper.mapperListDoToDto(iCommandeDao.findByUserId(idUser));
     }
 
 }

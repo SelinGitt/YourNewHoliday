@@ -5,16 +5,8 @@ package persistance.commande.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-
-import javax.persistence.NoResultException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -51,41 +43,6 @@ class CommandeDaoTest {
     @Test
     void testICommandeDao() {
         assertNotNull(this.iCommandeDao);
-    }
-
-    /**
-     * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByRef(java.lang.String)}.
-     */
-    @Test
-    void testFindByRef() {
-        final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
-        assertNotNull(commandeDo);
-        assertEquals(1, commandeDo.getId());
-        assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
-        assertEquals(2, commandeDo.getIdUtilisateur());
-        Date dateTest = null;
-        try {
-            dateTest = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-02-09 14:49:11");
-        } catch (ParseException exception) {
-            exception.printStackTrace();
-        }
-        assertEquals(dateTest, commandeDo.getDate());
-        assertThrows(NoResultException.class, () -> {
-            this.iCommandeDao.findByRef("ZZZ1");
-        });
-    }
-
-    /**
-     * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByUserId(java.lang.Integer)}.
-     */
-    @Test
-    void testFindByUserId() {
-        // On récupère les données
-        final List<CommandeDo> listCommande = this.iCommandeDao.findByUserId(2);
-        // On teste la conformitée du nombre de données
-        assertEquals(2, listCommande.size());
-        assertEquals(Collections.emptyList(), this.iCommandeDao.findByUserId(1));
     }
 
     /**

@@ -15,8 +15,8 @@ import presentation.commande.dto.CommandeDto;
  *
  * @author Hanan Anghari
  */
-public class CommandeMappeur {
-    private CommandeMappeur() {
+public class CommandeMapper {
+    private CommandeMapper() {
         // emprty
     }
 
@@ -47,7 +47,7 @@ public class CommandeMappeur {
      * @return                 la liste mappée
      */
     public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
-        return listeCommandeDo.stream().map(CommandeMappeur::mapperToDto).collect(Collectors.toList());
+        return listeCommandeDo.stream().map(CommandeMapper::mapperToDto).collect(Collectors.toList());
 
     }
 }
