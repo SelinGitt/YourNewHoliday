@@ -49,6 +49,9 @@ class ProduitServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#listerAllProduit()}.
+     */
     @Test
     void testListerAllProduit() {
         // SingletonList permet de retourner une liste avec 1 élement

@@ -6,7 +6,7 @@
     <spring:message code="pdt01.titre" />
 </h1>
 
-<table id="listeProduit" aria-describedby="GestionProduit">
+<table class="listeProduit" aria-describedby="GestionProduit">
     <thead>
         <tr>
             <th class="thPDT01"><spring:message code="pdt01.th.ref" /></th>
