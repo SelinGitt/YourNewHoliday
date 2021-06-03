@@ -1,7 +1,5 @@
 package presentation.utilisateur.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,13 +21,12 @@ public class ListerUtilisateurController {
     private IUtilisateurService iUtilisateurService;
 
     /**
-     * Permet de récuperer la liste des utilisateurs et d'afficher la jsp
+     * Permet de recuperer la liste des utilisateurs et d'afficher la jsp
      *
-     * @param  request HttpServletRequest
-     * @return         Nom de la jsp a charger
+     * @return Nom de la jsp a charger
      */
     @GetMapping
-    public ModelAndView listerUtilisateurs(final HttpServletRequest request) {
+    public ModelAndView listerUtilisateurs() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerUtilisateur");
         modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
