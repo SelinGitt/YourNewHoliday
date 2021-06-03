@@ -10,7 +10,9 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
+import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 
 /**
@@ -34,6 +36,13 @@ class UtilisateurMapperTest {
         utilisateurDto.setPrenom("Michel");
         utilisateurDto.setEstActif(true);
 
+        final var roleDto = new RoleDto();
+
+        roleDto.setIdRole(1);
+        roleDto.setLibelle("client");
+
+        utilisateurDto.setRole(roleDto);
+
         final var utilisateurDoMapper = UtilisateurMapper.mapperToDo(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurDoMapper);
@@ -44,6 +53,8 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getNom(), utilisateurDoMapper.getNom());
         Assertions.assertEquals(utilisateurDto.getPrenom(), utilisateurDoMapper.getPrenom());
         Assertions.assertEquals(utilisateurDto.getEstActif(), utilisateurDoMapper.getEstActif());
+        Assertions.assertEquals(utilisateurDto.getRole().getIdRole(), utilisateurDoMapper.getRole().getIdRole());
+        Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
     }
 
     /**
@@ -60,6 +71,13 @@ class UtilisateurMapperTest {
         utilisateurDo.setPrenom("Brice");
         utilisateurDo.setEstActif(true);
 
+        final var roleDo = new RoleDo();
+
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("client");
+
+        utilisateurDo.setRole(roleDo);
+
         final var utilisateurDtoMapper = UtilisateurMapper.mapperToDto(utilisateurDo);
 
         Assertions.assertNotNull(utilisateurDtoMapper);
@@ -70,6 +88,8 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDtoMapper.getNom());
         Assertions.assertEquals(utilisateurDo.getPrenom(), utilisateurDtoMapper.getPrenom());
         Assertions.assertEquals(utilisateurDo.getEstActif(), utilisateurDtoMapper.getEstActif());
+        Assertions.assertEquals(utilisateurDo.getRole().getIdRole(), utilisateurDtoMapper.getRole().getIdRole());
+        Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
     }
 
     /**
@@ -88,6 +108,13 @@ class UtilisateurMapperTest {
         utilisateurDo1.setPrenom("Michel");
         utilisateurDo1.setEstActif(true);
 
+        final var roleDo = new RoleDo();
+
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("client");
+
+        utilisateurDo1.setRole(roleDo);
+
         final var utilisateurDo2 = new UtilisateurDo();
 
         utilisateurDo2.setEmail("email_do@test.fr");
@@ -96,6 +123,13 @@ class UtilisateurMapperTest {
         utilisateurDo2.setNom("Dupond");
         utilisateurDo2.setPrenom("Brice");
         utilisateurDo2.setEstActif(true);
+
+        final var roleDo2 = new RoleDo();
+
+        roleDo2.setIdRole(1);
+        roleDo2.setLibelle("client");
+
+        utilisateurDo2.setRole(roleDo2);
 
         final List<UtilisateurDto> utilisateurDtoList = UtilisateurMapper.mapperToListDto(utilisateurDoList);
 
