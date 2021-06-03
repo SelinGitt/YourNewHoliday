@@ -15,8 +15,8 @@ import presentation.produit.dto.ProduitDto;
  */
 public class PanierDto {
 
-    private Map<ProduitDto, String> mapPanier;
-    private String                  nombreProduitDifferent;
+    private Map<ProduitDto, Integer> mapPanier;
+    private Integer                  nombRereference;
 
     /**
      * Constructor
@@ -30,7 +30,7 @@ public class PanierDto {
      *
      * @return the mapPanier
      */
-    public Map<ProduitDto, String> getMapPanier() {
+    public Map<ProduitDto, Integer> getMapPanier() {
         return mapPanier;
     }
 
@@ -39,7 +39,7 @@ public class PanierDto {
      *
      * @param mapPanier the mapPanier to set
      */
-    public void setMapPanier(final Map<ProduitDto, String> mapPanier) {
+    public void setMapPanier(final Map<ProduitDto, Integer> mapPanier) {
         this.mapPanier = mapPanier;
     }
 
@@ -48,8 +48,8 @@ public class PanierDto {
      *
      * @return the nombreProduitTotal
      */
-    public String getNombreProduitTotal() {
-        return nombreProduitDifferent;
+    public Integer getNombreProduitTotal() {
+        return nombRereference;
     }
 
     /**
@@ -57,7 +57,7 @@ public class PanierDto {
      *
      * @param nombreProduitTotal the nombreProduitTotal to set
      */
-    public void setNombreProduitTotal(final String nombreProduitTotal) {
-        this.nombreProduitDifferent = nombreProduitTotal;
+    public void setNombreProduitTotal(final Integer nombreProduitTotal) {
+        this.nombRereference = nombreProduitTotal;
     }
 }
