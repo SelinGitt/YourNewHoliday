@@ -6,13 +6,11 @@ package presentation.utilisateur.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
@@ -64,11 +62,5 @@ public class ConnecterController {
         modelAndView.setViewName("connecter");
 
         return modelAndView;
-    }
-
-    @ModelAttribute("utilisateurConnecteDto")
-    private UtilisateurConnecteDto utilisateurConnecte(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
-        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
-        return utilisateurConnecteDto;
     }
 }
