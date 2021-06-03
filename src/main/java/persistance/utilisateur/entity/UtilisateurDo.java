@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -43,6 +45,10 @@ public class UtilisateurDo {
 
     @Column(name = "est_desactive")
     private Boolean estActif;
+
+    @ManyToOne
+    @JoinColumn(name = "idRole")
+    private RoleDo  role;
 
     /**
      * Constructor
@@ -193,5 +199,23 @@ public class UtilisateurDo {
      */
     public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
+    }
+
+    /**
+     * Getter for role
+     *
+     * @return the role
+     */
+    public RoleDo getRole() {
+        return role;
+    }
+
+    /**
+     * Setter for role
+     *
+     * @param role the role to set
+     */
+    public void setRole(final RoleDo role) {
+        this.role = role;
     }
 }
