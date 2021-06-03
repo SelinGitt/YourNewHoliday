@@ -31,8 +31,7 @@ public class DateFormatUtil {
 	 */
 	public static String formaterDateToString(final Date date) {
 		final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-		final String dateFormat = formatter.format(date);
-		return dateFormat;
+		return formatter.format(date);
 	}
 
 	/**
