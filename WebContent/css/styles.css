@@ -2,10 +2,73 @@
 /* Factorisation du fichier */
 
 /* HEADER */
+#header {
+	width: 100%;
+	height: 8vh;
+	display:flex;
+}
+
+#headerLogo {
+	width: 70px;
+}
+
+.logoHeader {
+	width: 70px;
+	height: auto;
+}
+
+#headerNom {
+	width: 35.5%;
+}
+
+#headerStatut {
+	width: 35%;
+	top:20%;
+}
+
+#headerConnexion {
+	width: 15%;
+}
+
+#headerPanier {
+	width: 10%;
+}
+
+.headerCell {
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.headerSousCell {
+	display: inline-block;
+	vertical-align: middle;
+}
 
 /* MENU */
 
 /* FOOTER */
+#footer-container {
+	/* flex contenair*/
+	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+	display: flex;
+	/* gestion des items de façon horizontale */
+	flex-direction: row;
+	/* répartition horizontale */
+	justify-content: space-around;
+	/* alignement verticale des items */
+	align-items: center;
+}
+
+.footer-lang {
+	/* alignement du texte "langue" et des images */
+	vertical-align: middle;
+	/* définition de la hauteur et de la largeur des images */
+	height: 50px;
+	width: 50px;
+}
 
 /* FEATURE TEAM USER */
 /* USR00 */
@@ -18,8 +81,66 @@
 
 /* USR07 */
 
+.boutonValiderUSR07 {
+	background-color: #008000;
+	Color: white;
+}
+
+.boutonResetUSR07 {
+	background-color: #FF0000;
+	Color: white;
+}
+
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
+h1.title {
+	text-align: center;
+	color: #66C5EB;
+	font-size: 40px;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+	border: 1px solid #ff0000;
+}
+
+.containerVoyage {
+	display: inline-flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 10px;
+	max-width: 30%;
+}
+
+.price {
+	display: flex;
+	flex: 2 1 auto;
+	justify-content: flex-end;
+	padding: 0;
+}
+
+.img {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	max-width: 100%;
+}
+
+td.name {
+	display: flex;
+}
+
+tr.lineRow {
+	display: flex;
+}
+
+td.description {
+	display: flex;
+	max-width: 75%
+}
 
 /* PDT01 */
 

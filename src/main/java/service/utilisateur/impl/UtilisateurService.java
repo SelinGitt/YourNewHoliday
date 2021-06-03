@@ -38,7 +38,7 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDo findByEmail(final String email) {
-        UtilisateurDo utilisateurDo = iUtilisateurDao.findByEmail(email);
+        final var utilisateurDo = iUtilisateurDao.findByEmail(email);
         if (utilisateurDo != null) {
             return utilisateurDo;
         }
@@ -47,12 +47,11 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurConnecteDto authentify(final String email, final String password) {
-        final UtilisateurDo utilisateurDo = findByEmail(email);
+        final var utilisateurDo = findByEmail(email);
         if (utilisateurDo != null) {
             final String passwordCheck = utilisateurDo.getMdpHash();
             if (passwordCheck.equals(password)) {
-                final UtilisateurConnecteDto utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
-                return utilisateurConnecteDto;
+                return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
             logger.info("Erreur d'authentification, les mots de passe correspondent pas.");
         }

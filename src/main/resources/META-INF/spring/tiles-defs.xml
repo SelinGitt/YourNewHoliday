@@ -17,20 +17,30 @@
 		<put-attribute name="title" value="Tiles exemple" />
 		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
 	</definition>
-	
-	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp sera supprimer -->
-	<definition name="user_session" extends="base.definition">
-		<put-attribute name="title" value="Utilisateur en session"/>
-		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp"/>
-	</definition>
 
+	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
+		supprimés -->
+	<definition name="user_session" extends="base.definition">
+		<put-attribute name="title" value="Utilisateur en session" />
+		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp" />
+	</definition>
+	
 	<!-- Mettez la dénition de page ici -->
 	<!-- écran produit -->
-
+	<definition name="listerProduits" extends="base.definition">
+		<put-attribute name="title" value="Liste des séjours"/>
+		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp"/>
+	</definition>
 	<!-- écran panier -->
 
 	<!-- écran commande -->
 
 	<!-- écran utilisateur -->
+
+	<!-- page jsp USR_07 -->
+	<definition name="usr07" extends="base.definition">
+		<put-attribute name="title" value="USR07" />
+		<put-attribute name="body" value="/jsp/utilisateur/usr07.jsp" />
+	</definition>
 
 </tiles-definitions>

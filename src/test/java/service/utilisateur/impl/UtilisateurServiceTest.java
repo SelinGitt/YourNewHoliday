@@ -48,8 +48,11 @@ class UtilisateurServiceTest {
         Assertions.assertNull(iUtilisateurService.findByEmail("emailNonExistant@hotmail.com"));
     }
 
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
+     */
     @Test
-    void authentify() {
+    void testAuthentify() {
         final UtilisateurConnecteDto utilisateurConnecteDto1 = iUtilisateurService.authentify("baratheon.robert@hotmail.com",
                 "TestConnexionNonEncoreHashe");
         Assertions.assertNotNull(utilisateurConnecteDto1);
