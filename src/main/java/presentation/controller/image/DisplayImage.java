@@ -50,7 +50,7 @@ public class DisplayImage {
                 bufferedOutputStream.write(ch);
             }
         } catch (final IOException ioe) {
-            logger.debug(ioe.getLocalizedMessage());
+            logger.trace(ioe.getLocalizedMessage());
         }
     }
 }
