@@ -26,8 +26,6 @@ public class FichierContactService implements IFichierContactService {
 
     @Override
     public String trouverFichierContact() {
-
         return fichierContactDao.trouverFichierContact(NOMFICHIERHTML);
     }
-
 }

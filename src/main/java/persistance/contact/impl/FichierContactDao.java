@@ -37,10 +37,19 @@ public class FichierContactDao implements IFichierContactDao {
             }
         } catch (final IOException exception) {
             //si exception 
-            String erreur = "IoEception Error" + exception.getMessage();
+            final StringBuilder strBuilderError = new StringBuilder();
+            String contenuError = "";
+            //on recupere les elements du tableau exception.getStackTrace
+            final StackTraceElement[] array = exception.getStackTrace();
+            for (StackTraceElement stack : array) {
+                strBuilderError.append(stack);
+            }
+            contenuError = strBuilderError.toString();
+            final String erreur = "IOException Error" + contenuError;
             logger.error(erreur);
         }
         contenuHtml = strBuilder.toString();
         return contenuHtml;
     }
+
 }
