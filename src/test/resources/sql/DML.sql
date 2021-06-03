@@ -87,12 +87,12 @@ INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (1, 'ABC1', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-02-09 13:49:11', '1200.00', '1200.00', 2);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (2, 'ABC2', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-04-01 13:49:11', '4000.00', '3600.00', 2);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (3, 'ABC3', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2020-11-13 13:50:33', '600.00', '600.00', 3);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (4, 'ABC4', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2021-02-09 13:50:33', '1200.00', '1200.00', 3);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (5, 'ABC5', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-03-17 13:52:28', '900.00', '900.00', 5);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `idUtilisateur`) VALUES (6, 'ABC6', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-04-12 14:02:45', '1000.00', '1000.00', 6);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (1, 'ABC1', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-02-09 13:49:11', '1200.00', '1200.00', 3, 2);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (2, 'ABC2', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-04-01 13:49:11', '4000.00', '3600.00', 5, 2);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (3, 'ABC3', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2020-11-13 13:50:33', '600.00', '600.00', 1, 3);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (4, 'ABC4', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2021-02-09 13:50:33', '1200.00', '1200.00', 2, 3);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (5, 'ABC5', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-03-17 13:52:28', '900.00', '900.00', 1, 5);
+INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (6, 'ABC6', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-04-12 14:02:45', '1000.00', '1000.00', 1, 6);
 
 --
 -- Déchargement des données de la table `produit_achete`
@@ -115,7 +115,7 @@ INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `qua
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (5, 4, 4, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (6, 4, 5, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (7, 6, 6, 1);
-
+INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (8, 6, 3, 1);
 --
 -- Déchargement des données de la table `possede`
 --
