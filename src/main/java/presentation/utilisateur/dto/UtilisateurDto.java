@@ -16,7 +16,8 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated serial version UID
      */
-    private static final long serialVersionUID = -928259738873683816L;
+    private static final long serialVersionUID = -9088276324507198365L;
+    private String            idUtilisateur;
     private String            email;
     private String            password;
     private String            reference;
@@ -149,6 +150,24 @@ public class UtilisateurDto implements Serializable {
      */
     public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
+    }
+
+    /**
+     * Getter for idUtilisateur
+     *
+     * @return the idUtilisateur
+     */
+    public String getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    /**
+     * Setter for idUtilisateur
+     *
+     * @param idUtilisateur the idUtilisateur to set
+     */
+    public void setIdUtilisateur(final String idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
 }
