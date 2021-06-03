@@ -44,6 +44,7 @@ public class UtilisateurMapper {
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
         utilisateurDto.setEstActif(utilisateurDo.getEstActif());
+        utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
 
         return utilisateurDto;
     }
@@ -63,6 +64,7 @@ public class UtilisateurMapper {
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
         utilisateurDo.setEstActif(utilisateurDto.getEstActif());
+        utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
 
         return utilisateurDo;
     }
