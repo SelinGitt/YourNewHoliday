@@ -23,7 +23,7 @@ public class ListerUtilisateurController {
     /**
      * Permet de recuperer la liste des utilisateurs et d'afficher la jsp
      *
-     * @return Nom de la jsp a charger
+     * @return ModelAndView avec le nom de la jsp et la liste des utilisateurs en attribut
      */
     @GetMapping
     public ModelAndView listerUtilisateurs() {
