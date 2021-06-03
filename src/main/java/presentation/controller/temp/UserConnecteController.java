@@ -35,13 +35,13 @@ public class UserConnecteController {
     public String choixAction(final HttpSession session, final HttpServletRequest request) {
         final String action = request.getParameter("action");
         if (action != null) {
-            if (action.equals("create_client")) {
+            if ("create_client".equals(action)) {
                 session.setAttribute(UTILISATEUR, this.creerUtilisateurClient());
             }
-            if (action.equals("create_admin")) {
+            if ("create_admin".equals(action)) {
                 session.setAttribute(UTILISATEUR, this.creerUtilisateurAdmin());
             }
-            if (action.equals("supprimer")) {
+            if ("supprimer".equals(action)) {
                 session.removeAttribute(UTILISATEUR);
             }
             if (action.equals("create_client_panier")) {
