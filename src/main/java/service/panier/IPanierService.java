@@ -4,7 +4,7 @@
 package service.panier;
 
 /**
- * Interface Métier du produit
+ * Interface Métier du panier
  *
  * @author NathanR
  */

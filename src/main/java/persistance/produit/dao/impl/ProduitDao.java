@@ -5,6 +5,7 @@ package persistance.produit.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
@@ -49,5 +50,22 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         final TypedQuery<ProduitDo> allMiseEnVenteQuery = entityManager.createQuery(criteriaQuery);
         allMiseEnVenteQuery.setParameter(miseEnVente, true);
         return allMiseEnVenteQuery.getResultList();
+    }
+
+    @Override
+    public ProduitDo findProduitEnVente(final Integer idProduit) {
+        try {
+            // Une requête JPQL qui cherche un produit en vente en base suivant son ID
+            final TypedQuery<ProduitDo> query = entityManager
+                    .createQuery("FROM ProduitDo WHERE idProduitOriginal = :id AND mise_en_vente = 1", ProduitDo.class);
+            query.setParameter("id", idProduit);
+            // Instanciation du produit trouvé
+            final ProduitDo produitDo = query.getSingleResult();
+            return produitDo;
+            // Si l'id n'existe pas en base ou si le produit recherché n'est pas en vente, on retourne null.
+        } catch (final NoResultException noResultException) {
+            return null;
+        }
+
     }
 }

@@ -4,6 +4,8 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
@@ -59,5 +61,18 @@ class ProduitDaoTest {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
         // Test de la taille de la liste des produits en vente
         assertEquals(4, listeProduitDoEnVente.size());
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitEnVente() {
+        // On récupère un produit en vente
+        final ProduitDo produitDoEnVente = iProduitDao.findProduitEnVente(3);
+        assertNotNull(produitDoEnVente);
+        // On essaie de récupérer un produit qui n'est pas en vente
+        final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVente(2);
+        assertNull(produitDoPasEnVente);
     }
 }
