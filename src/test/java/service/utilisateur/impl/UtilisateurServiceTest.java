@@ -73,12 +73,16 @@ class UtilisateurServiceTest {
         utilisateurConnecteDto.setNom("nom");
 
         Mockito.when(this.dao.findByEmail("email")).thenReturn(utilisateurDo);
-        Assertions.assertNotNull(this.utilisateurService.authentify(email, password));
-        Assertions.assertEquals(utilisateurConnecteDto.getNom(), this.utilisateurService.authentify(email, password).getNom());
+
+        final UtilisateurConnecteDto user = this.utilisateurService.authentify(email, password);
+
+        Assertions.assertNotNull(user);
+        Assertions.assertEquals(utilisateurConnecteDto.getNom(), user.getNom());
     }
 
     /**
-     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()} <br>
+     * Email mauvais, password ok
      */
     @Test
     void testAuthentifyKO() {
@@ -88,6 +92,48 @@ class UtilisateurServiceTest {
         utilisateurDo.setNom("nom");
 
         final String email = "wrong email";
+        final String password = "password";
+
+        final UtilisateurConnecteDto utilisateurConnecteDto = new UtilisateurConnecteDto();
+        utilisateurConnecteDto.setNom("nom");
+
+        Mockito.when(this.dao.findByEmail("email")).thenReturn(utilisateurDo);
+        Assertions.assertNull(this.utilisateurService.authentify(email, password));
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()} <br>
+     * Email ok, password mauvais
+     */
+    @Test
+    void testAuthentifyKO2() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setEmail("email");
+        utilisateurDo.setMdpHash("password mauvais");
+        utilisateurDo.setNom("nom");
+
+        final String email = "email";
+        final String password = "password";
+
+        final UtilisateurConnecteDto utilisateurConnecteDto = new UtilisateurConnecteDto();
+        utilisateurConnecteDto.setNom("nom");
+
+        Mockito.when(this.dao.findByEmail("email")).thenReturn(utilisateurDo);
+        Assertions.assertNull(this.utilisateurService.authentify(email, password));
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()} <br>
+     * Email mauvais, password mauvais
+     */
+    @Test
+    void testAuthentifyKO3() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setEmail("email mauvais");
+        utilisateurDo.setMdpHash("password mauvais");
+        utilisateurDo.setNom("nom");
+
+        final String email = "email";
         final String password = "password";
 
         final UtilisateurConnecteDto utilisateurConnecteDto = new UtilisateurConnecteDto();
