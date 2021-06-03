@@ -19,7 +19,7 @@ public class PanierProduitsController {
     /**
      * Permet d'afficher la page PanierProduits
      *
-     * @return String le nom de la définition pour PanierProduits
+     * @return le nom de la définition pour PanierProduits
      */
     @GetMapping
     public String displayPanierProduits() {
