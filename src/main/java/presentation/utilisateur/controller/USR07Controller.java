@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
@@ -36,13 +38,13 @@ public class USR07Controller {
     /**
      * Permet d'afficher la vue de login
      * 
-     * @return : un model pour le binding et la vue associée
+     * @param  utilisateurDto : utilisateurDto utilisé par la vue pour authentifier
+     * @return                : un model pour le binding et la vue associée
      */
     @GetMapping
-    public ModelAndView voirUSR07() {
+    public ModelAndView voirUSR07(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("usr07");
-        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
         return modelAndView;
     }
 
@@ -63,5 +65,17 @@ public class USR07Controller {
         session.setAttribute(UTILISATEUR, utilisateurConnecteDto);
         //TODO on renvoie la même page pour l'instant, à renvoyer vers PDT00 quand cette vue sera disponible
         return "usr07";
+    }
+
+    @ModelAttribute("utilisateurDto")
+    private UtilisateurDto utilisateur() {
+        final var utilisateurDto = new UtilisateurDto();
+        return utilisateurDto;
+    }
+
+    @ModelAttribute("utilisateurConnecteDto")
+    private UtilisateurConnecteDto utilisateurConnecte(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
+        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        return utilisateurConnecteDto;
     }
 }

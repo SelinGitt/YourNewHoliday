@@ -21,10 +21,10 @@ public interface IUtilisateurService {
     List<UtilisateurDto> findAllUtilisateurs();
 
     /**
-     * Permet de renvoyer un UtilisateurConnecteDO à l'aide de son email
+     * Permet de renvoyer un UtilisateurDO à l'aide de son email
      *
      * @param  email : l'email de l'utilisateur
-     * @return       un UtilisateurConnecteDO
+     * @return       un UtilisateurDO
      */
     UtilisateurDo findByEmail(final String email);
 
