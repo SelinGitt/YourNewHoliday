@@ -13,6 +13,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
@@ -51,6 +52,13 @@ class UtilisateurServiceTest {
         final UtilisateurDo userDo = new UtilisateurDo();
 
         userDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+
+        final RoleDo role = new RoleDo();
+
+        role.setIdRole(1);
+        role.setLibelle("Client");
+
+        userDo.setRole(role);
 
         Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(userDo));
         Assertions.assertEquals(1, this.utilisateurService.findAllUtilisateurs().size());

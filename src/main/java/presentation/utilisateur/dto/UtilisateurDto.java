@@ -15,7 +15,8 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -3046775841427597976L;
+    private static final long serialVersionUID = -3802874782633152462L;
+
     private String            email;
     private String            password;
     private String            reference;
@@ -23,6 +24,7 @@ public class UtilisateurDto implements Serializable {
     private String            prenom;
     private String            dateInscription;
     private Boolean           estActif;
+    private RoleDto           role;
 
     /**
      * Getter for email
@@ -148,6 +150,24 @@ public class UtilisateurDto implements Serializable {
      */
     public void setEstActif(final Boolean estActif) {
         this.estActif = estActif;
+    }
+
+    /**
+     * Getter for role
+     *
+     * @return the role
+     */
+    public RoleDto getRole() {
+        return role;
+    }
+
+    /**
+     * Setter for role
+     *
+     * @param role the role to set
+     */
+    public void setRole(final RoleDto role) {
+        this.role = role;
     }
 
 }

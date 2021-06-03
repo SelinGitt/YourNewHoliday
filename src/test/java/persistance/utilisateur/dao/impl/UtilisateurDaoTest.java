@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,9 @@ class UtilisateurDaoTest {
         // On récupère les données
         final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAll();
         // On teste la conformitée du nombre de données
-        assertEquals(7, listUtilisateur.size());
+        Assertions.assertEquals(7, listUtilisateur.size());
+
+        listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
     }
 
     /**
