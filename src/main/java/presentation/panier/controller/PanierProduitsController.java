@@ -1,7 +1,7 @@
 /**
  * 
  */
-package presentation.controller.panier;
+package presentation.panier.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
