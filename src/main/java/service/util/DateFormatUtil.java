@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
  * @author Pierre
  */
 public class DateFormatUtil {
-	private static final Logger logger = LoggerFactory.getLogger(DateFormatUtil.class);
+	private static final Logger logger    = LoggerFactory.getLogger(DateFormatUtil.class);
+	private static final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
 	 * Constructeur
@@ -24,21 +25,25 @@ public class DateFormatUtil {
 	}
 
 	/**
-	 * Méthode permttant de formater une date dans la forme dd/MM/yyyy
+	 * Méthode permettant de formater une date dans la forme dd/MM/yyyy
 	 * 
-	 * @param  date la date que l'on formater
-	 * @return      un strig de la date formater
+	 * @param  date la date que l'on formate
+	 * @return      un string de la date formatée
 	 */
 	public static String formaterDateToString(final Date date) {
-		final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
-		return formatter.format(date);
+		try {
+			return formatter.format(date);
+		} catch (final IllegalArgumentException exception) {
+			logger.warn(exception.getMessage());
+		}
+		return "";
 	}
 
 	/**
-	 * Permet de mapper un string de la forne dd//MM/yy en date
+	 * Permet de mapper un string de la forme dd//MM/yy en date
 	 * 
-	 * @param  date le string a passer en date
-	 * @return      le date en objet date
+	 * @param  date le string à passer en date
+	 * @return      la date en objet date
 	 */
 	public static Date formaterStringToDate(final String date) {
 		try {

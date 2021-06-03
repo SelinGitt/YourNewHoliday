@@ -8,6 +8,11 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * JUnit pour la classe DateFormatUtil
+ * 
+ * @author Pierre
+ */
 class DateFormatUtilTest {
 
 	/**
@@ -26,7 +31,7 @@ class DateFormatUtilTest {
 	}
 
 	/**
-	 * Test method for {@link service.util.DateFormatUtil#formaterDateToString()}.
+	 * Test method for {@link service.util.DateFormatUtil#formaterStringToDate()}.
 	 */
 	@Test
 	void testFormaterStringToDate() {
