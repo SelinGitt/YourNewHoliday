@@ -9,6 +9,10 @@ Utilisateur en session :
     <li>Prenom : ${utilisateur.prenom}</li>
     <li>Nombre de produit dans le panier : ${utilisateur.nbProduitPanier}</li>
 </ul>
+<div>
+    <a href="/Projet_YNH/user_session.do?action=create_client_panier"> <spring:message code="usr.session.creer.clientPanier" />
+    </a>
+</div>
 <a href="/Projet_YNH/user_session.do?action=create_client"> <spring:message code="usr.session.creer.client" />
 </a>
 <br>

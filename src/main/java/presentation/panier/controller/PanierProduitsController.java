@@ -3,8 +3,6 @@
  */
 package presentation.panier.controller;
 
-import java.util.Scanner;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,8 +24,5 @@ public class PanierProduitsController {
     @GetMapping
     public String displayPanierProduits() {
         return "pan_00";
-    }
-    
-    Scanner sc = new Scanner(System.in);
-    String line = sc.nextLine();
+    }   
 }
