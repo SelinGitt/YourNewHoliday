@@ -30,7 +30,7 @@ public class ListerController {
      */
     @GetMapping
     public ModelAndView lister() {
-        final ModelAndView modelAndView = new ModelAndView();
+        final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
         modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         return modelAndView;
