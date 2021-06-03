@@ -3,9 +3,7 @@
  */
 package service.utilisateur.util;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import persistance.utilisateur.entity.RoleDo;
@@ -30,10 +28,10 @@ class RoleMapperTest {
 
         final var roleDtoMapper = RoleMapper.mapperToDto(role);
 
-        assertNotNull(role);
+        Assertions.assertNotNull(role);
 
-        assertEquals(role.getIdRole(), roleDtoMapper.getIdRole());
-        assertEquals(role.getLibelle(), roleDtoMapper.getLibelle());
+        Assertions.assertEquals(role.getIdRole(), roleDtoMapper.getIdRole());
+        Assertions.assertEquals(role.getLibelle(), roleDtoMapper.getLibelle());
 
     }
 
@@ -49,10 +47,10 @@ class RoleMapperTest {
 
         final var roleDoMapper = RoleMapper.mapperToDo(roleDto);
 
-        assertNotNull(roleDoMapper);
+        Assertions.assertNotNull(roleDoMapper);
 
-        assertEquals(roleDto.getIdRole(), roleDoMapper.getIdRole());
-        assertEquals(roleDto.getLibelle(), roleDoMapper.getLibelle());
+        Assertions.assertEquals(roleDto.getIdRole(), roleDoMapper.getIdRole());
+        Assertions.assertEquals(roleDto.getLibelle(), roleDoMapper.getLibelle());
 
     }
 
