@@ -49,11 +49,6 @@ footer {
 	overflow-y: auto;
 }
 
-/* titre responsive */
-.title-responsive {
-	font-size: 2.5em;
-}
-
 /* text responsive */
 .text-responsive {
 	font-size: 1.15em;
@@ -64,6 +59,18 @@ footer {
 	.ascenseur {
 		height: 65%;
 	}
+}
+
+/* titre */
+h1 {
+	text-align: center;
+	color: #66C5EB;
+	font-size: 40px;
+}
+
+/* titre responsive */
+.title-responsive {
+	font-size: 2.5em;
 }
 
 /* HEADER */
@@ -148,6 +155,35 @@ footer {
 /* USR00 */
 
 /* USR01 */
+#listeUser {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thUSR01 {
+	font-weight: lighter;
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyUSR01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imageUSR01 {
+	width: 40px;
+	height: 40px;
+}
+
+#imageNonActif {
+	width: 25px;
+	height: auto;
+}
 
 /* USR02 */
 
