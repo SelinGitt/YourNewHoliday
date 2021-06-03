@@ -22,7 +22,7 @@ public class RoleMapper {
      * Permet de map un {@link RoleDo} en {@link RoleDto}
      *
      * @param  roleDo roleDo a map
-     * @return        roleDto mapper
+     * @return        roleDto mappe
      */
     public static RoleDto mapperToDto(final RoleDo roleDo) {
         final var roleDto = new RoleDto();
@@ -37,7 +37,7 @@ public class RoleMapper {
      * Permet de map un {@link RoleDto} en {@link RoleDo}
      *
      * @param  roleDto roleDto a map
-     * @return         roleDo mapper
+     * @return         roleDo mappe
      */
     public static RoleDo mapperToDo(final RoleDto roleDto) {
         final var roleDo = new RoleDo();
