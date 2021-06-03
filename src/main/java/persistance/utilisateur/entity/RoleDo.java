@@ -3,14 +3,11 @@
  */
 package persistance.utilisateur.entity;
 
-import java.util.Collection;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -24,13 +21,10 @@ public class RoleDo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer                   idRole;
+    private Integer idRole;
 
     @Column(nullable = false, length = 50, unique = true)
-    private String                    libelle;
-
-    @OneToMany(mappedBy = "role")
-    private Collection<UtilisateurDo> utilisateurDo;
+    private String  libelle;
 
     /**
      * Constructor
@@ -74,23 +68,4 @@ public class RoleDo {
     public void setLibelle(final String libelle) {
         this.libelle = libelle;
     }
-
-    /**
-     * Getter for utilisateurDo
-     *
-     * @return the utilisateurDo
-     */
-    public Collection<UtilisateurDo> getUtilisateurDo() {
-        return utilisateurDo;
-    }
-
-    /**
-     * Setter for utilisateurDo
-     *
-     * @param utilisateurDo the utilisateurDo to set
-     */
-    public void setUtilisateurDo(final Collection<UtilisateurDo> utilisateurDo) {
-        this.utilisateurDo = utilisateurDo;
-    }
-
 }
