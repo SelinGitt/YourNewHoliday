@@ -12,10 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import service.image.IImageService;
 
 /**
  * Classe controller pour afficher une image dans une jsp
@@ -26,6 +29,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/DisplayImage.do")
 public class DisplayImage {
     private static final Logger logger = LoggerFactory.getLogger(DisplayImage.class);
+
+    @Autowired
+    private IImageService       imageService;
 
     /**
      * Permet d'afficher une image en focntion de son chemin en paramètre. <br>
@@ -41,16 +47,16 @@ public class DisplayImage {
     @GetMapping
     public void showImage(final HttpServletResponse response, final @RequestParam("path") String path) {
         try (final var servletOutputStream = response.getOutputStream();
-                final var fileInputStream = new FileInputStream(path);
+                final var fileInputStream = new FileInputStream(imageService.getImage(path));
                 final var bufferedInputStream = new BufferedInputStream(fileInputStream);
-                final var bufferedOutputStream = new BufferedOutputStream(servletOutputStream);) {
+                final var bufferedOutputStream = new BufferedOutputStream(servletOutputStream)) {
 
             var ch = 0;
             while ((ch = bufferedInputStream.read()) != -1) {
                 bufferedOutputStream.write(ch);
             }
         } catch (final IOException ioe) {
-            logger.trace(ioe.getLocalizedMessage());
+            logger.trace(ioe.getMessage(), ioe);
         }
     }
 }
