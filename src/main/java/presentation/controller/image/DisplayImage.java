@@ -51,9 +51,9 @@ public class DisplayImage {
                 final var bufferedInputStream = new BufferedInputStream(fileInputStream);
                 final var bufferedOutputStream = new BufferedOutputStream(servletOutputStream)) {
 
-            var ch = 0;
-            while ((ch = bufferedInputStream.read()) != -1) {
-                bufferedOutputStream.write(ch);
+            var byteToWrite = 0;
+            while ((byteToWrite = bufferedInputStream.read()) != -1) {
+                bufferedOutputStream.write(byteToWrite);
             }
         } catch (final IOException ioe) {
             logger.trace(ioe.getMessage(), ioe);
