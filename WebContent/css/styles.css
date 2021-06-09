@@ -148,6 +148,23 @@ h1 {
 	vertical-align: middle;
 }
 
+/* CONTACT */
+.contact-titre {
+	color: #5cbaef;
+	/* marge du titre */
+	margin-left: 15%;
+	margin-bottom: 50px;
+	margin-top: 75px;
+}
+
+.contact-container {
+	/* marge du contenu de Contact */
+	margin-left: 10%;
+	/* taille du container */
+	width: 1685px;
+	height: 830px;
+}
+
 /* FEATURE TEAM USER */
 /* USR00 */
 
