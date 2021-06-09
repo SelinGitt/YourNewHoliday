@@ -20,4 +20,11 @@ public interface IProduitService {
      * @return la liste des produits en vente
      */
     List<ProduitDto> listerProduitsEnVente();
+
+    /**
+     * Permet de XX
+     *
+     * @return
+     */
+    List<ProduitDto> rechercherProduits();
 }

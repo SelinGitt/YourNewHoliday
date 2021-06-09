@@ -1,25 +1,93 @@
 @charset "UTF-8";
 /* Factorisation du fichier */
+/* factorisation du html et du body */
+html, body, .conteneur-ascenseur {
+	width: 100%;
+	height: 100%;
+}
+
+/* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
+html, body, header, aside, section, footer, .conteneur-ascenseur {
+	box-sizing: border-box;
+}
+
+/* enlève les marges et les bordures pour les containers de chaque type*/
+html, body, header, aside, section, footer {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	overflow: hidden;
+}
+
+/* factorisation du header et du footer */
+header, footer {
+	display: block;
+	width: 100%;
+	height: 10vh;
+}
+
+/* factorisation du style du aside et section */
+aside, section {
+	display: block;
+	float: left;
+	height: 80vh;
+}
+
+/* taille du aside */
+aside {
+	width: 20%;
+}
+
+/* taille de la section */
+section {
+	width: 80%;
+}
+
+/* footer élémination du float fait pour aside et section */
+footer {
+	clear: both;
+}
+
+/* text responsive */
+.text-responsive {
+	font-size: 1.15em;
+}
+
+/* titre */
 h1 {
 	text-align: center;
 	color: #66C5EB;
 	font-size: 40px;
 }
 
+/* titre responsive */
+.title-responsive {
+	font-size: 2.5em;
+}
+
+/* classe pour le corps afin de faire apparaître l'ascenseur où vous le désirer (n'oubliez pas de donner une taille à la div qui doit la contenir) */
+.conteneur-ascenseur {
+	overflow-y: auto;
+}
 
 /* HEADER */
 #header {
 	width: 100%;
 	height: 8vh;
-	display:flex;
+	display: flex;
 }
 
 #headerLogo {
 	width: 70px;
 }
 
+.logoHeader-ynh {
+	width: 100%;
+	height: auto;
+}
+
 .logoHeader {
-	width: 70px;
+	width: 75%;
 	height: auto;
 }
 
@@ -29,7 +97,7 @@ h1 {
 
 #headerStatut {
 	width: 35%;
-	top:20%;
+	top: 20%;
 }
 
 #headerConnexion {
@@ -56,6 +124,12 @@ h1 {
 /* MENU */
 
 /* FOOTER */
+/* image responsive */
+.footer-responsive {
+	width: 50px;
+	height: auto;
+}
+
 #footer-container {
 	/* flex contenair*/
 	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -66,14 +140,12 @@ h1 {
 	justify-content: space-around;
 	/* alignement verticale des items */
 	align-items: center;
+	height: auto;
 }
 
 .footer-lang {
 	/* alignement du texte "langue" et des images */
 	vertical-align: middle;
-	/* définition de la hauteur et de la largeur des images */
-	height: 50px;
-	width: 50px;
 }
 
 /* FEATURE TEAM USER */
@@ -118,6 +190,14 @@ h1 {
 
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
+<<<<<<< HEAD
+=======
+h1.title {
+	text-align: center;
+	color: #66C5EB;
+}
+
+>>>>>>> develop
 .container {
 	display: flex;
 	flex-wrap: wrap;

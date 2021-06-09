@@ -50,4 +50,20 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         allMiseEnVenteQuery.setParameter(miseEnVente, true);
         return allMiseEnVenteQuery.getResultList();
     }
+
+    @Override
+    public List<ProduitDo> rechercherProduits() {
+        final var criteriaBuilder = entityManager.getCriteriaBuilder();
+        final CriteriaQuery<ProduitDo> criteriaQuery = criteriaBuilder.createQuery(ProduitDo.class);
+        final Root<ProduitDo> rootEntry = criteriaQuery.from(ProduitDo.class);
+        final ParameterExpression<Boolean> miseEnVente = criteriaBuilder.parameter(Boolean.class);
+        // Création du select avec la condition "where"
+        final var selectCriteriaQuery = criteriaQuery.select(rootEntry);
+        selectCriteriaQuery.where(
+                criteriaBuilder.equal(rootEntry.get("SELECT produit.nom FROM produit WHERE produit.reference LIKE '%ITA%' "), miseEnVente));
+        // Création de la typedQuery
+        final TypedQuery<ProduitDo> allMiseEnVenteQuery = entityManager.createQuery(criteriaQuery);
+        allMiseEnVenteQuery.setParameter(miseEnVente, true);
+        return allMiseEnVenteQuery.getResultList();
+    }
 }
