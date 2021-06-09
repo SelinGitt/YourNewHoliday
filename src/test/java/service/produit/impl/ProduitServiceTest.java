@@ -48,9 +48,11 @@ class ProduitServiceTest {
     void testListerAllProduit() {
         final var produitDo = new ProduitDo();
         produitDo.setPrixUnitaire(125d);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(125d);
         // List.of permet de retourner une liste
-        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo));
-        assertEquals(1, this.produitServiceMock.listerAllProduit().size());
+        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo, produitDo2));
+        assertEquals(2, this.produitServiceMock.listerAllProduit().size());
     }
 
     /**
@@ -60,8 +62,10 @@ class ProduitServiceTest {
     void testListerProduitsEnVente() {
         final var produitDo = new ProduitDo();
         produitDo.setPrixUnitaire(125d);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(125d);
         // List.of permet de retourner une liste
-        Mockito.when(this.iProduitDaoMock.findAllProduitsEnVente()).thenReturn(List.of(produitDo));
-        assertEquals(1, this.produitServiceMock.listerProduitsEnVente().size());
+        Mockito.when(this.iProduitDaoMock.findAllProduitsEnVente()).thenReturn(List.of(produitDo, produitDo2));
+        assertEquals(2, this.produitServiceMock.listerProduitsEnVente().size());
     }
 }
