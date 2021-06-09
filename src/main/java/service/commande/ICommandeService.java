@@ -15,14 +15,6 @@ import presentation.commande.dto.CommandeDto;
 public interface ICommandeService {
 
     /**
-     * Permet de trouver une commande à partir de sa référence
-     *
-     * @param  reference la référence
-     * @return           CommandeDto la commande
-     */
-    CommandeDto trouverCommandeParReference(final String reference);
-
-    /**
      * Permet de lister les commandes d'un utilisateur
      *
      * @param  idUser l'identifiant de l'utilisateur

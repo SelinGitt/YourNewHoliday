@@ -18,17 +18,17 @@ import org.junit.jupiter.api.Test;
 
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
-import service.commande.CommandeMappeur;
+import service.commande.CommandeMapper;
 
 /**
  * JUnit pour tester le Mapper de commande
  *
  * @author Hanan anghari
  */
-class CommandeMappeurTest {
+class CommandeMapperTest {
 
     /**
-     * Test method for {@link service.commande.CommandeMappeur#mapperToDto(persistance.commande.entity.CommandeDo)}.
+     * Test method for {@link service.commande.CommandeMapper#mapperToDto(persistance.commande.entity.CommandeDo)}.
      * 
      * @throws ParseException
      */
@@ -43,20 +43,20 @@ class CommandeMappeurTest {
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
 
-        final CommandeDto commandeDto = CommandeMappeur.mapperToDto(commandeDo);
+        final CommandeDto commandeDto = CommandeMapper.mapperToDto(commandeDo);
 
         assertNotNull(commandeDto);
         assertEquals("20", commandeDto.getId());
         assertEquals("ABC9", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
-        assertEquals("200.40", commandeDto.getPrixTotal());
-        final CommandeDto commandeDtoNull = CommandeMappeur.mapperToDto(null);
+        assertEquals("200,40", commandeDto.getPrixTotal());
+        final CommandeDto commandeDtoNull = CommandeMapper.mapperToDto(null);
         assertNull(commandeDtoNull);
 
     }
 
     /**
-     * Test method for {@link service.commande.CommandeMappeur#mapperListDoToDto(java.util.List)}.
+     * Test method for {@link service.commande.CommandeMapper#mapperListDoToDto(java.util.List)}.
      * 
      * @throws ParseException
      */
@@ -77,7 +77,7 @@ class CommandeMappeurTest {
         commandeDo2.setDate(date2);
         commandeDo2.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
 
-        assertEquals(2, CommandeMappeur.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
+        assertEquals(2, CommandeMapper.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
 
     }
 

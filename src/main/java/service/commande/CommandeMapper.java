@@ -1,5 +1,6 @@
 package service.commande;
 
+import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -14,8 +15,8 @@ import presentation.commande.dto.CommandeDto;
  *
  * @author Hanan Anghari
  */
-public class CommandeMappeur {
-    private CommandeMappeur() {
+public class CommandeMapper {
+    private CommandeMapper() {
         // emprty
     }
 
@@ -32,7 +33,8 @@ public class CommandeMappeur {
         final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(String.valueOf(commandeDo.getPrixTotal().setScale(2, RoundingMode.FLOOR)));
+        final BigDecimal prixTotal = commandeDo.getPrixTotal().setScale(2, RoundingMode.FLOOR);
+        commandeDto.setPrixTotal(String.format("%,.2f", prixTotal));
         final Format formatter = new SimpleDateFormat("dd/MM/yyyy");
         commandeDto.setDate(formatter.format(commandeDo.getDate()));
         return commandeDto;
@@ -45,7 +47,7 @@ public class CommandeMappeur {
      * @return                 la liste mappée
      */
     public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
-        return listeCommandeDo.stream().map(CommandeMappeur::mapperToDto).collect(Collectors.toList());
+        return listeCommandeDo.stream().map(CommandeMapper::mapperToDto).collect(Collectors.toList());
 
     }
 }

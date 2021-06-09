@@ -270,7 +270,7 @@ td.description {
 
 /* FEATURE TEAM COMMANDE */
 /* CMD00 */
-h2.commandeCMD00 {
+.commandeCMD00 {
 	color: #66C5EB;
 	text-align: center;
 }
@@ -333,7 +333,7 @@ div.commandePrixTotalValueCMD00 {
 	grid-column: 2;
 	text-align: right;
 	font-weight: bold;
-	width: 58%;
+	width: 60%;
 }
 
 /* colonne 3 */
