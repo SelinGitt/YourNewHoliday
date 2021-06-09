@@ -59,7 +59,7 @@ public class DisplayImage {
                 bufferedOutputStream.write(byteToWrite);
             }
         } catch (final IOException ioe) {
-            logger.trace(ioe.getMessage(), ioe);
+            logger.warn(ioe.getMessage(), ioe);
         }
     }
 }
