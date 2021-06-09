@@ -12,11 +12,7 @@ public enum TypeImage {
     /**
      * Type Produit
      */
-    PRODUIT("pdt"),
-    /**
-     * Type User
-     */
-    USER("usr");
+    PRODUIT("pdt");
 
     /**
      * type stocké
