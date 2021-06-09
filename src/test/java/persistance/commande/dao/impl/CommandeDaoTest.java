@@ -40,6 +40,9 @@ class CommandeDaoTest {
     @Autowired
     private ICommandeDao iCommandeDao;
 
+    /**
+     * Test si l'autowired injecte bien un CommandeDao dans iCommandeDao
+     */
     @Test
     void testICommandeDao() {
         assertNotNull(this.iCommandeDao);

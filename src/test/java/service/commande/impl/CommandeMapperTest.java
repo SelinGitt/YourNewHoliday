@@ -19,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 import service.commande.CommandeMapper;
+import service.util.DateFormatUtil;
 
 /**
  * JUnit pour tester le Mapper de commande
@@ -39,7 +40,7 @@ class CommandeMapperTest {
 
         commandeDo.setId(20);
         commandeDo.setReference("ABC9");
-        final Date date = new SimpleDateFormat("dd/MM/yyyy").parse("01/01/1970");
+        final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
 
