@@ -70,6 +70,7 @@ class UtilisateurDaoTest {
         utilisateurDo.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo.setEstActif(true);
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
+        utilisateurDo.setCheminAvatar("img/test.png");
 
         final RoleDo role = new RoleDo();
         role.setIdRole(1);
