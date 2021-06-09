@@ -1,11 +1,135 @@
 @charset "UTF-8";
 /* Factorisation du fichier */
+/* factorisation du html et du body */
+html, body, .conteneur-ascenseur {
+	width: 100%;
+	height: 100%;
+}
+
+/* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
+html, body, header, aside, section, footer, .conteneur-ascenseur {
+	box-sizing: border-box;
+}
+
+/* enlève les marges et les bordures pour les containers de chaque type*/
+html, body, header, aside, section, footer {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	overflow: hidden;
+}
+
+/* factorisation du header et du footer */
+header, footer {
+	display: block;
+	width: 100%;
+	height: 10vh;
+}
+
+/* factorisation du style du aside et section */
+aside, section {
+	display: block;
+	float: left;
+	height: 80vh;
+}
+
+/* taille du aside */
+aside {
+	width: 20%;
+}
+
+/* taille de la section */
+section {
+	width: 80%;
+}
+
+/* footer élémination du float fait pour aside et section */
+footer {
+	clear: both;
+}
+
+/* text responsive */
+.text-responsive {
+	font-size: 1.15em;
+}
+
+/* titre */
+h1 {
+	text-align: center;
+	color: #66C5EB;
+	font-size: 40px;
+}
+
+/* titre responsive */
+.title-responsive {
+	font-size: 2.5em;
+}
+
+/* classe pour le corps afin de faire apparaître l'ascenseur où vous le désirer (n'oubliez pas de donner une taille à la div qui doit la contenir) */
+.conteneur-ascenseur {
+	overflow-y: auto;
+}
 
 /* HEADER */
+#header {
+	width: 100%;
+	height: 8vh;
+	display: flex;
+}
+
+#headerLogo {
+	width: 70px;
+}
+
+.logoHeader-ynh {
+	width: 100%;
+	height: auto;
+}
+
+.logoHeader {
+	width: 75%;
+	height: auto;
+}
+
+#headerNom {
+	width: 35.5%;
+}
+
+#headerStatut {
+	width: 35%;
+	top: 20%;
+}
+
+#headerConnexion {
+	width: 15%;
+}
+
+#headerPanier {
+	width: 10%;
+}
+
+.headerCell {
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.headerSousCell {
+	display: inline-block;
+	vertical-align: middle;
+}
 
 /* MENU */
 
 /* FOOTER */
+/* image responsive */
+.footer-responsive {
+	width: 50px;
+	height: auto;
+}
+
 #footer-container {
 	/* flex contenair*/
 	/* https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -16,20 +140,64 @@
 	justify-content: space-around;
 	/* alignement verticale des items */
 	align-items: center;
+	height: auto;
 }
 
 .footer-lang {
 	/* alignement du texte "langue" et des images */
 	vertical-align: middle;
-	/* définition de la hauteur et de la largeur des images */
-	height: 50px;
-	width: 50px;
+}
+
+/* CONTACT */
+.contact-titre {
+	color: #5cbaef;
+	/* marge du titre */
+	margin-left: 15%;
+	margin-bottom: 50px;
+	margin-top: 75px;
+}
+
+.contact-container {
+	/* marge du contenu de Contact */
+	margin-left: 10%;
+	/* taille du container */
+	width: 1685px;
+	height: 830px;
 }
 
 /* FEATURE TEAM USER */
 /* USR00 */
 
 /* USR01 */
+#listeUser {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thUSR01 {
+	font-weight: lighter;
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyUSR01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imageUSR01 {
+	width: 40px;
+	height: 40px;
+}
+
+#imageNonActif {
+	width: 25px;
+	height: auto;
+}
 
 /* USR02 */
 
@@ -39,6 +207,53 @@
 
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
+h1.title {
+	text-align: center;
+	color: #66C5EB;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+	border: 1px solid #ff0000;
+}
+
+.containerVoyage {
+	display: inline-flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin: 10px;
+	max-width: 30%;
+}
+
+.price {
+	display: flex;
+	flex: 2 1 auto;
+	justify-content: flex-end;
+	padding: 0;
+}
+
+.img {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+	max-width: 100%;
+}
+
+td.name {
+	display: flex;
+}
+
+tr.lineRow {
+	display: flex;
+}
+
+td.description {
+	display: flex;
+	max-width: 75%
+}
 
 /* PDT01 */
 
