@@ -35,5 +35,23 @@
                 <td><spring:message code="usr05.creer.confirmPassword" /></td>
                 <td><form:input path="confirmPassword" /></td>
             </tr>
+            
+            <tr>
+                <td colspan="3">
+                    <div>
+                        <form:button value="submit">
+                            <spring:message code="usr05.creer.valider" />
+                        </form:button>
+                    </div>
+                </td>
+                
+                 <td colspan="3">
+                    <div>
+                        <form:button value="submit">
+                            <spring:message code="usr05.creer.reset" />
+                        </form:button>
+                    </div>
+                </td>
+            </tr>
             </table>
 </form:form>
