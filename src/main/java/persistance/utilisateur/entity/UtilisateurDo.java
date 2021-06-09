@@ -49,6 +49,9 @@ public class UtilisateurDo {
     @Column(name = "adresse")
     private String  adresse;
 
+    @Column(name = "chemin_de_lavatar")
+    private String  cheminAvatar;
+
     @Column(name = "est_desactive")
     private Boolean estActif;
 
@@ -259,6 +262,24 @@ public class UtilisateurDo {
      */
     public void setAdresse(final String adresse) {
         this.adresse = adresse;
+    }
+
+    /**
+     * Getter for cheminAvatar
+     *
+     * @return the cheminAvatar
+     */
+    public String getCheminAvatar() {
+        return cheminAvatar;
+    }
+
+    /**
+     * Setter for cheminAvatar
+     *
+     * @param cheminAvatar the cheminAvatar to set
+     */
+    public void setCheminAvatar(final String cheminAvatar) {
+        this.cheminAvatar = cheminAvatar;
     }
 
 }
