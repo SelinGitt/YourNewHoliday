@@ -21,7 +21,7 @@ import service.utilisateur.util.UtilisateurMapper;
 @Service
 @Transactional(propagation = Propagation.REQUIRED)
 public class UtilisateurService implements IUtilisateurService {
-    
+
     @Autowired
     private IUtilisateurDao iUtilisateurDao;
 
@@ -29,6 +29,11 @@ public class UtilisateurService implements IUtilisateurService {
     public List<UtilisateurDto> findAllUtilisateurs() {
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
     }
-    
-    
+
+    @Override
+    public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
+        final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
+    }
+
 }
