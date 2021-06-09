@@ -35,7 +35,7 @@ public class CommandeDo {
 	private Integer    idUtilisateur;
 
 	@Column(name = "quantiteTotale")
-	private Integer    quaniteTotale;
+	private Integer    quantiteTotale;
 
 	/**
 	 * Getter for id
@@ -132,8 +132,8 @@ public class CommandeDo {
 	 * 
 	 * @return the quantiteTotale
 	 */
-	public Integer getQuaniteTotale() {
-		return quaniteTotale;
+	public Integer getQuantiteTotale() {
+		return quantiteTotale;
 	}
 
 	/**
@@ -141,8 +141,8 @@ public class CommandeDo {
 	 * 
 	 * @param quaniteTotale the quantiteTotale to set
 	 */
-	public void setQuaniteTotale(final Integer quaniteTotale) {
-		this.quaniteTotale = quaniteTotale;
+	public void setQuantiteTotale(final Integer quaniteTotale) {
+		this.quantiteTotale = quaniteTotale;
 	}
 
 }

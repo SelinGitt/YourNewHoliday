@@ -35,7 +35,7 @@ public class CommandeMapper {
 		final BigDecimal prixTotal = commandeDo.getPrixTotal().setScale(2, RoundingMode.FLOOR);
 		commandeDto.setPrixTotal(String.format("%,.2f", prixTotal));
 		commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
-		commandeDto.setQuantiteTotale(commandeDo.getQuaniteTotale().toString());
+		commandeDto.setQuantiteTotale(commandeDo.getQuantiteTotale().toString());
 		return commandeDto;
 	}
 
