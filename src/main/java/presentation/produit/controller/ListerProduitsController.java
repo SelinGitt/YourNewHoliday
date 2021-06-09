@@ -35,7 +35,6 @@ public class ListerProduitsController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
         modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
-        modelAndView.getModelMap().addAttribute("searchInput", new String());
         return modelAndView;
     }
 
@@ -47,10 +46,13 @@ public class ListerProduitsController {
      */
     @PostMapping
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
-        System.out.println(searchInput);
         final var modelAndView = new ModelAndView("listerProduits");
         modelAndView.addObject("searchTerm", searchInput);
-        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+        if (!searchInput.isEmpty()) {
+            modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+        } else {
+            return new ModelAndView("redirect:/");
+        }
         return modelAndView;
     }
 }
