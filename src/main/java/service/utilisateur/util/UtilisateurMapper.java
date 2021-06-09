@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import persistance.utilisateur.entity.UtilisateurDo;
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 
 /**
@@ -77,6 +78,29 @@ public class UtilisateurMapper {
      */
     public static List<UtilisateurDto> mapperToListDto(final List<UtilisateurDo> utilisateurDoList) {
         return utilisateurDoList.stream().map(UtilisateurMapper::mapperToDto).collect(Collectors.toList());
+    }
+
+    /**
+     * Method to map UtilisateurDo into UtilisateurConnecteDto
+     *
+     * @param  utilisateurDo : Utilisateur to map
+     * @return               Mapped UtilisateurConnecteDto
+     */
+    public static UtilisateurConnecteDto mapperToConnecteDto(final UtilisateurDo utilisateurDo) {
+        final var utilisateurConnecteDto = new UtilisateurConnecteDto();
+
+        //TODO à changer quand les rôles seront gérés
+        utilisateurConnecteDto.setIdRole("1");
+        //TODO à changer quand les rôles seront gérés
+        utilisateurConnecteDto.setNomRole("Rôle");
+
+        utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
+        utilisateurConnecteDto.setNom(utilisateurDo.getNom());
+        utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
+        //TODO gestion du panier à travailler avec l'équipe Panier
+        utilisateurConnecteDto.setNbProduitPanier("0");
+
+        return utilisateurConnecteDto;
     }
 
     /**
