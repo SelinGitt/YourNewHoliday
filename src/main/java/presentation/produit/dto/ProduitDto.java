@@ -4,6 +4,7 @@
 package presentation.produit.dto;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Classe représentant un produit pour la vue
@@ -14,30 +15,49 @@ public class ProduitDto implements Serializable {
     /**
      * Serial Version UID généré aléatoirement
      */
-    private static final long serialVersionUID = 1L;  
-   
+    private static final long serialVersionUID = 1L;
 
-    private String            idProduitOriginal;
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProduitOriginal);
+    }
 
-    private String            version;
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ProduitDto other = (ProduitDto) obj;
+        return Objects.equals(idProduitOriginal, other.idProduitOriginal);
+    }
 
-    private String            reference;
+    private String idProduitOriginal;
 
-    private String            nom;
+    private String version;
 
-    private String            description;
+    private String reference;
 
-    private String            destination;
+    private String nom;
 
-    private String            prixUnitaire;
+    private String description;
 
-    private String            hebergement;
+    private String destination;
 
-    private String            miseEnVente;
+    private String prixUnitaire;
 
-    private String            cheminImage;
+    private String hebergement;
 
-    private String            services;
+    private String miseEnVente;
+
+    private String cheminImage;
+
+    private String services;
 
     /**
      * Getter for idProduitOriginal
