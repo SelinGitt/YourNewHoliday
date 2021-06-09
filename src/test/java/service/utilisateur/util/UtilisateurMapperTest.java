@@ -147,4 +147,26 @@ class UtilisateurMapperTest {
 
         Assertions.assertEquals(utilisateurDoList.size(), utilisateurDtoList.size());
     }
+    
+    /**
+     * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToConnecteDto(java.util.List)}
+     */
+    @Test
+    void testMapToConnecteDto() {
+        final var utilisateurDo = new UtilisateurDo();
+        
+        utilisateurDo.setIdUtilisateur(123);
+        utilisateurDo.setEmail("email_dto@test.fr");
+        utilisateurDo.setReference("123abc");
+        utilisateurDo.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo.setNom("Jean");
+        utilisateurDo.setPrenom("Michel");
+        utilisateurDo.setEstActif(true);
+        
+        final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
+        
+        Assertions.assertEquals("123", utilisateurConnecteDto.getIdUtilisateur());
+        Assertions.assertEquals("Jean", utilisateurConnecteDto.getNom());
+        Assertions.assertEquals("Michel",  utilisateurConnecteDto.getPrenom());
+    }
 }

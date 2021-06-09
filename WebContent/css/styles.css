@@ -205,6 +205,16 @@ h1 {
 
 /* USR07 */
 
+.boutonValiderUSR07 {
+	background-color: #008000;
+	Color: white;
+}
+
+.boutonResetUSR07 {
+	background-color: #FF0000;
+	Color: white;
+}
+
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
 h1.title {
@@ -256,6 +266,29 @@ td.description {
 }
 
 /* PDT01 */
+.listeProduit {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thPDT01 {
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyPDT01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imagePDT01 {
+	width: 40px;
+	height: 40px;
+}
 
 /* PDT02 */
 

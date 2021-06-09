@@ -1,5 +1,9 @@
 package persistance.utilisateur.dao.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -24,7 +28,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
  *
  * @author Valentin
  */
-//Permet de gérer le JUnit avec Spring
+// Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)
 //Et de déclarer le fichier de conf à utiliser
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
@@ -76,5 +80,18 @@ class UtilisateurDaoTest {
 
         Assertions.assertNotNull(utilisateurCreated);
         Assertions.assertNotNull(utilisateurCreated.getIdUtilisateur());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByEmail()}.
+     */
+    @Test
+    void testFindByEmail() {
+        //On essaie avec une adresse email présente en base de données
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByEmail("baratheon.robert@hotmail.com");
+        assertNotNull(utilisateurDo);
+        assertEquals("ClientCLIENT123", utilisateurDo.getReference());
+        //On essaie avec une adresse email absente en base de données
+        assertNull(iUtilisateurDao.findByEmail("emailNonExistant@hotmail.com"));
     }
 }

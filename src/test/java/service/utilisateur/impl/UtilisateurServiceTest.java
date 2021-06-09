@@ -7,6 +7,8 @@ import java.util.GregorianCalendar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -16,6 +18,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.util.UtilisateurMapper;
 
@@ -93,5 +96,46 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurCreated = this.utilisateurService.createUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurCreated);
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
+     */
+    @ParameterizedTest
+    @CsvSource({"email, password, true", "email, wrong password, false"})
+    void testAuthentifyEmailOK(final String email, final String password, final String check) {
+
+        //On crée l'utilisateurDo qu'on récupère en BD
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setEmail("email");
+        utilisateurDo.setMdpHash("password");
+        utilisateurDo.setNom("nom");
+
+        Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
+
+        //On tente une authentification 
+        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
+
+        //L'argument "true" sert à indiquer qu'on attend une authentification réussie
+        if (check.equals("true")) {
+            Assertions.assertNotNull(utilisateurConnecteDto);
+            Assertions.assertEquals("nom", utilisateurConnecteDto.getNom());
+        } else {
+            Assertions.assertNull(utilisateurConnecteDto);
+        }
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
+     */
+    @ParameterizedTest
+    @CsvSource({"wrong email, password", "wrong email, wrong password"})
+    void testAuthentifyEmailKO(final String email, final String password) {
+
+        //On teste avec un email non valide, findByEmail renvoie ddonc toujours null
+        Mockito.when(this.dao.findByEmail(email)).thenReturn(null);
+
+        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
+        Assertions.assertNull(utilisateurConnecteDto);
     }
 }
