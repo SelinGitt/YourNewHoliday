@@ -339,7 +339,7 @@ div.commandeVideCMD00 {
 /* création de la grille */
 div.commandeLineCMD00 {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 10px;
 	margin: 5px;
 }
@@ -382,8 +382,32 @@ div.commandePrixTotalValueCMD00 {
 }
 
 /* colonne 3 */
-div.commandeDateCMD00 {
+div.commandeQuantiteTotaleCMD00 {
 	grid-column: 3;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1px;
+}
+
+
+/* colonne 3.1 */
+div.commandeQuantiteTotaleTextCMD00 {
+	grid-column: 1;
+	width: 60%;
+}
+
+/* colonne 3.1 */
+div.commandeQuantiteTotaleValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+	font-weight: bold;
+	width: 60%;
+}
+
+
+/* colonne 4 */
+div.commandeDateCMD00 {
+	grid-column: 4;
 }
 
 /* espace entre la bordure et le texte */
