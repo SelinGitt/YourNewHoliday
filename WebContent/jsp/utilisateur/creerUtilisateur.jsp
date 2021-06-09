@@ -8,35 +8,35 @@
 </h1>
 
 <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do">
-    <table>
+    <table aria-describedby="CreerUtilisateur">
         <tr>
-            <td><spring:message code="usr05.creer.nom" /></td>
+            <th><spring:message code="usr05.creer.nom" /></th>
             <td><form:input path="nom" /></td>
         </tr>
         <tr>
-            <td><spring:message code="usr05.creer.prenom" /></td>
+            <th><spring:message code="usr05.creer.prenom" /></th>
             <td><form:input path="prenom" /></td>
         </tr>
 
         <tr>
-            <td><spring:message code="usr05.creer.adresse" /></td>
+            <th><spring:message code="usr05.creer.adresse" /></th>
             <td><form:input path="adresse" /></td>
         </tr>
         <tr>
-            <td><spring:message code="usr05.creer.dateNaissance" /></td>
+            <th><spring:message code="usr05.creer.dateNaissance" /></th>
             <td><form:input path="dateNaissance" /></td>
         </tr>
         <tr>
-            <td><spring:message code="usr05.creer.email" /></td>
+            <th><spring:message code="usr05.creer.email" /></th>
             <td><form:input path="email" /></td>
         </tr>
         <tr>
-            <td><spring:message code="usr05.creer.password" /></td>
+            <th><spring:message code="usr05.creer.password" /></th>
             <td><form:password path="password" /></td>
         </tr>
 
         <tr>
-            <td><spring:message code="usr05.creer.confirmPassword" /></td>
+            <th><spring:message code="usr05.creer.confirmPassword" /></th>
             <td><form:password path="confirmPassword" /></td>
         </tr>
 
