@@ -34,7 +34,7 @@
 	<!-- écran panier -->
 	<definition name="pan_00" extends="base.definition">
 		<put-attribute name="title" value="panier" />
-		<put-attribute name="body" value="/jsp/page/panier/panierProduits.jsp" />
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduits.jsp" />
 	</definition>
 	<!-- écran commande -->
 

@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
  *
  */
 @Controller
-@RequestMapping("/panierProduits.do")
-public class PanierProduitsController {
+@RequestMapping("/listerPanierProduits.do")
+public class ListerPanierProduitsController {
     /**
      * Permet d'afficher la page PanierProduits
      *
