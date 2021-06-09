@@ -20,5 +20,12 @@ public interface IGenericDao<T> {
      */
     List<T> findAll();
 
+    /**
+     * Permet de trouver une entité T en fonction de son ID en base
+     *
+     * @param  id l'id de l'entité T à trouver
+     * @return    l'entité T trouvée, retourne <code>null</code> si l'entité n'a pas été trouvée
+     */
+    T findById(final Integer id);
     // Les autres méthodes de CRUD de l'interface
 }

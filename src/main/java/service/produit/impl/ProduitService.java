@@ -33,7 +33,12 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+<<<<<<< HEAD
     public ProduitDto trouverProduitEnVente(final Integer idProduit) {
         return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
+=======
+    public List<ProduitDto> listerAllProduit() {
+        return ProduitMapper.mapToListDto(produitDao.findAll());
+>>>>>>> develop
     }
 }
