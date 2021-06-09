@@ -3,13 +3,19 @@
  */
 package presentation.utilisateur.controller;
 
+import java.time.Instant;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.utilisateur.IUtilisateurService;
 
 /**
  * Controller pour création d'un utilisateur
@@ -19,6 +25,9 @@ import presentation.utilisateur.dto.UtilisateurDto;
 @Controller
 @RequestMapping("/creerUtilisateur.do")
 public class CreerUtilisateurController {
+
+    @Autowired
+    private IUtilisateurService service;
 
     /**
      * Permet de traiter les requêtes GET<br/>
@@ -42,7 +51,15 @@ public class CreerUtilisateurController {
      * @return                lien vers la jsp
      */
     @PostMapping
-    public String processSubmit(final UtilisateurDto utilisateurDto) {
-        return "redirect:jsp/utilisateur/creerUtilisateur.jsp";
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
+        final var roleDto = new RoleDto();
+        roleDto.setIdRole(1);
+
+        utilisateurDto.setDateInscription(Date.from(Instant.now()).toString());
+        utilisateurDto.setRole(roleDto);
+
+        this.service.createUtilisateur(utilisateurDto);
+
+        return new ModelAndView("redirect:/");
     }
 }
