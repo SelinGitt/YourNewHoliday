@@ -5,7 +5,6 @@ package service.produit.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +49,7 @@ class ProduitServiceTest {
         final var produitDo = new ProduitDo();
         produitDo.setPrixUnitaire(125d);
         // List.of permet de retourner une liste
-        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(Collections.singletonList(produitDo));
+        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo));
         assertEquals(1, this.produitServiceMock.listerAllProduit().size());
     }
 
