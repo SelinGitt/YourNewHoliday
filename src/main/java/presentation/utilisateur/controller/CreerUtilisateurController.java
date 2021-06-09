@@ -5,6 +5,7 @@ package presentation.utilisateur.controller;
 
 import java.time.Instant;
 import java.util.Date;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,11 +56,50 @@ public class CreerUtilisateurController {
         final var roleDto = new RoleDto();
         roleDto.setIdRole(1);
 
-        utilisateurDto.setDateInscription(Date.from(Instant.now()).toString());
         utilisateurDto.setRole(roleDto);
+
+        utilisateurDto.setDateInscription(Date.from(Instant.now()).toString());
+
+        utilisateurDto.setEstActif(true);
+
+        utilisateurDto.setReference(this.generateReference());
+
+        System.out.println(utilisateurDto.getPassword());
 
         this.service.createUtilisateur(utilisateurDto);
 
         return new ModelAndView("redirect:/");
+    }
+
+    /**
+     * Permet de generer une reference <br>
+     * Ceci est temporaire
+     *
+     * @return Reference creer
+     */
+    private String generateReference() {
+        // create a string of all characters
+        final var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        // create random string builder
+        final var sb = new StringBuilder();
+
+        // create an object of Random class
+        final var random = new Random();
+
+        for (var i = 0; i < 7; i++) {
+
+            // generate random index number
+            final var index = random.nextInt(alphabet.length());
+
+            // get character specified by index
+            // from the string
+            final var randomChar = alphabet.charAt(index);
+
+            // append the character to string builder
+            sb.append(randomChar);
+        }
+
+        return sb.toString();
     }
 }
