@@ -5,6 +5,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
