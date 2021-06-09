@@ -190,14 +190,11 @@ h1 {
 
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
-<<<<<<< HEAD
-=======
 h1.title {
 	text-align: center;
 	color: #66C5EB;
 }
 
->>>>>>> develop
 .container {
 	display: flex;
 	flex-wrap: wrap;
@@ -240,8 +237,8 @@ td.name {
 }
 
 .searchBarInside {
-	outline: none; 
-	border-radius : 30px;
+	outline: none;
+	border-radius: 30px;
 	border: 2px solid grey;
 	border-radius: 30px;
 }
