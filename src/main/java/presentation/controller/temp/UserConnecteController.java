@@ -44,6 +44,9 @@ public class UserConnecteController {
             if ("supprimer".equals(action)) {
                 session.removeAttribute(UTILISATEUR);
             }
+            if ("create_client_panier".equals(action)) {
+                session.setAttribute(UTILISATEUR, this.creerUtilisateurAvecPanier());
+            }
         }
         return "user_session";
     }
@@ -80,6 +83,26 @@ public class UserConnecteController {
         utilisateurConnecteDto.setNbProduitPanier("0");
         utilisateurConnecteDto.setNom("Marly");
         utilisateurConnecteDto.setPrenom("Cyntia");
+
+        return utilisateurConnecteDto;
+    }
+
+    /**
+     * Methode pour créer un {@link presentation.utilisateur.dto.UtilisateurConnecteDto} utilisateur avec panier
+     *
+     * @return UtilisateurConnecteDto créer
+     */
+    private UtilisateurConnecteDto creerUtilisateurAvecPanier() {
+        final var utilisateurConnecteDto = new UtilisateurConnecteDto();
+
+        utilisateurConnecteDto.setIdRole("1");
+        utilisateurConnecteDto.setNomRole("Client");
+        utilisateurConnecteDto.setIdUtilisateur("257");
+        // not used
+        utilisateurConnecteDto.setNbProduitPanier("0");
+        utilisateurConnecteDto.setNom("Poe");
+        utilisateurConnecteDto.setPrenom("Edgar");
+        utilisateurConnecteDto.setPanierDto(RemplirPanier.echantillon());
 
         return utilisateurConnecteDto;
     }

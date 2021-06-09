@@ -3,6 +3,7 @@
  */
 package presentation.panier.dto;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,10 +14,13 @@ import presentation.produit.dto.ProduitDto;
  *
  * @author NathanB
  */
-public class PanierDto {
-
+public class PanierDto implements Serializable {
+    /**
+     * Serial Version UID généré automatiquement 
+     */
+    private static final long serialVersionUID = 1L;
     private Map<ProduitDto, Integer> mapPanier;
-    private Integer                  nombRereference;
+    private Integer                  nombreDeReferences = 0;
 
     /**
      * Constructor
@@ -44,20 +48,31 @@ public class PanierDto {
     }
 
     /**
-     * Getter for nombreProduitTotal
+     * Getter for serialversionuid
      *
-     * @return the nombreProduitTotal
+     * @return the serialversionuid
      */
-    public Integer getNombreProduitTotal() {
-        return nombRereference;
+    public static long getSerialversionuid() {
+        return serialVersionUID;
     }
 
     /**
-     * Setter for nombreProduitTotal
+     * Getter for nombreDeReferences
      *
-     * @param nombreProduitTotal the nombreProduitTotal to set
+     * @return the nombreDeReferences
      */
-    public void setNombreProduitTotal(final Integer nombreProduitTotal) {
-        this.nombRereference = nombreProduitTotal;
+    public Integer getNombreDeReferences() {
+        return nombreDeReferences;
     }
+
+    /**
+     * Setter for nombreDeReferences
+     *
+     * @param nombreDeReferences the nombreDeReferences to set
+     */
+    public void setNombreDeReferences(final Integer nombreDeReferences) {
+        this.nombreDeReferences = nombreDeReferences;
+    }
+
+    
 }
