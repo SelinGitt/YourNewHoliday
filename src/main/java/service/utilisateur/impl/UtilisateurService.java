@@ -43,7 +43,7 @@ public class UtilisateurService implements IUtilisateurService {
             if (passwordCheck.equals(password)) {
                 return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
-            logger.info("Erreur d'authentification, les mots de passe correspondent pas.");
+            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
         }
         return null;
     }

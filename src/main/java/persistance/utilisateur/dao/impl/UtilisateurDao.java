@@ -1,7 +1,7 @@
 package persistance.utilisateur.dao.impl;
 
 import javax.persistence.NoResultException;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,10 +34,11 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
 
     @Override
     public UtilisateurDo findByEmail(final String email) {
-        final Query query = entityManager.createQuery("select util from UtilisateurDo util where util.email = :email", UtilisateurDo.class);
+        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("select util from UtilisateurDo util where util.email = :email",
+                UtilisateurDo.class);
         query.setParameter("email", email);
         try {
-            return (UtilisateurDo) query.getSingleResult();
+            return query.getSingleResult();
         } catch (final NoResultException exception) {
             logger.info("Utilisateur avec l'email {} non trouvé en base de données.", email, exception);
             return null;
