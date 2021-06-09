@@ -148,6 +148,23 @@ h1 {
 	vertical-align: middle;
 }
 
+/* CONTACT */
+.contact-titre {
+	color: #5cbaef;
+	/* marge du titre */
+	margin-left: 15%;
+	margin-bottom: 50px;
+	margin-top: 75px;
+}
+
+.contact-container {
+	/* marge du contenu de Contact */
+	margin-left: 10%;
+	/* taille du container */
+	width: 1685px;
+	height: 830px;
+}
+
 /* FEATURE TEAM USER */
 /* USR00 */
 
@@ -249,6 +266,29 @@ td.description {
 }
 
 /* PDT01 */
+.listeProduit {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thPDT01 {
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyPDT01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imagePDT01 {
+	width: 40px;
+	height: 40px;
+}
 
 /* PDT02 */
 
