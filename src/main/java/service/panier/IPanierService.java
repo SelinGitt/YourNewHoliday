@@ -17,7 +17,7 @@ public interface IPanierService {
      *
      * @param  panier    : le panier à mettre à jour
      * @param  idProduit : l'id du produit à ajouter au panier
-     * @param  quantité  : la quantité de ce produit à ajouter
+     * @param  quantite  : la quantité de ce produit à ajouter
      * @return           : le panier mis à jour
      */
     PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite);

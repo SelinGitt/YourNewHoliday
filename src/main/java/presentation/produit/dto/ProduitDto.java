@@ -12,10 +12,11 @@ import java.util.Objects;
  * @author Administrateur
  */
 public class ProduitDto implements Serializable {
+
     /**
      * Serial Version UID généré aléatoirement
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 8646499598254785864L;
 
     @Override
     public int hashCode() {
