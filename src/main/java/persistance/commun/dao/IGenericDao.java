@@ -20,5 +20,12 @@ public interface IGenericDao<T> {
      */
     List<T> findAll();
 
+    /**
+     * Permet de trouver un élément T de la base de données
+     *
+     * @param  id l'id de l'élément à trouver
+     * @return    <T> l'élément pojo de type T que l'on retourne
+     */
+    T findById(final Integer id);
     // Les autres méthodes de CRUD de l'interface
 }

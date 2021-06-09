@@ -2,5 +2,5 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
     <c:forEach items="${ListeProduits}" var="produitDto">
-        <img src="DisplayImage.do?path=${produitDto.cheminImage}" alt="test"/>
+        <img src="DisplayImage.do?id=${produitDto.idProduitOriginal}&type=pdt" alt="test"/>
     </c:forEach>

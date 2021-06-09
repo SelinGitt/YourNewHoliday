@@ -16,8 +16,9 @@ public interface IImageService {
     /**
      * Permet de récupérer une image en fonction de son chemin absolu
      *
-     * @param  path le chemin absolu
+     * @param  type le type d'image a recuperer
+     * @param  id   l'id a recuperer
      * @return      l'image dans un type file
      */
-    File getImage(final String path);
+    File getImage(final String id, final String type);
 }

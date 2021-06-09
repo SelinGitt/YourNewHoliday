@@ -23,7 +23,7 @@ import service.image.IImageService;
 /**
  * Classe controller pour afficher une image dans une jsp
  *
- * @author LucasNotAdmin
+ * @author Lucas
  */
 @Controller
 @RequestMapping("/DisplayImage.do")
@@ -42,12 +42,14 @@ public class DisplayImage {
      * ex: <<i>img src="DisplayImage.do?path=C:/temp/img/image.jpg"</i>><br>
      * 
      * @param response permet d'écrire dans une servlet
-     * @param path     le chemin de l'image
+     * @param id       l'id à rechercher
+     * @param type     le type d'image
      */
     @GetMapping
-    public void showImage(final HttpServletResponse response, final @RequestParam("path") String path) {
+    public void showImage(final HttpServletResponse response, final @RequestParam("id") String id,
+            final @RequestParam("type") String type) {
         try (final var servletOutputStream = response.getOutputStream();
-                final var fileInputStream = new FileInputStream(imageService.getImage(path));
+                final var fileInputStream = new FileInputStream(imageService.getImage(id, type));
                 final var bufferedInputStream = new BufferedInputStream(fileInputStream);
                 final var bufferedOutputStream = new BufferedOutputStream(servletOutputStream)) {
 
