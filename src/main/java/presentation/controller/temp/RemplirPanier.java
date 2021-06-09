@@ -41,8 +41,10 @@ public class RemplirPanier {
         produitDto2.setCheminImage(null);
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, 6);
+        panierDto.setNombreDeReferences(1+ panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, 2);
-        
+        panierDto.setNombreDeReferences(1+ panierDto.getNombreDeReferences());
+
         return panierDto;
     }
 }
