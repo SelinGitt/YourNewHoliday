@@ -34,12 +34,13 @@ public class DisplayImage {
     private IImageService       imageService;
 
     /**
-     * Permet d'afficher une image en focntion de son chemin en paramètre. <br>
-     * Le paramètre demandé en <b>GET</b> est la chaine de caractère du chemin absolu de l'image <br>
-     * <i> ex: C:/temp/img/image.jpg</i> <br>
+     * Permet d'afficher une image en fonction de son chemin en paramètre. <br>
+     * Le paramètre demandé en <b>GET</b> est l'id recherché ainsi que son type.<br>
+     * ex:<i>id=1&type=pdt</i><br>
      * Pour appeler cette méthode depuis une JSP; il suffit juste de prendre une balise img avec le src qui est égal à cette
-     * page et le path du paramètre. <br>
-     * ex: <<i>img src="DisplayImage.do?path=C:/temp/img/image.jpg"</i>><br>
+     * page et l'id et le type de ce que vous voulez. <br>
+     * Pour connaitre les types que vous pouvez utiliser, regardez l'enum {@link service.image.TypeImage} <br>
+     * ex: <<i>img src="DisplayImage.do?id=1&type=pdt"</i>><br>
      * 
      * @param response permet d'écrire dans une servlet
      * @param id       l'id à rechercher

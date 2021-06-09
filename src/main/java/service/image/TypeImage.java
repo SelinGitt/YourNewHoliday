@@ -4,15 +4,23 @@
 package service.image;
 
 /**
- * Classe représentant XX
+ * Enum des types utilisés pour récupérer les types d'images
  *
- * @author LucasNotAdmin
+ * @author Lucas
  */
 public enum TypeImage {
     /**
      * Type Produit
      */
-    PRODUIT("pdt");
+    PRODUIT("pdt"),
+    /**
+     * Type user
+     */
+    USER("usr"),
+    /**
+     * Type Produit Acheté
+     */
+    PRODUIT_ACHETE("pdt_achete");
 
     /**
      * type stocké
