@@ -37,6 +37,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setEstActif(true);
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
+        utilisateurDto.setPassword("test");
 
         final var roleDto = new RoleDto();
 
@@ -59,6 +60,12 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
         Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
         Assertions.assertEquals(utilisateurDto.getAdresse(), utilisateurDoMapper.getAdresse());
+
+        // TODO : Test a changer avec le mdp hash
+        Assertions.assertEquals(utilisateurDto.getPassword(), utilisateurDoMapper.getMdpHash());
+
+        // TODO : Changer quand upload img ok
+        Assertions.assertEquals("img/test.png", utilisateurDoMapper.getCheminAvatar());
     }
 
     /**
@@ -76,6 +83,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setEstActif(true);
         utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
+        utilisateurDo.setMdpHash("test");
 
         final var roleDo = new RoleDo();
 
@@ -98,6 +106,9 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
         Assertions.assertEquals(utilisateurDo.getAdresse(), utilisateurDtoMapper.getAdresse());
+
+        // TODO : Test a changer avec le mdp hash
+        Assertions.assertEquals(utilisateurDo.getMdpHash(), utilisateurDtoMapper.getPassword());
     }
 
     /**
@@ -147,14 +158,14 @@ class UtilisateurMapperTest {
 
         Assertions.assertEquals(utilisateurDoList.size(), utilisateurDtoList.size());
     }
-    
+
     /**
      * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToConnecteDto(java.util.List)}
      */
     @Test
     void testMapToConnecteDto() {
         final var utilisateurDo = new UtilisateurDo();
-        
+
         utilisateurDo.setIdUtilisateur(123);
         utilisateurDo.setEmail("email_dto@test.fr");
         utilisateurDo.setReference("123abc");
@@ -162,11 +173,11 @@ class UtilisateurMapperTest {
         utilisateurDo.setNom("Jean");
         utilisateurDo.setPrenom("Michel");
         utilisateurDo.setEstActif(true);
-        
+
         final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
-        
+
         Assertions.assertEquals("123", utilisateurConnecteDto.getIdUtilisateur());
         Assertions.assertEquals("Jean", utilisateurConnecteDto.getNom());
-        Assertions.assertEquals("Michel",  utilisateurConnecteDto.getPrenom());
+        Assertions.assertEquals("Michel", utilisateurConnecteDto.getPrenom());
     }
 }
