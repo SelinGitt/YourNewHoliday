@@ -167,7 +167,7 @@ td.description {
 }
 
 /* PDT01 */
-#listeProduit {
+.listeProduit {
 	border-collapse: collapse;
 	border: 1px solid black;
 	overflow-y: scroll;
