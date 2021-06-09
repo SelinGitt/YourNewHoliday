@@ -3,18 +3,18 @@
 <h2 class="commandeCMD00">
     <spring:message code="listeCommande.titre.text" />
 </h2>
-<fieldset class="commandeCMD00">
+<fieldset class="commandeCMD00 conteneur-ascenseur">
     <legend class="commandeCMD00">
         <spring:message code="listeCommande.soustitre.text" />
     </legend>
     <c:choose>
         <c:when test="${listCommande.size() == 0}">
-            <div class="commandeVideCMD00">
+            <div class="commandeVideCMD00 colorTextCMD00">
                 <spring:message code="listeCommande.vide.text" />
             </div>
         </c:when>
         <c:otherwise>
-            <div class="commandeWrapperCMD00">
+            <div class="commandeWrapperCMD00 colorTextCMD00">
                 <c:forEach items="${listCommande}" var="commande">
                     <div class="commandeLineCMD00">
                         <div class="commandeReferenceCMD00">

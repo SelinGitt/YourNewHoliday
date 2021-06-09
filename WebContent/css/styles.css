@@ -280,11 +280,6 @@ legend.commandeCMD00 {
 	color: #6FA8DC;
 }
 
-/* wrapper de la grille */
-div.commandeWrapperCMD00 {
-	overflow-y: auto;
-}
-
 /* style pour une page sans commande */
 div.commandeVideCMD00 {
 	text-align: center;
@@ -292,8 +287,20 @@ div.commandeVideCMD00 {
 
 /* factorisation des css communs */
 fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
-	width: 750px;
 	padding: 10px;
+}
+
+/* hauteur field set */
+fieldset.commandeCMD00 {
+	display: grid;
+	align-items: center;
+	width: 90%;
+	height: 85%;
+	width: 90%;
+}
+
+div.commandeVideCMD00 {
+	margin: auto;
 }
 
 /* création de la grille */
@@ -307,6 +314,11 @@ div.commandeLineCMD00 {
 /* factorisation des bordures */
 fieldset.commandeCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
+}
+
+/* couleur du texte pour commande */
+.colorTextCMD00 {
+	color: black;
 }
 
 /* colonne 1 */
