@@ -5,8 +5,15 @@ package service.produit.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Collections;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -14,6 +21,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.produit.dao.IProduitDao;
+import persistance.produit.entity.ProduitDo;
 import service.produit.IProduitService;
 
 /**
@@ -29,6 +38,28 @@ import service.produit.IProduitService;
 class ProduitServiceTest {
     @Autowired
     private IProduitService iProduitService;
+
+    @InjectMocks
+    private ProduitService  produitServiceMock;
+    @Mock
+    private IProduitDao     iProduitDaoMock;
+
+    @BeforeEach
+    void initMock() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#listerAllProduit()}.
+     */
+    @Test
+    void testListerAllProduit() {
+        // SingletonList permet de retourner une liste avec 1 élement
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(Collections.singletonList(produitDo));
+        assertEquals(1, this.produitServiceMock.listerAllProduit().size());
+    }
 
     /**
      * Test method for {@link service.produit.impl.ProduitService#listerProduitsEnVente()}.

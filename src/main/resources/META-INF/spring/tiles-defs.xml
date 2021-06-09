@@ -31,6 +31,11 @@
 		<put-attribute name="title" value="Liste des séjours"/>
 		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp"/>
 	</definition>
+	
+	<definition name="listerProduitsAdmin" extends="base.definition">
+		<put-attribute name="title" value="Gestion des produits"/>
+		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp"/>
+	</definition>
 	<!-- écran panier -->
 
 	<!-- écran commande -->
