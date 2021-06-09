@@ -30,14 +30,11 @@
 	<definition name="listerProduits" extends="base.definition">
 		<put-attribute name="title" value="Liste des séjours" />
 		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp" />
-<<<<<<< HEAD
-=======
 	</definition>
 
 	<definition name="listerProduitsAdmin" extends="base.definition">
 		<put-attribute name="title" value="Gestion des produits" />
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
->>>>>>> develop
 	</definition>
 
 	<!-- écran panier -->
@@ -47,12 +44,11 @@
 		<put-attribute name="title" value="liste Des Commandes" />
 		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
 	</definition>
+
 	<!-- écran utilisateur -->
 	<definition name="listerUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />
 		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp" />
-<<<<<<< HEAD
-=======
 	</definition>
 
 	<!-- page jsp Écran de connexion USR_07 -->
@@ -64,7 +60,6 @@
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
->>>>>>> develop
 	</definition>
 
 </tiles-definitions>

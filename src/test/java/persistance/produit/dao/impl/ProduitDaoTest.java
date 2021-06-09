@@ -6,10 +6,7 @@ package persistance.produit.dao.impl;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-<<<<<<< HEAD
-=======
 import static org.junit.jupiter.api.Assertions.assertTrue;
->>>>>>> develop
 
 import java.util.List;
 
@@ -68,7 +65,6 @@ class ProduitDaoTest {
     }
 
     /**
-<<<<<<< HEAD
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
@@ -79,7 +75,9 @@ class ProduitDaoTest {
         // On essaie de récupérer un produit qui n'est pas en vente
         final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVente(2);
         assertNull(produitDoPasEnVente);
-=======
+    }
+
+    /**
      * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findById(Integer)}.
      */
     @Test
@@ -100,6 +98,5 @@ class ProduitDaoTest {
         assertEquals(1, produitEnVente.getServices());
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);
->>>>>>> develop
     }
 }
