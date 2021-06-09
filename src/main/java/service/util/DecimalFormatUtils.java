@@ -16,7 +16,7 @@ import java.util.Locale;
 public class DecimalFormatUtils {
 
     /**
-     * Permet de transformer des BigDecimal en string avec le bonne affichage. La langue par default de la local est fr
+     * Permet de transformer des BigDecimal en string avec le bon affichage. La langue par default de la local est fr
      * 
      * @param  nombre : un nombre en BigDecimal
      * @return        : le nombre decimal en format String
@@ -29,7 +29,7 @@ public class DecimalFormatUtils {
     }
 
     /**
-     * Permet de transformer des doubles en string avec le bonne affichage. La langue par default de la local est fr
+     * Permet de transformer des doubles en string avec le bon affichage. La langue par default de la local est fr
      * 
      * @param  nombre : un nombre
      * @return        : le nombre decimal en format String
@@ -53,17 +53,17 @@ public class DecimalFormatUtils {
         //affichage de la langue
         final var symbols = new DecimalFormatSymbols(locale);
 
-        //garder uniquement 2 chiffre apres la virgule
+        //garder uniquement 2 chiffres apres la virgule
         //decimalFormat ###,###.#
         final var format = new DecimalFormat("###,###.#", symbols);
-        // deffinis le nb de chiffres apres la virgule
+        // defini le nb de chiffres apres la virgule
         format.setMinimumFractionDigits(2);
 
         return format.format(nombre);
     }
 
     /**
-     * Permet de transformer des BigDecimal en string avec le bonne affichage. La langue par default de la local est fr
+     * Permet de transformer des BigDecimal en string avec le bon affichage. La langue par default de la local est fr
      * 
      * @param  nombre : un nombre en BigDecimal
      * @param  locale : la locale avec la langue definis
@@ -74,10 +74,10 @@ public class DecimalFormatUtils {
         //affichage de la langue
         final var symbols = new DecimalFormatSymbols(locale);
 
-        //garder uniquement 2 chiffre apres la virgule
+        //garder uniquement 2 chiffres apres la virgule
         //decimalFormat ###,###.#
         final var format = new DecimalFormat("###,###.#", symbols);
-        // deffinis le nb de chiffres apres la virgule
+        // defini le nb de chiffres apres la virgule
         format.setMinimumFractionDigits(2);
 
         return format.format(nombre);

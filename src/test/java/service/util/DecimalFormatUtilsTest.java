@@ -24,6 +24,7 @@ class DecimalFormatUtilsTest {
     void testDecimalFormatUtilBigDecimal() {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
         final double nombre = 11115555.478243;
+        //on verifie que ca fonctionne avec un Bigdecimal
         final BigDecimal bigDecimal = new BigDecimal(nombre);
         assertEquals("11 115 555,48", decimalFormatUtils.decimalFormatUtil(bigDecimal));
 
@@ -37,11 +38,14 @@ class DecimalFormatUtilsTest {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
         double nombre = 5555.55547;
 
+        //on verifie qu'il y'ai 2 chiffres apres la virgule
         assertEquals("5 555,56", decimalFormatUtils.decimalFormatUtil(nombre));
 
+        //on verifie l'espacement
         nombre = 555555.55547;
         assertEquals("555 555,56", decimalFormatUtils.decimalFormatUtil(nombre));
 
+        //on verifie les espacement
         nombre = 1345255.757;
         assertEquals("1 345 255,76", decimalFormatUtils.decimalFormatUtil(nombre));
     }
@@ -54,6 +58,7 @@ class DecimalFormatUtilsTest {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
         final double nombre = 11115555.478243;
 
+        //on verifie les locales
         final Locale localeFr = Locale.FRENCH;
         final Locale localeEng = Locale.ENGLISH;
 
@@ -70,6 +75,7 @@ class DecimalFormatUtilsTest {
         final double nombre = 11115555.478243;
         final BigDecimal bigDecimal = new BigDecimal(nombre);
 
+        //on verifie les locales
         final Locale localeFr = Locale.FRENCH;
         final Locale localeEng = Locale.ENGLISH;
 
