@@ -205,6 +205,16 @@ h1 {
 
 /* USR07 */
 
+.boutonValiderUSR07 {
+	background-color: #008000;
+	Color: white;
+}
+
+.boutonResetUSR07 {
+	background-color: #FF0000;
+	Color: white;
+}
+
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
 h1.title {
@@ -274,6 +284,29 @@ td.description {
 }
 
 /* PDT01 */
+.listeProduit {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thPDT01 {
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyPDT01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imagePDT01 {
+	width: 40px;
+	height: 40px;
+}
 
 /* PDT02 */
 
@@ -288,5 +321,92 @@ td.description {
 
 /* FEATURE TEAM COMMANDE */
 /* CMD00 */
+.commandeCMD00 {
+	color: #66C5EB;
+	text-align: center;
+}
+
+/* sous titre */
+legend.commandeCMD00 {
+	color: #6FA8DC;
+}
+
+/* style pour une page sans commande */
+div.commandeVideCMD00 {
+	text-align: center;
+}
+
+/* factorisation des css communs */
+fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+	padding: 10px;
+}
+
+/* hauteur field set */
+fieldset.commandeCMD00 {
+	display: grid;
+	align-items: center;
+	width: 90%;
+	height: 85%;
+	width: 90%;
+}
+
+div.commandeVideCMD00 {
+	margin: auto;
+}
+
+/* création de la grille */
+div.commandeLineCMD00 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	margin: 5px;
+}
+
+/* factorisation des bordures */
+fieldset.commandeCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+	border: 3px solid black;
+}
+
+/* couleur du texte pour commande */
+.colorTextCMD00 {
+	color: black;
+}
+
+/* colonne 1 */
+div.commandeReferenceCMD00 {
+	grid-column: 1;
+}
+
+/* colonne 2 */
+div.commandePrixTotalCMD00 {
+	grid-column: 2;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1px;
+}
+
+/* colonne 2.1 */
+div.commandePrixTotalTextCMD00 {
+	grid-column: 1;
+	width: 65%;
+}
+
+/* colonne 2.2 */
+div.commandePrixTotalValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+	font-weight: bold;
+	width: 60%;
+}
+
+/* colonne 3 */
+div.commandeDateCMD00 {
+	grid-column: 3;
+}
+
+/* espace entre la bordure et le texte */
+div.commandeReferenceCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+	padding: 5px;
+}
 
 /* CMD04 */

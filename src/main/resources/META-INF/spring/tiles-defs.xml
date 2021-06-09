@@ -28,17 +28,31 @@
 	<!-- Mettez la dénition de page ici -->
 	<!-- écran produit -->
 	<definition name="listerProduits" extends="base.definition">
-		<put-attribute name="title" value="Liste des séjours"/>
-		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp"/>
+		<put-attribute name="title" value="Liste des séjours" />
+		<put-attribute name="body" value="/jsp/produit/listerProduits.jsp" />
+	</definition>
+
+	<definition name="listerProduitsAdmin" extends="base.definition">
+		<put-attribute name="title" value="Gestion des produits" />
+		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
 	<!-- écran panier -->
 
 	<!-- écran commande -->
-
+	<definition name="listerCommande" extends="base.definition">
+		<put-attribute name="title" value="liste Des Commandes" />
+		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
+	</definition>
 	<!-- écran utilisateur -->
 	<definition name="listerUtilisateur" extends="base.definition">
-		<put-attribute name="title" value="Liste Utilisateur"/>
-		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp"/>
+		<put-attribute name="title" value="Liste Utilisateur" />
+		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp" />
+	</definition>
+
+	<!-- page jsp Écran de connexion USR_07 -->
+	<definition name="connecter" extends="base.definition">
+		<put-attribute name="title" value="Écran de connexion" />
+		<put-attribute name="body" value="/jsp/utilisateur/connecter.jsp" />
 	</definition>
 
 	<!-- écran contact -->
