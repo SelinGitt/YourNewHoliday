@@ -49,6 +49,9 @@ public class UtilisateurMapper {
         utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
 
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDto.setPassword(utilisateurDo.getMdpHash());
+
         return utilisateurDto;
     }
 
@@ -70,6 +73,11 @@ public class UtilisateurMapper {
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
         utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
+
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDo.setMdpHash(utilisateurDto.getPassword());
+        // TODO : Remplacer quand upload img ok
+        utilisateurDo.setCheminAvatar("img/test.png");
 
         return utilisateurDo;
     }
