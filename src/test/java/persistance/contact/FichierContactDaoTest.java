@@ -41,7 +41,7 @@ class FichierContactDaoTest {
         //les tests marcheront a la condition d'avoir le fichier html dans le repertoire indiquer
         //pour le test le fichier sera directement dans le projet : 
         //aller dans propriété sur test-contact.html => recuperer le repertoire
-        final String nomFichier = "E:/Java/source/ynh/src/test/resources/contact/test-contact.html";
+        final String nomFichier = "src/test/resources/contact/test-contact.html";
         assertNotNull(iFichier.trouverFichierContact(nomFichier));
         assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichierContact(nomFichier));
 
