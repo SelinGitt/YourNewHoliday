@@ -11,9 +11,16 @@ import java.util.Locale;
 /**
  * Classe unitaire pour factoriser l'affichage des décimaux
  *
- * @author Administrateur
+ * @author Alexandre
  */
 public class DecimalFormatUtils {
+
+    /**
+     * Constructor
+     */
+    private DecimalFormatUtils() {
+        //
+    }
 
     /**
      * Permet de transformer des BigDecimal en string avec le bon affichage. La langue par default de la local est fr
@@ -21,11 +28,10 @@ public class DecimalFormatUtils {
      * @param  nombre : un nombre en BigDecimal
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final BigDecimal nombre) {
+    public static String decimalFormatUtil(final BigDecimal nombre) {
 
         //on defini la local qui determinera l'affichage en fonction de la langue
-        final var locale = Locale.FRENCH;
-        return decimalFormatUtil(nombre, locale);
+        return decimalFormatUtil(nombre, Locale.FRENCH);
     }
 
     /**
@@ -34,11 +40,10 @@ public class DecimalFormatUtils {
      * @param  nombre : un nombre
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final Double nombre) {
+    public static String decimalFormatUtil(final Double nombre) {
 
         //on defini la local qui determinera l'affichage en fonction de la langue
-        final var locale = Locale.FRENCH;
-        return decimalFormatUtil(nombre, locale);
+        return decimalFormatUtil(nombre, Locale.FRENCH);
     }
 
     /**
@@ -48,7 +53,7 @@ public class DecimalFormatUtils {
      * @param  locale : permet de definir le format d'affichage
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final Double nombre, final Locale locale) {
+    public static String decimalFormatUtil(final Double nombre, final Locale locale) {
 
         //affichage de la langue
         final var symbols = new DecimalFormatSymbols(locale);
@@ -69,7 +74,7 @@ public class DecimalFormatUtils {
      * @param  locale : la locale avec la langue definis
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final BigDecimal nombre, final Locale locale) {
+    public static String decimalFormatUtil(final BigDecimal nombre, final Locale locale) {
 
         //affichage de la langue
         final var symbols = new DecimalFormatSymbols(locale);
