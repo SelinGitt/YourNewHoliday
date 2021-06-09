@@ -46,6 +46,7 @@ public class UtilisateurMapper {
         utilisateurDto.setEstActif(utilisateurDo.getEstActif());
         utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
         utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
+        utilisateurDto.setAdresse(utilisateurDo.getAdresse());
 
         return utilisateurDto;
     }
@@ -67,6 +68,7 @@ public class UtilisateurMapper {
         utilisateurDo.setEstActif(utilisateurDto.getEstActif());
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
         utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
+        utilisateurDo.setAdresse(utilisateurDto.getAdresse());
 
         return utilisateurDo;
     }

@@ -81,6 +81,7 @@ class UtilisateurServiceTest {
         utilisateurDto.setDateInscription("09/06/2021");
         utilisateurDto.setDateNaissance("09/06/2021");
         utilisateurDto.setEstActif(true);
+        utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
 
         final RoleDto role = new RoleDto();
         role.setIdRole(1);

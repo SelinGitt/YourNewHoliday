@@ -36,6 +36,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setPrenom("Michel");
         utilisateurDto.setEstActif(true);
         utilisateurDto.setDateNaissance("15/06/1994");
+        utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDto = new RoleDto();
 
@@ -57,6 +58,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getRole().getIdRole(), utilisateurDoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
         Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
+        Assertions.assertEquals(utilisateurDto.getAdresse(), utilisateurDoMapper.getAdresse());
     }
 
     /**
@@ -73,6 +75,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setPrenom("Brice");
         utilisateurDo.setEstActif(true);
         utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDo = new RoleDo();
 
@@ -94,6 +97,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDo.getRole().getIdRole(), utilisateurDtoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
+        Assertions.assertEquals(utilisateurDo.getAdresse(), utilisateurDtoMapper.getAdresse());
     }
 
     /**
@@ -112,6 +116,7 @@ class UtilisateurMapperTest {
         utilisateurDo1.setNom("Jean");
         utilisateurDo1.setPrenom("Michel");
         utilisateurDo1.setEstActif(true);
+        utilisateurDo1.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDo = new RoleDo();
 
@@ -129,6 +134,7 @@ class UtilisateurMapperTest {
         utilisateurDo2.setNom("Dupond");
         utilisateurDo2.setPrenom("Brice");
         utilisateurDo2.setEstActif(true);
+        utilisateurDo2.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDo2 = new RoleDo();
 

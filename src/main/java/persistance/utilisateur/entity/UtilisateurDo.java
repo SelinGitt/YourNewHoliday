@@ -46,6 +46,9 @@ public class UtilisateurDo {
     @Column(name = "date_de_naissance")
     private Date    dateNaissance;
 
+    @Column(name = "adresse")
+    private String  adresse;
+
     @Column(name = "est_desactive")
     private Boolean estActif;
 
@@ -238,6 +241,24 @@ public class UtilisateurDo {
      */
     public void setDateNaissance(final Date dateNaissance) {
         this.dateNaissance = dateNaissance;
+    }
+
+    /**
+     * Getter for adresse
+     *
+     * @return the adresse
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * Setter for adresse
+     *
+     * @param adresse the adresse to set
+     */
+    public void setAdresse(final String adresse) {
+        this.adresse = adresse;
     }
 
 }
