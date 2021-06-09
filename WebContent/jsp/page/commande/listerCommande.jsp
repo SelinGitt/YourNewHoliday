@@ -21,7 +21,9 @@
                             <a href="#"><spring:message code="listeCommande.reference.text" />${commande.reference}</a>
                         </div>
                         <div class="commandeQuantiteTotaleCMD00">
-                            <div class="commandeQuantiteTotaleTextCMD00"><spring:message code="listeCommande.quantiteTotal.text" /></div>
+                            <div class="commandeQuantiteTotaleTextCMD00">
+                                <spring:message code="listeCommande.qTotal.text" />
+                            </div>
                             <div class="commandeQuantiteTotaleValueCMD00">${commande.quantiteTotale}</div>
                         </div>
                         <div class="commandePrixTotalCMD00">
