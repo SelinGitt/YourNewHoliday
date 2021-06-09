@@ -3,10 +3,13 @@
  */
 package presentation.utilisateur.controller;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.time.Instant;
 import java.util.Date;
-import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +29,8 @@ import service.utilisateur.IUtilisateurService;
 @Controller
 @RequestMapping("/creerUtilisateur.do")
 public class CreerUtilisateurController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CreerUtilisateurController.class);
 
     @Autowired
     private IUtilisateurService service;
@@ -62,9 +67,12 @@ public class CreerUtilisateurController {
 
         utilisateurDto.setEstActif(true);
 
-        utilisateurDto.setReference(this.generateReference());
-
-        System.out.println(utilisateurDto.getPassword());
+        // TODO : Temporaire avec le generateReference
+        try {
+            utilisateurDto.setReference(this.generateReference());
+        } catch (final NoSuchAlgorithmException exception) {
+            logger.warn(exception.getMessage(), exception);
+        }
 
         this.service.createUtilisateur(utilisateurDto);
 
@@ -75,9 +83,10 @@ public class CreerUtilisateurController {
      * Permet de generer une reference <br>
      * Ceci est temporaire
      *
-     * @return Reference creer
+     * @return                          Reference creer
+     * @throws NoSuchAlgorithmException
      */
-    private String generateReference() {
+    private String generateReference() throws NoSuchAlgorithmException {
         // create a string of all characters
         final var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -85,7 +94,7 @@ public class CreerUtilisateurController {
         final var sb = new StringBuilder();
 
         // create an object of Random class
-        final var random = new Random();
+        final var random = SecureRandom.getInstanceStrong();
 
         for (var i = 0; i < 7; i++) {
 
