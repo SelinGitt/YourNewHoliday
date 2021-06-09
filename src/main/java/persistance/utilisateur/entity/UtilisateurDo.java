@@ -43,6 +43,9 @@ public class UtilisateurDo {
     @Column(name = "date_d_inscription")
     private Date    dateInscription;
 
+    @Column(name = "date_de_naissance")
+    private Date    dateNaissance;
+
     @Column(name = "est_desactive")
     private Boolean estActif;
 
@@ -218,4 +221,23 @@ public class UtilisateurDo {
     public void setRole(final RoleDo role) {
         this.role = role;
     }
+
+    /**
+     * Getter for dateNaissance
+     *
+     * @return the dateNaissance
+     */
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * Setter for dateNaissance
+     *
+     * @param dateNaissance the dateNaissance to set
+     */
+    public void setDateNaissance(final Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
 }
