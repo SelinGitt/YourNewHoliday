@@ -35,6 +35,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setNom("Jean");
         utilisateurDto.setPrenom("Michel");
         utilisateurDto.setEstActif(true);
+        utilisateurDto.setDateNaissance("15/06/1994");
 
         final var roleDto = new RoleDto();
 
@@ -55,6 +56,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getEstActif(), utilisateurDoMapper.getEstActif());
         Assertions.assertEquals(utilisateurDto.getRole().getIdRole(), utilisateurDoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
+        Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
     }
 
     /**
@@ -70,6 +72,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setNom("Dupond");
         utilisateurDo.setPrenom("Brice");
         utilisateurDo.setEstActif(true);
+        utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
 
         final var roleDo = new RoleDo();
 
@@ -90,6 +93,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDo.getEstActif(), utilisateurDtoMapper.getEstActif());
         Assertions.assertEquals(utilisateurDo.getRole().getIdRole(), utilisateurDtoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
+        Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
     }
 
     /**
@@ -104,6 +108,7 @@ class UtilisateurMapperTest {
         utilisateurDo1.setEmail("email_dto@test.fr");
         utilisateurDo1.setReference("123abc");
         utilisateurDo1.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo1.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo1.setNom("Jean");
         utilisateurDo1.setPrenom("Michel");
         utilisateurDo1.setEstActif(true);
@@ -120,6 +125,7 @@ class UtilisateurMapperTest {
         utilisateurDo2.setEmail("email_do@test.fr");
         utilisateurDo2.setReference("456def");
         utilisateurDo2.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo2.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo2.setNom("Dupond");
         utilisateurDo2.setPrenom("Brice");
         utilisateurDo2.setEstActif(true);
