@@ -51,6 +51,9 @@ class UtilisateurDaoTest {
         listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
     }
 
+    /**
+     * Test pour {@link persistance.commun.dao.impl.AbstractGenericDao#create(Object)}.
+     */
     @Test
     void testCreate() {
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -62,6 +65,7 @@ class UtilisateurDaoTest {
         utilisateurDo.setDateInscription(Date.from(Instant.now()));
         utilisateurDo.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo.setEstActif(true);
+        utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
 
         final RoleDo role = new RoleDo();
         role.setIdRole(1);
