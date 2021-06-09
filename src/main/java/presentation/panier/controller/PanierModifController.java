@@ -21,7 +21,7 @@ import service.panier.IPanierService;
  * @author NathanR
  */
 @Controller
-@RequestMapping(value = "panier.do")
+@RequestMapping(value = "/panier.do")
 public class PanierModifController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class PanierModifController {
     @GetMapping
     public ModelAndView modifier(final HttpSession session, final HttpServletRequest request) {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("panier");
+        modelAndView.setViewName("PAN_00");
         final PanierDto panier = (PanierDto) session.getAttribute("panier");
         final String idProduit = request.getParameter("idProduit");
         final String quantite = request.getParameter("quantite");

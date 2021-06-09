@@ -17,6 +17,12 @@
 		<put-attribute name="title" value="Tiles exemple" />
 		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
 	</definition>
+	
+	<!-- page jsp exemple -->
+	<definition name="PAN_00" extends="base.definition">
+		<put-attribute name="title" value="Panier" />
+		<put-attribute name="body" value="/jsp/page/panier/panier.jsp" />
+	</definition>
 
 	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
 		supprimés -->
