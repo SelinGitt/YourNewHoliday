@@ -15,14 +15,16 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -3802874782633152462L;
+    private static final long serialVersionUID = 8099092013445837263L;
 
     private String            email;
     private String            password;
+    private String            confirmPassword;
     private String            reference;
     private String            nom;
     private String            prenom;
     private String            dateInscription;
+    private String            dateNaissance;
     private Boolean           estActif;
     private RoleDto           role;
 
@@ -168,6 +170,42 @@ public class UtilisateurDto implements Serializable {
      */
     public void setRole(final RoleDto role) {
         this.role = role;
+    }
+
+    /**
+     * Getter for confirmPassword
+     *
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * Setter for confirmPassword
+     *
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(final String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    /**
+     * Getter for dateNaissance
+     *
+     * @return the dateNaissance
+     */
+    public String getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * Setter for dateNaissance
+     *
+     * @param dateNaissance the dateNaissance to set
+     */
+    public void setDateNaissance(final String dateNaissance) {
+        this.dateNaissance = dateNaissance;
     }
 
 }
