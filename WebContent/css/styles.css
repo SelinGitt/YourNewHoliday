@@ -307,9 +307,14 @@ td.description {
 	text-align: center;
 }
 
+h2.commandeCMD00 {
+	font-size: 40px;
+}
+
 /* sous titre */
 legend.commandeCMD00 {
 	color: #6FA8DC;
+	font-size: 32px;
 }
 
 /* style pour une page sans commande */
@@ -327,8 +332,7 @@ fieldset.commandeCMD00 {
 	display: grid;
 	align-items: center;
 	width: 90%;
-	height: 85%;
-	width: 90%;
+	height: 80%;
 }
 
 div.commandeVideCMD00 {
