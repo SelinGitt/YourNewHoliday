@@ -34,7 +34,7 @@ public class DecimalFormatUtils {
      * @param  nombre : un nombre
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final double nombre) {
+    public String decimalFormatUtil(final Double nombre) {
 
         //on defini la local qui determinera l'affichage en fonction de la langue
         final var locale = Locale.FRENCH;
@@ -42,13 +42,13 @@ public class DecimalFormatUtils {
     }
 
     /**
-     * Permet de transformer des BigDecimal en string avec le bonne affichage.
+     * Permet de transformer des doubles en string avec le bonne affichage.
      * 
      * @param  nombre : un nombre
      * @param  locale : permet de definir le format d'affichage
      * @return        : le nombre decimal en format String
      */
-    public String decimalFormatUtil(final double nombre, final Locale locale) {
+    public String decimalFormatUtil(final Double nombre, final Locale locale) {
 
         //affichage de la langue
         final var symbols = new DecimalFormatSymbols(locale);

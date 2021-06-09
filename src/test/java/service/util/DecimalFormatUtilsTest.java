@@ -23,7 +23,8 @@ class DecimalFormatUtilsTest {
     @Test
     void testDecimalFormatUtilBigDecimal() {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
-        final double nombre = 11115555.478243;
+        //Depuis JAVA 7 possibilité d'utiliser des underscores dans les entiers littéraux :    
+        final Double nombre = 11_115_555.478243;
         //on verifie que ca fonctionne avec un Bigdecimal
         final BigDecimal bigDecimal = new BigDecimal(nombre);
         assertEquals("11 115 555,48", decimalFormatUtils.decimalFormatUtil(bigDecimal));
@@ -36,12 +37,14 @@ class DecimalFormatUtilsTest {
     @Test
     void testDecimalFormatUtilDouble() {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
-        double nombre = 5555.55547;
+        //Depuis JAVA 7 possibilité d'utiliser des underscores dans les entiers littéraux :
+        Double nombre = 5_555.55547;
 
         //on verifie qu'il y'ai 2 chiffres apres la virgule
         assertEquals("5 555,56", decimalFormatUtils.decimalFormatUtil(nombre));
 
         //on verifie l'espacement
+        //on verifie les arrondies : cela arronndie toujour au superieur
         nombre = 555555.55547;
         assertEquals("555 555,56", decimalFormatUtils.decimalFormatUtil(nombre));
 
@@ -56,7 +59,8 @@ class DecimalFormatUtilsTest {
     @Test
     void testDecimalFormatUtilDoubleLocale() {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
-        final double nombre = 11115555.478243;
+        //Depuis JAVA 7 possibilité d'utiliser des underscores dans les entiers littéraux :    
+        final Double nombre = 11_115_555.478243;
 
         //on verifie les locales
         final Locale localeFr = Locale.FRENCH;
@@ -72,7 +76,8 @@ class DecimalFormatUtilsTest {
     @Test
     void testDecimalFormatUtilBigDecimalLocale() {
         final DecimalFormatUtils decimalFormatUtils = new DecimalFormatUtils();
-        final double nombre = 11115555.478243;
+        //Depuis JAVA 7 possibilité d'utiliser des underscores dans les entiers littéraux :    
+        final Double nombre = 11_115_555.478243;
         final BigDecimal bigDecimal = new BigDecimal(nombre);
 
         //on verifie les locales
