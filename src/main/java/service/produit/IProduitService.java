@@ -22,9 +22,10 @@ public interface IProduitService {
     List<ProduitDto> listerProduitsEnVente();
 
     /**
-     * Permet de XX
-     *
-     * @return
+     * Permet de rechercher produits par reference
+     * 
+     * @param  pSearchTerm terme recherché
+     * @return             liste de produits associée à la recherche
      */
-    List<ProduitDto> rechercherProduits();
+    List<ProduitDto> rechercherProduits(final String pSearchTerm);
 }

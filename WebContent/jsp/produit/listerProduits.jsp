@@ -9,8 +9,11 @@
     </div>
     <br />
     <div class=searchBar>
-        <input class="searchBarInside" type="search" placeholder="<spring:message code='pdt00.searchbar'/>">
-        <button class=searchBarOk>OK</button>
+        <form action="listerProduits.do" method="POST">
+            <input name="searchInput" class="searchBarInside" type="search"
+                placeholder="<spring:message code='pdt00.searchbar'/>"> <input type="submit" value="OK"
+                class=searchBarOk />
+        </form>
     </div>
     <br />
     <div class="container">
