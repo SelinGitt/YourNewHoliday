@@ -25,7 +25,7 @@ import service.utilisateur.util.UtilisateurMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class UtilisateurService implements IUtilisateurService {
 
-    static final Logger     logger = LoggerFactory.getLogger(UtilisateurService.class);
+    private static final Logger     logger = LoggerFactory.getLogger(UtilisateurService.class);
 
     @Autowired
     private IUtilisateurDao iUtilisateurDao;
