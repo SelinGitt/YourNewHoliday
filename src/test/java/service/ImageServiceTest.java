@@ -3,7 +3,10 @@
  */
 package service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.File;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -31,8 +34,11 @@ class ImageServiceTest {
      */
     @Test
     void testGetImage() {
-        final String path = "C:\\temp\\img\\frame.png";
-        assertEquals("C:\\temp\\img\\frame.png", imageService.getImage(path).getAbsolutePath());
+        final var path = "C:\\temp\\img\\maldives.jpg";
+        final var file = new File(path);
+        assertNotNull(imageService.getImage("1", "pdt"));
+        assertTrue(file.exists());
+
     }
 
 }
