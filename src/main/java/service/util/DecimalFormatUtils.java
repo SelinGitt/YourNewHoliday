@@ -24,7 +24,7 @@ public class DecimalFormatUtils {
     public String decimalFormatUtil(final BigDecimal nombre) {
 
         //on defini la local qui determinera l'affichage en fonction de la langue
-        final Locale locale = Locale.FRENCH;
+        final var locale = Locale.FRENCH;
         return decimalFormatUtil(nombre, locale);
     }
 
@@ -37,7 +37,7 @@ public class DecimalFormatUtils {
     public String decimalFormatUtil(final double nombre) {
 
         //on defini la local qui determinera l'affichage en fonction de la langue
-        final Locale locale = Locale.FRENCH;
+        final var locale = Locale.FRENCH;
         return decimalFormatUtil(nombre, locale);
     }
 
@@ -51,11 +51,11 @@ public class DecimalFormatUtils {
     public String decimalFormatUtil(final double nombre, final Locale locale) {
 
         //affichage de la langue
-        final DecimalFormatSymbols symbols = new DecimalFormatSymbols(locale);
+        final var symbols = new DecimalFormatSymbols(locale);
 
         //garder uniquement 2 chiffre apres la virgule
         //decimalFormat ###,###.#
-        final DecimalFormat format = new DecimalFormat("###,###.#", symbols);
+        final var format = new DecimalFormat("###,###.#", symbols);
         // deffinis le nb de chiffres apres la virgule
         format.setMinimumFractionDigits(2);
 
@@ -72,11 +72,11 @@ public class DecimalFormatUtils {
     public String decimalFormatUtil(final BigDecimal nombre, final Locale locale) {
 
         //affichage de la langue
-        final DecimalFormatSymbols symbols = new DecimalFormatSymbols(locale);
+        final var symbols = new DecimalFormatSymbols(locale);
 
         //garder uniquement 2 chiffre apres la virgule
         //decimalFormat ###,###.#
-        final DecimalFormat format = new DecimalFormat("###,###.#", symbols);
+        final var format = new DecimalFormat("###,###.#", symbols);
         // deffinis le nb de chiffres apres la virgule
         format.setMinimumFractionDigits(2);
 
