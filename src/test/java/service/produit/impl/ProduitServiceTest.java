@@ -14,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,7 +22,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
-import service.produit.IProduitService;
 
 /**
  * Classe test de {@link ProduitService}
@@ -36,13 +34,11 @@ import service.produit.IProduitService;
 //Utilisation d'une transaction pour avoir des auto rollbacks à chaque fin de tests
 @Transactional(propagation = Propagation.REQUIRED)
 class ProduitServiceTest {
-    @Autowired
-    private IProduitService iProduitService;
 
     @InjectMocks
-    private ProduitService  produitServiceMock;
+    private ProduitService produitServiceMock;
     @Mock
-    private IProduitDao     iProduitDaoMock;
+    private IProduitDao    iProduitDaoMock;
 
     @BeforeEach
     void initMock() {
@@ -66,7 +62,10 @@ class ProduitServiceTest {
      */
     @Test
     void testListerProduitsEnVente() {
-        //Test de la taille de la liste de produits en Vente
-        assertEquals(4, iProduitService.listerProduitsEnVente().size());
+        // SingletonList permet de retourner une liste avec 1 élement
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        Mockito.when(this.iProduitDaoMock.findAllProduitsEnVente()).thenReturn(Collections.singletonList(produitDo));
+        assertEquals(1, this.produitServiceMock.listerProduitsEnVente().size());
     }
 }
