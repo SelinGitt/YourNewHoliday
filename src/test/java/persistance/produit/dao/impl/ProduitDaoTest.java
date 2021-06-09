@@ -4,6 +4,9 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -59,5 +62,28 @@ class ProduitDaoTest {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
         // Test de la taille de la liste des produits en vente
         assertEquals(4, listeProduitDoEnVente.size());
+    }
+
+    /**
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findById(Integer)}.
+     */
+    @Test
+    void testFindById() {
+        //on récupère un produit qui est en vente
+        final var produitEnVente = iProduitDao.findById(1);
+        assertNotNull(produitEnVente);
+        assertEquals(1, produitEnVente.getIdProduitOriginal());
+        assertEquals(2, produitEnVente.getVersion());
+        assertEquals("125693", produitEnVente.getReference());
+        assertEquals("Voyage aux Maldives", produitEnVente.getNom());
+        assertEquals("description1", produitEnVente.getDescription());
+        assertEquals("Maldives", produitEnVente.getDestination());
+        assertEquals(900.00, produitEnVente.getPrixUnitaire());
+        assertEquals("Maison dHotes", produitEnVente.getHebergement());
+        assertTrue(produitEnVente.getMiseEnVente());
+        assertEquals("D:....", produitEnVente.getCheminImage());
+        assertEquals(1, produitEnVente.getServices());
+        final var produitNonExistant = iProduitDao.findById(444);
+        assertNull(produitNonExistant);
     }
 }
