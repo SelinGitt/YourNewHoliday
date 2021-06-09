@@ -28,8 +28,8 @@ public class CreerUtilisateurController {
      */
     @GetMapping
     public ModelAndView afficher() {
-        final ModelAndView modelAndView = new ModelAndView("creer");
-        modelAndView.getModelMap().addAttribute("creer", new UtilisateurDto());
+        final var modelAndView = new ModelAndView();
+        modelAndView.setViewName("creerUtilisateur");
         return modelAndView;
     }
 
