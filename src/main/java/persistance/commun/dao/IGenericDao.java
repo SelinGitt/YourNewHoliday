@@ -21,4 +21,12 @@ public interface IGenericDao<T> {
     List<T> findAll();
 
     // Les autres méthodes de CRUD de l'interface
+
+    /**
+     * Permet de creer T en base de donnees
+     * 
+     * @param  bean Bean T a creer en base de doonees
+     * @return      T creer
+     */
+    T create(final T bean);
 }

@@ -1,5 +1,7 @@
 package persistance.utilisateur.dao.impl;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +16,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
 
 /**
@@ -46,5 +49,27 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(7, listUtilisateur.size());
 
         listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
+    }
+
+    @Test
+    void testCreate() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setReference("ABC123");
+        utilisateurDo.setEmail("test@test.fr");
+        utilisateurDo.setNom("Nom");
+        utilisateurDo.setPrenom("Prenom");
+        utilisateurDo.setMdpHash("Hash");
+        utilisateurDo.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo.setEstActif(true);
+
+        final RoleDo role = new RoleDo();
+        role.setIdRole(1);
+
+        utilisateurDo.setRole(role);
+
+        final UtilisateurDo utilisateurCreated = iUtilisateurDao.create(utilisateurDo);
+
+        Assertions.assertNotNull(utilisateurCreated);
+        Assertions.assertNotNull(utilisateurCreated.getIdUtilisateur());
     }
 }

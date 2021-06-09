@@ -73,5 +73,10 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
     }
 
     // les autres méthodes du CRUD à ajouter
+    @Override
+    public T create(final T bean) {
+        this.entityManager.persist(bean);
+        return bean;
+    }
 
 }
