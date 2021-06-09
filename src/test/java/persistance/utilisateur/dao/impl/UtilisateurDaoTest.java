@@ -60,6 +60,7 @@ class UtilisateurDaoTest {
         utilisateurDo.setPrenom("Prenom");
         utilisateurDo.setMdpHash("Hash");
         utilisateurDo.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo.setEstActif(true);
 
         final RoleDo role = new RoleDo();

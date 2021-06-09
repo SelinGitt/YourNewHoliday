@@ -54,6 +54,7 @@ class UtilisateurServiceTest {
         final UtilisateurDo userDo = new UtilisateurDo();
 
         userDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        userDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
 
         final RoleDo role = new RoleDo();
 
@@ -78,6 +79,7 @@ class UtilisateurServiceTest {
         utilisateurDto.setPrenom("Prenom");
         utilisateurDto.setPassword("Hash");
         utilisateurDto.setDateInscription("09/06/2021");
+        utilisateurDto.setDateNaissance("09/06/2021");
         utilisateurDto.setEstActif(true);
 
         final RoleDto role = new RoleDto();
