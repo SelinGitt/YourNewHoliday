@@ -9,14 +9,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
@@ -26,9 +22,6 @@ import persistance.produit.entity.ProduitDo;
  *
  * @author Administrateur
  */
-@WebAppConfiguration("WebContent")
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
 class ProduitServiceTest {
 
     @InjectMocks
