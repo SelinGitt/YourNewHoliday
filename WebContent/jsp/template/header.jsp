@@ -25,7 +25,7 @@
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
-            <a href="connecter.do/logout"> <img src="img/template/header/deconnexion.png" 
+            <a href="deconnecter.do"> <img src="img/template/header/deconnexion.png" 
             class="logoHeader" alt="icône déconnexion">
             </a>
         </div>
