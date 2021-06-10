@@ -72,6 +72,13 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         return allQuery.getResultList();
     }
 
+    @Override
+    public T findById(final Integer id) {
+        final var entite = entityManager.find(entiteClass, id);
+        this.logger.debug("Generic Dao {} findById", this.entiteClass.getSimpleName());
+        return entite;
+    }
+
     // les autres méthodes du CRUD à ajouter
     @Override
     public T create(final T bean) {
