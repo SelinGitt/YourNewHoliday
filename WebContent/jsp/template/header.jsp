@@ -2,7 +2,7 @@
 <div id="header">
     <%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
     <div id="headerLogo" class="headerCell">
-        <a href=""> <img src="img/template/header/logoYNH.png" class="logoHeader-ynh" alt="logo">
+        <a href="/Projet_YNH/listerProduits.do"> <img src="img/template/header/logoYNH.png" class="logoHeader-ynh" alt="logo">
         </a>
     </div>
     <%--     suivi du nom de l'agence de voyage --%>
