@@ -6,12 +6,17 @@ package service.utilisateur.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Classe unitaire pour crypter un mot de passe utilisateur
  *
  * @author Meliodas-sama
  */
 public class MDPCrypter {
+
+    private static final Logger logger = LoggerFactory.getLogger(MDPCrypter.class);
 
     /**
      * Constructor
@@ -43,10 +48,19 @@ public class MDPCrypter {
 
         } catch (final NoSuchAlgorithmException e) {
 
-            e.printStackTrace();
+            logger.error("NoSuchAlgorithmeException exception", e);
         }
         return buf.toString();
 
+    }
+
+    /**
+     * Getter for logger
+     *
+     * @return the logger
+     */
+    public static Logger getLogger() {
+        return logger;
     }
 
 }
