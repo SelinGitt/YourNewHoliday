@@ -36,21 +36,22 @@ public class PanierService implements IPanierService {
             return panier;
         }
         final Map<ProduitDto, Integer> mapPanier = panier.getMapPanier();
-        final Integer quantiteAncienne = mapPanier.get(produitAjout);
-        Integer quantiteAjout = quantite;
+        Integer quantiteProduit = mapPanier.get(produitAjout);
         // si le produit était déjà dans le panier, on met à jour sa quantité.
-        if (quantiteAncienne != null) {
-            quantiteAjout += quantiteAncienne;
+        if (quantiteProduit != null) {
+            quantiteProduit += quantite;
+            // sinon, le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
+        } else {
+            quantiteProduit = quantite;
         }
         // si la quantité du produit que l'on met à jour devient nulle ou négative, 
         // alors le produit est supprimé du panier.
-        if (quantiteAjout < 1) {
+        if (quantiteProduit < 1) {
             mapPanier.remove(produitAjout);
-            panier.setNombreDeReferences(panier.getMapPanier().size());
-            return panier;
+            // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
+        } else {
+            mapPanier.put(produitAjout, quantiteProduit);
         }
-        // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
-        mapPanier.put(produitAjout, quantiteAjout);
         // on met à jour le nombre de référence dans le panier.
         panier.setNombreDeReferences(panier.getMapPanier().size());
         return panier;

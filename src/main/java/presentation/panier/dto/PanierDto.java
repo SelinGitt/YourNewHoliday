@@ -18,7 +18,8 @@ public class PanierDto implements Serializable {
     /**
      * Serial Version UID généré automatiquement 
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1559416502575443553L;
+   
     private Map<ProduitDto, Integer> mapPanier;
     private Integer                  nombreDeReferences = 0;
 

@@ -11,11 +11,14 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commun.dao.impl.AbstractGenericDao;
+import persistance.contact.impl.FichierContactDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
 
@@ -27,6 +30,8 @@ import persistance.produit.entity.ProduitDo;
 @Repository
 @Transactional(propagation = Propagation.MANDATORY)
 public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProduitDao {
+
+    private static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
 
     /**
      * Constructeur par défaut
@@ -64,6 +69,8 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
             return produitDo;
             // Si l'id n'existe pas en base ou si le produit recherché n'est pas en vente, on retourne null.
         } catch (final NoResultException noResultException) {
+            // Si exception 
+            logger.error("NoResult Exception", noResultException);
             return null;
         }
 
