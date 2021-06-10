@@ -3,12 +3,16 @@
  */
 package presentation.utilisateur.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -62,5 +66,20 @@ public class ConnecterController {
         modelAndView.setViewName("connecter");
 
         return modelAndView;
+    }
+    
+    /**
+     * @param request
+     * @param sessionStatus
+     * @return
+     */
+    @GetMapping(value = "/logout")
+    public String logout(final HttpServletRequest request, final SessionStatus sessionStatus) {
+		final HttpSession session = request.getSession();
+		sessionStatus.setComplete();
+		if (session != null) {
+			session.invalidate();
+		}
+		return "redirect:/listerProduits.do";
     }
 }
