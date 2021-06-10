@@ -34,7 +34,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setDateInscription("12/04/2021");
         utilisateurDto.setNom("Jean");
         utilisateurDto.setPrenom("Michel");
-        utilisateurDto.setEstActif(true);
+        utilisateurDto.setEstDesactive(true);
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDto.setPassword("test");
@@ -55,7 +55,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals("Mon Apr 12 00:00:00 CEST 2021", utilisateurDoMapper.getDateInscription().toString());
         Assertions.assertEquals(utilisateurDto.getNom(), utilisateurDoMapper.getNom());
         Assertions.assertEquals(utilisateurDto.getPrenom(), utilisateurDoMapper.getPrenom());
-        Assertions.assertEquals(utilisateurDto.getEstActif(), utilisateurDoMapper.getEstActif());
+        Assertions.assertEquals(utilisateurDto.getEstDesactive(), utilisateurDoMapper.getEstDesactive());
         Assertions.assertEquals(utilisateurDto.getRole().getIdRole(), utilisateurDoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
         Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
@@ -80,7 +80,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
         utilisateurDo.setNom("Dupond");
         utilisateurDo.setPrenom("Brice");
-        utilisateurDo.setEstActif(true);
+        utilisateurDo.setEstDesactive(true);
         utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDo.setMdpHash("test");
@@ -101,7 +101,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateInscription());
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDtoMapper.getNom());
         Assertions.assertEquals(utilisateurDo.getPrenom(), utilisateurDtoMapper.getPrenom());
-        Assertions.assertEquals(utilisateurDo.getEstActif(), utilisateurDtoMapper.getEstActif());
+        Assertions.assertEquals(utilisateurDo.getEstDesactive(), utilisateurDtoMapper.getEstDesactive());
         Assertions.assertEquals(utilisateurDo.getRole().getIdRole(), utilisateurDtoMapper.getRole().getIdRole());
         Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
@@ -126,7 +126,7 @@ class UtilisateurMapperTest {
         utilisateurDo1.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo1.setNom("Jean");
         utilisateurDo1.setPrenom("Michel");
-        utilisateurDo1.setEstActif(true);
+        utilisateurDo1.setEstDesactive(true);
         utilisateurDo1.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDo = new RoleDo();
@@ -144,7 +144,7 @@ class UtilisateurMapperTest {
         utilisateurDo2.setDateNaissance(Date.from(Instant.now()));
         utilisateurDo2.setNom("Dupond");
         utilisateurDo2.setPrenom("Brice");
-        utilisateurDo2.setEstActif(true);
+        utilisateurDo2.setEstDesactive(true);
         utilisateurDo2.setAdresse("19 rue Test, 59000, Lille");
 
         final var roleDo2 = new RoleDo();
@@ -172,7 +172,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setDateInscription(Date.from(Instant.now()));
         utilisateurDo.setNom("Jean");
         utilisateurDo.setPrenom("Michel");
-        utilisateurDo.setEstActif(true);
+        utilisateurDo.setEstDesactive(true);
 
         final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
 

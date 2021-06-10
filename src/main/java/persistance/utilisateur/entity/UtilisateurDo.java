@@ -53,7 +53,7 @@ public class UtilisateurDo {
     private String  cheminAvatar;
 
     @Column(name = "est_desactive")
-    private Boolean estActif;
+    private Boolean estDesactive;
 
     @ManyToOne
     @JoinColumn(name = "idRole")
@@ -193,21 +193,21 @@ public class UtilisateurDo {
     }
 
     /**
-     * Getter for estActif
+     * Getter for estDesactive
      *
-     * @return the estActif
+     * @return the estDesactive
      */
-    public Boolean getEstActif() {
-        return estActif;
+    public Boolean getEstDesactive() {
+        return estDesactive;
     }
 
     /**
-     * Setter for estActif
+     * Setter for estDesactive
      *
-     * @param estActif the estActif to set
+     * @param estDesactive the estDesactive to set
      */
-    public void setEstActif(final Boolean estActif) {
-        this.estActif = estActif;
+    public void setEstDesactive(final Boolean estDesactive) {
+        this.estDesactive = estDesactive;
     }
 
     /**

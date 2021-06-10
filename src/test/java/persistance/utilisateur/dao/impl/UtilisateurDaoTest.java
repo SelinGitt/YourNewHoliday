@@ -68,7 +68,7 @@ class UtilisateurDaoTest {
         utilisateurDo.setMdpHash("Hash");
         utilisateurDo.setDateInscription(Date.from(Instant.now()));
         utilisateurDo.setDateNaissance(Date.from(Instant.now()));
-        utilisateurDo.setEstActif(true);
+        utilisateurDo.setEstDesactive(true);
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDo.setCheminAvatar("img/test.png");
 

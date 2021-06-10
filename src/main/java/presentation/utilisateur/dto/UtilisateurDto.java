@@ -26,7 +26,7 @@ public class UtilisateurDto implements Serializable {
     private String            adresse;
     private String            dateInscription;
     private String            dateNaissance;
-    private Boolean           estActif;
+    private Boolean           estDesactive;
     private RoleDto           role;
 
     /**
@@ -138,21 +138,21 @@ public class UtilisateurDto implements Serializable {
     }
 
     /**
-     * Getter for estActif
+     * Getter for estDesactive
      *
-     * @return the estActif
+     * @return the estDesactive
      */
-    public Boolean getEstActif() {
-        return estActif;
+    public Boolean getEstDesactive() {
+        return estDesactive;
     }
 
     /**
-     * Setter for estActif
+     * Setter for estDesactive
      *
-     * @param estActif the estActif to set
+     * @param estDesactive the estActif to set
      */
-    public void setEstActif(final Boolean estActif) {
-        this.estActif = estActif;
+    public void setEstDesactive(final Boolean estDesactive) {
+        this.estDesactive = estDesactive;
     }
 
     /**

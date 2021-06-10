@@ -49,7 +49,7 @@ public class UtilisateurService implements IUtilisateurService {
 
         utilisateurDto.setDateInscription(Date.from(Instant.now()).toString());
 
-        utilisateurDto.setEstActif(true);
+        utilisateurDto.setEstDesactive(false);
 
         // TODO : Temporaire avec le generateReference
         try {
