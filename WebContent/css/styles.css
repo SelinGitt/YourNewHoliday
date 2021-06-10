@@ -318,7 +318,7 @@ legend.commandeLegendCMD00 {
 }
 
 /* style pour une page sans commande */
-div.commandeVideCMD00 {
+div.commandeVideCMD00, div.commandeCMD00GRille {
 	text-align: center;
 }
 
