@@ -3,15 +3,21 @@
  */
 package presentation.utilisateur.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -21,27 +27,35 @@ import service.utilisateur.IUtilisateurService;
  */
 @Controller
 @RequestMapping("/connecter.do")
-@SessionAttributes("utilisateurConnecteDto")
+@SessionAttributes("utilisateur")
 public class ConnecterController {
+
+    /**
+     * L'utilisateur en session
+     */
+    public static final String  UTILISATEUR = "utilisateur";
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
 
-    //    @InitBinder
-    //    private void initBinder(final WebDataBinder webDataBinder) {
-    //        webDataBinder.setValidator(new ConnecterValidator());
-    //    }
+    @Autowired
+    private ConnecterValidator  connecterValidator;
 
     /**
      * Permet d'afficher la vue de login
      * 
-     * @return : un model pour le binding et la vue associée
+     * @param  session        : HttpSession utilisé uniquement pour clore la session en cours en arrivant sur le controller
+     * @param  utilisateurDto : l'utilisateurDto utilisé pour le formulaire
+     * @return                : un model pour le binding et la vue associée
      */
     @GetMapping
-    public ModelAndView voirConnecter() {
+    public ModelAndView voirConnecter(final HttpSession session, final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
+
+        //TODO à retirer quand la déconnexion sera gérée
+        session.invalidate();
+
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("connecter");
-        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
         return modelAndView;
     }
 
@@ -49,55 +63,37 @@ public class ConnecterController {
      * Permet de mettre logger un utilisateur en session
      *
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
-     * @return                ModelAndView and l'utilisateur en session et le nom de la jsp
+     * @param  result         : resultats du binding utilisé pour gérer les erreurs
+     * @param  modelAndView   : ModelAndView du controller
+     * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
-    public ModelAndView loggerUtilisateur(final UtilisateurDto utilisateurDto) {
+    public ModelAndView loggerUtilisateur(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
+            final ModelAndView modelAndView) {
 
-        final var modelAndView = new ModelAndView();
+        connecterValidator.validate(utilisateurDto, result);
 
-        modelAndView.getModelMap().addAttribute("utilisateurConnecteDto",
-                iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword()));
+        if (result.hasErrors()) {
+            modelAndView.setViewName("connecter");
+            return modelAndView;
+        }
 
-        modelAndView.setViewName("connecter");
+        final UtilisateurConnecteDto utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
+                utilisateurDto.getPassword());
 
+        if (null != utilisateurConnecteDto) {
+            modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
+            modelAndView.setViewName("exemple");
+        } else {
+            result.reject("usr07.erreur.login_failed", "Default Error");
+            modelAndView.setViewName("connecter");
+        }
         return modelAndView;
     }
 
-    //    /**
-    //     * Permet de mettre logger un utilisateur en session
-    //     *
-    //     * @param  utilisateurDto : le {@link UtilisateurDto} à logger
-    //     * @return                ModelAndView and l'utilisateur en session et le nom de la jsp
-    //     */
-    //    @PostMapping
-    //    public ModelAndView loggerUtilisateur(final UtilisateurDto utilisateurDto) {
-    //
-    //        final var modelAndView = new ModelAndView();
-    //
-    //        final UtilisateurConnecteDto utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
-    //                utilisateurDto.getPassword());
-    //
-    //        if (null != utilisateurConnecteDto) {
-    //
-    //            //appel à une méthode qui a un @ModelAttribute
-    //            //methode(UtilisateurConnecteDto) -> retourne UtilisateurConnecteDto
-    //
-    ////            retournerConnecteDto(utilisateurConnecteDto);
-    //
-    //            modelAndView.getModelMap().addAttribute("utilisateurConnecteDto", utilisateurConnecteDto);
-    //
-    //            modelAndView.setViewName("exemple");
-    //
-    //        } else {
-    //            modelAndView.setViewName("connecter");
-    //        }
-    //
-    //        return modelAndView;
-    //    }
-
-    //    @ModelAttribute("utilisateurConnecteDto")
-    //    private UtilisateurConnecteDto retournerConnecteDto(final UtilisateurConnecteDto utilisateurConnecteDto) {
-    //        return utilisateurConnecteDto;
-    //    }
+    @ModelAttribute("utilisateurDto")
+    private UtilisateurDto retournerDto() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        return utilisateurDto;
+    }
 }
