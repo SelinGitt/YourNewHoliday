@@ -34,7 +34,7 @@ public class DisplayImage {
     private IImageService       imageService;
 
     /**
-     * Permet d'afficher une image en fonction de son chemin en paramètre. <br>
+     * Permet d'afficher une image en fonction de son id et de son type en paramètre. <br>
      * Le paramètre demandé en <b>GET</b> est l'id recherché ainsi que son type.<br>
      * ex:<i>id=1&type=pdt</i><br>
      * Pour appeler cette méthode depuis une JSP; il suffit juste de prendre une balise img avec le src qui est égal à cette
