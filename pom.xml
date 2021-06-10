@@ -19,6 +19,13 @@
 		<jstl.version>1.2</jstl.version>
 		<tiles.version>3.0.8</tiles.version>
 		<mockito-version>3.8.0</mockito-version>
+		<maven.plugin>2.22.2</maven.plugin>
+		<maven-war>3.3.1</maven-war>
+		<sonar.version>3.7.0.1746</sonar.version>
+		<jacoco.version>0.8.7</jacoco.version>
+		<junit-jupiter>5.7.0</junit-jupiter>
+		<lockback-version>1.2.3</lockback-version>
+		<maven-compiler>3.8.1</maven-compiler>
 	</properties>
 
 	<!-- Sonar profile config -->
@@ -91,7 +98,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven-compiler}</version>
 				<configuration>
 					<release>11</release>
 				</configuration>
@@ -99,11 +106,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>${maven.plugin}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>${maven-war}</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>true</failOnMissingWebXml>
@@ -114,14 +121,14 @@
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.7.0.1746</version>
+				<version>${sonar.version}</version>
 			</plugin>
 
 			<!-- Jacoco -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
+				<version>${jacoco.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -165,7 +172,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.7.0</version>
+			<version>${junit-jupiter}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -263,7 +270,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version>
+			<version>${lockback-version}</version>
 		</dependency>
 	</dependencies>
 </project>
