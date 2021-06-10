@@ -48,11 +48,10 @@ public class ListerProduitsController {
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerProduits");
         modelAndView.addObject("searchTerm", searchInput);
-        if (!searchInput.isEmpty()) {
-            modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
-        } else {
+        if (searchInput.isEmpty()) {
             return new ModelAndView("redirect:/");
         }
+        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
         return modelAndView;
     }
 }

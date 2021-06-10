@@ -25,7 +25,6 @@ public class ProduitDo {
 
     private Integer version;
 
-    @Column
     private String  reference;
 
     private String  nom;

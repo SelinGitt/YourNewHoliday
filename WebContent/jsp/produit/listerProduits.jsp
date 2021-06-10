@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
@@ -8,12 +9,12 @@
         </h1>
     </div>
     <br />
-    <div class=searchBar>
-        <form action="listerProduits.do" method="POST">
-            <input name="searchInput" class="searchBarInside" type="search"
-                placeholder="<spring:message code='pdt00.searchbar'/>"> <input type="submit" value="OK"
-                class=searchBarOk />
-        </form>
+    <div class="searchBar">
+        <form:form action="listerProduits.do" method="POST">
+            <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
+                placeholder="<spring:message code='pdt00.searchbar'/>">
+            <input type="submit" value="OK" class=searchBarOk />
+        </form:form>
     </div>
     <br />
     <div class="container">
