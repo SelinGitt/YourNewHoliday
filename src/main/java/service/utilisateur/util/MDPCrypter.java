@@ -43,7 +43,7 @@ public class MDPCrypter {
 
         } catch (final NoSuchAlgorithmException e) {
 
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return buf.toString();
 
