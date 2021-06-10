@@ -1,6 +1,5 @@
 package service.utilisateur.impl;
 
-import java.security.NoSuchAlgorithmException;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -52,11 +51,7 @@ public class UtilisateurService implements IUtilisateurService {
         utilisateurDto.setEstDesactive(false);
 
         // TODO : Temporaire avec le generateReference
-        try {
-            utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
-        } catch (final NoSuchAlgorithmException exception) {
-            logger.warn(exception.getMessage(), exception);
-        }
+        utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
