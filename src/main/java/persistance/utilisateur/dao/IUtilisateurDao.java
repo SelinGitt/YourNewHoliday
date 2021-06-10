@@ -10,5 +10,12 @@ import persistance.utilisateur.entity.UtilisateurDo;
  * @author Valentin
  */
 public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
-    // Vide pour le moment
+
+    /**
+     * Permet de renvoyer un UtilisateurDo trouvé gâce à l'email
+     *
+     * @param  email à utiliser pour la recherche
+     * @return       l'UtilisateurDo correspondant
+     */
+    UtilisateurDo findByEmail(final String email);
 }

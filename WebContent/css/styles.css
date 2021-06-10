@@ -205,6 +205,16 @@ h1 {
 
 /* USR07 */
 
+.boutonValiderUSR07 {
+	background-color: #008000;
+	Color: white;
+}
+
+.boutonResetUSR07 {
+	background-color: #FF0000;
+	Color: white;
+}
+
 /* FEATURE TEAM PRODUIT */
 /* PDT00 */
 h1.title {

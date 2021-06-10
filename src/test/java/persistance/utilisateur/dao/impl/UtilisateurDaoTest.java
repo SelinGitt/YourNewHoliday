@@ -1,5 +1,9 @@
 package persistance.utilisateur.dao.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -46,5 +50,18 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(7, listUtilisateur.size());
 
         listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByEmail()}.
+     */
+    @Test
+    void testFindByEmail() {
+        //On essaie avec une adresse email présente en base de données
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByEmail("baratheon.robert@hotmail.com");
+        assertNotNull(utilisateurDo);
+        assertEquals("ClientCLIENT123", utilisateurDo.getReference());
+        //On essaie avec une adresse email absente en base de données
+        assertNull(iUtilisateurDao.findByEmail("emailNonExistant@hotmail.com"));
     }
 }
