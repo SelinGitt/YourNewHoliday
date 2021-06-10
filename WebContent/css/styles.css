@@ -308,13 +308,13 @@ td.description {
 }
 
 h2.commandeCMD00 {
-	font-size: 40px;
+	font-size: 2.55em;
 }
 
 /* sous titre */
-legend.commandeCMD00 {
+legend.commandeLegendCMD00 {
 	color: #6FA8DC;
-	font-size: 32px;
+	font-size: 2em;
 }
 
 /* style pour une page sans commande */
@@ -323,16 +323,22 @@ div.commandeVideCMD00 {
 }
 
 /* factorisation des css communs */
-fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	padding: 10px;
 }
 
 /* hauteur field set */
-fieldset.commandeCMD00 {
-	display: grid;
-	align-items: center;
+fieldset.commandeFieldsetCMD00 {
 	width: 90%;
 	height: 80%;
+}
+
+/* grille à l'intérieur du fieldset */
+div.commandeCMD00GRille {
+	display: grid;
+	align-items: center;
+	width: 100%;
+	height: 100%;
 }
 
 div.commandeVideCMD00 {
@@ -348,7 +354,7 @@ div.commandeLineCMD00 {
 }
 
 /* factorisation des bordures */
-fieldset.commandeCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
 }
 
