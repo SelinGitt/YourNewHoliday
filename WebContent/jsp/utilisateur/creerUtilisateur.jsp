@@ -24,7 +24,7 @@
         </tr>
         <tr>
             <th><spring:message code="usr05.creer.dateNaissance" /></th>
-            <td><form:input type="date" path="dateNaissance" required /></td>
+            <td><form:input path="dateNaissance" /></td>
         </tr>
         <tr>
             <th><spring:message code="usr05.creer.email" /></th>
