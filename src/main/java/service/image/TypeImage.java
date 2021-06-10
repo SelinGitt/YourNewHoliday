@@ -12,15 +12,7 @@ public enum TypeImage {
     /**
      * Type Produit
      */
-    PRODUIT("pdt"),
-    /**
-     * Type user
-     */
-    USER("usr"),
-    /**
-     * Type Produit Acheté
-     */
-    PRODUIT_ACHETE("pdt_achete");
+    PRODUIT("pdt");
 
     /**
      * type stocké

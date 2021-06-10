@@ -38,7 +38,7 @@ public class ImageService implements IImageService {
             path = produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
-        //ajouter l'utilisateurDao, indisponible à l'heure actuelle
+        //ajouter l'utilisateurDao et le produitAcheteDao, indisponible à l'heure actuelle
         return null;
     }
 
