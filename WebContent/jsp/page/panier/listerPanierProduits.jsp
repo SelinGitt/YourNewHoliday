@@ -10,48 +10,83 @@
 <div class="panier-corps">
     <div>
         <fieldset class="panier-left panier-ascenceur">
-            <legend><h2>Mon Panier</h2></legend>
+            <legend>
+                <h2>Mon Panier</h2>
+            </legend>
             <table class="panier-tab">
                 <tbody>
                     <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
                         <tr>
                             <td class="panier-tab-bordure panier-produit">
-                            <div>
-                                <img class="panier-responsive panier-image-produit" src="img/panier/produitSample.jpg"
-                                alt="image produit" /></div>
                                 <div>
-                                <div><h2>${entry.key.nom}-${entry.key.reference}</h2></div>
-                                <div>${entry.key.description}</div>
+                                    <img class="panier-responsive panier-image-produit"
+                                        src="img/panier/produitSample.jpg" alt="image produit" />
+                                </div>
+                                <div>
+                                    <div>
+                                        <h2>${entry.key.nom}-${entry.key.reference}</h2>
+                                    </div>
+                                    <div>${entry.key.description}</div>
                                 </div>
                             </td>
-                            <td class="panier-tab-bordure"><div>Prix unitaire</div> ${entry.key.prixUnitaire}</td>
-                            <td class="panier-tab-bordure"><div>Quantité</div>
-                                <div class="panier-gestion-quantite"><button type="button">-</button><input type="text" id="quantite" name="quantite" size=1
-                                value=${entry.value}><button type="button">+</button></div></td>
-                            <td class="panier-tab-bordure"><div>Supprimer</div> <img class="panier-responsive" src="img/commun/poubelle.jpg"
+                            <td class="panier-tab-bordure panier-prix-unitaire"><div>
+                                    <h3>Prix unitaire</h3>
+                                </div> ${entry.key.prixUnitaire}</td>
+                            <td class="panier-tab-bordure panier-quantite"><div>
+                                    <h3>Quantité</h3>
+                                </div>
+                                <div class="panier-gestion-quantite">
+                                    <button type="button">-</button>
+                                    <span><input class="panier-quantite" type="text" id="panier-quantite" name="panier-quantite"
+                                   size="1"    value=${entry.value}></span>
+                                    <button type="button">+</button>
+                                </div></td>
+                            <td class="panier-tab-bordure"><div>
+                                    <h3>Supprimer</h3>
+                                </div> <img class="panier-responsive" src="img/commun/poubelle.jpg"
                                 alt="icone poubelle pour suppression" /></td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
-            <button type="button" class="panier-vider">Vider le panier</button>
+            <div class="panier-vider">
+                <button type="button">Vider le panier</button>
+            </div>
         </fieldset>
     </div>
     <div class="panier-right">
         <fieldset class="panier-ascenceur panier-macommande">
-            <legend><h2>Ma Commande</h2></legend>
+            <legend>
+                <h2>Ma Commande</h2>
+            </legend>
             <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
-                <div><h3>${entry.key.nom}-${entry.key.reference}</h3></div>
+                <div>
+                    <h3>${entry.key.nom}-${entry.key.reference}</h3>
+                </div>
                 <div>Prix unitaire : ${entry.key.prixUnitaire}</div>
                 <div>Quantité : ${entry.value}</div>
 
                 <div>Prix :</div>
             </c:forEach>
         </fieldset>
-        <div>Total avant remise <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13"></div>
-        <div>Remise <input type="text" id="remise" name="remise" maxlength="13"></div>
-        <div>Total après remise <input type="text" id="total_après_remise" name="total_après_remise" maxlength="13"></div>
-        <button type="button">Valider le panier</button>
+        <div class="panier-elements-a-droite">
+            <div class="panier-ligne-chiffre">
+                <h3>Total avant remise</h3>
+                <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13">
+            </div>
+            <div class="panier-ligne-chiffre">
+                <h3>Remise</h3>
+                <input type="text" id="remise" name="remise" maxlength="13">
+            </div>
+            <div class="panier-ligne-chiffre">
+                <h3>Total après remise</h3>
+                <input type="text" id="total_après_remise" name="total_après_remise" maxlength="13">
+            </div>
+            <div class="panier-valider">
+                <button type="button">Valider le panier</button>
+            </div>
+
+        </div>
     </div>
 </div>
 

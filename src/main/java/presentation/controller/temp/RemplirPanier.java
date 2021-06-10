@@ -41,7 +41,7 @@ public class RemplirPanier {
         produitDto2.setCheminImage(null);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
-        produitDto3.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
+        produitDto3.setDescription("Description courte du voyage sur deux ou trois lignes maximum, un peu d etexte ne plus pour tester l'affichage");
         produitDto3.setPrixUnitaire("12300");
         produitDto3.setNom("Voyage au Canada");
         produitDto3.setReference("0298544ddf");
@@ -53,7 +53,7 @@ public class RemplirPanier {
         panierDto.setNombreDeReferences(1+ panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, 2);
         panierDto.setNombreDeReferences(1+ panierDto.getNombreDeReferences());
-        panierDto.getMapPanier().put(produitDto3, 8);
+        panierDto.getMapPanier().put(produitDto3,128);
         panierDto.setNombreDeReferences(1+ panierDto.getNombreDeReferences());
 
         return panierDto;
