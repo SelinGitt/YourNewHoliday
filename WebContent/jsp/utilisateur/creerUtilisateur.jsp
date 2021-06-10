@@ -51,7 +51,7 @@
 
             <td colspan="3">
                 <div>
-                    <form:button value="reset">
+                    <form:button type="reset">
                         <spring:message code="usr05.creer.reset" />
                     </form:button>
                 </div>
