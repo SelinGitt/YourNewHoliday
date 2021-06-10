@@ -55,7 +55,6 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     public List<ProduitDo> rechercherProduits(final String searchTerm) {
         final TypedQuery<ProduitDo> query = entityManager
                 .createQuery("SELECT produit from ProduitDo produit WHERE reference LIKE '%" + searchTerm + "%'", ProduitDo.class);
-        System.out.println(query.getResultList().size());
         return query.getResultList();
     }
 }
