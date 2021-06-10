@@ -12,12 +12,6 @@
 		<put-attribute name="footer" value="/jsp/template/footer.jsp" />
 	</definition>
 
-	<!-- page jsp exemple -->
-	<definition name="exemple" extends="base.definition">
-		<put-attribute name="title" value="Tiles exemple" />
-		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
-	</definition>
-
 	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
 		supprimés -->
 	<definition name="user_session" extends="base.definition">
@@ -54,10 +48,10 @@
 		<put-attribute name="title" value="Écran de connexion" />
 		<put-attribute name="body" value="/jsp/utilisateur/connecter.jsp" />
 	</definition>
-	
+
 	<definition name="creerUtilisateur" extends="base.definition">
-		<put-attribute name="title" value="Création de profil"/>
-		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp"/>
+		<put-attribute name="title" value="Création de profil" />
+		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
 
 	<!-- écran contact -->
