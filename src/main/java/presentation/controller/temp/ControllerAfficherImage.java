@@ -17,7 +17,7 @@ import service.produit.IProduitService;
  * @author Lucas
  */
 @Controller
-@RequestMapping("/AfficherImageTemp.do")
+@RequestMapping("/afficherImageTemp.do")
 public class ControllerAfficherImage {
     @Autowired
     private IProduitService produitService;

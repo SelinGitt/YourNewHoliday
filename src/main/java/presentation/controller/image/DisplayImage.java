@@ -26,7 +26,7 @@ import service.image.IImageService;
  * @author Lucas
  */
 @Controller
-@RequestMapping("/DisplayImage.do")
+@RequestMapping("/displayImage.do")
 public class DisplayImage {
     private static final Logger logger = LoggerFactory.getLogger(DisplayImage.class);
 
