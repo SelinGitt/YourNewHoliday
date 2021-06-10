@@ -36,6 +36,11 @@
 		<put-attribute name="title" value="Gestion des produits" />
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
+
+	<definition name="creerProduitAdmin" extends="base.definition">
+		<put-attribute name="title" value="Gestion des produits" />
+		<put-attribute name="body" value="/jsp/produit/creerProduitAdmin.jsp" />
+	</definition>
 	<!-- écran panier -->
 
 	<!-- écran commande -->
