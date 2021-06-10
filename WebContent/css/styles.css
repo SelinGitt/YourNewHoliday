@@ -248,7 +248,49 @@ td.description {
 
 /* FEATURE TEAM PANIER */
 /* PAN00 */
+/* images responsives */
+.panier-responsive {
+	width: 50px;
+	height: auto;
+}
+.panier-produit{
+	display: flex;
+}
 
+.panier-image-produit{
+	width: auto;
+	height: 18vh;
+	margin-left: 1vh;
+	margin-top: 1vh;
+}
+.panier-corps {
+	display: flex;
+}
+.panier-left{
+	height: 60vh;
+	width: 95%;	
+}
+.panier-macommande{
+	height: 30vh;
+	width: 70%;
+	padding-left: 5%;
+}
+.panier-ascenceur{
+	overflow: auto;
+}
+.panier-tab{
+	border: 1px solid black;		
+}
+.panier-gestion-quantite{
+	display : flex;
+}
+.panier-tab-bordure{
+	border: 1px solid black;
+	height: 20vh;
+}
+.panier-vider{
+	float: right;
+}
 /* PAN08 */
 
 /* FEATURE TEAM COMMANDE */
