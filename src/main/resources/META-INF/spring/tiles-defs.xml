@@ -54,6 +54,11 @@
 		<put-attribute name="title" value="Écran de connexion" />
 		<put-attribute name="body" value="/jsp/utilisateur/connecter.jsp" />
 	</definition>
+	
+	<definition name="creerUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Création de profil"/>
+		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp"/>
+	</definition>
 
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
