@@ -20,8 +20,16 @@ public interface IUtilisateurService {
     List<UtilisateurDto> findAllUtilisateurs();
 
     /**
-     * Permet d'authentifier un utilisateur à l'aide de son email et de son mot de passe
+     * Permet de creer un utilisateur en base de donnees
      *
+     * @param  utilisateurDto Utilisateur a creer
+     * @return                Utilisateur creer
+     */
+    UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto);
+
+    /**
+     * Permet d'authentifier un utilisateur à l'aide de son email et de son mot de passe
+     * 
      * @param  email    : l'email saisi par l'utilisateur
      * @param  password : le mot de passe saisi par l'utilisateur
      * @return          un UtilisateurConnecteDto à mettre en session si l'authentification est valide, null sinon
