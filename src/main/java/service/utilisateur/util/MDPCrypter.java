@@ -14,6 +14,13 @@ import java.security.NoSuchAlgorithmException;
 public class MDPCrypter {
 
     /**
+     * Constructor
+     */
+    private MDPCrypter() {
+        //empty now
+    }
+
+    /**
      * Permet de crypter un mot de passe avec un algorithme<br/>
      * de chiffrement de type SHA1
      *
@@ -36,7 +43,7 @@ public class MDPCrypter {
 
         } catch (final NoSuchAlgorithmException e) {
 
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return buf.toString();
 
