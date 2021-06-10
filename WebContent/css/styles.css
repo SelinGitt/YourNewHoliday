@@ -202,6 +202,58 @@ h1 {
 /* USR02 */
 
 /* USR05 */
+.user05 {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.user05 .leftSideUser05 {
+	width: 75%;
+}
+
+.user05 .leftSideUser05 form table {
+	width: 100%;
+}
+
+.user05 .leftSideUser05 form table tr th {
+	width: 30%;
+	text-align: left;
+	padding: 10px 0;
+}
+
+.user05 .leftSideUser05 form table tr td {
+	width: fit-content;
+}
+
+.user05 .leftSideUser05 form table tr td div button {
+	padding: 5px 25px;
+	border-radius: 5px;
+	color: white;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .creerUser05 {
+	background-color: rgb(106, 168, 79);
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
+	background-color: rgb(224, 102, 102);
+}
+	
+.user05 .leftSideUser05 form table tr td input {
+	width: 100%;
+}
+
+.user05 .rightSideUser05 {
+	width: 25%;
+}
 
 /* USR07 */
 .boutonValiderUSR07 {
@@ -335,9 +387,14 @@ td.description {
 	text-align: center;
 }
 
+h2.commandeCMD00 {
+	font-size: 2.55em;
+}
+
 /* sous titre */
-legend.commandeCMD00 {
+legend.commandeLegendCMD00 {
 	color: #6FA8DC;
+	font-size: 2em;
 }
 
 /* style pour une page sans commande */
@@ -346,17 +403,22 @@ div.commandeVideCMD00 {
 }
 
 /* factorisation des css communs */
-fieldset.commandeCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	padding: 10px;
 }
 
 /* hauteur field set */
-fieldset.commandeCMD00 {
+fieldset.commandeFieldsetCMD00 {
+	width: 90%;
+	height: 80%;
+}
+
+/* grille à l'intérieur du fieldset */
+div.commandeCMD00GRille {
 	display: grid;
 	align-items: center;
-	width: 90%;
-	height: 85%;
-	width: 90%;
+	width: 100%;
+	height: 100%;
 }
 
 div.commandeVideCMD00 {
@@ -372,7 +434,7 @@ div.commandeLineCMD00 {
 }
 
 /* factorisation des bordures */
-fieldset.commandeCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
 	border: 3px solid black;
 }
 
