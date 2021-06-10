@@ -4,7 +4,6 @@
 <h1>
     <spring:message code="usr07.titre" />
 </h1>
-
 <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do">
     <table>
         <caption></caption>
@@ -15,10 +14,12 @@
         <tr>
             <td><spring:message code="usr07.label.email" /></td>
             <td><form:input path="email" /></td>
+            <td><form:errors path="email" cssClass="error" /></td>
         </tr>
         <tr>
             <td><spring:message code="usr07.label.password" /></td>
             <td><form:input path="password" /></td>
+            <td><form:errors path="password" cssClass="error" /></td>
         </tr>
     </table>
     <button class="boutonValiderUSR07" onclick="submit">
