@@ -60,8 +60,8 @@ class DecimalFormatUtilsTest {
         final Double nombre = 11_115_555.478_243;
 
         //on verifie les locales
-        assertEquals("11,115,555.48", DecimalFormatUtils.decimalFormatUtil(nombre, Locale.FRENCH));
-        assertEquals("11 115 555,48", DecimalFormatUtils.decimalFormatUtil(nombre, Locale.ENGLISH));
+        assertEquals("11,115,555.48", DecimalFormatUtils.decimalFormatUtil(nombre, Locale.ENGLISH));
+        assertEquals("11 115 555,48", DecimalFormatUtils.decimalFormatUtil(nombre, Locale.FRANCE));
     }
 
     /**
