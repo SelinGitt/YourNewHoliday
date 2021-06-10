@@ -13,6 +13,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurMapper;
 
 /**
@@ -39,8 +40,9 @@ public class UtilisateurService implements IUtilisateurService {
     public UtilisateurConnecteDto authentify(final String email, final String password) {
         final var utilisateurDo = iUtilisateurDao.findByEmail(email);
         if (utilisateurDo != null) {
-            final String passwordCheck = utilisateurDo.getMdpHash();
-            if (passwordCheck.equals(password)) {
+            //Dans une prochaine version du cryptage, le mot de passe en BD sera crypté.
+            final String passwordCheck = MDPCrypter.crypterMDPV1(utilisateurDo.getMdpHash());
+            if (passwordCheck.equals(MDPCrypter.crypterMDPV1(password))) {
                 return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
             logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
