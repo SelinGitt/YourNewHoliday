@@ -69,15 +69,17 @@ public class ConnecterController {
     }
     
     /**
-     * @param request
-     * @param sessionStatus
-     * @return
+     * Permet de retirer l'utilisateur en session 
+     *  
+     * @param request la requête 
+     * @param sessionStatus le sessionStatus
+     * @return un redirect ver listerProduits.do
      */
     @GetMapping(value = "/logout")
     public String logout(final HttpServletRequest request, final SessionStatus sessionStatus) {
 		final HttpSession session = request.getSession();
-		sessionStatus.setComplete();
 		if (session != null) {
+			sessionStatus.setComplete();
 			session.invalidate();
 		}
 		return "redirect:/listerProduits.do";
