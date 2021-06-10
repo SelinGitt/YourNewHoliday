@@ -44,8 +44,13 @@ public class UtilisateurMapper {
         utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
-        utilisateurDto.setEstActif(utilisateurDo.getEstActif());
+        utilisateurDto.setEstDesactive(utilisateurDo.getEstDesactive());
         utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
+        utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
+        utilisateurDto.setAdresse(utilisateurDo.getAdresse());
+
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDto.setPassword(utilisateurDo.getMdpHash());
 
         return utilisateurDto;
     }
@@ -64,8 +69,15 @@ public class UtilisateurMapper {
         utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
-        utilisateurDo.setEstActif(utilisateurDto.getEstActif());
+        utilisateurDo.setEstDesactive(utilisateurDto.getEstDesactive());
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
+        utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
+        utilisateurDo.setAdresse(utilisateurDto.getAdresse());
+
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDo.setMdpHash(utilisateurDto.getPassword());
+        // TODO : Remplacer quand upload img ok
+        utilisateurDo.setCheminAvatar("img/test.png");
 
         return utilisateurDo;
     }

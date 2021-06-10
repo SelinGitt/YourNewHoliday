@@ -1,5 +1,7 @@
 package service.utilisateur.impl;
 
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,8 +12,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
+import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.util.GenerateReferenceUtil;
 import service.utilisateur.IUtilisateurService;
 import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurMapper;
@@ -34,6 +38,24 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
+    }
+
+    @Override
+    public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
+        final var roleDto = new RoleDto();
+        roleDto.setIdRole(1);
+
+        utilisateurDto.setRole(roleDto);
+
+        utilisateurDto.setDateInscription(Date.from(Instant.now()).toString());
+
+        utilisateurDto.setEstDesactive(false);
+
+        // TODO : Temporaire avec le generateReference
+        utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
+
+        final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
     }
 
     @Override
