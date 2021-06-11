@@ -7,13 +7,14 @@
     <spring:message code="pdt03.titre" />
 </h1>
 
-<div class="grid-container">
-    <div class="grid-item formlaireCreerProduit">
-        <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
+<form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
+    <div class="grid-container">
+        <div class="grid-item formlaireCreerProduit">
+
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th><form:hidden path="idProduitOriginal" value="0" /></th>
-                    <th><form:hidden path="version" value="1"/></th>
+                    <th><form:hidden path="idProduitOriginal" value="-1" /></th>
+                    <th><form:hidden path="version" value="1" /></th>
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.nom" /></td>
@@ -64,44 +65,45 @@
 
                 </tr>
             </table>
-        </form:form>
+        </div>
+        <div class="grid-item imageProduit">
+            <table class="imageCreationProduit" aria-label="ajout image produit">
+                <tr>
+                    <th><spring:message code="form.pdt03.image" /></th>
+                </tr>
+                <tr>
+                    <td><img
+                        src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg"
+                        alt="Maroc" class="img" /></td>
+                </tr>
+                <tr>
+                    <td><spring:message code="form.pdt03.parcourir" /></td>
+                </tr>
+            </table>
+        </div>
+        <div class="grid-item logoService">
+            <table class="listeService" aria-label="liste des services disponibles">
+                <tr>
+                    <th><form:hidden path="services" value="4" /></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                </tr>
+            </table>
+        </div>
     </div>
-    <div class="grid-item imageProduit">
-        <table class="imageCreationProduit" aria-label="ajout image produit">
-            <tr>
-                <th><spring:message code="form.pdt03.image" /></th>
-            </tr>
-            <tr>
-                <td><img src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg"
-                    alt="Maroc" class="img" /></td>
-            </tr>
-            <tr>
-                <td><spring:message code="form.pdt03.parcourir" /></td>
-            </tr>
-        </table>
-    </div>
-    <div class="grid-item logoService">
-        <table class="listeService" aria-label="liste des services disponibles">
-            <tr>
-                <th><form:hidden path="services" value="4"/></th>
-                <th></th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>5</td>
-                <td>6</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>8</td>
-                <td>9</td>
-            </tr>
-        </table>
-    </div>
-</div>
+</form:form>
