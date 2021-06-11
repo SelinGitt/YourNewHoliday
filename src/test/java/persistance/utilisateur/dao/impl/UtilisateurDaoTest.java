@@ -1,5 +1,11 @@
 package persistance.utilisateur.dao.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +20,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
 
 /**
@@ -21,7 +28,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
  *
  * @author Valentin
  */
-//Permet de gérer le JUnit avec Spring
+// Permet de gérer le JUnit avec Spring
 @ExtendWith(SpringExtension.class)
 //Et de déclarer le fichier de conf à utiliser
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
@@ -46,5 +53,46 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(7, listUtilisateur.size());
 
         listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
+    }
+
+    /**
+     * Test pour {@link persistance.commun.dao.impl.AbstractGenericDao#create(Object)}.
+     */
+    @Test
+    void testCreate() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setReference("ABC123");
+        utilisateurDo.setEmail("test@test.fr");
+        utilisateurDo.setNom("Nom");
+        utilisateurDo.setPrenom("Prenom");
+        utilisateurDo.setMdpHash("Hash");
+        utilisateurDo.setDateInscription(Date.from(Instant.now()));
+        utilisateurDo.setDateNaissance(Date.from(Instant.now()));
+        utilisateurDo.setEstDesactive(true);
+        utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
+        utilisateurDo.setCheminAvatar("img/test.png");
+
+        final RoleDo role = new RoleDo();
+        role.setIdRole(1);
+
+        utilisateurDo.setRole(role);
+
+        final UtilisateurDo utilisateurCreated = iUtilisateurDao.create(utilisateurDo);
+
+        Assertions.assertNotNull(utilisateurCreated);
+        Assertions.assertNotNull(utilisateurCreated.getIdUtilisateur());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByEmail()}.
+     */
+    @Test
+    void testFindByEmail() {
+        //On essaie avec une adresse email présente en base de données
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByEmail("baratheon.robert@hotmail.com");
+        assertNotNull(utilisateurDo);
+        assertEquals("ClientCLIENT123", utilisateurDo.getReference());
+        //On essaie avec une adresse email absente en base de données
+        assertNull(iUtilisateurDao.findByEmail("emailNonExistant@hotmail.com"));
     }
 }

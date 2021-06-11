@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import persistance.utilisateur.entity.UtilisateurDo;
+import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 
 /**
@@ -43,8 +44,13 @@ public class UtilisateurMapper {
         utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
-        utilisateurDto.setEstActif(utilisateurDo.getEstActif());
+        utilisateurDto.setEstDesactive(utilisateurDo.getEstDesactive());
         utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
+        utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
+        utilisateurDto.setAdresse(utilisateurDo.getAdresse());
+
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDto.setPassword(utilisateurDo.getMdpHash());
 
         return utilisateurDto;
     }
@@ -63,8 +69,15 @@ public class UtilisateurMapper {
         utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
-        utilisateurDo.setEstActif(utilisateurDto.getEstActif());
+        utilisateurDo.setEstDesactive(utilisateurDto.getEstDesactive());
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
+        utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
+        utilisateurDo.setAdresse(utilisateurDto.getAdresse());
+
+        // TODO : Remplacer apres cryptage du mdp
+        utilisateurDo.setMdpHash(utilisateurDto.getPassword());
+        // TODO : Remplacer quand upload img ok
+        utilisateurDo.setCheminAvatar("img/test.png");
 
         return utilisateurDo;
     }
@@ -77,6 +90,29 @@ public class UtilisateurMapper {
      */
     public static List<UtilisateurDto> mapperToListDto(final List<UtilisateurDo> utilisateurDoList) {
         return utilisateurDoList.stream().map(UtilisateurMapper::mapperToDto).collect(Collectors.toList());
+    }
+
+    /**
+     * Method to map UtilisateurDo into UtilisateurConnecteDto
+     *
+     * @param  utilisateurDo : Utilisateur to map
+     * @return               Mapped UtilisateurConnecteDto
+     */
+    public static UtilisateurConnecteDto mapperToConnecteDto(final UtilisateurDo utilisateurDo) {
+        final var utilisateurConnecteDto = new UtilisateurConnecteDto();
+
+        //TODO à changer quand les rôles seront gérés
+        utilisateurConnecteDto.setIdRole("1");
+        //TODO à changer quand les rôles seront gérés
+        utilisateurConnecteDto.setNomRole("Rôle");
+
+        utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
+        utilisateurConnecteDto.setNom(utilisateurDo.getNom());
+        utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
+        //TODO gestion du panier à travailler avec l'équipe Panier
+        utilisateurConnecteDto.setNbProduitPanier("0");
+
+        return utilisateurConnecteDto;
     }
 
     /**
