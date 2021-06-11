@@ -34,7 +34,8 @@ public class DroitDao extends AbstractGenericDao<DroitDo> implements IDroitDao {
 
     @Override
     public List<String> findRole(final DroitDo droit) {
-        final TypedQuery<String> query = entityManager.createQuery("SELECT r.libelle FROM RoleDo r, DroitDo d WHERE d.url LIKE :urlDroit",
+        final TypedQuery<String> query = entityManager.createQuery(
+                "SELECT r.libelle FROM RoleDo r, DroitDo d, PossedeDo p WHERE d.id = p.droit.idDroit AND p.role.idRole = r.id AND d.url = :urlDroit",
                 String.class);
         query.setParameter("urlDroit", droit.getUrl());
 
