@@ -73,6 +73,7 @@ public class ConnecterController {
 
         connecterValidator.validate(utilisateurDto, result);
 
+        //Si le formulaire a des erreurs
         if (result.hasErrors()) {
             modelAndView.setViewName("connecter");
             return modelAndView;
@@ -81,11 +82,15 @@ public class ConnecterController {
         final UtilisateurConnecteDto utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
                 utilisateurDto.getPassword());
 
+        //Si l'utilisateur est trouvé en BD et renvoyé
         if (null != utilisateurConnecteDto) {
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
+            //TODO rediriger vers la page d'accueil au lieu d' "exemple.do"
             modelAndView.setViewName("exemple");
         } else {
-            result.reject("usr07.erreur.login_failed", "Default Error");
+            //Si l'utilisateur n'est pas trouvé en BD, et donc null
+            //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
+            modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             modelAndView.setViewName("connecter");
         }
         return modelAndView;

@@ -2,8 +2,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%-- <c:if test="${empty utilisateur.nom}" ><spring:message code="usr07.erreur.login_failed"/></c:if> --%>
-<c:if test="${empty result}" ><spring:message code="usr07.erreur.login_failed"/></c:if>
+<c:if test="${not empty error}">
+    <spring:message code="${error}" />
+</c:if>
 <h1>
     <spring:message code="usr07.titre" />
 </h1>
