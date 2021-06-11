@@ -30,7 +30,7 @@ public class MDPCrypter {
      * de chiffrement de type SHA1
      *
      * @param  password le mot de passe à crypter
-     * @return          le mot de passe crypté si ok, une exception sinon
+     * @return          le mot de passe crypté, sinon, le message "NoSuchAlgorithmeException exception"
      */
     public static String crypterMDPV1(final String password) {
         final var buf = new StringBuilder();
