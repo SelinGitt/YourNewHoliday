@@ -205,7 +205,7 @@ h1 {
 .user05 {
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .user05 .leftSideUser05 {
@@ -246,7 +246,7 @@ h1 {
 .user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
 	background-color: rgb(224, 102, 102);
 }
-	
+
 .user05 .leftSideUser05 form table tr td input {
 	width: 100%;
 }
@@ -371,6 +371,33 @@ td.description {
 .logoService {
 	grid-column: 3;
 	grid-row: 2/span 1;
+}
+
+.boutonCreerPDT03 {
+	background-color: rgb(106, 168, 79);
+}
+
+.boutonResetPDT03 {
+	background-color: rgb(224, 102, 102);
+}
+
+.grid-container input {
+	width: 100%;
+}
+
+.formPDT03Radio {
+	display: flex;
+}
+
+.pdt03DivRadio {
+	display: flex;
+}
+
+.buttonsPdt03 {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }
 
 /* PDT04 */

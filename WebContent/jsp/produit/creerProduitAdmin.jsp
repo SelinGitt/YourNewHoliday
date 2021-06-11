@@ -37,15 +37,38 @@
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.miseEnVente" /></td>
-                    <td><form:radiobutton path="miseEnVente" value="true" /> <spring:message code="form.pdt03.oui" />
-                        <form:radiobutton path="miseEnVente" value="false" /> <spring:message code="form.pdt03.non" /></td>
+                    <td class="formPDT03Radio">
+                        <div class="pdt03DivRadio">
+                            <form:radiobutton path="miseEnVente" value="true" />
+                            <spring:message code="form.pdt03.oui" />
+                        </div>
+                        <div class="pdt03DivRadio">
+                            <form:radiobutton path="miseEnVente" value="false" />
+                            <spring:message code="form.pdt03.non" />
+                        </div>
+                    </td>
+
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.description" /></td>
-                    <td><form:textarea path="description" /></td>
+                    <td><form:textarea path="description" rows="4" cols="100" /></td>
                 </tr>
                 <tr>
-                    <td><form:button value="submit">Submit</form:button></td>
+                    <td></td>
+                    <td class="buttonsPdt03">
+                        <div>
+                            <form:button value="submit" class="boutonCreerPDT03">
+                                <spring:message code="form.pdt03.valider" />
+                            </form:button>
+                        </div>
+                        <div>
+
+                            <form:button type="reset" class="boutonResetPDT03">
+                                <spring:message code="form.pdt03.reset" />
+                            </form:button>
+                        </div>
+                    </td>
+
                 </tr>
             </table>
         </form:form>
