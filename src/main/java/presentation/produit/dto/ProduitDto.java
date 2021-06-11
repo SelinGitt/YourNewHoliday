@@ -18,6 +18,28 @@ public class ProduitDto implements Serializable {
      */
     private static final long serialVersionUID = 8646499598254785864L;
 
+    private String            idProduitOriginal;
+
+    private String            version;
+
+    private String            reference;
+
+    private String            nom;
+
+    private String            description;
+
+    private String            destination;
+
+    private String            prixUnitaire;
+
+    private String            hebergement;
+
+    private String            miseEnVente;
+
+    private String            cheminImage;
+
+    private String            services;
+
     @Override
     public int hashCode() {
         return Objects.hash(idProduitOriginal);
@@ -37,28 +59,6 @@ public class ProduitDto implements Serializable {
         final ProduitDto other = (ProduitDto) obj;
         return Objects.equals(idProduitOriginal, other.idProduitOriginal);
     }
-
-    private String idProduitOriginal;
-
-    private String version;
-
-    private String reference;
-
-    private String nom;
-
-    private String description;
-
-    private String destination;
-
-    private String prixUnitaire;
-
-    private String hebergement;
-
-    private String miseEnVente;
-
-    private String cheminImage;
-
-    private String services;
 
     /**
      * Getter for idProduitOriginal

@@ -65,8 +65,7 @@ class ProduitDaoTest {
     }
 
     /**
-<<<<<<< HEAD
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     * <<<<<<< HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
     void testFindProduitEnVente() {
@@ -76,7 +75,9 @@ class ProduitDaoTest {
         // On essaie de récupérer un produit qui n'est pas en vente
         final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVente(2);
         assertNull(produitDoPasEnVente);
-=======
+    }
+
+    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduits()}.
      */
     @Test
@@ -89,7 +90,6 @@ class ProduitDaoTest {
         final String searchTerm2 = "ZZZ";
         final List<ProduitDo> listeProduitsRecherchee2 = iProduitDao.rechercherProduits(searchTerm2);
         assertEquals(0, listeProduitsRecherchee2.size());
->>>>>>> develop
     }
 
     /**

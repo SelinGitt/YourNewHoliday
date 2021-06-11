@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commun.dao.impl.AbstractGenericDao;
-import persistance.contact.impl.FichierContactDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
 
@@ -31,7 +30,7 @@ import persistance.produit.entity.ProduitDo;
 @Transactional(propagation = Propagation.MANDATORY)
 public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProduitDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProduitDao.class);
 
     /**
      * Constructeur par défaut
@@ -64,13 +63,12 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
             final TypedQuery<ProduitDo> query = entityManager
                     .createQuery("FROM ProduitDo WHERE idProduitOriginal = :id AND mise_en_vente = 1", ProduitDo.class);
             query.setParameter("id", idProduit);
-            // Instanciation du produit trouvé
-            final ProduitDo produitDo = query.getSingleResult();
-            return produitDo;
+            // On retourne le produit trouvé
+            return query.getSingleResult();
             // Si l'id n'existe pas en base ou si le produit recherché n'est pas en vente, on retourne null.
         } catch (final NoResultException noResultException) {
             // Si exception 
-            logger.error("NoResult Exception", noResultException);
+            logger.error("Le produit d'ID {idProduit} n'est pas en base ou n'est pas en vente.", noResultException);
             return null;
         }
     }

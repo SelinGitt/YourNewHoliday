@@ -38,11 +38,11 @@ public class PanierService implements IPanierService {
         final Map<ProduitDto, Integer> mapPanier = panier.getMapPanier();
         Integer quantiteProduit = mapPanier.get(produitAjout);
         // si le produit était déjà dans le panier, on met à jour sa quantité.
-        if (quantiteProduit != null) {
-            quantiteProduit += quantite;
+        if (quantiteProduit == null) {
+            quantiteProduit = quantite;
             // sinon, le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
         } else {
-            quantiteProduit = quantite;
+            quantiteProduit += quantite;
         }
         // si la quantité du produit que l'on met à jour devient nulle ou négative, 
         // alors le produit est supprimé du panier.

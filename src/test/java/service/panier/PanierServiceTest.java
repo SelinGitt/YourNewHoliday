@@ -7,44 +7,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.impl.PanierService;
-import service.produit.impl.ProduitService;
+import service.produit.IProduitService;
 
 /**
  * Classe test de {@link PanierService}
  *
  * @author NathanR
  */
-@WebAppConfiguration("WebContent")
-//Permet de gérer le JUnit avec Spring
-@ExtendWith(SpringExtension.class)
-//Pour initialiser la base de données avec les bonnes données 
-@Sql("/sql/DML.sql")
-@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
-//Utilisation d'une transaction pour avoir des auto rollbacks à chaque fin de tests
-@Transactional(propagation = Propagation.REQUIRED)
 class PanierServiceTest {
 
     @InjectMocks
-    private PanierService  panierService;
+    private PanierService   panierService;
 
     // Mock à injecter
     @Mock
-    private ProduitService produitService;
+    private IProduitService iProduitService;
 
     @BeforeEach
     private void setup() {
@@ -68,10 +53,10 @@ class PanierServiceTest {
         final var produitTest3 = new ProduitDto();
         produitTest3.setIdProduitOriginal("3");
         produitTest1.setMiseEnVente("1");
-        Mockito.when(this.produitService.trouverProduitEnVente(1)).thenReturn(produitTest1);
-        Mockito.when(this.produitService.trouverProduitEnVente(2)).thenReturn(produitTest2);
-        Mockito.when(this.produitService.trouverProduitEnVente(3)).thenReturn(produitTest3);
-        Mockito.when(this.produitService.trouverProduitEnVente(99)).thenReturn(null);
+        Mockito.when(this.iProduitService.trouverProduitEnVente(1)).thenReturn(produitTest1);
+        Mockito.when(this.iProduitService.trouverProduitEnVente(2)).thenReturn(produitTest2);
+        Mockito.when(this.iProduitService.trouverProduitEnVente(3)).thenReturn(produitTest3);
+        Mockito.when(this.iProduitService.trouverProduitEnVente(99)).thenReturn(null);
         panierService.updatePanier(panierTest, 1, 5);
         panierService.updatePanier(panierTest, 2, 7);
         assertEquals(2, panierTest.getNombreDeReferences());
