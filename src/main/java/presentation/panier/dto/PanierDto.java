@@ -15,10 +15,11 @@ import presentation.produit.dto.ProduitDto;
  * @author NathanB
  */
 public class PanierDto implements Serializable {
+    
     /**
-     * Serial Version UID généré automatiquement 
+     * serial
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -1559416502575443553L;
     private Map<ProduitDto, Integer> mapPanier;
     private Integer                  nombreDeReferences = 0;
 

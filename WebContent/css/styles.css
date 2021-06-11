@@ -248,87 +248,88 @@ td.description {
 
 /* FEATURE TEAM PANIER */
 /* PAN00 */
+/* CSS factorisé */
+.panier-display-flex {
+	display: flex;
+}
+
+.panier-justify-content-center {
+	justify-content: center;
+}
+
+.panier-overflow-auto {
+	overflow: auto;
+}
+
+.panier-align-item-center {
+	align-items: center;
+}
+/* CSS specifique */
+
 /* images responsives */
 .panier-responsive {
 	width: 50px;
 	height: auto;
 }
-.panier-produit{
-	display: flex;
-}
 
-.panier-image-produit{
+.panier-image-produit {
 	width: auto;
 	height: 18vh;
 	margin-left: 1vh;
 	margin-top: 1vh;
 }
-.panier-corps {
-	display: flex;
-}
-.panier-left{
+
+.panier-left {
 	height: 60vh;
-	width: 95%;	
+	width: 95%;
 }
-.panier-macommande{
+
+.panier-macommande {
 	height: 30vh;
 	width: 85%;
 	padding-left: 5%;
 }
-.panier-ascenceur{
-	overflow: auto;
+
+.panier-tab {
+	border: 1px solid black;
 }
-.panier-tab{
-	border: 1px solid black;		
-}
-.panier-gestion-quantite{
-	display : flex;
-}
-.panier-tab-bordure{
+
+.panier-tab-bordure {
 	border: 1px solid black;
 	height: 25vh;
 }
-.panier-float-right{
-	height: 3.34em;
-	float: right;
-	display: flex;  
-  	align-items: center;
-}
-.panier-float-left{
-	float: left;
-}
-.panier-elements-a-droite{
+
+.panier-elements-a-droite {
 	width: 85%;
 }
-.panier-ligne-chiffre{
-	display: flex;
+
+.panier-ligne-chiffre {
 	justify-content: space-between;
-	align-items: center;
 }
-.panier-valider{
-	display: flex;
+
+.panier-valider {
 	justify-content: center;
-	align-items: center;
 }
-.panier-vider{
-	display: flex;
+
+.panier-vider {
 	flex-direction: row-reverse;
-	align-items: center;
 	margin-top: 1.5em;
 	margin-right: 1.5em;
 }
-.panier-prix-unitaire{
+
+.panier-prix-unitaire {
 	width: 15%;
 }
-.panier-quantite{
- 	width: 1.7em;
+
+.panier-quantite {
+	width: 1.7em;
+	text-align: center;
 }
-.panier-quantite{
- 	text-align: center; 
+
+.panier-supprimer {
+	margin-top: 3em;
 }
-.plus-petit{
-/* 	width: 1em; */
-}
+
 /* PAN08 */
 
 /* FEATURE TEAM COMMANDE */
