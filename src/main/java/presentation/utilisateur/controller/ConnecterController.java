@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
@@ -74,8 +73,7 @@ public class ConnecterController {
             return modelAndView;
         }
 
-        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
-                utilisateurDto.getPassword());
+        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
 
         //Si l'utilisateur est trouvé en BD et renvoyé
         if (null != utilisateurConnecteDto) {
