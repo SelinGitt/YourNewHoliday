@@ -108,7 +108,7 @@ class UtilisateurServiceTest {
         //On crée l'utilisateurDo qu'on récupère en BD
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
         utilisateurDo.setEmail("email");
-        utilisateurDo.setMdpHash("password");
+        utilisateurDo.setMdpHash("5A6ECB3308206F317E8D");
         utilisateurDo.setNom("nom");
 
         Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
