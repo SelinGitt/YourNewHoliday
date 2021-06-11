@@ -5,7 +5,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<link href="css-ext/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
@@ -13,12 +13,15 @@
     <header>
         <tiles:insertAttribute name="header" />
     </header>
-    <aside>
-        <tiles:insertAttribute name="menu" />
-    </aside>
-    <section>
-        <tiles:insertAttribute name="body" />
-    </section>
+    <!--     regrouper aside et section afin de facilité la manipulation et d'avoir le rendu souhaité sans détours  -->
+    <div id="content">
+        <aside>
+            <tiles:insertAttribute name="menu" />
+        </aside>
+        <section>
+            <tiles:insertAttribute name="body" />
+        </section>
+    </div>
     <footer>
         <tiles:insertAttribute name="footer" />
     </footer>
