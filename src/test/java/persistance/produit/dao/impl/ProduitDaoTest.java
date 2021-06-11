@@ -65,6 +65,21 @@ class ProduitDaoTest {
     }
 
     /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduits()}.
+     */
+    @Test
+    void testRechercherProduits() {
+        //recherche d'une référence 128 existente
+        final String searchTerm = "128";
+        final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherProduits(searchTerm);
+        assertEquals(1, listeProduitsRecherchee.size());
+        //recherche référence non existente
+        final String searchTerm2 = "ZZZ";
+        final List<ProduitDo> listeProduitsRecherchee2 = iProduitDao.rechercherProduits(searchTerm2);
+        assertEquals(0, listeProduitsRecherchee2.size());
+    }
+
+    /**
      * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findById(Integer)}.
      */
     @Test
