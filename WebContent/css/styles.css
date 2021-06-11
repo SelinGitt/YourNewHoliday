@@ -202,6 +202,58 @@ h1 {
 /* USR02 */
 
 /* USR05 */
+.user05 {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.user05 .leftSideUser05 {
+	width: 75%;
+}
+
+.user05 .leftSideUser05 form table {
+	width: 100%;
+}
+
+.user05 .leftSideUser05 form table tr th {
+	width: 30%;
+	text-align: left;
+	padding: 10px 0;
+}
+
+.user05 .leftSideUser05 form table tr td {
+	width: fit-content;
+}
+
+.user05 .leftSideUser05 form table tr td div button {
+	padding: 5px 25px;
+	border-radius: 5px;
+	color: white;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .creerUser05 {
+	background-color: rgb(106, 168, 79);
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
+	background-color: rgb(224, 102, 102);
+}
+	
+.user05 .leftSideUser05 form table tr td input {
+	width: 100%;
+}
+
+.user05 .rightSideUser05 {
+	width: 25%;
+}
 
 /* USR07 */
 
@@ -256,6 +308,24 @@ td.name {
 	display: flex;
 }
 
+.searchBar {
+	display: flex;
+	justify-content: flex-end;
+	align-content: flex-end;
+	align-items: flex-end;
+}
+
+.searchBarInside {
+	outline: none;
+	border-radius: 30px;
+	border: 2px solid grey;
+	border-radius: 30px;
+}
+
+.searchBarOk {
+	cursor: pointer;
+}
+
 tr.lineRow {
 	display: flex;
 }
@@ -303,5 +373,102 @@ td.description {
 
 /* FEATURE TEAM COMMANDE */
 /* CMD00 */
+.commandeCMD00 {
+	color: #66C5EB;
+	text-align: center;
+}
+
+h2.commandeCMD00 {
+	font-size: 2.55em;
+}
+
+/* sous titre */
+legend.commandeLegendCMD00 {
+	color: #6FA8DC;
+	font-size: 2em;
+}
+
+/* style pour une page sans commande */
+div.commandeVideCMD00 {
+	text-align: center;
+}
+
+/* factorisation des css communs */
+fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+	padding: 10px;
+}
+
+/* hauteur field set */
+fieldset.commandeFieldsetCMD00 {
+	width: 90%;
+	height: 80%;
+}
+
+/* grille à l'intérieur du fieldset */
+div.commandeCMD00GRille {
+	display: grid;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+div.commandeVideCMD00 {
+	margin: auto;
+}
+
+/* création de la grille */
+div.commandeLineCMD00 {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 10px;
+	margin: 5px;
+}
+
+/* factorisation des bordures */
+fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+	border: 3px solid black;
+}
+
+/* couleur du texte pour commande */
+.colorTextCMD00 {
+	color: black;
+}
+
+/* colonne 1 */
+div.commandeReferenceCMD00 {
+	grid-column: 1;
+}
+
+/* colonne 2 */
+div.commandePrixTotalCMD00 {
+	grid-column: 2;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1px;
+}
+
+/* colonne 2.1 */
+div.commandePrixTotalTextCMD00 {
+	grid-column: 1;
+	width: 65%;
+}
+
+/* colonne 2.2 */
+div.commandePrixTotalValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+	font-weight: bold;
+	width: 60%;
+}
+
+/* colonne 3 */
+div.commandeDateCMD00 {
+	grid-column: 3;
+}
+
+/* espace entre la bordure et le texte */
+div.commandeReferenceCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+	padding: 5px;
+}
 
 /* CMD04 */
