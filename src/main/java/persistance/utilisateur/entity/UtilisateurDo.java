@@ -43,8 +43,17 @@ public class UtilisateurDo {
     @Column(name = "date_d_inscription")
     private Date    dateInscription;
 
+    @Column(name = "date_de_naissance")
+    private Date    dateNaissance;
+
+    @Column(name = "adresse")
+    private String  adresse;
+
+    @Column(name = "chemin_de_lavatar")
+    private String  cheminAvatar;
+
     @Column(name = "est_desactive")
-    private Boolean estActif;
+    private Boolean estDesactive;
 
     @ManyToOne
     @JoinColumn(name = "idRole")
@@ -184,21 +193,21 @@ public class UtilisateurDo {
     }
 
     /**
-     * Getter for estActif
+     * Getter for estDesactive
      *
-     * @return the estActif
+     * @return the estDesactive
      */
-    public Boolean getEstActif() {
-        return estActif;
+    public Boolean getEstDesactive() {
+        return estDesactive;
     }
 
     /**
-     * Setter for estActif
+     * Setter for estDesactive
      *
-     * @param estActif the estActif to set
+     * @param estDesactive the estDesactive to set
      */
-    public void setEstActif(final Boolean estActif) {
-        this.estActif = estActif;
+    public void setEstDesactive(final Boolean estDesactive) {
+        this.estDesactive = estDesactive;
     }
 
     /**
@@ -218,4 +227,59 @@ public class UtilisateurDo {
     public void setRole(final RoleDo role) {
         this.role = role;
     }
+
+    /**
+     * Getter for dateNaissance
+     *
+     * @return the dateNaissance
+     */
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * Setter for dateNaissance
+     *
+     * @param dateNaissance the dateNaissance to set
+     */
+    public void setDateNaissance(final Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    /**
+     * Getter for adresse
+     *
+     * @return the adresse
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * Setter for adresse
+     *
+     * @param adresse the adresse to set
+     */
+    public void setAdresse(final String adresse) {
+        this.adresse = adresse;
+    }
+
+    /**
+     * Getter for cheminAvatar
+     *
+     * @return the cheminAvatar
+     */
+    public String getCheminAvatar() {
+        return cheminAvatar;
+    }
+
+    /**
+     * Setter for cheminAvatar
+     *
+     * @param cheminAvatar the cheminAvatar to set
+     */
+    public void setCheminAvatar(final String cheminAvatar) {
+        this.cheminAvatar = cheminAvatar;
+    }
+
 }

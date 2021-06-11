@@ -1,30 +1,26 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="header">
-	<%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
-	<div id="headerLogo" class="headerCell">
-		<a href=""> <img src="img/template/header/logoYNH.png"
-			class="logoHeader-ynh" alt="logo">
-		</a>
-	</div>
-	<%--     suivi du nom de l'agence de voyage --%>
-	<div id="headerNom" class="headerCell">
-		<h1>
-			<spring:message code="header.nom" />
-		</h1>
-	</div>
-	<%--     de l'identité de l'utilisateur s'il est connecté --%>
-	<div id="headerStatut" class="headerCell">
-		<div>
-			<strong><spring:message code="header.id" /></strong>${utilisateur.prenom }
-			${utilisateur.nom }
-		</div>
-		<%--         de son statut (visiteur, client, administrateur) --%>
-		<div>
-			<strong><spring:message code="header.statut" /></strong>
-			${utilisateur.nomRole }
-		</div>
-
+    <%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
+    <div id="headerLogo" class="headerCell">
+        <a href="/Projet_YNH/listerProduits.do"> <img src="img/template/header/logoYNH.png" class="logoHeader-ynh" alt="logo">
+        </a>
+    </div>
+    <%--     suivi du nom de l'agence de voyage --%>
+    <div id="headerNom" class="headerCell">
+        <h1>
+            <spring:message code="header.nom" />
+        </h1>
+    </div>
+    <%--     de l'identité de l'utilisateur s'il est connecté --%>
+    <div id="headerStatut" class="headerCell">
+        <div>
+            <strong><spring:message code="header.id" /></strong>${utilisateur.prenom } ${utilisateur.nom }
+        </div>
+        <%--         de son statut (visiteur, client, administrateur) --%>
+        <div>
+            <strong><spring:message code="header.statut" /></strong> ${utilisateur.nomRole }
+        </div>
 	</div>
 	<%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
 	<div id="headerConnexion" class="headerCell">
