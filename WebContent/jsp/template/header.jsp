@@ -27,12 +27,12 @@
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
-            <c:if test="${utilisateur.idRole == '2'}">
+            <c:if test="${utilisateur.idRole != '2'}">
                 <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
                 </a>
             </c:if>
-            <c:if test="${utilisateur.idRole != '2'}">
+            <c:if test="${utilisateur.idRole == '2'}">
                 <a href=""> <img src="img/template/header/connexion.png" class="logoHeader" alt="icône déconnexion">
                 </a>
             </c:if>
