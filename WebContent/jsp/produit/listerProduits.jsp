@@ -16,7 +16,6 @@
             <input type="submit" value="OK" class=searchBarOk />
         </form:form>
     </div>
-    <br />
     <div class="container">
         <c:forEach items="${listeProduitDto}" var="produitDto">
             <table class="containerVoyage" aria-label="Produit">
