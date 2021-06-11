@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
@@ -40,11 +39,13 @@ public class ConnecterController {
 	/**
 	 * Permet d'afficher la vue de login
 	 * 
-	 * @return : un model pour le binding et la vue associée
+	 * @param  request
+	 * @param  sessionStatus
+	 * @return               : un model pour le binding et la vue associée
 	 */
 	@GetMapping
 	public ModelAndView choixDesUrl(final HttpServletRequest request, final SessionStatus sessionStatus) {
-		if (request.getRequestURI().equals("/Projet_YNH/deconnecter.do")) {
+		if (request.getRequestURI().contains("/deconnecter.do")) {
 			return logout(request, sessionStatus);
 		}
 		return voirConnecter();
