@@ -3,6 +3,9 @@
  */
 package service.utilisateur.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -51,6 +54,26 @@ class DroitMapperTest {
 
         Assertions.assertEquals(droitDto.getIdDroit(), droitDoMapper.getIdDroit());
         Assertions.assertEquals(droitDto.getUrl(), droitDoMapper.getUrl());
+    }
+
+    /**
+     * Test method for {@link service.utilisateur.util.DroitMapper#mapperToListDto(List)}.
+     */
+    @Test
+    void testMapperListe() {
+        final DroitDo droit1 = new DroitDo();
+        final DroitDo droit2 = new DroitDo();
+
+        droit1.setIdDroit(1);
+        droit2.setIdDroit(2);
+
+        droit1.setUrl("test1");
+        droit2.setUrl("test2");
+
+        final List<DroitDto> listDroitsDto = DroitMapper.mapperToListDto(Arrays.asList(droit1, droit2));
+
+        Assertions.assertNotNull(listDroitsDto);
+        Assertions.assertEquals(2, listDroitsDto.size());
     }
 
 }

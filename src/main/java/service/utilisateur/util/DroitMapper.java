@@ -3,6 +3,9 @@
  */
 package service.utilisateur.util;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import persistance.utilisateur.entity.DroitDo;
 import presentation.utilisateur.dto.DroitDto;
 
@@ -49,5 +52,15 @@ public class DroitMapper {
         droitDo.setUrl(droitDto.getUrl());
 
         return droitDo;
+    }
+
+    /**
+     * Permet de map une liste de DroitDo en une liste de DroitDto
+     * 
+     * @param  droitDoList Liste a map
+     * @return             Liste mappe
+     */
+    public static List<DroitDto> mapperToListDto(final List<DroitDo> droitDoList) {
+        return droitDoList.stream().map(DroitMapper::mapperToDto).collect(Collectors.toList());
     }
 }
