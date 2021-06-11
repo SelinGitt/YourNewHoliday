@@ -30,11 +30,6 @@ import service.utilisateur.IUtilisateurService;
 @SessionAttributes("utilisateur")
 public class ConnecterController {
 
-    /**
-     * L'utilisateur en session
-     */
-    public static final String  UTILISATEUR = "utilisateur";
-
     @Autowired
     private IUtilisateurService iUtilisateurService;
 
@@ -79,7 +74,7 @@ public class ConnecterController {
             return modelAndView;
         }
 
-        final UtilisateurConnecteDto utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
+        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(),
                 utilisateurDto.getPassword());
 
         //Si l'utilisateur est trouvé en BD et renvoyé
@@ -98,7 +93,6 @@ public class ConnecterController {
 
     @ModelAttribute("utilisateurDto")
     private UtilisateurDto retournerDto() {
-        final UtilisateurDto utilisateurDto = new UtilisateurDto();
-        return utilisateurDto;
+        return new UtilisateurDto();
     }
 }
