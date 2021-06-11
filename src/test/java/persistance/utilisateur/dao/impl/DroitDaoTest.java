@@ -55,8 +55,11 @@ class DroitDaoTest {
     @Test
     void testFindRole() {
         final DroitDo droit = new DroitDo();
-        droit.setUrl("contact.do");
+        droit.setUrl("listerUtilisateur.do");
 
+        Assertions.assertEquals(1, this.droitDao.findRole(droit).size());
+
+        droit.setUrl("contact.do");
         Assertions.assertEquals(3, this.droitDao.findRole(droit).size());
     }
 
