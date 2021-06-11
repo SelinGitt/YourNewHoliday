@@ -5,6 +5,7 @@ package presentation.controller.temp;
 
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import service.util.DecimalFormatUtils;
 
 /**
  * Class represents RemplirPanier : static methods provider
@@ -28,24 +29,24 @@ public class RemplirPanier {
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
         produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
-        produitDto1.setPrixUnitaire("200");
+        produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30));
         produitDto1.setNom("Voyage au royaume uni de Grange Bretagne et d'Irlande du nord");
-        produitDto1.setReference("0236544ddf");
+        produitDto1.setReference("ABC1234567");
         produitDto1.setCheminImage(null);
         // ProduitDto2
         final var produitDto2 = new ProduitDto();
         produitDto2.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
-        produitDto2.setPrixUnitaire("123");
+        produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(9000.00));
         produitDto2.setNom("Voyage aux états unis d'Amérique");
-        produitDto2.setReference("0298544ddf");
+        produitDto2.setReference("CCC1865521");
         produitDto2.setCheminImage(null);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
         produitDto3.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu d etexte ne plus pour tester l'affichage");
-        produitDto3.setPrixUnitaire("12300");
+        produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(12000.00));
         produitDto3.setNom("Voyage au Canada");
-        produitDto3.setReference("0298544ddf");
+        produitDto3.setReference("AAA1256568");
         produitDto3.setCheminImage(null);
 
         // add products to PanierDto
