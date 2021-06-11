@@ -15,15 +15,18 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -3802874782633152462L;
+    private static final long serialVersionUID = -1858474764496664661L;
 
     private String            email;
     private String            password;
+    private String            confirmPassword;
     private String            reference;
     private String            nom;
     private String            prenom;
+    private String            adresse;
     private String            dateInscription;
-    private Boolean           estActif;
+    private String            dateNaissance;
+    private Boolean           estDesactive;
     private RoleDto           role;
 
     /**
@@ -135,21 +138,21 @@ public class UtilisateurDto implements Serializable {
     }
 
     /**
-     * Getter for estActif
+     * Getter for estDesactive
      *
-     * @return the estActif
+     * @return the estDesactive
      */
-    public Boolean getEstActif() {
-        return estActif;
+    public Boolean getEstDesactive() {
+        return estDesactive;
     }
 
     /**
-     * Setter for estActif
+     * Setter for estDesactive
      *
-     * @param estActif the estActif to set
+     * @param estDesactive the estActif to set
      */
-    public void setEstActif(final Boolean estActif) {
-        this.estActif = estActif;
+    public void setEstDesactive(final Boolean estDesactive) {
+        this.estDesactive = estDesactive;
     }
 
     /**
@@ -168,6 +171,60 @@ public class UtilisateurDto implements Serializable {
      */
     public void setRole(final RoleDto role) {
         this.role = role;
+    }
+
+    /**
+     * Getter for confirmPassword
+     *
+     * @return the confirmPassword
+     */
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    /**
+     * Setter for confirmPassword
+     *
+     * @param confirmPassword the confirmPassword to set
+     */
+    public void setConfirmPassword(final String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
+    /**
+     * Getter for dateNaissance
+     *
+     * @return the dateNaissance
+     */
+    public String getDateNaissance() {
+        return dateNaissance;
+    }
+
+    /**
+     * Setter for dateNaissance
+     *
+     * @param dateNaissance the dateNaissance to set
+     */
+    public void setDateNaissance(final String dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    /**
+     * Getter for adresse
+     *
+     * @return the adresse
+     */
+    public String getAdresse() {
+        return adresse;
+    }
+
+    /**
+     * Setter for adresse
+     *
+     * @param adresse the adresse to set
+     */
+    public void setAdresse(final String adresse) {
+        this.adresse = adresse;
     }
 
 }
