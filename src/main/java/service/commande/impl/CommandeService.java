@@ -47,7 +47,8 @@ public class CommandeService implements ICommandeService {
     }
 
     /**
-     * Permet de trier une liste de CommandeDo à partir des dates dans l'ordre antéchronologie
+     * Permet de trier une liste de CommandeDo à partir des dates dans l'ordre antéchronologique<br/>
+     * pour la règle de gestion CMD_00_RG_01
      *
      * @param listCommandeDo la liste à trier
      */
