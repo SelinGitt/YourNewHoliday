@@ -3,6 +3,7 @@
  */
 package presentation.produit.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.produit.dto.ProduitDto;
+import service.produit.IProduitService;
 
 /**
  * Classe représentant le controller pour creer un produit en tant qu'admin
@@ -21,10 +23,14 @@ import presentation.produit.dto.ProduitDto;
 @RequestMapping(value = "/creerProduitAdmin.do")
 public class CreerProduitAdminController {
 
+    @Autowired
+    private IProduitService iProduitService;
+
     /**
-     * Permet de traiter une requête de type GET
+     * Permet de traiter une requête de type GET<br/>
+     * et de mettre un ProduitDto vide dans la modelMap
      *
-     * @return liste de produits pour le model et la vue associée
+     * @return le model et la vue associée
      */
     @GetMapping
     public ModelAndView voirFormulaireCreerProduit() {
@@ -35,13 +41,16 @@ public class CreerProduitAdminController {
     }
 
     /**
-     * Méthode POST pour la création d'un produit via un formulaire
+     * Méthode POST pour la création d'un produit via un formulaire<br/>
+     * et de creer un nouveau produit
      *
      * @param  produitDto le produit Dto utilisé pour le binding
      * @return            vers une creerProduitAdmin.jsp
      */
     @PostMapping
     public ModelAndView creerProduit(final @ModelAttribute("produitDto") ProduitDto produitDto) {
+        
+        iProduitService.creerProduit(produitDto);
         return new ModelAndView("creerProduitAdmin");
     }
 }

@@ -12,8 +12,8 @@
         <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th></th>
-                    <th></th>
+                    <th><form:hidden path="idProduitOriginal" value="0" /></th>
+                    <th><form:hidden path="version" value="1"/></th>
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.nom" /></td>
@@ -33,20 +33,13 @@
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.prix" /></td>
-                    <td><form:input path="nom" /></td>
+                    <td><form:input path="prixUnitaire" /></td>
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.miseEnVente" /></td>
-                    <td class="formPDT03Radio">
-                        <div class="pdt03DivRadio">
-                            <form:radiobutton path="miseEnVente" value="true" />
-                            <spring:message code="form.pdt03.oui" />
-                        </div>
-                        <div class="pdt03DivRadio">
-                            <form:radiobutton path="miseEnVente" value="false" />
-                            <spring:message code="form.pdt03.non" />
-                        </div>
-                    </td>
+                    <td class="formPDT03Radio"><form:radiobutton path="miseEnVente" value="true" /> <spring:message
+                            code="form.pdt03.oui" /> <form:radiobutton path="miseEnVente" value="false" /> <spring:message
+                            code="form.pdt03.non" /></td>
 
                 </tr>
                 <tr>
@@ -90,7 +83,7 @@
     <div class="grid-item logoService">
         <table class="listeService" aria-label="liste des services disponibles">
             <tr>
-                <th></th>
+                <th><form:hidden path="services" value="4"/></th>
                 <th></th>
                 <th></th>
             </tr>

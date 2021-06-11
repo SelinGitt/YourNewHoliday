@@ -36,4 +36,10 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
     }
+
+    @Override
+    public ProduitDto creerProduit(final ProduitDto produitDto) {
+        final var produitDo = ProduitMapper.mapToDo(produitDto);
+        return ProduitMapper.mapToDto(produitDao.create(produitDo));
+    }
 }
