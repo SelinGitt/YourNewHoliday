@@ -6,7 +6,9 @@ package presentation.produit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.produit.IProduitService;
@@ -18,7 +20,7 @@ import service.produit.IProduitService;
  */
 @Controller
 @RequestMapping(value = {"/listerProduits.do", "/"})
-public class ListerController {
+public class ListerProduitsController {
 
     @Autowired
     private IProduitService iProduitService;
@@ -33,6 +35,23 @@ public class ListerController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
         modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
+        return modelAndView;
+    }
+
+    /**
+     * Permet de traiter une requete de type GET
+     * 
+     * @param  searchInput terme recherché
+     * @return             liste de produits pour le model et la vue associée
+     */
+    @PostMapping
+    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+        final var modelAndView = new ModelAndView("listerProduits");
+        modelAndView.addObject("searchTerm", searchInput);
+        if (searchInput.isEmpty()) {
+            return new ModelAndView("redirect:/");
+        }
+        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
         return modelAndView;
     }
 }
