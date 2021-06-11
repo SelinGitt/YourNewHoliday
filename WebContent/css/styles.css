@@ -308,6 +308,24 @@ td.name {
 	display: flex;
 }
 
+.searchBar {
+	display: flex;
+	justify-content: flex-end;
+	align-content: flex-end;
+	align-items: flex-end;
+}
+
+.searchBarInside {
+	outline: none;
+	border-radius: 30px;
+	border: 2px solid grey;
+	border-radius: 30px;
+}
+
+.searchBarOk {
+	cursor: pointer;
+}
+
 tr.lineRow {
 	display: flex;
 }
