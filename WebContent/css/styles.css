@@ -205,7 +205,7 @@ h1 {
 .user05 {
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .user05 .leftSideUser05 {
@@ -246,7 +246,7 @@ h1 {
 .user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
 	background-color: rgb(224, 102, 102);
 }
-	
+
 .user05 .leftSideUser05 form table tr td input {
 	width: 100%;
 }
@@ -256,7 +256,6 @@ h1 {
 }
 
 /* USR07 */
-
 .boutonValiderUSR07 {
 	background-color: #008000;
 	Color: white;
@@ -410,6 +409,11 @@ td.description {
 	padding-left: 5%;
 }
 
+.panier-elements-a-droite {
+	width: 90%;
+	padding-left: 5%;
+}
+
 .panier-tab {
 	border: 1px solid black;
 }
@@ -417,10 +421,6 @@ td.description {
 .panier-tab-bordure {
 	border: 1px solid black;
 	height: 25vh;
-}
-
-.panier-elements-a-droite {
-	width: 85%;
 }
 
 .panier-ligne-chiffre {

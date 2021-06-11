@@ -10,10 +10,8 @@
 <div class="panier-display-flex">
     <div>
         <fieldset class="panier-left panier-overflow-auto">
-
             <%--  TODO Q2 : Couleur et taille factorisation ? --%>
             <legend>Mon Panier</legend>
-
             <table class="panier-tab">
                 <tbody>
                     <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">

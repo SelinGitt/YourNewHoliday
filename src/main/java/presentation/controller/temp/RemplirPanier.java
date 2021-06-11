@@ -51,7 +51,6 @@ public class RemplirPanier {
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, 6);
-        // TODO Q incrément ?
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, 2);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
