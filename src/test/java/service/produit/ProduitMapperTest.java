@@ -33,6 +33,7 @@ class ProduitMapperTest {
         assertEquals("Description de test", produitDoCompare.getDescription());
         assertEquals("Destination de test", produitDoCompare.getDestination());
         assertEquals("Hebergement de test", produitDoCompare.getHebergement());
+        //FIXME : corriger le test avec l'id
         assertEquals(111, produitDoCompare.getIdProduitOriginal());
         assertEquals("nom de test", produitDoCompare.getNom());
         assertTrue(produitDoCompare.getMiseEnVente());

@@ -31,7 +31,8 @@ public class ProduitMapper {
             return null;
         }
         final var produitDo = new ProduitDo();
-        produitDo.setIdProduitOriginal(Integer.valueOf(produitDto.getIdProduitOriginal()));
+        //FIXME : l'id est null pour la creation mais aura une valeur pour l'édition
+        produitDo.setIdProduitOriginal(null);
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
         produitDo.setReference(produitDto.getReference());
         produitDo.setNom(produitDto.getNom());

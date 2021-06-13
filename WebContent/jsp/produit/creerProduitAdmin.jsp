@@ -13,8 +13,9 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th><form:hidden path="idProduitOriginal" value="-1" /></th>
-                    <th><form:hidden path="version" value="1" /></th>
+                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version" value="1" />
+                        <form:hidden path="cheminImage" value="D:/Test" /></th>
+                    <th></th>
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.nom" /></td>
