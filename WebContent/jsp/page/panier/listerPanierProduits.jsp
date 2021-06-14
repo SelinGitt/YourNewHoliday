@@ -12,11 +12,11 @@
         <fieldset class="panier-left panier-overflow-auto">
             <%--  TODO Q2 : Couleur et taille factorisation ? --%>
             <legend>Mon Panier</legend>
-            <table class="panier-tab">
+            <table class="panier-bordure-1px">
                 <tbody>
                     <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
                         <tr>
-                            <td class="panier-tab-bordure panier-display-flex">
+                            <td class="panier-tab-ligne panier-bordure-1px panier-display-flex">
                                 <div>
                                     <img class="panier-responsive panier-image-produit"
                                         src="img/panier/produitSample.jpg" alt="image produit" />
@@ -28,21 +28,21 @@
                                     <div>${entry.key.description}</div>
                                 </div>
                             </td>
-                            <td class="panier-tab-bordure panier-prix-unitaire"><div>
+                            <td class="panier-tab-ligne panier-bordure-1px panier-prix-unitaire"><div>
                                     <h3>Prix unitaire</h3>
                                 </div>
                                 <div class="panier-justify-content-center panier-display-flex">
                                     ${entry.key.prixUnitaire}</div></td>
-                            <td class="panier-tab-bordure panier-quantite"><div>
+                            <td class="panier-tab-ligne panier-bordure-1px panier-quantite panier-text-align-center"><div>
                                     <h3>Quantité</h3>
                                 </div>
                                 <div class="panier-display-flex">
                                     <button type="button">-</button>
-                                    <span><input class="panier-quantite" type="text" id="panier-quantite"
+                                    <span><input class="panier-quantite panier-text-align-center" type="text" id="panier-quantite"
                                         name="panier-quantite" size="1" value=${entry.value}></span>
                                     <button type="button">+</button>
                                 </div></td>
-                            <td class="panier-tab-bordure"><div>
+                            <td class="panier-tab-ligne panier-bordure-1px"><div>
                                     <div class="panier-supprimer">
                                         <h3>Supprimer</h3>
                                     </div>
@@ -55,7 +55,7 @@
                     </c:forEach>
                 </tbody>
             </table>
-            <div class="panier-vider panier-display-flex panier-align-item-center">
+            <div class="panier-vider panier-flex-direction-row-reverse panier-display-flex panier-align-item-center">
                 <button type="button">Vider le panier</button>
             </div>
         </fieldset>
@@ -67,26 +67,27 @@
                 <div>
                     <h3>${entry.key.nom}-${entry.key.reference}</h3>
                 </div>
-                <div>Prix unitaire : ${entry.key.prixUnitaire}</div>
-                <div>Quantité : ${entry.value}</div>
+                <div class="panier-display-flex panier-justify-content-space-between panier-ligne-prix-unitaire">Prix unitaire <span><spring:message code="pan00.deuxpoints" /></span> ${entry.key.prixUnitaire}€</div>
+               
+                <div class="panier-display-flex panier-justify-content-space-between panier-ligne-quantite"><span><spring:message code="pan00.quantite" /></span><span><spring:message code="pan00.deuxpoints" /></span><span>${entry.value}</span></div>
 
                 <div>Prix :</div>
             </c:forEach>
         </fieldset>
         <div class="panier-elements-a-droite">
-            <div class="panier-ligne-chiffre panier-display-flex panier-align-item-center">
+            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
                 <h3>Total avant remise</h3>
                 <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13">
             </div>
-            <div class="panier-ligne-chiffre panier-display-flex panier-align-item-center">
+            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
                 <h3>Remise</h3>
                 <input type="text" id="remise" name="remise" maxlength="13">
             </div>
-            <div class="panier-ligne-chiffre panier-display-flex panier-align-item-center">
+            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
                 <h3>Total après remise</h3>
                 <input type="text" id="total_après_remise" name="total_après_remise" maxlength="13">
             </div>
-            <div class="panier-valider panier-display-flex panier-align-item-center">
+            <div class="panier-justify-content-center panier-display-flex panier-align-item-center">
                 <button type="button">Valider le panier</button>
             </div>
 

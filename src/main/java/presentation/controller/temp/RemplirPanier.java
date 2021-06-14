@@ -3,6 +3,8 @@
  */
 package presentation.controller.temp;
 
+import java.util.Locale;
+
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.util.DecimalFormatUtils;
@@ -29,7 +31,7 @@ public class RemplirPanier {
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
         produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
-        produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30));
+        produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30, Locale.FRANCE));
         produitDto1.setNom("Voyage au royaume uni de Grange Bretagne et d'Irlande du nord");
         produitDto1.setReference("ABC1234567");
         produitDto1.setCheminImage(null);

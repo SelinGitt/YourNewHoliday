@@ -368,20 +368,42 @@ td.description {
 /* FEATURE TEAM PANIER */
 /* PAN00 */
 /* CSS factorisé */
+/* active flex*/
 .panier-display-flex {
 	display: flex;
 }
-
-.panier-justify-content-center {
-	justify-content: center;
-}
-
+/* ascenseur */
 .panier-overflow-auto {
 	overflow: auto;
 }
 
+/* alignement horizontale */
+.panier-justify-content-center {
+	justify-content: center;
+}
+
+.panier-justify-content-space-between {
+	justify-content: space-between;
+}
+
+/* alignement vertical */
 .panier-align-item-center {
 	align-items: center;
+}
+
+/* alignement text horizontal */
+.panier-text-align-center {
+	text-align: center;
+}
+
+/* inversion le sens des éléments flex */
+.panier-flex-direction-row-reverse{
+	flex-direction: row-reverse;
+}
+
+/* bordures */
+.panier-bordure-1px{
+	border: 1px solid black;
 }
 /* CSS specifique */
 
@@ -389,6 +411,10 @@ td.description {
 .panier-responsive {
 	width: 50px;
 	height: auto;
+}
+
+.panier-format {
+	width: 6em;
 }
 
 .panier-image-produit {
@@ -414,25 +440,19 @@ td.description {
 	padding-left: 5%;
 }
 
-.panier-tab {
-	border: 1px solid black;
-}
-
-.panier-tab-bordure {
-	border: 1px solid black;
+.panier-tab-ligne {	
 	height: 25vh;
 }
 
-.panier-ligne-chiffre {
-	justify-content: space-between;
+.panier-ligne-prix-unitaire {
+	width: 50%;
 }
 
-.panier-valider {
-	justify-content: center;
+.panier-ligne-quantite {
+	width: 44%;
 }
 
-.panier-vider {
-	flex-direction: row-reverse;
+.panier-vider {	
 	margin-top: 1.5em;
 	margin-right: 1.5em;
 }
@@ -443,7 +463,6 @@ td.description {
 
 .panier-quantite {
 	width: 1.7em;
-	text-align: center;
 }
 
 .panier-supprimer {
