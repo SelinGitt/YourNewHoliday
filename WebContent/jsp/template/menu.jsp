@@ -1,7 +1,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="sidebar">
     <a href="#home"><i class="fa fa-globe"></i>
-        <p>Catalogue</p></a>
+<!--         <p>Catalogue</p></a> -->
+<p>                <spring:message code="menu.lien.catalogue" /></p>
+
     <p class="bar_menu">_________</p>
     <a href="#clients"><i class="fa fa-fw fa-user"></i>
         <p>Mon Profil</p></a> <a href="#contact"><i class="fa fa-history"></i>

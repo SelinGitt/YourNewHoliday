@@ -13,8 +13,8 @@
     <header>
         <tiles:insertAttribute name="header" />
     </header>
-    <!--     regrouper aside et section afin de facilité la manipulation et d'avoir le rendu souhaité sans détours  -->
-    <div id="content">
+    <%--regrouper aside et section afin de facilité la manipulation et d'avoir le rendu souhaité sans détours --%>
+    <div class="content">
         <aside>
             <tiles:insertAttribute name="menu" />
         </aside>
