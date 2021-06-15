@@ -38,6 +38,7 @@ aside {
 	top: 0px;
 	display: flex;
 	overflow: auto;
+	margin-top: 8vh;
 }
 
 /* taille de la section */
@@ -127,20 +128,36 @@ h1 {
 /* MENU */
 /* Side Bar */
 .sidebar {
-	width: 100%;
+	width: 80%;
 	min-width: 160px;
 	background-color: transparent;
 	padding-top: 16px;
+	display:flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 aside {
 	justify-content: center;
 }
-
+.link-container {
+	width: 90%;
+	margin:auto;
+}
+.link-container.underline {
+	border-bottom: 3px solid black;
+	padding-bottom: 20px;
+}
+.link-container.admin {
+	padding: 8px 0px;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+}
 .sidebar p {
 	font-size: 20px;
 	margin: auto;
-	width: 110px;
+	max-width: 300px;
+	min-width: 110px;
 	text-align: center;
 }
 
@@ -150,8 +167,6 @@ aside {
 }
 
 .sidebar a {
-	padding: 6px 20px 6px 16px;
-	margin: 27px 0px 0px 0px;
 	text-decoration: none;
 	font-size: 25px;
 	color: black;

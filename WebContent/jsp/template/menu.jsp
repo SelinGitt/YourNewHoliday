@@ -1,15 +1,48 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<div class="sidebar">
-    <a href="#home"><i class="fa fa-globe"></i>
-<!--         <p>Catalogue</p></a> -->
-<p>                <spring:message code="menu.lien.catalogue" /></p>
 
-    <p class="bar_menu">_________</p>
-    <a href="#clients"><i class="fa fa-fw fa-user"></i>
-        <p>Mon Profil</p></a> <a href="#contact"><i class="fa fa-history"></i>
-        <p>Mes Commandes</p></a>
-    <p class="admin_bar">Administration</p>
-    <a href="#clients"><i class="fa fa-cart-plus"></i>
-        <p>Gestion produits</p> </a> <a href="#contact"><i class="fa fa-address-card-o"></i>
-        <p>Gestion Clients</p> </a>
+<div class="sidebar">
+    <div class="link-container underline">
+        <a href="#home"> <i class="fa fa-globe"></i>
+            <p>
+                <spring:message code="menu.lien.catalogue" />
+            </p>
+        </a>
+    </div>
+    <div class="link-container">
+        <a href="#clients"> <i class="fa fa-fw fa-user"></i>
+            <p>
+                <spring:message code="menu.lien.profil" />
+            </p>
+        </a>
+    </div>
+    <div class="link-container">
+        <a href="#contact"> <i class="fa fa-history"></i>
+            <p>
+                <spring:message code="menu.lien.commandes" />
+            </p>
+        </a>
+    </div>
+
+    <div class="link-container admin">
+        <p>
+            <spring:message code="menu.administration" />
+        </p>
+    </div>
+
+    <div class="link-container">
+        <a href="#contact"> <i class="fa fa-cart-plus"></i>
+            <p>
+                <spring:message code="menu.lien.gestion.produits" />
+            </p>
+        </a>
+    </div>
+
+    <div class="link-container">
+        <a href="#contact"> <i class="fa fa-address-card-o"></i>
+            <p>
+                <spring:message code="menu.lien.gestion.clients" />
+            </p>
+        </a>
+    </div>
+
 </div>
