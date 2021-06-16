@@ -37,4 +37,18 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste des produits trouvés
      */
     List<ProduitDo> rechercherProduits(final String searchTerm);
+
+    /**
+     * Permet de lister les produits par ordre croissant
+     *
+     * @return liste triée
+     */
+    List<ProduitDo> listerCroissant();
+
+    /**
+     * Permet de lister les produits par ordre décroissant
+     *
+     * @return liste triée
+     */
+    List<ProduitDo> listerDecroissant();
 }

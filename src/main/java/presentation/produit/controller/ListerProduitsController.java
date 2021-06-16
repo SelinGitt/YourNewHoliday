@@ -39,19 +39,47 @@ public class ListerProduitsController {
     }
 
     /**
-     * Permet de traiter une requete de type GET
+     * Permet de traiter une requete de type POST
      * 
      * @param  searchInput terme recherché
      * @return             liste de produits pour le model et la vue associée
      */
+//    @PostMapping
+//    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+//        final var modelAndView = new ModelAndView("listerProduits");
+//        modelAndView.addObject("searchTerm", searchInput);
+//        if (searchInput.isEmpty()) {
+//            return new ModelAndView("redirect:/");
+//        }
+//        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+//        return modelAndView;
+//    }
+
+    /**
+     * Permet de traiter une requete de type POST
+     *
+     * @param  prix_croissant ordre de tri
+     * @return                liste triée
+     */
     @PostMapping
-    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+    public ModelAndView listerCroissant(final @RequestParam(value = "prix_croissant") String prix_croissant) {
         final var modelAndView = new ModelAndView("listerProduits");
-        modelAndView.addObject("searchTerm", searchInput);
-        if (searchInput.isEmpty()) {
-            return new ModelAndView("redirect:/");
-        }
-        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+        modelAndView.addObject("prix_croissant", prix_croissant);
+        modelAndView.addObject("prix_croissant", iProduitService.listerCroissant());
         return modelAndView;
     }
+
+    /**
+     * Permet de traiter une requete de type POST
+     *
+     * @param  prix_decroissant ordre de tri
+     * @return                  liste triée
+     */
+//    @PostMapping
+//    public ModelAndView listerDecroissant(final @RequestParam(value = "prix_decroissant") String prix_decroissant) {
+//        final var modelAndView = new ModelAndView("listerProduits");
+//        modelAndView.addObject("prix_decroissant", prix_decroissant);
+//        modelAndView.addObject("prix_decroissant", iProduitService.listerDecroissant());
+//        return modelAndView;
+//    }
 }

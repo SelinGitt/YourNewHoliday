@@ -43,4 +43,18 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
+
+    /**
+     * Permet de lister par ordre croissant
+     *
+     * @return liste triée
+     */
+    List<ProduitDto> listerCroissant();
+
+    /**
+     * Permet de lister par ordre décroissant
+     *
+     * @return liste triée
+     */
+    List<ProduitDto> listerDecroissant();
 }
