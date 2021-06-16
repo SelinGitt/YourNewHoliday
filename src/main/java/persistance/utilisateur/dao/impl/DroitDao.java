@@ -3,10 +3,6 @@
  */
 package persistance.utilisateur.dao.impl;
 
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,15 +26,5 @@ public class DroitDao extends AbstractGenericDao<DroitDo> implements IDroitDao {
     public DroitDao() {
         // on utilise le constructeur de la superclass avec DroitDo.class pour récupérer la classe de l'entité.
         super(DroitDo.class);
-    }
-
-    @Override
-    public List<String> findRole(final DroitDo droit) {
-        final TypedQuery<String> query = entityManager.createQuery(
-                "SELECT r.libelle FROM RoleDo r, DroitDo d, PossedeDo p WHERE d.url = :urlDroit AND d.id = p.droit.idDroit AND p.role.idRole = r.id",
-                String.class);
-        query.setParameter("urlDroit", droit.getUrl());
-
-        return query.getResultList();
     }
 }

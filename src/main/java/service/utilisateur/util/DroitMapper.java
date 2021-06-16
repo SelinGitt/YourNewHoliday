@@ -35,6 +35,7 @@ public class DroitMapper {
 
         droitDto.setIdDroit(droitDo.getIdDroit());
         droitDto.setUrl(droitDo.getUrl());
+        droitDto.setPossede(PossedeMapper.mapperToListDto(droitDo.getPossede()));
 
         return droitDto;
     }

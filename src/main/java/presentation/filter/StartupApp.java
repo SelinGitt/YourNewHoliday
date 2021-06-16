@@ -3,6 +3,7 @@
  */
 package presentation.filter;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import presentation.utilisateur.dto.DroitDto;
+import presentation.utilisateur.dto.PossedeDto;
 import service.utilisateur.IDroitService;
 
 /**
@@ -23,13 +25,13 @@ import service.utilisateur.IDroitService;
 @Component
 public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    private IDroitService                         droitService;
-
     /**
      * Map qui contient url + droits
      */
-    public static final Map<String, List<String>> mapDroit = new HashMap<>();
+    public static final Map<String, List<String>> DROITS = new HashMap<>();
+
+    @Autowired
+    private IDroitService                         droitService;
 
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
@@ -38,7 +40,13 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
         //        listDroit.stream().map(DroitDo::getUrl).forEach(Assertions::assertNotNull);
 
         for (final DroitDto droit : listDroit) {
-            mapDroit.put(droit.getUrl(), this.droitService.findRole(droit));
+            final List<String> listRole = new ArrayList<>();
+
+            for (final PossedeDto possede : droit.getPossede()) {
+                listRole.add(possede.getRoleDto().getLibelle());
+            }
+
+            DROITS.put(droit.getUrl(), listRole);
         }
     }
 }

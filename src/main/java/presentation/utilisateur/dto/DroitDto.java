@@ -4,6 +4,7 @@
 package presentation.utilisateur.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Classe pour Droit Dto
@@ -15,11 +16,13 @@ public class DroitDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = 5037471217411182997L;
+    private static final long serialVersionUID = 1738455666059639407L;
 
     private int               idDroit;
 
     private String            url;
+
+    private List<PossedeDto>  possede;
 
     /**
      * Getter for idDroit
@@ -56,4 +59,23 @@ public class DroitDto implements Serializable {
     public void setUrl(final String url) {
         this.url = url;
     }
+
+    /**
+     * Getter for possede
+     *
+     * @return the possede
+     */
+    public List<PossedeDto> getPossede() {
+        return possede;
+    }
+
+    /**
+     * Setter for possede
+     *
+     * @param possede the possede to set
+     */
+    public void setPossede(final List<PossedeDto> possede) {
+        this.possede = possede;
+    }
+
 }

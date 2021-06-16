@@ -20,12 +20,4 @@ public interface IDroitService {
      * @return List de DroitDto ou EmptyList
      */
     List<DroitDto> findAll();
-
-    /**
-     * Permet de trouver les roles lie a un droit
-     *
-     * @param  droit Droit ou il faut trouver les roles
-     * @return       List des libelle des roles
-     */
-    List<String> findRole(final DroitDto droit);
 }

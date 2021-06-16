@@ -33,9 +33,4 @@ public class DroitService implements IDroitService {
         return DroitMapper.mapperToListDto(this.iDroitDao.findAll());
     }
 
-    @Override
-    public List<String> findRole(final DroitDto droit) {
-        return this.iDroitDao.findRole(DroitMapper.mapperToDo(droit));
-    }
-
 }
