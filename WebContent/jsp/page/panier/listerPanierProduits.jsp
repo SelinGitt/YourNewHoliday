@@ -151,6 +151,8 @@
                         <spring:message code="pan00.prix.bis" />
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
+                    <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
+                    <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
                     <span>50,50 <spring:message code="glb.devise" />
                     </span>
                 </div>

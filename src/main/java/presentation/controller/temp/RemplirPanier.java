@@ -55,13 +55,9 @@ public class RemplirPanier {
         produitDto3.setCheminImage(null);
 
         // add products to PanierDto
-        System.out.println("avant : " + panierDto.getMapPanier().size());
         panierDto.getMapPanier().put(produitDto1, 6);
-        System.out.println("après la première insertion : " + panierDto.getMapPanier().size());
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, 2);
-        System.out.println(panierDto.getMapPanier().keySet());
-        System.out.println("après la deuxième insertion : " + panierDto.getMapPanier().size());
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto3, 128);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
