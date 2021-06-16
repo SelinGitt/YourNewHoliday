@@ -27,12 +27,12 @@
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
-            <c:if test="${utilisateur.idRole == '2'}">
+            <c:if test="${utilisateur.idRole == 'null'}">
                 <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
                 </a>
             </c:if>
-            <c:if test="${utilisateur.idRole != '2'}">
+            <c:if test="${utilisateur.idRole != 'null'}">
                 <a href=""> <img src="img/template/header/connexion.png" class="logoHeader" alt="icône déconnexion">
                 </a>
             </c:if>
@@ -40,11 +40,11 @@
         <%--  suivi du texte "Connexion" ou "Déconnexion" en fonction --%>
         <div class="headerSousCell">
             <h3>
-                <c:if test="${utilisateur.idRole == '2'}">
+                <c:if test="${utilisateur.idRole == 'null'}">
                     <spring:message code="header.deconnexion" />
 
                 </c:if>
-                <c:if test="${utilisateur.idRole != '2'}">
+                <c:if test="${utilisateur.idRole != 'null'}">
                     <spring:message code="header.connexion" />
 
                 </c:if>
@@ -53,7 +53,7 @@
     </div>
     <%--  et enfin d'une icône cliquable pour créer un compte si on n'est pas connecté --%>
     <%--  ou pour accéder au panier si on est connecté --%>
-    <c:if test="${utilisateur.idRole == '2'}">
+    <c:if test="${utilisateur.idRole == 'null'}">
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
                 <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader" alt="icône panier vide">
@@ -68,7 +68,7 @@
         </div>
     </c:if>
 
-    <c:if test="${utilisateur.idRole != '2'}">
+    <c:if test="${utilisateur.idRole != 'null'}">
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
                 <a href=""> <img src="img/template/header/creerCompte.png" class="logoHeader"
