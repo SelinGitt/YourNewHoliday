@@ -35,7 +35,8 @@
             </c:if>
 
             <c:if test="${empty sessionScope.utilisateur}">
-                <a href=""> <img src="img/template/header/connexion.png" class="logoHeader" alt="icône déconnexion">
+                <a href="connecter.do"> <img src="img/template/header/connexion.png" class="logoHeader"
+                    alt="icône déconnexion">
                 </a>
             </c:if>
         </div>
