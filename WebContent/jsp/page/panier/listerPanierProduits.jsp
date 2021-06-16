@@ -17,7 +17,7 @@
             </legend>
 
             <%--  tableau --%>
-            <table class="panier-bordure-1px">
+            <table class="panier-bordure-1px" aria-label="tableau panier">
                 <tbody>
                     <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
                         <tr>
