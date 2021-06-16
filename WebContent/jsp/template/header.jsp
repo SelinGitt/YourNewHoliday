@@ -27,7 +27,7 @@
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
-            <c:if test="${utilisateur.idRole == 'null'}">
+            <c:if test="${utilisateur == 'null'}">
                 <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
                 </a>
