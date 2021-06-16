@@ -1,5 +1,4 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="header">
     <%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
@@ -29,11 +28,13 @@
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
     <div id="headerConnexion" class="headerCell">
         <div class="headerSousCell">
+
             <c:if test="${!empty sessionScope.utilisateur}">
                 <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
                 </a>
             </c:if>
+
             <c:if test="${empty sessionScope.utilisateur}">
                 <a href=""> <img src="img/template/header/connexion.png" class="logoHeader" alt="icône déconnexion">
                 </a>
@@ -42,20 +43,23 @@
         <%--  suivi du texte "Connexion" ou "Déconnexion" en fonction --%>
         <div class="headerSousCell">
             <h3>
+
                 <c:if test="${!empty sessionScope.utilisateur}">
                     <spring:message code="header.deconnexion" />
 
                 </c:if>
                 <c:if test="${empty sessionScope.utilisateur}">
-                    <spring:message code="header.connexion" />
-
+                    <spring:message code="header.deconnexion" />
                 </c:if>
+
             </h3>
         </div>
     </div>
     <%--  et enfin d'une icône cliquable pour créer un compte si on n'est pas connecté --%>
     <%--  ou pour accéder au panier si on est connecté --%>
+
     <c:if test="${!empty sessionScope.utilisateur}">
+
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
                 <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader" alt="icône panier vide">
@@ -70,6 +74,7 @@
         </div>
     </c:if>
 
+
     <c:if test="${empty sessionScope.utilisateur}">
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
@@ -80,7 +85,7 @@
             <%--"Créer un compte"--%>
             <div class="headerSousCell">
                 <h3>
-                    <spring:message code="header.creerCompte" />
+                    <spring:message code="header.creer.compte" />
                 </h3>
             </div>
         </div>
