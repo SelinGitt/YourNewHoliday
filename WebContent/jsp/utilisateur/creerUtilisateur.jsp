@@ -63,6 +63,6 @@
     </div>
 
     <div class="rightSideUser05">
-        <p>Section avatar & co</p>
+        <p>Section avatar And co</p>
     </div>
 </div>
