@@ -10,18 +10,17 @@
 		<project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
 		<!-- les versions des dépendances -->
 		<spring.version>5.3.5</spring.version>
-		<hibernate.version>5.4.28.Final</hibernate.version>
+		<hibernate.core.version>5.4.28.Final</hibernate.core.version>
 		<mysql.connector.version>8.0.23</mysql.connector.version>
 		<dbcp2.version>2.8.0</dbcp2.version>
 		<junit.version>5.7.1</junit.version>
-		<maven.version>4.0.1</maven.version>
-		<javax.servlet.version>4.0.1</javax.servlet.version>
 		<junit.plateform.version>1.7.0</junit.plateform.version>
+		<junit.jupiter.version>5.7.0</junit.jupiter.version>
+		<javax.servlet.version>4.0.1</javax.servlet.version>
 		<jstl.version>1.2</jstl.version>
 		<tiles.version>3.0.8</tiles.version>
-		<mockito.version>3.8.0</mockito.version>
-		<junit.jupiter.version>5.7.0</junit.jupiter.version>
-		<lockback.version>1.2.3</lockback.version>
+		<mockito.core.version>3.8.0</mockito.core.version>
+		<logback.classic.version>1.2.3</logback.classic.version>
 
 		<!-- les versions des Plugins -->
 		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
@@ -234,7 +233,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
+			<version>${hibernate.core.version}</version>
 		</dependency>
 
 		<!-- Pour utiliser la JSTL dans les JSP : -->
@@ -266,7 +265,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>${mockito.version}</version>
+			<version>${mockito.core.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -274,7 +273,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>${lockback.version}</version>
+			<version>${logback.classic.version}</version>
 		</dependency>
 	</dependencies>
 </project>
