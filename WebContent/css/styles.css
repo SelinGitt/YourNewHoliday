@@ -326,7 +326,6 @@ aside {
 }
 
 /* USR07 */
-
 .boutonValiderUSR07 {
 	background-color: #008000;
 	Color: white;
@@ -459,7 +458,7 @@ legend.commandeLegendCMD00 {
 }
 
 /* style pour une page sans commande */
-div.commandeVideCMD00 {
+div.commandeVideCMD00, div.commandeCMD00GRille {
 	text-align: center;
 }
 
@@ -483,13 +482,14 @@ div.commandeCMD00GRille {
 }
 
 div.commandeVideCMD00 {
-	margin: auto;
+	margin: inherit;
+	font-size: 1.15em;
 }
 
 /* création de la grille */
 div.commandeLineCMD00 {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 10px;
 	margin: 5px;
 }
@@ -510,35 +510,55 @@ div.commandeReferenceCMD00 {
 }
 
 /* colonne 2 */
-div.commandePrixTotalCMD00 {
+div.commandeQuantiteTotaleCMD00 {
 	grid-column: 2;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 1.75fr 0.25fr;
 	grid-gap: 1px;
 }
 
 /* colonne 2.1 */
-div.commandePrixTotalTextCMD00 {
+div.commandeQuantiteTotaleTextCMD00 {
 	grid-column: 1;
-	width: 65%;
+	text-align: right;
 }
 
 /* colonne 2.2 */
+div.commandeQuantiteTotaleValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+}
+
+/* colonne 3 */
+div.commandePrixTotalCMD00 {
+	grid-column: 3;
+	display: grid;
+	grid-template-columns: 1.15fr 0.85fr;
+	grid-gap: 1px;
+}
+
+/* colonne 3.1 */
+div.commandePrixTotalTextCMD00 {
+	grid-column: 1;
+	text-align: right;
+}
+
+/* colonne 3.2 */
 div.commandePrixTotalValueCMD00 {
 	grid-column: 2;
 	text-align: right;
 	font-weight: bold;
-	width: 60%;
 }
 
-/* colonne 3 */
+/* colonne 4 */
 div.commandeDateCMD00 {
-	grid-column: 3;
+	grid-column: 4;
 }
 
 /* espace entre la bordure et le texte */
-div.commandeReferenceCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
-	padding: 5px;
+div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+	padding: 0.9375em;
+	font-size: 1.05em;
 }
 
 /* CMD04 */
