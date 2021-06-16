@@ -4,6 +4,8 @@
 package service.produit.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
 
@@ -60,5 +62,21 @@ class ProduitServiceTest {
         // List.of permet de retourner une liste
         Mockito.when(this.iProduitDaoMock.findAllProduitsEnVente()).thenReturn(List.of(produitDo, produitDo2));
         assertEquals(2, this.produitServiceMock.listerProduitsEnVente().size());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverProduitEnVente(java.lang.Integer)}.
+     */
+    @Test
+    void testTrouverProduitEnVente() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        Mockito.when(this.iProduitDaoMock.findProduitEnVente(1)).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findProduitEnVente(2)).thenReturn(null);
+        // On récupère un produit en vente
+        assertNotNull(produitServiceMock.trouverProduitEnVente(1));
+        // On essaie de récupérer un produit qui n'est pas en vente
+        assertNull(produitServiceMock.trouverProduitEnVente(2));
     }
 }
