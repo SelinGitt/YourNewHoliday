@@ -1,48 +1,54 @@
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 
-<div class="sidebar">
+  <div class="sidebar">
     <div class="link-container underline">
-        <a href="#"> <span class="fa fa-globe"></span>
-            <p>
-                <spring:message code="menu.lien.catalogue" />
-            </p>
-        </a>
+      <a href="#"> <span class="fa fa-globe"></span>
+        <span>
+          <spring:message code="menu.lien.catalogue" />
+        </span>
+      </a>
     </div>
+
     <div class="link-container">
-        <a href="#"> <span class="fa fa-fw fa-user"></span>
-            <p>
-                <spring:message code="menu.lien.profil" />
-            </p>
-        </a>
+      <a href="#">
+        <span class="fa fa-user"></span>
+        <span>
+          <spring:message code="menu.lien.profil" />
+        </span>
+      </a>
     </div>
+
     <div class="link-container">
-        <a href="#"> <span class="fa fa-history"></span>
-            <p>
-                <spring:message code="menu.lien.commandes" />
-            </p>
-        </a>
+      <a href="#">
+        <span class="fa fa-history"></span>
+        <span>
+          <spring:message code="menu.lien.commandes" />
+        </span>
+      </a>
     </div>
 
     <div class="link-container admin">
-        <p>
-            <spring:message code="menu.administration" />
-        </p>
+      <span>
+        <spring:message code="menu.administration" />
+      </span>
     </div>
 
     <div class="link-container">
-        <a href="#"> <span class="fa fa-cart-plus"></span>
-            <p>
-                <spring:message code="menu.lien.gestion.produits" />
-            </p>
-        </a>
+      <a href="#">
+        <span class="fa fa-cart-plus"></span>
+        <span>
+          <spring:message code="menu.lien.gestion.produits" />
+        </span>
+      </a>
     </div>
 
     <div class="link-container">
-        <a href="#"> <span class="fa fa-address-card-o"></span>
-            <p>
-                <spring:message code="menu.lien.gestion.clients" />
-            </p>
-        </a>
+      <a href="#">
+        <span class="fa fa-address-card-o"></span>
+        <span>
+          <spring:message code="menu.lien.gestion.clients" />
+        </span>
+      </a>
     </div>
 
-</div>
+  </div>
