@@ -1,2 +1,0 @@
-Ce package pocLogBack, la classe POCLogBack, ainsi que le package de test et la classe de test associés sont temporaires et seront supprimés plus tard.
-Ils servent d'exemple pour implémenter les premiers logbacks réels.
