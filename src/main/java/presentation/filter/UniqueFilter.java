@@ -32,15 +32,21 @@ public class UniqueFilter implements Filter {
         final var response = (HttpServletResponse) resp;
 
         final var user = (UtilisateurConnecteDto) request.getSession().getAttribute(ConnecterController.UTILISATEUR);
-        //        final var modelAndView = new ModelAndView();
+        //        final var modelAndView = new ModelAndView("404");
         //        final var user = (UtilisateurConnecteDto) modelAndView.getModelMap().getAttribute(ConnecterController.UTILISATEUR);
 
         final var uri = request.getRequestURI().split("/")[2];
+
+        if (uri.equals("404.do")) {
+            chain.doFilter(req, resp);
+            return;
+        }
+
         final var map = StartupApp.DROITS.get(uri);
 
         // Si map null redirection
         if (map == null) {
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/404.do");
             return;
         }
 
@@ -56,7 +62,7 @@ public class UniqueFilter implements Filter {
                 return;
             }
 
-        response.sendRedirect(request.getContextPath() + "/");
+        response.sendRedirect(request.getContextPath() + "/404.do");
     }
 
 }
