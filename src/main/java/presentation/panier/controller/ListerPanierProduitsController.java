@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Class represents PanierProduitsController
  *
  * @author Steve
- *
  */
 @Controller
 @RequestMapping("/listerPanierProduits.do")
@@ -24,5 +23,5 @@ public class ListerPanierProduitsController {
     @GetMapping
     public String displayPanierProduits() {
         return "pan_00";
-    }   
+    }
 }

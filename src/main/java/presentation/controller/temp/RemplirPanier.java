@@ -45,7 +45,7 @@ public class RemplirPanier {
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
         produitDto3.setDescription(
-                "Description courte du voyage sur deux ou trois lignes maximum, un peu d etexte ne plus pour tester l'affichage");
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(12000.00));
         produitDto3.setNom("Voyage au Canada");
         produitDto3.setReference("AAA1256568");
