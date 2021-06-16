@@ -43,13 +43,12 @@
         <%--  suivi du texte "Connexion" ou "Déconnexion" en fonction --%>
         <div class="headerSousCell">
             <h3>
-
                 <c:if test="${!empty sessionScope.utilisateur}">
                     <spring:message code="header.deconnexion" />
 
                 </c:if>
                 <c:if test="${empty sessionScope.utilisateur}">
-                    <spring:message code="header.deconnexion" />
+                    <spring:message code="header.connexion" />
                 </c:if>
 
             </h3>
@@ -73,7 +72,6 @@
             </div>
         </div>
     </c:if>
-
 
     <c:if test="${empty sessionScope.utilisateur}">
         <div id="headerPanier" class="headerCell">
