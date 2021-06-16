@@ -412,7 +412,8 @@ div.commandeCMD00GRille {
 }
 
 div.commandeVideCMD00 {
-	margin: auto;
+	margin: inherit;
+	font-size: 1.15em;
 }
 
 /* création de la grille */
@@ -442,13 +443,14 @@ div.commandeReferenceCMD00 {
 div.commandeQuantiteTotaleCMD00 {
 	grid-column: 2;
 	display: grid;
-	grid-template-columns: 1.5fr 0.5fr;
+	grid-template-columns: 1.75fr 0.25fr;
 	grid-gap: 1px;
 }
 
 /* colonne 2.1 */
 div.commandeQuantiteTotaleTextCMD00 {
 	grid-column: 1;
+	text-align: right;
 }
 
 /* colonne 2.2 */
@@ -461,13 +463,14 @@ div.commandeQuantiteTotaleValueCMD00 {
 div.commandePrixTotalCMD00 {
 	grid-column: 3;
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
+	grid-template-columns: 1.15fr 0.85fr;
 	grid-gap: 1px;
 }
 
 /* colonne 3.1 */
 div.commandePrixTotalTextCMD00 {
 	grid-column: 1;
+	text-align: right;
 }
 
 /* colonne 3.2 */
