@@ -23,7 +23,7 @@
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-display-flex">
+                            <th class="panier-tab-ligne panier-bordure-1px panier-display-flex">
                                 <div>
                                     <%--  photo --%>
                                     <img class="panier-responsive panier-image-produit"
@@ -37,7 +37,7 @@
                                     <%--  description --%>
                                     <div>${entry.key.description}</div>
                                 </div>
-                            </td>
+                            </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
                             <td class="panier-tab-ligne panier-bordure-1px panier-prix-unitaire"><div>
@@ -57,7 +57,8 @@
 
                             <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
                             <%--  rendu d'affichage uniquement pour l'instant --%>
-                            <%--  TODO : sera à modifier avec form:form, form:input, form:button par la suite, ne pas oublier de déclarer la taglib --%>
+                            <%--  TODO : sera à modifier avec form:form, form:input, form:button par la suite --%>
+                            <%--  Ne pas oublier de déclarer la taglib --%>
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite panier-text-align-center"><div>
 
                                     <%--  label --%>
