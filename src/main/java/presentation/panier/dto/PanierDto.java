@@ -15,11 +15,11 @@ import presentation.produit.dto.ProduitDto;
  * @author NathanB
  */
 public class PanierDto implements Serializable {
-    
     /**
-     * serial
+     * Serial Version UID généré automatiquement
      */
-    private static final long serialVersionUID = -1559416502575443553L;
+    private static final long        serialVersionUID   = -1559416502575443553L;
+
     private Map<ProduitDto, Integer> mapPanier;
     private Integer                  nombreDeReferences = 0;
 
@@ -49,15 +49,6 @@ public class PanierDto implements Serializable {
     }
 
     /**
-     * Getter for serialversionuid
-     *
-     * @return the serialversionuid
-     */
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
-
-    /**
      * Getter for nombreDeReferences
      *
      * @return the nombreDeReferences
@@ -75,5 +66,4 @@ public class PanierDto implements Serializable {
         this.nombreDeReferences = nombreDeReferences;
     }
 
-    
 }
