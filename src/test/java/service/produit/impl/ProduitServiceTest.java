@@ -4,45 +4,32 @@
 package service.produit.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
-import service.produit.IProduitService;
 
 /**
  * Classe test de {@link ProduitService}
  *
  * @author Administrateur
  */
-@WebAppConfiguration("WebContent")
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
-//Utilisation d'une transaction pour avoir des auto rollbacks à chaque fin de tests
-@Transactional(propagation = Propagation.REQUIRED)
 class ProduitServiceTest {
-    @Autowired
-    private IProduitService iProduitService;
 
     @InjectMocks
-    private ProduitService  produitServiceMock;
+    private ProduitService produitServiceMock;
     @Mock
-    private IProduitDao     iProduitDaoMock;
+    private IProduitDao    iProduitDaoMock;
 
     @BeforeEach
     void initMock() {
@@ -54,11 +41,13 @@ class ProduitServiceTest {
      */
     @Test
     void testListerAllProduit() {
-        // SingletonList permet de retourner une liste avec 1 élement
         final var produitDo = new ProduitDo();
         produitDo.setPrixUnitaire(125d);
-        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(Collections.singletonList(produitDo));
-        assertEquals(1, this.produitServiceMock.listerAllProduit().size());
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(125d);
+        // List.of permet de retourner une liste
+        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo, produitDo2));
+        assertEquals(2, this.produitServiceMock.listerAllProduit().size());
     }
 
     /**
@@ -66,7 +55,28 @@ class ProduitServiceTest {
      */
     @Test
     void testListerProduitsEnVente() {
-        //Test de la taille de la liste de produits en Vente
-        assertEquals(4, iProduitService.listerProduitsEnVente().size());
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(125d);
+        // List.of permet de retourner une liste
+        Mockito.when(this.iProduitDaoMock.findAllProduitsEnVente()).thenReturn(List.of(produitDo, produitDo2));
+        assertEquals(2, this.produitServiceMock.listerProduitsEnVente().size());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverProduitEnVente(java.lang.Integer)}.
+     */
+    @Test
+    void testTrouverProduitEnVente() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        Mockito.when(this.iProduitDaoMock.findProduitEnVente(1)).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findProduitEnVente(2)).thenReturn(null);
+        // On récupère un produit en vente
+        assertNotNull(produitServiceMock.trouverProduitEnVente(1));
+        // On essaie de récupérer un produit qui n'est pas en vente
+        assertNull(produitServiceMock.trouverProduitEnVente(2));
     }
 }

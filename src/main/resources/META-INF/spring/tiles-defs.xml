@@ -39,6 +39,10 @@
 	<!-- écran panier -->
 
 	<!-- écran commande -->
+	<definition name="listerCommande" extends="base.definition">
+		<put-attribute name="title" value="liste Des Commandes" />
+		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
+	</definition>
 
 	<!-- écran utilisateur -->
 	<definition name="listerUtilisateur" extends="base.definition">
@@ -50,6 +54,11 @@
 	<definition name="connecter" extends="base.definition">
 		<put-attribute name="title" value="Écran de connexion" />
 		<put-attribute name="body" value="/jsp/utilisateur/connecter.jsp" />
+	</definition>
+
+	<definition name="creerUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Création de profil" />
+		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
 
 	<!-- écran contact -->

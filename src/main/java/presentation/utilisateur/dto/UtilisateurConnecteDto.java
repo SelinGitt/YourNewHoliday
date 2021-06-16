@@ -16,7 +16,7 @@ public class UtilisateurConnecteDto implements Serializable {
     /**
      * Generated serial version UID
      */
-    private static final long serialVersionUID = 6974844825779535836L;
+    private static final long serialVersionUID = 1424694129404702994L;
 
     private String            idRole;
     private String            nomRole;
