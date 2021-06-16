@@ -15,6 +15,12 @@
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt00.recherche.OK"/>" class=searchBarOk />
         </form:form>
+        <select id="tri">
+            <option disabled selected><spring:message code="pdt00.tri"></spring:message></option>
+            <option><spring:message code="pdt00.tri.croissant"></spring:message></option>
+            <option><spring:message code="pdt00.tri.decroissant"></spring:message></option>
+        </select>
+        <input type="submit" value="OK">
     </div>
     <div class="container">
         <c:forEach items="${listeProduitDto}" var="produitDto">
