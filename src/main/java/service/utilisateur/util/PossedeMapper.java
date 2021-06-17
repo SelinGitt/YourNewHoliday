@@ -43,7 +43,7 @@ public class PossedeMapper {
      * Permet de map une liste de PossedeDo en une liste de PossedeDto
      * 
      * @param  possedeDoList Liste a map
-     * @return               Liste mappe
+     * @return               Liste mappee
      */
     public static List<PossedeDto> mapperToListDto(final List<PossedeDo> possedeDoList) {
         return possedeDoList.stream().map(PossedeMapper::mapperToDto).collect(Collectors.toList());
