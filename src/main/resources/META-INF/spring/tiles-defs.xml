@@ -12,12 +12,6 @@
 		<put-attribute name="footer" value="/jsp/template/footer.jsp" />
 	</definition>
 
-	<!-- page jsp exemple -->
-	<definition name="exemple" extends="base.definition">
-		<put-attribute name="title" value="Tiles exemple" />
-		<put-attribute name="body" value="/jsp/page/exemple/exemple.jsp" />
-	</definition>
-
 	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
 		supprimés -->
 	<definition name="user_session" extends="base.definition">
@@ -65,5 +59,9 @@
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
-
+	<!-- Ecran test pour afficherImage -->
+	<definition name="showImage" extends="base.definition">
+		<put-attribute name="title" value="Liste Utilisateur" />
+		<put-attribute name="body" value="/jsp/page/temp/showImage.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>
