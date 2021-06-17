@@ -4,10 +4,12 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -113,5 +115,19 @@ class ProduitDaoTest {
         assertEquals(1, produitEnVente.getServices());
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);
+    }
+
+    /**
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#prixCroissant()}.
+     */
+    @Test
+    void testPrixCroissant() {
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.listerCroissant();
+        final ProduitDo produitDo1 = iProduitDao.findById(4);
+        final ProduitDo produitDo2 = iProduitDao.findById(3);
+        final ProduitDo produitDo3 = iProduitDao.findById(5);
+        final ProduitDo produitDo4 = iProduitDao.findById(1);
+        final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
+        assertEquals(listeProduitsCroissant, listeTriee);
     }
 }
