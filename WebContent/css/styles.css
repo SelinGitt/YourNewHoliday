@@ -7,8 +7,9 @@ html, body, .conteneur-ascenseur {
 }
 
 /* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
-html, body, header, aside, section, footer, .conteneur-ascenseur {
+html, body, header, aside, section, footer {
 	box-sizing: border-box;
+	overflow-y: hidden;
 }
 
 /* enlève les marges et les bordures pour les containers de chaque type*/
@@ -16,7 +17,6 @@ html, body, header, aside, section, footer {
 	margin: 0px;
 	padding: 0px;
 	border: 0px;
-	overflow: hidden;
 }
 
 /* factorisation du header et du footer */
@@ -26,16 +26,18 @@ header, footer {
 	height: 10vh;
 }
 
-/* factorisation du style du aside et section */
-aside, section {
-	display: block;
-	float: left;
-	height: 80vh;
+.content {
+	display: flex;
+	justify-content: space-between;
+	height: 80%;
 }
 
 /* taille du aside */
 aside {
 	width: 20%;
+	top: 0px;
+	display: flex;
+	overflow: auto;
 }
 
 /* taille de la section */
@@ -67,6 +69,7 @@ h1 {
 
 /* classe pour le corps afin de faire apparaître l'ascenseur où vous le désirer (n'oubliez pas de donner une taille à la div qui doit la contenir) */
 .conteneur-ascenseur {
+	box-sizing: border-box;
 	overflow-y: auto;
 }
 
@@ -122,6 +125,76 @@ h1 {
 }
 
 /* MENU */
+/* Side Bar */
+.sidebar {
+	width: 80%;
+	min-width: 160px;
+	background-color: transparent;
+	padding-top: 16px;
+	display:flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+aside {
+	justify-content: center;
+}
+.link-container {
+	width: 90%;
+	margin:auto;
+}
+.link-container.underline {
+	border-bottom: 3px solid black;
+	padding-bottom: 20px;
+}
+.link-container.admin {
+	padding: 8px 0px;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+}
+.sidebar p {
+	font-size: 20px;
+	margin: auto;
+	max-width: 300px;
+	min-width: 110px;
+	text-align: center;
+}
+
+.fa fa-globe {
+	width: 50px;
+	height: 40px;
+}
+
+.link-container span {
+	font-size: 25px;
+	display: block;
+	text-align: center;
+}
+.link-container a {
+	display: block;
+	color: black;
+	text-decoration: none;
+}
+
+.link-container a:hover {
+	color: #818181;
+}
+
+.bar_menu {
+	color: black;
+	font-weight: 1000;
+}
+
+.admin_bar {
+	color: black;
+	padding: 20px 0px 0px 0px;
+	margin: 10px 0px -20px 0px;
+	text-align: center;
+	font-size: 20px;
+	width: 125px;
+	text-decoration: underline overline;
+	text-decoration-thickness: 2px;
+}
 
 /* FOOTER */
 /* image responsive */

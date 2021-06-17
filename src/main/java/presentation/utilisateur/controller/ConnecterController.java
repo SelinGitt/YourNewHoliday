@@ -3,6 +3,7 @@
  */
 package presentation.utilisateur.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -25,7 +27,7 @@ import service.utilisateur.IUtilisateurService;
  * @author Damien D.
  */
 @Controller
-@RequestMapping("/connecter.do")
+@RequestMapping({"/connecter.do", "/deconnecter.do"})
 @SessionAttributes("utilisateur")
 public class ConnecterController {
 
@@ -38,19 +40,16 @@ public class ConnecterController {
     /**
      * Permet d'afficher la vue de login
      * 
-     * @param  session        : HttpSession utilisé uniquement pour clore la session en cours en arrivant sur le controller
-     * @param  utilisateurDto : l'utilisateurDto utilisé pour le formulaire
-     * @return                : un model pour le binding et la vue associée
+     * @param  request       la requête HTTP
+     * @param  sessionStatus la session
+     * @return               : un model pour le binding et la vue associée
      */
     @GetMapping
-    public ModelAndView voirConnecter(final HttpSession session, final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto) {
-
-        //TODO à retirer quand la déconnexion sera gérée
-        session.invalidate();
-
-        final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("connecter");
-        return modelAndView;
+    public ModelAndView choixDesUrl(final HttpServletRequest request, final SessionStatus sessionStatus) {
+        if (request.getRequestURI().contains("/deconnecter.do")) {
+            return logout(request, sessionStatus);
+        }
+        return voirConnecter();
     }
 
     /**
@@ -89,8 +88,32 @@ public class ConnecterController {
         return modelAndView;
     }
 
-    @ModelAttribute("utilisateurDto")
-    private UtilisateurDto retournerDto() {
-        return new UtilisateurDto();
+    /**
+     * Permet de se rendre sur connecter avec un nouvelle utilisateur
+     *
+     * @return ModelAndView la vue et le modèle utiliser par celui ci
+     */
+    private ModelAndView voirConnecter() {
+        final var modelAndView = new ModelAndView();
+        modelAndView.setViewName("connecter");
+        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
+        return modelAndView;
+    }
+
+    /**
+     * Permet de détruire la session et donc de se déconnecter de l'application
+     *
+     * @param  request       la requête HTTP
+     * @param  sessionStatus la session
+     * @return               ModelAndView se rend sur la vue utiliser comme accueil
+     */
+    private ModelAndView logout(final HttpServletRequest request, final SessionStatus sessionStatus) {
+        final HttpSession session = request.getSession();
+        if (session != null) {
+            sessionStatus.setComplete();
+            session.invalidate();
+        }
+        final var modelAndView = new ModelAndView("redirect:/listerProduits.do");
+        return modelAndView;
     }
 }
