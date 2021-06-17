@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
@@ -55,6 +56,9 @@ public class ConnecterController {
     public ModelAndView loggerUtilisateur(final UtilisateurDto utilisateurDto) {
 
         final var modelAndView = new ModelAndView();
+
+        //ajout d'un panier vide en session
+        modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
 
         modelAndView.getModelMap().addAttribute(UTILISATEUR,
                 iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword()));
