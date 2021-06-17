@@ -22,7 +22,7 @@
             <table class="containerVoyage" aria-label="Produit">
                 <tr>
                     <th colspan="2"><img
-                        src="displayImage.do?id=${produitDto.idProduitOriginal }&type=pdt"
+                        src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                         alt="${produitDto.destination}" class="img" /></th>
                 </tr>
                 <tr class="lineRow">
