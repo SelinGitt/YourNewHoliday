@@ -102,7 +102,7 @@ class ProduitDaoTest {
         assertNotNull(produitEnVente);
         assertEquals(1, produitEnVente.getIdProduitOriginal());
         assertEquals(2, produitEnVente.getVersion());
-        assertEquals("125693", produitEnVente.getReference());
+        assertEquals("MVR125693", produitEnVente.getReference());
         assertEquals("Voyage aux Maldives", produitEnVente.getNom());
         assertEquals("description1", produitEnVente.getDescription());
         assertEquals("Maldives", produitEnVente.getDestination());
