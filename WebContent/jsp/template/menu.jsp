@@ -9,7 +9,7 @@
       </a>
     </div>
 
-  <!-- a ajouter si connecter -->
+   <%-- a ajouter si connecter --%>
     <c:if test="${!empty sessionScope.utilisateur}">
         <div class="link-container">
           <a href="#">
@@ -30,7 +30,7 @@
         </div>
        </c:if>
     
-    <!-- a ajouter pour l'administateur le role 3 corespond a admin : Le changer si l'id du role admin change -->
+    <%-- a ajouter pour l'administateur le role 3 corespond a admin : Le changer si l'id du role admin change --%>
     <c:if test="${sessionScope.utilisateur.idRole =='3'}">
         <div class="link-container admin">
           <span>
