@@ -1,13 +1,12 @@
 package service.commande;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 import service.util.DateFormatUtil;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe Mapper pour la commande
@@ -32,9 +31,9 @@ public class CommandeMapper {
         final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        final BigDecimal prixTotal = commandeDo.getPrixTotal().setScale(2, RoundingMode.FLOOR);
-        commandeDto.setPrixTotal(String.format("%,.2f", prixTotal));
+        commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         return commandeDto;
     }
 
