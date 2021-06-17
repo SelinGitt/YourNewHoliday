@@ -35,7 +35,8 @@ public class ConnecterValidator implements Validator {
         //Vérification du format de l'adresse email
         final var email = utilisateurDto.getEmail();
 
-        final Pattern pattern = Pattern.compile("^\\S+@\\S+$");
+//        final Pattern pattern = Pattern.compile("^\\S+@\\S+$");
+        final Pattern pattern = Pattern.compile("^\\S{1,350}@\\S{1,350}+$");
         final Matcher matcher = pattern.matcher(email);
 
         if (!email.isBlank() && !matcher.matches()) {
