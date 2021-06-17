@@ -75,16 +75,16 @@ public class ConnecterController {
 
         final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
 
-        //Si l'utilisateur est trouvé en BD et renvoyé
-        if (null != utilisateurConnecteDto) {
-            modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
-            //TODO rediriger vers la page d'accueil au lieu d' "exemple.do"
-            modelAndView.setViewName("exemple");
-        } else {
-            //Si l'utilisateur n'est pas trouvé en BD, et donc null
+        //Si l'utilisateur n'est pas trouvé en BD, et donc null
+        if (null == utilisateurConnecteDto) {
             //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
             modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             modelAndView.setViewName("connecter");
+        } else {
+            //On met l'utilisateur connecté en session
+            modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
+            //Redirection vers page d'accueil
+            modelAndView.setViewName("listerProduits");
         }
         return modelAndView;
     }

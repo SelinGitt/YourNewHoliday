@@ -13,7 +13,7 @@ import presentation.utilisateur.dto.UtilisateurDto;
 /**
  * Validator pour le formulaire du controller ConnecterController, valide l'UtilisateurDto
  *
- * @author Administrateur
+ * @author Damien D.
  */
 @Component
 public class ConnecterValidator implements Validator {
