@@ -44,7 +44,7 @@ INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `desc
 -- Déchargement des données de la table `droit`
 --
 
-INSERT INTO `droit` (`idDroit`, `url`) VALUES (1, 'listerProduis.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (1, 'listerProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (2, 'listerUtilisateur.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (3, 'contact.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (4, 'listerProduitsAdmin.do');
