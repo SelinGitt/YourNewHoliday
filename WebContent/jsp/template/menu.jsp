@@ -2,7 +2,7 @@
 
   <div class="sidebar">
     <div class="link-container underline">
-      <a href="#"> <span class="fa fa-globe"></span>
+      <a href="listerProduits.do"> <span class="fa fa-globe"></span>
         <span>
           <spring:message code="menu.lien.catalogue" />
         </span>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="link-container">
-      <a href="#">
+      <a href="listerCommande.do">
         <span class="fa fa-history"></span>
         <span>
           <spring:message code="menu.lien.commandes" />
@@ -34,7 +34,7 @@
     </div>
 
     <div class="link-container">
-      <a href="#">
+      <a href="listerProduitsAdmin.do">
         <span class="fa fa-cart-plus"></span>
         <span>
           <spring:message code="menu.lien.gestion.produits" />
@@ -43,7 +43,7 @@
     </div>
 
     <div class="link-container">
-      <a href="#">
+      <a href="listerUtilisateur.do">
         <span class="fa fa-address-card-o"></span>
         <span>
           <spring:message code="menu.lien.gestion.clients" />
