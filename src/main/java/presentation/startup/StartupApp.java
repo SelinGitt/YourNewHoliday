@@ -1,20 +1,20 @@
 /**
  * 
  */
-package presentation.filter;
+package presentation.startup;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import presentation.utilisateur.dto.DroitDto;
 import presentation.utilisateur.dto.PossedeDto;
+import presentation.utilisateur.dto.RoleDto;
 import service.utilisateur.IDroitService;
 
 /**
@@ -37,16 +37,7 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         final var listDroit = this.droitService.findAll();
 
-        //        listDroit.stream().map(DroitDo::getUrl).forEach(Assertions::assertNotNull);
-
-        for (final DroitDto droit : listDroit) {
-            final List<String> listRole = new ArrayList<>();
-
-            for (final PossedeDto possede : droit.getPossede()) {
-                listRole.add(possede.getRoleDto().getLibelle());
-            }
-
-            DROITS.put(droit.getUrl(), listRole);
-        }
+        listDroit.forEach(droit -> DROITS.put(droit.getUrl(), droit.getPossede().stream().map(PossedeDto::getRoleDto)
+                .collect(Collectors.toList()).stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
     }
 }
