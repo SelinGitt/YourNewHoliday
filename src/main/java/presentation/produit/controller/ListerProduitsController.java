@@ -44,16 +44,16 @@ public class ListerProduitsController {
      * @param  searchInput terme recherché
      * @return             liste de produits pour le model et la vue associée
      */
-    @PostMapping
-    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
-        final var modelAndView = new ModelAndView("listerProduits");
-        modelAndView.addObject("searchTerm", searchInput);
-        if (searchInput.isEmpty()) {
-            return new ModelAndView("redirect:/");
-        }
-        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
-        return modelAndView;
-    }
+    //    @PostMapping
+    //    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+    //        final var modelAndView = new ModelAndView("listerProduits");
+    //        modelAndView.addObject("searchTerm", searchInput);
+    //        if (searchInput.isEmpty()) {
+    //            return new ModelAndView("redirect:/");
+    //        }
+    //        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+    //        return modelAndView;
+    //    }
 
     /**
      * Permet de traiter une requete de type POST
@@ -62,7 +62,7 @@ public class ListerProduitsController {
      * @return     liste triée
      */
     @PostMapping
-    public ModelAndView listerTriee(final @RequestParam(value = "tri") String tri) {
+    public ModelAndView listerCroissant(final @RequestParam(value = "tri") String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
         if ("prix_croissant".equals(tri)) {
             modelAndView.addObject("listeProduitDto", iProduitService.listerCroissant());
