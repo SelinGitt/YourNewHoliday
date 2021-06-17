@@ -16,14 +16,10 @@ import presentation.panier.dto.PanierDto;
 public class UtilisateurConnecteDto implements Serializable {
 
     /**
-     * 
-     */
-    private static final long serialVersionUID = 5690856366192217553L;
-    /**
      * Generated serial version UID
      */
+    private static final long serialVersionUID = 5690856366192217553L;
 
-    
     private String            idRole;
     private String            nomRole;
     private String            idUtilisateur;
@@ -173,6 +169,5 @@ public class UtilisateurConnecteDto implements Serializable {
     public void setPanierDto(final PanierDto panierDto) {
         this.panierDto = panierDto;
     }
-    
 
 }
