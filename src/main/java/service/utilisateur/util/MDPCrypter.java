@@ -9,8 +9,6 @@ import java.security.NoSuchAlgorithmException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import service.utilisateur.impl.UtilisateurService;
-
 /**
  * Classe utilitaire pour crypter un mot de passe utilisateur
  *
