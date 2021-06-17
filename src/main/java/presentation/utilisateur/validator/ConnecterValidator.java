@@ -37,11 +37,5 @@ public class ConnecterValidator implements Validator {
             errors.rejectValue("email", "usr07.erreur.email_format", new Object[] {password}, "Default Error");
 
         }
-        //        final var password = utilisateurDto.getEmail();
-        //        if (!password.isBlank() && password.length() < 320) {
-        //            if (!password.matches("^\\S+@\\S+$")) {
-        //                errors.rejectValue("email", "usr07.erreur.email_format", new Object[] {password}, "Default Error");
-        //            }
-        //        }
     }
 }

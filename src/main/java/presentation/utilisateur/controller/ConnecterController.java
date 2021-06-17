@@ -113,7 +113,6 @@ public class ConnecterController {
             sessionStatus.setComplete();
             session.invalidate();
         }
-        final var modelAndView = new ModelAndView("redirect:/listerProduits.do");
-        return modelAndView;
+        return new ModelAndView("redirect:/listerProduits.do");
     }
 }
