@@ -8,6 +8,7 @@ public class CommandeDto {
     private String reference;
     private String prixTotal;
     private String date;
+    private String quantiteTotale;
 
     /**
      * Getter for id
@@ -80,6 +81,24 @@ public class CommandeDto {
      */
     public void setDate(final String date) {
         this.date = date;
+    }
+
+    /**
+     * Getter for quantiteTotale
+     * 
+     * @return the quantiteTotale
+     */
+    public String getQuantiteTotale() {
+        return quantiteTotale;
+    }
+
+    /**
+     * Setter for quantiteTotale
+     * 
+     * @param quantiteTotale the quantiteTotale to set
+     */
+    public void setQuantiteTotale(final String quantiteTotale) {
+        this.quantiteTotale = quantiteTotale;
     }
 
 }
