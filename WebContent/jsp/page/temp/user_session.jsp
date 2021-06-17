@@ -11,12 +11,15 @@ Utilisateur en session :
 </ul>
 
 <div>
-<div>
-    <a href="/Projet_YNH/user_session.do?action=create_client_panier"> <spring:message code="usr.session.creer.clientPanier" />
-    </a>
-    </div>
-    <a href="/Projet_YNH/listerPanierProduits.do"> <spring:message code="usr.session.redirectionPanier" />
-    </a>
+    <p>
+        <a href="/Projet_YNH/user_session.do?action=create_client_panier"> <spring:message
+                code="usr.session.creer.clientPanier" />
+        </a>
+    </p>
+    <p>
+        <a href="/Projet_YNH/listerPanierProduits.do"> <spring:message code="usr.session.redirectionPanier" />
+        </a>
+    </p>
 </div>
 
 <a href="/Projet_YNH/user_session.do?action=create_client"> <spring:message code="usr.session.creer.client" />
