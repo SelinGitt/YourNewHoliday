@@ -3,7 +3,6 @@
  */
 package presentation.utilisateur.validator;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Component;
@@ -34,11 +33,9 @@ public class ConnecterValidator implements Validator {
         final var utilisateurDto = (UtilisateurDto) target;
         //Vérification du format de l'adresse email
         final var email = utilisateurDto.getEmail();
-
-//        final Pattern pattern = Pattern.compile("^\\S+@\\S+$");
-        final Pattern pattern = Pattern.compile("^\\S{1,350}@\\S{1,350}+$");
-        final Matcher matcher = pattern.matcher(email);
-
+        final var pattern = Pattern.compile("^\\S{1,350}@\\S{1,350}+$");
+        final var matcher = pattern.matcher(email);
+        //Si email n'est pas blank et n'est pas au bon format
         if (!email.isBlank() && !matcher.matches()) {
             errors.rejectValue("email", "usr07.erreur.email_format", new Object[] {email}, "Default Error");
         }
