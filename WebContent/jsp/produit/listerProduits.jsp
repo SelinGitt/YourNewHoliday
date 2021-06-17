@@ -13,7 +13,7 @@
         <form:form action="listerProduits.do" method="POST">
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
-            <input type="submit" value="OK" class=searchBarOk />
+            <input type="submit" value="<spring:message code="pdt00.recherche.OK"/>" class="searchBarOk" />
         </form:form>
     </div>
     <br />

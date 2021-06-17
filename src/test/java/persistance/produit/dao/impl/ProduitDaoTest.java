@@ -65,6 +65,19 @@ class ProduitDaoTest {
     }
 
     /**
+     * <<<<<<< HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitEnVente() {
+        // On récupère un produit en vente
+        final ProduitDo produitDoEnVente = iProduitDao.findProduitEnVente(3);
+        assertNotNull(produitDoEnVente);
+        // On essaie de récupérer un produit qui n'est pas en vente
+        final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVente(2);
+        assertNull(produitDoPasEnVente);
+    }
+
+    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduits()}.
      */
     @Test
@@ -96,7 +109,7 @@ class ProduitDaoTest {
         assertEquals(900.00, produitEnVente.getPrixUnitaire());
         assertEquals("Maison dHotes", produitEnVente.getHebergement());
         assertTrue(produitEnVente.getMiseEnVente());
-        assertEquals("D:....", produitEnVente.getCheminImage());
+        assertEquals("C:/temp/img/maldives.jpg", produitEnVente.getCheminImage());
         assertEquals(1, produitEnVente.getServices());
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);
