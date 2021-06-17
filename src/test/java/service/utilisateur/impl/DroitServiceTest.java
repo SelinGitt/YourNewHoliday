@@ -12,6 +12,8 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.utilisateur.dao.IDroitDao;
 import persistance.utilisateur.entity.DroitDo;
+import persistance.utilisateur.entity.PossedeDo;
+import persistance.utilisateur.entity.RoleDo;
 
 /**
  * JUnit test classe pour {@link service.utilisateur.impl.DroitService}
@@ -49,6 +51,19 @@ class DroitServiceTest {
 
         droitDo.setIdDroit(1);
         droitDo.setUrl("test");
+
+        final RoleDo roleDo = new RoleDo();
+
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("libelle");
+
+        final PossedeDo possedeDo = new PossedeDo();
+
+        possedeDo.setId(1);
+        possedeDo.setDroit(droitDo);
+        possedeDo.setRole(roleDo);
+
+        droitDo.setPossede(Collections.singletonList(possedeDo));
 
         Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(droitDo));
         Assertions.assertEquals(1, this.droitService.findAll().size());
