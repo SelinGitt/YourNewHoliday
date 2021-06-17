@@ -4,6 +4,7 @@
 package service.utilisateur.util;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
@@ -28,6 +29,7 @@ class DroitMapperTest {
 
         droit.setIdDroit(1);
         droit.setUrl("test.do");
+        droit.setPossede(Collections.emptyList());
 
         final var droitDtoMapper = DroitMapper.mapperToDto(droit);
 
@@ -69,6 +71,9 @@ class DroitMapperTest {
 
         droit1.setUrl("test1");
         droit2.setUrl("test2");
+
+        droit1.setPossede(Collections.emptyList());
+        droit2.setPossede(Collections.emptyList());
 
         final List<DroitDto> listDroitsDto = DroitMapper.mapperToListDto(Arrays.asList(droit1, droit2));
 

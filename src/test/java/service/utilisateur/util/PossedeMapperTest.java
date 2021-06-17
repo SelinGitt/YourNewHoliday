@@ -54,8 +54,8 @@ class PossedeMapperTest {
         role.setLibelle("Client");
 
         final RoleDo role2 = new RoleDo();
-        role.setIdRole(2);
-        role.setLibelle("Admin");
+        role2.setIdRole(2);
+        role2.setLibelle("Admin");
 
         possede1.setId(1);
         possede2.setId(2);
