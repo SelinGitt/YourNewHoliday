@@ -30,7 +30,7 @@ public class ConnecterValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "usr07.erreur.password_vide", "Default Error");
         final var utilisateurDto = (UtilisateurDto) target;
         //Vérification du format de l'adresse email
-        if (!utilisateurDto.getEmail().isBlank() && !utilisateurDto.getEmail().matches("^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$")) {
+        if (!utilisateurDto.getEmail().isBlank() && !utilisateurDto.getEmail().matches("^\\S+@\\S+$")) {
             errors.rejectValue("email", "usr07.erreur.email_format", new Object[] {utilisateurDto.getEmail()}, "Default Error");
         }
     }
