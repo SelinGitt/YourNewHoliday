@@ -44,7 +44,7 @@ public class UserConnecteController {
             if ("supprimer".equals(action)) {
                 session.removeAttribute(UTILISATEUR);
             }
-            if (action.equals("create_client_panier")) {
+            if ("create_client_panier".equals(action)) {
                 session.setAttribute(UTILISATEUR, this.creerUtilisateurAvecPanier());
             }
         }
