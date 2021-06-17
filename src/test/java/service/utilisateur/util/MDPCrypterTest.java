@@ -20,7 +20,7 @@ class MDPCrypterTest {
     void testCrypterMDPV1() {
         final String psw = MDPCrypter.crypterMDPV1("TestConnexionNonEncoreHashe");
         //le premier élément du assertEquals représente le mdp ci-dessus après avoir été crypté
-        Assertions.assertEquals("13090376696E0E956AE6", psw);
+        Assertions.assertEquals("46E43F808CF3CAB2C8AC6321D7FF743F43A13A412C38FAFFDDD8252D711113E2", psw);
     }
 
 }

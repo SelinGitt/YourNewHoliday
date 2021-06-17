@@ -62,8 +62,9 @@ public class UtilisateurService implements IUtilisateurService {
     public UtilisateurConnecteDto authentify(final String email, final String password) {
         final var utilisateurDo = iUtilisateurDao.findByEmail(email);
         if (utilisateurDo != null) {
-            //Dans une prochaine version du cryptage, le mot de passe en BD sera crypté.
-            final String passwordCheck = MDPCrypter.crypterMDPV1(utilisateurDo.getMdpHash());
+            //On récupère le mot de passe hashé en BD
+            final String passwordCheck = utilisateurDo.getMdpHash();
+            //On compare avec le mot de passe saisi qu'on hashe
             if (passwordCheck.equals(MDPCrypter.crypterMDPV1(password))) {
                 return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
