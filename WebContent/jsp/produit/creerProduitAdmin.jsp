@@ -13,8 +13,8 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version" value="1" />
-                        <form:hidden path="cheminImage" value="D:/Test" /></th>
+                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version"
+                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
                     <th></th>
                 </tr>
                 <tr>
@@ -39,9 +39,16 @@
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.miseEnVente" /></td>
-                    <td class="formPDT03Radio"><form:radiobutton path="miseEnVente" value="true" /> <spring:message
-                            code="form.pdt03.oui" /> <form:radiobutton path="miseEnVente" value="false" /> <spring:message
-                            code="form.pdt03.non" /></td>
+                    <td class="formPDT03Radio">
+                        <div>
+                            <form:radiobutton path="miseEnVente" value="true" />
+                            <spring:message code="form.pdt03.oui" />
+                        </div>
+                        <div>
+                            <form:radiobutton path="miseEnVente" value="false" />
+                            <spring:message code="form.pdt03.non" />
+                        </div>
+                    </td>
 
                 </tr>
                 <tr>
@@ -78,7 +85,13 @@
                         alt="Maroc" class="img" /></td>
                 </tr>
                 <tr>
-                    <td><spring:message code="form.pdt03.parcourir" /></td>
+                    <td>
+                        <div>
+                            <form:button type="file" class="boutonParcourirPDT03">
+                               <spring:message code="form.pdt03.parcourir" />
+                            </form:button>
+                        </div> 
+                    </td>
                 </tr>
             </table>
         </div>
