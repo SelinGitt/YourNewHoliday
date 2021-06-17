@@ -42,7 +42,7 @@ public class UniqueFilter implements Filter {
         final var response = (HttpServletResponse) resp;
         final var map = StartupApp.DROITS.get(uri);
 
-        // Si map null redirection
+        // Si map null redirection, le lien n'existe pas donc 404
         if (map == null) {
             response.sendRedirect(request.getContextPath() + "/404.do");
             return;
