@@ -83,7 +83,7 @@ public class ConnecterController {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
             //Redirection vers page d'accueil
-            modelAndView.setViewName("listerProduits");
+            modelAndView.setViewName("redirect:listerProduits.do");
         }
         return modelAndView;
     }
