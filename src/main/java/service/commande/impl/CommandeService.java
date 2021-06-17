@@ -33,7 +33,7 @@ public class CommandeService implements ICommandeService {
     @Override
     public List<CommandeDto> listerCommandesUtilisateur(final Integer idUser) {
         logger.info("la liste  des commandes utilisateur avec  idUser {}", idUser);
-        return CommandeMapper.mapperListDoToDto(iCommandeDao.findByUserId(idUser));
+        return CommandeMapper.mapperListDoToDto(this.iCommandeDao.findByUserId(idUser));
     }
 
 }
