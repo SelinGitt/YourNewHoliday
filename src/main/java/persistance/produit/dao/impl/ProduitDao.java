@@ -82,13 +82,13 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
 
     @Override
     public List<ProduitDo> listerCroissant() {
-        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo ORDER BY prix_unitaire ASC ", ProduitDo.class);
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo WHERE mise_en_vente = 1 ORDER BY prix_unitaire ASC ", ProduitDo.class);
         return query.getResultList();
     }
 
     @Override
     public List<ProduitDo> listerDecroissant() {
-        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo ORDER BY prix_unitaire DESC ", ProduitDo.class);
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo WHERE mise_en_vente = 1 ORDER BY prix_unitaire DESC ", ProduitDo.class);
         return query.getResultList();
     }
 }

@@ -4,7 +4,6 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -129,5 +128,19 @@ class ProduitDaoTest {
         final ProduitDo produitDo4 = iProduitDao.findById(1);
         final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
         assertEquals(listeProduitsCroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#prixDecroissant()}.
+     */
+    @Test
+    void testPrixDecroissant() {
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.listerDecroissant();
+        final ProduitDo produitDo1 = iProduitDao.findById(1);
+        final ProduitDo produitDo2 = iProduitDao.findById(5);
+        final ProduitDo produitDo3 = iProduitDao.findById(3);
+        final ProduitDo produitDo4 = iProduitDao.findById(4);
+        final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
+        assertEquals(listeProduitsDecroissant, listeTriee);
     }
 }

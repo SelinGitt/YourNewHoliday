@@ -65,7 +65,7 @@ public class ListerProduitsController {
     public ModelAndView listerCroissant(final @RequestParam(value = "prix_croissant") String prix_croissant) {
         final var modelAndView = new ModelAndView("listerProduits");
         modelAndView.addObject("prix_croissant", prix_croissant);
-        modelAndView.addObject("prix_croissant", iProduitService.listerCroissant());
+        modelAndView.addObject("listeProduitDto", iProduitService.listerCroissant());
         return modelAndView;
     }
 
