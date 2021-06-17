@@ -37,7 +37,7 @@ public class MDPCrypter {
         try {
             final var md = MessageDigest.getInstance("SHA1");
             md.update(password.getBytes());
-            byte[] output = md.digest();
+            final byte[] output = md.digest();
 
             //ajouter de la complexité au password
             final char[] hexDigit = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
@@ -52,15 +52,6 @@ public class MDPCrypter {
         }
         return buf.toString();
 
-    }
-
-    /**
-     * Getter for logger
-     *
-     * @return the logger
-     */
-    public static Logger getLogger() {
-        return logger;
     }
 
 }
