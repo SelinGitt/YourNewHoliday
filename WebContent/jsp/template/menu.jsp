@@ -27,7 +27,7 @@
     </div>
 
     <div class="link-container">
-        <a href="listerProduitsAdmin.do"> <span class="fa fa-cart-plus"></span> <span> <spring:message
+        <a href="listerProduitsAdmin.do"> <span class="fa fa-cart-plus"></span><span> <spring:message
                     code="menu.lien.gestion.produits" />
         </span>
         </a>
