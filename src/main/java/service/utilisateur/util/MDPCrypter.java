@@ -6,12 +6,19 @@ package service.utilisateur.util;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import service.utilisateur.impl.UtilisateurService;
+
 /**
  * Classe utilitaire pour crypter un mot de passe utilisateur
  *
  * @author Meliodas-sama
  */
 public class MDPCrypter {
+
+    private static final Logger logger = LoggerFactory.getLogger(MDPCrypter.class);
 
     /**
      * Constructor
@@ -30,7 +37,7 @@ public class MDPCrypter {
     public static String crypterMDPV1(final String password) {
         StringBuffer buf = new StringBuffer();
         try {
-            final MessageDigest md = MessageDigest.getInstance("SHA-512");
+            final var md = MessageDigest.getInstance("SHA-512");
             md.update(password.getBytes());
             byte[] output = md.digest();
 
@@ -42,8 +49,7 @@ public class MDPCrypter {
             }
 
         } catch (final NoSuchAlgorithmException e) {
-
-            e.printStackTrace();
+            logger.error("Erreur lors du hashage du mot de passe avec la stack trace suivante", e);
         }
         return buf.toString();
 
