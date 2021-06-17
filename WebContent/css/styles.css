@@ -131,7 +131,7 @@ h1 {
 	min-width: 160px;
 	background-color: transparent;
 	padding-top: 16px;
-	display:flex;
+	display: flex;
 	justify-content: center;
 	flex-direction: column;
 }
@@ -139,19 +139,23 @@ h1 {
 aside {
 	justify-content: center;
 }
+
 .link-container {
 	width: 90%;
-	margin:auto;
+	margin: auto;
 }
+
 .link-container.underline {
 	border-bottom: 3px solid black;
 	padding-bottom: 20px;
 }
+
 .link-container.admin {
 	padding: 8px 0px;
-    border-bottom: 3px solid black;
-    border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	border-top: 3px solid black;
 }
+
 .sidebar p {
 	font-size: 20px;
 	margin: auto;
@@ -170,6 +174,7 @@ aside {
 	display: block;
 	text-align: center;
 }
+
 .link-container a {
 	display: block;
 	color: black;
