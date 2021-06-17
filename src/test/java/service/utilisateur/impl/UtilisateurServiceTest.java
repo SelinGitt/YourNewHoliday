@@ -111,6 +111,12 @@ class UtilisateurServiceTest {
         utilisateurDo.setMdpHash("password");
         utilisateurDo.setNom("nom");
 
+        final RoleDo roleDo = new RoleDo();
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("libelle");
+
+        utilisateurDo.setRole(roleDo);
+
         Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
 
         //On tente une authentification 
