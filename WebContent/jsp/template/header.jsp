@@ -22,7 +22,6 @@
         <div>
             <strong><spring:message code="header.statut" /></strong> ${utilisateur.nomRole }
         </div>
-
     </div>
 
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
@@ -30,13 +29,14 @@
         <div class="headerSousCell">
 
             <c:if test="${!empty sessionScope.utilisateur}">
-                <a href=""> <img src="img/template/header/deconnexion.png" class="logoHeader"
+                <a href="deconnecter.do"> <img src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
                 </a>
             </c:if>
 
             <c:if test="${empty sessionScope.utilisateur}">
-                <a href=""> <img src="img/template/header/connexion.png" class="logoHeader" alt="icône déconnexion">
+                <a href="connecter.do"> <img src="img/template/header/connexion.png" class="logoHeader"
+                    alt="icône déconnexion">
                 </a>
             </c:if>
         </div>
