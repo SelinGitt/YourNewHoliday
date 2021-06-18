@@ -3,9 +3,6 @@
  */
 package service.commande;
 
-import persistance.commande.entity.ProduitAcheteDo;
-import presentation.commande.dto.ProduitAcheteDto;
-
 /**
  * Classe représentant ProduitAcheteMapper
  * 
@@ -17,7 +14,4 @@ public class ProduitAcheteMapper {
         //empty
     }
 
-    public static ProduitAcheteDto apperToDto(final ProduitAcheteDo produitAcheteDo) {
-
-    }
 }
