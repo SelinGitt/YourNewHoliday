@@ -13,11 +13,7 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <<<<<<< HEAD
-                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version"
-                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th> =======
                     <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
-                    >>>>>>> 3848632cf190e37b88e98750d0b3476a1d0b5d70
                     <th></th>
                 </tr>
                 <tr>
