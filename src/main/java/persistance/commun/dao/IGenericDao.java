@@ -36,4 +36,13 @@ public interface IGenericDao<T> {
      * @return      T creer
      */
     T create(final T bean);
+
+    /**
+     * Permet d'effectue une recherche en base selon un terme dans une colonne donnee
+     *
+     * @param  colonne    Colonne ou effectue la recherche
+     * @param  searchTerm Terme a recherche
+     * @return            List de T correspondant a la recherche
+     */
+    List<T> recherche(final String colonne, final String searchTerm);
 }
