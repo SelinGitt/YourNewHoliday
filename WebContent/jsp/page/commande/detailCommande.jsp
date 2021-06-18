@@ -20,7 +20,8 @@
                 <c:forEach items="${commande.listCommandeProduitDto}" var="commandeProduit">
                     <div>
                         <div>
-                            <img src="file://${commandeProduit.produitAcheteDto.cheminDeLImage}" alt="image">
+                            <img src="file://${commandeProduit.produitAcheteDto.cheminDeLImage}"
+                                alt="${commandeProduit.produitAcheteDto.destination}">
                         </div>
                         <div>
                             <p>

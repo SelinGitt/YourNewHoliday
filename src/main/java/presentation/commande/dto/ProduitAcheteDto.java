@@ -18,6 +18,8 @@ public class ProduitAcheteDto {
 
     private String description;
 
+    private String destination;
+
     private String prixUnitaire;
 
     private String cheminDeLImage;
@@ -92,6 +94,24 @@ public class ProduitAcheteDto {
      */
     public void setDescription(final String description) {
         this.description = description;
+    }
+
+    /**
+     * Getter for destination
+     *
+     * @return the destination
+     */
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Setter for destination
+     *
+     * @param destination the destination to set
+     */
+    public void setDestination(final String destination) {
+        this.destination = destination;
     }
 
     /**
