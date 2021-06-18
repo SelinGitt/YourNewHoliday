@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h1>
+
+<form action="creerUtilisateur.do">
+         <button type="submit" class="far fa-plus-square"><spring:message code="usr01.creer.nouveau"/></button>
+      </form>
 
 <table id="listeUser" aria-describedby="titreGestion">
     <thead>
@@ -61,3 +66,4 @@
         </c:forEach>
     </tbody>
 </table>
+
