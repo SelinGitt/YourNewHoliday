@@ -54,7 +54,7 @@ public class PanierService implements IPanierService {
         }
         // on met à jour le nombre de référence dans le panier.
         panier.setNombreDeReferences(panier.getMapPanier().size());
-        return panier;
+        return "r;
     }
 
 }
