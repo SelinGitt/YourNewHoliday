@@ -19,12 +19,12 @@ import presentation.utilisateur.controller.ConnecterController;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
 /**
- * Classe UniqueFilter
+ * Classe DroitAccesFilter
  *
  * @author Valentin
  */
-@WebFilter(filterName = "UniqueFilter", urlPatterns = "*.do")
-public class UniqueFilter implements Filter {
+@WebFilter(filterName = "DroitAccesFilter", urlPatterns = "*.do")
+public class DroitAccesFilter implements Filter {
 
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse resp, final FilterChain chain)
