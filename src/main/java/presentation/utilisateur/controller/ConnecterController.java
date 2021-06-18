@@ -22,7 +22,7 @@ import service.utilisateur.IUtilisateurService;
  */
 @Controller
 @RequestMapping("/connecter.do")
-@SessionAttributes("utilisateur")
+@SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
 
     /**
@@ -57,12 +57,12 @@ public class ConnecterController {
 
         final var modelAndView = new ModelAndView();
 
-        //ajout d'un panier vide en session
-        modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
-
         modelAndView.getModelMap().addAttribute(UTILISATEUR,
                 iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword()));
 
+        //ajout d'un panier vide en session
+        modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+        
         modelAndView.setViewName("connecter");
 
         return modelAndView;

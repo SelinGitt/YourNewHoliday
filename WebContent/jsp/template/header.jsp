@@ -16,7 +16,7 @@
     <%--     de l'identité de l'utilisateur s'il est connecté --%>
     <div id="headerStatut" class="headerCell">
         <div>
-            <strong><spring:message code="header.id" /></strong>${utilisateur.prenom } ${utilisateur.nom }
+            <strong><spring:message code="header.id" /></strong>${utilisateur.prenom } ${utilisateur.nom } ${panierDto}
         </div>
         <%--         de son statut (visiteur, client, administrateur) --%>
         <div>
