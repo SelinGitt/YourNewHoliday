@@ -49,6 +49,8 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         final ParameterExpression<Integer> parameter = criteriaBuilder.parameter(Integer.class);
         // on crée la clause where avec le paramètre
         final CriteriaQuery<CommandeDo> allWhere = allCriteria.where(criteriaBuilder.equal(rootEntry.get("idUtilisateur"), parameter));
+        // creation du "order by" date
+        allWhere.orderBy(criteriaBuilder.desc(rootEntry.get("date")));
         final TypedQuery<CommandeDo> allQuery = this.entityManager.createQuery(allWhere);
         // on fournit à la requête la valeur du paramètre que l'on cherche
         allQuery.setParameter(parameter, userId);

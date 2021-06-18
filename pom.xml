@@ -3,22 +3,32 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Projet_YNH</groupId>
 	<artifactId>Projet_YNH</artifactId>
-	<version>0.1.8-SNAPSHOT</version>
+	<version>0.1.11-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>cp1252</project.build.sourceEncoding>
 		<!-- les versions des dépendances -->
 		<spring.version>5.3.5</spring.version>
-		<hibernate.version>5.4.28.Final</hibernate.version>
+		<hibernate.core.version>5.4.28.Final</hibernate.core.version>
 		<mysql.connector.version>8.0.23</mysql.connector.version>
 		<dbcp2.version>2.8.0</dbcp2.version>
 		<junit.version>5.7.1</junit.version>
-		<maven.version>4.0.1</maven.version>
 		<junit.plateform.version>1.7.0</junit.plateform.version>
+		<junit.jupiter.version>5.7.0</junit.jupiter.version>
+		<javax.servlet.version>4.0.1</javax.servlet.version>
 		<jstl.version>1.2</jstl.version>
 		<tiles.version>3.0.8</tiles.version>
-		<mockito-version>3.8.0</mockito-version>
+		<mockito.core.version>3.8.0</mockito.core.version>
+		<logback.classic.version>1.2.3</logback.classic.version>
+
+		<!-- les versions des Plugins -->
+		<maven.surefire.plugin.version>2.22.2</maven.surefire.plugin.version>
+		<sonar.plugin.version>3.7.0.1746</sonar.plugin.version>
+		<jacoco.plugin.version>0.8.7</jacoco.plugin.version>
+		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
+		<maven.war.plugin.version>3.3.1</maven.war.plugin.version>
+
 	</properties>
 
 	<!-- Sonar profile config -->
@@ -91,7 +101,7 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${maven.compiler.plugin.version}</version>
 				<configuration>
 					<release>11</release>
 				</configuration>
@@ -99,11 +109,11 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
+				<version>${maven.surefire.plugin.version}</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>${maven.war.plugin.version}</version>
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>true</failOnMissingWebXml>
@@ -114,14 +124,14 @@
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
 				<artifactId>sonar-maven-plugin</artifactId>
-				<version>3.7.0.1746</version>
+				<version>${sonar.plugin.version}</version>
 			</plugin>
 
 			<!-- Jacoco -->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.7</version>
+				<version>${jacoco.plugin.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -165,7 +175,7 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
-			<version>5.7.0</version>
+			<version>${junit.jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -173,7 +183,7 @@
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>${maven.version}</version>
+			<version>${javax.servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -223,7 +233,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
+			<version>${hibernate.core.version}</version>
 		</dependency>
 
 		<!-- Pour utiliser la JSTL dans les JSP : -->
@@ -255,7 +265,7 @@
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-core</artifactId>
-			<version>${mockito-version}</version>
+			<version>${mockito.core.version}</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -263,7 +273,7 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.2.3</version>
+			<version>${logback.classic.version}</version>
 		</dependency>
 	</dependencies>
 </project>

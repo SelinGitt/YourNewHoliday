@@ -13,8 +13,8 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version" value="1" />
-                        <form:hidden path="cheminImage" value="D:/Test" /></th>
+                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version"
+                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
                     <th></th>
                 </tr>
                 <tr>
@@ -78,7 +78,8 @@
                         alt="Maroc" class="img" /></td>
                 </tr>
                 <tr>
-                    <td><spring:message code="form.pdt03.parcourir" /></td>
+                    <td><input type="file" name="imageUpload"
+                        value="<spring:message code="form.pdt03.parcourir" />"></td>
                 </tr>
             </table>
         </div>

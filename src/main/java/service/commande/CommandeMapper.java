@@ -33,6 +33,7 @@ public class CommandeMapper {
         commandeDto.setReference(commandeDo.getReference());
         commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         return commandeDto;
     }
 
