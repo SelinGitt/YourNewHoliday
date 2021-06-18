@@ -40,10 +40,10 @@ public class DroitAccesFilter implements Filter {
         }
 
         final var response = (HttpServletResponse) resp;
-        final var map = StartupApp.DROITS.get(uri);
+        final var listRole = StartupApp.DROITS.get(uri);
 
-        // Si map null redirection, le lien n'existe pas donc 404
-        if (map == null) {
+        // Si listRole null redirection, le lien n'existe pas donc 404
+        if (listRole == null) {
             response.sendRedirect(request.getContextPath() + "/404.do");
             return;
         }
@@ -52,12 +52,12 @@ public class DroitAccesFilter implements Filter {
 
         // Si user null = visiteur; sinon check rang
         if (user == null) {
-            if (map.contains("visiteur")) {
+            if (listRole.contains("visiteur")) {
                 chain.doFilter(req, resp);
                 return;
             }
         } else {
-            if (map.contains(user.getNomRole())) {
+            if (listRole.contains(user.getNomRole())) {
                 chain.doFilter(req, resp);
                 return;
             }
