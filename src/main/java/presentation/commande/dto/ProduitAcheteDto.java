@@ -108,7 +108,7 @@ public class ProduitAcheteDto {
      *
      * @param prixUnitaire the prixUnitaire to set
      */
-    public void setPrix_unitaire(final String prixUnitaire) {
+    public void setPrixUnitaire(final String prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 
