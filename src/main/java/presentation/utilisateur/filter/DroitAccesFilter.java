@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import presentation.startup.StartupApp;
-import presentation.utilisateur.controller.ConnecterController;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
 /**
@@ -48,7 +47,7 @@ public class DroitAccesFilter implements Filter {
             return;
         }
 
-        final var user = (UtilisateurConnecteDto) request.getSession().getAttribute(ConnecterController.UTILISATEUR);
+        final var user = (UtilisateurConnecteDto) request.getSession().getAttribute("utilisateur");
 
         // Si user null = visiteur; sinon check rang
         if (user == null) {
