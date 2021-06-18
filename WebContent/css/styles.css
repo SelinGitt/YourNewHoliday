@@ -492,11 +492,17 @@ td.description {
 
 .formPDT03Radio {
 	display: flex;
-	align-items: center;
+	justify-content: space-around;
 }
 
 .formPDT03Radio div {
 	display: flex;
+	align-items: center;
+}
+
+.formPDT03Radio div input {
+	margin-right: 15px;
+	width: auto;
 }
 
 .buttonsPdt03 {

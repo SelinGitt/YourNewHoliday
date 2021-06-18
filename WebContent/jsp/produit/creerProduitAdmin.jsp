@@ -45,11 +45,12 @@
                                 <spring:message code="form.pdt03.oui" />
                             </div>
 
-
+                            <div>
+                                <form:radiobutton path="miseEnVente" value="false" />
+                                <spring:message code="form.pdt03.non" />
+                            </div>
 
                         </td>
-                        <td><form:radiobutton path="miseEnVente" value="false" /> <spring:message
-                                code="form.pdt03.non" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
