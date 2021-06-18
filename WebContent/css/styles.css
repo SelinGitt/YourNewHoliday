@@ -242,6 +242,10 @@ aside {
 /* USR00 */
 
 /* USR01 */
+.usr01searchMenu {
+	margin-bottom: 15px;
+}
+
 #listeUser {
 	border-collapse: collapse;
 	border: 1px solid black;

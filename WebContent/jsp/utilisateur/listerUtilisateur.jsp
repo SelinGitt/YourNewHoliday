@@ -6,13 +6,15 @@
     <spring:message code="usr01.titre" />
 </h1>
 
-<div class="searchBar">
-    <form:form action="listerUtilisateur.do" method="POST">
-        <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
-            placeholder="<spring:message code='usr01.searchbar'/>">
-        <input type="hidden" name="searchType" value="search" />
-        <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
-    </form:form>
+<div class="usr01searchMenu">
+    <div class="usr01searchBar">
+        <form:form action="listerUtilisateur.do" method="POST">
+            <input value="${searchInput}" name="searchInput" class="searchBarInside" type="search"
+                placeholder="<spring:message code='usr01.searchbar'/>">
+            <input type="hidden" name="searchType" value="search" />
+            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+        </form:form>
+    </div>
 </div>
 
 <table id="listeUser" aria-describedby="titreGestion">
