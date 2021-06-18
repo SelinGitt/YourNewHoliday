@@ -13,8 +13,7 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
-                    <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version"
-                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
+                    <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
                     <th></th>
                 </tr>
                 <tr>
@@ -88,9 +87,9 @@
                     <td>
                         <div>
                             <form:button type="file" class="boutonParcourirPDT03">
-                               <spring:message code="form.pdt03.parcourir" />
+                                <spring:message code="form.pdt03.parcourir" />
                             </form:button>
-                        </div> 
+                        </div>
                     </td>
                 </tr>
             </table>
