@@ -50,6 +50,8 @@ public class ListerUtilisateurController {
             final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
+        modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
+
         if ("search".equals(searchType)) {
             modelAndView.getModelMap().addAttribute("listeUtilisateur", this.rechercheInput(searchInput));
         }
@@ -57,7 +59,13 @@ public class ListerUtilisateurController {
         return modelAndView;
     }
 
+    /**
+     * Permet de rechercher un utilisateur avec son nom
+     *
+     * @param  searchInput Le nom a rechercher
+     * @return             List d'UtilisateurDto
+     */
     private List<UtilisateurDto> rechercheInput(final String searchInput) {
-        return null;
+        return this.iUtilisateurService.rechercherUtilisateur(searchInput);
     }
 }
