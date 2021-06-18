@@ -97,6 +97,7 @@ class ProduitServiceTest {
     /**
      * Test method for {@link service.produit.impl.ProduitService#trouverProduitEnVente(java.lang.Integer)}.
      */
+
     @Test
     void testTrouverProduitEnVente() {
         final var produitDo = new ProduitDo();
@@ -108,5 +109,6 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitEnVente(1));
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
+
     }
 }

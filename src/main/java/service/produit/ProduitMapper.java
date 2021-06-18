@@ -5,6 +5,7 @@ package service.produit;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import persistance.produit.entity.ProduitDo;
@@ -16,73 +17,81 @@ import presentation.produit.dto.ProduitDto;
  * @author Administrateur
  */
 public class ProduitMapper {
-    private ProduitMapper() {
-        //empty Method
-    }
+	private ProduitMapper() {
+		//empty Method
+	}
 
-    /**
-     * Permet de mapper un produitDto vers un produitDo
-     *
-     * @param  produitDto le produitDto à mapper
-     * @return            Le produitDo mappé
-     */
-    public static ProduitDo mapToDo(final ProduitDto produitDto) {
-        if (produitDto == null) {
-            return null;
-        }
-        final var produitDo = new ProduitDo();
-        //FIXME : l'id est null pour la creation mais aura une valeur pour l'édition
-        produitDo.setIdProduitOriginal(null);
-        produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
-        produitDo.setReference(produitDto.getReference());
-        produitDo.setNom(produitDto.getNom());
-        produitDo.setDescription(produitDto.getDescription());
-        produitDo.setDestination(produitDto.getDestination());
-        produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
-        produitDo.setHebergement(produitDto.getHebergement());
-        produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
-        produitDo.setCheminImage(produitDto.getCheminImage());
-        produitDo.setServices(Integer.valueOf(produitDto.getServices()));
-        produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
+	/**
+	 * Permet de mapper un produitDto vers un produitDo
+	 *
+	 * @param  produitDto le produitDto à mapper
+	 * @return            Le produitDo mappé
+	 */
+	public static ProduitDo mapToDo(final ProduitDto produitDto) {
 
-        return produitDo;
-    }
+		if (produitDto == null) {
+			return null;
+		}
 
-    /**
-     * Permet de mapper un produitDo vers un ProduitDto
-     *
-     * @param  produitDo le produitDo à mapper
-     * @return           le ProduitDto mappé
-     */
-    public static ProduitDto mapToDto(final ProduitDo produitDo) {
-        if (produitDo == null) {
-            return null;
-        }
-        final var decimalFormat = new DecimalFormat("#.00");
-        final var produitDto = new ProduitDto();
-        produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
-        produitDto.setVersion(String.valueOf(produitDo.getVersion()));
-        produitDto.setReference(produitDo.getReference());
-        produitDto.setNom(produitDo.getNom());
-        produitDto.setDescription(produitDo.getDescription());
-        produitDto.setDestination(produitDo.getDestination());
-        produitDto.setPrixUnitaire(decimalFormat.format(produitDo.getPrixUnitaire()));
-        produitDto.setHebergement(produitDo.getHebergement());
-        produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
-        produitDto.setCheminImage(produitDo.getCheminImage());
-        produitDto.setServices(String.valueOf(produitDo.getServices()));
-        produitDto.setVersion(String.valueOf(produitDo.getVersion()));
+		final var produitDo = new ProduitDo();
+		final var idOriginal = produitDto.getIdProduitOriginal();
 
-        return produitDto;
-    }
+		produitDo.setIdProduitOriginal(Optional.ofNullable(idOriginal).map(Integer::parseInt).orElse(null));
 
-    /**
-     * Permet de mapper une liste de produitDo en liste de produitDto
-     *
-     * @param  listeProduit la liste de produit à mapper
-     * @return              la liste de produit mappée
-     */
-    public static List<ProduitDto> mapToListDto(final List<ProduitDo> listeProduit) {
-        return listeProduit.stream().map(ProduitMapper::mapToDto).collect(Collectors.toList());
-    }
+		
+//		  if (idOriginal != null) { produitDo.setIdProduitOriginal(Integer.valueOf(idOriginal)); }
+		 
+
+		produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
+		produitDo.setReference(produitDto.getReference());
+		produitDo.setNom(produitDto.getNom());
+		produitDo.setDescription(produitDto.getDescription());
+		produitDo.setDestination(produitDto.getDestination());
+		produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
+		produitDo.setHebergement(produitDto.getHebergement());
+		produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
+		produitDo.setCheminImage(produitDto.getCheminImage());
+		produitDo.setServices(Integer.valueOf(produitDto.getServices()));
+		produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
+
+		return produitDo;
+	}
+
+	/**
+	 * Permet de mapper un produitDo vers un ProduitDto
+	 *
+	 * @param  produitDo le produitDo à mapper
+	 * @return           le ProduitDto mappé
+	 */
+	public static ProduitDto mapToDto(final ProduitDo produitDo) {
+		if (produitDo == null) {
+			return null;
+		}
+		final var decimalFormat = new DecimalFormat("#.00");
+		final var produitDto = new ProduitDto();
+		produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
+		produitDto.setVersion(String.valueOf(produitDo.getVersion()));
+		produitDto.setReference(produitDo.getReference());
+		produitDto.setNom(produitDo.getNom());
+		produitDto.setDescription(produitDo.getDescription());
+		produitDto.setDestination(produitDo.getDestination());
+		produitDto.setPrixUnitaire(decimalFormat.format(produitDo.getPrixUnitaire()));
+		produitDto.setHebergement(produitDo.getHebergement());
+		produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
+		produitDto.setCheminImage(produitDo.getCheminImage());
+		produitDto.setServices(String.valueOf(produitDo.getServices()));
+		produitDto.setVersion(String.valueOf(produitDo.getVersion()));
+
+		return produitDto;
+	}
+
+	/**
+	 * Permet de mapper une liste de produitDo en liste de produitDto
+	 *
+	 * @param  listeProduit la liste de produit à mapper
+	 * @return              la liste de produit mappée
+	 */
+	public static List<ProduitDto> mapToListDto(final List<ProduitDo> listeProduit) {
+		return listeProduit.stream().map(ProduitMapper::mapToDto).collect(Collectors.toList());
+	}
 }

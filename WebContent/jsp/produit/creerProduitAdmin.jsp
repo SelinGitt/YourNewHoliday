@@ -13,8 +13,11 @@
 
             <table class="formulaireProduit" aria-label="Formulaire de création d'un produit">
                 <tr>
+                    <<<<<<< HEAD
                     <th><form:hidden path="idProduitOriginal" value="null" /> <form:hidden path="version"
-                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
+                            value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th> =======
+                    <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage" value="D:/Test" /></th>
+                    >>>>>>> 3848632cf190e37b88e98750d0b3476a1d0b5d70
                     <th></th>
                 </tr>
                 <tr>
@@ -39,9 +42,16 @@
                 </tr>
                 <tr>
                     <td><spring:message code="form.pdt03.miseEnVente" /></td>
-                    <td class="formPDT03Radio"><form:radiobutton path="miseEnVente" value="true" /> <spring:message
-                            code="form.pdt03.oui" /> <form:radiobutton path="miseEnVente" value="false" /> <spring:message
-                            code="form.pdt03.non" /></td>
+                    <td class="formPDT03Radio">
+                        <div>
+                            <form:radiobutton path="miseEnVente" value="true" />
+                            <spring:message code="form.pdt03.oui" />
+                        </div>
+                        <div>
+                            <form:radiobutton path="miseEnVente" value="false" />
+                            <spring:message code="form.pdt03.non" />
+                        </div>
+                    </td>
 
                 </tr>
                 <tr>
