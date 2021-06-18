@@ -19,7 +19,7 @@
             <%--  tableau --%>
             <table class="panier-bordure-1px" aria-label="tableau panier">
                 <tbody>
-                    <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
+                    <c:forEach items="${panierDto.mapPanier}" var="entry">
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
@@ -120,7 +120,7 @@
                 <spring:message code="pan00.titre.fieldset.commande" />
             </legend>
 
-            <c:forEach items="${utilisateur.panierDto.mapPanier}" var="entry">
+            <c:forEach items="${panierDto.mapPanier}" var="entry">
                 <%--  nom et référence --%>
                 <div>
                     <h3>${entry.key.nom}-${entry.key.reference}</h3>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 
 /**
@@ -46,6 +47,7 @@ public class UserConnecteController {
             }
             if ("create_client_panier".equals(action)) {
                 session.setAttribute(UTILISATEUR, this.creerUtilisateurAvecPanier());
+                session.setAttribute("panierDto", creerPanier());
             }
         }
         return "user_session";
@@ -102,8 +104,13 @@ public class UserConnecteController {
         utilisateurConnecteDto.setNbProduitPanier("0");
         utilisateurConnecteDto.setNom("Poe");
         utilisateurConnecteDto.setPrenom("Edgar");
-        utilisateurConnecteDto.setPanierDto(RemplirPanier.echantillon());
 
         return utilisateurConnecteDto;
     }
+
+    private PanierDto creerPanier() {
+        //ajout d'un panier vide en session        
+        return RemplirPanier.echantillon();
+    }
+
 }
