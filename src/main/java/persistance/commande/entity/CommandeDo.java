@@ -39,6 +39,9 @@ public class CommandeDo {
     @OneToMany(mappedBy = "commandeDo")
     private Set<CommandeProduitDo> commandeProduitDoSet;
 
+    @Column(name = "quantiteTotale")
+    private Integer                quantiteTotale;
+
     /**
      * Getter for id
      *
@@ -130,7 +133,7 @@ public class CommandeDo {
     }
 
     /**
-     * Getter for commandeProduitDoSet
+     * <<<<<<< HEAD Getter for commandeProduitDoSet
      *
      * @return the commandeProduitDoSet
      */
@@ -145,6 +148,25 @@ public class CommandeDo {
      */
     public void setCommandeProduitDoSet(final Set<CommandeProduitDo> commandeProduitDoSet) {
         this.commandeProduitDoSet = commandeProduitDoSet;
+    }
+
+    /**
+     * Getter for quantiteTotale
+     * 
+     * @return the quantiteTotale
+     */
+    public Integer getQuantiteTotale() {
+        return quantiteTotale;
+    }
+
+    /**
+     * Setter for quantiteTotale
+     * 
+     * @param quaniteTotale the quantiteTotale to set
+     */
+    public void setQuantiteTotale(final Integer quaniteTotale) {
+        this.quantiteTotale = quaniteTotale;
+
     }
 
 }

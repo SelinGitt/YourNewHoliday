@@ -4,15 +4,19 @@
 package persistance.commande.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * classe représentant un ProduitAcheteen BD
  *
- * @author Zakaria B
+ * @author Hanan Anghari
  */
+@Entity
+@Table(name = "produit_achete")
 public class ProduitAcheteDo {
 
     @Id
