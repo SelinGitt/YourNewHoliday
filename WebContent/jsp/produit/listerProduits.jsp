@@ -11,12 +11,15 @@
     <br />
     <div class="searchBar">
         <form:form action="listerProduits.do" method="POST">
+            <input type="hidden" name="type" value="search" />
+        
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code='pdt00.recherche.OK'/>" class=searchBarOk />
         </form:form>
         <form:form action="listerProduits.do" method="POST" id="tri">
-            <select id="tri" name="tri">
+        <input type="hidden" name="type" value="tri" />
+            <select id="tri" name="tri">               
                 <option disabled selected><spring:message code="pdt00.tri"></spring:message></option>
                 <option value="prix_croissant"><spring:message code="pdt00.tri.croissant"></spring:message></option>
                 <option value="prix_decroissant"><spring:message code="pdt00.tri.decroissant"></spring:message></option>
