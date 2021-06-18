@@ -244,6 +244,17 @@ aside {
 }
 
 /* FEATURE TEAM USER */
+
+/* ECRAN ERREUR 404 */
+.div404 {
+    text-align: center;
+    height: 100%;
+}
+
+.div404 .img404 {
+	height: 100%;
+}
+
 /* USR00 */
 
 /* USR01 */

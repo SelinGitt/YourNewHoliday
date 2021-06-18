@@ -14,11 +14,13 @@
         <div class="lib-champ">
             <span><spring:message code="usr07.label.email" /></span>
             <form:input path="email" />
+            <form:errors path="email" cssClass="error" />
         </div>
 
         <div class="lib-champ">
             <span><spring:message code="usr07.label.password" /></span>
             <form:input path="password" />
+            <form:errors path="email" cssClass="error" />
         </div>
         <div id="button">
             <button class="boutonValiderUSR07" onclick="submit">
