@@ -174,6 +174,13 @@ class UtilisateurMapperTest {
         utilisateurDo.setPrenom("Michel");
         utilisateurDo.setEstDesactive(true);
 
+        final var roleDo = new RoleDo();
+
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("libelle");
+
+        utilisateurDo.setRole(roleDo);
+
         final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
 
         Assertions.assertEquals("123", utilisateurConnecteDto.getIdUtilisateur());
