@@ -23,4 +23,12 @@ public interface ICommandeDao extends IGenericDao<CommandeDo> {
      */
     List<CommandeDo> findByUserId(final Integer userId);
 
+    /**
+     * Permet de retourner une commande selon sa référence
+     *
+     * @param  reference la réference de la commande
+     * @return           CommandeDo la commande trouvé, null sinon
+     */
+    CommandeDo findByRef(final String reference);
+
 }

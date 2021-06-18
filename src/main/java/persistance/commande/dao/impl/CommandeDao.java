@@ -57,4 +57,23 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         return allQuery.getResultList();
     }
 
+    @Override
+    public CommandeDo findByRef(final String reference) {
+        // la requête findByRef avec un critère
+        final var criteriaBuilder = this.entityManager.getCriteriaBuilder();
+        final CriteriaQuery<CommandeDo> criteriaQuery = criteriaBuilder.createQuery(CommandeDo.class);
+        final Root<CommandeDo> rootEntry = criteriaQuery.from(CommandeDo.class);
+        final CriteriaQuery<CommandeDo> allCriteria = criteriaQuery.select(rootEntry);
+        // on indique le type de paramètre que l'on veut chercher
+        final ParameterExpression<String> parameter = criteriaBuilder.parameter(String.class);
+        // on crée la clause where avec le paramètre
+        final CriteriaQuery<CommandeDo> allWhere = allCriteria.where(criteriaBuilder.equal(rootEntry.get("reference"), parameter));
+        final TypedQuery<CommandeDo> allQuery = this.entityManager.createQuery(allWhere);
+        // on fournit à la requête la valeur du paramètre que l'on cherche
+        allQuery.setParameter(parameter, reference);
+        // ajout du message pour le debug
+        this.logger.debug("findByRef {} ", reference);
+        return allQuery.getSingleResult();
+    }
+
 }
