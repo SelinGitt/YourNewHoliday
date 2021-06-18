@@ -85,12 +85,4 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         this.entityManager.persist(bean);
         return bean;
     }
-
-    @Override
-    public List<T> recherche(final String colonne, final String searchTerm) {
-        final String queryStr = "From " + entiteClass.getName() + " WHERE " + colonne + " LIKE :searchTerm";
-        final TypedQuery<T> query = entityManager.createQuery(queryStr, entiteClass);
-        query.setParameter("searchTerm", "%" + searchTerm + "%");
-        return query.getResultList();
-    }
 }
