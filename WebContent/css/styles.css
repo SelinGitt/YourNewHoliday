@@ -334,24 +334,35 @@ aside {
 }
 
 /* USR07 */
+#title {
+	text-align: center;
+	margin-bottom: 50px;
+}
 
 #form {
-	 display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#button{
+	display: flex;
+	align-items: center;
 	justify-content: center;
-    margin: auto;
-    width: 80%;
-    display: flex;
 }
 
-input{
-	width: 150px;
-	margin: 0;
+#button {
+	justify-content: center;
+	margin: auto;
+	width: 80%;
+	display: flex;
 }
+
+input {
+	margin-left:50px;
+	width: 300px;
+}
+
+.lib-champ {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
 .boutonValiderUSR07 {
 	background-color: #008000;
 	margin-right: 20%;
@@ -430,9 +441,10 @@ td.description {
 	display: flex;
 	max-width: 75%
 }
+
 .form-group {
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 	margin-bottom: 20px;
 }
 
