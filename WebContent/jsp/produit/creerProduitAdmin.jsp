@@ -98,19 +98,19 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        <td><i class="fa fa-glass"></i></td>
+                        <td><i class="fa fa-bath"></i></td>
+                        <td><i class="fa fa-paw"></i></td>
                     </tr>
                     <tr>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
+                        <td><i class="fa fa-gamepad"></i></td>
+                        <td><i class="fa fa-wifi"></i></td>
+                        <td><i class="fa fa-cutlery"></i></td>
                     </tr>
                     <tr>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
+                        <td><i class="fa fa-wheelchair"></i></td>
+                        <td><i class="fa fa-snowflake-o"></i></td>
+                        <td><i class="fa fa-tv"></i></td>
                     </tr>
                 </table>
             </div>

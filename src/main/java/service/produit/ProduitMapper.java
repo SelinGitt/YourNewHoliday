@@ -36,11 +36,8 @@ public class ProduitMapper {
 		final var produitDo = new ProduitDo();
 		final var idOriginal = produitDto.getIdProduitOriginal();
 
+		// En Java 8 : permet de gérer l'id null lors de la création d'un produit et l'id existant pour l'édition
 		produitDo.setIdProduitOriginal(Optional.ofNullable(idOriginal).map(Integer::parseInt).orElse(null));
-
-		
-//		  if (idOriginal != null) { produitDo.setIdProduitOriginal(Integer.valueOf(idOriginal)); }
-		 
 
 		produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
 		produitDo.setReference(produitDto.getReference());
