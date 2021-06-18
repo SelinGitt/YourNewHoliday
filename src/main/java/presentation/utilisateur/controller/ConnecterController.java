@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
@@ -28,7 +29,7 @@ import service.utilisateur.IUtilisateurService;
  */
 @Controller
 @RequestMapping({"/connecter.do", "/deconnecter.do"})
-@SessionAttributes("utilisateur")
+@SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
 
     @Autowired
@@ -82,6 +83,8 @@ public class ConnecterController {
         } else {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
+            //ajout d'un panier vide en session
+            modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
         }
