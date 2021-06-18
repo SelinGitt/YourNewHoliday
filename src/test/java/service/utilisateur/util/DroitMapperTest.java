@@ -35,7 +35,6 @@ class DroitMapperTest {
 
         Assertions.assertNotNull(droitDtoMapper);
 
-        Assertions.assertEquals(droit.getIdDroit(), droitDtoMapper.getIdDroit());
         Assertions.assertEquals(droit.getUrl(), droitDtoMapper.getUrl());
 
     }
@@ -47,14 +46,12 @@ class DroitMapperTest {
     void testMapperToDo() {
         final DroitDto droitDto = new DroitDto();
 
-        droitDto.setIdDroit(1);
         droitDto.setUrl("test.do");
 
         final var droitDoMapper = DroitMapper.mapperToDo(droitDto);
 
         Assertions.assertNotNull(droitDoMapper);
 
-        Assertions.assertEquals(droitDto.getIdDroit(), droitDoMapper.getIdDroit());
         Assertions.assertEquals(droitDto.getUrl(), droitDoMapper.getUrl());
     }
 

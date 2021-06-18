@@ -16,31 +16,12 @@ public class DroitDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = 1738455666059639407L;
 
-    private int               idDroit;
+    private static final long serialVersionUID = 525091163774644464L;
 
     private String            url;
 
     private List<PossedeDto>  possede;
-
-    /**
-     * Getter for idDroit
-     *
-     * @return the idDroit
-     */
-    public int getIdDroit() {
-        return idDroit;
-    }
-
-    /**
-     * Setter for idDroit
-     *
-     * @param idDroit the idDroit to set
-     */
-    public void setIdDroit(final int idDroit) {
-        this.idDroit = idDroit;
-    }
 
     /**
      * Getter for url

@@ -33,7 +33,6 @@ public class DroitMapper {
     public static DroitDto mapperToDto(final DroitDo droitDo) {
         final var droitDto = new DroitDto();
 
-        droitDto.setIdDroit(droitDo.getIdDroit());
         droitDto.setUrl(droitDo.getUrl());
         droitDto.setPossede(PossedeMapper.mapperToListDto(droitDo.getPossede()));
 
@@ -49,7 +48,6 @@ public class DroitMapper {
     public static DroitDo mapperToDo(final DroitDto droitDto) {
         final var droitDo = new DroitDo();
 
-        droitDo.setIdDroit(droitDto.getIdDroit());
         droitDo.setUrl(droitDto.getUrl());
 
         return droitDo;

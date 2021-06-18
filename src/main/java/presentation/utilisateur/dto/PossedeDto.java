@@ -15,29 +15,9 @@ public class PossedeDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -9037293999653181737L;
-
-    private int               idPossede;
+    private static final long serialVersionUID = -6957282466346848192L;
 
     private RoleDto           roleDto;
-
-    /**
-     * Getter for idPossede
-     *
-     * @return the idPossede
-     */
-    public int getIdPossede() {
-        return idPossede;
-    }
-
-    /**
-     * Setter for idPossede
-     *
-     * @param idPossede the idPossede to set
-     */
-    public void setIdPossede(final int idPossede) {
-        this.idPossede = idPossede;
-    }
 
     /**
      * Getter for roleDto

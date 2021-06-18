@@ -37,7 +37,6 @@ class PossedeMapperTest {
 
         Assertions.assertNotNull(possede);
 
-        Assertions.assertEquals(possede.getId(), PossedeDtoMapper.getIdPossede());
         Assertions.assertEquals(possede.getRole().getLibelle(), PossedeDtoMapper.getRoleDto().getLibelle());
     }
 

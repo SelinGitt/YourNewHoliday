@@ -33,7 +33,6 @@ public class PossedeMapper {
     public static PossedeDto mapperToDto(final PossedeDo possedeDo) {
         final var possedeDto = new PossedeDto();
 
-        possedeDto.setIdPossede(possedeDo.getId());
         possedeDto.setRoleDto(RoleMapper.mapperToDto(possedeDo.getRole()));
 
         return possedeDto;
