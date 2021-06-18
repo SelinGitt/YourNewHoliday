@@ -51,6 +51,7 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (4, 'listerProduitsAdmin.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (5, 'connecter.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (6, 'creerUtilisateur.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (7, 'deconnecter.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (8, 'listerCommande.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -124,3 +125,5 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (10, 6, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (11, 4, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (13, 7, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (15, 8, 3);
