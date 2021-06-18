@@ -29,8 +29,8 @@
             <table class="containerVoyage" aria-label="Produit">
                 <tr>
                     <th colspan="2"><img
-                        src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg"
-                        alt="Maroc" class="img" /></th>
+                        src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                        alt="${produitDto.destination}" class="img" /></th>
                 </tr>
                 <tr class="lineRow">
                     <td class="name text-responsive">${produitDto.nom}</td>
