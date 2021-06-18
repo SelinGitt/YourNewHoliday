@@ -37,7 +37,7 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         final var listDroit = this.droitService.findAll();
 
-        listDroit.forEach(droit -> DROITS.put(droit.getUrl(), droit.getPossede().stream().map(PossedeDto::getRoleDto)
-                .collect(Collectors.toList()).stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
+        listDroit.forEach(droit -> DROITS.put(droit.getUrl(),
+                droit.getPossede().stream().map(PossedeDto::getRoleDto).map(RoleDto::getLibelle).collect(Collectors.toList())));
     }
 }

@@ -37,7 +37,7 @@ class DroitServiceTest {
      * Test pour {@link service.utilisateur.IDroitService#findAll()}, retourne liste vide
      */
     @Test
-    void testFindAll() {
+    void testFindAllEmpty() {
         Mockito.when(this.dao.findAll()).thenReturn(Collections.emptyList());
         Assertions.assertEquals(0, this.droitService.findAll().size());
     }
@@ -46,7 +46,7 @@ class DroitServiceTest {
      * Test pour {@link service.utilisateur.IDroitService#findAll()}, retourne 1 droit
      */
     @Test
-    void testFindAll2() {
+    void testFindAll() {
         final DroitDo droitDo = new DroitDo();
 
         droitDo.setIdDroit(1);
