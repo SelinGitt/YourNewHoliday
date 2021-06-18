@@ -18,6 +18,8 @@ public class CommandeProduitDto {
 
     private String           quantite;
 
+    private String           prixTotal;
+
     /**
      * Getter for idListeCommande
      *
@@ -88,6 +90,24 @@ public class CommandeProduitDto {
      */
     public void setQuantite(final String quantite) {
         this.quantite = quantite;
+    }
+
+    /**
+     * Getter for prixTotal
+     *
+     * @return the prixTotal
+     */
+    public String getPrixTotal() {
+        return prixTotal;
+    }
+
+    /**
+     * Setter for prixTotal
+     *
+     * @param prixTotal the prixTotal to set
+     */
+    public void setPrixTotal(final String prixTotal) {
+        this.prixTotal = prixTotal;
     }
 
 }

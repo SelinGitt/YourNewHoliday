@@ -1,14 +1,18 @@
 package presentation.commande.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Classe représentant une commande pour la vue
  */
 public class CommandeDto {
-    private String id;
-    private String reference;
-    private String prixTotal;
-    private String date;
-    private String quantiteTotale;
+    private String                   id;
+    private String                   reference;
+    private String                   prixTotal;
+    private String                   date;
+    private String                   quantiteTotale;
+    private List<CommandeProduitDto> listCommandeProduitDto = new ArrayList<>();
 
     /**
      * Getter for id
@@ -99,6 +103,24 @@ public class CommandeDto {
      */
     public void setQuantiteTotale(final String quantiteTotale) {
         this.quantiteTotale = quantiteTotale;
+    }
+
+    /**
+     * Getter for listCommandeProduitDto
+     *
+     * @return the listCommandeProduitDto
+     */
+    public List<CommandeProduitDto> getListCommandeProduitDto() {
+        return listCommandeProduitDto;
+    }
+
+    /**
+     * Setter for listCommandeProduitDto
+     *
+     * @param listCommandeProduitDto the listCommandeProduitDto to set
+     */
+    public void setListCommandeProduitDto(final List<CommandeProduitDto> listCommandeProduitDto) {
+        this.listCommandeProduitDto = listCommandeProduitDto;
     }
 
 }
