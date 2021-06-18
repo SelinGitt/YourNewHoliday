@@ -44,12 +44,12 @@
                                 <form:radiobutton path="miseEnVente" value="true" />
                                 <spring:message code="form.pdt03.oui" />
                             </div>
-                            <div>
-                                <form:radiobutton path="miseEnVente" value="false" />
-                                <spring:message code="form.pdt03.non" />
-                            </div>
-                        </td>
 
+
+
+                        </td>
+                        <td><form:radiobutton path="miseEnVente" value="false" /> <spring:message
+                                code="form.pdt03.non" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
@@ -98,19 +98,19 @@
                         <th></th>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-glass"></i></td>
-                        <td><i class="fa fa-bath"></i></td>
-                        <td><i class="fa fa-paw"></i></td>
+                        <td><em class="fa fa-glass"></em></td>
+                        <td><em class="fa fa-bath"></em></td>
+                        <td><em class="fa fa-paw"></em></td>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-gamepad"></i></td>
-                        <td><i class="fa fa-wifi"></i></td>
-                        <td><i class="fa fa-cutlery"></i></td>
+                        <td><em class="fa fa-gamepad"></em></td>
+                        <td><em class="fa fa-wifi"></em></td>
+                        <td><em class="fa fa-cutlery"></em></td>
                     </tr>
                     <tr>
-                        <td><i class="fa fa-wheelchair"></i></td>
-                        <td><i class="fa fa-snowflake-o"></i></td>
-                        <td><i class="fa fa-tv"></i></td>
+                        <td><em class="fa fa-wheelchair"></em></td>
+                        <td><em class="fa fa-snowflake-o"></em></td>
+                        <td><em class="fa fa-tv"></em></td>
                     </tr>
                 </table>
             </div>

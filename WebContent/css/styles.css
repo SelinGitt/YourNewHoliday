@@ -469,6 +469,15 @@ td.description {
 	grid-row: 2/span 1;
 }
 
+.formulaireProduit input {
+	width: 100%
+}
+
+.formulaireProduit {
+	table-layout: fixed;
+	text-align: left;
+}
+
 .boutonCreerPDT03 {
 	background-color: rgb(106, 168, 79);
 }
@@ -486,7 +495,7 @@ td.description {
 	align-items: center;
 }
 
-.pdt03DivRadio {
+.formPDT03Radio div {
 	display: flex;
 }
 
