@@ -474,8 +474,13 @@ td.description {
 }
 
 .formulaireProduit {
-	table-layout: fixed;
+	table-layout: auto;
 	text-align: left;
+	line-height: 60px;
+}
+
+.formulaireProduit td{
+	padding: 0 5px 0 5px;
 }
 
 .boutonCreerPDT03 {
@@ -503,6 +508,11 @@ td.description {
 .formPDT03Radio div input {
 	margin-right: 15px;
 	width: auto;
+}
+
+.textAreaPDT03 textarea {
+	resize: vertical;
+	min-height: 60 px;
 }
 
 .buttonsPdt03 {

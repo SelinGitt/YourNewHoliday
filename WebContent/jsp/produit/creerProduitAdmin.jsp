@@ -54,7 +54,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
-                        <td><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td class=textAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
                     </tr>
                     <tr>
                         <td></td>
