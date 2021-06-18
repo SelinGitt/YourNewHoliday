@@ -10,11 +10,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.springframework.stereotype.Service;
+
 /**
  * Classe utilitaire permettant de récupérer les clés du fichier YNH-application.properties
  *
  * @author NathanR
  */
+@Service
 public class GetPropertyValues {
 
     /**
@@ -38,7 +41,6 @@ public class GetPropertyValues {
                 throw new FileNotFoundException("The property file " + propFileName + " not found in the classpath.");
             }
             PROPERTIESMAP.put("contactRepo", prop.getProperty("contactRepo"));
-            PROPERTIESMAP.put("produitsImagesRepo", prop.getProperty("produitsImagesRepo"));
         } catch (
 
         final Exception e) {
