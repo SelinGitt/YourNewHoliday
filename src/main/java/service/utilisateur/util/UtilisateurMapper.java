@@ -101,10 +101,10 @@ public class UtilisateurMapper {
     public static UtilisateurConnecteDto mapperToConnecteDto(final UtilisateurDo utilisateurDo) {
         final var utilisateurConnecteDto = new UtilisateurConnecteDto();
 
-        //TODO à changer quand les rôles seront gérés
-        utilisateurConnecteDto.setIdRole("1");
-        //TODO à changer quand les rôles seront gérés
-        utilisateurConnecteDto.setNomRole("Rôle");
+        final var role = utilisateurDo.getRole();
+
+        utilisateurConnecteDto.setIdRole(role.getIdRole().toString());
+        utilisateurConnecteDto.setNomRole(role.getLibelle());
 
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
