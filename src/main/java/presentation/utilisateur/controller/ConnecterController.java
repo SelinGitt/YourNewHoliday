@@ -96,7 +96,8 @@ public class ConnecterController {
             sessionStatus.setComplete();
             session.invalidate();
         }
-        final var modelAndView = new ModelAndView("redirect:/listerProduits.do");
+//        final var modelAndView = new ModelAndView("redirect:/listerProduits.do");
+        final var modelAndView = new ModelAndView("redirect:/consulterUtilisateur.do");
         return modelAndView;
     }
 }
