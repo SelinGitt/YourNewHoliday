@@ -342,7 +342,10 @@ aside {
 }
 
 #button{
-	margin-left: 150px;
+	justify-content: center;
+    margin: auto;
+    width: 80%;
+    display: flex;
 }
 
 input{
@@ -351,6 +354,7 @@ input{
 }
 .boutonValiderUSR07 {
 	background-color: #008000;
+	margin-right: 20%;
 	Color: white;
 }
 
@@ -425,6 +429,11 @@ tr.lineRow {
 td.description {
 	display: flex;
 	max-width: 75%
+}
+.form-group {
+	display: flex;
+	justify-content:space-between;
+	margin-bottom: 20px;
 }
 
 /* PDT01 */
