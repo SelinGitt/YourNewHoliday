@@ -6,6 +6,7 @@ package service.util;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -19,7 +20,7 @@ public class GetPropertyValues {
     /**
      * Map contennant les chemins d'accès aux répertoires
      */
-    public static final Map<String, String> PROPERTIESMAP = null;
+    public static final Map<String, String> PROPERTIESMAP = new HashMap<>();
 
     /**
      * Permet d'extraire les données du fichier YNH-application.properties et de les placer dans la map
