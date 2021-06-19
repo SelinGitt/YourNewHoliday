@@ -94,4 +94,21 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 ProduitDo.class);
         return query.getResultList();
     }
+
+    @Override
+    public List<ProduitDo> listerFiltreTriCroissant(final String searchTerm) {
+
+        final TypedQuery<ProduitDo> query = entityManager.createQuery(
+                "FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire ASC ", ProduitDo.class);
+        query.setParameter("searchTerm", "%" + searchTerm + "%");
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProduitDo> listerFiltreTriDecroissant(final String searchTerm) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery(
+                "FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire DESC ", ProduitDo.class);
+        query.setParameter("searchTerm", "%" + searchTerm + "%");
+        return query.getResultList();
+    }
 }

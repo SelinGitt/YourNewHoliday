@@ -56,4 +56,13 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> listerDecroissant() {
         return ProduitMapper.mapToListDto(produitDao.listerDecroissant());
     }
+
+    @Override
+    public List<ProduitDto> listerFiltreTri(final String typeFiltre, final String searchTerm) {
+        if ("ASC".equals(typeFiltre)) {
+            return ProduitMapper.mapToListDto(produitDao.listerFiltreTriCroissant(searchTerm));
+        }
+        return ProduitMapper.mapToListDto(produitDao.listerFiltreTriDecroissant(searchTerm));
+    }
+
 }

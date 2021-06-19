@@ -12,17 +12,18 @@
     <div class="searchBar">
         <form:form action="listerProduits.do" method="POST">
             <input type="hidden" name="type" value="search" />
-        
+            <input type="hidden" name="tri" value="${tri}"/> 
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code='pdt00.recherche.OK'/>" class=searchBarOk />
         </form:form>
         <form:form action="listerProduits.do" method="POST" id="tri">
         <input type="hidden" name="type" value="tri" />
+        <input type="hidden" name="searchInput" value="${searchTerm}"/>
             <select id="tri" name="tri">               
                 <option disabled selected><spring:message code="pdt00.tri"></spring:message></option>
-                <option value="prix_croissant"><spring:message code="pdt00.tri.croissant"></spring:message></option>
-                <option value="prix_decroissant"><spring:message code="pdt00.tri.decroissant"></spring:message></option>
+                <option value="ASC"><spring:message code="pdt00.tri.croissant"></spring:message></option>
+                <option value="DESC"><spring:message code="pdt00.tri.decroissant"></spring:message></option>
             </select>
             <input type="submit" form="tri" value="<spring:message code='pdt00.recherche.OK'/>">
         </form:form>

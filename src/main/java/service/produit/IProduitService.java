@@ -57,4 +57,14 @@ public interface IProduitService {
      * @return liste triée
      */
     List<ProduitDto> listerDecroissant();
+
+    /**
+     * Permet de filtrer la liste des produits recherchés en fonction d'un terme de recherche. <br>
+     * Permet aussi de les trier en fonction de leur type, ASC ou DESC
+     *
+     * @param  typeFiltre <code>ASC</code> ou <code>DESC</code> pour trier
+     * @param  searchTerm le terme recherché
+     * @return            la liste triée et contenant les termes recherchés
+     */
+    List<ProduitDto> listerFiltreTri(final String typeFiltre, final String searchTerm);
 }

@@ -55,6 +55,10 @@ public class ListerProduitsController {
             final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
+        if (!searchTerm.isEmpty() && !tri.isEmpty()) {
+            listerFiltreTri(searchTerm, tri, modelAndView);
+            return modelAndView;
+        }
         switch (type) {
             case "tri":
                 trierListe(tri, modelAndView);
@@ -74,12 +78,13 @@ public class ListerProduitsController {
      * @param searchTerm   le terme à rechercher
      * @param modelAndView le modelAndView
      */
-    private ModelAndView filtrerListe(final String searchTerm, final ModelAndView modelAndView) {
+    private void filtrerListe(final String searchTerm, final ModelAndView modelAndView) {
         if (!searchTerm.isEmpty()) {
             modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
-            return modelAndView;
+            modelAndView.addObject("searchTerm", searchTerm);
+        } else {
+            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         }
-        return modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
 
     }
 
@@ -90,32 +95,13 @@ public class ListerProduitsController {
      * @param modelAndView
      */
     private void trierListe(final String tri, final ModelAndView modelAndView) {
-        if ("prix_croissant".equals(tri)) {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
-        } else {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerDecroissant());
-        }
+        modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
+        modelAndView.addObject("tri", tri);
     }
 
-    //    /**
-    //     * Permet de traiter une requete de type POST
-    //     *
-    //     * @param  tri ordre de tri
-    //     * @return     liste triée
-    //     */
-    //    @PostMapping
-    //    public ModelAndView listerCroissant(final @RequestParam(value = "tri") String tri) {
-    //        final var modelAndView = new ModelAndView("listerProduits");
-    //        trierListe(tri, modelAndView);
-    //        return modelAndView;
+    private void listerFiltreTri(final String searchTerm, final String tri, final ModelAndView modelAndView) {
+        modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(tri, searchTerm));
+        modelAndView.addObject("tri", tri);
+        modelAndView.addObject("searchTerm", searchTerm);
+    }
 }
-//    @PostMapping
-//    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
-//        final var modelAndView = new ModelAndView("listerProduits");
-//        modelAndView.addObject("searchTerm", searchInput);
-//        if (searchInput.isEmpty()) {
-//            return new ModelAndView("redirect:/");
-//        }
-//        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
-//        return modelAndView;
-//    }
