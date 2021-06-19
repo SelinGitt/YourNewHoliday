@@ -15,7 +15,7 @@
             <input type="hidden" name="tri" value="${tri}"/> 
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
-            <input type="submit" value="<spring:message code='pdt00.recherche.OK'/>" class=searchBarOk />
+            <input type="submit" value="<spring:message code='pdt00.recherche.OK'/>" class="searchBarOk" />
         </form:form>
         <form:form action="listerProduits.do" method="POST" id="tri">
         <input type="hidden" name="type" value="tri" />
