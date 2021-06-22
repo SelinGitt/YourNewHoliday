@@ -35,4 +35,20 @@ public interface IUtilisateurService {
      * @return          un UtilisateurConnecteDto à mettre en session si l'authentification est valide, null sinon
      */
     UtilisateurConnecteDto authentify(final String email, final String password);
+
+    /**
+     * Permet de renvoyer un UtilisateurDto en le cherchant par l'Id
+     *
+     * @param  id de l'utilisateur provenant de l'utilisateurConnecteDto
+     * @return    un UtilisateurDto, ou null si non trouvé
+     */
+    UtilisateurDto findUtilisateurById(final Integer id);
+
+    /**
+     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id
+     *
+     * @param  id
+     * @return    true si la suppression a réussi, false sinon
+     */
+    boolean deleteUtilisateurById(final Integer id);
 }

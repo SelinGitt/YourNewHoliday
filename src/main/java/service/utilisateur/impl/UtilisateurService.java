@@ -72,4 +72,15 @@ public class UtilisateurService implements IUtilisateurService {
         }
         return null;
     }
+
+    @Override
+    public UtilisateurDto findUtilisateurById(final Integer id) {
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.findById(id));
+    }
+
+    @Override
+    public boolean deleteUtilisateurById(final Integer id) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 }

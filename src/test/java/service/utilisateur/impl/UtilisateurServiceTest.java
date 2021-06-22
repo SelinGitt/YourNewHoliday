@@ -139,4 +139,9 @@ class UtilisateurServiceTest {
         final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
         Assertions.assertNull(utilisateurConnecteDto);
     }
+
+    @Test
+    void testFindUtilisateurById() {
+        //TODO faire le test
+    }
 }
