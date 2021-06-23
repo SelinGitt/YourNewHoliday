@@ -255,6 +255,7 @@ aside {
 /* USR01 */
 .usr01searchMenu {
 	margin-bottom: 15px;
+	display: flex;
 }
 
 .usr01searchMenu .usr01AddUser {
@@ -292,10 +293,6 @@ aside {
 }
 
 .bouton {
-	width: 12%;
-	text-align: center;
-	float: right;
-	padding: 3px 0;
 	background-color: rgb(34, 177, 76);
 	color : white;
 }
