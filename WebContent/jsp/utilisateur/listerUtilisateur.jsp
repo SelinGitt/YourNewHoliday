@@ -17,6 +17,22 @@
             </form:form>
         </div>
 
+        <div class="usr01filterBar">
+            <form:form action="listerUtilisateur.do" method="POST">
+            
+                <input type="hidden" name="searchType" value="filter" />
+            
+                <select name="usr01selectFilter">
+                    <option disabled selected>Filtrer Client / Administrateur</option>
+                    <option value="all"><spring:message code="usr01.filter.tous" /></option>
+                    <option value="admin"><spring:message code="usr01.filter.admin" /></option>
+                    <option value="client"><spring:message code="usr01.filter.client" /></option>
+                </select>
+                
+                <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+            </form:form>
+        </div>
+
         <div class="usr01AddUser">
             <a href="creerUtilisateur.do">
                 <button type="button" class="urs01newUserBouton">
