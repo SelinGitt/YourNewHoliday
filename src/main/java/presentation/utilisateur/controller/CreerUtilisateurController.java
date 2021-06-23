@@ -55,8 +55,11 @@ public class CreerUtilisateurController {
     public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, final HttpServletRequest request) {
         this.service.createUtilisateur(utilisateurDto);
 
-        request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+        if (request.getSession().getAttribute("utilisateur") == null) {
+            request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
+            return new ModelAndView("redirect:/connecter.do");
+        }
 
-        return new ModelAndView("redirect:/connecter.do");
+        return new ModelAndView("redirect:/listerUtilisateur.do");
     }
 }

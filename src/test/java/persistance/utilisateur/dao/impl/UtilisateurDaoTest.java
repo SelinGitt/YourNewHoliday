@@ -95,4 +95,16 @@ class UtilisateurDaoTest {
         //On essaie avec une adresse email absente en base de données
         assertNull(iUtilisateurDao.findByEmail("emailNonExistant@hotmail.com"));
     }
+
+    /**
+     * Test pour {@link persistance.commun.dao.IGenericDao#recherche(String, String)}
+     */
+    @Test
+    void testRecherche() {
+        final List<UtilisateurDo> utilisateurDo = iUtilisateurDao.recherche("Marsial");
+
+        Assertions.assertNotNull(utilisateurDo);
+        Assertions.assertEquals(1, utilisateurDo.size());
+        Assertions.assertEquals("Marsial", utilisateurDo.get(0).getNom());
+    }
 }

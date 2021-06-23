@@ -1,5 +1,7 @@
 package persistance.utilisateur.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
@@ -43,5 +45,13 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
             logger.info("Utilisateur avec l'email {} non trouvé en base de données.", email, exception);
             return null;
         }
+    }
+
+    @Override
+    public List<UtilisateurDo> recherche(final String nom) {
+        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("From UtilisateurDo WHERE nom LIKE :searchTerm",
+                UtilisateurDo.class);
+        query.setParameter("searchTerm", "%" + nom + "%");
+        return query.getResultList();
     }
 }
