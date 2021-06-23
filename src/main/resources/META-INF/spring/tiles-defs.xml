@@ -55,14 +55,19 @@
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
 
+	<!-- écran panier -->
+	<definition name="listerPanierAdresses" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierAdresses.jsp" />
+	</definition>
+
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
-	
+
 	<!-- écran 404 -->
 	<definition name="404" extends="base.definition">
-		<put-attribute name="title" value="404 Error"/>
+		<put-attribute name="title" value="404 Error" />
 		<put-attribute name="body" value="/jsp/utilisateur/404.jsp" />
 	</definition>
 
