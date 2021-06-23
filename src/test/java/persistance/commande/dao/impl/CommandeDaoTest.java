@@ -84,6 +84,7 @@ class CommandeDaoTest {
         assertThrows(NoResultException.class, () -> {
             this.iCommandeDao.findByRef("ZZZ1");
         });
+        assertEquals(2, commandeDo.getCommandeProduitDoSet().size());
 
     }
 }

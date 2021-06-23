@@ -33,7 +33,6 @@ public class CommandeProduitDo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProduit")
-
     private ProduitAcheteDo produitAcheteDo;
 
     @Column(name = "quantite")
