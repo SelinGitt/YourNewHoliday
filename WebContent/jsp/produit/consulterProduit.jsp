@@ -5,20 +5,21 @@
         <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
         <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message> </a>
     </div>
+    <table style="width: 100%" class="consulterProduit">
+        <tr>
+            <th class="tableauPdt04" colspan="2">${consulterProduitDto.hebergement}
+            <th class="description text-responsive tableauPdt04"><spring:message code="pdt04.description"></spring:message><br>${consulterProduitDto.description}</th>
+        </tr>
+        <tr>
+            <td class="tableauPdt04"><img class="imagePDT04"
+                src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt"
+                alt="${consulterProduitDto.destination}" width="30%" /> 
+                <td> <spring:message code="pdt04.reference"></spring:message> ${consulterProduitDto.reference}</td>
+        </tr>
+    </table>
     <table>
         <tr>
-            <td>${consulterProduitDto.hebergement}
-            <td class="description text-responsive">${consulterProduitDto.description}</td>
-        </tr>
-        <tr><td><img src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt" alt="${consulterProduitDto.destination}"
-            class="img" /></td></tr>
-        <tr>
-            <td>${consulterProduitDto.reference}
-        </tr>
-        <tr>
-            <td><spring:message code="pdt04.prix"></spring:message> ${consulterProduitDto.prixUnitaire} €
-        </tr>
-        <tr><td><spring:message code="pdt04.services"></spring:message> ${consulterProduitDto.services}</td>
+            <th><spring:message code="pdt04.services"></spring:message> ${consulterProduitDto.services}</th>
         </tr>
     </table>
 </div>

@@ -247,8 +247,8 @@ aside {
 
 /* ECRAN ERREUR 404 */
 .div404 {
-    text-align: center;
-    height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 .div404 .img404 {
@@ -294,7 +294,7 @@ aside {
 	float: right;
 	padding: 3px 0;
 	background-color: rgb(34, 177, 76);
-	color : white;
+	color: white;
 }
 
 /* USR02 */
@@ -372,13 +372,13 @@ aside {
 	display: flex;
 }
 
-.lib-champ-email{
-	margin-left:50px;
+.lib-champ-email {
+	margin-left: 50px;
 	width: 300px;
 }
 
-.lib-champ-password{
-	margin-left:50px;
+.lib-champ-password {
+	margin-left: 50px;
 	width: 300px;
 }
 
@@ -503,7 +503,21 @@ td.description {
 /* PDT03 */
 
 /* PDT04 */
+.consulterProduit {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
 
+.tableauPdt04 {
+	padding: 5px;
+	text-align: left;
+}
+
+.imagePDT04 {
+	width: 30%;
+}
 /* FEATURE TEAM PANIER */
 /* PAN00 */
 
