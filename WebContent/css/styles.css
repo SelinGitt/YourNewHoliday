@@ -247,8 +247,8 @@ aside {
 
 /* ECRAN ERREUR 404 */
 .div404 {
-    text-align: center;
-    height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 .div404 .img404 {
@@ -490,7 +490,7 @@ td.description {
 	line-height: 60px;
 }
 
-.formulaireProduit td{
+.formulaireProduit td {
 	padding: 0 5px 0 5px;
 }
 

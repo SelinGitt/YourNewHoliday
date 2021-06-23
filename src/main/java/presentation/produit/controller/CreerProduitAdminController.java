@@ -49,7 +49,7 @@ public class CreerProduitAdminController {
      */
     @PostMapping
     public ModelAndView creerProduit(final @ModelAttribute("produitDto") ProduitDto produitDto) {
-        
+
         iProduitService.creerProduit(produitDto);
         return new ModelAndView("creerProduitAdmin");
     }
