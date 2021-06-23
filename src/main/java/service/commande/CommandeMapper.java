@@ -28,12 +28,13 @@ public class CommandeMapper {
         if (commandeDo == null) {
             return null;
         }
-        final var commandeDto = new CommandeDto();
+        final CommandeDto commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
         commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
+
         return commandeDto;
     }
 

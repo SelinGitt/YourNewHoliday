@@ -3,6 +3,8 @@
  */
 package persistance.commande.entity;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,25 +24,25 @@ public class ProduitAcheteDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idProduit")
-    private Integer idProduit;
+    private Integer    idProduit;
 
     @Column(name = "reference")
-    private String  reference;
+    private String     reference;
 
     @Column(name = "nom")
-    private String  nom;
+    private String     nom;
 
     @Column(name = "description")
-    private String  description;
+    private String     description;
 
     @Column(name = "destination")
-    private String  destination;
+    private String     destination;
 
     @Column(name = "prix_unitaire")
-    private Integer prixUnitaire;
+    private BigDecimal prixUnitaire;
 
     @Column(name = "chemin_de_l_image")
-    private String  cheminImage;
+    private String     cheminImage;
 
     /**
      * Constructor
@@ -144,7 +146,7 @@ public class ProduitAcheteDo {
      *
      * @return the prixUnitaire
      */
-    public Integer getPrixUnitaire() {
+    public BigDecimal getPrixUnitaire() {
         return prixUnitaire;
     }
 
@@ -153,7 +155,7 @@ public class ProduitAcheteDo {
      *
      * @param prixUnitaire the prixUnitaire to set
      */
-    public void setPrixUnitaire(final Integer prixUnitaire) {
+    public void setPrixUnitaire(final BigDecimal prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
     }
 

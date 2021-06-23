@@ -133,7 +133,7 @@ public class CommandeDo {
     }
 
     /**
-     * <<<<<<< HEAD Getter for commandeProduitDoSet
+     * Getter for commandeProduitDoSet
      *
      * @return the commandeProduitDoSet
      */

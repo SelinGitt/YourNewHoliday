@@ -14,6 +14,9 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.google.protobuf.TextFormat.ParseException;
+
+import presentation.commande.dto.CommandeDto;
 import service.commande.ICommandeService;
 
 /**
@@ -48,6 +51,22 @@ class CommandeServiceTest {
     void testListerCommandesUtilisateur() {
 
         assertEquals(2, commandeService.listerCommandesUtilisateur(2).size());
+    }
+
+    /**
+     * Test method for {@link service.commande.impl.CommandeService#trouverCommandeParReference(java.lang.String)}.
+     */
+    @Test
+    void testTrouverCommandeParReference() throws ParseException {
+        final CommandeDto commandeDto = commandeService.trouverCommandeParReference("ABC1");
+        assertNotNull(commandeDto);
+        assertEquals("1", commandeDto.getId());
+        assertEquals("ABC1", commandeDto.getReference());
+        assertEquals("09/02/2021", commandeDto.getDate());
+        final double doubleDto = 1200.00;
+        final String nombre = String.format("%,.2f", doubleDto);
+        assertEquals(nombre, commandeDto.getPrixTotal());
+
     }
 
 }

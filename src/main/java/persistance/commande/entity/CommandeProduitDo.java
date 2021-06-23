@@ -13,8 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import persistance.produit.entity.ProduitDo;
-
 /**
  * Classe représentant l'association entre commande et produit
  *
@@ -27,19 +25,19 @@ public class CommandeProduitDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idListeCommande")
-    private Integer    idCommandeProduit;
+    private Integer         idCommandeProduit;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "idCommande")
-    private CommandeDo commandeDo;
+    private CommandeDo      commandeDo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idProduit")
 
-    private ProduitDo  produitDo;
+    private ProduitAcheteDo produitAcheteDo;
 
     @Column(name = "quantite")
-    private Integer    quantite;
+    private Integer         quantite;
 
     /**
      * Getter for idCommandeProduit
@@ -78,21 +76,21 @@ public class CommandeProduitDo {
     }
 
     /**
-     * Getter for produitDo
+     * Getter for produitAcheteDo
      *
-     * @return the produitDo
+     * @return the produitAcheteDo
      */
-    public ProduitDo getProduitDo() {
-        return produitDo;
+    public ProduitAcheteDo getProduitAcheteDo() {
+        return produitAcheteDo;
     }
 
     /**
-     * Setter for produitDo
+     * Setter for produitAcheteDo
      *
-     * @param produitDo the produitDo to set
+     * @param produitAcheteDo the produitAcheteDo to set
      */
-    public void setProduitDo(final ProduitDo produitDo) {
-        this.produitDo = produitDo;
+    public void setProduitAcheteDo(final ProduitAcheteDo produitAcheteDo) {
+        this.produitAcheteDo = produitAcheteDo;
     }
 
     /**

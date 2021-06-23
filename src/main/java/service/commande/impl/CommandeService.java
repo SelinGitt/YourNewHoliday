@@ -36,4 +36,10 @@ public class CommandeService implements ICommandeService {
         return CommandeMapper.mapperListDoToDto(this.iCommandeDao.findByUserId(idUser));
     }
 
+    @Override
+    public CommandeDto trouverCommandeParReference(final String reference) {
+        logger.info("Recherche de la commande avec la réference {}", reference);
+        return CommandeMapper.mapperToDto(iCommandeDao.findByRef(reference));
+    }
+
 }

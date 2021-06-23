@@ -18,6 +18,8 @@ public class ProduitAcheteDto {
 
     private String description;
 
+    private String destination;
+
     private String prixUnitaire;
 
     private String cheminDeLImage;
@@ -95,12 +97,21 @@ public class ProduitAcheteDto {
     }
 
     /**
-     * Getter for prixUnitaire
+     * Getter for destination
      *
-     * @return the prixUnitaire
+     * @return the destination
      */
-    public String getPrixUnitaire() {
-        return prixUnitaire;
+    public String getDestination() {
+        return destination;
+    }
+
+    /**
+     * Setter for destination
+     *
+     * @param destination the destination to set
+     */
+    public void setDestination(final String destination) {
+        this.destination = destination;
     }
 
     /**
@@ -108,8 +119,17 @@ public class ProduitAcheteDto {
      *
      * @param prixUnitaire the prixUnitaire to set
      */
-    public void setPrix_unitaire(final String prixUnitaire) {
+    public void setPrixUnitaire(final String prixUnitaire) {
         this.prixUnitaire = prixUnitaire;
+    }
+
+    /**
+     * Getter for prixUnitaire
+     *
+     * @return the prixUnitaire
+     */
+    public String getPrixUnitaire() {
+        return prixUnitaire;
     }
 
     /**
