@@ -39,7 +39,7 @@ public class ConsulterUtilisateurController {
     public ModelAndView afficherPage(final HttpServletRequest request, final HttpSession session) {
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         if (request.getRequestURI().contains("/supprimerUtilisateur.do")) {
-            return supprimerUtilisateur();
+            return supprimerUtilisateur(utilisateurConnecte);
         }
         return consulterUtilisateur(utilisateurConnecte);
     }
@@ -53,8 +53,9 @@ public class ConsulterUtilisateurController {
         return modelAndView;
     }
 
-    private ModelAndView supprimerUtilisateur() {
-        System.out.println("SUPPRESSION");
+    private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto) {
+        final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
+        iUtilisateurService.deleteUtilisateurById(id);
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/deconnecter.do");
         return modelAndView;

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
@@ -34,6 +35,9 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Autowired
     private IUtilisateurDao     iUtilisateurDao;
+
+    @Autowired
+    private ICommandeDao        iCommandeDao;
 
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
@@ -80,7 +84,7 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public boolean deleteUtilisateurById(final Integer id) {
-        // TODO Auto-generated method stub
-        return false;
+        iCommandeDao.updateCommandeDoUserDeletion(id);
+        return iUtilisateurDao.deleteUtilisateurById(id);
     }
 }

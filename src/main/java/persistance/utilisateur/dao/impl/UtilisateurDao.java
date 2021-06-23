@@ -1,5 +1,6 @@
 package persistance.utilisateur.dao.impl;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
@@ -47,7 +48,12 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
 
     @Override
     public boolean deleteUtilisateurById(final Integer id) {
-        entityManager.remove(entityManager.getReference(UtilisateurDo.class, id));
-        return true;
+        try {
+            entityManager.remove(entityManager.getReference(UtilisateurDo.class, id));
+            return true;
+        } catch (final EntityNotFoundException exception) {
+            logger.error("Erreur lors de la suppression de l'utilisateur id {}.", id, exception);
+            return false;
+        }
     }
 }

@@ -59,4 +59,15 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         return allQuery.getResultList();
     }
 
+    //Méthode utilisée à la suppression d'un utilisateur
+    @Override
+    public void updateCommandeDoUserDeletion(final Integer idUtilisateur) {
+        //on récupère la liste des commandes de l'utilisateur à supprimer
+        final List<CommandeDo> listeCommande = findByUserId(idUtilisateur);
+        //on passe tous les idUtilisateur de ces commandes à NULL
+        for (final CommandeDo commande : listeCommande) {
+            commande.setIdUtilisateur(null);
+            entityManager.merge(commande);
+        }
+    }
 }

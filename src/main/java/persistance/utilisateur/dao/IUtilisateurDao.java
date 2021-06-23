@@ -1,5 +1,7 @@
 package persistance.utilisateur.dao;
 
+import java.util.List;
+
 import persistance.commun.dao.IGenericDao;
 import persistance.utilisateur.entity.UtilisateurDo;
 
