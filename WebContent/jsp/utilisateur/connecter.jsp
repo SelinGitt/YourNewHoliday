@@ -2,27 +2,31 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<div id="title">
+<div class="title">
     <h1>
         <span><spring:message code="usr07.titre" /></span>
     </h1>
 </div>
 
-<div id="form">
+<div class="form">
     <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do">
 
         <div class="lib-champ">
             <span><spring:message code="usr07.label.email" /></span>
-            <form:input path="email" />
+            <div class="lib-champ-email">
+                <form:input path="email" />
+            </div>
             <form:errors path="email" cssClass="error" />
         </div>
 
         <div class="lib-champ">
             <span><spring:message code="usr07.label.password" /></span>
-            <form:input path="password" />
-            <form:errors path="email" cssClass="error" />
+            <div class="lib-champ-password">
+                <form:input path="password" />
+            </div>
+            <form:errors path="password" cssClass="error" />
         </div>
-        <div id="button">
+        <div class="button">
             <button class="boutonValiderUSR07" onclick="submit">
                 <spring:message code="usr07.label.valider" />
             </button>

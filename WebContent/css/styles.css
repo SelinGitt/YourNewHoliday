@@ -345,30 +345,42 @@ aside {
 }
 
 /* USR07 */
-#title {
+.title {
 	text-align: center;
 	margin-bottom: 50px;
 }
 
-#form {
+.form {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-#button {
+.button {
 	justify-content: center;
 	margin: auto;
 	width: 80%;
 	display: flex;
 }
 
-input {
+.lib-champ-email{
 	margin-left:50px;
 	width: 300px;
 }
 
+.lib-champ-password{
+	margin-left:50px;
+	width: 300px;
+}
+
+/* input { */
+/* 	margin-left:50px; */
+/* 	width: 300px; */
+/* } */
+
 .lib-champ {
+/* 	margin-left:50px; */
+/* 	width: 300px; */
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 50px;
