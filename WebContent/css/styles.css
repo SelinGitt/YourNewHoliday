@@ -247,8 +247,8 @@ aside {
 
 /* ECRAN ERREUR 404 */
 .div404 {
-    text-align: center;
-    height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 .div404 .img404 {
@@ -294,7 +294,7 @@ aside {
 	float: right;
 	padding: 3px 0;
 	background-color: rgb(34, 177, 76);
-	color : white;
+	color: white;
 }
 
 /* USR02 */
@@ -372,14 +372,26 @@ aside {
 	display: flex;
 }
 
-.lib-champ-email{
-	margin-left:50px;
+.lib-champ-email {
+	margin-left: 50px;
 	width: 300px;
 }
 
-.lib-champ-password{
-	margin-left:50px;
+.lib-champ-password {
+	margin-left: 50px;
 	width: 300px;
+}
+
+.error {
+	Color: red;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
 }
 
 .lib-champ {
