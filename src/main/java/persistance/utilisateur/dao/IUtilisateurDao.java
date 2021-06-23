@@ -30,10 +30,19 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     List<UtilisateurDo> recherche(final String nom);
 
     /**
-     * Permet d'effectue une recherche en base selon le rang
+     * Permet d'effectue une recherche en base selon le role
      *
-     * @param  rang Rang a recherche
+     * @param  role Role a recherche
      * @return      List d'UtilisateurDo correspondant a la recherche
      */
-    List<UtilisateurDo> rechercheRang(final String rang);
+    List<UtilisateurDo> rechercheRole(final String role);
+
+    /**
+     * Permet d'effectue une recherche en base selon le nom et le role
+     * 
+     * @param  nom  Nom a recherche
+     * @param  role Role a recherche
+     * @return      List d'UtilisateurDo correspondant a la recherche
+     */
+    List<UtilisateurDo> rechercheNomRole(final String nom, final String role);
 }

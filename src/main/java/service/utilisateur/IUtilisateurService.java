@@ -45,10 +45,19 @@ public interface IUtilisateurService {
     List<UtilisateurDto> rechercherUtilisateur(final String nom);
 
     /**
-     * Permet de rechercher un utilisateur selon le rang
+     * Permet de rechercher un utilisateur selon le role
      *
-     * @param  rang Rang a rechercher
-     * @return      List des utilisateur avec le rang
+     * @param  role Role a rechercher
+     * @return      List des utilisateur avec le role
      */
-    List<UtilisateurDto> rechercherUtilisateurRang(final String rang);
+    List<UtilisateurDto> rechercherUtilisateurRole(final String role);
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom et le role
+     * 
+     * @param  nom  Nom a rechercher
+     * @param  role Role a rechercher
+     * @return      List des utilisateur avec le nom et le role
+     */
+    List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final String role);
 }

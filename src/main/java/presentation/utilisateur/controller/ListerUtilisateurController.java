@@ -51,20 +51,27 @@ public class ListerUtilisateurController {
     public ModelAndView recherche(final @RequestParam(value = "searchType") String searchType,
             final @RequestParam(value = "searchInput") String searchInput,
             final @RequestParam(value = "searchFilter") String searchFilter) {
-        // TODO : Faire les tests du service + dao; Filtre sur visiteur ?!
+        // TODO : Faire les tests du service + dao; Garder affichage dans le filtre
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
+        modelAndView.getModelMap().addAttribute("searchFilter", searchFilter);
 
         List<UtilisateurDto> listUtilisateur = new ArrayList<>();
 
-        // Si on effectue une recherche par nom ou si elle a deja ete effectue
-        if ("search".equals(searchType)) {
-            listUtilisateur = this.rechercheInput(searchInput);
-        }
+        // Si on effectue une recherche par nom et par filtre
+        if (!searchInput.isEmpty() && !searchFilter.isEmpty()) {
+            listUtilisateur = this.rechercheNomFiltre(searchInput, searchFilter);
+        } else {
+            // Si on effectue une recherche par nom ou si on selectionne filter a tous
+            if ("search".equals(searchType) || ("filter".equals(searchType) && searchFilter.isEmpty())) {
+                listUtilisateur = this.rechercheInput(searchInput);
+            }
 
-        if ("filter".equals(searchType)) {
-            listUtilisateur = this.rechercheFiltre(searchFilter);
+            // Si on effectue une recherche par filtre et que la recherche par nom est vide sinon ecrase la liste
+            if ("filter".equals(searchType) && searchInput.isBlank()) {
+                listUtilisateur = this.rechercheFiltre(searchFilter);
+            }
         }
 
         modelAndView.getModelMap().addAttribute("listeUtilisateur", listUtilisateur);
@@ -83,15 +90,26 @@ public class ListerUtilisateurController {
     }
 
     /**
-     * Permet de recherche des utilisateurs avec leur rang
+     * Permet de recherche des utilisateurs avec leur role
      *
-     * @param  searchFilter Filtre rang a appliquer
+     * @param  searchFilter Filtre role a appliquer
      * @return              List d'UtilisateurDto
      */
     private List<UtilisateurDto> rechercheFiltre(final String searchFilter) {
-        if ("all".equals(searchFilter)) {
+        if (searchFilter.isBlank()) {
             return this.iUtilisateurService.findAllUtilisateurs();
         }
-        return this.iUtilisateurService.rechercherUtilisateurRang(searchFilter);
+        return this.iUtilisateurService.rechercherUtilisateurRole(searchFilter);
+    }
+
+    /**
+     * Permet de rechercher des utilisateurs selon nom et role
+     *
+     * @param  searchInput  Le nom a rechercher
+     * @param  searchFilter Filtre role a appliquer
+     * @return              List d'UtilisateurDto
+     */
+    private List<UtilisateurDto> rechercheNomFiltre(final String searchInput, final String searchFilter) {
+        return this.iUtilisateurService.rechercherUtilisateurNomRole(searchInput, searchFilter);
     }
 }

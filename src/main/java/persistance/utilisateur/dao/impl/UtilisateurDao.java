@@ -56,10 +56,19 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
     }
 
     @Override
-    public List<UtilisateurDo> rechercheRang(final String rang) {
-        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("From UtilisateurDo WHERE idRole LIKE :searchTerm",
+    public List<UtilisateurDo> rechercheRole(final String role) {
+        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("From UtilisateurDo WHERE idRole LIKE :searchFilter",
                 UtilisateurDo.class);
-        query.setParameter("searchTerm", "%" + rang + "%");
+        query.setParameter("searchFilter", role);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<UtilisateurDo> rechercheNomRole(final String nom, final String role) {
+        final TypedQuery<UtilisateurDo> query = entityManager
+                .createQuery("From UtilisateurDo WHERE nom LIKE :searchTerm AND idRole LIKE :searchFilter", UtilisateurDo.class);
+        query.setParameter("searchTerm", "%" + nom + "%");
+        query.setParameter("searchFilter", role);
         return query.getResultList();
     }
 }
