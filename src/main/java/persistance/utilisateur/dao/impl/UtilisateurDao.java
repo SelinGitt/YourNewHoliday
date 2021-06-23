@@ -1,5 +1,7 @@
 package persistance.utilisateur.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -55,5 +57,13 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
             logger.error("Erreur lors de la suppression de l'utilisateur id {}.", id, exception);
             return false;
         }
+    }
+
+    @Override
+    public List<UtilisateurDo> rechercheRang(final String rang) {
+        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("From UtilisateurDo WHERE idRole LIKE :searchTerm",
+                UtilisateurDo.class);
+        query.setParameter("searchTerm", "%" + rang + "%");
+        return query.getResultList();
     }
 }
