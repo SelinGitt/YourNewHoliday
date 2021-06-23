@@ -22,7 +22,7 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
  *
  * @author Valentin
  */
-//@WebFilter(filterName = "DroitAccesFilter", urlPatterns = "*.do")
+@WebFilter(filterName = "DroitAccesFilter", urlPatterns = "*.do")
 public class DroitAccesFilter implements Filter {
 
     @Override
