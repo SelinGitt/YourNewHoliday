@@ -106,7 +106,5 @@ class UtilisateurDaoTest {
         Assertions.assertNotNull(utilisateurDo);
         Assertions.assertEquals(1, utilisateurDo.size());
         Assertions.assertEquals("Marsial", utilisateurDo.get(0).getNom());
-
-        System.out.println(utilisateurDo);
     }
 }
