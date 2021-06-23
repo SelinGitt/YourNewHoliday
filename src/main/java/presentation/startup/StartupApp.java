@@ -15,12 +15,13 @@ import org.springframework.stereotype.Component;
 
 import presentation.utilisateur.dto.PossedeDto;
 import presentation.utilisateur.dto.RoleDto;
+import service.util.GetPropertyValues;
 import service.utilisateur.IDroitService;
 
 /**
  * Classe StartupApp
  *
- * @author Valentin
+ * @author Valentin/NathanR
  */
 @Component
 public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
@@ -33,11 +34,16 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private IDroitService                         droitService;
 
+    @Autowired
+    private GetPropertyValues                     getPropertyValues;
+
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
+        getPropertyValues.getPropValues();
         final var listDroit = this.droitService.findAll();
 
         listDroit.forEach(droit -> DROITS.put(droit.getUrl(),
                 droit.getPossede().stream().map(PossedeDto::getRoleDto).map(RoleDto::getLibelle).collect(Collectors.toList())));
     }
+
 }

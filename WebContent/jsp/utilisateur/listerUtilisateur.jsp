@@ -1,14 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h1 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h1>
 
-       <a href="creerUtilisateur.do">
-       <button type="button" class="bouton far fa-plus-square">
-       <spring:message code="usr01.creer.nouveau" />
-    </button></a>
+<div class="container">
+    <div class="usr01searchMenu">
+        <div class="usr01searchBar">
+            <form:form action="listerUtilisateur.do" method="POST">
+                <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
+                    placeholder="<spring:message code='usr01.searchbar'/>">
+                <input type="hidden" name="searchType" value="search" />
+                <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+            </form:form>
+        </div>
+
+        <div class="usr01AddUser">
+            <a href="creerUtilisateur.do">
+                <button type="button" class="urs01newUserBouton">
+                    <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                    <spring:message code="usr01.creer.nouveau" />
+                </button>
+            </a>
+        </div>
+    </div>
 
     <table id="listeUser" aria-describedby="titreGestion">
         <thead>
@@ -60,3 +77,4 @@
             </c:forEach>
         </tbody>
     </table>
+</div>
