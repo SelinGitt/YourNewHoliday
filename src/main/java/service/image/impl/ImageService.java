@@ -14,6 +14,7 @@ import persistance.image.IImageDao;
 import persistance.produit.dao.IProduitDao;
 import service.image.IImageService;
 import service.image.TypeImage;
+import service.util.GetPropertyValues;
 
 /**
  * Classe représentant l'interface métier {@link IImageService}
@@ -35,7 +36,7 @@ public class ImageService implements IImageService {
         String path;
         if (TypeImage.PRODUIT.type.equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
-            path = produitDo.getCheminImage();
+            path = GetPropertyValues.PROPERTIESMAP.get("imagesProduitsRepo") + produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
         //ajouter l'utilisateurDao et le produitAcheteDao, indisponible à l'heure actuelle
