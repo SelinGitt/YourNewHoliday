@@ -12,7 +12,8 @@
         </tr>
         <tr>
             <td rowspan="4" class="tdPDT04"><img class="imagePDT04"
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYtfZRhbGQtq2BapB2MXJfWIO2QriO5Wx3qQ&usqp=CAU"></td>
+                        src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt"
+                        alt="${consulterProduitDto.destination}" class="img" /></td>
             <td class="tdPDT04"><spring:message code="pdt04.reference"></spring:message> ${consulterProduitDto.reference}</td>
             <td rowspan="5" class="tdPDT04">${consulterProduitDto.description}</td>
         </tr>
