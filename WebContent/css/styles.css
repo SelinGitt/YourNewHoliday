@@ -264,6 +264,15 @@ aside {
 	width: 100%;
 }
 
+.usr01filterBar {
+	width: 15%;
+	margin-left: 1em;
+}
+
+.usr01filterBar select {
+	width: 70%;
+}
+
 .usr01searchMenu .usr01AddUser {
 	margin-left: auto;
 }
