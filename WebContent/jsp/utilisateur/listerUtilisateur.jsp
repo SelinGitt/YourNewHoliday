@@ -26,11 +26,13 @@
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
             
                 <select name="searchFilter">
-                    <option disabled selected>${searchFilter}</option>
-                    <option value="all"><spring:message code="usr01.filter.tous" /></option>
-                    <option value="3"><spring:message code="usr01.filter.admin" /></option>
-                    <option value="1"><spring:message code="usr01.filter.client" /></option>
-                    <option value="2"><spring:message code="usr01.filter.visiteur" /></option>
+                    <option selected value="${searchFilter}">
+                        <spring:message code="usr01.filter.${searchFilter}"  />
+                    </option>
+                    <option value=""><spring:message code="usr01.filter." /></option>
+                    <option value="3"><spring:message code="usr01.filter.3" /></option>
+                    <option value="1"><spring:message code="usr01.filter.1" /></option>
+                    <option value="2"><spring:message code="usr01.filter.2" /></option>
                 </select>
                 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
