@@ -43,12 +43,4 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
-
-    /**
-     * Permet de consulter un produit
-     *
-     * @param  idProduit
-     * @return           le produit à consulter
-     */
-    ProduitDto findById(final Integer idProduit);
 }
