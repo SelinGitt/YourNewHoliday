@@ -3,31 +3,47 @@
  */
 package presentation.startup;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
+import presentation.utilisateur.dto.PossedeDto;
+import presentation.utilisateur.dto.RoleDto;
 import service.util.GetPropertyValues;
+import service.utilisateur.IDroitService;
 
 /**
  * Classe StartUpApp
  *
- * @author NathanR
+ * @author Valentin/NathanR
  */
 @Component
 public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
 
-    @Autowired
-    private GetPropertyValues   getPropertyValues;
+    /**
+     * Map qui contient url + droits
+     */
+    public static final Map<String, List<String>> DROITS = new HashMap<>();
 
-    private static final Logger logger = LoggerFactory.getLogger(StartupApp.class);
+    @Autowired
+    private IDroitService                         droitService;
+
+    @Autowired
+    private GetPropertyValues                     getPropertyValues;
 
     @Override
     public void onApplicationEvent(final ContextRefreshedEvent event) {
         getPropertyValues.getPropValues();
+        final var listDroit = this.droitService.findAll();
+
+        listDroit.forEach(droit -> DROITS.put(droit.getUrl(),
+                droit.getPossede().stream().map(PossedeDto::getRoleDto).map(RoleDto::getLibelle).collect(Collectors.toList())));
     }
 
 }

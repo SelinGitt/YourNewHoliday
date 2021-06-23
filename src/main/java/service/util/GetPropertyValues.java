@@ -38,16 +38,24 @@ public class GetPropertyValues {
      * Permet d'extraire les données du fichier YNH-application.properties et de les placer dans la map
      */
     public void getPropValues() {
+        // On instancie une Properties
         final var prop = new Properties();
+        // On précise le nom du fichier Properties
         final var propFileName = "YNH-application.properties";
+        // On crée un stream sur le fichier Properties
         try (final var inputStream = getClass().getClassLoader().getResourceAsStream(propFileName)) {
-
-            if (inputStream != null) {
-                prop.load(inputStream);
-            } else {
+            // Si le stream est null, on lance un FileNotFoundException
+            if (inputStream == null) {
                 throw new FileNotFoundException("The property file " + propFileName + " not found in the classpath.");
             }
+            // On lit le fichier YNH-application.properties
+            prop.load(inputStream);
+            // On place dans la map chaque couple clé/valeur du fichier properties
             PROPERTIESMAP.put("contactRepo", prop.getProperty("contactRepo"));
+            PROPERTIESMAP.put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
+            PROPERTIESMAP.put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
+            PROPERTIESMAP.put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
+            // On catch les éventuelles exceptions générées par le stream
         } catch (final Exception e) {
             logger.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);
         }

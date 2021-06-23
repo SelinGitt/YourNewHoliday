@@ -23,6 +23,6 @@ public class FichierContactService implements IFichierContactService {
 
     @Override
     public String trouverFichierContact() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get("contactRepo"));
+        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "test-contact.html");
     }
 }
