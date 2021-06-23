@@ -46,4 +46,9 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
     }
+
+    @Override
+    public ProduitDto findById(final Integer idProduit) {
+        return ProduitMapper.mapToDto(produitDao.findById(idProduit));
+    }
 }
