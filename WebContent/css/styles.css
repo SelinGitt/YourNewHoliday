@@ -288,6 +288,15 @@ aside {
 	height: auto;
 }
 
+.bouton {
+	width: 12%;
+	text-align: center;
+	float: right;
+	padding: 3px 0;
+	background-color: rgb(34, 177, 76);
+	color : white;
+}
+
 /* USR02 */
 
 /* USR05 */
@@ -345,8 +354,43 @@ aside {
 }
 
 /* USR07 */
+.title {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	justify-content: center;
+	margin: auto;
+	width: 80%;
+	display: flex;
+}
+
+.lib-champ-email{
+	margin-left:50px;
+	width: 300px;
+}
+
+.lib-champ-password{
+	margin-left:50px;
+	width: 300px;
+}
+
+.lib-champ {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
 .boutonValiderUSR07 {
 	background-color: #008000;
+	margin-right: 20%;
 	Color: white;
 }
 
@@ -421,6 +465,12 @@ tr.lineRow {
 td.description {
 	display: flex;
 	max-width: 75%
+}
+
+.form-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }
 
 /* PDT01 */
