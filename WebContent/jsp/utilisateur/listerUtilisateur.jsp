@@ -6,6 +6,7 @@
     <spring:message code="usr01.titre" />
 </h1>
 
+<div class="container">
 <div class="usr01searchMenu">
     <div class="usr01searchBar">
         <form:form action="listerUtilisateur.do" method="POST">
@@ -19,7 +20,7 @@
     <div class="usr01AddUser">
         <a href="creerUtilisateur.do">
             <button type="button" class="bouton">
-            <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                <span class="fa fa-plus-square-o" aria-hidden="true"></span>
                 <spring:message code="usr01.creer.nouveau" />
             </button>
         </a>
@@ -40,6 +41,8 @@
             <th class="thUSR01"><spring:message code="usr01.th.actif" /></th>
 
             <th class="thUSR01"><spring:message code="usr01.th.editer" /></th>
+
+            <th class="thUSR01"><spring:message code="usr01.th.supprimer" /></th>
         </tr>
     </thead>
 
@@ -74,3 +77,4 @@
         </c:forEach>
     </tbody>
 </table>
+</div>
