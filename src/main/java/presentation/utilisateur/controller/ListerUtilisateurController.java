@@ -1,5 +1,6 @@
 package presentation.utilisateur.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,20 +42,32 @@ public class ListerUtilisateurController {
     /**
      * Permet d'effectuee une recherche
      * 
-     * @param  searchType  Le type de recherche, filtre, ou recherche avec input
-     * @param  searchInput La valeur de la recherche
-     * @return             ModelAndView avec le nom de la jsp et la liste des utilisateurs trie en attribut
+     * @param  searchType   Le type de recherche, filtre, ou recherche avec input
+     * @param  searchInput  La valeur de la recherche
+     * @param  searchFilter La valeur du filtre applique
+     * @return              ModelAndView avec le nom de la jsp et la liste des utilisateurs trie en attribut
      */
     @PostMapping
     public ModelAndView recherche(final @RequestParam(value = "searchType") String searchType,
-            final @RequestParam(value = "searchInput") String searchInput) {
+            final @RequestParam(value = "searchInput") String searchInput,
+            final @RequestParam(value = "searchFilter") String searchFilter) {
+        // TODO : Faire les tests du service + dao; Filtre sur visiteur ?!
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
 
+        List<UtilisateurDto> listUtilisateur = new ArrayList<>();
+
+        // Si on effectue une recherche par nom ou si elle a deja ete effectue
         if ("search".equals(searchType)) {
-            modelAndView.getModelMap().addAttribute("listeUtilisateur", this.rechercheInput(searchInput));
+            listUtilisateur = this.rechercheInput(searchInput);
         }
+
+        if ("filter".equals(searchType)) {
+            listUtilisateur = this.rechercheFiltre(searchFilter);
+        }
+
+        modelAndView.getModelMap().addAttribute("listeUtilisateur", listUtilisateur);
 
         return modelAndView;
     }
@@ -67,5 +80,18 @@ public class ListerUtilisateurController {
      */
     private List<UtilisateurDto> rechercheInput(final String searchInput) {
         return this.iUtilisateurService.rechercherUtilisateur(searchInput);
+    }
+
+    /**
+     * Permet de recherche des utilisateurs avec leur rang
+     *
+     * @param  searchFilter Filtre rang a appliquer
+     * @return              List d'UtilisateurDto
+     */
+    private List<UtilisateurDto> rechercheFiltre(final String searchFilter) {
+        if ("all".equals(searchFilter)) {
+            return this.iUtilisateurService.findAllUtilisateurs();
+        }
+        return this.iUtilisateurService.rechercherUtilisateurRang(searchFilter);
     }
 }

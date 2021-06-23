@@ -28,4 +28,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return     List d'UtilisateurDo correspondant a la recherche
      */
     List<UtilisateurDo> recherche(final String nom);
+
+    /**
+     * Permet d'effectue une recherche en base selon le rang
+     *
+     * @param  rang Rang a recherche
+     * @return      List d'UtilisateurDo correspondant a la recherche
+     */
+    List<UtilisateurDo> rechercheRang(final String rang);
 }
