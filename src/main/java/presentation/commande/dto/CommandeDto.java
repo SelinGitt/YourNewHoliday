@@ -1,6 +1,5 @@
 package presentation.commande.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,7 +11,7 @@ public class CommandeDto {
     private String                   prixTotal;
     private String                   date;
     private String                   quantiteTotale;
-    private List<CommandeProduitDto> listCommandeProduitDto = new ArrayList<>();
+    private List<CommandeProduitDto> listCommandeProduitDto;
 
     /**
      * Getter for id

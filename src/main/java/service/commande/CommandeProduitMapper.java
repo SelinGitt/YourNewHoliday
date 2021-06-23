@@ -4,7 +4,7 @@
 package service.commande;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -36,7 +36,6 @@ public class CommandeProduitMapper {
         }
         final CommandeProduitDto commandeProduitDto = new CommandeProduitDto();
         commandeProduitDto.setIdListeCommande(String.valueOf(commandeProduitDo.getIdCommandeProduit()));
-        commandeProduitDto.setCommandeDto(CommandeMapper.mapperToDto(commandeProduitDo.getCommandeDo()));
         commandeProduitDto.setProduitAcheteDto(ProduitAcheteMapper.mapperToDto(commandeProduitDo.getProduitAcheteDo()));
         commandeProduitDto.setQuantite(String.valueOf(commandeProduitDo.getQuantite()));
         commandeProduitDto
@@ -53,7 +52,7 @@ public class CommandeProduitMapper {
      */
     public static List<CommandeProduitDto> mapperSetDoToListDto(final Set<CommandeProduitDo> commandeProduitDoSet) {
         if (CollectionUtils.isEmpty(commandeProduitDoSet)) {
-            return new ArrayList<>();
+            return Collections.emptyList();
         }
         return commandeProduitDoSet.stream().map(CommandeProduitMapper::mapperToDto).collect(Collectors.toList());
     }

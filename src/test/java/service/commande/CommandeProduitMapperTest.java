@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import persistance.commande.entity.CommandeDo;
 import persistance.commande.entity.CommandeProduitDo;
 import persistance.commande.entity.ProduitAcheteDo;
-import presentation.commande.dto.CommandeDto;
 import presentation.commande.dto.CommandeProduitDto;
 import presentation.commande.dto.ProduitAcheteDto;
 import service.util.DateFormatUtil;
@@ -48,15 +47,6 @@ class CommandeProduitMapperTest {
         assertEquals("produit", produitAcheteDto.getNom());
         assertEquals("300,00", produitAcheteDto.getPrixUnitaire());
         assertEquals("135699", produitAcheteDto.getReference());
-
-        final CommandeDto commandeDto = commandeProduitDto.getCommandeDto();
-        assertNotNull(commandeDto);
-        assertEquals("01/01/1970", commandeDto.getDate());
-        assertEquals("1", commandeDto.getId());
-        assertEquals("200,40", commandeDto.getPrixTotal());
-        assertEquals("2", commandeDto.getQuantiteTotale());
-        assertEquals("ABC5", commandeDto.getReference());
-
     }
 
     private ProduitAcheteDo initProduitAcheterDo() {

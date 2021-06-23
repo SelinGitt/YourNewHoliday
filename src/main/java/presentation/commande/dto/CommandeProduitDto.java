@@ -12,8 +12,6 @@ public class CommandeProduitDto {
 
     private String           idListeCommande;
 
-    private CommandeDto      commandeDto;
-
     private ProduitAcheteDto produitAcheteDto;
 
     private String           quantite;
@@ -36,24 +34,6 @@ public class CommandeProduitDto {
      */
     public void setIdListeCommande(final String idListeCommande) {
         this.idListeCommande = idListeCommande;
-    }
-
-    /**
-     * Getter for commandeDto
-     *
-     * @return the commandeDto
-     */
-    public CommandeDto getCommandeDto() {
-        return commandeDto;
-    }
-
-    /**
-     * Setter for commandeDto
-     *
-     * @param commandeDto the commandeDto to set
-     */
-    public void setCommandeDto(final CommandeDto commandeDto) {
-        this.commandeDto = commandeDto;
     }
 
     /**
