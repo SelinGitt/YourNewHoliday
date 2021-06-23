@@ -124,6 +124,16 @@ h1 {
 	vertical-align: middle;
 }
 
+.headerSousCellNbrPdt {
+	position: absolute;
+	display: inline-block;
+	left: 1.65em;
+	top: 1.65em;
+	font-size: 0.8em;
+	text-align: center;
+	width: 1.65em;
+}
+
 /* MENU */
 /* Side Bar */
 .sidebar {
