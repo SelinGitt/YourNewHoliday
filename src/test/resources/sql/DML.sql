@@ -62,9 +62,9 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (15, 'listerPanierProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (16, 'listerPanierAdresses.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (17, 'mentionsLegales.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (18, 'displayImage.do');
+
 -- à supprimer en même temps que utilisateurConnecteDto
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (42, 'user_session.do');
-=======
 
 --
 -- Déchargement des données de la table `role`
@@ -113,9 +113,6 @@ INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `referenc
 -- Déchargement des données de la table `liste_commande`
 --
 
-
-
-
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (1, 1, 1, 2);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (2, 2, 1, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (3, 3, 2, 5);
@@ -124,9 +121,6 @@ INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `qua
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (6, 4, 5, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (7, 6, 6, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (8, 6, 3, 1);
-
-
-
 --
 -- Déchargement des données de la table `possede`
 --
@@ -167,6 +161,6 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (33, 17, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
+
 -- à supprimer en même temps que utilisateurConnecteDto
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 42, 2);
-
