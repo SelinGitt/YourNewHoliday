@@ -19,7 +19,7 @@
 
         <div class="usr01AddUser">
             <a href="creerUtilisateur.do">
-                <button type="button" class="bouton">
+                <button type="button" class="urs01newUserBouton">
                     <span class="fa fa-plus-square-o" aria-hidden="true"></span>
                     <spring:message code="usr01.creer.nouveau" />
                 </button>
