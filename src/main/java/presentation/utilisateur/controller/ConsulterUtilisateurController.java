@@ -46,8 +46,6 @@ public class ConsulterUtilisateurController {
 
     private ModelAndView consulterUtilisateur(final UtilisateurConnecteDto utilisateurConnecte) {
         final var modelAndView = new ModelAndView();
-        //        final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-
         final UtilisateurDto utilisateurDto = recupererUtilisateurDto(utilisateurConnecte);
 
         modelAndView.setViewName("consulterUtilisateur");
@@ -58,7 +56,7 @@ public class ConsulterUtilisateurController {
     private ModelAndView supprimerUtilisateur() {
         System.out.println("SUPPRESSION");
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/listerProduits.do");
+        modelAndView.setViewName("redirect:/deconnecter.do");
         return modelAndView;
     }
 

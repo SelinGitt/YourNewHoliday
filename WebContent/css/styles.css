@@ -240,6 +240,19 @@ aside {
 
 /* FEATURE TEAM USER */
 /* USR00 */
+.user00 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.user00 .leftSideUser00 {
+	width: 75%;
+}
+
+.user00 .rightSideUser00 {
+	width: 25%;
+}
 
 /* USR01 */
 #listeUser {

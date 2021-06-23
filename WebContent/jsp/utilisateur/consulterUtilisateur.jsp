@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <h1>
     <spring:message code="usr00.titre" />
+    - ${fn:toUpperCase(utilisateurDto.role.libelle)}
 </h1>
 
 <div class="user00">
@@ -33,11 +34,11 @@
                 <td>**********</td>
             </tr>
         </table>
+
+        <a href="#">Modifier</a> <a href="supprimerUtilisateur.do">Supprimer</a>
+
     </div>
     <div class="rightSideUser00">
         <p>Section avatar And co</p>
     </div>
-    <button onclick="listerProduits.do" type="button">Modifier</button>
-    <a href="#">Modifier</a> 
-    <a href="supprimerUtilisateur.do">Supprimer</a>
 </div>
