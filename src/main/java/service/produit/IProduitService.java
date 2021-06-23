@@ -5,6 +5,7 @@ package service.produit;
 
 import java.util.List;
 
+import presentation.produit.controller.TypeRecherche;
 import presentation.produit.dto.ProduitDto;
 
 /**
@@ -66,5 +67,5 @@ public interface IProduitService {
      * @param  searchTerm le terme recherché
      * @return            la liste triée et contenant les termes recherchés
      */
-    List<ProduitDto> listerFiltreTri(final String typeFiltre, final String searchTerm);
+    List<ProduitDto> listerFiltreTri(final TypeRecherche typeFiltre, final String searchTerm);
 }

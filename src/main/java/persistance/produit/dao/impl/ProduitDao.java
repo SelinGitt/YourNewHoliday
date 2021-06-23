@@ -97,7 +97,6 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
 
     @Override
     public List<ProduitDo> listerFiltreTriCroissant(final String searchTerm) {
-
         final TypedQuery<ProduitDo> query = entityManager.createQuery(
                 "FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire ASC ", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");

@@ -23,7 +23,7 @@ import service.produit.IProduitService;
 public class ListerProduitsController {
 
     /**
-     * 
+     * Utilisation d'une constante pour stocker l'attribut
      */
     private static final String LISTE_PRODUIT_DTO = "listeProduitDto";
     @Autowired
@@ -55,7 +55,7 @@ public class ListerProduitsController {
             final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (!searchTerm.isEmpty() && !tri.isEmpty()) {
+        if (!searchTerm.isBlank() && !tri.isEmpty()) {
             listerFiltreTri(searchTerm, tri, modelAndView);
             return modelAndView;
         }
@@ -79,7 +79,7 @@ public class ListerProduitsController {
      * @param modelAndView le modelAndView
      */
     private void filtrerListe(final String searchTerm, final ModelAndView modelAndView) {
-        if (!searchTerm.isEmpty()) {
+        if (!searchTerm.isBlank()) {
             modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
             modelAndView.addObject("searchTerm", searchTerm);
         } else {
@@ -100,7 +100,11 @@ public class ListerProduitsController {
     }
 
     private void listerFiltreTri(final String searchTerm, final String tri, final ModelAndView modelAndView) {
-        modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(tri, searchTerm));
+        if ("ASC".equals(tri)) {
+            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.ASC, searchTerm));
+        } else {
+            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.DESC, searchTerm));
+        }
         modelAndView.addObject("tri", tri);
         modelAndView.addObject("searchTerm", searchTerm);
     }
