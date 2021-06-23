@@ -54,11 +54,11 @@ class CommandeServiceTest {
     }
 
     /**
-     * Test method for {@link service.commande.impl.CommandeService#trouverCommandeParReference(java.lang.String)}.
+     * Test method for {@link service.commande.impl.CommandeService#chercherCommandeParReference(java.lang.String)}.
      */
     @Test
     void testTrouverCommandeParReference() throws ParseException {
-        final CommandeDto commandeDto = commandeService.trouverCommandeParReference("ABC1");
+        final CommandeDto commandeDto = commandeService.chercherCommandeParReference("ABC1");
         assertNotNull(commandeDto);
         assertEquals("1", commandeDto.getId());
         assertEquals("ABC1", commandeDto.getReference());

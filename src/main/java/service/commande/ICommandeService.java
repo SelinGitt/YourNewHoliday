@@ -28,6 +28,6 @@ public interface ICommandeService {
      * @param  reference la référence de la commande qu'on cherche
      * @return           CommandeDto la commandeDto qu'on a trouvée
      */
-    CommandeDto trouverCommandeParReference(final String reference);
+    CommandeDto chercherCommandeParReference(final String reference);
 
 }
