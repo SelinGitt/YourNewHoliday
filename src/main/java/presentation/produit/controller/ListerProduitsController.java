@@ -95,7 +95,11 @@ public class ListerProduitsController {
      * @param modelAndView
      */
     private void trierListe(final String tri, final ModelAndView modelAndView) {
-        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
+        if ("ASC".equals(tri)) {
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
+        } else {
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerDecroissant());
+        }
         modelAndView.getModelMap().addAttribute("tri", tri);
     }
 

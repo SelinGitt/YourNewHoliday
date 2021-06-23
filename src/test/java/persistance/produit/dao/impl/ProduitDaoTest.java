@@ -117,7 +117,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#prixCroissant()}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerCroissant()}.
      */
     @Test
     void testPrixCroissant() {
@@ -131,7 +131,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#prixDecroissant()}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerDecroissant()}.
      */
     @Test
     void testPrixDecroissant() {
@@ -142,5 +142,29 @@ class ProduitDaoTest {
         final ProduitDo produitDo4 = iProduitDao.findById(4);
         final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
         assertEquals(listeProduitsDecroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerFiltreTriDecroissant()}.
+     */
+    @Test
+    void testPrixFiltreDecroissant() {
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.listerFiltreTriDecroissant("99");
+        final ProduitDo produitDo = iProduitDao.findById(5);
+        final ProduitDo produitDo1 = iProduitDao.findById(4);
+        final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);
+        assertEquals(listeProduitsDecroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerFiltreTriCroissant()}.
+     */
+    @Test
+    void testPrixFiltreCroissant() {
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.listerFiltreTriCroissant("89");
+        final ProduitDo produitDo = iProduitDao.findById(4);
+        final ProduitDo produitDo1 = iProduitDao.findById(3);
+        final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);
+        assertEquals(listeProduitsCroissant, listeTriee);
     }
 }
