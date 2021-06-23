@@ -30,6 +30,7 @@
                     <option value="all"><spring:message code="usr01.filter.tous" /></option>
                     <option value="3"><spring:message code="usr01.filter.admin" /></option>
                     <option value="1"><spring:message code="usr01.filter.client" /></option>
+                    <option value="2"><spring:message code="usr01.filter.visiteur" /></option>
                 </select>
                 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
