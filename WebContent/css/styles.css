@@ -503,20 +503,20 @@ td.description {
 /* PDT03 */
 
 /* PDT04 */
-.consulterProduit {
+.tableauPDT04 {
 	border-collapse: collapse;
-	border: 1px solid black;
-	overflow-y: scroll;
 	width: 100%;
+	text-align: left;
 }
 
-.tableauPdt04 {
+.tdPDT04, thPDT04 {
+	border: 1px solid #dddddd;
 	padding: 5px;
 	text-align: left;
 }
 
 .imagePDT04 {
-	width: 30%;
+	width: 100%;
 }
 /* FEATURE TEAM PANIER */
 /* PAN00 */

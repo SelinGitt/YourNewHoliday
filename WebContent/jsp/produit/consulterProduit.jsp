@@ -5,21 +5,28 @@
         <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
         <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message> </a>
     </div>
-    <table style="width: 100%" class="consulterProduit">
+    <table class="tableauPDT04">
         <tr>
-            <th class="tableauPdt04" colspan="2">${consulterProduitDto.hebergement}
-            <th class="description text-responsive tableauPdt04"><spring:message code="pdt04.description"></spring:message><br>${consulterProduitDto.description}</th>
+            <th colspan="2" class="thPDT04">${consulterProduitDto.hebergement}</th>
+            <th class="thPDT04"><spring:message code="pdt04.description"></spring:message> </th>
         </tr>
         <tr>
-            <td class="tableauPdt04"><img class="imagePDT04"
-                src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt"
-                alt="${consulterProduitDto.destination}" width="30%" /> 
-                <td> <spring:message code="pdt04.reference"></spring:message> ${consulterProduitDto.reference}</td>
+            <td rowspan="4" class="tdPDT04"><img class="imagePDT04"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYtfZRhbGQtq2BapB2MXJfWIO2QriO5Wx3qQ&usqp=CAU"></td>
+            <td class="tdPDT04"><spring:message code="pdt04.reference"></spring:message> ${consulterProduitDto.reference}</td>
+            <td rowspan="5" class="tdPDT04">${consulterProduitDto.description}</td>
         </tr>
-    </table>
-    <table>
         <tr>
-            <th><spring:message code="pdt04.services"></spring:message> ${consulterProduitDto.services}</th>
+            <td class="tdPDT04"><spring:message code="pdt04.prix"></spring:message>${consulterProduitDto.prixUnitaire} €</td>
+        </tr>
+        <tr>
+            <td class="tdPDT04">bouton + / -</td>
+        </tr>
+        <tr>
+            <td class="tdPDT04">bouton AJOUTER</td>
+        </tr>
+        <tr>
+            <td colspan="2" class="tdPDT04"><spring:message code="pdt04.services"></spring:message></td>
         </tr>
     </table>
 </div>
