@@ -19,7 +19,7 @@ import service.util.GetPropertyValues;
 import service.utilisateur.IDroitService;
 
 /**
- * Classe StartUpApp
+ * Classe StartupApp
  *
  * @author Valentin/NathanR
  */
