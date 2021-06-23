@@ -4,7 +4,6 @@
 package service.util;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -21,7 +20,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetPropertyValues {
 
-    private static final Logger             logger        = LoggerFactory.getLogger(GetPropertyValues.class);
+    private static final Logger logger = LoggerFactory.getLogger(GetPropertyValues.class);
+
+    /**
+     * Constructor
+     */
+    private GetPropertyValues() {
+        // void
+    }
 
     /**
      * Map contennant les chemins d'accès aux répertoires
@@ -30,10 +36,8 @@ public class GetPropertyValues {
 
     /**
      * Permet d'extraire les données du fichier YNH-application.properties et de les placer dans la map
-     *
-     * @throws IOException
      */
-    public void getPropValues() throws IOException {
+    public void getPropValues() {
         final var prop = new Properties();
         final var propFileName = "YNH-application.properties";
         try (final var inputStream = getClass().getClassLoader().getResourceAsStream(propFileName)) {
