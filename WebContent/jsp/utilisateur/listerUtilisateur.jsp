@@ -15,6 +15,14 @@
             <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
         </form:form>
     </div>
+
+    <div class="usr01AddUser">
+        <a href="creerUtilisateur.do">
+            <button type="button" class="bouton">
+                <spring:message code="usr01.creer.nouveau" />
+            </button>
+        </a>
+    </div>
 </div>
 
 <table id="listeUser" aria-describedby="titreGestion">
@@ -31,8 +39,6 @@
             <th class="thUSR01"><spring:message code="usr01.th.actif" /></th>
 
             <th class="thUSR01"><spring:message code="usr01.th.editer" /></th>
-
-            <th class="thUSR01"><spring:message code="usr01.th.supprimer" /></th>
         </tr>
     </thead>
 

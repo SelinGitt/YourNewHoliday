@@ -257,6 +257,10 @@ aside {
 	margin-bottom: 15px;
 }
 
+.usr01searchMenu .usr01AddUser {
+	margin-left: auto;
+}
+
 #listeUser {
 	border-collapse: collapse;
 	border: 1px solid black;
@@ -285,6 +289,15 @@ aside {
 #imageNonActif {
 	width: 25px;
 	height: auto;
+}
+
+.bouton {
+	width: 12%;
+	text-align: center;
+	float: right;
+	padding: 3px 0;
+	background-color: rgb(34, 177, 76);
+	color : white;
 }
 
 /* USR02 */
