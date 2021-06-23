@@ -18,4 +18,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return       l'UtilisateurDo correspondant
      */
     UtilisateurDo findByEmail(final String email);
+
+    /**
+     * Permet de supprimer une UtilisateurDo en BD
+     *
+     * @param  id : id de l'utilisateur à supprimer
+     * @return    un boolean, true si suppression ok, false sinon
+     */
+    boolean deleteUtilisateurById(final Integer id);
 }

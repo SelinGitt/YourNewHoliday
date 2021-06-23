@@ -44,4 +44,10 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
             return null;
         }
     }
+
+    @Override
+    public boolean deleteUtilisateurById(final Integer id) {
+        entityManager.remove(entityManager.getReference(UtilisateurDo.class, id));
+        return true;
+    }
 }

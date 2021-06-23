@@ -47,7 +47,7 @@ public interface IUtilisateurService {
     /**
      * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id
      *
-     * @param  id
+     * @param  id : id de l'utilisateur à supprimer
      * @return    true si la suppression a réussi, false sinon
      */
     boolean deleteUtilisateurById(final Integer id);
