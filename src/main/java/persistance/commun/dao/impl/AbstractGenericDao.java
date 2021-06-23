@@ -85,4 +85,5 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         this.entityManager.persist(bean);
         return bean;
     }
+
 }
