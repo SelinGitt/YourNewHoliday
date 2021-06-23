@@ -5,8 +5,6 @@ package presentation.utilisateur.dto;
 
 import java.io.Serializable;
 
-import presentation.panier.dto.PanierDto;
-
 /**
  * Classe UtilisateurConnecteDto <br>
  * Contient les informations mise en session
@@ -18,7 +16,7 @@ public class UtilisateurConnecteDto implements Serializable {
     /**
      * Generated serial version UID
      */
-    private static final long serialVersionUID = 5690856366192217553L;
+    private static final long serialVersionUID = 1424694129404702994L;
 
     private String            idRole;
     private String            nomRole;
@@ -26,7 +24,6 @@ public class UtilisateurConnecteDto implements Serializable {
     private String            nom;
     private String            prenom;
     private String            nbProduitPanier;
-    private PanierDto         panierDto;
 
     /**
      * Constructor
@@ -151,23 +148,4 @@ public class UtilisateurConnecteDto implements Serializable {
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
-
-    /**
-     * Getter for panierDto
-     *
-     * @return the panierDto
-     */
-    public PanierDto getPanierDto() {
-        return panierDto;
-    }
-
-    /**
-     * Setter for panierDto
-     *
-     * @param panierDto the panierDto to set
-     */
-    public void setPanierDto(final PanierDto panierDto) {
-        this.panierDto = panierDto;
-    }
-
 }

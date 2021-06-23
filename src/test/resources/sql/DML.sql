@@ -52,6 +52,9 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (5, 'connecter.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (6, 'creerUtilisateur.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (7, 'deconnecter.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (8, 'listerCommande.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (9, 'listerPanierProduits.do');
+-- à supprimer en même temps que utilisateurConnecteDto
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (42, 'user_session.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -100,6 +103,9 @@ INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `referenc
 -- Déchargement des données de la table `liste_commande`
 --
 
+
+
+
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (1, 1, 1, 2);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (2, 2, 1, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (3, 3, 2, 5);
@@ -108,6 +114,9 @@ INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `qua
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (6, 4, 5, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (7, 6, 6, 1);
 INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `quantite`) VALUES (8, 6, 3, 1);
+
+
+
 --
 -- Déchargement des données de la table `possede`
 --
@@ -127,3 +136,6 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (13, 7, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (15, 8, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 1);
+-- à supprimer en même temps que utilisateurConnecteDto
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 42, 2);

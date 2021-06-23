@@ -98,7 +98,7 @@ public class UserConnecteController {
         final var utilisateurConnecteDto = new UtilisateurConnecteDto();
 
         utilisateurConnecteDto.setIdRole("1");
-        utilisateurConnecteDto.setNomRole("Client");
+        utilisateurConnecteDto.setNomRole("client");
         utilisateurConnecteDto.setIdUtilisateur("257");
         // not used
         utilisateurConnecteDto.setNbProduitPanier("0");
