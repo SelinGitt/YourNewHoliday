@@ -20,7 +20,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetPropertyValues {
 
-    private static final Logger logger = LoggerFactory.getLogger(GetPropertyValues.class);
+    /**
+     * Map contennant les chemins d'accès aux répertoires
+     */
+    public static final Map<String, String> PROPERTIESMAP = new HashMap<>();
+
+    private static final Logger             logger        = LoggerFactory.getLogger(GetPropertyValues.class);
 
     /**
      * Constructor
@@ -28,11 +33,6 @@ public class GetPropertyValues {
     private GetPropertyValues() {
         // void
     }
-
-    /**
-     * Map contennant les chemins d'accès aux répertoires
-     */
-    public static final Map<String, String> PROPERTIESMAP = new HashMap<>();
 
     /**
      * Permet d'extraire les données du fichier YNH-application.properties et de les placer dans la map
