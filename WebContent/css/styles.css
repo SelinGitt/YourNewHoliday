@@ -124,6 +124,18 @@ h1 {
 	vertical-align: middle;
 }
 
+.headerSousCellNbrPdt {
+	position: absolute;
+	display: inline-block;
+	left: 1.65em;
+	top: 1.65em;
+	font-size: 0.8em;
+	text-align: center;
+	width: 1.65em;
+}
+
+.
+
 /* MENU */
 /* Side Bar */
 .sidebar {
@@ -247,8 +259,8 @@ aside {
 
 /* ECRAN ERREUR 404 */
 .div404 {
-    text-align: center;
-    height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 .div404 .img404 {
@@ -294,7 +306,7 @@ aside {
 	float: right;
 	padding: 3px 0;
 	background-color: rgb(34, 177, 76);
-	color : white;
+	color: white;
 }
 
 /* USR02 */
@@ -372,13 +384,13 @@ aside {
 	display: flex;
 }
 
-.lib-champ-email{
-	margin-left:50px;
+.lib-champ-email {
+	margin-left: 50px;
 	width: 300px;
 }
 
-.lib-champ-password{
-	margin-left:50px;
+.lib-champ-password {
+	margin-left: 50px;
 	width: 300px;
 }
 
