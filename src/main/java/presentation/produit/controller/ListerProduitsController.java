@@ -80,10 +80,10 @@ public class ListerProduitsController {
      */
     private void filtrerListe(final String searchTerm, final ModelAndView modelAndView) {
         if (!searchTerm.isBlank()) {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
-            modelAndView.addObject("searchTerm", searchTerm);
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
+            modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
         } else {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         }
 
     }
@@ -95,17 +95,17 @@ public class ListerProduitsController {
      * @param modelAndView
      */
     private void trierListe(final String tri, final ModelAndView modelAndView) {
-        modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
-        modelAndView.addObject("tri", tri);
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
+        modelAndView.getModelMap().addAttribute("tri", tri);
     }
 
     private void listerFiltreTri(final String searchTerm, final String tri, final ModelAndView modelAndView) {
         if ("ASC".equals(tri)) {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.ASC, searchTerm));
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.ASC, searchTerm));
         } else {
-            modelAndView.addObject(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.DESC, searchTerm));
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.DESC, searchTerm));
         }
-        modelAndView.addObject("tri", tri);
-        modelAndView.addObject("searchTerm", searchTerm);
+        modelAndView.getModelMap().addAttribute("tri", tri);
+        modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
     }
 }
