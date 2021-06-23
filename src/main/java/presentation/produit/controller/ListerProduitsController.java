@@ -47,7 +47,7 @@ public class ListerProduitsController {
     @PostMapping
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerProduits");
-        modelAndView.addObject("searchTerm", searchInput);
+        modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         if (searchInput.isEmpty()) {
             modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         } else {
