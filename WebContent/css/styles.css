@@ -131,7 +131,7 @@ h1 {
 	min-width: 160px;
 	background-color: transparent;
 	padding-top: 16px;
-	display:flex;
+	display: flex;
 	justify-content: center;
 	flex-direction: column;
 }
@@ -139,19 +139,23 @@ h1 {
 aside {
 	justify-content: center;
 }
+
 .link-container {
 	width: 90%;
-	margin:auto;
+	margin: auto;
 }
+
 .link-container.underline {
 	border-bottom: 3px solid black;
 	padding-bottom: 20px;
 }
+
 .link-container.admin {
 	padding: 8px 0px;
-    border-bottom: 3px solid black;
-    border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	border-top: 3px solid black;
 }
+
 .sidebar p {
 	font-size: 20px;
 	margin: auto;
@@ -170,6 +174,7 @@ aside {
 	display: block;
 	text-align: center;
 }
+
 .link-container a {
 	display: block;
 	color: black;
@@ -239,6 +244,17 @@ aside {
 }
 
 /* FEATURE TEAM USER */
+
+/* ECRAN ERREUR 404 */
+.div404 {
+    text-align: center;
+    height: 100%;
+}
+
+.div404 .img404 {
+	height: 100%;
+}
+
 /* USR00 */
 
 /* USR01 */
@@ -270,6 +286,15 @@ aside {
 #imageNonActif {
 	width: 25px;
 	height: auto;
+}
+
+.bouton {
+	width: 12%;
+	text-align: center;
+	float: right;
+	padding: 3px 0;
+	background-color: rgb(34, 177, 76);
+	color : white;
 }
 
 /* USR02 */
@@ -329,8 +354,43 @@ aside {
 }
 
 /* USR07 */
+.title {
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.button {
+	justify-content: center;
+	margin: auto;
+	width: 80%;
+	display: flex;
+}
+
+.lib-champ-email{
+	margin-left:50px;
+	width: 300px;
+}
+
+.lib-champ-password{
+	margin-left:50px;
+	width: 300px;
+}
+
+.lib-champ {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
 .boutonValiderUSR07 {
 	background-color: #008000;
+	margin-right: 20%;
 	Color: white;
 }
 
@@ -405,6 +465,12 @@ tr.lineRow {
 td.description {
 	display: flex;
 	max-width: 75%
+}
+
+.form-group {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
 }
 
 /* PDT01 */
