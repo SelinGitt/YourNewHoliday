@@ -7,6 +7,7 @@
     <h1>
         <spring:message code="pdt03.titre" />
     </h1>
+    <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour"/></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="grid-container">
             <div class="grid-item formlaireCreerProduit">

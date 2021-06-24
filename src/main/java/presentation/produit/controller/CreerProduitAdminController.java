@@ -50,7 +50,9 @@ public class CreerProduitAdminController {
     @PostMapping
     public ModelAndView creerProduit(final @ModelAttribute("produitDto") ProduitDto produitDto) {
 
-        iProduitService.creerProduit(produitDto);
+       if(iProduitService.creerProduit(produitDto) != null) {
+           return new ModelAndView("redirect:/listerProduitsAdmin.do");
+       }
         return new ModelAndView("creerProduitAdmin");
     }
 }
