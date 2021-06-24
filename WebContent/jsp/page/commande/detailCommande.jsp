@@ -19,12 +19,13 @@
             <div class="commande-grille commande-max-height">
                 <c:forEach items="${commande.listCommandeProduitDto}" var="commandeProduit">
                     <div class="commande-bordure commande-ligne">
-                        <div class="commande-grille-cellule commande-colonne-1">
-                            <div>
-                                <img src="file://${commandeProduit.produitAcheteDto.cheminDeLImage}"
-                                    alt="${commandeProduit.produitAcheteDto.destination}">
+                        <div
+                            class="commande-grille-cellule commande-colonne-1 commande-bordure-right commande-grille commande-image-grille commande-max-height">
+                            <div class="commande-colonne-1 commande-max-height">
+                                <img src="displayImage.do?id=${commandeProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
+                                    alt="${commandeProduit.produitAcheteDto.destination}" class="commande-image">
                             </div>
-                            <div>
+                            <div class="commande-colonne-2 commande-max-height">
                                 <p class="commande-bold commande-aligne-text-center">
                                     ${commandeProduit.produitAcheteDto.nom}
                                     <spring:message code="detailCommande.tiret"></spring:message>
@@ -33,7 +34,7 @@
                                 <p class="commande-aligne-text-justify">${commandeProduit.produitAcheteDto.description}</p>
                             </div>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-2">
+                        <div class="commande-grille-cellule commande-colonne-2 commande-bordure-right">
                             <p class="commande-bold commande-aligne-text-center">
                                 <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                             </p>
@@ -42,11 +43,11 @@
                                 <spring:message code="glb.devise"></spring:message>
                             </p>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-3">
+                        <div class="commande-grille-cellule commande-colonne-3 commande-bordure-right">
                             <p class="commande-bold commande-aligne-text-center">
                                 <spring:message code="detailCommande.prd.quantite"></spring:message>
                             </p>
-                            <p class="commande-aligne-text-right">${commandeProduit.quantite}</p>
+                            <p class="commande-aligne-text-center">${commandeProduit.quantite}</p>
                         </div>
                         <div class="commande-grille-cellule commande-colonne-4">
                             <p class="commande-bold commande-aligne-text-center">

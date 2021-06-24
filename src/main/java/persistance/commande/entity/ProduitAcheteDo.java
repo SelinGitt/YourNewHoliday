@@ -26,6 +26,9 @@ public class ProduitAcheteDo {
     @Column(name = "idProduit")
     private Integer    idProduit;
 
+    @Column(name = "idDeLOriginal")
+    private Integer    idDeLOriginal;
+
     @Column(name = "reference")
     private String     reference;
 
@@ -67,6 +70,24 @@ public class ProduitAcheteDo {
      */
     public void setIdProduit(final Integer idProduit) {
         this.idProduit = idProduit;
+    }
+
+    /**
+     * Getter for idDeLOriginal
+     *
+     * @return the idDeLOriginal
+     */
+    public Integer getIdDeLOriginal() {
+        return idDeLOriginal;
+    }
+
+    /**
+     * Setter for idDeLOriginal
+     *
+     * @param idDeLOriginal the idDeLOriginal to set
+     */
+    public void setIdDeLOriginal(final Integer idDeLOriginal) {
+        this.idDeLOriginal = idDeLOriginal;
     }
 
     /**

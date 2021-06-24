@@ -172,6 +172,11 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	border: 0.19em solid #000;
 }
 
+/* bordure à droite */
+.commande-bordure-right {
+	border-right: 0.19em solid #000;
+}
+
 /* height 100% */
 .commande-max-height {
 	height: 100%;
@@ -194,9 +199,16 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	display: grid;
 	/* pas d'espacement entre les grilles */
 	grid-gap: 0;
-	grid-template-columns: 3fr repeat(3, 1fr);
+	grid-template-columns: 4fr repeat(3, 1fr);
 	margin: 0.313em;
-	height: 35%;
+	height: 40%;
+}
+
+/* grille pour afficher l'image à droite */
+.commande-image-grille {
+	/* pas d'espacement entre les grilles */
+	grid-gap: 0;
+	grid-template-columns: 1fr 2fr;
 }
 
 /* cellule d'une grille */
@@ -247,4 +259,12 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 /* aligner le texte justify*/
 .commande-aligne-text-justify {
 	text-align: justify;
+}
+
+/* padding de la grille */
+
+/* pour afficher les images */
+.commande-image {
+	width: 80%;
+	height: auto;
 }

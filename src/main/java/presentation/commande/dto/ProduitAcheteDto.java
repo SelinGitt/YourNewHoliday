@@ -12,6 +12,8 @@ public class ProduitAcheteDto {
 
     private String idProduit;
 
+    private String idDeLOriginal;
+
     private String reference;
 
     private String nom;
@@ -40,6 +42,24 @@ public class ProduitAcheteDto {
      */
     public void setIdProduit(final String idProduit) {
         this.idProduit = idProduit;
+    }
+
+    /**
+     * Getter for idDeLOriginal
+     *
+     * @return the idDeLOriginal
+     */
+    public String getIdDeLOriginal() {
+        return idDeLOriginal;
+    }
+
+    /**
+     * Setter for idDeLOriginal
+     *
+     * @param idDeLOriginal the idDeLOriginal to set
+     */
+    public void setIdDeLOriginal(final String idDeLOriginal) {
+        this.idDeLOriginal = idDeLOriginal;
     }
 
     /**
