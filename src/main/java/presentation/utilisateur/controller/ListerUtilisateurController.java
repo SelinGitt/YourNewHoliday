@@ -53,15 +53,15 @@ public class ListerUtilisateurController {
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         modelAndView.getModelMap().addAttribute("searchFilter", searchFilter);
 
-        Integer role = null;
+        Integer idRole = null;
 
         // Si on fait un filtre on parse en Integer
         if (!searchFilter.isEmpty()) {
-            role = Integer.parseInt(searchFilter);
+            idRole = Integer.parseInt(searchFilter);
         }
 
         modelAndView.getModelMap().addAttribute("listeUtilisateur",
-                this.iUtilisateurService.rechercherUtilisateur(searchInput, role, searchType));
+                this.iUtilisateurService.rechercherUtilisateur(searchInput, idRole, searchType));
 
         return modelAndView;
     }

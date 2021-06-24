@@ -32,17 +32,17 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     /**
      * Permet d'effectue une recherche en base selon le role
      *
-     * @param  role Role a recherche
-     * @return      List d'UtilisateurDo correspondant a la recherche
+     * @param  idRole Role a recherche
+     * @return        List d'UtilisateurDo correspondant a la recherche
      */
-    List<UtilisateurDo> rechercheRole(final Integer role);
+    List<UtilisateurDo> rechercheRole(final Integer idRole);
 
     /**
      * Permet d'effectue une recherche en base selon le nom et le role
      * 
-     * @param  nom  Nom a recherche
-     * @param  role Role a recherche
-     * @return      List d'UtilisateurDo correspondant a la recherche
+     * @param  nom    Nom a recherche
+     * @param  idRole Role a recherche
+     * @return        List d'UtilisateurDo correspondant a la recherche
      */
-    List<UtilisateurDo> rechercheNomRole(final String nom, final Integer role);
+    List<UtilisateurDo> rechercheNomRole(final String nom, final Integer idRole);
 }

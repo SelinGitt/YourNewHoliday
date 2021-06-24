@@ -40,9 +40,9 @@ public interface IUtilisateurService {
      * Permet de rechercher un utilisater selon le nom et/ou le role
      *
      * @param  nom        Nom a rechercher
-     * @param  role       Role a rechercher
+     * @param  idRole     Role a rechercher
      * @param  searchType Type de recherche a effectue
      * @return            List d'UtilisateurDto
      */
-    List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer role, final String searchType);
+    List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole, final String searchType);
 }

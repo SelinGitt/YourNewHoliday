@@ -75,21 +75,21 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer role, final String searchType) {
+    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole, final String searchType) {
         List<UtilisateurDto> listUtilisateur = new ArrayList<>();
 
         // Si on effectue une recherche par nom et par filtre
-        if (!nom.isEmpty() && role != null) {
-            listUtilisateur = this.rechercherUtilisateurNomRole(nom, role);
+        if (!nom.isEmpty() && idRole != null) {
+            listUtilisateur = this.rechercherUtilisateurNomRole(nom, idRole);
         } else {
             // Si on effectue une recherche par nom ou si on selectionne filter a tous et que la recherche par nom n'est pas vide
-            if ("search".equals(searchType) || ("filter".equals(searchType) && role == null)) {
+            if ("search".equals(searchType) || ("filter".equals(searchType) && idRole == null)) {
                 listUtilisateur = this.rechercherUtilisateurNom(nom);
             }
 
             // Si on effectue une recherche par filtre et que la recherche par nom est vide sinon ecrase la liste
             if ("filter".equals(searchType) && nom.isBlank()) {
-                listUtilisateur = this.rechercherUtilisateurRole(role);
+                listUtilisateur = this.rechercherUtilisateurRole(idRole);
             }
         }
 
@@ -109,24 +109,24 @@ public class UtilisateurService implements IUtilisateurService {
     /**
      * Permet de rechercher un utilisateur selon le role
      *
-     * @param  role Role a rechercher
-     * @return      List des utilisateur avec le role
+     * @param  idRole Role a rechercher
+     * @return        List des utilisateur avec le role
      */
-    private List<UtilisateurDto> rechercherUtilisateurRole(final Integer role) {
-        if (role == null) {
+    private List<UtilisateurDto> rechercherUtilisateurRole(final Integer idRole) {
+        if (idRole == null) {
             return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
         }
-        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(role));
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(idRole));
     }
 
     /**
      * Permet de rechercher un utilisateur selon le nom et le role
      * 
-     * @param  nom  Nom a rechercher
-     * @param  role Role a rechercher
-     * @return      List des utilisateur avec le nom et le role
+     * @param  nom    Nom a rechercher
+     * @param  idRole Role a rechercher
+     * @return        List des utilisateur avec le nom et le role
      */
-    private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer role) {
-        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, role));
+    private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer idRole) {
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, idRole));
     }
 }
