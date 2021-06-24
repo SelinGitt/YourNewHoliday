@@ -8,17 +8,19 @@
     <table class="tableauPDT04">
         <tr>
             <th colspan="2" class="thPDT04">${consulterProduitDto.hebergement}</th>
-            <th class="thPDT04"><spring:message code="pdt04.description"></spring:message> </th>
+            <th class="thPDT04"><spring:message code="pdt04.description"></spring:message></th>
         </tr>
         <tr>
             <td rowspan="4" class="tdPDT04" width=300 height=100><img class="imagePDT04"
-                        src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt"
-                        alt="${consulterProduitDto.destination}" class="img" /></td>
-            <td class="tdPDT04"><spring:message code="pdt04.reference"></spring:message> ${consulterProduitDto.reference}</td>
-            <td rowspan="5" class="tdPDT04" valign="top" >${consulterProduitDto.description}</td>
+                src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt"
+                alt="${consulterProduitDto.destination}" class="img" /></td>
+            <td class="tdPDT04"><spring:message code="pdt04.reference"></spring:message>
+                ${consulterProduitDto.reference}</td>
+            <td rowspan="5" class="tdPDT04" valign="top">${consulterProduitDto.description}</td>
         </tr>
         <tr>
-            <td class="tdPDT04"><spring:message code="pdt04.prix"></spring:message>${consulterProduitDto.prixUnitaire} €</td>
+            <td class="tdPDT04"><spring:message code="pdt04.prix"></spring:message>${consulterProduitDto.prixUnitaire}
+                €</td>
         </tr>
         <tr>
             <td class="tdPDT04">bouton + / -</td>
