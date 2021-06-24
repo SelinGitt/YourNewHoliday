@@ -40,7 +40,10 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
+        if (!pSearchTerm.isBlank()) {
+            return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
+        }
+        return ProduitMapper.mapToListDto(produitDao.findAllProduitsEnVente());
     }
 
     @Override
