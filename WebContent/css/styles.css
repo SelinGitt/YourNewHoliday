@@ -370,8 +370,7 @@ aside {
 }
 
 /* USR07 */
-
-.body-general{
+.body-general {
 	width: 100%;
 }
 
@@ -543,20 +542,17 @@ td.description {
 /* PDT03 */
 
 /* PDT04 */
-.tableauPDT04 {
-	border-collapse: collapse;
-	width: 100%;
-	text-align: left;
+.flex-container {
+	display: flex;
 }
 
-.tdPDT04, thPDT04 {
-	border: 1px solid #dddddd;
-	padding: 5px;
-	text-align: left;
-}
-
-.imagePDT04 {
+.flex-container>div {
+	text-align: left; margin : 10px;
+	padding: 20px;
+	font-size: 30px;
 	width: 100%;
+	height: auto;
+	margin: 10px;
 }
 
 /* FEATURE TEAM PANIER */
