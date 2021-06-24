@@ -56,7 +56,7 @@ public class ListerProduitsController {
             final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (!"default".equals(tri) && !searchTerm.isBlank() && !tri.isEmpty()) {
+        if (tri != null && !searchTerm.isBlank() && !tri.isEmpty()) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeTri.checkType(tri), searchTerm));
             modelAndView.getModelMap().addAttribute("tri", tri);
             modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
