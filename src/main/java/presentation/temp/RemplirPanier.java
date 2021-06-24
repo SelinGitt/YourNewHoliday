@@ -15,6 +15,9 @@ import service.util.DecimalFormatUtils;
  * @author Steve
  */
 public class RemplirPanier {
+
+    //TODO TEMP: a supprimer par la suite 
+
     // avoid to instanciate this class
     private RemplirPanier() {
         // empty

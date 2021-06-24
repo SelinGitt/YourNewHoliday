@@ -53,8 +53,8 @@ public class ConnecterController {
         }
         return voirConnecter();
     }
-    
-    
+
+    //TODO methode temporaire pour creer un panier remplis
     private PanierDto creerPanier() {
         //ajout d'un panier vide en session        
         return RemplirPanier.echantillon();
@@ -90,8 +90,14 @@ public class ConnecterController {
         } else {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
+
             //ajout d'un panier vide en session
+            //modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+
+            //ajout d'un panier Remplis en session pour les TESTS
+            //TODO a suprimmer par la suite
             modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
+
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
         }
