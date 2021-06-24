@@ -29,6 +29,11 @@
 		<put-attribute name="title" value="panier" />
 		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduits.jsp" />
 	</definition>
+	
+	<definition name="pan_00_vide" extends="base.definition">
+		<put-attribute name="title" value="panier" />
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduitsVide.jsp" />
+	</definition>
 
 	<!-- écran commande -->
 	<definition name="listerCommande" extends="base.definition">

@@ -6,6 +6,10 @@ package presentation.panier.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.ModelAndView;
+
+import presentation.panier.dto.PanierDto;
 
 /**
  * Class represents PanierProduitsController
@@ -15,13 +19,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/listerPanierProduits.do")
 public class ListerPanierProduitsController {
+
     /**
      * Permet d'afficher la page PanierProduits
-     *
-     * @return le nom de la définition pour PanierProduits
+     * 
+     * @param  panierDto : panierDto vide
+     * @return           le nom de la définition pour PanierProduits
      */
     @GetMapping
-    public String displayPanierProduits() {
-        return "pan_00";
+    public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto) {
+        final var modelAndView = new ModelAndView();
+
+        //si le panier recuperer est vide
+        if (panierDto.getMapPanier().isEmpty()) {
+            modelAndView.setViewName("pan_00_vide");
+        } else {
+            modelAndView.setViewName("pan_00");
+        }
+
+        return modelAndView;
     }
+
 }
