@@ -32,6 +32,8 @@ public class ListerUtilisateurController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerUtilisateur");
         modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
+        // Permet d'eviter une erreur js sur le premier chargement de la page
+        modelAndView.getModelMap().addAttribute("searchFilter", 0);
         return modelAndView;
     }
 
