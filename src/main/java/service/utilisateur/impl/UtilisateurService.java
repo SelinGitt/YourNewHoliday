@@ -72,4 +72,9 @@ public class UtilisateurService implements IUtilisateurService {
         }
         return null;
     }
+
+    @Override
+    public List<UtilisateurDto> rechercherUtilisateur(final String nom) {
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.recherche(nom));
+    }
 }

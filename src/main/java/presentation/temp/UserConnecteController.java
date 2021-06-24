@@ -1,4 +1,4 @@
-package presentation.controller.temp;
+package presentation.temp;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

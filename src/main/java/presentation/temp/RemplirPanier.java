@@ -1,7 +1,7 @@
 /**
  * 
  */
-package presentation.controller.temp;
+package presentation.temp;
 
 import java.util.Locale;
 

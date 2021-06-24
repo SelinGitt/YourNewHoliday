@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.controller.temp.RemplirPanier;
 import presentation.panier.dto.PanierDto;
+import presentation.temp.RemplirPanier;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
