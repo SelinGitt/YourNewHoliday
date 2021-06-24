@@ -29,6 +29,7 @@
                     <option selected value="${searchFilter}">
                         <spring:message code="usr01.filter.${searchFilter}"  />
                     </option>
+                    <%-- Tous --%>
                     <option value=""><spring:message code="usr01.filter." /></option>
                     <%-- Admin --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
