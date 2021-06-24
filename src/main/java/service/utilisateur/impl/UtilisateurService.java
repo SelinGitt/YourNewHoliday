@@ -113,6 +113,9 @@ public class UtilisateurService implements IUtilisateurService {
      * @return      List des utilisateur avec le role
      */
     private List<UtilisateurDto> rechercherUtilisateurRole(final Integer role) {
+        if (role == null) {
+            return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
+        }
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(role));
     }
 
