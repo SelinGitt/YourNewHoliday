@@ -5,38 +5,7 @@
 
 /* PAN00 */
 /* CSS factorisé */
-/* active flex*/
-.panier-display-flex {
-	display: flex;
-}
-/* ascenseur */
-.panier-overflow-auto {
-	overflow: auto;
-}
 
-/* alignement horizontale */
-.panier-justify-content-center {
-	justify-content: center;
-}
-
-.panier-justify-content-space-between {
-	justify-content: space-between;
-}
-
-/* alignement vertical */
-.panier-align-item-center {
-	align-items: center;
-}
-
-/* alignement text horizontal */
-.panier-text-align-center {
-	text-align: center;
-}
-
-/* inversion le sens des éléments flex */
-.panier-flex-direction-row-reverse {
-	flex-direction: row-reverse;
-}
 
 /* bordures */
 .panier-bordure-1px {
@@ -119,7 +88,5 @@
 .panier-supprimer {
 	padding-top: 3em;
 }
-
-
 
 /* PAN08 */

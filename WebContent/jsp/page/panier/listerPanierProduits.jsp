@@ -7,11 +7,12 @@
     <spring:message code="pan00.titre" />
 </h1>
 
-<div class="panier-display-flex">
+<div class="display-flex">
     <div>
 
         <%--  fieldset mon panier : tableau et bouton vider le panier --%>
-        <fieldset class="panier-left panier-overflow-auto">
+        <fieldset class="panier-left overflow-auto">
+        
             <legend>
                 <spring:message code="pan00.titre.fieldset.panier" />
             </legend>
@@ -43,14 +44,14 @@
                             <td class="panier-tab-ligne panier-bordure-1px panier-prix-unitaire"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-display-flex panier-justify-content-center">
+                                    <div class="display-flex justify-content-center">
                                         <h3>
                                             <spring:message code="pan00.prix.unitaire" />
                                         </h3>
                                     </div>
 
                                 </div> <%--  valeur --%>
-                                <div class="panier-justify-content-center display-flex">
+                                <div class="justify-content-center display-flex">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
                                 </div></td>
@@ -59,7 +60,7 @@
                             <%--  rendu d'affichage uniquement pour l'instant --%>
                             <%--  TODO : sera à modifier avec form:form, form:input, form:button par la suite --%>
                             <%--  Ne pas oublier de déclarer la taglib --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-quantite panier-text-align-center"><div>
+                            <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
 
                                     <%--  label --%>
                                     <div class="display-flex justify-content-center">
@@ -75,7 +76,7 @@
                                     <button type="button">-</button>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite panier-text-align-center" type="text"
+                                    <input class="panier-quantite text-align-center" type="text"
                                         id="panier-quantite" name="panier-quantite" value="${entry.value}" size="1">
 
                                     <%--  bouton + --%>
@@ -86,14 +87,14 @@
                             <td class="panier-tab-ligne panier-bordure-1px panier-td-delete"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-supprimer panier-display-flex panier-justify-content-center">
+                                    <div class="panier-supprimer display-flex justify-content-center">
                                         <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
                                     </div>
 
                                 </div> <%--  image --%>
-                                <div class="panier-justify-content-center panier-display-flex">
+                                <div class="justify-content-center display-flex">
                                     <img class="panier-responsive" src="img/commun/poubelle.jpg"
                                         alt="icone poubelle pour suppression" />
                                 </div></td>
@@ -103,7 +104,7 @@
             </table>
 
             <%--  bouton vider le panier  --%>
-            <div class="panier-vider panier-flex-direction-row-reverse panier-display-flex panier-align-item-center">
+            <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
                 <button type="button">
                     <spring:message code="pan00.vider.panier" />
                 </button>
@@ -115,7 +116,7 @@
     <div class="panier-right">
 
         <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
-        <fieldset class="panier-overflow-auto panier-macommande">
+        <fieldset class="overflow-auto panier-macommande">
             <legend>
                 <spring:message code="pan00.titre.fieldset.commande" />
             </legend>
@@ -127,8 +128,8 @@
                 </div>
 
                 <%--  prix unitaire --%>
-                <div class="panier-display-flex panier-justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="panier-display-flex panier-justify-content-space-between panier-ligne-label">
+                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
+                    <div class="display-flex justify-content-space-between panier-ligne-label">
                         <spring:message code="pan00.prix.unitaire.bis" />
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
@@ -137,8 +138,8 @@
                 </div>
 
                 <%--  quantité --%>
-                <div class="panier-display-flex panier-justify-content-space-between panier-ligne-quantite">
-                    <div class="panier-display-flex panier-justify-content-space-between panier-ligne-label">
+                <div class="display-flex justify-content-space-between panier-ligne-quantite">
+                    <div class="display-flex justify-content-space-between panier-ligne-label">
                         <spring:message code="pan00.quantite.bis" />
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
@@ -146,8 +147,8 @@
                 </div>
 
                 <%--  prix  --%>
-                <div class="panier-display-flex panier-justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="panier-display-flex panier-justify-content-space-between panier-ligne-label">
+                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
+                    <div class="display-flex justify-content-space-between panier-ligne-label">
                         <spring:message code="pan00.prix.bis" />
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
@@ -163,7 +164,7 @@
         <div class="panier-elements-a-droite">
 
             <%--  total avant remise --%>
-            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
+            <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
@@ -171,7 +172,7 @@
             </div>
 
             <%-- remise --%>
-            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
+            <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
@@ -179,7 +180,7 @@
             </div>
 
             <%--  total après remise --%>
-            <div class="panier-justify-content-space-between panier-display-flex panier-align-item-center">
+            <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
@@ -187,7 +188,7 @@
             </div>
 
             <%--  bouton valider le panier --%>
-            <div class="panier-justify-content-center panier-display-flex panier-align-item-center">
+            <div class="justify-content-center display-flex align-item-center">
                 <button type="button">
                     <spring:message code="pan00.valider.panier" />
                 </button>

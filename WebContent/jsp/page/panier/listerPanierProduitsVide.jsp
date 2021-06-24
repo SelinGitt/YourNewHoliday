@@ -7,7 +7,7 @@
 <h1>
     <spring:message code="pan00.titre" />
 </h1>
-<div class ="panier-display-flex panier-align-item-center">
+<div class ="display-flex align-item-center">
 <a href ="https://www.oups.gouv.fr/">
     <spring:message code="pan00.paragraphe.panierVide" />
 </a>
