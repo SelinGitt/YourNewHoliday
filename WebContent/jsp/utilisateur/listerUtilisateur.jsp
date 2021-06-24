@@ -30,11 +30,11 @@
                         <spring:message code="usr01.filter.${searchFilter}"  />
                     </option>
                     <option value=""><spring:message code="usr01.filter." /></option>
-                    <!-- Admin -->
+                    <%-- Admin --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
-                    <!-- Client -->
+                    <%-- Client --%>
                     <option value="1"><spring:message code="usr01.filter.1" /></option>
-                    <!-- Visiteur -->
+                    <%-- Visiteur --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
                 </select>
                 
