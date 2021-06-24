@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeTri;
 
 /**
  * Classe représentant les tests unitaires pour produitDao
@@ -121,7 +122,7 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixCroissant() {
-        final List<ProduitDo> listeProduitsCroissant = iProduitDao.listerCroissant();
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierListe(TypeTri.checkType("1"));
         final ProduitDo produitDo1 = iProduitDao.findById(4);
         final ProduitDo produitDo2 = iProduitDao.findById(3);
         final ProduitDo produitDo3 = iProduitDao.findById(5);
@@ -135,7 +136,7 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixDecroissant() {
-        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.listerDecroissant();
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierListe(TypeTri.checkType("2"));
         final ProduitDo produitDo1 = iProduitDao.findById(1);
         final ProduitDo produitDo2 = iProduitDao.findById(5);
         final ProduitDo produitDo3 = iProduitDao.findById(3);
@@ -149,7 +150,8 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixFiltreDecroissant() {
-        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.listerFiltreTriDecroissant("99");
+        //2 correspond au tri desc
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierFiltreListe(TypeTri.checkType("2"), "99");
         final ProduitDo produitDo = iProduitDao.findById(5);
         final ProduitDo produitDo1 = iProduitDao.findById(4);
         final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);
@@ -161,7 +163,8 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixFiltreCroissant() {
-        final List<ProduitDo> listeProduitsCroissant = iProduitDao.listerFiltreTriCroissant("89");
+        //1 correspond au tri asc
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierFiltreListe(TypeTri.checkType("1"), "89");
         final ProduitDo produitDo = iProduitDao.findById(4);
         final ProduitDo produitDo1 = iProduitDao.findById(3);
         final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);

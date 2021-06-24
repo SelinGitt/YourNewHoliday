@@ -40,38 +40,6 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     List<ProduitDo> rechercherProduits(final String searchTerm);
 
     /**
-     * Permet de lister les produits par ordre croissant
-     *
-     * @return liste triée
-     */
-    List<ProduitDo> listerCroissant();
-
-    /**
-     * Permet de lister les produits par ordre décroissant
-     *
-     * @return liste triée
-     */
-    List<ProduitDo> listerDecroissant();
-
-    /**
-     * Permet de filtrer la liste des produits recherchés en fonction d'un terme de recherche et le tri selon le prix
-     * unitaire par ordre croissant.
-     *
-     * @param  searchTerm le terme recherché
-     * @return            la liste triée et contenant les termes recherchés
-     */
-    List<ProduitDo> listerFiltreTriCroissant(final String searchTerm);
-
-    /**
-     * Permet de filtrer la liste des produits recherchés en fonction d'un terme de recherche et le tri selon le prix
-     * unitaire par ordre décroissant.
-     *
-     * @param  searchTerm le terme recherché
-     * @return            la liste triée et contenant les termes recherchés
-     */
-    List<ProduitDo> listerFiltreTriDecroissant(final String searchTerm);
-
-    /**
      * Permet de trier la liste en fonction de son type de recherche
      *
      * @param  typeTri le type de tri
@@ -84,7 +52,7 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      *
      * @param  typeTri    le type de recherche à effectuer
      * @param  searchTerm le terme à rechercher
-     * @return
+     * @return            la liste triée et filtrée
      */
     List<ProduitDo> trierFiltreListe(final TypeTri typeTri, final String searchTerm);
 

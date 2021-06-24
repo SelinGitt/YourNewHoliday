@@ -50,10 +50,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm) {
-        if (TypeTri.ASC == typeFiltre) {
-            return ProduitMapper.mapToListDto(produitDao.listerFiltreTriCroissant(searchTerm));
-        }
-        return ProduitMapper.mapToListDto(produitDao.listerFiltreTriDecroissant(searchTerm));
+        return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
     }
 
     @Override
