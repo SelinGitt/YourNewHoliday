@@ -54,9 +54,9 @@ public class ListerProduitsController {
     @PostMapping
     public ModelAndView findFilter(final @RequestParam(value = "type", required = false) String type,
             final @RequestParam(value = "searchInput", required = false) String searchTerm,
-            final @RequestParam(value = "tri", required = false) String tri) {
+            final @RequestParam(value = "tri", required = false, defaultValue = "0") String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (tri != null && !searchTerm.isBlank() && !tri.isEmpty()) {
+        if (!"0".equals(tri) && !searchTerm.isBlank() && !tri.isEmpty()) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeTri.checkType(tri), searchTerm));
             modelAndView.getModelMap().addAttribute("tri", tri);
             modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
@@ -66,10 +66,11 @@ public class ListerProduitsController {
             case "tri":
                 modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.trierListe(TypeTri.checkType(tri)));
                 modelAndView.getModelMap().addAttribute("tri", tri);
+                modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
                 break;
             case "search":
                 modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
-                modelAndView.getModelMap().addAttribute("tri", "0");
+                modelAndView.getModelMap().addAttribute("tri", tri);
                 modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
                 break;
             default:
