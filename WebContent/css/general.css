@@ -37,9 +37,9 @@ html, body, header, aside, section, footer {
 
 /* enlève les marges et les bordures pour les containers de chaque type*/
 html, body, header, aside, section, footer {
-	margin: 0px;
-	padding: 0px;
-	border: 0px;
+	margin: 0;
+	padding: 0;
+	border: 0;
 }
 
 .content {
@@ -51,7 +51,6 @@ html, body, header, aside, section, footer {
 /* taille du aside */
 aside {
 	width: 20%;
-	top: 0px;
 	display: flex;
 	overflow: auto;
 }
