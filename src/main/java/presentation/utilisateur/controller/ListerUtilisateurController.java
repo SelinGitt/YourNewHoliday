@@ -40,20 +40,20 @@ public class ListerUtilisateurController {
     /**
      * Permet d'effectuee une recherche
      * 
-     * @param  searchType   Le type de recherche, filtre, ou recherche avec input
      * @param  searchInput  La valeur de la recherche
      * @param  searchFilter La valeur du filtre applique
      * @return              ModelAndView avec le nom de la jsp et la liste des utilisateurs trie en attribut
      */
     @PostMapping
-    public ModelAndView recherche(final @RequestParam(value = "searchType") String searchType,
-            final @RequestParam(value = "searchInput") String searchInput,
+    public ModelAndView recherche(final @RequestParam(value = "searchInput") String searchInput,
             final @RequestParam(value = "searchFilter") String searchFilter) {
 
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         modelAndView.getModelMap().addAttribute("searchFilter", searchFilter);
+
+        System.out.println(searchFilter);
 
         Integer idRole = null;
 
@@ -62,8 +62,7 @@ public class ListerUtilisateurController {
             idRole = Integer.parseInt(searchFilter);
         }
 
-        modelAndView.getModelMap().addAttribute("listeUtilisateur",
-                this.iUtilisateurService.rechercherUtilisateur(searchInput, idRole, searchType));
+        modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.rechercherUtilisateur(searchInput, idRole));
 
         return modelAndView;
     }

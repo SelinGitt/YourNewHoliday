@@ -10,21 +10,19 @@
     <div class="usr01searchMenu">
         <div class="usr01searchBar">
             <form:form action="listerUtilisateur.do" method="POST">
-                <input type="hidden" name="searchType" value="search" />
                 <input type="hidden" name="searchFilter" value="${searchFilter}" />
-            
+
                 <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                     placeholder="<spring:message code='usr01.searchbar'/>">
-                
+
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
             </form:form>
         </div>
 
         <div class="usr01filterBar">
             <form:form action="listerUtilisateur.do" method="POST">
-                <input type="hidden" name="searchType" value="filter" />
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
-            
+
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value=""><spring:message code="usr01.filter." /></option>
@@ -35,11 +33,11 @@
                     <%-- Admin --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
                 </select>
-                
+
                 <script>
                 	document.getElementById("filterBar").options[${searchFilter}].selected = true;
                 </script>
-                
+
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
             </form:form>
         </div>

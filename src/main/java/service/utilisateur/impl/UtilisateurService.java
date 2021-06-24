@@ -1,7 +1,6 @@
 package service.utilisateur.impl;
 
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -75,25 +74,20 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole, final String searchType) {
-        List<UtilisateurDto> listUtilisateur = new ArrayList<>();
-
-        // Si on effectue une recherche par nom et par filtre
-        if (!nom.isEmpty() && idRole != null) {
-            listUtilisateur = this.rechercherUtilisateurNomRole(nom, idRole);
-        } else {
-            // Si on effectue une recherche par nom ou si on selectionne filter a tous et que la recherche par nom n'est pas vide
-            if ("search".equals(searchType) || ("filter".equals(searchType) && idRole == null)) {
-                listUtilisateur = this.rechercherUtilisateurNom(nom);
+    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole) {
+        // Si nom empty on fait une recherche par filtre
+        if (nom.isEmpty()) {
+            if (idRole == null) {
+                return this.findAllUtilisateurs();
             }
-
-            // Si on effectue une recherche par filtre et que la recherche par nom est vide sinon ecrase la liste
-            if ("filter".equals(searchType) && nom.isBlank()) {
-                listUtilisateur = this.rechercherUtilisateurRole(idRole);
-            }
+            return this.rechercherUtilisateurRole(idRole);
         }
 
-        return listUtilisateur;
+        // Nom pas empty, donc recherche par nom ou nom + role
+        if (idRole == null) {
+            return this.rechercherUtilisateurNom(nom);
+        }
+        return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
     /**
