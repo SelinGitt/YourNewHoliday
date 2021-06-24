@@ -12,13 +12,6 @@
 		<put-attribute name="footer" value="/jsp/template/footer.jsp" />
 	</definition>
 
-	<!-- page jsp affichage des infos utilisateur en session / A supprimer quand UserConnecteController & user_session.jsp seront 
-		supprimés -->
-	<definition name="user_session" extends="base.definition">
-		<put-attribute name="title" value="Utilisateur en session" />
-		<put-attribute name="body" value="/jsp/page/temp/user_session.jsp" />
-	</definition>
-
 	<!-- Mettez la dénition de page ici -->
 	<!-- écran produit -->
 	<definition name="listerProduits" extends="base.definition">
@@ -64,6 +57,13 @@
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
+	
+	<!-- écran 404 -->
+	<definition name="404" extends="base.definition">
+		<put-attribute name="title" value="404 Error"/>
+		<put-attribute name="body" value="/jsp/utilisateur/404.jsp" />
+	</definition>
+
 	<!-- Ecran test pour afficherImage -->
 	<definition name="showImage" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />

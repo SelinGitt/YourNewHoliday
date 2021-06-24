@@ -1,0 +1,63 @@
+@charset "UTF-8";
+/* Vous pouvez utiliser directement ces propriétés pour vos éléments 
+en ajoutant la classe dans une balise html 
+ex : <div class="display-flex"></div>
+Si vous voulez ajouter des propriétes flex à ce fichier, contacter Hanan.*/
+
+/* display */
+.display-flex {
+	display: flex;
+}
+
+.flex-wrap-wrap {
+	flex-wrap: wrap;
+}
+
+.display-inline-flex {
+	display: inline-flex;
+}
+
+/* alignement horizontale */
+.justify-content-center {
+	justify-content: center;
+}
+
+.justify-content-space-between {
+	justify-content: space-between;
+}
+
+.justify-content-space-around {
+	justify-content: space-around;
+}
+
+.justify-content-flex-end {
+	justify-content: flex-end;
+}
+
+/* alignement vertical */
+.align-item-center {
+	align-items: center;
+}
+
+.align-items-flex-end {
+	align-items: flex-end;
+}
+
+/* alignement text horizontal */
+.text-align-center {
+	text-align: center;
+}
+
+/* flex -direction */
+.flex-direction-row {
+	flex-direction: row;
+}
+
+.flex-direction-row-reverse {
+	flex-direction: row-reverse;
+}
+
+/* align content */
+.align-content-flex-end {
+	align-content: flex-end;
+}

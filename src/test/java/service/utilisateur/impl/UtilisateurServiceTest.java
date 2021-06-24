@@ -3,6 +3,7 @@ package service.utilisateur.impl;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -112,6 +113,12 @@ class UtilisateurServiceTest {
         utilisateurDo.setMdpHash("B0FBB24B2497D66890D0BBF15034768B8BD7557E094D512A52AD0F0C58FA0AB8");
         utilisateurDo.setNom("nom");
 
+        final RoleDo roleDo = new RoleDo();
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("libelle");
+
+        utilisateurDo.setRole(roleDo);
+
         Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
 
         //On tente une authentification 
@@ -138,5 +145,18 @@ class UtilisateurServiceTest {
 
         final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
         Assertions.assertNull(utilisateurConnecteDto);
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateur(String)}
+     */
+    @Test
+    void testRecherche() {
+        Mockito.when(this.dao.recherche("Toto")).thenReturn(Collections.emptyList());
+
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto");
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(0, response.size());
     }
 }

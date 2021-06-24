@@ -48,8 +48,6 @@ public class UtilisateurMapper {
         utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
         utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
-
-        // TODO : Remplacer apres cryptage du mdp
         utilisateurDto.setPassword(utilisateurDo.getMdpHash());
 
         return utilisateurDto;
@@ -74,8 +72,7 @@ public class UtilisateurMapper {
         utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
 
-        // TODO : Remplacer apres cryptage du mdp
-        utilisateurDo.setMdpHash(utilisateurDto.getPassword());
+        utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
         // TODO : Remplacer quand upload img ok
         utilisateurDo.setCheminAvatar("img/test.png");
 
@@ -101,10 +98,10 @@ public class UtilisateurMapper {
     public static UtilisateurConnecteDto mapperToConnecteDto(final UtilisateurDo utilisateurDo) {
         final var utilisateurConnecteDto = new UtilisateurConnecteDto();
 
-        //TODO à changer quand les rôles seront gérés
-        utilisateurConnecteDto.setIdRole("1");
-        //TODO à changer quand les rôles seront gérés
-        utilisateurConnecteDto.setNomRole("Rôle");
+        final var role = utilisateurDo.getRole();
+
+        utilisateurConnecteDto.setIdRole(role.getIdRole().toString());
+        utilisateurConnecteDto.setNomRole(role.getLibelle());
 
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
