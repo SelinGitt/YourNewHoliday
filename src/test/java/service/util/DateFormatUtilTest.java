@@ -3,6 +3,7 @@ package service.util;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -61,11 +62,12 @@ class DateFormatUtilTest {
     @Test
     void testFormaterStringToDateError() {
         //creer une nouvelle date si le format n'est pas le bon
-        assertTrue(DateFormatUtil.formaterStringToDate("").equals(new Date()));
+        final boolean date = DateFormatUtil.formaterStringToDate("PHFF").equals(new Date());
+        assertTrue(date);
 
-        //verifie le NullPointerException (asserthrow)
-        
-        
-        
+        //verifier le null
+        assertThrows(NullPointerException.class, () -> {
+            DateFormatUtil.formaterStringToDate(null);
+        });
     }
 }
