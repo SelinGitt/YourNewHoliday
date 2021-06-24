@@ -20,7 +20,7 @@
         <form:form action="listerProduits.do" method="POST" id="tri">
         <input type="hidden" name="type" value="tri" />
         <input type="hidden" name="searchInput" value="${searchTerm}"/>
-            <select id="tri" name="tri">               
+            <select id="tri" name="tri" >               
                 <option disabled selected><spring:message code="pdt00.tri"></spring:message></option>
                 <option value="ASC"><spring:message code="pdt00.tri.croissant"></spring:message></option>
                 <option value="DESC"><spring:message code="pdt00.tri.decroissant"></spring:message></option>

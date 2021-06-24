@@ -55,7 +55,8 @@ public class ListerProduitsController {
             final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (!searchTerm.isBlank() && !tri.isEmpty()) {
+        //FIXME fix NPE sur tri
+        if (tri != null && !searchTerm.isBlank() && !tri.isEmpty()) {
             listerFiltreTri(searchTerm, tri, modelAndView);
             return modelAndView;
         }
@@ -95,6 +96,10 @@ public class ListerProduitsController {
      * @param modelAndView
      */
     private void trierListe(final String tri, final ModelAndView modelAndView) {
+        if (tri == null) {
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
+            return;
+        }
         if ("ASC".equals(tri)) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
         } else {
