@@ -5,10 +5,9 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<link href="css/styles.css" rel="stylesheet">
 <link href="css/commande.css" rel="stylesheet">
-<link href="css/panier.css" rel="stylesheet">
 <link href="css/produit.css" rel="stylesheet">
+<link href="css/panier.css" rel="stylesheet">
 <link href="css/user.css" rel="stylesheet">
 <link href="css/external_files.css" rel="stylesheet">
 <link href="css-ext/font-awesome/css/font-awesome.min.css" rel="stylesheet">
