@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
-import presentation.produit.controller.TypeRecherche;
+import presentation.produit.controller.TypeTri;
 import presentation.produit.dto.ProduitDto;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
@@ -49,21 +49,16 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> listerCroissant() {
-        return ProduitMapper.mapToListDto(produitDao.listerCroissant());
-    }
-
-    @Override
-    public List<ProduitDto> listerDecroissant() {
-        return ProduitMapper.mapToListDto(produitDao.listerDecroissant());
-    }
-
-    @Override
-    public List<ProduitDto> listerFiltreTri(final TypeRecherche typeFiltre, final String searchTerm) {
-        if (TypeRecherche.ASC == typeFiltre) {
+    public List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm) {
+        if (TypeTri.ASC == typeFiltre) {
             return ProduitMapper.mapToListDto(produitDao.listerFiltreTriCroissant(searchTerm));
         }
         return ProduitMapper.mapToListDto(produitDao.listerFiltreTriDecroissant(searchTerm));
+    }
+
+    @Override
+    public List<ProduitDto> trierListe(final TypeTri typeFiltre) {
+        return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
     }
 
 }

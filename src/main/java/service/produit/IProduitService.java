@@ -5,7 +5,7 @@ package service.produit;
 
 import java.util.List;
 
-import presentation.produit.controller.TypeRecherche;
+import presentation.produit.controller.TypeTri;
 import presentation.produit.dto.ProduitDto;
 
 /**
@@ -46,20 +46,6 @@ public interface IProduitService {
     List<ProduitDto> listerAllProduit();
 
     /**
-     * Permet de lister par ordre croissant
-     *
-     * @return liste triée
-     */
-    List<ProduitDto> listerCroissant();
-
-    /**
-     * Permet de lister par ordre décroissant
-     *
-     * @return liste triée
-     */
-    List<ProduitDto> listerDecroissant();
-
-    /**
      * Permet de filtrer la liste des produits recherchés en fonction d'un terme de recherche. <br>
      * Permet aussi de les trier en fonction de leur type, ASC ou DESC
      *
@@ -67,5 +53,13 @@ public interface IProduitService {
      * @param  searchTerm le terme recherché
      * @return            la liste triée et contenant les termes recherchés
      */
-    List<ProduitDto> listerFiltreTri(final TypeRecherche typeFiltre, final String searchTerm);
+    List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm);
+
+    /**
+     * Permet de trier la liste
+     * 
+     * @param  typeFiltre le type du filtre a appliquer
+     * @return            liste triée
+     */
+    List<ProduitDto> trierListe(final TypeTri typeFiltre);
 }

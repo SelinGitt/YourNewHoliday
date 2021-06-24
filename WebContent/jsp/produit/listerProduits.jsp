@@ -12,19 +12,22 @@
     <div class="searchBar">
         <form:form action="listerProduits.do" method="POST">
             <input type="hidden" name="type" value="search" />
-            <input type="hidden" name="tri" value="${tri}"/> 
+            <input type="hidden" name="tri" value="${tri}" />
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code='pdt00.recherche.OK'/>" class="searchBarOk" />
         </form:form>
         <form:form action="listerProduits.do" method="POST" id="tri">
-        <input type="hidden" name="type" value="tri" />
-        <input type="hidden" name="searchInput" value="${searchTerm}"/>
-            <select id="tri" name="tri" >               
-                <option selected value="${tri}" ><spring:message code="pdt00.tri.${tri}"></spring:message></option>
-                <option value="asc"><spring:message code="pdt00.tri.asc"></spring:message></option>
-                <option value="desc"><spring:message code="pdt00.tri.desc"></spring:message></option>
+            <input type="hidden" name="type" value="tri" />
+            <input type="hidden" name="searchInput" value="${searchTerm}" />
+            <select id="triSelect" name="tri">
+                <option disabled value="0"><spring:message code="pdt00.tri.default"></spring:message></option>
+                <option value="1"><spring:message code="pdt00.tri.asc"></spring:message></option>
+                <option value="2"><spring:message code="pdt00.tri.desc"></spring:message></option>
             </select>
+            <script>
+            		document.getElementById("triSelect").options[${tri}].selected=true;          	
+            </script>
             <input type="submit" form="tri" value="<spring:message code='pdt00.recherche.OK'/>">
         </form:form>
     </div>
@@ -32,8 +35,7 @@
         <c:forEach items="${listeProduitDto}" var="produitDto">
             <table class="containerVoyage" aria-label="Produit">
                 <tr>
-                    <th colspan="2"><img
-                        src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                    <th colspan="2"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                         alt="${produitDto.destination}" class="img" /></th>
                 </tr>
                 <tr class="lineRow">

@@ -7,6 +7,7 @@ import java.util.List;
 
 import persistance.commun.dao.IGenericDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeTri;
 
 /**
  * Interface pour le CRUD des produits
@@ -69,4 +70,22 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            la liste triée et contenant les termes recherchés
      */
     List<ProduitDo> listerFiltreTriDecroissant(final String searchTerm);
+
+    /**
+     * Permet de trier la liste en fonction de son type de recherche
+     *
+     * @param  typeTri le type de tri
+     * @return         une liste de produitDo triée
+     */
+    List<ProduitDo> trierListe(final TypeTri typeTri);
+
+    /**
+     * Permet de trier la liste et de la filtrer en fonction de leurs paramètres
+     *
+     * @param  typeTri    le type de recherche à effectuer
+     * @param  searchTerm le terme à rechercher
+     * @return
+     */
+    List<ProduitDo> trierFiltreListe(final TypeTri typeTri, final String searchTerm);
+
 }
