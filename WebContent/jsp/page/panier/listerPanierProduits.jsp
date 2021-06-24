@@ -23,7 +23,7 @@
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-tab-ligne panier-bordure-1px panier-display-flex">
+                            <th class="panier-tab-ligne panier-bordure-1px display-flex">
                                 <div>
                                     <%--  photo --%>
                                     <img class="panier-responsive panier-image-produit"
@@ -50,7 +50,7 @@
                                     </div>
 
                                 </div> <%--  valeur --%>
-                                <div class="panier-justify-content-center panier-display-flex">
+                                <div class="panier-justify-content-center display-flex">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
                                 </div></td>
@@ -62,14 +62,14 @@
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite panier-text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-display-flex panier-justify-content-center">
+                                    <div class="display-flex justify-content-center">
                                         <h3 class="panier-quantite-label">
                                             <spring:message code="pan00.quantite" />
                                         </h3>
                                     </div>
 
                                 </div>
-                                <div class="panier-display-flex">
+                                <div class="display-flex">
 
                                     <%--  bouton - --%>
                                     <button type="button">-</button>

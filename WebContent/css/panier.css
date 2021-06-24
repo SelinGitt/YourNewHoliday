@@ -1,0 +1,125 @@
+@charset "UTF-8";
+/* FEATURE TEAM PANIER */
+
+/* correctif : le nom des classes spécifique doit commencer par le nom de la FT team */
+
+/* PAN00 */
+/* CSS factorisé */
+/* active flex*/
+.panier-display-flex {
+	display: flex;
+}
+/* ascenseur */
+.panier-overflow-auto {
+	overflow: auto;
+}
+
+/* alignement horizontale */
+.panier-justify-content-center {
+	justify-content: center;
+}
+
+.panier-justify-content-space-between {
+	justify-content: space-between;
+}
+
+/* alignement vertical */
+.panier-align-item-center {
+	align-items: center;
+}
+
+/* alignement text horizontal */
+.panier-text-align-center {
+	text-align: center;
+}
+
+/* inversion le sens des éléments flex */
+.panier-flex-direction-row-reverse {
+	flex-direction: row-reverse;
+}
+
+/* bordures */
+.panier-bordure-1px {
+	border: 1px solid black;
+}
+/* CSS specifique */
+
+/* images responsives */
+.panier-responsive {
+	width: 50px;
+	height: auto;
+	margin-bottom: 2em;
+	margin-top: -1em;
+}
+
+.panier-td-delete {
+	width: 12%;
+}
+
+.panier-format {
+	width: 6em;
+}
+
+.panier-image-produit {
+	width: auto;
+	height: 18vh;
+	margin-left: 1vh;
+	margin-top: 1vh;
+}
+
+.panier-left {
+	height: 60vh;
+	width: 95%;
+}
+
+.panier-macommande {
+	height: 30vh;
+	width: 85%;
+	padding-left: 5%;
+}
+
+.panier-elements-a-droite {
+	width: 90%;
+	padding-left: 5%;
+}
+
+.panier-tab-ligne {
+	height: 25vh;
+}
+
+.panier-ligne-prix-unitaire {
+	width: 80%;
+}
+
+.panier-ligne-label {
+	width: 50%;
+}
+
+.panier-ligne-quantite {
+	width: 80%;
+}
+
+.panier-vider {
+	margin-top: 1.5em;
+	margin-right: 1.5em;
+}
+
+.panier-prix-unitaire {
+	width: 18%;
+}
+
+.panier-quantite {
+	width: 1.7em;
+}
+
+.panier-quantite-label {
+	padding-top: 0.21em;
+}
+
+.panier-supprimer {
+	padding-top: 3em;
+}
+
+
+
+/* PAN08 */
