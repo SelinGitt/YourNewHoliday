@@ -1,6 +1,7 @@
 package service.utilisateur.impl;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -74,17 +75,55 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public List<UtilisateurDto> rechercherUtilisateur(final String nom) {
+    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer role, final String searchType) {
+        List<UtilisateurDto> listUtilisateur = new ArrayList<>();
+
+        // Si on effectue une recherche par nom et par filtre
+        if (!nom.isEmpty() && role != null) {
+            listUtilisateur = this.rechercherUtilisateurNomRole(nom, role);
+        } else {
+            // Si on effectue une recherche par nom ou si on selectionne filter a tous et que la recherche par nom n'est pas vide
+            if ("search".equals(searchType) || ("filter".equals(searchType) && role == null)) {
+                listUtilisateur = this.rechercherUtilisateurNom(nom);
+            }
+
+            // Si on effectue une recherche par filtre et que la recherche par nom est vide sinon ecrase la liste
+            if ("filter".equals(searchType) && nom.isBlank()) {
+                listUtilisateur = this.rechercherUtilisateurRole(role);
+            }
+        }
+
+        return listUtilisateur;
+    }
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom
+     *
+     * @param  nom Nom a rechercher
+     * @return     List des utilisateur avec le nom
+     */
+    private List<UtilisateurDto> rechercherUtilisateurNom(final String nom) {
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.recherche(nom));
     }
 
-    @Override
-    public List<UtilisateurDto> rechercherUtilisateurRole(final String role) {
+    /**
+     * Permet de rechercher un utilisateur selon le role
+     *
+     * @param  role Role a rechercher
+     * @return      List des utilisateur avec le role
+     */
+    private List<UtilisateurDto> rechercherUtilisateurRole(final Integer role) {
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(role));
     }
 
-    @Override
-    public List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final String role) {
+    /**
+     * Permet de rechercher un utilisateur selon le nom et le role
+     * 
+     * @param  nom  Nom a rechercher
+     * @param  role Role a rechercher
+     * @return      List des utilisateur avec le nom et le role
+     */
+    private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer role) {
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, role));
     }
 }

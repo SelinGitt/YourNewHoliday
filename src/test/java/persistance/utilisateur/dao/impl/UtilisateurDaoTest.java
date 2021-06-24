@@ -113,7 +113,7 @@ class UtilisateurDaoTest {
      */
     @Test
     void testRechercheRole() {
-        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheRole("1");
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheRole(1);
 
         Assertions.assertNotNull(utilisateurDos);
         Assertions.assertEquals(4, utilisateurDos.size());
@@ -124,7 +124,7 @@ class UtilisateurDaoTest {
      */
     @Test
     void testRechercheNomRole() {
-        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheNomRole("Ma", "3");
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheNomRole("Ma", 3);
 
         Assertions.assertNotNull(utilisateurDos);
         Assertions.assertEquals(2, utilisateurDos.size());
