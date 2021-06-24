@@ -33,7 +33,8 @@ public class ListerUtilisateurController {
         modelAndView.setViewName("listerUtilisateur");
         modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
         // Permet d'eviter une erreur js sur le premier chargement de la page
-        modelAndView.getModelMap().addAttribute("searchFilter", 0);
+        // -1 car on fait +1 dans le script pour correspondre au value des options
+        modelAndView.getModelMap().addAttribute("searchFilter", -1);
         return modelAndView;
     }
 
