@@ -1,6 +1,6 @@
 @charset "UTF-8";
-/* CSS pour les élements du template : 
-Header, menu, footer.
+/* CSS pour les élements du template : Header, menu, footer. */
+
 /* factorisation du header et du footer */
 header, footer {
 	display: block;
