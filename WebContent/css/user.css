@@ -2,13 +2,181 @@
 /* FEATURE TEAM USER */
 
 /* ECRAN ERREUR 404 */
+.div404 {
+	text-align: center;
+	height: 100%;
+}
+
+.div404 .img404 {
+	height: 100%;
+}
+
+/* USR00 */
 
 /* USR01 */
+.usr01searchMenu {
+	margin-bottom: 15px;
+	display: flex;
+	width: 100%;
+}
+
+.usr01searchMenu .usr01AddUser {
+	margin-left: auto;
+}
+
+#listeUser {
+	border-collapse: collapse;
+	border: 1px solid black;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.thUSR01 {
+	font-weight: lighter;
+	border-bottom: 1px solid black;
+	padding: 7px 0;
+}
+
+.bodyUSR01 {
+	border-bottom: 1px solid black;
+	text-align: center;
+	font-weight: bold;
+	padding: 9px 0;
+}
+
+.imageUSR01 {
+	width: 40px;
+	height: 40px;
+}
+
+#imageNonActif {
+	width: 25px;
+	height: auto;
+}
+
+.urs01newUserBouton {
+	background-color: rgb(34, 177, 76);
+	color: white;
+}
 
 /* USR02 */
 
 /* USR03 */
 
 /* USR05 */
+.user05 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.user05 .leftSideUser05 {
+	width: 75%;
+}
+
+.user05 .leftSideUser05 form table {
+	width: 100%;
+}
+
+.user05 .leftSideUser05 form table tr th {
+	width: 30%;
+	text-align: left;
+	padding: 10px 0;
+}
+
+.user05 .leftSideUser05 form table tr td {
+	width: fit-content;
+}
+
+.user05 .leftSideUser05 form table tr td div button {
+	padding: 5px 25px;
+	border-radius: 5px;
+	color: white;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .creerUser05 {
+	background-color: rgb(106, 168, 79);
+}
+
+.user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
+	background-color: rgb(224, 102, 102);
+}
+
+.user05 .leftSideUser05 form table tr td input {
+	width: 100%;
+}
+
+.user05 .rightSideUser05 {
+	width: 25%;
+}
 
 /* USR07 */
+.body-general {
+	width: 100%;
+}
+
+.title {
+	text-align: center;
+	margin-right: 100px;
+	margin-bottom: 50px;
+}
+
+.form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+.button {
+	align-items: center;
+	margin: auto;
+	width: 80%;
+	display: flex;
+}
+
+.lib-champ-email {
+	margin-left: 50px;
+	width: 300px;
+}
+
+.lib-champ-password {
+	margin-left: 50px;
+	width: 300px;
+}
+
+.error {
+	Color: red;
+}
+
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.errorblock {
+	background-color: #ff7f00;
+	border: 2px solid #000000;
+	display: flex
+}
+
+.lib-champ {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+
+.boutonValiderUSR07 {
+	background-color: #008000;
+	margin-left: 70px;
+	margin-right: 20%;
+	Color: white;
+}
+
+.boutonResetUSR07 {
+	background-color: #FF0000;
+	Color: white;
+}
