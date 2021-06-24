@@ -591,7 +591,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 /* container de la page CMD04*/
 .commande-container {
 	width: 95%;
-	height: 80%;
+	height: 75%;
 	grid-template-columns: 3fr 1fr;
 	grid-gap: 0.05em;
 }
@@ -613,10 +613,14 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	border: 0.19em solid #000;
 }
 
+/* height 100% */
+.commande-max-height {
+	height: 100%;
+}
+
 /* bordure des fieldset */
 .commande-fieldset {
 	padding: 0.625em;
-	height: 100%;
 }
 
 /* couleur et taille du text pour les légendes des fieldsets */
@@ -627,14 +631,61 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 
 /* ligne dans la grille de commande */
 .commande-ligne {
+	box-sizing: border-box;
 	display: grid;
 	/* pas d'espacement entre les grilles */
-	grid-gap: 0px;
+	grid-gap: 0;
 	grid-template-columns: 3fr repeat(3, 1fr);
-	height: 30%;
+	margin: 0.313em;
+	height: 35%;
 }
 
 /* cellule d'une grille */
 .commande-grille-cellule {
 	padding: 0.313em;
+}
+
+/* grille colonne 1 */
+.commande-colonne-1 {
+	grid-column: 1;
+}
+
+/* grille colonne 2 */
+.commande-colonne-2 {
+	grid-column: 2;
+}
+
+/* grille colonne 3 */
+.commande-colonne-3 {
+	grid-column: 3;
+}
+
+/* grille colonne 4 */
+.commande-colonne-4 {
+	grid-column: 4;
+}
+
+/* grille colonne 5 */
+.commande-colonne-5 {
+	grid-column: 5;
+}
+
+/* mettre en gras */
+.commande-bold {
+	font-weight: bold;
+}
+
+/* aligner le texte au centre */
+.commande-aligne-text-center {
+	text-align: center;
+}
+
+/* aligner le texte à droite */
+.commande-aligne-text-right {
+	text-align: right;
+}
+
+/* aligner le texte justify*/
+.commande-aligne-text-justify {
+	text-align: justify;
 }
