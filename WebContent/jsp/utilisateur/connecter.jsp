@@ -11,7 +11,7 @@
     </div>
 
     <div class="form">
-        <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do">
+        <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do" autocomplete="one-time-code">
 
             <div class="title">
                 <h1>
@@ -32,7 +32,7 @@
             <div class="lib-champ">
                 <span><spring:message code="usr07.label.password" /></span>
                 <div class="lib-champ-password">
-                    <form:password path="password" autocomplete="new-password" />
+                    <form:password path="password" />
                     <div class="error">
                         <form:errors path="password" cssClass="error" />
                     </div>
