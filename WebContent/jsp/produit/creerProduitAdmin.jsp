@@ -82,9 +82,7 @@
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td><img
-                            src="https://www.voyage-prive.com/s/images/visual/login/backgrounds/2048x1463-maroc.jpg"
-                            alt="Maroc" class="img" /></td>
+                        <td><img src="" alt="Image du produit à ajouter" class="form-imageProduit" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
@@ -93,9 +91,10 @@
                 </table>
             </div>
             <div class="grid-item logoService">
+                <form:hidden path="services" value="4" />
                 <table class="listeService" aria-label="liste des services disponibles">
                     <tr>
-                        <th colspan="3"><form:hidden path="services" value="4" /></th>
+                        <th colspan="3"><spring:message code="form.pdt03.service" /></th>
                     </tr>
                     <tr>
                         <td><em class="fa fa-glass"></em></td>

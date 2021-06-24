@@ -44,7 +44,11 @@ public class ProduitMapper {
         produitDo.setNom(produitDto.getNom());
         produitDo.setDescription(produitDto.getDescription());
         produitDo.setDestination(produitDto.getDestination());
-        produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
+        if (produitDto.getPrixUnitaire().matches("\\d+(?:[,]\\d{2}$)")) {
+            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire().replace(",", ".")));
+        } else {
+            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
+        }
         produitDo.setHebergement(produitDto.getHebergement());
         produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
         produitDo.setCheminImage(produitDto.getCheminImage());

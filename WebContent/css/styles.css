@@ -543,16 +543,14 @@ td.description {
 /* PDT03 */
 .grid-container {
 	display: grid;
-	grid-gap: 10px;
-	background-color: #2196F3;
-	padding: 10px;
+	grid-gap: 5px;
+	padding: 5px;
 }
 
 .grid-item {
-	background-color: rgba(255, 255, 255, 0.8);
 	text-align: center;
-	padding: 20px;
-	font-size: 30px;
+	padding: 10px;
+	font-size: 18px;
 }
 
 .formlaireCreerProduit {
@@ -626,7 +624,9 @@ td.description {
 .listeService {
 	width: 100%;
 }
-
+.imageCreationProduit{
+	width: 100%;
+}
 /* PDT04 */
 
 /* FEATURE TEAM PANIER */
