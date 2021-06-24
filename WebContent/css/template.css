@@ -1,8 +1,169 @@
 @charset "UTF-8";
-/* Header */
+/* CSS pour les élements du template : 
+Header, menu, footer.
+/* factorisation du header et du footer */
+header, footer {
+	display: block;
+	width: 100%;
+	height: 10vh;
+}
 
-/* Menu */
+/* HEADER */
+#header {
+	width: 100%;
+	height: 8vh;
+	display: flex;
+}
 
-/* Footer */
+#headerLogo {
+	width: 70px;
+}
 
-/* Body */
+.logoHeader-ynh {
+	width: 100%;
+	height: auto;
+}
+
+.logoHeader {
+	width: 60%;
+	height: auto;
+}
+
+#headerNom {
+	width: 35.5%;
+}
+
+#headerStatut {
+	width: 35%;
+	top: 20%;
+}
+
+#headerConnexion {
+	width: 15%;
+}
+
+#headerPanier {
+	width: 20%;
+}
+
+.headerCell {
+	height: 100%;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+}
+
+.headerSousCell {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+/* MENU */
+
+/* Side Bar */
+.sidebar {
+	width: 80%;
+	min-width: 160px;
+	background-color: transparent;
+	padding-top: 16px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+aside {
+	justify-content: center;
+}
+
+.link-container {
+	width: 90%;
+	margin: auto;
+}
+
+.link-container.underline {
+	border-bottom: 3px solid black;
+	padding-bottom: 20px;
+}
+
+.link-container.admin {
+	padding: 8px 0px;
+	border-bottom: 3px solid black;
+	border-top: 3px solid black;
+}
+
+.sidebar p {
+	font-size: 20px;
+	margin: auto;
+	max-width: 300px;
+	min-width: 110px;
+	text-align: center;
+}
+
+.fa fa-globe {
+	width: 50px;
+	height: 40px;
+}
+
+.link-container span {
+	font-size: 25px;
+	display: block;
+	text-align: center;
+}
+
+.link-container a {
+	display: block;
+	color: black;
+	text-decoration: none;
+}
+
+.link-container a:hover {
+	color: #818181;
+}
+
+.bar_menu {
+	color: black;
+	font-weight: 1000;
+}
+
+.admin_bar {
+	color: black;
+	padding: 20px 0px 0px 0px;
+	margin: 10px 0px -20px 0px;
+	text-align: center;
+	font-size: 20px;
+	width: 125px;
+	text-decoration: underline overline;
+	text-decoration-thickness: 2px;
+}
+
+/* FOOTER */
+
+/* image responsive */
+
+/* footer elemination du float fait pour aside et section */
+footer {
+	clear: both;
+}
+
+.footer-responsive {
+	width: 50px;
+	height: auto;
+}
+
+#footer-container {
+	/* flex contenair*/
+	display: flex;
+	/* gestion des items de façon horizontale */
+	flex-direction: row;
+	/* rÃ©partition horizontale */
+	justify-content: space-around;
+	/* alignement verticale des items */
+	align-items: center;
+	height: auto;
+}
+
+.footer-lang {
+	/* alignement du texte "langue" et des images */
+	vertical-align: middle;
+}
