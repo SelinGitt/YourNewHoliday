@@ -51,7 +51,6 @@ public class ListerUtilisateurController {
     public ModelAndView recherche(final @RequestParam(value = "searchType") String searchType,
             final @RequestParam(value = "searchInput") String searchInput,
             final @RequestParam(value = "searchFilter") String searchFilter) {
-        // TODO : Faire les tests du service + dao; Garder affichage dans le filtre
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
@@ -63,7 +62,7 @@ public class ListerUtilisateurController {
         if (!searchInput.isEmpty() && !searchFilter.isEmpty()) {
             listUtilisateur = this.rechercheNomFiltre(searchInput, searchFilter);
         } else {
-            // Si on effectue une recherche par nom ou si on selectionne filter a tous
+            // Si on effectue une recherche par nom ou si on selectionne filter a tous et que la recherche par nom n'est pas vide
             if ("search".equals(searchType) || ("filter".equals(searchType) && searchFilter.isEmpty())) {
                 listUtilisateur = this.rechercheInput(searchInput);
             }
