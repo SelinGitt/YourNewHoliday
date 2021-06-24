@@ -4,6 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
+        <c:if test="${not empty success}">
+            <span class="errorblock"><spring:message code="${success}" /></span>
+        </c:if>
+    </div>
+
+    <div>
         <h1 class="title title-responsive">
             <spring:message code="pdt00.titre" />
         </h1>
@@ -21,8 +27,7 @@
         <c:forEach items="${listeProduitDto}" var="produitDto">
             <table class="containerVoyage" aria-label="Produit">
                 <tr>
-                    <th colspan="2"><img
-                        src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                    <th colspan="2"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                         alt="${produitDto.destination}" class="img" /></th>
                 </tr>
                 <tr class="lineRow">
