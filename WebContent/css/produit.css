@@ -1,20 +1,25 @@
 @charset "UTF-8";
 /* FEATURE TEAM PRODUIT */
+
+/*le nom des classes spécifique doit commencer par le nom de la FT team */
+
 /* PDT00 */
 h1.title {
 	text-align: center;
 	color: #66C5EB;
 }
-
+/* utiliser des em au lieu des px */
 .container {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 20px;
 	border: 1px solid #ff0000;
 }
-
+/* utiliser des em au lieu des px */
 .containerVoyage {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: inline-flex;
 	justify-content: center;
 	flex-wrap: wrap;
@@ -23,6 +28,7 @@ h1.title {
 }
 
 .price {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
 	flex: 2 1 auto;
 	justify-content: flex-end;
@@ -30,26 +36,28 @@ h1.title {
 }
 
 .img {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
 	justify-content: center;
 	padding: 0;
 	max-width: 100%;
 }
-
+/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 td.name {
 	display: flex;
 }
-
+/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 .searchBar {
 	display: flex;
 	justify-content: flex-end;
 	align-content: flex-end;
 	align-items: flex-end;
 }
-
+/* utiliser des em au lieu des px */
 .searchBarInside {
 	outline: none;
 	border-radius: 30px;
+	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	border: 2px solid grey;
 	border-radius: 30px;
 }
@@ -57,47 +65,53 @@ td.name {
 .searchBarOk {
 	cursor: pointer;
 }
-
+/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 tr.lineRow {
 	display: flex;
 }
 
 td.description {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
 	max-width: 75%
 }
-
+/* utiliser des em au lieu des px */
 .form-group {
+	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 20px;
 }
 
 /* PDT01 */
+/* utiliser des em au lieu des px */
 .listeProduit {
 	border-collapse: collapse;
+	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	border: 1px solid black;
 	overflow-y: scroll;
 	width: 100%;
 }
-
+/* utiliser des em au lieu des px */
 .thPDT01 {
+	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	border-bottom: 1px solid black;
 	padding: 7px 0;
 }
-
+/* utiliser des em au lieu des px */
 .bodyPDT01 {
+	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	border-bottom: 1px solid black;
 	text-align: center;
 	font-weight: bold;
 	padding: 9px 0;
 }
-
+/* utiliser des em au lieu des px */
 .imagePDT01 {
 	width: 40px;
 	height: 40px;
 }
-
+/* utiliser des em au lieu des px */
 .iconePDT01 {
 	width: 90px;
 	height: 60px;
