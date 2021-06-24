@@ -3,6 +3,7 @@ package service.utilisateur.impl;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -146,8 +147,22 @@ class UtilisateurServiceTest {
         Assertions.assertNull(utilisateurConnecteDto);
     }
 
+<<<<<<< HEAD
     @Test
     void testFindUtilisateurById() {
         //TODO faire le test
+=======
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateur(String)}
+     */
+    @Test
+    void testRecherche() {
+        Mockito.when(this.dao.recherche("Toto")).thenReturn(Collections.emptyList());
+
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto");
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(0, response.size());
+>>>>>>> develop
     }
 }

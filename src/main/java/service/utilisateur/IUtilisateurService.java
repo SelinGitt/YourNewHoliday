@@ -60,4 +60,12 @@ public interface IUtilisateurService {
      * @return      List des utilisateur avec le rang
      */
     List<UtilisateurDto> rechercherUtilisateurRang(final String rang);
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom
+     *
+     * @param  nom Nom a rechercher
+     * @return     List des utilisateur avec le nom
+     */
+    List<UtilisateurDto> rechercherUtilisateur(final String nom);
 }

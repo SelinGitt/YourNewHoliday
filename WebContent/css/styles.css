@@ -124,6 +124,16 @@ h1 {
 	vertical-align: middle;
 }
 
+.headerSousCellNbrPdt {
+	position: absolute;
+	display: inline-block;
+	left: 1.65em;
+	top: 1.65em;
+	font-size: 0.8em;
+	text-align: center;
+	width: 1.65em;
+}
+
 /* MENU */
 /* Side Bar */
 .sidebar {
@@ -247,8 +257,8 @@ aside {
 
 /* ECRAN ERREUR 404 */
 .div404 {
-    text-align: center;
-    height: 100%;
+	text-align: center;
+	height: 100%;
 }
 
 .div404 .img404 {
@@ -271,6 +281,16 @@ aside {
 }
 
 /* USR01 */
+.usr01searchMenu {
+	margin-bottom: 15px;
+	display: flex;
+	width: 100%;
+}
+
+.usr01searchMenu .usr01AddUser {
+	margin-left: auto;
+}
+
 #listeUser {
 	border-collapse: collapse;
 	border: 1px solid black;
@@ -301,13 +321,9 @@ aside {
 	height: auto;
 }
 
-.bouton {
-	width: 12%;
-	text-align: center;
-	float: right;
-	padding: 3px 0;
+.urs01newUserBouton {
 	background-color: rgb(34, 177, 76);
-	color : white;
+	color: white;
 }
 
 /* USR02 */
@@ -367,8 +383,13 @@ aside {
 }
 
 /* USR07 */
+.body-general {
+	width: 100%;
+}
+
 .title {
 	text-align: center;
+	margin-right: 100px;
 	margin-bottom: 50px;
 }
 
@@ -376,23 +397,35 @@ aside {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 10px;
 }
 
 .button {
-	justify-content: center;
+	align-items: center;
 	margin: auto;
 	width: 80%;
 	display: flex;
 }
 
-.lib-champ-email{
-	margin-left:50px;
+.lib-champ-email {
+	margin-left: 50px;
 	width: 300px;
 }
 
-.lib-champ-password{
-	margin-left:50px;
+.lib-champ-password {
+	margin-left: 50px;
 	width: 300px;
+}
+
+.error {
+	Color: red;
+}
+
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.errorblock {
+	background-color: #ff7f00;
+	border: 2px solid #000000;
+	display: flex
 }
 
 .lib-champ {
@@ -403,6 +436,7 @@ aside {
 
 .boutonValiderUSR07 {
 	background-color: #008000;
+	margin-left: 70px;
 	margin-right: 20%;
 	Color: white;
 }
@@ -509,6 +543,11 @@ td.description {
 .imagePDT01 {
 	width: 40px;
 	height: 40px;
+}
+
+.iconePDT01 {
+	width: 90px;
+	height: 60px;
 }
 
 /* PDT02 */
