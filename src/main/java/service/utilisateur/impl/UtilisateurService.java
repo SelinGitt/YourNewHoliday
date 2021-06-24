@@ -103,6 +103,7 @@ public class UtilisateurService implements IUtilisateurService {
      * @return     List des utilisateur avec le nom
      */
     private List<UtilisateurDto> rechercherUtilisateurNom(final String nom) {
+        logger.debug("Recherche par nom : {}", nom);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.recherche(nom));
     }
 
@@ -113,9 +114,12 @@ public class UtilisateurService implements IUtilisateurService {
      * @return        List des utilisateur avec le role
      */
     private List<UtilisateurDto> rechercherUtilisateurRole(final Integer idRole) {
+        logger.debug("Recherche par idRole");
         if (idRole == null) {
+            logger.debug("idRole null");
             return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
         }
+        logger.debug("idRole : {}", idRole);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(idRole));
     }
 
@@ -127,6 +131,7 @@ public class UtilisateurService implements IUtilisateurService {
      * @return        List des utilisateur avec le nom et le role
      */
     private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer idRole) {
+        logger.debug("Recherche par nom et idRole; {} / {}", nom, idRole);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, idRole));
     }
 }
