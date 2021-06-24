@@ -134,7 +134,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	color: #000;
 	font-size: 1.15em;
 	/* enlève la bordure du bouton */
-	border: 0px;
+	border: 0;
 	border-radius: 0.313em;
 	text-align: center;
 	padding: 0.5em;
@@ -142,7 +142,6 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 
 /* la grille pour commande */
 .commande-grille {
-	box-sizing: border-box;
 	display: grid;
 	align-items: center;
 }
@@ -151,6 +150,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 .commande-container {
 	width: 95%;
 	height: 75%;
+	max-height: 75%;
 	grid-template-columns: 3fr 1fr;
 	grid-gap: 0.05em;
 }
@@ -158,13 +158,11 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 /* container de la liste des produits */
 .commande-produits {
 	grid-column: 1;
-	height: 100%;
 }
 
 /* container des adresses et des montants payés*/
 .commande-details {
 	grid-column: 2;
-	height: 100%;
 }
 
 /* bordure */
@@ -180,6 +178,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 /* height 100% */
 .commande-max-height {
 	height: 100%;
+	max-height: 100%;
 }
 
 /* bordure des fieldset */
@@ -193,15 +192,19 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	font-size: 1.25em;
 }
 
+/* taille et hauteur calculer en tenant compte des bordures des bordures externes */
+.commande-box-sizing {
+	box-sizing: border-box;
+}
+
 /* ligne dans la grille de commande */
 .commande-ligne {
-	box-sizing: border-box;
 	display: grid;
 	/* pas d'espacement entre les grilles */
 	grid-gap: 0;
 	grid-template-columns: 4fr repeat(3, 1fr);
 	margin: 0.313em;
-	height: 40%;
+	height: 12.5vh;
 }
 
 /* grille pour afficher l'image à droite */
@@ -267,4 +270,16 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 .commande-image {
 	width: 80%;
 	height: auto;
+}
+
+.commande-box-title {
+	height: 20%;
+}
+
+.commande-box-text {
+	height: 80%;
+}
+
+.commande-overflow-y {
+	overflow-y: auto;
 }

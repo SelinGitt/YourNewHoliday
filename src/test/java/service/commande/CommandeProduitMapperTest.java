@@ -3,8 +3,8 @@
  */
 package service.commande;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -47,6 +47,7 @@ class CommandeProduitMapperTest {
         assertEquals("produit", produitAcheteDto.getNom());
         assertEquals("300,00", produitAcheteDto.getPrixUnitaire());
         assertEquals("135699", produitAcheteDto.getReference());
+        assertEquals("600,00", commandeProduitDto.getPrixTotal());
     }
 
     private ProduitAcheteDo initProduitAcheterDo() {
@@ -96,7 +97,6 @@ class CommandeProduitMapperTest {
         final List<CommandeProduitDto> commandeProduitDtoList = CommandeProduitMapper.mapperSetDoToListDto(commandeProduitDoSet);
         assertNotNull(commandeProduitDtoList);
         assertEquals(1, commandeProduitDtoList.size());
-
     }
 
 }

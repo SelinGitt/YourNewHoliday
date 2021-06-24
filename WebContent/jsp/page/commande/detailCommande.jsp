@@ -10,60 +10,62 @@
         </button>
     </a>
 </div>
-<div class="commande-grille commande-container">
-    <div class="commande-produits">
-        <fieldset class="commande-bordure commande-fieldset commande-max-height">
+<div class="commande-grille commande-container commande-box-sizing commande-overflow-y">
+    <div class="commande-produits commande-max-height commande-box-sizing commande-overflow-y">
+        <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing commande-overflow-y">
             <legend class="commande-fieldset-legend">
                 <spring:message code="detailCommande.stitle.text"></spring:message>
             </legend>
-            <div class="commande-grille commande-max-height">
+            <div class="commande-grille commande-max-height commande-box-sizing commande-overflow-y">
                 <c:forEach items="${commande.listCommandeProduitDto}" var="commandeProduit">
-                    <div class="commande-bordure commande-ligne">
+                    <div class="commande-bordure commande-ligne commande-box-sizing">
                         <div
-                            class="commande-grille-cellule commande-colonne-1 commande-bordure-right commande-grille commande-image-grille commande-max-height">
+                            class="commande-grille-cellule commande-colonne-1 commande-bordure-right commande-grille commande-image-grille commande-max-height commande-box-sizing">
                             <div class="commande-colonne-1 commande-max-height">
                                 <img src="displayImage.do?id=${commandeProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
                                     alt="${commandeProduit.produitAcheteDto.destination}" class="commande-image">
                             </div>
                             <div class="commande-colonne-2 commande-max-height">
-                                <p class="commande-bold commande-aligne-text-center">
+                                <div class="commande-bold commande-aligne-text-center commande-box-title">
                                     ${commandeProduit.produitAcheteDto.nom}
                                     <spring:message code="detailCommande.tiret"></spring:message>
                                     ${commandeProduit.produitAcheteDto.reference}
-                                </p>
-                                <p class="commande-aligne-text-justify">${commandeProduit.produitAcheteDto.description}</p>
+                                </div>
+                                <div class="commande-aligne-text-justify commande-box-text">${commandeProduit.produitAcheteDto.description}</div>
                             </div>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-2 commande-bordure-right">
-                            <p class="commande-bold commande-aligne-text-center">
+                        <div
+                            class="commande-grille-cellule commande-colonne-2 commande-bordure-right commande-max-height commande-box-sizing">
+                            <div class="commande-bold commande-aligne-text-center commande-box-title">
                                 <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
-                            </p>
-                            <p class="commande-aligne-text-right">
+                            </div>
+                            <div class="commande-aligne-text-right commande-box-text">
                                 ${commandeProduit.produitAcheteDto.prixUnitaire}
                                 <spring:message code="glb.devise"></spring:message>
-                            </p>
+                            </div>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-3 commande-bordure-right">
-                            <p class="commande-bold commande-aligne-text-center">
+                        <div
+                            class="commande-grille-cellule commande-colonne-3 commande-bordure-right commande-max-height commande-box-sizing">
+                            <div class="commande-bold commande-aligne-text-center commande-box-title">
                                 <spring:message code="detailCommande.prd.quantite"></spring:message>
-                            </p>
-                            <p class="commande-aligne-text-center">${commandeProduit.quantite}</p>
+                            </div>
+                            <div class="commande-aligne-text-center commande-box-text">${commandeProduit.quantite}</div>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-4">
-                            <p class="commande-bold commande-aligne-text-center">
+                        <div class="commande-grille-cellule commande-colonne-4 commande-max-height">
+                            <div class="commande-bold commande-aligne-text-center commande-box-title">
                                 <spring:message code="detailCommande.prd.pTotal"></spring:message>
-                            </p>
-                            <p class="commande-aligne-text-right">
+                            </div>
+                            <div class="commande-aligne-text-right commande-box-text">
                                 ${commandeProduit.prixTotal}
                                 <spring:message code="glb.devise"></spring:message>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </c:forEach>
             </div>
         </fieldset>
     </div>
-    <div class="commande-details">
+    <div class="commande-details commande-max-height">
         <div>
             <fieldset class="commande-bordure commande-fieldset commande-max-height">
                 <legend class="commande-fieldset-legend">

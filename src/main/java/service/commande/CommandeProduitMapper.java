@@ -13,6 +13,7 @@ import org.springframework.util.CollectionUtils;
 
 import persistance.commande.entity.CommandeProduitDo;
 import presentation.commande.dto.CommandeProduitDto;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe Mapper pour CommandeProduit
@@ -59,9 +60,9 @@ public class CommandeProduitMapper {
 
     private static String getPrixTotal(final BigDecimal prixUnitaire, final int quantite) {
         if (prixUnitaire == null) {
-            return String.valueOf(BigDecimal.valueOf(0));
+            return DecimalFormatUtils.decimalFormatUtil(BigDecimal.valueOf(0));
         }
-        return String.valueOf(prixUnitaire.multiply(new BigDecimal(quantite)));
+        return DecimalFormatUtils.decimalFormatUtil(prixUnitaire.multiply(new BigDecimal(quantite)));
     }
 
 }
