@@ -38,6 +38,7 @@ public class ListerProduitsController {
     public ModelAndView lister() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
+        modelAndView.getModelMap().addAttribute("tri", "default");
         modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         return modelAndView;
     }
@@ -56,7 +57,9 @@ public class ListerProduitsController {
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
         //FIXME fix NPE sur tri
-        if (tri != null && !searchTerm.isBlank() && !tri.isEmpty()) {
+        System.out.println(tri);
+
+        if (!"default".equals(tri) && !searchTerm.isBlank() && !tri.isEmpty()) {
             listerFiltreTri(searchTerm, tri, modelAndView);
             return modelAndView;
         }
@@ -66,6 +69,7 @@ public class ListerProduitsController {
                 break;
             case "search":
                 filtrerListe(searchTerm, modelAndView);
+                modelAndView.getModelMap().addAttribute("tri", "default");
                 break;
             default:
                 return lister();
@@ -96,11 +100,12 @@ public class ListerProduitsController {
      * @param modelAndView
      */
     private void trierListe(final String tri, final ModelAndView modelAndView) {
-        if (tri == null) {
+        if ("default".equals(tri)) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
+            modelAndView.getModelMap().addAttribute("tri", "default");
             return;
         }
-        if ("ASC".equals(tri)) {
+        if ("asc".equals(tri)) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerCroissant());
         } else {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerDecroissant());
@@ -109,7 +114,7 @@ public class ListerProduitsController {
     }
 
     private void listerFiltreTri(final String searchTerm, final String tri, final ModelAndView modelAndView) {
-        if ("ASC".equals(tri)) {
+        if ("asc".equals(tri)) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.ASC, searchTerm));
         } else {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeRecherche.DESC, searchTerm));

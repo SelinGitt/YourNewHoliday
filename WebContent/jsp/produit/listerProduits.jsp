@@ -21,9 +21,9 @@
         <input type="hidden" name="type" value="tri" />
         <input type="hidden" name="searchInput" value="${searchTerm}"/>
             <select id="tri" name="tri" >               
-                <option disabled selected><spring:message code="pdt00.tri"></spring:message></option>
-                <option value="ASC"><spring:message code="pdt00.tri.croissant"></spring:message></option>
-                <option value="DESC"><spring:message code="pdt00.tri.decroissant"></spring:message></option>
+                <option selected value="${tri}" ><spring:message code="pdt00.tri.${tri}"></spring:message></option>
+                <option value="asc"><spring:message code="pdt00.tri.asc"></spring:message></option>
+                <option value="desc"><spring:message code="pdt00.tri.desc"></spring:message></option>
             </select>
             <input type="submit" form="tri" value="<spring:message code='pdt00.recherche.OK'/>">
         </form:form>
