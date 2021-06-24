@@ -32,7 +32,7 @@
             <div class="lib-champ">
                 <span><spring:message code="usr07.label.password" /></span>
                 <div class="lib-champ-password">
-                    <form:password path="password" />
+                    <form:password path="password" autocomplete="new-password" />
                     <div class="error">
                         <form:errors path="password" cssClass="error" />
                     </div>
