@@ -11,7 +11,7 @@
     </div>
 
     <div class="form">
-        <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do">
+        <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do" autocomplete="one-time-code">
 
             <div class="title">
                 <h1>
