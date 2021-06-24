@@ -39,10 +39,26 @@
                 <th><spring:message code="usr00.consulter.password" /></th>
                 <td>**********</td>
             </tr>
-        </table>
 
-        <a href="#">Modifier</a> <a href="supprimerUtilisateur.do"
-            onclick="return confirm('<spring:message code="usr00.consulter.confirm_deletion" />')">Supprimer</a>
+            <tr>
+                <td></td>
+
+                <td class="buttonsUser00">
+                    <div>
+                        <a href="#">
+                            <button class="modifierUser00">Modifier</button>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="supprimerUtilisateur.do"
+                            onclick="return confirm('<spring:message code="usr00.consulter.confirm_deletion" />')">
+                            <button class="supprimerUser00">Supprimer</button>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+
+        </table>
 
     </div>
     <div class="rightSideUser00">

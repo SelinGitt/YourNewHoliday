@@ -87,8 +87,8 @@ public class UtilisateurService implements IUtilisateurService {
         if (1 == rechercherUtilisateurRang("3").size() && "3".equals(role)) {
             return false;
         }
-//        iCommandeDao.updateCommandeDoUserDeletion(id);
-//        iUtilisateurDao.deleteUtilisateurById(id);
+        iCommandeDao.updateCommandeDoUserDeletion(id);
+        iUtilisateurDao.deleteUtilisateurById(id);
         return true;
     }
 

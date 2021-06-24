@@ -107,4 +107,16 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(1, utilisateurDo.size());
         Assertions.assertEquals("Marsial", utilisateurDo.get(0).getNom());
     }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#deleteUtilisateurById(Integer)}.
+     */
+    void testDeleteUtilisateurById() {
+        //On supprime un utilisateur existant en BD
+        assertEquals(true, iUtilisateurDao.deleteUtilisateurById(2));
+        //On supprime le même utilisateur une deuxième fois
+        assertEquals(false, iUtilisateurDao.deleteUtilisateurById(2));
+        //On supprime un utilisateur NON existant en BD
+        assertEquals(false, iUtilisateurDao.deleteUtilisateurById(20));
+    }
 }
