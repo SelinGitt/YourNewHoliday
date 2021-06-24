@@ -26,11 +26,6 @@
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
             
                 <select name="searchFilter" id="filterBar">
-                    <%-- <option selected value="${searchFilter}">
-                        <spring:message code="usr01.filter.${searchFilter}"  />
-                    </option> --%>
-                    <%-- Message par default --%>
-                    <option selected disabled><spring:message code="usr01.filter" /></option>
                     <%-- Tous --%>
                     <option value=""><spring:message code="usr01.filter." /></option>
                     <%-- Client --%>
@@ -42,7 +37,7 @@
                 </select>
                 
                 <script>
-                	document.getElementById("filterBar").options[${searchFilter} + 1].selected = true;
+                	document.getElementById("filterBar").options[${searchFilter}].selected = true;
                 </script>
                 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
