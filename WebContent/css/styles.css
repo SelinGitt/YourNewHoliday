@@ -379,8 +379,13 @@ aside {
 }
 
 /* USR07 */
+.body-general {
+	width: 100%;
+}
+
 .title {
 	text-align: center;
+	margin-right: 100px;
 	margin-bottom: 50px;
 }
 
@@ -388,10 +393,11 @@ aside {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 10px;
 }
 
 .button {
-	justify-content: center;
+	align-items: center;
 	margin: auto;
 	width: 80%;
 	display: flex;
@@ -407,6 +413,17 @@ aside {
 	width: 300px;
 }
 
+.error {
+	Color: red;
+}
+
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.errorblock {
+	background-color: #ff7f00;
+	border: 2px solid #000000;
+	display: flex
+}
+
 .lib-champ {
 	display: flex;
 	justify-content: space-between;
@@ -415,6 +432,7 @@ aside {
 
 .boutonValiderUSR07 {
 	background-color: #008000;
+	margin-left: 70px;
 	margin-right: 20%;
 	Color: white;
 }
