@@ -1,13 +1,13 @@
 /**
  * 
  */
-package service.mentionsLegales.impl;
+package service.mentions_legales.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import persistance.contact.IFichierContactDao;
-import service.mentionsLegales.IFichierMentionsLegalesService;
+import service.mentions_legales.IFichierMentionsLegalesService;
 import service.util.GetPropertyValues;
 
 /**

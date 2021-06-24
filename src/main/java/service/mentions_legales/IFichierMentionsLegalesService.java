@@ -1,7 +1,7 @@
 /**
  * 
  */
-package service.mentionsLegales;
+package service.mentions_legales;
 
 /**
  * Classe représentant l'interface fichierContactService
