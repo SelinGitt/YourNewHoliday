@@ -124,6 +124,16 @@ h1 {
 	vertical-align: middle;
 }
 
+.headerSousCellNbrPdt {
+	position: absolute;
+	display: inline-block;
+	left: 1.65em;
+	top: 1.65em;
+	font-size: 0.8em;
+	text-align: center;
+	width: 1.65em;
+}
+
 /* MENU */
 /* Side Bar */
 .sidebar {
@@ -258,6 +268,16 @@ aside {
 /* USR00 */
 
 /* USR01 */
+.usr01searchMenu {
+	margin-bottom: 15px;
+	display: flex;
+	width: 100%;
+}
+
+.usr01searchMenu .usr01AddUser {
+	margin-left: auto;
+}
+
 #listeUser {
 	border-collapse: collapse;
 	border: 1px solid black;
@@ -288,11 +308,7 @@ aside {
 	height: auto;
 }
 
-.bouton {
-	width: 12%;
-	text-align: center;
-	float: right;
-	padding: 3px 0;
+.urs01newUserBouton {
 	background-color: rgb(34, 177, 76);
 	color: white;
 }
@@ -380,10 +396,12 @@ aside {
 }
 
 .lib-champ-email {
+	margin-left: 50px;
 	width: 300px;
 }
 
 .lib-champ-password {
+	margin-left: 50px;
 	width: 300px;
 }
 
@@ -513,6 +531,11 @@ td.description {
 .imagePDT01 {
 	width: 40px;
 	height: 40px;
+}
+
+.iconePDT01 {
+	width: 90px;
+	height: 60px;
 }
 
 /* PDT02 */

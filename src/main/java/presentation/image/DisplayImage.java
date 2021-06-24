@@ -1,7 +1,7 @@
 /**
  * 
  */
-package presentation.controller.image;
+package presentation.image;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

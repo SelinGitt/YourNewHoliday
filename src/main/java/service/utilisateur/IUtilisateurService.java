@@ -35,4 +35,12 @@ public interface IUtilisateurService {
      * @return          un UtilisateurConnecteDto à mettre en session si l'authentification est valide, null sinon
      */
     UtilisateurConnecteDto authentify(final String email, final String password);
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom
+     *
+     * @param  nom Nom a rechercher
+     * @return     List des utilisateur avec le nom
+     */
+    List<UtilisateurDto> rechercherUtilisateur(final String nom);
 }
