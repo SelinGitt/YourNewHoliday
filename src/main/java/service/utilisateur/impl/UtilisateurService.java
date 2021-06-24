@@ -83,8 +83,17 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurById(final Integer id) {
+    public boolean deleteUtilisateurById(final Integer id, final String role) {
+        if (1 == rechercherUtilisateurRang("3").size() && "3".equals(role)) {
+            return false;
+        }
         iCommandeDao.updateCommandeDoUserDeletion(id);
-        return iUtilisateurDao.deleteUtilisateurById(id);
+        iUtilisateurDao.deleteUtilisateurById(id);
+        return true;
+    }
+
+    @Override
+    public List<UtilisateurDto> rechercherUtilisateurRang(final String rang) {
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRang(rang));
     }
 }

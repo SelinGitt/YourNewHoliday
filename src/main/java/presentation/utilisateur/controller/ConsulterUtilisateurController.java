@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -55,9 +56,25 @@ public class ConsulterUtilisateurController {
 
     private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto) {
         final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
-        iUtilisateurService.deleteUtilisateurById(id);
+        final String role = utilisateurConnecteDto.getIdRole();
+
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:/deconnecter.do");
+
+        final boolean result;
+        try {
+            result = iUtilisateurService.deleteUtilisateurById(id, role);
+        } catch (final UnexpectedRollbackException exception) {
+            modelAndView.getModelMap().addAttribute("error", "usr00.erreur.failure");
+            modelAndView.setViewName("forward:/consulterUtilisateur.do");
+            return modelAndView;
+        }
+        if (result) {
+            modelAndView.getModelMap().addAttribute("success", "usr00.success.deleted");
+            modelAndView.setViewName("forward:/deconnecter.do");
+            return modelAndView;
+        }
+        modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
+        modelAndView.setViewName("forward:/consulterUtilisateur.do");
         return modelAndView;
     }
 
@@ -65,5 +82,4 @@ public class ConsulterUtilisateurController {
         final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
         return iUtilisateurService.findUtilisateurById(id);
     }
-
 }

@@ -47,8 +47,17 @@ public interface IUtilisateurService {
     /**
      * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id
      *
-     * @param  id : id de l'utilisateur à supprimer
-     * @return    true si la suppression a réussi, false sinon
+     * @param  id   : id de l'utilisateur à supprimer
+     * @param  role le rôle de l'utilisateur à supprimer
+     * @return      true si suppression OK, KO si suppression non autorisée (dernier admin)
      */
-    boolean deleteUtilisateurById(final Integer id);
+    boolean deleteUtilisateurById(final Integer id, final String role);
+
+    /**
+     * Permet de rechercher un utilisateur selon le rang
+     *
+     * @param  rang Rang a rechercher
+     * @return      List des utilisateur avec le rang
+     */
+    List<UtilisateurDto> rechercherUtilisateurRang(final String rang);
 }
