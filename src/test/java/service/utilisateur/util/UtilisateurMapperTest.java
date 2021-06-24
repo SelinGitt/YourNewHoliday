@@ -61,8 +61,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
         Assertions.assertEquals(utilisateurDto.getAdresse(), utilisateurDoMapper.getAdresse());
 
-        // TODO : Test a changer avec le mdp hash
-        Assertions.assertEquals(utilisateurDto.getPassword(), utilisateurDoMapper.getMdpHash());
+        Assertions.assertEquals(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()), utilisateurDoMapper.getMdpHash());
 
         // TODO : Changer quand upload img ok
         Assertions.assertEquals("img/test.png", utilisateurDoMapper.getCheminAvatar());
@@ -107,7 +106,6 @@ class UtilisateurMapperTest {
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
         Assertions.assertEquals(utilisateurDo.getAdresse(), utilisateurDtoMapper.getAdresse());
 
-        // TODO : Test a changer avec le mdp hash
         Assertions.assertEquals(utilisateurDo.getMdpHash(), utilisateurDtoMapper.getPassword());
     }
 

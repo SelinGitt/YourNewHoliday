@@ -39,7 +39,7 @@ public class ListerProduitsController {
     }
 
     /**
-     * Permet de traiter une requete de type GET
+     * Permet de traiter une requete de type POST
      * 
      * @param  searchInput terme recherché
      * @return             liste de produits pour le model et la vue associée
@@ -47,11 +47,12 @@ public class ListerProduitsController {
     @PostMapping
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerProduits");
-        modelAndView.addObject("searchTerm", searchInput);
+        modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         if (searchInput.isEmpty()) {
-            return new ModelAndView("redirect:/");
+            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
+        } else {
+            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.rechercherProduits(searchInput));
         }
-        modelAndView.addObject("listeProduitDto", iProduitService.rechercherProduits(searchInput));
         return modelAndView;
     }
 }
