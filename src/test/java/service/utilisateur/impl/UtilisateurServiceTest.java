@@ -147,11 +147,11 @@ class UtilisateurServiceTest {
         Assertions.assertNull(utilisateurConnecteDto);
     }
 
-<<<<<<< HEAD
     @Test
     void testFindUtilisateurById() {
         //TODO faire le test
-=======
+    }
+
     /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateur(String)}
      */
@@ -163,6 +163,5 @@ class UtilisateurServiceTest {
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
->>>>>>> develop
     }
 }
