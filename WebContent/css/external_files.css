@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*contact*/
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 .contact-titre {
 	color: #5cbaef;
 	/* marge du titre */
@@ -9,7 +9,7 @@
 	margin-top: 75px;
 }
 
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 .contact-container {
 	/* marge du contenu de Contact */
 	margin-left: 10%;

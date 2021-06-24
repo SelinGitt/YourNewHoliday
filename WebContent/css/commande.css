@@ -23,7 +23,7 @@ div.commandeVideCMD00, div.commandeCMD00GRille {
 }
 
 /* factorisation des css communs */
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
 	padding: 10px;
 }
@@ -48,7 +48,7 @@ div.commandeVideCMD00 {
 }
 
 /* création de la grille */
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 div.commandeLineCMD00 {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -57,15 +57,15 @@ div.commandeLineCMD00 {
 }
 
 /* factorisation des bordures */
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
-	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
+	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	border: 3px solid black;
 }
 
 /* couleur du texte pour commande */
 .colorTextCMD00 {
-	/* utiliser l’hexadécimal (pas de nom, ni de rgb) */
+	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
 	color: black;
 }
 
@@ -75,7 +75,7 @@ div.commandeReferenceCMD00 {
 }
 
 /* colonne 2 */
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 div.commandeQuantiteTotaleCMD00 {
 	grid-column: 2;
 	display: grid;
@@ -96,7 +96,7 @@ div.commandeQuantiteTotaleValueCMD00 {
 }
 
 /* colonne 3 */
-/* utiliser des em au lieu des px */
+/* correctif : utiliser des em au lieu des px */
 div.commandePrixTotalCMD00 {
 	grid-column: 3;
 	display: grid;

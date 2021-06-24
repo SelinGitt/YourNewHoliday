@@ -28,14 +28,11 @@ html, body, .conteneur-ascenseur {
 	height: 100%;
 }
 
-/* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
 html, body, header, aside, section, footer {
+	/* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
 	box-sizing: border-box;
 	overflow-y: hidden;
-}
-
-/* enlève les marges et les bordures pour les containers de chaque type*/
-html, body, header, aside, section, footer {
+	/* enlève les marges et les bordures pour les containers de chaque type*/
 	margin: 0;
 	padding: 0;
 	border: 0;
