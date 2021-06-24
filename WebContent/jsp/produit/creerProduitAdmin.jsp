@@ -7,7 +7,7 @@
     <h1>
         <spring:message code="pdt03.titre" />
     </h1>
-    <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour"/></a>
+    <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="grid-container">
             <div class="grid-item formlaireCreerProduit">
@@ -95,9 +95,7 @@
             <div class="grid-item logoService">
                 <table class="listeService" aria-label="liste des services disponibles">
                     <tr>
-                        <th><form:hidden path="services" value="4" /></th>
-                        <th></th>
-                        <th></th>
+                        <th colspan="3"><form:hidden path="services" value="4" /></th>
                     </tr>
                     <tr>
                         <td><em class="fa fa-glass"></em></td>
