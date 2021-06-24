@@ -12,6 +12,7 @@ import org.springframework.transaction.UnexpectedRollbackException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -32,15 +33,17 @@ public class ConsulterUtilisateurController {
     /**
      * Permet de traiter les requêtes en GET affiche la page de consultation de profil Utilisateur
      * 
-     * @param  request : la requête HTTP
-     * @param  session : la session en cours
-     * @return         un modelAndView
+     * @param  request            : la requête HTTP
+     * @param  session            : la session en cours
+     * @param  redirectAttributes : attributs de redirection
+     * @return                    un modelAndView
      */
     @GetMapping
-    public ModelAndView afficherPage(final HttpServletRequest request, final HttpSession session) {
+    public ModelAndView afficherPage(final HttpServletRequest request, final HttpSession session,
+            final RedirectAttributes redirectAttributes) {
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         if (request.getRequestURI().contains("/supprimerUtilisateur.do")) {
-            return supprimerUtilisateur(utilisateurConnecte);
+            return supprimerUtilisateur(utilisateurConnecte, redirectAttributes);
         }
         return consulterUtilisateur(utilisateurConnecte);
     }
@@ -54,7 +57,8 @@ public class ConsulterUtilisateurController {
         return modelAndView;
     }
 
-    private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto) {
+    private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto,
+            final RedirectAttributes redirectAttributes) {
         final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
         final String role = utilisateurConnecteDto.getIdRole();
 
@@ -62,17 +66,22 @@ public class ConsulterUtilisateurController {
 
         final boolean result;
         try {
+            //appel de la méthode de suppression et stockage du retour dans variable result
             result = iUtilisateurService.deleteUtilisateurById(id, role);
         } catch (final UnexpectedRollbackException exception) {
+            //Erreur inconnue, on reste sur la page + message d'erreur générique
             modelAndView.getModelMap().addAttribute("error", "usr00.erreur.failure");
             modelAndView.setViewName("forward:/consulterUtilisateur.do");
             return modelAndView;
         }
         if (result) {
-            modelAndView.getModelMap().addAttribute("success", "usr00.success.deleted");
-            modelAndView.setViewName("forward:/deconnecter.do");
+            //redirection vers deconnecter.do si suppression réussie, 
+            //puis vers listerProduits.do ensuite (voir dans ConnecterController)
+            redirectAttributes.addFlashAttribute("deletionSuccess", "usr00.success.deleted");
+            modelAndView.setViewName("redirect:/deconnecter.do");
             return modelAndView;
         }
+        //Un seul administrateur en BD -> suppression impossible, + message d'erreur
         modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
         modelAndView.setViewName("forward:/consulterUtilisateur.do");
         return modelAndView;

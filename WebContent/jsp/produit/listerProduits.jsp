@@ -4,8 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
-        <c:if test="${not empty success}">
-            <span class="errorblock"><spring:message code="${success}" /></span>
+        <c:if test="${not empty deletionSuccess}">
+            <span class="errorblock"><spring:message code="${deletionSuccess}" /></span>
         </c:if>
     </div>
 

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -41,14 +42,17 @@ public class ConnecterController {
     /**
      * Permet d'afficher la vue de login
      * 
-     * @param  request       la requête HTTP
-     * @param  sessionStatus la session
-     * @return               : un model pour le binding et la vue associée
+     * @param  request            la requête HTTP
+     * @param  sessionStatus      la session
+     * @param  code               : String code d'erreur placé en ModelAttribute
+     * @param  redirectAttributes : attributs de redirection
+     * @return                    : un model pour le binding et la vue associée
      */
     @GetMapping
-    public ModelAndView choixDesUrl(final HttpServletRequest request, final SessionStatus sessionStatus) {
+    public ModelAndView choixDesUrl(final HttpServletRequest request, final SessionStatus sessionStatus,
+            final @ModelAttribute("deletionSuccess") String code, final RedirectAttributes redirectAttributes) {
         if (request.getRequestURI().contains("/deconnecter.do")) {
-            return logout(request, sessionStatus);
+            return logout(request, sessionStatus, code, redirectAttributes);
         }
         return voirConnecter();
     }
@@ -110,12 +114,19 @@ public class ConnecterController {
      * @param  sessionStatus la session
      * @return               ModelAndView se rend sur la vue utiliser comme accueil
      */
-    private ModelAndView logout(final HttpServletRequest request, final SessionStatus sessionStatus) {
+    private ModelAndView logout(final HttpServletRequest request, final SessionStatus sessionStatus,
+            final @ModelAttribute("deletionSuccess") String code, final RedirectAttributes redirectAttributes) {
         final HttpSession session = request.getSession();
+        //Si la session n'est pas null, on y met fin
         if (session != null) {
+            //Si message présent, on le stocke en FlashAttribute de RedirectAttributes
+            if (!code.isBlank()) {
+                redirectAttributes.addFlashAttribute("deletionSuccess", code);
+            }
             sessionStatus.setComplete();
             session.invalidate();
         }
-        return new ModelAndView("redirect:/listerProduits.do");
+        final ModelAndView modelAndView = new ModelAndView("redirect:/listerProduits.do");
+        return modelAndView;
     }
 }
