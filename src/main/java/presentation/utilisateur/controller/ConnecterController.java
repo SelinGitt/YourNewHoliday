@@ -91,11 +91,7 @@ public class ConnecterController {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
 
-            //ajout d'un panier vide en session
-            //modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
-
-            //ajout d'un panier Remplis en session pour les TESTS
-            //TODO a suprimmer par la suite
+            //TODO ajout d'un panier Remplis en session pour les TESTS
             modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
 
             //Redirection vers page d'accueil
