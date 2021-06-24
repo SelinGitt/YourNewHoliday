@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.controller.temp.RemplirPanier;
 import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
@@ -52,6 +53,12 @@ public class ConnecterController {
         }
         return voirConnecter();
     }
+    
+    
+    private PanierDto creerPanier() {
+        //ajout d'un panier vide en session        
+        return RemplirPanier.echantillon();
+    }
 
     /**
      * Permet de mettre logger un utilisateur en session
@@ -84,7 +91,7 @@ public class ConnecterController {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
             //ajout d'un panier vide en session
-            modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+            modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
         }

@@ -162,5 +162,3 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
 
--- à supprimer en même temps que utilisateurConnecteDto
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 42, 2);
