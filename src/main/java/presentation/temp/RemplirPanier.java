@@ -16,7 +16,6 @@ import service.util.DecimalFormatUtils;
  * @author Steve
  */
 public class RemplirPanier {
-
     //TODO TEMP: a supprimer par la suite 
 
     // avoid to instanciate this class
@@ -61,10 +60,13 @@ public class RemplirPanier {
         // ajout des lignes de commande
         final LigneCommandeProduit ligneCommandeProduit = new LigneCommandeProduit();
         ligneCommandeProduit.setQuantite(6);
+        ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
         final LigneCommandeProduit ligneCommandeProduit2 = new LigneCommandeProduit();
-        ligneCommandeProduit.setQuantite(2);
+        ligneCommandeProduit2.setQuantite(8);
+        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 9000.00, Locale.FRANCE));
         final LigneCommandeProduit ligneCommandeProduit3 = new LigneCommandeProduit();
-        ligneCommandeProduit.setQuantite(128);
+        ligneCommandeProduit3.setQuantite(128);
+        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(128 * 12000.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
