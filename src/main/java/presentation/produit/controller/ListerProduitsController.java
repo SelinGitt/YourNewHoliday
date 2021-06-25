@@ -66,7 +66,7 @@ public class ListerProduitsController {
             modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
             return modelAndView;
         }
-        if ("0".equals(tri)) {
+        if (!"0".equals(tri)) {
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.trierListe(TypeTri.checkType(tri)));
             modelAndView.getModelMap().addAttribute("tri", tri);
             modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
