@@ -38,7 +38,7 @@ public class ListerProduitsController {
     public ModelAndView lister() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
-        modelAndView.getModelMap().addAttribute("tri", "0");
+        modelAndView.getModelMap().addAttribute("tri", 0);
         modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         return modelAndView;
     }
@@ -46,36 +46,34 @@ public class ListerProduitsController {
     /**
      * Permet de traiter une requete de type POST
      * 
-     * @param  type       le type de recherche effectuée
      * @param  searchTerm le terme recherché
      * @param  tri        le tri à effectuer
      * @return            liste de produits pour le model et la vue associée
      */
     @PostMapping
-    public ModelAndView findFilter(final @RequestParam(value = "type", required = false) String type,
-            final @RequestParam(value = "searchInput", required = false) String searchTerm,
-            final @RequestParam(value = "tri", required = false, defaultValue = "0") String tri) {
+    public ModelAndView findFilter(final @RequestParam(value = "searchInput", required = false) String searchTerm,
+            final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (!"0".equals(tri) && !searchTerm.isBlank() && !tri.isEmpty()) {
+        if (!searchTerm.isBlank()) {
+            if ("0".equals(tri)) {
+                modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
+                modelAndView.getModelMap().addAttribute("tri", tri);
+                modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
+                return modelAndView;
+            }
             modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeTri.checkType(tri), searchTerm));
             modelAndView.getModelMap().addAttribute("tri", tri);
             modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
             return modelAndView;
         }
-        switch (type) {
-            case "tri":
-                modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.trierListe(TypeTri.checkType(tri)));
-                modelAndView.getModelMap().addAttribute("tri", tri);
-                modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-                break;
-            case "search":
-                modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
-                modelAndView.getModelMap().addAttribute("tri", tri);
-                modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-                break;
-            default:
-                return lister();
+        if ("0".equals(tri)) {
+            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.trierListe(TypeTri.checkType(tri)));
+            modelAndView.getModelMap().addAttribute("tri", tri);
+            modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
+            return modelAndView;
+
         }
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         return modelAndView;
     }
 
