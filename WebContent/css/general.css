@@ -15,7 +15,7 @@
 h1 {
 	text-align: center;
 	color: #66C5EB;
-	font-size: 2.5em;
+	font-size: 40px;
 }
 
 h2 {
@@ -39,15 +39,15 @@ html, body, header, aside, section, footer {
 }
 
 .content {
-	/* 	display: flex; */
-	/* 	justify-content: space-between; */
+	display: flex;
+	justify-content: space-between;
 	height: 80%;
 }
 
 /* taille du aside */
 aside {
 	width: 20%;
-	/* 	display: flex; */
+	display: flex;
 	overflow: auto;
 }
 
@@ -62,7 +62,6 @@ section {
 }
 
 /* titre responsive */
-/*SERT A RIEN */
 .title-responsive {
 	font-size: 2.5em;
 }
