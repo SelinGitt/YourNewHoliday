@@ -9,31 +9,32 @@
         </h1>
     </div>
     <br />
-    <div class="searchBar">
+    <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
         <form:form action="listerProduits.do" method="POST">
-            <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
+            <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
-            <input type="submit" value="<spring:message code="pdt00.recherche.OK"/>" class="searchBarOk" />
+            <input type="submit" value="<spring:message code="pdt00.recherche.OK"/>" class="pdtSearchBarOk" />
         </form:form>
     </div>
     <br />
-    <div class="container">
+    <div class="display-flex flex-wrap-wrap justify-content-center">
         <c:forEach items="${listeProduitDto}" var="produitDto">
-            <table class="containerVoyage" aria-label="Produit">
+            <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
+                aria-label="Produit">
                 <tr>
-                    <th colspan="2"><img
-                        src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                        alt="${produitDto.destination}" class="img" /></th>
+                    <th colspan="2"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                        alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" /></th>
                 </tr>
-                <tr class="lineRow">
-                    <td class="name text-responsive">${produitDto.nom}</td>
-                    <td class="price text-responsive">${produitDto.prixUnitaire}€</td>
+                <tr class="display-flex">
+                    <td class="display-flex text-responsive">${produitDto.nom}</td>
+                    <td class="pdt00Price text-responsive display-flex justify-content-flex-end">${produitDto.prixUnitaire}
+                        €</td>
                 </tr>
                 <tr>
                     <td class="text-responsive">${produitDto.reference}</td>
                 </tr>
                 <tr>
-                    <td class="description text-responsive">${produitDto.description}</td>
+                    <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
                 </tr>
             </table>
         </c:forEach>
