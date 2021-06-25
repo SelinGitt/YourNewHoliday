@@ -130,7 +130,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 
 /* CMD04 */
 /* taille du texte */
-.commande-bouton-retour {
+.cmd-bouton-retour {
 	color: #000;
 	font-size: 1.15em;
 	/* enlève la bordure du bouton */
@@ -141,13 +141,13 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 }
 
 /* la grille pour commande */
-.commande-grille {
+.cmd-grid {
 	display: grid;
 	align-items: center;
 }
 
 /* container de la page CMD04*/
-.commande-container {
+.cmd-container {
 	width: 95%;
 	height: 75%;
 	max-height: 75%;
@@ -156,49 +156,49 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 }
 
 /* container de la liste des produits */
-.commande-produits {
+.cmd-produits {
 	grid-column: 1;
 }
 
 /* container des adresses et des montants payés*/
-.commande-details {
+.cmd-details {
 	grid-column: 2;
 }
 
 /* bordure */
-.commande-bordure {
+.cmd-bordure {
 	border: 0.19em solid #000;
 }
 
 /* bordure à droite */
-.commande-bordure-right {
+.cmd-bordure-right {
 	border-right: 0.19em solid #000;
 }
 
 /* height 100% */
-.commande-max-height {
+.cmd-max-height {
 	height: 100%;
 	max-height: 100%;
 }
 
 /* bordure des fieldset */
-.commande-fieldset {
+.cmd-fieldset {
 	padding: 0.625em;
 }
 
 /* couleur et taille du text pour les légendes des fieldsets */
-.commande-fieldset-legend {
+.cmd-fieldset-legend {
 	color: #6FA8DC;
 	font-size: 1.25em;
 }
 
 /* taille et hauteur calculer en tenant compte des bordures des bordures externes */
-.commande-box-sizing {
+.cmd-box-sizing {
 	box-sizing: border-box;
 }
 
 /* ligne dans la grille de commande */
-.commande-ligne {
+.cmd-ligne {
 	display: grid;
 	/* pas d'espacement entre les grilles */
 	grid-gap: 0;
@@ -208,86 +208,86 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 }
 
 /* grille pour afficher l'image à droite */
-.commande-image-grille {
+.cmd-image-grid {
 	/* pas d'espacement entre les grilles */
 	grid-gap: 0;
 	grid-template-columns: 1fr 2fr;
 }
 
 /* cellule d'une grille */
-.commande-grille-cellule {
+.cmd-grid-cel {
 	padding: 0.313em;
 }
 
 /* grille colonne 1 */
-.commande-colonne-1 {
+.cmd-colonne-1 {
 	grid-column: 1;
 }
 
 /* grille colonne 2 */
-.commande-colonne-2 {
+.cmd-colonne-2 {
 	grid-column: 2;
 }
 
 /* grille colonne 3 */
-.commande-colonne-3 {
+.cmd-colonne-3 {
 	grid-column: 3;
 }
 
 /* grille colonne 4 */
-.commande-colonne-4 {
+.cmd-colonne-4 {
 	grid-column: 4;
 }
 
 /* grille colonne 5 */
-.commande-colonne-5 {
+.cmd-colonne-5 {
 	grid-column: 5;
 }
 
 /* mettre en gras */
-.commande-bold {
+.cmd-bold {
 	font-weight: bold;
 }
 
 /* aligner le texte au centre */
-.commande-aligne-text-center {
+.cmd-aligne-text-center {
 	text-align: center;
 }
 
 /* aligner le texte à droite */
-.commande-aligne-text-right {
+.cmd-aligne-text-right {
 	text-align: right;
 }
 
 /* aligner le texte justify*/
-.commande-aligne-text-justify {
+.cmd-aligne-text-justify {
 	text-align: justify;
 }
 
 /* padding de la grille */
 
 /* pour afficher les images */
-.commande-image {
+.cmd-image {
 	width: 80%;
 	height: auto;
 }
 
 /* taille des div titres dans les boites */
-.commande-box-title {
+.cmd-box-title {
 	height: 20%;
 }
 
 /* taille des div textes dans les boites */
-.commande-box-text {
+.cmd-box-text {
 	height: 80%;
 }
 
 /* l'ascensseur à droite vertical */
-.commande-overflow {
+.cmd-overflow {
 	overflow-y: auto;
 }
 
 /* hauteur d'une taille 1/3 envrion */
-.commande-divise-3-hauteur {
+.cmd-divise-3-hauteur {
 	height: 33.33%;
 }

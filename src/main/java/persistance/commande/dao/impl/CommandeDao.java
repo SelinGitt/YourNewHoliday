@@ -63,7 +63,7 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
     public CommandeDo findByRef(final String reference) {
         // Le Inner Join Fetch nous permet de faire la requête JPQL en une seule requête SQL et de récupérer toutes les valeurs
         // des attributs des tables bien qu'on soit en FetchType.LAZY.
-        final StringBuilder request = new StringBuilder("SELECT c FROM CommandeDo c");
+        final var request = new StringBuilder("SELECT c FROM CommandeDo c");
         request.append(" INNER JOIN FETCH c.commandeProduitDoSet cp").append(" INNER JOIN FETCH cp.produitAcheteDo p")
                 .append(" WHERE c.reference = :reference");
         final TypedQuery<CommandeDo> query = entityManager.createQuery(request.toString(), CommandeDo.class);

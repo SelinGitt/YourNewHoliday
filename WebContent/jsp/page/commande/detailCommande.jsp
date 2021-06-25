@@ -5,57 +5,57 @@
 </h1>
 <div>
     <a href="listerCommande.do">
-        <button class="commande-bouton-retour">
+        <button class="cmd-bouton-retour">
             <spring:message code="detailCommande.btn.retour" />
         </button>
     </a>
 </div>
-<div class="commande-grille commande-container commande-box-sizing commande-overflow">
-    <div class="commande-produits commande-max-height commande-box-sizing commande-overflow">
-        <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing commande-overflow">
-            <legend class="commande-fieldset-legend">
+<div class="cmd-grid cmd-container cmd-box-sizing cmd-overflow">
+    <div class="cmd-produits cmd-max-height cmd-box-sizing cmd-overflow">
+        <fieldset class="cmd-bordure cmd-fieldset cmd-max-height cmd-box-sizing cmd-overflow">
+            <legend class="cmd-fieldset-legend">
                 <spring:message code="detailCommande.stitle.text"></spring:message>
             </legend>
-            <div class="commande-grille commande-max-height commande-box-sizing commande-overflow">
+            <div class="cmd-grid cmd-max-height cmd-box-sizing cmd-overflow">
                 <c:forEach items="${commande.listCommandeProduitDto}" var="commandeProduit">
-                    <div class="commande-bordure commande-ligne commande-box-sizing">
+                    <div class="cmd-bordure cmd-ligne cmd-box-sizing">
                         <div
-                            class="commande-grille-cellule commande-colonne-1 commande-bordure-right commande-grille commande-image-grille commande-max-height commande-box-sizing">
-                            <div class="commande-colonne-1 commande-max-height">
+                            class="cmd-grid-cel cmd-colonne-1 cmd-bordure-right cmd-grid cmd-image-grid cmd-max-height cmd-box-sizing">
+                            <div class="cmd-colonne-1 cmd-max-height">
                                 <img src="displayImage.do?id=${commandeProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
-                                    alt="${commandeProduit.produitAcheteDto.destination}" class="commande-image">
+                                    alt="${commandeProduit.produitAcheteDto.destination}" class="cmd-image">
                             </div>
-                            <div class="commande-colonne-2 commande-max-height">
-                                <div class="commande-bold commande-aligne-text-center commande-box-title">
+                            <div class="cmd-colonne-2 cmd-max-height">
+                                <div class="cmd-bold cmd-aligne-text-center cmd-box-title">
                                     ${commandeProduit.produitAcheteDto.nom}
                                     <spring:message code="detailCommande.tiret"></spring:message>
                                     ${commandeProduit.produitAcheteDto.reference}
                                 </div>
-                                <div class="commande-aligne-text-justify commande-box-text">${commandeProduit.produitAcheteDto.description}</div>
+                                <div class="cmd-aligne-text-justify cmd-box-text">${commandeProduit.produitAcheteDto.description}</div>
                             </div>
                         </div>
                         <div
-                            class="commande-grille-cellule commande-colonne-2 commande-bordure-right commande-max-height commande-box-sizing">
-                            <div class="commande-bold commande-aligne-text-center commande-box-title">
+                            class="cmd-grid-cellule cmd-colonne-2 cmd-bordure-right cmd-max-height cmd-box-sizing">
+                            <div class="cmd-bold cmd-aligne-text-center cmd-box-title">
                                 <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                             </div>
-                            <div class="commande-aligne-text-right commande-box-text">
+                            <div class="cmd-aligne-text-right cmd-box-text">
                                 ${commandeProduit.produitAcheteDto.prixUnitaire}
                                 <spring:message code="glb.devise"></spring:message>
                             </div>
                         </div>
                         <div
-                            class="commande-grille-cellule commande-colonne-3 commande-bordure-right commande-max-height commande-box-sizing">
-                            <div class="commande-bold commande-aligne-text-center commande-box-title">
+                            class="cmd-grid-cel cmd-colonne-3 cmd-bordure-right cmd-max-height cmd-box-sizing">
+                            <div class="cmd-bold cmd-aligne-text-center cmd-box-title">
                                 <spring:message code="detailCommande.prd.quantite"></spring:message>
                             </div>
-                            <div class="commande-aligne-text-center commande-box-text">${commandeProduit.quantite}</div>
+                            <div class="cmd-aligne-text-center cmd-box-text">${commandeProduit.quantite}</div>
                         </div>
-                        <div class="commande-grille-cellule commande-colonne-4 commande-max-height">
-                            <div class="commande-bold commande-aligne-text-center commande-box-title">
+                        <div class="cmd-grid-cel cmd-colonne-4 cmd-max-height">
+                            <div class="cmd-bold cmd-aligne-text-center cmd-box-title">
                                 <spring:message code="detailCommande.prd.pTotal"></spring:message>
                             </div>
-                            <div class="commande-aligne-text-right commande-box-text">
+                            <div class="cmd-aligne-text-right cmd-box-text">
                                 ${commandeProduit.prixTotal}
                                 <spring:message code="glb.devise"></spring:message>
                             </div>
@@ -65,21 +65,21 @@
             </div>
         </fieldset>
     </div>
-    <div class="commande-details commande-max-height commande-box-sizing">
-        <div class="commande-divise-3-hauteur commande-box-sizing">
-            <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing">
-                <legend class="commande-fieldset-legend">
+    <div class="cmd-details cmd-max-height cmd-box-sizing">
+        <div class="cmd-divise-3-hauteur cmd-box-sizing">
+            <fieldset class="cmd-bordure cmd-fieldset cmd-max-height cmd-box-sizing">
+                <legend class="cmd-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
             </fieldset>
         </div>
-        <div class="commande-divise-3-hauteur commande-box-sizing">
-            <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing">
-                <legend class="commande-fieldset-legend">
+        <div class="cmd-divise-3-hauteur cmd-box-sizing">
+            <fieldset class="cmd-bordure cmd-fieldset cmd-max-height cmd-box-sizing">
+                <legend class="cmd-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
             </fieldset>
         </div>
-        <div class="commande-divise-3-hauteur commande-box-sizing"></div>
+        <div class="cmd-divise-3-hauteur cmd-box-sizing"></div>
     </div>
 </div>
