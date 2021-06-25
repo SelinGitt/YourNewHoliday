@@ -35,7 +35,7 @@ class GetPropertyValuesTest {
         getPropertyValues.getPropValues();
         assertEquals(4, GetPropertyValues.PROPERTIESMAP.size());
         assertEquals("C:/test/", GetPropertyValues.PROPERTIESMAP.get("contactRepo"));
-        assertEquals("", GetPropertyValues.PROPERTIESMAP.get("mentionsLegalesRepo"));
+        assertEquals("C:/temp/MLG/", GetPropertyValues.PROPERTIESMAP.get("mentionsLegalesRepo"));
         assertEquals("C:/temp/img/", GetPropertyValues.PROPERTIESMAP.get("imagesProduitsRepo"));
         assertEquals("", GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo"));
     }

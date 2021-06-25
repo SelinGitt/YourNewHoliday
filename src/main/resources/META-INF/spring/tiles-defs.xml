@@ -67,10 +67,15 @@
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
+
+	<!-- écran mentions légales -->
+	<definition name="mentionsLegales" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/mentionsLegales/mentionsLegales.jsp" />
+	</definition>
 	
 	<!-- écran 404 -->
 	<definition name="404" extends="base.definition">
-		<put-attribute name="title" value="404 Error"/>
+		<put-attribute name="title" value="404 Error" />
 		<put-attribute name="body" value="/jsp/utilisateur/404.jsp" />
 	</definition>
 
