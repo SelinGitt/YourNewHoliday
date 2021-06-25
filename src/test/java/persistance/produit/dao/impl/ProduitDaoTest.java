@@ -102,14 +102,14 @@ class ProduitDaoTest {
         assertNotNull(produitEnVente);
         assertEquals(1, produitEnVente.getIdProduitOriginal());
         assertEquals(2, produitEnVente.getVersion());
-        assertEquals("125693", produitEnVente.getReference());
+        assertEquals("MVR1256934", produitEnVente.getReference());
         assertEquals("Voyage aux Maldives", produitEnVente.getNom());
         assertEquals("description1", produitEnVente.getDescription());
         assertEquals("Maldives", produitEnVente.getDestination());
         assertEquals(900.00, produitEnVente.getPrixUnitaire());
         assertEquals("Maison dHotes", produitEnVente.getHebergement());
         assertTrue(produitEnVente.getMiseEnVente());
-        assertEquals("C:/temp/img/maldives.jpg", produitEnVente.getCheminImage());
+        assertEquals("maldives.jpg", produitEnVente.getCheminImage());
         assertEquals(1, produitEnVente.getServices());
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);

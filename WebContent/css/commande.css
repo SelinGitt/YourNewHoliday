@@ -1,0 +1,131 @@
+@charset "UTF-8";
+/* FEATURE TEAM COMMANDE */
+
+/* CMD00 */
+.commandeCMD00 {
+	color: #66C5EB;
+	text-align: center;
+}
+
+h2.commandeCMD00 {
+	font-size: 2.55em;
+}
+
+/* sous titre */
+legend.commandeLegendCMD00 {
+	color: #6FA8DC;
+	font-size: 2em;
+}
+
+/* style pour une page sans commande */
+div.commandeVideCMD00, div.commandeCMD00GRille {
+	text-align: center;
+}
+
+/* factorisation des css communs */
+/* correctif : utiliser des em au lieu des px */
+fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+	padding: 10px;
+}
+
+/* hauteur field set */
+fieldset.commandeFieldsetCMD00 {
+	width: 90%;
+	height: 80%;
+}
+
+/* grille à l'intérieur du fieldset */
+div.commandeCMD00GRille {
+	display: grid;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+div.commandeVideCMD00 {
+	margin: inherit;
+	font-size: 1.15em;
+}
+
+/* création de la grille */
+/* correctif : utiliser des em au lieu des px */
+div.commandeLineCMD00 {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 10px;
+	margin: 5px;
+}
+
+/* factorisation des bordures */
+/* correctif : utiliser des em au lieu des px */
+fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
+	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
+	border: 3px solid black;
+}
+
+/* couleur du texte pour commande */
+.colorTextCMD00 {
+	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
+	color: black;
+}
+
+/* colonne 1 */
+div.commandeReferenceCMD00 {
+	grid-column: 1;
+}
+
+/* colonne 2 */
+/* correctif : utiliser des em au lieu des px */
+div.commandeQuantiteTotaleCMD00 {
+	grid-column: 2;
+	display: grid;
+	grid-template-columns: 1.75fr 0.25fr;
+	grid-gap: 1px;
+}
+
+/* colonne 2.1 */
+div.commandeQuantiteTotaleTextCMD00 {
+	grid-column: 1;
+	text-align: right;
+}
+
+/* colonne 2.2 */
+div.commandeQuantiteTotaleValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+}
+
+/* colonne 3 */
+/* correctif : utiliser des em au lieu des px */
+div.commandePrixTotalCMD00 {
+	grid-column: 3;
+	display: grid;
+	grid-template-columns: 1.15fr 0.85fr;
+	grid-gap: 1px;
+}
+
+/* colonne 3.1 */
+div.commandePrixTotalTextCMD00 {
+	grid-column: 1;
+	text-align: right;
+}
+
+/* colonne 3.2 */
+div.commandePrixTotalValueCMD00 {
+	grid-column: 2;
+	text-align: right;
+	font-weight: bold;
+}
+
+/* colonne 4 */
+div.commandeDateCMD00 {
+	grid-column: 4;
+}
+
+/* espace entre la bordure et le texte */
+div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+	padding: 0.9375em;
+	font-size: 1.05em;
+}
+
+/* CMD04 */

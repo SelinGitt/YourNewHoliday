@@ -36,7 +36,7 @@
 
             <c:if test="${empty sessionScope.utilisateur}">
                 <a href="connecter.do"> <img src="img/template/header/connexion.png" class="logoHeader"
-                    alt="icône déconnexion">
+                    alt="icône connexion">
                 </a>
             </c:if>
         </div>
@@ -61,8 +61,17 @@
 
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
-                <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader" alt="icône panier vide">
-                </a>
+                <c:if test="${sessionScope.panierDto.nombreDeReferences < 1}">
+                    <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader"
+                        alt="icône panier vide">
+                    </a>
+                </c:if>
+                <c:if test="${sessionScope.panierDto.nombreDeReferences > 0 }">
+                    <a href=""> <img src="img/template/header/panierRempli.png" class="logoHeader"
+                        alt="icône panier rempli">
+                    </a>
+                    <div class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</div>
+                </c:if>
             </div>
             <%--"Panier" --%>
             <div class="headerSousCell">
@@ -77,7 +86,7 @@
         <div id="headerPanier" class="headerCell">
             <div class="headerSousCell">
                 <a href=""> <img src="img/template/header/creerCompte.png" class="logoHeader"
-                    alt="icône panier vide">
+                    alt="icône créer compte">
                 </a>
             </div>
             <%--"Créer un compte"--%>

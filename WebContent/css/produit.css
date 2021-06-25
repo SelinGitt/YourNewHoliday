@@ -1,0 +1,69 @@
+@charset "UTF-8";
+/* FEATURE TEAM PRODUIT */
+/* PDT Commun */
+.pdtSearchBarInside {
+	outline: none;
+	border-radius: 1.875em;
+	border: 0.125em solid #808080;
+	border-radius: 1.875em;
+}
+
+.pdtSearchBarOk {
+	cursor: pointer;
+}
+
+/* PDT00 */
+.pdt00ContainerVoyage {
+	margin: 0.625em;
+	max-width: 30%;
+}
+
+.pdt00Price {
+	flex: 2 1 auto;
+	padding: 0;
+}
+
+.pdt00Img {
+	padding: 0;
+	max-width: 100%;
+}
+
+td.pdt00Description {
+	max-width: 75%
+}
+
+/* PDT01 */
+.pdtListeProduit {
+	border-collapse: collapse;
+	border: 0.063em solid #000000;
+	overflow-y: scroll;
+	width: 100%;
+}
+
+th.pdt01 {
+	border-bottom: 0.063em solid #000000;
+	padding: 0.438em 0;
+}
+
+.pdt01Body {
+	border-bottom: 0.063em solid #000000;
+	text-align: center;
+	font-weight: bold;
+	padding: 0.563em 0;
+}
+
+.pdt01Image {
+	width: 2.5em;
+	height: 2.5em;
+}
+
+.pdt01Icone {
+	width: 5.625em;
+	height: 3.75em;
+}
+
+/* PDT02 */
+
+/* PDT03 */
+
+/* PDT04 */

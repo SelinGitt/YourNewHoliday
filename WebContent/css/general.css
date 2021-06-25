@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* Couleur */
+
+/* Le vert*/
+.background-color-green {
+	background-color: #008000;
+}
+
+/* Le rouge*/
+.background-color-rouge {
+	background-color: #F00;
+}
+
+/* titre */
+h1 {
+	text-align: center;
+	color: #66C5EB;
+	font-size: 40px;
+}
+
+h2 {
+	color: #66C5EB;
+}
+
+/* factorisation du html et du body */
+html, body, .conteneur-ascenseur {
+	width: 100%;
+	height: 100%;
+}
+
+html, body, header, aside, section, footer {
+	/* indique que le conteneur n'ajoute pas la taille de la bordure du contenu dans sa taille */
+	box-sizing: border-box;
+	overflow-y: hidden;
+	/* enlève les marges et les bordures pour les containers de chaque type*/
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.content {
+	display: flex;
+	justify-content: space-between;
+	height: 80%;
+}
+
+/* taille du aside */
+aside {
+	width: 20%;
+	display: flex;
+	overflow: auto;
+}
+
+/* taille de la section */
+section {
+	width: 80%;
+}
+
+/* text responsive */
+.text-responsive {
+	font-size: 1.15em;
+}
+
+/* titre responsive */
+.title-responsive {
+	font-size: 2.5em;
+}
+
+/* classe pour le corps afin de faire apparaître l'ascenseur où vous le désirer (n'oubliez pas de donner une taille à la div qui doit la contenir) */
+.conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+}
+
+.overflow-auto {
+	overflow: auto;
+}

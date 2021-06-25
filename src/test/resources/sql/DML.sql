@@ -33,12 +33,12 @@ DELETE FROM `produit`;
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 2, '125693', 'Voyage aux Maldives', 'description1', 'Maldives', '900.00', 'Maison dHotes', 1, 'C:/temp/img/maldives.jpg', 1);
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (2, 1, '126794', 'Voyage en Grèce', 'description2', 'Grèce', '500.00', 'Suite', 0, 'C:/temp/img/greece.jpg', 1);
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (3, 1, '127895', 'Voyage en Espagne', 'description3', 'Espagne', '450.00', 'chambre dhôtel', 1, 'C:/temp/img/espagne.jpg', 1);
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (4, 3, '128996', 'Voyage en Italie', 'description4', 'Italie', '300.00', 'chambre dhôtel', 1, 'C:/temp/img/italy.jpg', 1);
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (5, 1, '129997', 'Voyage à Tokyo', 'description5', 'Tokyo', '800.00', 'Appartement', 1, 'C:/temp/img/tokyo.jpg', 1);
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (6, 1, '129998', 'Voyage au Portugal ', 'description6', 'Portugal', '600.00', 'Maison dHotes', 0, 'C:/temp/img/portugal.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 2, 'MVR1256934', 'Voyage aux Maldives', 'description1', 'Maldives', '900.00', 'Maison dHotes', 1, 'maldives.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (2, 1, 'GRC1267941', 'Voyage en Grèce', 'description2', 'Grèce', '500.00', 'Suite', 0, 'greece.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (3, 1, 'SPA1278951', 'Voyage en Espagne', 'description3', 'Espagne', '450.00', 'chambre dhôtel', 1, 'espagne.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (4, 3, 'ITA1289967', 'Voyage en Italie', 'description4', 'Italie', '300.00', 'chambre dhôtel', 1, 'italy.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (5, 1, 'TYO1299974', 'Voyage à Tokyo', 'description5', 'Tokyo', '800.00', 'Appartement', 1, 'tokyo.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (6, 1, 'POR1299984', 'Voyage au Portugal ', 'description6', 'Portugal', '600.00', 'Maison dHotes', 0, 'portugal.jpg', 1);
 
 --
 -- Déchargement des données de la table `droit`
@@ -52,6 +52,16 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (5, 'connecter.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (6, 'creerUtilisateur.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (7, 'deconnecter.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (8, 'listerCommande.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (9, 'modifierUtilisateur.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (10, 'consulterUtilisateur.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (11, 'creerProduitAdmin.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (12, 'consulterProduit.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (13, 'editerProduitAdmin.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (14, 'detailCommande.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (15, 'listerPanierProduits.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (16, 'listerPanierAdresses.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (17, 'mentionsLegales.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (18, 'displayImage.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -90,11 +100,11 @@ INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adres
 -- Déchargement des données de la table `produit_achete`
 --
 
-INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 3, 1, '127895', 'Voyage en Espagne', 'description3', 'Espagne', '450.00', 'chambre d\hôtel', 1, 'C:/temp/img/espagne.jpg', 1);
-INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (2, 4, 3, '128996', 'Voyage en Italie', 'description4', 'Italie', '300.00', 'chambre d\hôtel', 1, 'C:/temp/img/italy.jpg', 1);
-INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (3, 5, 2, '129997', 'Voyage à Tokyo', 'description5', 'Tokyo', '800.00', 'Appartement', 1, 'C:/temp/img/tokyo.jpg', 1);
-INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (4, 1, 1, '125693', 'Voyage aux Maldives', 'description1', 'Maldives', '900.00', 'Maison d\Hotes', 1, 'C:/temp/img/maldives.jpg', 1);
-INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (6, 1, 2, '125693', 'Voyage aux Maldives', 'description1', 'Maldives', '1000.00', 'Hotel', 1, 'C:/temp/img/maldives.jpg', 1);
+INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 3, 1, 'SPA1278951', 'Voyage en Espagne', 'description3', 'Espagne', '450.00', 'chambre d\hôtel', 1, 'espagne.jpg', 1);
+INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (2, 4, 3, 'ITA1289967', 'Voyage en Italie', 'description4', 'Italie', '300.00', 'chambre d\hôtel', 1, 'italy.jpg', 1);
+INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (3, 5, 2, 'TYO1299974', 'Voyage à Tokyo', 'description5', 'Tokyo', '800.00', 'Appartement', 1, 'tokyo.jpg', 1);
+INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (4, 1, 1, 'MVR1256934', 'Voyage aux Maldives', 'description1', 'Maldives', '900.00', 'Maison d\Hotes', 1, 'maldives.jpg', 1);
+INSERT INTO `produit_achete` (`idProduit`, `idDeLOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (6, 1, 2, 'MVR1256934', 'Voyage aux Maldives', 'description1', 'Maldives', '1000.00', 'Hotel', 1, 'maldives.jpg', 1);
 
 --
 -- Déchargement des données de la table `liste_commande`
@@ -127,3 +137,24 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (13, 7, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (15, 8, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (17, 9, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (18, 10, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (19, 10, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (20, 11, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (21, 12, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (22, 12, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (23, 12, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (24, 13, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (25, 14, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (26, 14, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (27, 15, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (28, 15, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (29, 16, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (30, 16, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (31, 17, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (32, 17, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (33, 17, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
