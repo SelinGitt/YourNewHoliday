@@ -3,8 +3,10 @@
  */
 package service.commande.impl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,6 +17,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import presentation.commande.dto.CommandeDto;
+import presentation.commande.dto.CommandeProduitDto;
 import service.commande.ICommandeService;
 import service.util.DecimalFormatUtils;
 
@@ -64,7 +67,9 @@ class CommandeServiceTest {
         assertEquals("09/02/2021", commandeDto.getDate());
         final String nombre = DecimalFormatUtils.decimalFormatUtil(1200.00);
         assertEquals(nombre, commandeDto.getPrixTotal());
-        assertEquals(2, commandeDto.getListCommandeProduitDto().size());
+        final List<CommandeProduitDto> listCommandeProduitDto = commandeDto.getListCommandeProduitDto();
+        assertNotNull(listCommandeProduitDto);
+        assertEquals(2, listCommandeProduitDto.size());
     }
 
 }

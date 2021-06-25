@@ -65,21 +65,21 @@
             </div>
         </fieldset>
     </div>
-    <div class="commande-details commande-max-height">
-        <div>
-            <fieldset class="commande-bordure commande-fieldset commande-max-height">
+    <div class="commande-details commande-max-height commande-box-sizing">
+        <div class="commande-divise-3-hauteur commande-box-sizing">
+            <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing">
                 <legend class="commande-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
             </fieldset>
         </div>
-        <div>
-            <fieldset class="commande-bordure commande-fieldset commande-max-height">
+        <div class="commande-divise-3-hauteur commande-box-sizing">
+            <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing">
                 <legend class="commande-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
             </fieldset>
         </div>
-        <div></div>
+        <div class="commande-divise-3-hauteur commande-box-sizing"></div>
     </div>
 </div>

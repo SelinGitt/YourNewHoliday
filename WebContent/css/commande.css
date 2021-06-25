@@ -272,14 +272,22 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 	height: auto;
 }
 
+/* taille des div titres dans les boites */
 .commande-box-title {
 	height: 20%;
 }
 
+/* taille des div textes dans les boites */
 .commande-box-text {
 	height: 80%;
 }
 
+/* l'ascensseur à droite vertical */
 .commande-overflow-y {
 	overflow-y: auto;
+}
+
+/* hauteur d'une taille 1/3 envrion */
+.commande-divise-3-hauteur {
+	height: 33.33%;
 }

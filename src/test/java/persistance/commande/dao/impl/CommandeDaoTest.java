@@ -8,9 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.NoResultException;
 
@@ -26,6 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
 import persistance.commande.entity.CommandeDo;
+import persistance.commande.entity.CommandeProduitDo;
 
 /**
  * Classe représentant les tests JUnits de CommandeDao
@@ -67,11 +70,9 @@ class CommandeDaoTest {
 
     /**
      * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByRef(java.lang.String)}.
-     * 
-     * @throws java.text.ParseException
      */
     @Test
-    void testFindByRef() throws java.text.ParseException {
+    void testFindByRef() {
         final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
@@ -79,12 +80,17 @@ class CommandeDaoTest {
         assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
         assertEquals(2, commandeDo.getIdUtilisateur());
         Date dateTest = null;
-        dateTest = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-02-09 14:49:11");
+        try {
+            dateTest = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2021-02-09 14:49:11");
+        } catch (final ParseException exception) {
+            exception.printStackTrace();
+        }
         assertEquals(dateTest, commandeDo.getDate());
         assertThrows(NoResultException.class, () -> {
             this.iCommandeDao.findByRef("ZZZ1");
         });
-        assertEquals(2, commandeDo.getCommandeProduitDoSet().size());
-
+        final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
+        assertNotNull(commandeProduitSet);
+        assertEquals(2, commandeProduitSet.size());
     }
 }

@@ -19,7 +19,8 @@
                     <c:forEach items="${listCommande}" var="commande">
                         <div class="commandeLineCMD00">
                             <div class="commandeReferenceCMD00">
-                                <a href="#"><spring:message code="listeCommande.ref.text" />${commande.reference}</a>
+                                <a href="detailCommande.do?ref=${commande.reference}"><spring:message
+                                        code="listeCommande.ref.text" />${commande.reference}</a>
                             </div>
                             <div class="commandeQuantiteTotaleCMD00">
                                 <div class="commandeQuantiteTotaleTextCMD00">
