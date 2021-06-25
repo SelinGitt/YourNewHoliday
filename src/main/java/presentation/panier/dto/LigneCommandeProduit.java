@@ -8,7 +8,7 @@ package presentation.panier.dto;
  *
  * @author Steve
  */
-public class ProduitLigneCommande {
+public class LigneCommandeProduit {
 
     private Integer quantite;
     private String  prix;
