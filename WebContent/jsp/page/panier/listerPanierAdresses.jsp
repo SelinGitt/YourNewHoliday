@@ -8,8 +8,7 @@
 </h1>
 
 <%-- lien Retour --%>
-<%--remplire le lien pour renvoyer vers Pan00--%>
-<a class="panier-retour" href="#"><spring:message code="pan08.lien.retour" /></a>
+<a class="panier-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
 
 <%-- container de facturation + livraison--%>
 <div class="panier-container-Adresse">
