@@ -75,18 +75,25 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole) {
+        System.out.println(nom);
+        System.out.println(idRole);
         // Si nom empty on fait une recherche par filtre
         if (nom.isEmpty()) {
-            if (idRole == null) {
+            System.out.println("Nom empty");
+            if (idRole == 0) {
+                System.out.println("Nom empty role null");
                 return this.findAllUtilisateurs();
             }
+            System.out.println("Nom Empty Role pas null");
             return this.rechercherUtilisateurRole(idRole);
         }
 
         // Nom pas empty, donc recherche par nom ou nom + role
-        if (idRole == null) {
+        if (idRole == 0) {
+            System.out.println("Nom pas empty role null");
             return this.rechercherUtilisateurNom(nom);
         }
+        System.out.println("Nom pas empty role pas null");
         return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
