@@ -1,21 +1,6 @@
 @charset "UTF-8";
 /* FEATURE TEAM PRODUIT */
-/* PDT00 */
-.pdtContainerVoyage {
-	margin: 0.625em;
-	max-width: 30%;
-}
-
-.pdtPrice {
-	flex: 2 1 auto;
-	padding: 0;
-}
-
-.pdtImg {
-	padding: 0;
-	max-width: 100%;
-}
-
+/* PDT Commun */
 .pdtSearchBarInside {
 	outline: none;
 	border-radius: 1.875em;
@@ -27,7 +12,23 @@
 	cursor: pointer;
 }
 
-td.pdtDescription {
+/* PDT00 */
+.pdt00ContainerVoyage {
+	margin: 0.625em;
+	max-width: 30%;
+}
+
+.pdt00Price {
+	flex: 2 1 auto;
+	padding: 0;
+}
+
+.pdt00Img {
+	padding: 0;
+	max-width: 100%;
+}
+
+td.pdt00Description {
 	max-width: 75%
 }
 
