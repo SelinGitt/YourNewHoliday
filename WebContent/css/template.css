@@ -16,7 +16,7 @@ header, footer {
 }
 
 #headerLogo {
-	width: 70px;
+	width: 4.375em;
 }
 
 .logoHeader-ynh {
@@ -59,14 +59,24 @@ header, footer {
 	vertical-align: middle;
 }
 
+.headerSousCellNbrPdt {
+	position: absolute;
+	display: inline-block;
+	left: 1.65em;
+	top: 1.65em;
+	font-size: 0.8em;
+	text-align: center;
+	width: 1.65em;
+}
+
 /* MENU */
 
 /* Side Bar */
 .sidebar {
 	width: 80%;
-	min-width: 160px;
+	min-width: 10em;
 	background-color: transparent;
-	padding-top: 16px;
+	padding-top: 1em;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -82,31 +92,31 @@ aside {
 }
 
 .link-container.underline {
-	border-bottom: 3px solid #000;
-	padding-bottom: 20px;
+	border-bottom: 0.188em solid #000;
+	padding-bottom: 1.25em;
 }
 
 .link-container.admin {
-	padding: 8px 0px;
-	border-bottom: 3px solid #000;
-	border-top: 3px solid #000;
+	padding: 0.5em 0;
+	border-bottom: 0.188em solid #000;
+	border-top: 0.188em solid #000;
 }
 
 .sidebar p {
-	font-size: 20px;
+	font-size: 1.25em;
 	margin: auto;
-	max-width: 300px;
-	min-width: 110px;
+	max-width: 18.75em;
+	min-width: 6.875em;
 	text-align: center;
 }
 
 .fa fa-globe {
-	width: 50px;
-	height: 40px;
+	width: 3.125em;
+	height: 2.5em;
 }
 
 .link-container span {
-	font-size: 25px;
+	font-size: 1.563em;
 	display: block;
 	text-align: center;
 }
@@ -130,7 +140,7 @@ aside {
 
 /* footer responsive */
 .footer-responsive {
-	width: 50px;
+	width: 3.125em;
 	height: auto;
 }
 
