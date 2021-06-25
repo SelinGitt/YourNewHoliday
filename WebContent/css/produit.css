@@ -120,5 +120,83 @@ td.description {
 /* PDT02 */
 
 /* PDT03 */
+.pdtGrid-container {
+	display: grid;
+	grid-gap: 0.4em;
+	padding: 0.4em;
+}
 
+.pdtGrid-item {
+	text-align: center;
+	padding: 0.625em;
+	font-size: 1.125em;
+}
+
+.pdtFormlaireCreerProduit {
+	grid-column: 1/span 2;
+	grid-row: 1/span 2;
+}
+
+.pdtImageProduit {
+	grid-column: 3;
+	grid-row: 1/span 1;
+}
+
+.pdtLogoService {
+	grid-column: 3;
+	grid-row: 2/span 1;
+}
+
+.pdtFormulaireProduit input {
+	width: 100%
+}
+
+.pdtFormulaireProduit {
+	table-layout: auto;
+	text-align: left;
+	line-height: 3.75em;
+}
+
+.pdtFormulaireProduit td {
+	padding: 0 0.313em 0 0.313em;
+}
+
+.pdtGrid-container form table tr td input {
+	width: 100%;
+}
+
+.pdtFormPDT03Radio {
+	display: flex;
+	justify-content: space-around;
+}
+
+.pdtFormPDT03Radio div {
+	display: flex;
+	align-items: center;
+}
+
+.pdtFormPDT03Radio div input {
+	margin-right: 0.938em;
+	width: auto;
+}
+
+.pdtTextAreaPDT03 textarea {
+	resize: vertical;
+	min-height: 3.75em;
+}
+
+.pdtButtonsPdt03 {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.pdtListeService {
+	width: 100%;
+}
+
+.pdtImageCreationProduit {
+	width: 100%;
+}
 /* PDT04 */
