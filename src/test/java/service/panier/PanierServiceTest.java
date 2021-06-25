@@ -67,7 +67,7 @@ class PanierServiceTest {
         panierService.updatePanier(panierTest, 2, 2);
         assertEquals(3, panierTest.getNombreDeReferences());
         // On s'assure que la quantité du produit a bien été mise à jour.
-        assertEquals(9, panierTest.getMapPanier().get(produitTest2));
+        assertEquals(9, panierTest.getMapPanier().get(produitTest2).getQuantite());
         // On teste que l'ajout d'un produit null n'incrémente pas le nombre de référence.
         panierService.updatePanier(panierTest, 99, 12);
         assertEquals(3, panierTest.getNombreDeReferences());

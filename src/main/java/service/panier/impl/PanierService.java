@@ -38,26 +38,34 @@ public class PanierService implements IPanierService {
         }
         final Map<ProduitDto, LigneCommandeProduit> mapPanier = panier.getMapPanier();
         // On récupère la ligne de commande
-        final LigneCommandeProduit ligneCommande = mapPanier.get(produitAjout);
-        // On récupère la quantité
-        Integer quantiteProduit = ligneCommande.getQuantite();
-        // si le produit était déjà dans le panier, on met à jour sa quantité.
-        if (quantiteProduit == null) {
-            quantiteProduit = quantite;
-            // sinon, le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
+        LigneCommandeProduit ligneCommande = mapPanier.get(produitAjout);
+        // si le produit n'était pas dans le panier, 
+        // le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
+        if (ligneCommande == null) {
+            // on l'ajoute si la quantité n'est pas nulle ou négative
+            if (quantite > 0) {
+                // on crée la ligne de commande
+                ligneCommande = new LigneCommandeProduit();
+                // on ajoute la quantité
+                ligneCommande.setQuantite(quantite);
+                // on mets à jour la map
+                mapPanier.put(produitAjout, ligneCommande);
+            }
+            // sinon, on mets à jour la quantité existante
         } else {
+            int quantiteProduit = ligneCommande.getQuantite();
             quantiteProduit += quantite;
-        }
-        // si la quantité du produit que l'on met à jour devient nulle ou négative, 
-        // alors le produit est supprimé du panier.
-        if (quantiteProduit < 1) {
-            mapPanier.remove(produitAjout);
-            // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
-        } else {
-            // on modifie la ligne de commande
-            ligneCommande.setQuantite(quantiteProduit);
-            // on mets à jour la map
-            mapPanier.put(produitAjout, ligneCommande);
+            // si la quantité du produit que l'on met à jour devient nulle ou négative, 
+            // alors le produit est supprimé du panier.
+            if (quantiteProduit < 1) {
+                mapPanier.remove(produitAjout);
+                // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
+            } else {
+                // on modifie la ligne de commande
+                ligneCommande.setQuantite(quantiteProduit);
+                // on mets à jour la map
+                mapPanier.put(produitAjout, ligneCommande);
+            }
         }
         // on met à jour le nombre de référence dans le panier.
         panier.setNombreDeReferences(panier.getMapPanier().size());
