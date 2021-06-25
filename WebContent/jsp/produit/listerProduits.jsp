@@ -11,6 +11,7 @@
     <br />
     <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
         <form:form action="listerProduits.do" method="POST">
+            <input type="hidden" name="tri" value="${tri }" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt00.recherche.OK"/>" class="pdtSearchBarOk" />

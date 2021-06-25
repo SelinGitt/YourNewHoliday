@@ -54,27 +54,9 @@ public class ListerProduitsController {
     public ModelAndView findFilter(final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", required = false) String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        if (!searchTerm.isBlank()) {
-            if ("0".equals(tri)) {
-                modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.rechercherProduits(searchTerm));
-                modelAndView.getModelMap().addAttribute("tri", tri);
-                modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-                return modelAndView;
-            }
-            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerFiltreTri(TypeTri.checkType(tri), searchTerm));
-            modelAndView.getModelMap().addAttribute("tri", tri);
-            modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-            return modelAndView;
-        }
-        if (!"0".equals(tri)) {
-            modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.trierListe(TypeTri.checkType(tri)));
-            modelAndView.getModelMap().addAttribute("tri", tri);
-            modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-            return modelAndView;
-
-        }
-        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
-
+        modelAndView.getModelMap().addAttribute("tri", tri);
+        modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, this.iProduitService.findFilter(searchTerm, tri));
         return modelAndView;
     }
 

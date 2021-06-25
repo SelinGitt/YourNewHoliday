@@ -39,26 +39,34 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        if (!pSearchTerm.isBlank()) {
-            return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
-        }
-        return ProduitMapper.mapToListDto(produitDao.findAllProduitsEnVente());
-    }
-
-    @Override
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
     }
 
     @Override
-    public List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm) {
+    public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
+        if (!searchTerm.isBlank()) {
+            if ("0".equals(tri)) {
+                return rechercherProduits(searchTerm);
+            }
+            return listerFiltreTri(TypeTri.checkType(tri), searchTerm);
+        }
+        if (!"0".equals(tri)) {
+            return trierListe(TypeTri.checkType(tri));
+        }
+        return listerProduitsEnVente();
+    }
+
+    private List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm) {
         return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
     }
 
-    @Override
-    public List<ProduitDto> trierListe(final TypeTri typeFiltre) {
+    private List<ProduitDto> trierListe(final TypeTri typeFiltre) {
         return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
     }
 
+    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
+
+    }
 }

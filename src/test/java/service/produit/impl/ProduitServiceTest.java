@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -18,6 +20,8 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeTri;
+import presentation.produit.dto.ProduitDto;
 
 /**
  * Classe test de {@link ProduitService}
@@ -78,5 +82,31 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitEnVente(1));
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#findFilter(String,String)}.
+     */
+    @Test
+    void testFindFilterWithRecherche() {
+        Mockito.when(this.iProduitDaoMock.rechercherProduits("23")).thenReturn(Collections.emptyList());
+        final List<ProduitDto> liste = produitServiceMock.findFilter("23", "0");
+        assertNotNull(liste);
+        assertEquals(Collections.emptyList(), liste);
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#findFilter(String,String)}.
+     */
+    @Test
+    void testFindFilterWithTri() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(126d);
+        Mockito.when(this.iProduitDaoMock.trierListe(TypeTri.ASC)).thenReturn(Arrays.asList(produitDo2, produitDo));
+        final List<ProduitDto> liste = produitServiceMock.findFilter("0", "2");
+        assertNotNull(liste);
+        assertEquals(liste, produitServiceMock.findFilter("0", "2"));
     }
 }
