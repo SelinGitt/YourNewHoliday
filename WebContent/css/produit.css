@@ -67,3 +67,42 @@ th.pdt01 {
 /* PDT03 */
 
 /* PDT04 */
+.pdt04Flex-container {
+	text-align: left;
+	width: auto;
+	height: auto;
+	margin: 0.625em;
+	font-size: 1.125em;
+	justify-content: flex-start;
+	min-width: 50%;
+	flex-wrap: wrap;
+}
+
+.pdt04Display{
+	display: flex;
+	min-width: 50%;
+	justify-content: space-between;
+}
+
+.pdt04Image {
+	width: 15em;
+	height: 8em;
+}
+
+.pdt04Hebergement {
+	font-size: 2.5em;
+}
+
+.pdt04SousTitre {
+	font-size: 1.125em;
+	color: #66C5EB;
+}
+
+.pdt04TextArea {
+	resize: none;
+}
+
+.pdt04IconeServices {
+	width: 2.125em;
+	height: 2.125em;
+}
