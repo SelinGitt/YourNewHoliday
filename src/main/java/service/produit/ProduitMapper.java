@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import persistance.produit.entity.ProduitDo;
 import presentation.produit.dto.ProduitDto;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe Mapper de produit, mappant un produitDto vers un produitDo et vice versa
@@ -44,7 +45,7 @@ public class ProduitMapper {
         produitDo.setNom(produitDto.getNom());
         produitDo.setDescription(produitDto.getDescription());
         produitDo.setDestination(produitDto.getDestination());
-        if (produitDto.getPrixUnitaire().matches("\\d+(?:[,]\\d{2}$)")) {
+        if (DecimalFormatUtils.isPrixAVirgule(produitDto.getPrixUnitaire())) {
             produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire().replace(",", ".")));
         } else {
             produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));

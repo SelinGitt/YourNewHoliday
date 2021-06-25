@@ -4,6 +4,8 @@
 package service.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -76,5 +78,17 @@ class DecimalFormatUtilsTest {
         //on verifie les locales
         assertEquals("11,115,555.48", DecimalFormatUtils.decimalFormatUtil(bigDecimal, Locale.ENGLISH));
         assertEquals("11 115 555,48", DecimalFormatUtils.decimalFormatUtil(bigDecimal, Locale.FRENCH));
+    }
+
+    /**
+     * Test method for {@link service.util.DecimalFormatUtils#isPrixAVirgule(String)}.
+     */
+    @Test
+    void testIsPrixAVirgurle() {
+        final String prixVirgule = "125,25";
+        final String prixPoint = "125.11";
+
+        assertTrue(DecimalFormatUtils.isPrixAVirgule(prixVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixPoint));
     }
 }
