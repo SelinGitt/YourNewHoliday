@@ -111,13 +111,26 @@ class UtilisateurDaoTest {
     /**
      * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#deleteUtilisateurById(Integer)}.
      */
+    @Test
     void testDeleteUtilisateurById() {
+        //Le test se fait avec un utilisateur n'ayant pas de commande rattachée à lui
+        //Pour un utilisateur possédant des commandes, cela est géré dans UtilisateurService et non UtilisateurDao
+
         //On supprime un utilisateur existant en BD
-        assertEquals(true, iUtilisateurDao.deleteUtilisateurById(2));
-        //On supprime le même utilisateur une deuxième fois
-        assertEquals(false, iUtilisateurDao.deleteUtilisateurById(2));
+        Assertions.assertTrue(iUtilisateurDao.deleteUtilisateurById(4));
         //On supprime un utilisateur NON existant en BD
-        assertEquals(false, iUtilisateurDao.deleteUtilisateurById(20));
+        Assertions.assertFalse(iUtilisateurDao.deleteUtilisateurById(20));
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#rechercheNombreParRole(Integer)}.
+     */
+    @Test
+    void testRechercheNombreParRole() {
+        //recherche des admins (id role 3)
+        assertEquals(2, iUtilisateurDao.rechercheNombreParRole(3));
+        //recherche des clients (id role 1)
+        assertEquals(4, iUtilisateurDao.rechercheNombreParRole(1));
     }
 
     /**

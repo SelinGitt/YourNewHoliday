@@ -190,6 +190,9 @@ class UtilisateurServiceTest {
         Assertions.assertEquals(0, response.size());
     }
 
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#findUtilisateurById(Integer)}
+     */
     @Test
     void testFindUtilisateurById() {
         final var utilisateurDo = new UtilisateurDo();
@@ -220,6 +223,9 @@ class UtilisateurServiceTest {
         Assertions.assertEquals("email_do@test.fr", utilisateurDto.getEmail());
     }
 
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+     */
     @Test
     void testDeleteUtilisateurById() {
 
@@ -229,7 +235,16 @@ class UtilisateurServiceTest {
         //Au moins un admin restant si suppression -> true 
         Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 3));
 
-        //On retire un admin de la liste, liste de taille 1
+        //Même test mais en supprimant un id=1 (client) -> true
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+     */
+    @Test
+    void testDeleteUtilisateurByIdLastAdmin() {
+        //On retourne une Liste de 1 UtilisateursDto étant admin
         Mockito.when(this.dao.rechercheNombreParRole(3)).thenReturn(1);
 
         //Dernier admin, suppression impossible -> false 
@@ -237,6 +252,6 @@ class UtilisateurServiceTest {
 
         //Même test mais en supprimant un id=1 (client) -> true
         Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
-
     }
+
 }

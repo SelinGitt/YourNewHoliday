@@ -6,6 +6,8 @@ package presentation.utilisateur.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.UnexpectedRollbackException;
@@ -26,6 +28,8 @@ import service.utilisateur.IUtilisateurService;
 @Controller
 @RequestMapping({"/consulterUtilisateur.do", "/supprimerUtilisateur.do"})
 public class ConsulterUtilisateurController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ConsulterUtilisateurController.class);
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
@@ -50,7 +54,7 @@ public class ConsulterUtilisateurController {
 
     private ModelAndView consulterUtilisateur(final UtilisateurConnecteDto utilisateurConnecte) {
         final var modelAndView = new ModelAndView();
-        final UtilisateurDto utilisateurDto = recupererUtilisateurDto(utilisateurConnecte);
+        final var utilisateurDto = recupererUtilisateurDto(utilisateurConnecte);
 
         modelAndView.setViewName("consulterUtilisateur");
         modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
@@ -59,8 +63,8 @@ public class ConsulterUtilisateurController {
 
     private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto,
             final RedirectAttributes redirectAttributes) {
-        final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
-        final Integer role = Integer.valueOf(utilisateurConnecteDto.getIdRole());
+        final var id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
+        final var role = Integer.valueOf(utilisateurConnecteDto.getIdRole());
 
         final var modelAndView = new ModelAndView();
 
@@ -70,6 +74,7 @@ public class ConsulterUtilisateurController {
             result = iUtilisateurService.deleteUtilisateurById(id, role);
         } catch (final UnexpectedRollbackException exception) {
             //Erreur inconnue, on reste sur la page + message d'erreur générique
+            logger.error("Erreur de suppression de l'utilisateur d'id {} avec l'exception : ", id, exception);
             modelAndView.getModelMap().addAttribute("error", "usr00.erreur.failure");
             modelAndView.setViewName("forward:/consulterUtilisateur.do");
             return modelAndView;
@@ -88,7 +93,7 @@ public class ConsulterUtilisateurController {
     }
 
     private UtilisateurDto recupererUtilisateurDto(final UtilisateurConnecteDto utilisateurConnecteDto) {
-        final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
+        final var id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
         return iUtilisateurService.findUtilisateurById(id);
     }
 }
