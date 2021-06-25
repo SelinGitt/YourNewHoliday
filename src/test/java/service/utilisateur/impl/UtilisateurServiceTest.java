@@ -154,7 +154,7 @@ class UtilisateurServiceTest {
     void testRecherche() {
         Mockito.when(this.dao.recherche("Toto")).thenReturn(Collections.emptyList());
 
-        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", null);
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", 0);
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
