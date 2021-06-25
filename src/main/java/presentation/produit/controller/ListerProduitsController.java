@@ -74,6 +74,7 @@ public class ListerProduitsController {
 
         }
         modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
+
         return modelAndView;
     }
 
