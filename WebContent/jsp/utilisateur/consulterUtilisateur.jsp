@@ -46,13 +46,17 @@
                 <td class="buttonsUser00">
                     <div>
                         <a href="#">
-                            <button class="modifierUser00"><spring:message code="usr00.consulter.modifier" /></button>
+                            <button class="modifierUser00">
+                                <spring:message code="usr00.consulter.modifier" />
+                            </button>
                         </a>
                     </div>
                     <div>
                         <a href="supprimerUtilisateur.do"
                             onclick="return confirm('<spring:message code="usr00.consulter.confirmer_suppression" />')">
-                            <button class="supprimerUser00"><spring:message code="usr00.consulter.supprimer" /></button>
+                            <button class="supprimerUser00">
+                                <spring:message code="usr00.consulter.supprimer" />
+                            </button>
                         </a>
                     </div>
                 </td>

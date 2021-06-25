@@ -30,14 +30,6 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     boolean deleteUtilisateurById(final Integer id);
 
     /**
-     * Permet d'effectue une recherche en base selon le rang
-     *
-     * @param  rang Rang a recherche
-     * @return      List d'UtilisateurDo correspondant a la recherche
-     */
-    List<UtilisateurDo> rechercheRang(final String rang);
-
-    /**
      * Permet d'effectue une recherche en base selon un terme dans une colonne donnee
      *
      * @param  nom Nom a recherche
