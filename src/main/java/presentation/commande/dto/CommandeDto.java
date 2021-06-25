@@ -1,11 +1,18 @@
 package presentation.commande.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Classe représentant une commande pour la vue
  */
-public class CommandeDto {
+public class CommandeDto implements Serializable {
+
+    /**
+     * Générer Automatiquement pour la sérialisation
+     */
+    private static final long        serialVersionUID = -7225820006767319912L;
+
     private String                   id;
     private String                   reference;
     private String                   prixTotal;

@@ -40,7 +40,7 @@ public class CommandeProduitMapper {
         commandeProduitDto.setProduitAcheteDto(ProduitAcheteMapper.mapperToDto(commandeProduitDo.getProduitAcheteDo()));
         commandeProduitDto.setQuantite(String.valueOf(commandeProduitDo.getQuantite()));
         commandeProduitDto
-                .setPrixTotal(getPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo.getQuantite()));
+                .setPrixTotal(calculerPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo.getQuantite()));
         return commandeProduitDto;
 
     }
@@ -58,7 +58,7 @@ public class CommandeProduitMapper {
         return commandeProduitDoSet.stream().map(CommandeProduitMapper::mapperToDto).collect(Collectors.toList());
     }
 
-    private static String getPrixTotal(final BigDecimal prixUnitaire, final int quantite) {
+    private static String calculerPrixTotal(final BigDecimal prixUnitaire, final int quantite) {
         if (prixUnitaire == null) {
             return DecimalFormatUtils.decimalFormatUtil(BigDecimal.valueOf(0));
         }

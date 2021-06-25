@@ -3,28 +3,35 @@
  */
 package presentation.commande.dto;
 
+import java.io.Serializable;
+
 /**
  * Classe représentant le DTO des produits achetés d'une commande
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-public class ProduitAcheteDto {
+public class ProduitAcheteDto implements Serializable {
 
-    private String idProduit;
+    /**
+     * Générer Automatiquement pour la sérialisation
+     */
+    private static final long serialVersionUID = 3233367546229029568L;
 
-    private String idDeLOriginal;
+    private String            idProduit;
 
-    private String reference;
+    private String            idDeLOriginal;
 
-    private String nom;
+    private String            reference;
 
-    private String description;
+    private String            nom;
 
-    private String destination;
+    private String            description;
 
-    private String prixUnitaire;
+    private String            destination;
 
-    private String cheminDeLImage;
+    private String            prixUnitaire;
+
+    private String            cheminDeLImage;
 
     /**
      * Getter for idProduit

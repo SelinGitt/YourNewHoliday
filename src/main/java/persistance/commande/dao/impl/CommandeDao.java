@@ -69,10 +69,9 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         final TypedQuery<CommandeDo> query = entityManager.createQuery(request.toString(), CommandeDo.class);
         query.setParameter("reference", reference);
 
-        logger.info("commande avec le reference {} non trouvé en base de données.", reference);
+        logger.info("Recherche la commande avec le reference {} en base de données.", reference);
 
         return query.getSingleResult();
-
     }
 
 }

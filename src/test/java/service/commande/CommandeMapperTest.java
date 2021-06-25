@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,7 @@ class CommandeMapperTest {
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
+        commandeDo.setCommandeProduitDoSet(null);
 
         final CommandeDto commandeDto = CommandeMapper.mapperToDto(commandeDo);
 
@@ -51,18 +53,24 @@ class CommandeMapperTest {
         assertEquals("01/01/1970", commandeDto.getDate());
         assertEquals("200,40", commandeDto.getPrixTotal());
         assertEquals("5", commandeDto.getQuantiteTotale());
-        final CommandeDto commandeDtoNull = CommandeMapper.mapperToDto(null);
-        assertNull(commandeDtoNull);
-
+        assertEquals(Collections.emptyList(), commandeDto.getListCommandeProduitDto());
     }
 
     /**
-     * Test method for {@link service.commande.CommandeMapper#mapperListDoToDto(java.util.List)}.
+     * Test method for {@link service.commande.CommandeMapper#mapperToDto(persistance.commande.entity.CommandeDo)}.
      * 
      * @throws ParseException
      */
     @Test
-    void testMapperListDoToDto() throws ParseException {
+    void testMapperToDtoWithDoNull() throws ParseException {
+        assertNull(CommandeMapper.mapperToDto(null));
+    }
+
+    /**
+     * Test method for {@link service.commande.CommandeMapper#mapperListDoToDto(java.util.List)}.
+     */
+    @Test
+    void testMapperListDoToDto() {
 
         final CommandeDo commandeDo = new CommandeDo();
         commandeDo.setId(20);
@@ -71,6 +79,7 @@ class CommandeMapperTest {
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
+        commandeDo.setCommandeProduitDoSet(null);
 
         final CommandeDo commandeDo2 = new CommandeDo();
         commandeDo2.setId(23);
@@ -79,9 +88,9 @@ class CommandeMapperTest {
         commandeDo2.setDate(date2);
         commandeDo2.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
+        commandeDo2.setCommandeProduitDoSet(null);
 
         assertEquals(2, CommandeMapper.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
-
     }
 
 }

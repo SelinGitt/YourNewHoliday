@@ -3,20 +3,27 @@
  */
 package presentation.commande.dto;
 
+import java.io.Serializable;
+
 /**
  * Classe représentant le Dto de la liste des produits d'une commande
  *
  * @author Mirailov
  */
-public class CommandeProduitDto {
+public class CommandeProduitDto implements Serializable {
 
-    private String           idListeCommande;
+    /**
+     * Générer Automatiquement pour la sérialisation
+     */
+    private static final long serialVersionUID = -369258075215287777L;
 
-    private ProduitAcheteDto produitAcheteDto;
+    private String            idListeCommande;
 
-    private String           quantite;
+    private ProduitAcheteDto  produitAcheteDto;
 
-    private String           prixTotal;
+    private String            quantite;
+
+    private String            prixTotal;
 
     /**
      * Getter for idListeCommande

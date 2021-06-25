@@ -50,7 +50,14 @@ class CommandeProduitMapperTest {
         assertEquals("300,00", produitAcheteDto.getPrixUnitaire());
         assertEquals("135699", produitAcheteDto.getReference());
         assertEquals("600,00", commandeProduitDto.getPrixTotal());
+    }
 
+    /**
+     * Test method for
+     * {@link service.commande.CommandeProduitMapper#mapperToDto(persistance.commande.entity.CommandeProduitDo)}.
+     */
+    @Test
+    void testMapperToDtoWithDoNull() {
         assertNull(CommandeProduitMapper.mapperToDto(null));
     }
 

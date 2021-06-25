@@ -162,11 +162,10 @@ public class CommandeDo {
     /**
      * Setter for quantiteTotale
      * 
-     * @param quaniteTotale the quantiteTotale to set
+     * @param quantiteTotale the quantiteTotale to set
      */
-    public void setQuantiteTotale(final Integer quaniteTotale) {
-        this.quantiteTotale = quaniteTotale;
-
+    public void setQuantiteTotale(final Integer quantiteTotale) {
+        this.quantiteTotale = quantiteTotale;
     }
 
 }
