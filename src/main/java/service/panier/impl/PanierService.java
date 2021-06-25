@@ -15,6 +15,7 @@ import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe représentant l'interface métier {@link IPanierService}
@@ -39,7 +40,7 @@ public class PanierService implements IPanierService {
         final Map<ProduitDto, LigneCommandeProduit> mapPanier = panier.getMapPanier();
         // On récupère la ligne de commande
         LigneCommandeProduit ligneCommande = mapPanier.get(produitAjout);
-        // si le produit n'était pas dans le panier, 
+        // si le produit n'était pas dans le panier 
         // le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
         if (ligneCommande == null) {
             // on l'ajoute si la quantité n'est pas nulle ou négative
@@ -48,6 +49,12 @@ public class PanierService implements IPanierService {
                 ligneCommande = new LigneCommandeProduit();
                 // on ajoute la quantité
                 ligneCommande.setQuantite(quantite);
+                // On récupère le prix unitaire               
+                final Double prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+                // On calcule le prix
+                final Double prix = prixUnitaire * quantite;
+                // on ajoute le prix formaté à la ligne de commande
+                ligneCommande.setPrix(DecimalFormatUtils.decimalFormatUtil(prix));
                 // on mets à jour la map
                 mapPanier.put(produitAjout, ligneCommande);
             }
@@ -63,6 +70,12 @@ public class PanierService implements IPanierService {
             } else {
                 // on modifie la ligne de commande
                 ligneCommande.setQuantite(quantiteProduit);
+                // On récupère le prix unitaire
+                final Double prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+                // On calcule le prix
+                final Double prix = prixUnitaire * quantiteProduit;
+                // on ajoute le prix formaté à la ligne de commande
+                ligneCommande.setPrix(DecimalFormatUtils.decimalFormatUtil(prix));
                 // on mets à jour la map
                 mapPanier.put(produitAjout, ligneCommande);
             }
