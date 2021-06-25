@@ -6,7 +6,7 @@
     </div>
     <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message></a>
     <div class="display-flex pdt04Flex-container flex-wrap-wrap">
-        <table>
+        <table class="pdt04Display2">
             <tr>
                 <th colspan="2" class="pdt04Hebergement">${consulterProduitDto.hebergement}</th>
             </tr>
@@ -27,7 +27,7 @@
                 <td>AJOUTER</td>
             </tr>
         </table>
-        <table>
+        <table class="pdt04Display2">
             <tr>
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
@@ -37,7 +37,7 @@
         </table>
         <div class="display-flex pdt04IconeServices">
             <div>
-                <table>
+                <table class="pdt04Display2">
                     <tr>
                         <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services"></spring:message></th>
                     </tr>

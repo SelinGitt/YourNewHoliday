@@ -69,16 +69,22 @@ th.pdt01 {
 /* PDT04 */
 .pdt04Flex-container {
 	text-align: left;
-	width: auto;
+	width: 100%;
 	height: auto;
 	margin: 0.625em;
 	font-size: 1.125em;
 	justify-content: flex-start;
-	min-width: 50%;
 	flex-wrap: wrap;
+	align-items: baseline
 }
 
 .pdt04Display{
+	display: flex;
+	width: 50%;
+	justify-content: space-between;
+}
+
+.pdt04Display2{
 	display: flex;
 	min-width: 50%;
 	justify-content: space-between;
