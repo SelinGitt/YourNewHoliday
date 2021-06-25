@@ -19,61 +19,45 @@
 }
 
 /*MLG*/
-.mlg-titre {
-	color: #5cbaef;
-	/* marge du titre */
-	margin-bottom: 3.125em;
-	margin-top: 4.688em;
-}
-
-.mlg-container {
-	/* marge du contenu de MLG */
-	margin-left: 10%;
-	/* taille du container */
-	width: 90%;
-	overflow-y: scroll;
-	height: 100%;
-}
-
-.mlg-container-boutons {
+.mlg-boutons {
 	width: 100%;
 	position: relative;
 	display: inline-block;
 	height: 2 em;
 }
 
-.mlg-container-bouton {
+.mlg-bouton {
 	width: 49%;
 	display: inline-block;
 	font-size: 1.2em;
 	font-weight: bold;
 	text-align: center;
-	min-width: 80px;
-	border: 1px solid gray;
+	min-width: 5em;
+	border: 0.063em solid gray;
 	border-top-left-radius: 0.375em;
 	border-top-right-radius: 0.375em;
 	text-align: center;
 }
 
-#CGV-button {
+.CGV-button {
 	background: #F0F0F0;
 }
 
-#CGU-button {
+.CGU-button {
 	background: #615b63;
 }
 
-.mlg-container-file {
+.mlg-file {
 	background: #F0F0F0;
 	width: 97.3%;
-	border: 1px solid gray;
+	border: 0.063em solid gray;
 	padding: 0.5em 0.5em 0.5em 0.5em;
 }
 
-#CGV-file {
+.CGV-file {
 	display: block;
 }
 
-#CGU-file {
+.CGU-file {
 	display: none;
 }

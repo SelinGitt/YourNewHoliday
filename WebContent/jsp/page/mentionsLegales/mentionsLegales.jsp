@@ -1,29 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%-- div container --%>
-<div class="mlg-container">
+<div class="body">
     <%-- titre --%>
-    <h1 class="mlg-titre">
+    <h1>
         <spring:message code="mlg.titre" />
     </h1>
 
-    <div class="mlg-container-boutons">
-        <div id="CGV-button" class="mlg-container-bouton" onclick="selectMLG(1)">
+    <div class="mlg-boutons">
+        <div class="mlg-bouton CGV-button" onclick="selectMLG(1)">
             <p>
                 <spring:message code="mlg.CGV" />
             </p>
         </div>
-        <div id="CGU-button" class="mlg-container-bouton" onclick="selectMLG(2)">
+        <div class="mlg-bouton CGU-button" onclick="selectMLG(2)">
             <p>
                 <spring:message code="mlg.CGU" />
             </p>
         </div>
     </div>
-    <div id="CGV-file" class="mlg-container-file">
+    <div class="mlg-file CGV-file">
         <p>${fichierCGV}</p>
     </div>
-    <div id="CGU-file" class="mlg-container-file">
+    <div class="mlg-file CGU-file">
         <p>${fichierCGU}</p>
     </div>
 
