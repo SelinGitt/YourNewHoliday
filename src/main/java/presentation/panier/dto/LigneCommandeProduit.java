@@ -3,15 +3,21 @@
  */
 package presentation.panier.dto;
 
+import java.io.Serializable;
+
 /**
  * Class represents ProduitLigneCommande
  *
  * @author Steve
  */
-public class LigneCommandeProduit {
+public class LigneCommandeProduit implements Serializable {
 
-    private Integer quantite;
-    private String  prix;
+    /**
+     * Serial Version UID généré automatiquement
+     */
+    private static final long serialVersionUID = -3358530512736185067L;
+    private Integer           quantite;
+    private String            prix;
 
     /**
      * Getter for quantite
