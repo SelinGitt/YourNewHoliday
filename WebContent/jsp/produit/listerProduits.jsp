@@ -5,7 +5,7 @@
 <div class="conteneur-ascenseur">
     <div>
         <c:if test="${not empty deletionSuccess}">
-            <span class="errorblock"><spring:message code="${deletionSuccess}" /></span>
+            <span><spring:message code="${deletionSuccess}" /></span>
         </c:if>
     </div>
 
