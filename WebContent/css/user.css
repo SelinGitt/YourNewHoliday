@@ -24,9 +24,19 @@
 	width: 100%;
 }
 
-.usr01searchMenu .usr01AddUser {
+.usr01AddUser {
 	margin-left: auto;
 }
+
+.usr01filterBar {
+	width: 15%;
+	margin-left: 1em;
+}
+
+.usr01filterBar select {
+	width: 70%;
+}
+
 /* correctif : utiliser des em au lieu des px */
 #listeUser {
 	border-collapse: collapse;
