@@ -63,8 +63,6 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (16, 'listerPanierAdresses.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (17, 'mentionsLegales.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (18, 'displayImage.do');
 
--- à supprimer en même temps que utilisateurConnecteDto
-INSERT INTO `droit` (`idDroit`, `url`) VALUES (42, 'user_session.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -161,4 +159,3 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (33, 17, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
-
