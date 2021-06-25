@@ -1,120 +1,65 @@
 @charset "UTF-8";
 /* FEATURE TEAM PRODUIT */
+/* PDT Commun */
+.pdtSearchBarInside {
+	outline: none;
+	border-radius: 1.875em;
+	border: 0.125em solid #808080;
+	border-radius: 1.875em;
+}
 
-/* correctif : le nom des classes spécifique doit commencer par le nom de la FT team */
+.pdtSearchBarOk {
+	cursor: pointer;
+}
 
 /* PDT00 */
-h1.title {
-	text-align: center;
-	color: #66C5EB;
-}
-/* correctif : utiliser des em au lieu des px */
-.container {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	padding: 20px;
-	border: 1px solid #ff0000;
-}
-/* correctif : utiliser des em au lieu des px */
-.containerVoyage {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: inline-flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin: 10px;
+.pdt00ContainerVoyage {
+	margin: 0.625em;
 	max-width: 30%;
 }
 
-.price {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
+.pdt00Price {
 	flex: 2 1 auto;
-	justify-content: flex-end;
 	padding: 0;
 }
 
-.img {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	justify-content: center;
+.pdt00Img {
 	padding: 0;
 	max-width: 100%;
 }
-/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-td.name {
-	display: flex;
-}
-/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-.searchBar {
-	display: flex;
-	justify-content: flex-end;
-	align-content: flex-end;
-	align-items: flex-end;
-}
-/* correctif : utiliser des em au lieu des px */
-.searchBarInside {
-	outline: none;
-	border-radius: 30px;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border: 2px solid grey;
-	border-radius: 30px;
-}
 
-.searchBarOk {
-	cursor: pointer;
-}
-/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-tr.lineRow {
-	display: flex;
-}
-
-td.description {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
+td.pdt00Description {
 	max-width: 75%
-}
-/* correctif : utiliser des em au lieu des px */
-.form-group {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 20px;
 }
 
 /* PDT01 */
-/* correctif : utiliser des em au lieu des px */
-.listeProduit {
+.pdtListeProduit {
 	border-collapse: collapse;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border: 1px solid black;
+	border: 0.063em solid #000000;
 	overflow-y: scroll;
 	width: 100%;
 }
-/* correctif : utiliser des em au lieu des px */
-.thPDT01 {
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border-bottom: 1px solid black;
-	padding: 7px 0;
+
+th.pdt01 {
+	border-bottom: 0.063em solid #000000;
+	padding: 0.438em 0;
 }
-/* correctif : utiliser des em au lieu des px */
-.bodyPDT01 {
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border-bottom: 1px solid black;
+
+.pdt01Body {
+	border-bottom: 0.063em solid #000000;
 	text-align: center;
 	font-weight: bold;
-	padding: 9px 0;
+	padding: 0.563em 0;
 }
-/* correctif : utiliser des em au lieu des px */
-.imagePDT01 {
-	width: 40px;
-	height: 40px;
+
+.pdt01Image {
+	width: 2.5em;
+	height: 2.5em;
 }
-/* correctif : utiliser des em au lieu des px */
-.iconePDT01 {
-	width: 90px;
-	height: 60px;
+
+.pdt01Icone {
+	width: 5.625em;
+	height: 3.75em;
 }
 
 /* PDT02 */
