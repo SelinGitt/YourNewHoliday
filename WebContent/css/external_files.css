@@ -26,6 +26,11 @@
 	height: 2 em;
 }
 
+.scroll {
+	overflow-y: scroll;
+	height: 100%;
+}
+
 .mlg-bouton {
 	width: 49%;
 	display: inline-block;
@@ -49,7 +54,7 @@
 
 .mlg-file {
 	background: #F0F0F0;
-	width: 97.3%;
+	width: 97.25%;
 	border: 0.063em solid gray;
 	padding: 0.5em 0.5em 0.5em 0.5em;
 }
