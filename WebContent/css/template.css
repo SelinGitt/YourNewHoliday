@@ -9,13 +9,13 @@ header, footer {
 }
 
 /* HEADER */
-#header {
+.header-global {
 	width: 100%;
 	height: 8vh;
 	display: flex;
 }
 
-#headerLogo {
+.headerLogo {
 	width: 4.375em;
 }
 
@@ -29,20 +29,20 @@ header, footer {
 	height: auto;
 }
 
-#headerNom {
+.headerNom {
 	width: 35.5%;
 }
 
-#headerStatut {
+.headerStatut {
 	width: 35%;
 	top: 20%;
 }
 
-#headerConnexion {
+.headerConnexion {
 	width: 15%;
 }
 
-#headerPanier {
+.headerPanier {
 	width: 20%;
 }
 
@@ -92,14 +92,14 @@ aside {
 }
 
 .link-container.underline {
-	border-bottom: 0.188em solid #000;
+	border-bottom: 0.188em solid #000000;
 	padding-bottom: 1.25em;
 }
 
 .link-container.admin {
 	padding: 0.5em 0;
-	border-bottom: 0.188em solid #000;
-	border-top: 0.188em solid #000;
+	border-bottom: 0.188em solid #000000;
+	border-top: 0.188em solid #000000;
 }
 
 .sidebar p {
@@ -123,7 +123,7 @@ aside {
 
 .link-container a {
 	display: block;
-	color: #000;
+	color: #000000;
 	text-decoration: none;
 }
 
@@ -144,7 +144,7 @@ aside {
 	height: auto;
 }
 
-#footer-container {
+.footer-container {
 	/* flex contenair*/
 	display: flex;
 	/* gestion des items de façon horizontale */

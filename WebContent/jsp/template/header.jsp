@@ -1,20 +1,20 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div id="header">
+<div class="header-global">
     <%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
-    <div id="headerLogo" class="headerCell">
+    <div class="headerCell headerLogo">
         <a href="/Projet_YNH/listerProduits.do"> <img src="img/template/header/logoYNH.png" class="logoHeader-ynh"
             alt="logo">
         </a>
     </div>
     <%--     suivi du nom de l'agence de voyage --%>
-    <div id="headerNom" class="headerCell">
+    <div class="headerCell headerNom">
         <h2>
             <spring:message code="header.nom" />
         </h2>
     </div>
     <%--     de l'identité de l'utilisateur s'il est connecté --%>
-    <div id="headerStatut" class="headerCell">
+    <div class="headerCell headerStatut">
         <div>
             <strong><spring:message code="header.id" /></strong>${utilisateur.prenom } ${utilisateur.nom }
         </div>
@@ -25,7 +25,7 @@
     </div>
 
     <%--     d'une icône cliquable pour se connecter ou se déconnecter suivant son statut --%>
-    <div id="headerConnexion" class="headerCell">
+    <div class="headerCell headerConnexion">
         <div class="headerSousCell">
 
             <c:if test="${!empty sessionScope.utilisateur}">
@@ -59,7 +59,7 @@
 
     <c:if test="${!empty sessionScope.utilisateur}">
 
-        <div id="headerPanier" class="headerCell">
+        <div class="headerCell headerPanier">
             <div class="headerSousCell">
                 <c:if test="${sessionScope.panierDto.nombreDeReferences < 1}">
                     <a href=""> <img src="img/template/header/panierVide.png" class="logoHeader"
@@ -83,7 +83,7 @@
     </c:if>
 
     <c:if test="${empty sessionScope.utilisateur}">
-        <div id="headerPanier" class="headerCell">
+        <div class="headerCell headerPanier">
             <div class="headerSousCell">
                 <a href=""> <img src="img/template/header/creerCompte.png" class="logoHeader"
                     alt="icône créer compte">
