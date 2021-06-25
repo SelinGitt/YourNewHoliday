@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import presentation.panier.dto.LigneCommandeProduit;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
@@ -35,8 +36,11 @@ public class PanierService implements IPanierService {
         if (produitAjout == null) {
             return panier;
         }
-        final Map<ProduitDto, Integer> mapPanier = panier.getMapPanier();
-        Integer quantiteProduit = mapPanier.get(produitAjout);
+        final Map<ProduitDto, LigneCommandeProduit> mapPanier = panier.getMapPanier();
+        // On récupère la ligne de commande
+        final LigneCommandeProduit ligneCommande = mapPanier.get(produitAjout);
+        // On récupère la quantité
+        Integer quantiteProduit = ligneCommande.getQuantite();
         // si le produit était déjà dans le panier, on met à jour sa quantité.
         if (quantiteProduit == null) {
             quantiteProduit = quantite;
@@ -50,11 +54,13 @@ public class PanierService implements IPanierService {
             mapPanier.remove(produitAjout);
             // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
         } else {
-            mapPanier.put(produitAjout, quantiteProduit);
+            // on modifie la ligne de commande
+            ligneCommande.setQuantite(quantiteProduit);
+            // on mets à jour la map
+            mapPanier.put(produitAjout, ligneCommande);
         }
         // on met à jour le nombre de référence dans le panier.
         panier.setNombreDeReferences(panier.getMapPanier().size());
         return panier;
     }
-
 }
