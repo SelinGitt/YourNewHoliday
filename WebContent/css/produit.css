@@ -69,6 +69,7 @@ th.pdt01 {
 	display: grid;
 	grid-gap: 0.3em;
 	padding: 0.3em;
+	width: 90%;
 }
 
 .pdt03Grid-item {
@@ -104,10 +105,6 @@ th.pdt01 {
 
 .pdt03FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
-}
-
-.pdt03Grid-container {
-	width: 100%;
 }
 
 .pdt03FormPDT03Radio {
