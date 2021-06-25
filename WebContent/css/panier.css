@@ -111,18 +111,18 @@
 
 .panier-container-Adresse {
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
 	flex-direction: row;
-	width: 78%;
+	width: 95%;
 }
 
 .panier-block-fieldSet {
-	width: 50%;
+	width: 100%;
 }
 
 .panier-margin-left-3em {
-	margin-left: 3em;
+	margin-left: 1em;
+	margin-right: 1em;
 }
 
 .panier-formulaire {
@@ -147,5 +147,9 @@
 }
 
 .panier-formulaire-textarea {
+	width: 100%;
+}
+
+.panier-100 {
 	width: 100%;
 }
