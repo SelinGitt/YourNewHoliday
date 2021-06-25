@@ -53,8 +53,6 @@ public class ListerUtilisateurController {
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         modelAndView.getModelMap().addAttribute("searchFilter", searchFilter);
 
-        System.out.println(searchFilter);
-
         Integer idRole = null;
 
         // Si on fait un filtre on parse en Integer
