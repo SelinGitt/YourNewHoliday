@@ -12,7 +12,7 @@
 
         <%--  fieldset mon panier : tableau et bouton vider le panier --%>
         <fieldset class="panier-left overflow-auto">
-        
+
             <legend>
                 <spring:message code="pan00.titre.fieldset.panier" />
             </legend>
@@ -76,8 +76,8 @@
                                     <button type="button">-</button>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite text-align-center" type="text"
-                                        id="panier-quantite" name="panier-quantite" value="${entry.value}" size="1">
+                                    <input class="panier-quantite text-align-center" type="text" id="panier-quantite"
+                                        name="panier-quantite" value="${entry.value}" size="1">
 
                                     <%--  bouton + --%>
                                     <button type="button">+</button>

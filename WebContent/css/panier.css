@@ -6,7 +6,6 @@
 /* PAN00 */
 /* CSS factorisé */
 
-
 /* bordures */
 .panier-bordure-1px {
 	border: 1px solid black;
@@ -87,6 +86,15 @@
 
 .panier-supprimer {
 	padding-top: 3em;
+}
+
+.panier-vide-ligne {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.panier-flex-column {
+	flex-direction: column;
 }
 
 /* PAN08 */
