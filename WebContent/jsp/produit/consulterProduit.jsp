@@ -42,12 +42,9 @@
                         <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services"></spring:message></th>
                     </tr>
                     <tr class="pdt04IconeServices">
-                        <td><em class="fa fa-glass"></em>
-                        <td>
-                        <td><em class="fa fa-bath"></em>
-                        <td>
-                        <td><em class="fa fa-paw"></em>
-                        <td>
+                        <td><em class="fa fa-glass"></em></td>
+                        <td><em class="fa fa-bath"></em></td>
+                        <td><em class="fa fa-paw"></em></td>
                         <td><em class="fa fa-gamepad"></em></td>
                         <td><em class="fa fa-wifi"></em></td>
                         <td><em class="fa fa-cutlery"></em></td>
