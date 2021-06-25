@@ -120,83 +120,80 @@ td.description {
 /* PDT02 */
 
 /* PDT03 */
-.pdtGrid-container {
+.pdt03Grid-container {
 	display: grid;
 	grid-gap: 0.4em;
 	padding: 0.4em;
 }
 
-.pdtGrid-item {
+.pdt03Grid-item {
 	text-align: center;
 	padding: 0.625em;
 	font-size: 1.125em;
 }
 
-.pdtFormlaireCreerProduit {
+.pdt03FormlaireCreerProduit {
 	grid-column: 1/span 2;
 	grid-row: 1/span 2;
 }
 
-.pdtImageProduit {
+.pdt03ImageProduit {
 	grid-column: 3;
 	grid-row: 1/span 1;
 }
 
-.pdtLogoService {
+.pdt03LogoService {
 	grid-column: 3;
 	grid-row: 2/span 1;
 }
 
-.pdtFormulaireProduit input {
+.pdt03FormulaireProduit input {
 	width: 100%
 }
 
-.pdtFormulaireProduit {
+.pdt03FormulaireProduit {
 	table-layout: auto;
 	text-align: left;
 	line-height: 3.75em;
 }
 
-.pdtFormulaireProduit td {
+.pdt03FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
 }
 
-.pdtGrid-container form table tr td input {
+.pdt03Grid-container form table tr td input {
 	width: 100%;
 }
 
-.pdtFormPDT03Radio {
-	display: flex;
+.pdt03FormPDT03Radio {
 	justify-content: space-around;
 }
 
-.pdtFormPDT03Radio div {
-	display: flex;
+.pdt03FormPDT03Radio div {
 	align-items: center;
 }
 
-.pdtFormPDT03Radio div input {
+.pdt03FormPDT03Radio div input {
 	margin-right: 0.938em;
 	width: auto;
 }
 
-.pdtTextAreaPDT03 textarea {
+.pdt03TextAreaPDT03 textarea {
 	resize: vertical;
 	min-height: 3.75em;
 }
 
-.pdtButtonsPdt03 {
+.pdt03ButtonsPdt03 {
 	width: 100%;
-	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 
-.pdtListeService {
+.pdt03ListeService {
 	width: 100%;
 }
 
-.pdtImageCreationProduit {
+.pdt03ImageCreationProduit {
 	width: 100%;
 }
 /* PDT04 */

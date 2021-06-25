@@ -9,10 +9,10 @@
     </h1>
     <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
-        <div class="pdtGrid-container">
-            <div class="pdtGrid-item pdtFormlaireCreerProduit">
+        <div class="pdt03Grid-container">
+            <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
 
-                <table class="pdtFormulaireProduit" aria-label="Formulaire de création d'un produit">
+                <table class="pdt03FormulaireProduit" aria-label="Formulaire de création d'un produit">
                     <tr>
                         <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage"
                                 value="D:/Test" /></th>
@@ -40,13 +40,12 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.miseEnVente" /></td>
-                        <td class="pdtFormPDT03Radio">
-                            <div>
+                        <td class="pdt03FormPDT03Radio display-flex">
+                            <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="true" />
                                 <spring:message code="form.pdt03.oui" />
                             </div>
-
-                            <div>
+                            <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="false" />
                                 <spring:message code="form.pdt03.non" />
                             </div>
@@ -55,11 +54,11 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
-                        <td class=pdtTextAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td class=pdt03TextAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="pdtButtonsPdt03">
+                        <td class="pdt03ButtonsPdt03 display-flex">
                             <div>
                                 <form:button value="submit" class="background-color-green">
                                     <spring:message code="form.pdt03.valider" />
@@ -76,13 +75,13 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdtGrid-item pdtImageProduit">
-                <table class="pdtImageCreationProduit" aria-label="ajout image produit">
+            <div class="pdt03Grid-item pdt03ImageProduit">
+                <table class="pdt03ImageCreationProduit" aria-label="ajout image produit">
                     <tr>
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="Image du produit à ajouter" class="pdtForm-imageProduit" /></td>
+                        <td><img src="" alt="Image du produit à ajouter" class="pdt03Form-imageProduit" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
@@ -90,9 +89,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdtGrid-item pdtLogoService">
+            <div class="pdt03Grid-item pdt03LogoService">
                 <form:hidden path="services" value="4" />
-                <table class="pdtListeService" aria-label="liste des services disponibles">
+                <table class="pdt03ListeService" aria-label="liste des services disponibles">
                     <tr>
                         <th colspan="3"><spring:message code="form.pdt03.service" /></th>
                     </tr>
