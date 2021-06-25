@@ -34,7 +34,8 @@
                     </div>
                     <div class="panier-formulaire-div">
                         <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                        <textarea class="panier-formulaire-textarea" id="adresse" name="adresse" rows="12"></textarea>
+                        <textarea class="panier-formulaire-textarea" id="adresse"
+                         name="adresse" rows="12"></textarea>
                     </div>
                 </div>
             </fieldset>
