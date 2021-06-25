@@ -28,7 +28,7 @@ public class CommandeMapper {
         if (commandeDo == null) {
             return null;
         }
-        final CommandeDto commandeDto = new CommandeDto();
+        final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
         commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
