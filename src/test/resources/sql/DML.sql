@@ -63,7 +63,6 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (16, 'listerPanierAdresses.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (17, 'mentionsLegales.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (18, 'displayImage.do');
 
-
 --
 -- Déchargement des données de la table `role`
 --
