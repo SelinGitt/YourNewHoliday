@@ -5,10 +5,10 @@ package service.commande;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -47,33 +47,7 @@ class ProduitAcheteMapperTest {
         assertEquals("200,00", produitDto.getPrixUnitaire());
         assertEquals("C:/temp/img/grece.jpg", produitDto.getCheminDeLImage());
 
-    }
-
-    /**
-     * Test method for {@link service.commande.ProduitAcheteMapper#mapperListDoToDto(java.util.List)}.
-     */
-    @Test
-    void testMapperListDoToDto() {
-        final ProduitAcheteDo produitDo1 = new ProduitAcheteDo();
-        produitDo1.setIdProduit(10);
-        produitDo1.setReference("125699");
-        produitDo1.setNom("Voyage en grèce");
-        produitDo1.setDescription("desciption10");
-        produitDo1.setDestination("Grèce");
-        produitDo1.setPrixUnitaire(new BigDecimal(200.00).setScale(2, RoundingMode.FLOOR));
-        produitDo1.setCheminImage("C:/temp/img/grece.jpg");
-
-        final ProduitAcheteDo produitDo2 = new ProduitAcheteDo();
-
-        produitDo2.setIdProduit(11);
-        produitDo2.setReference("135699");
-        produitDo2.setNom("Voyage au portugal");
-        produitDo2.setDescription("desciption11");
-        produitDo2.setDestination("Portugal");
-        produitDo2.setPrixUnitaire(new BigDecimal(250.00).setScale(2, RoundingMode.FLOOR));
-        produitDo2.setCheminImage("C:/temp/img/portugal.jpg");
-
-        assertEquals(2, ProduitAcheteMapper.mapperListDoToDto(Arrays.asList(produitDo1, produitDo2)).size());
+        assertNull(ProduitAcheteMapper.mapperToDto(null));
 
     }
 

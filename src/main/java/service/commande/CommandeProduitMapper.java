@@ -35,7 +35,7 @@ public class CommandeProduitMapper {
         if (commandeProduitDo == null) {
             return null;
         }
-        final CommandeProduitDto commandeProduitDto = new CommandeProduitDto();
+        final var commandeProduitDto = new CommandeProduitDto();
         commandeProduitDto.setIdListeCommande(String.valueOf(commandeProduitDo.getIdCommandeProduit()));
         commandeProduitDto.setProduitAcheteDto(ProduitAcheteMapper.mapperToDto(commandeProduitDo.getProduitAcheteDo()));
         commandeProduitDto.setQuantite(String.valueOf(commandeProduitDo.getQuantite()));

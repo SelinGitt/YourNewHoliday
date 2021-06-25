@@ -5,9 +5,11 @@ package service.commande;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -48,6 +50,8 @@ class CommandeProduitMapperTest {
         assertEquals("300,00", produitAcheteDto.getPrixUnitaire());
         assertEquals("135699", produitAcheteDto.getReference());
         assertEquals("600,00", commandeProduitDto.getPrixTotal());
+
+        assertNull(CommandeProduitMapper.mapperToDto(null));
     }
 
     private ProduitAcheteDo initProduitAcheterDo() {
@@ -97,6 +101,8 @@ class CommandeProduitMapperTest {
         final List<CommandeProduitDto> commandeProduitDtoList = CommandeProduitMapper.mapperSetDoToListDto(commandeProduitDoSet);
         assertNotNull(commandeProduitDtoList);
         assertEquals(1, commandeProduitDtoList.size());
+
+        assertEquals(0, CommandeProduitMapper.mapperSetDoToListDto(Collections.emptySet()).size());
     }
 
 }

@@ -10,13 +10,13 @@
         </button>
     </a>
 </div>
-<div class="commande-grille commande-container commande-box-sizing commande-overflow-y">
-    <div class="commande-produits commande-max-height commande-box-sizing commande-overflow-y">
-        <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing commande-overflow-y">
+<div class="commande-grille commande-container commande-box-sizing commande-overflow">
+    <div class="commande-produits commande-max-height commande-box-sizing commande-overflow">
+        <fieldset class="commande-bordure commande-fieldset commande-max-height commande-box-sizing commande-overflow">
             <legend class="commande-fieldset-legend">
                 <spring:message code="detailCommande.stitle.text"></spring:message>
             </legend>
-            <div class="commande-grille commande-max-height commande-box-sizing commande-overflow-y">
+            <div class="commande-grille commande-max-height commande-box-sizing commande-overflow">
                 <c:forEach items="${commande.listCommandeProduitDto}" var="commandeProduit">
                     <div class="commande-bordure commande-ligne commande-box-sizing">
                         <div

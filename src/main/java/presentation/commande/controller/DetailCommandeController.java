@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.commande.dto.CommandeDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.commande.ICommandeService;
 
@@ -45,7 +44,7 @@ public class DetailCommandeController {
         final var modelAndView = new ModelAndView();
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         this.logger.debug("detailler la commande {} de l'utilisateur : {} ", reference, utilisateurConnecte.getIdUtilisateur());
-        final CommandeDto commandeDto = this.iCommandeService.chercherCommandeParReference(reference);
+        final var commandeDto = this.iCommandeService.chercherCommandeParReference(reference);
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
         return modelAndView;

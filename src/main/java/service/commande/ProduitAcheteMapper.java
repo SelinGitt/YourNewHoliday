@@ -3,9 +3,6 @@
  */
 package service.commande;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.ProduitAcheteDto;
 import service.util.DecimalFormatUtils;
@@ -31,7 +28,7 @@ public class ProduitAcheteMapper {
         if (produitAcheteDo == null) {
             return null;
         }
-        final ProduitAcheteDto produitAcheteDto = new ProduitAcheteDto();
+        final var produitAcheteDto = new ProduitAcheteDto();
         produitAcheteDto.setIdProduit(String.valueOf(produitAcheteDo.getIdProduit()));
         produitAcheteDto.setIdDeLOriginal(String.valueOf(produitAcheteDo.getIdDeLOriginal()));
         produitAcheteDto.setReference(produitAcheteDo.getReference());
@@ -42,17 +39,6 @@ public class ProduitAcheteMapper {
         produitAcheteDto.setCheminDeLImage(produitAcheteDo.getCheminImage());
         return produitAcheteDto;
 
-    }
-    //TODO pas besoin 
-
-    /**
-     * Permet de mapper une liste de ProduitAchete
-     *
-     * @param  listeProduitAcheteDo la liste à mapper
-     * @return                      la liste mappée
-     */
-    public static List<ProduitAcheteDto> mapperListDoToDto(final List<ProduitAcheteDo> listeProduitAcheteDo) {
-        return listeProduitAcheteDo.stream().map(ProduitAcheteMapper::mapperToDto).collect(Collectors.toList());
     }
 
 }

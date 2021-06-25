@@ -283,7 +283,7 @@ div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTot
 }
 
 /* l'ascensseur à droite vertical */
-.commande-overflow-y {
+.commande-overflow {
 	overflow-y: auto;
 }
 
