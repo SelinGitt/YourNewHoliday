@@ -108,7 +108,13 @@ class CommandeProduitMapperTest {
         final List<CommandeProduitDto> commandeProduitDtoList = CommandeProduitMapper.mapperSetDoToListDto(commandeProduitDoSet);
         assertNotNull(commandeProduitDtoList);
         assertEquals(1, commandeProduitDtoList.size());
+    }
 
+    /**
+     * Test method for {@link service.commande.CommandeProduitMapper#mapperSetDoToListDto(java.util.Set)}.
+     */
+    @Test
+    void testMapperSetDoToListDtoWithEmptySet() {
         assertEquals(0, CommandeProduitMapper.mapperSetDoToListDto(Collections.emptySet()).size());
     }
 
