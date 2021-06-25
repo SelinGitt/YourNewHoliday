@@ -6,13 +6,18 @@
 /* PAN00 */
 
 /* PAN08 */
-.retour {
+.panier-retour {
 	font-size: 1.5em;
 	color: #000000;
 	text-decoration: none;
 }
 
-.containerAdressePan08 {
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
+.panier-container-Adresse {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -20,16 +25,15 @@
 	width: 78%;
 }
 
-.fieldSetPan08 {
-	width: 36.688em;
-	height: 30em;
+.panier-block-fieldSet {
+	width: 50%;
 }
 
-.espacePan08 {
+.panier-margin-left-3em {
 	margin-left: 3em;
 }
 
-.formPan08 {
+.panier-formulaire {
 	margin: 0.5em;
 	width: 90%;
 	display: flex;
@@ -38,18 +42,18 @@
 	flex-direction: column;
 }
 
-.formPan08 div {
+.panier-formulaire-div {
 	font-size: 1.5em;
 	margin-top: 1em;
 	display: flex;
 	flex-direction: column;
 }
 
-.formPan08 div input {
+.panier-formulaire-input {
 	height: 1.563em;
 	width: 100%;
 }
 
-.formPan08 div textarea {
+.panier-formulaire-textarea {
 	width: 100%;
 }

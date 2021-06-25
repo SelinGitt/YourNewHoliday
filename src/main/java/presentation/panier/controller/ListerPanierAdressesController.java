@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/listerPanierAdresses.do")
-public class listerPanierAdressesController {
+public class ListerPanierAdressesController {
 
     /**
      * Permet d'afficher la JSP listerPanierAdresses
@@ -22,7 +22,7 @@ public class listerPanierAdressesController {
      * @return : le nom de la JSP
      */
     @GetMapping
-    public String ListerAdresses() {
+    public String listerAdresses() {
 
         return "listerPanierAdresses";
     }
