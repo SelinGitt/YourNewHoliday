@@ -25,7 +25,7 @@
 
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
-                    <option value=""><spring:message code="usr01.filter." /></option>
+                    <option value="0"><spring:message code="usr01.filter." /></option>
                     <%-- Client --%>
                     <option value="1"><spring:message code="usr01.filter.1" /></option>
                     <%-- Visiteur --%>
