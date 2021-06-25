@@ -54,18 +54,11 @@ public interface IUtilisateurService {
     boolean deleteUtilisateurById(final Integer id, final Integer role);
 
     /**
-     * Permet de rechercher un utilisateur selon le rang
+     * Permet de rechercher un utilisater selon le nom et/ou le role
      *
-     * @param  rang Rang a rechercher
-     * @return      List des utilisateur avec le rang
+     * @param  nom    Nom a rechercher
+     * @param  idRole Role a rechercher
+     * @return        List d'UtilisateurDto
      */
-    List<UtilisateurDto> rechercherUtilisateurRang(final String rang);
-
-    /**
-     * Permet de rechercher un utilisateur selon le nom
-     *
-     * @param  nom Nom a rechercher
-     * @return     List des utilisateur avec le nom
-     */
-    List<UtilisateurDto> rechercherUtilisateur(final String nom);
+    List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole);
 }

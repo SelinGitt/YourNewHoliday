@@ -97,7 +97,7 @@ class UtilisateurDaoTest {
     }
 
     /**
-     * Test pour {@link persistance.commun.dao.IGenericDao#recherche(String, String)}
+     * Test pour {@link persistance.utilisateur.dao.IUtilisateurDao#recherche(String)}
      */
     @Test
     void testRecherche() {
@@ -118,5 +118,27 @@ class UtilisateurDaoTest {
         assertEquals(false, iUtilisateurDao.deleteUtilisateurById(2));
         //On supprime un utilisateur NON existant en BD
         assertEquals(false, iUtilisateurDao.deleteUtilisateurById(20));
+    }
+
+    /**
+     * Test pour {@link persistance.utilisateur.dao.IUtilisateurDao#rechercheRole(String)}
+     */
+    @Test
+    void testRechercheRole() {
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheRole(1);
+
+        Assertions.assertNotNull(utilisateurDos);
+        Assertions.assertEquals(4, utilisateurDos.size());
+    }
+
+    /**
+     * Test pour {@link persistance.utilisateur.dao.IUtilisateurDao#rechercheNomRole(String, String)}
+     */
+    @Test
+    void testRechercheNomRole() {
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheNomRole("Ma", 3);
+
+        Assertions.assertNotNull(utilisateurDos);
+        Assertions.assertEquals(2, utilisateurDos.size());
     }
 }

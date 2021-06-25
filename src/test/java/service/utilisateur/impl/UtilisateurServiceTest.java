@@ -152,13 +152,39 @@ class UtilisateurServiceTest {
     }
 
     /**
-     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateur(String)}
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateurNom(String)}
      */
     @Test
     void testRecherche() {
         Mockito.when(this.dao.recherche("Toto")).thenReturn(Collections.emptyList());
 
-        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto");
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", 0);
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(0, response.size());
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateurRole(String)}
+     */
+    @Test
+    void testRechercheRole() {
+        Mockito.when(this.dao.rechercheRole(1)).thenReturn(Collections.emptyList());
+
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("", 1);
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(0, response.size());
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#rechercherUtilisateurNomRole(String, String)}
+     */
+    @Test
+    void testRechercheNomRole() {
+        Mockito.when(this.dao.rechercheNomRole("Toto", 1)).thenReturn(Collections.emptyList());
+
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", 1);
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
