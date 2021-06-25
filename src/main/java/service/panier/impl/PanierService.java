@@ -50,7 +50,7 @@ public class PanierService implements IPanierService {
                 // on ajoute la quantité
                 ligneCommande.setQuantite(quantite);
                 // On récupère le prix unitaire               
-                final Double prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+                final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
                 // On calcule le prix
                 final Double prix = prixUnitaire * quantite;
                 // on ajoute le prix formaté à la ligne de commande
@@ -71,7 +71,7 @@ public class PanierService implements IPanierService {
                 // on modifie la ligne de commande
                 ligneCommande.setQuantite(quantiteProduit);
                 // On récupère le prix unitaire
-                final Double prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+                final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
                 // On calcule le prix
                 final Double prix = prixUnitaire * quantiteProduit;
                 // on ajoute le prix formaté à la ligne de commande
