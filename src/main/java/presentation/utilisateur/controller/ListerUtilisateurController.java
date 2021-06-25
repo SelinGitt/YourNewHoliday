@@ -1,7 +1,5 @@
 package presentation.utilisateur.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -35,37 +32,32 @@ public class ListerUtilisateurController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerUtilisateur");
         modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.findAllUtilisateurs());
+        // Permet d'eviter une erreur js sur le premier chargement de la page
+        modelAndView.getModelMap().addAttribute("searchFilter", 0);
         return modelAndView;
     }
 
     /**
      * Permet d'effectuee une recherche
      * 
-     * @param  searchType  Le type de recherche, filtre, ou recherche avec input
-     * @param  searchInput La valeur de la recherche
-     * @return             ModelAndView avec le nom de la jsp et la liste des utilisateurs trie en attribut
+     * @param  searchInput  La valeur de la recherche
+     * @param  searchFilter La valeur du filtre applique
+     * @return              ModelAndView avec le nom de la jsp et la liste des utilisateurs trie en attribut
      */
     @PostMapping
-    public ModelAndView recherche(final @RequestParam(value = "searchType") String searchType,
-            final @RequestParam(value = "searchInput") String searchInput) {
+    public ModelAndView recherche(final @RequestParam(value = "searchInput") String searchInput,
+            final @RequestParam(value = "searchFilter") String searchFilter) {
+
         final var modelAndView = new ModelAndView("listerUtilisateur");
 
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
+        modelAndView.getModelMap().addAttribute("searchFilter", searchFilter);
 
-        if ("search".equals(searchType)) {
-            modelAndView.getModelMap().addAttribute("listeUtilisateur", this.rechercheInput(searchInput));
-        }
+        // Il ne sera jamais null car on l'initialise dans la methode listeUtilisateur
+        final var idRole = Integer.parseInt(searchFilter);
+
+        modelAndView.getModelMap().addAttribute("listeUtilisateur", this.iUtilisateurService.rechercherUtilisateur(searchInput, idRole));
 
         return modelAndView;
-    }
-
-    /**
-     * Permet de rechercher un utilisateur avec son nom
-     *
-     * @param  searchInput Le nom a rechercher
-     * @return             List d'UtilisateurDto
-     */
-    private List<UtilisateurDto> rechercheInput(final String searchInput) {
-        return this.iUtilisateurService.rechercherUtilisateur(searchInput);
     }
 }

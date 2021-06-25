@@ -74,7 +74,58 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public List<UtilisateurDto> rechercherUtilisateur(final String nom) {
+    public List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole) {
+        // Si nom empty on fait une recherche par filtre
+        if (nom.isEmpty()) {
+            if (idRole == 0) {
+                return this.findAllUtilisateurs();
+            }
+            return this.rechercherUtilisateurRole(idRole);
+        }
+
+        // Nom pas empty, donc recherche par nom ou nom + role
+        if (idRole == 0) {
+            return this.rechercherUtilisateurNom(nom);
+        }
+        return this.rechercherUtilisateurNomRole(nom, idRole);
+    }
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom
+     *
+     * @param  nom Nom a rechercher
+     * @return     List des utilisateur avec le nom
+     */
+    private List<UtilisateurDto> rechercherUtilisateurNom(final String nom) {
+        logger.debug("Recherche par nom : {}", nom);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.recherche(nom));
+    }
+
+    /**
+     * Permet de rechercher un utilisateur selon le role
+     *
+     * @param  idRole Role a rechercher
+     * @return        List des utilisateur avec le role
+     */
+    private List<UtilisateurDto> rechercherUtilisateurRole(final Integer idRole) {
+        logger.debug("Recherche par idRole");
+        if (idRole == null) {
+            logger.debug("idRole null");
+            return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
+        }
+        logger.debug("idRole : {}", idRole);
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheRole(idRole));
+    }
+
+    /**
+     * Permet de rechercher un utilisateur selon le nom et le role
+     * 
+     * @param  nom    Nom a rechercher
+     * @param  idRole Role a rechercher
+     * @return        List des utilisateur avec le nom et le role
+     */
+    private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer idRole) {
+        logger.debug("Recherche par nom et idRole; {} / {}", nom, idRole);
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, idRole));
     }
 }
