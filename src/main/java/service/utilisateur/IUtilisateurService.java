@@ -51,7 +51,7 @@ public interface IUtilisateurService {
      * @param  role le rôle de l'utilisateur à supprimer
      * @return      true si suppression OK, KO si suppression non autorisée (dernier admin)
      */
-    boolean deleteUtilisateurById(final Integer id, final String role);
+    boolean deleteUtilisateurById(final Integer id, final Integer role);
 
     /**
      * Permet de rechercher un utilisateur selon le rang

@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
@@ -32,6 +33,9 @@ class UtilisateurServiceTest {
 
     @Mock
     private IUtilisateurDao    dao;
+
+    @Mock
+    private ICommandeDao       commandeDao;
 
     @InjectMocks
     private UtilisateurService utilisateurService;
@@ -192,6 +196,21 @@ class UtilisateurServiceTest {
 
     @Test
     void testDeleteUtilisateurById() {
-        //TODO
+
+        //On retourne une Liste de 2 UtilisateursDto étant admins
+        Mockito.when(this.dao.rechercheNombreParRole(3)).thenReturn(2);
+
+        //Au moins un admin restant si suppression -> true 
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 3));
+
+        //On retire un admin de la liste, liste de taille 1
+        Mockito.when(this.dao.rechercheNombreParRole(3)).thenReturn(1);
+
+        //Dernier admin, suppression impossible -> false 
+        Assertions.assertFalse(this.utilisateurService.deleteUtilisateurById(2, 3));
+
+        //Même test mais en supprimant un id=1 (client) -> true
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
+
     }
 }

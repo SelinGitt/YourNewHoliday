@@ -44,4 +44,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return     List d'UtilisateurDo correspondant a la recherche
      */
     List<UtilisateurDo> recherche(final String nom);
+    
+    /**
+     * Permet de renvoyer le nombre d'utilisateur d'un rôle donnée en le passant en paramètre
+     *
+     * @param  rang : rang de l'utilisateur
+     * @return      : un int le nombre d'utilisateurs ayant ce rôle
+     */
+    int rechercheNombreParRole(final Integer rang);
 }

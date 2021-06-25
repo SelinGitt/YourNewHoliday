@@ -60,7 +60,7 @@ public class ConsulterUtilisateurController {
     private ModelAndView supprimerUtilisateur(final UtilisateurConnecteDto utilisateurConnecteDto,
             final RedirectAttributes redirectAttributes) {
         final Integer id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
-        final String role = utilisateurConnecteDto.getIdRole();
+        final Integer role = Integer.valueOf(utilisateurConnecteDto.getIdRole());
 
         final var modelAndView = new ModelAndView();
 

@@ -83,8 +83,8 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurById(final Integer id, final String role) {
-        if (1 == rechercherUtilisateurRang("3").size() && "3".equals(role)) {
+    public boolean deleteUtilisateurById(final Integer id, final Integer role) {
+        if (1 == this.iUtilisateurDao.rechercheNombreParRole(3) && (3 == role)) {
             return false;
         }
         iCommandeDao.updateCommandeDoUserDeletion(id);
