@@ -2,52 +2,52 @@
 /* FEATURE TEAM COMMANDE */
 
 /* CMD00 */
-.commandeCMD00 {
+.CMD_00-commande {
 	color: #66C5EB;
 	text-align: center;
 }
 
-h2.commandeCMD00 {
+h2.CMD_00-commande {
 	font-size: 2.55em;
 }
 
 /* sous titre */
-legend.commandeLegendCMD00 {
+legend.CMD_00-commandeLegend {
 	color: #6FA8DC;
 	font-size: 2em;
 }
 
 /* style pour une page sans commande */
-div.commandeVideCMD00, div.commandeCMD00GRille {
+div.CMD_00-commandeVide, div.CMD_00-commandeGrille {
 	text-align: center;
 }
 
 /* factorisation des css communs */
-fieldset.commandeFieldsetCMD00, div.commandeWrapperCMD00, div.commandeVideCMD00 {
+fieldset.CMD_00-commandeFieldset, div.CMD_00-commandeWrapper, div.CMD_00-commandeVide {
 	padding: 0.625em;
 }
 
 /* hauteur field set */
-fieldset.commandeFieldsetCMD00 {
+fieldset.CMD_00-commandeFieldset {
 	width: 90%;
 	height: 80%;
 }
 
 /* grille à l'intérieur du fieldset */
-div.commandeCMD00GRille {
+div.CMD_00-commandeGrille {
 	display: grid;
 	align-items: center;
 	width: 100%;
 	height: 100%;
 }
 
-div.commandeVideCMD00 {
+div.CMD_00-commandeVide {
 	margin: inherit;
 	font-size: 1.15em;
 }
 
 /* création de la grille */
-div.commandeLineCMD00 {
+div.CMD_00-commandeLine {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 0.625em;
@@ -55,22 +55,22 @@ div.commandeLineCMD00 {
 }
 
 /* factorisation des bordures */
-fieldset.commandeFieldsetCMD00, div.commandeLineCMD00, div.commandeVideCMD00 {
-	border: 0.188em solid #000;
+fieldset.CMD_00-commandeFieldset, div.CMD_00-commandeLine, div.CMD_00-commandeVide {
+	border: 0.188em solid #000000;
 }
 
 /* couleur du texte pour commande */
-.colorTextCMD00 {
-	color: #000;
+.CMD_00-colorText {
+	color: #000000;
 }
 
 /* colonne 1 */
-div.commandeReferenceCMD00 {
+div.CMD_00-commandeReference {
 	grid-column: 1;
 }
 
 /* colonne 2 */
-div.commandeQuantiteTotaleCMD00 {
+div.CMD_00-commandeQuantiteTotale {
 	grid-column: 2;
 	display: grid;
 	grid-template-columns: 1.75fr 0.25fr;
@@ -78,19 +78,19 @@ div.commandeQuantiteTotaleCMD00 {
 }
 
 /* colonne 2.1 */
-div.commandeQuantiteTotaleTextCMD00 {
+div.CMD_00-commandeQuantiteTotaleText {
 	grid-column: 1;
 	text-align: right;
 }
 
 /* colonne 2.2 */
-div.commandeQuantiteTotaleValueCMD00 {
+div.CMD_00-commandeQuantiteTotaleValue {
 	grid-column: 2;
 	text-align: right;
 }
 
 /* colonne 3 */
-div.commandePrixTotalCMD00 {
+div.CMD_00-commandePrixTotal {
 	grid-column: 3;
 	display: grid;
 	grid-template-columns: 1.15fr 0.85fr;
@@ -98,25 +98,25 @@ div.commandePrixTotalCMD00 {
 }
 
 /* colonne 3.1 */
-div.commandePrixTotalTextCMD00 {
+div.CMD_00-commandePrixTotalText {
 	grid-column: 1;
 	text-align: right;
 }
 
 /* colonne 3.2 */
-div.commandePrixTotalValueCMD00 {
+div.CMD_00-commandePrixTotalValue {
 	grid-column: 2;
 	text-align: right;
 	font-weight: bold;
 }
 
 /* colonne 4 */
-div.commandeDateCMD00 {
+div.CMD_00-commandeDate {
 	grid-column: 4;
 }
 
 /* espace entre la bordure et le texte */
-div.commandeReferenceCMD00, div.commandeQuantiteTotaleCMD00, div.commandePrixTotalCMD00, div.commandeDateCMD00 {
+div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-commandePrixTotal, div.CMD_00-commandeDate {
 	padding: 0.9375em;
 	font-size: 1.05em;
 }
