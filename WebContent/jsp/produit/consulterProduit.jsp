@@ -5,9 +5,9 @@
         <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
     </div>
     <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message></a>
-    <div class="display-flex pdt04Flex-container flex-wrap-wrap">
+    <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
         <div>
-            <table class="pdt04Display2">
+            <table>
                 <tr>
                     <th colspan="2" class="pdt04Hebergement">${consulterProduitDto.hebergement}</th>
                 </tr>
@@ -30,7 +30,7 @@
             </table>
             <div class="display-flex pdt04IconeServices">
                 <div>
-                    <table class="pdt04Display2">
+                    <table>
                         <tr>
                             <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services"></spring:message></th>
                         </tr>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <table class="pdt04Display2">
+        <table>
             <tr>
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
