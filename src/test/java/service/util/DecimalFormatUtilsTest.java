@@ -87,8 +87,16 @@ class DecimalFormatUtilsTest {
     void testIsPrixAVirgurle() {
         final String prixVirgule = "125,25";
         final String prixPoint = "125.11";
+        final String prixPointVirgule = "1564.5484,54";
+        final String prixVirgulePoint = "1564,54.54";
+        final String prixDoubleVirgule = "1225,145,25";
+        final String prixDecimalTooLong = "123,124578";
 
         assertTrue(DecimalFormatUtils.isPrixAVirgule(prixVirgule));
         assertFalse(DecimalFormatUtils.isPrixAVirgule(prixPoint));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixPointVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixVirgulePoint));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDoubleVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDecimalTooLong));
     }
 }
