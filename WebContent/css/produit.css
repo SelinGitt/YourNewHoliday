@@ -67,13 +67,13 @@ th.pdt01 {
 /* PDT03 */
 .pdt03Grid-container {
 	display: grid;
-	grid-gap: 0.4em;
-	padding: 0.4em;
+	grid-gap: 0.3em;
+	padding: 0.3em;
 }
 
 .pdt03Grid-item {
 	text-align: center;
-	padding: 0.625em;
+	padding: 0.3em;
 	font-size: 1.125em;
 }
 
