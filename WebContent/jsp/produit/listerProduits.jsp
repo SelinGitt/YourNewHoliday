@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
-        <h1 class="title title-responsive">
+        <h1 class="title title-responsive text-align-center">
             <spring:message code="pdt00.titre" />
         </h1>
     </div>
