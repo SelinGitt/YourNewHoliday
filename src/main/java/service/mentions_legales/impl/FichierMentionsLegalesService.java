@@ -6,7 +6,7 @@ package service.mentions_legales.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import persistance.contact.IFichierContactDao;
+import persistance.external_files.IFichierDao;
 import service.mentions_legales.IFichierMentionsLegalesService;
 import service.util.GetPropertyValues;
 
@@ -32,15 +32,15 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     private static final String PATH          = "mentionsLegalesRepo";
 
     @Autowired
-    private IFichierContactDao  fichierContactDao;
+    private IFichierDao         fichierContactDao;
 
     @Override
     public String trouverFichierCGV() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGV_NAME_FILE);
+        return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGV_NAME_FILE);
     }
 
     @Override
     public String trouverFichierCGU() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGU_NAME_FILE);
+        return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGU_NAME_FILE);
     }
 }

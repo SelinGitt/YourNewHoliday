@@ -12,13 +12,13 @@
 	<!-- Appender permettant l'écriture dans un fichier : RollingFileAppender -->
 
 	<!-- Propriété d'emplacement et de nom de fichier -->
-	<property name="FILELOG" value="C:/YNH/logs/app.log" />
+	<property name="FILELOG" value="C:/YNH_Project/logs/app.log" />
 
 	<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<!-- Fichier de log -->
 		<file>${FILELOG}</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-			<fileNamePattern>C:/temp/logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<fileNamePattern>C:/YNH_Project/logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<!-- taille max des fichiers à archiver, peut évoluer -->
 			<maxFileSize>10MB</maxFileSize>
 			<!-- taille totale des fichiers archivés, peut évoluer -->
