@@ -71,7 +71,6 @@ th.pdt01 {
 	text-align: left;
 	width: 100%;
 	height: auto;
-	margin: 0.625em;
 	font-size: 1.125em;
 	flex-wrap: wrap;
 	align-items: baseline
@@ -82,8 +81,8 @@ th.pdt01 {
 }
 
 .pdt04Image {
-	width: 15em;
-	height: 8em;
+	width: 20em;
+	height: 12em;
 }
 
 .pdt04Hebergement {
