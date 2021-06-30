@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -31,9 +32,17 @@ public class EditerUtilisateur {
      * @return           ModelAndView avec le nom de la jsp et l'utilisateur en attribut
      */
     @GetMapping
-    public ModelAndView modifierUtilisateur(@RequestParam("ref") final String reference) {
+    public ModelAndView modifierUtilisateur(@RequestParam(value = "ref", defaultValue = "") final String reference) {
         final var modelAndView = new ModelAndView("modifierUtilisateur");
-        modelAndView.getModelMap().addAttribute("utilisateur", this.iUtilisateurService.findByReference(reference));
+
+        final var utilisateurDto = this.iUtilisateurService.findByReference(reference);
+
+        if (utilisateurDto == null) {
+            modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
+        } else {
+            modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
+        }
+
         return modelAndView;
     }
 
