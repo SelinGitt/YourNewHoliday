@@ -23,13 +23,12 @@ class DateFormatUtilTest {
     @Test
     void testFormaterDateToString() {
         final Calendar calendar = Calendar.getInstance();
-        calendar.set(2021, 5, 3);
+        calendar.set(2021, Calendar.JUNE, 3);
         final Date date = calendar.getTime();
         final String dateFormate = DateFormatUtil.formaterDateToString(date);
         assertNotNull(date);
         assertNotNull(dateFormate);
         assertEquals("03/06/2021", dateFormate);
-
     }
 
     /**
@@ -52,7 +51,7 @@ class DateFormatUtilTest {
         calendar.setTime(dateClasse);
         assertNotNull(dateClasse);
         assertEquals(3, calendar.get(Calendar.DAY_OF_MONTH));
-        assertEquals(5, calendar.get(Calendar.MONTH));
+        assertEquals(Calendar.JUNE, calendar.get(Calendar.MONTH));
         assertEquals(2021, calendar.get(Calendar.YEAR));
     }
 
@@ -62,8 +61,11 @@ class DateFormatUtilTest {
     @Test
     void testFormaterStringToDateError() {
         //creer une nouvelle date si le format n'est pas le bon
-        final boolean date = DateFormatUtil.formaterStringToDate("PHFF").equals(new Date());
-        assertTrue(date);
+        final Date dateClasse = DateFormatUtil.formaterStringToDate("PHFF");
+        final Date newDate = new Date();
+
+        //on verifie que les dates sont trés proche et non identique pour eviter les erreurs
+        assertTrue(Math.abs(dateClasse.getTime() - newDate.getTime()) < 1000);
 
         //verifier le null
         assertThrows(NullPointerException.class, () -> {
