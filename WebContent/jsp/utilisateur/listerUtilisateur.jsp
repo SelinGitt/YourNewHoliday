@@ -91,8 +91,8 @@
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="bodyUSR01"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"
-                            class="poubelle imageUSR01">
+                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                            alt="" src="img/commun/editer.png" class="poubelle imageUSR01">
                     </a></td>
 
                     <td class="bodyUSR01"><a href="javascript:void()"> <img alt=""
