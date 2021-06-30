@@ -21,11 +21,29 @@ import presentation.panier.dto.PanierDto;
 public class ListerPanierProduitsController {
 
     /**
+     * Permet de vider le panier
+     *
+     * @param  panierDto : le panier dto a vider
+     * @param  request   : requete
+     * @return           : le panier
+     */
+    @GetMapping
+    public ModelAndView viderPanierProduits(@SessionAttribute("panierDto") PanierDto panierDto) {
+        final var modelAndView = new ModelAndView();
+
+        //appelle methode Service
+        modelAndView.setViewName("pan_00_vide");
+        modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+        return modelAndView;
+    }
+
+    /**
      * Permet d'afficher la page PanierProduits
      * 
      * @param  panierDto : panierDto vide
      * @return           le nom de la définition pour PanierProduits
      */
+
     @GetMapping
     public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto) {
         final var modelAndView = new ModelAndView();
