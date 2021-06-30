@@ -18,8 +18,10 @@
         <%-- texte indiquant les drapeaux permettant de changer de langue --%>
         <span class="text-responsive"><spring:message code="glb.footer.texte.langue" /></span>
         <%-- image du drapeau français permettant de basculer le site en français. --%>
-        <img class="footer-lang footer-responsive" src="img/template/footer/france.svg" alt="drapeau français" />
+        <a href="?language=fr"><img class="footer-lang footer-responsive" src="img/template/footer/france.svg"
+            alt="drapeau français" /></a>
         <%-- image du drapeau anglais permettant de basculer le site en anglais.--%>
-        <img class="footer-lang footer-responsive" src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" />
+        <a href="?language=en"> <img class="footer-lang footer-responsive"
+            src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /></a>
     </div>
 </div>
