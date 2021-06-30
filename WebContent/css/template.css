@@ -9,14 +9,14 @@ header, footer {
 }
 
 /* HEADER */
-.header-global {
+#header {
 	width: 100%;
 	height: 8vh;
 	display: flex;
 }
 
-.headerLogo {
-	width: 4.375em;
+#headerLogo {
+	width: 70px;
 }
 
 .logoHeader-ynh {
@@ -29,20 +29,20 @@ header, footer {
 	height: auto;
 }
 
-.headerNom {
+#headerNom {
 	width: 35.5%;
 }
 
-.headerStatut {
+#headerStatut {
 	width: 35%;
 	top: 20%;
 }
 
-.headerConnexion {
+#headerConnexion {
 	width: 15%;
 }
 
-.headerPanier {
+#headerPanier {
 	width: 20%;
 }
 
@@ -59,24 +59,14 @@ header, footer {
 	vertical-align: middle;
 }
 
-.headerSousCellNbrPdt {
-	position: absolute;
-	display: inline-block;
-	left: 1.65em;
-	top: 1.65em;
-	font-size: 0.8em;
-	text-align: center;
-	width: 1.65em;
-}
-
 /* MENU */
 
 /* Side Bar */
 .sidebar {
 	width: 80%;
-	min-width: 10em;
+	min-width: 160px;
 	background-color: transparent;
-	padding-top: 1em;
+	padding-top: 16px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -92,38 +82,38 @@ aside {
 }
 
 .link-container.underline {
-	border-bottom: 0.188em solid #000000;
-	padding-bottom: 1.25em;
+	border-bottom: 3px solid #000;
+	padding-bottom: 20px;
 }
 
 .link-container.admin {
-	padding: 0.5em 0;
-	border-bottom: 0.188em solid #000000;
-	border-top: 0.188em solid #000000;
+	padding: 8px 0px;
+	border-bottom: 3px solid #000;
+	border-top: 3px solid #000;
 }
 
 .sidebar p {
-	font-size: 1.25em;
+	font-size: 20px;
 	margin: auto;
-	max-width: 18.75em;
-	min-width: 6.875em;
+	max-width: 300px;
+	min-width: 110px;
 	text-align: center;
 }
 
 .fa fa-globe {
-	width: 3.125em;
-	height: 2.5em;
+	width: 50px;
+	height: 40px;
 }
 
 .link-container span {
-	font-size: 1.563em;
+	font-size: 25px;
 	display: block;
 	text-align: center;
 }
 
 .link-container a {
 	display: block;
-	color: #000000;
+	color: #000;
 	text-decoration: none;
 }
 
@@ -132,7 +122,7 @@ aside {
 }
 
 .bar_menu {
-	color: #000000;
+	color: #000;
 	font-weight: 1000;
 }
 
@@ -140,11 +130,11 @@ aside {
 
 /* footer responsive */
 .footer-responsive {
-	width: 3.125em;
+	width: 50px;
 	height: auto;
 }
 
-.footer-container {
+#footer-container {
 	/* flex contenair*/
 	display: flex;
 	/* gestion des items de façon horizontale */
