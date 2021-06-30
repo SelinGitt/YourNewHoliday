@@ -4,5 +4,152 @@
 /* correctif : le nom des classes spécifique doit commencer par le nom de la FT team */
 
 /* PAN00 */
+/* CSS factorisé */
+
+/* bordures */
+.panier-bordure-1px {
+	border: 1px solid black;
+}
+/* CSS specifique */
+
+/* images responsives */
+.panier-responsive {
+	width: 50px;
+	height: auto;
+	margin-bottom: 2em;
+	margin-top: -1em;
+}
+
+.panier-td-delete {
+	width: 12%;
+}
+
+.panier-format {
+	width: 6em;
+}
+
+.panier-image-produit {
+	width: auto;
+	height: 18vh;
+	margin-left: 1vh;
+	margin-top: 1vh;
+}
+
+.panier-left {
+	height: 60vh;
+	width: 95%;
+}
+
+.panier-macommande {
+	height: 30vh;
+	width: 85%;
+	padding-left: 5%;
+}
+
+.panier-elements-a-droite {
+	width: 90%;
+	padding-left: 5%;
+}
+
+.panier-tab-ligne {
+	height: 25vh;
+}
+
+.panier-ligne-prix-unitaire {
+	width: 80%;
+}
+
+.panier-ligne-label {
+	width: 50%;
+}
+
+.panier-ligne-quantite {
+	width: 80%;
+}
+
+.panier-vider {
+	margin-top: 1.5em;
+	margin-right: 1.5em;
+}
+
+.panier-prix-unitaire {
+	width: 18%;
+}
+
+.panier-quantite {
+	width: 1.7em;
+}
+
+.panier-quantite-label {
+	padding-top: 0.21em;
+}
+
+.panier-supprimer {
+	padding-top: 3em;
+}
+
+.panier-vide-ligne {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.panier-flex-column {
+	flex-direction: column;
+}
 
 /* PAN08 */
+.panier-retour {
+	font-size: 1.5em;
+	color: #000000;
+	text-decoration: none;
+}
+
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
+.panier-container-Adresse {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	width: 95%;
+}
+
+.panier-block-fieldSet {
+	width: 100%;
+}
+
+.panier-margin-left-3em {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.panier-formulaire {
+	margin: 0.5em;
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.panier-formulaire-div {
+	font-size: 1.5em;
+	margin-top: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+.panier-formulaire-input {
+	height: 1.563em;
+	width: 100%;
+}
+
+.panier-formulaire-textarea {
+	width: 100%;
+}
+
+.panier-100 {
+	width: 100%;
+}
