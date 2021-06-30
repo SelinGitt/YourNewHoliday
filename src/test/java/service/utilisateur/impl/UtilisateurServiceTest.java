@@ -239,8 +239,8 @@ class UtilisateurServiceTest {
         Mockito.when(this.dao.findByReference("Ref")).thenReturn(utilisateurDo);
         Mockito.when(this.dao.findByReference("RefKO")).thenReturn(null);
 
-        Assertions.assertNotNull(this.utilisateurService.findByReference("Ref"));
+        Assertions.assertNotNull(this.utilisateurService.rechercherReference("Ref"));
 
-        Assertions.assertNull(this.utilisateurService.findByReference("RefKO"));
+        Assertions.assertNull(this.utilisateurService.rechercherReference("RefKO"));
     }
 }

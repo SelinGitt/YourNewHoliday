@@ -35,7 +35,7 @@ public class EditerUtilisateur {
     @GetMapping
     public ModelAndView modifierUtilisateur(@RequestParam(value = "ref", defaultValue = "") final String reference) {
 
-        final var utilisateurDto = this.iUtilisateurService.findByReference(reference);
+        final var utilisateurDto = this.iUtilisateurService.rechercherReference(reference);
 
         if (utilisateurDto == null) {
             // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
