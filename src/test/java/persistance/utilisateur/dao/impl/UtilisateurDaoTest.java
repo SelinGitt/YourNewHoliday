@@ -129,4 +129,21 @@ class UtilisateurDaoTest {
         Assertions.assertNotNull(utilisateurDos);
         Assertions.assertEquals(2, utilisateurDos.size());
     }
+
+    /**
+     * Test pour {@link persistance.communDao.impl.AbstractGenericDao#update(Object)}
+     */
+    @Test
+    void testUpdate() {
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findById(1);
+
+        utilisateurDo.setEmail("email@update.fr");
+        utilisateurDo.setNom("Updated");
+
+        final UtilisateurDo utilisateurDoUpdated = iUtilisateurDao.update(utilisateurDo);
+
+        Assertions.assertNotNull(utilisateurDoUpdated);
+        Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDoUpdated.getEmail());
+        Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDoUpdated.getNom());
+    }
 }

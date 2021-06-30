@@ -36,4 +36,12 @@ public interface IGenericDao<T> {
      * @return      T creer
      */
     T create(final T bean);
+
+    /**
+     * Permet de mettre a jour T en base de donnees
+     *
+     * @param  bean Bean T a mettre a jour en base de donnees
+     * @return      T mis a jour
+     */
+    T update(final T bean);
 }
