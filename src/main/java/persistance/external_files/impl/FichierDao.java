@@ -1,7 +1,7 @@
 /**
  * 
  */
-package persistance.contact.impl;
+package persistance.external_files.impl;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import persistance.contact.IFichierContactDao;
+import persistance.external_files.IFichierDao;
 
 /**
  * Classe représentant le dao de fichierContactDao
@@ -19,9 +19,9 @@ import persistance.contact.IFichierContactDao;
  * @author Alexandre
  */
 @Repository
-public class FichierContactDao implements IFichierContactDao {
+public class FichierDao implements IFichierDao {
 
-    private static final Logger logger = LoggerFactory.getLogger(FichierContactDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(FichierDao.class);
 
     @Override
     public String trouverFichierContact(final String nomFichier) {

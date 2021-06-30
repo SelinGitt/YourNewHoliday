@@ -15,6 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import persistance.external_files.IFichierDao;
+
 /**
  * Classe représentant les test de fichierContactDao
  *
@@ -30,10 +32,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 class FichierContactDaoTest {
 
     @Autowired
-    private IFichierContactDao iFichier;
+    private IFichierDao iFichier;
 
     /**
-     * Test method for {@link persistance.contact.impl.FichierContactDao#trouverFichierContact(java.lang.String)}.
+     * Test method for {@link persistance.external_files.impl.FichierDao#trouverFichierContact(java.lang.String)}.
      */
     @Test
     void testTrouverFichierContact() {

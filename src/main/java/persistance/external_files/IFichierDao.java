@@ -1,14 +1,14 @@
 /**
  * 
  */
-package persistance.contact;
+package persistance.external_files;
 
 /**
  * Classe représentant l'interface de fichierContactDao
  *
  * @author Alexandre
  */
-public interface IFichierContactDao {
+public interface IFichierDao {
 
     /**
      * Permet de charger un fichier html

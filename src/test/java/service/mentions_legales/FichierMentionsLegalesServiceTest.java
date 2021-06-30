@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import persistance.contact.IFichierContactDao;
+import persistance.external_files.IFichierDao;
 import service.mentions_legales.impl.FichierMentionsLegalesService;
 
 /**
@@ -28,7 +28,7 @@ class FichierMentionsLegalesServiceTest {
 
     // Mock to be injected
     @Mock
-    private IFichierContactDao            iFichierContactDao;
+    private IFichierDao            iFichierContactDao;
 
     @BeforeEach
     private void setup() {
