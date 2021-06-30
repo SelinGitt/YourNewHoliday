@@ -43,4 +43,12 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
+
+    /**
+     * Permet de maj un produit
+     * 
+     * @param  produitDto le produit à éditer
+     * @return            le produit édité
+     */
+    ProduitDto editerProduit(final ProduitDto produitDto);
 }
