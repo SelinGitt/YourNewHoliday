@@ -39,15 +39,6 @@ public enum TypeTriAlphanumerique {
     }
 
     /**
-     * Getter for typeRecherche
-     *
-     * @return the typeRecherche
-     */
-    public String getTypeRecherche() {
-        return typeRecherche;
-    }
-
-    /**
      * Permet de retrouver un type en fonction d'un string clé
      *
      * @param  type le type à trouver
@@ -55,7 +46,7 @@ public enum TypeTriAlphanumerique {
      */
     public static TypeTriAlphanumerique checkType(final String type) {
         for (final TypeTriAlphanumerique tta : TypeTriAlphanumerique.values()) {
-            if (tta.getTypeRecherche().equals(type)) {
+            if (tta.typeRecherche.equals(type)) {
                 return tta;
             }
         }
