@@ -68,7 +68,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * <<<<<<< HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
     void testFindProduitEnVente() {
@@ -166,9 +166,7 @@ class ProduitDaoTest {
 
     private List<ProduitDo> triLocalCroissant() {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
-        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
-            return p1.compareTo(p2);
-        });
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire);
         Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
         return listeProduitDoEnVente;
 
@@ -176,28 +174,29 @@ class ProduitDaoTest {
 
     private List<ProduitDo> triLocalDecroissant() {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
-        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
-            return p2.compareTo(p1);
-        });
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire,
+                (prixProduitInferieur, prixProduitSuperieur) -> {
+                    return prixProduitSuperieur.compareTo(prixProduitInferieur);
+                });
         Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
         return listeProduitDoEnVente;
     }
 
     private List<ProduitDo> triLocalCroissantAvecFiltre(final String searchTerm) {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduits(searchTerm);
-        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
-            return p1.compareTo(p2);
-        });
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire);
         Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
         return listeProduitDoEnVente;
     }
 
     private List<ProduitDo> triLocalDecroissantAvecFiltre(final String searchTerm) {
         final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduits(searchTerm);
-        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
-            return p2.compareTo(p1);
-        });
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire,
+                (prixProduitInferieur, prixProduitSuperieur) -> {
+                    return prixProduitSuperieur.compareTo(prixProduitInferieur);
+                });
         Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+
         return listeProduitDoEnVente;
     }
 }
