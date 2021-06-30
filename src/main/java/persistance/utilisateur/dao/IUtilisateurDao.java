@@ -22,6 +22,14 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     UtilisateurDo findByEmail(final String email);
 
     /**
+     * Permet de supprimer une UtilisateurDo en BD
+     *
+     * @param  id : id de l'utilisateur à supprimer
+     * @return    un boolean, true si suppression ok, false sinon
+     */
+    boolean deleteUtilisateurById(final Integer id);
+
+    /**
      * Permet d'effectue une recherche en base selon un terme dans une colonne donnee
      *
      * @param  nom Nom a recherche
@@ -45,4 +53,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return        List d'UtilisateurDo correspondant a la recherche
      */
     List<UtilisateurDo> rechercheNomRole(final String nom, final Integer idRole);
+
+    /**
+     * Permet de savoir un utilisateur est le dernier administrateur
+     *
+     * @param  idRole = id du rôle de l'utilisateur
+     * @return        un boolean true si c'est le dernier administrateur, false sinon
+     */
+    boolean isLastAdmin(final Integer idRole);
 }

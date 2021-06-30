@@ -92,4 +92,19 @@ class CommandeDaoTest {
             this.iCommandeDao.findByRef("ZZZ1");
         });
     }
+
+    /*
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#updateCommandeDoUserDeletion(Integer)}.
+     */
+    @Test
+    void testUpdateCommandeDoUserDeletion() {
+        //on récupère le nombre de commandes de la liste de l'utilisateur d'id 2
+        int nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(2).size();
+        assertEquals(2, nombreCommandesUtilisateur);
+        //On le détache de ses commandes
+        this.iCommandeDao.updateCommandeDoUserDeletion(2);
+        //on récupère à nouveau le nombre de commandes de la liste de l'utilisateur d'id 2
+        nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(2).size();
+        assertEquals(0, nombreCommandesUtilisateur);
+    }
 }
