@@ -58,15 +58,15 @@ public class RemplirPanier {
         produitDto3.setCheminImage(null);
 
         // ajout des lignes de commande
-        final LigneCommandeProduit ligneCommandeProduit = new LigneCommandeProduit();
+        final var ligneCommandeProduit = new LigneCommandeProduit();
         ligneCommandeProduit.setQuantite(6);
         ligneCommandeProduit.setQuantiteAffichage(String.format("%2d", 6));
         ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
-        final LigneCommandeProduit ligneCommandeProduit2 = new LigneCommandeProduit();
+        final var ligneCommandeProduit2 = new LigneCommandeProduit();
         ligneCommandeProduit2.setQuantite(8);
         ligneCommandeProduit2.setQuantiteAffichage(String.format("%2d", 8));
         ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 9000.00, Locale.FRANCE));
-        final LigneCommandeProduit ligneCommandeProduit3 = new LigneCommandeProduit();
+        final var ligneCommandeProduit3 = new LigneCommandeProduit();
         ligneCommandeProduit3.setQuantite(12);
         ligneCommandeProduit3.setQuantiteAffichage(String.format("%2d", 12));
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
