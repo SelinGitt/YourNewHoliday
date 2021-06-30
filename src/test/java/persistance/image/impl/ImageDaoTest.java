@@ -34,9 +34,9 @@ class ImageDaoTest {
      */
     @Test
     void testGetImage() {
-        final var path = "C:\\temp\\img\\maldives.jpg";
+        final var path = "C:\\YNH_Project\\external_files\\img\\produits\\maldives.jpg";
         final var file = new File(path);
-        assertEquals("C:\\temp\\img\\maldives.jpg", imageDao.getImage(path).getAbsolutePath());
+        assertEquals("C:\\YNH_Project\\external_files\\img\\produits\\maldives.jpg", imageDao.getImage(path).getAbsolutePath());
         assertTrue(file.exists());
     }
 
