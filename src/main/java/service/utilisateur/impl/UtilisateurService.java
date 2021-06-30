@@ -99,11 +99,7 @@ public class UtilisateurService implements IUtilisateurService {
     public UtilisateurDto findByReference(final String reference) {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
 
-        if (utilisateurDo != null) {
-            return UtilisateurMapper.mapperToDto(utilisateurDo);
-        }
-
-        return null;
+        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
     }
 
     /**
