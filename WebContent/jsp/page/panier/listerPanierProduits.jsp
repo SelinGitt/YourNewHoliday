@@ -134,7 +134,7 @@
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
                     <div class="panier-ligne-quantite-box text-align-center">
-                        <span class="panier-ligne-quantite-valeur">${entry.value.getQuantite()}</span>
+                        <span>${entry.value.getQuantite()}</span>
                     </div>
                 </div>
 
