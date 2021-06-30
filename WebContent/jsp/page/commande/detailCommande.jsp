@@ -63,7 +63,9 @@
                                     class="CMD_04-text-align-center CMD_04-box-text
                                            CMD_04-grid CMD_04-box-padding">${cmdProduit.quantite}</div>
                             </div>
-                            <div class="CMD_04-grid-cel CMD_04-col-4 CMD_04-height">
+                            <div
+                                class="CMD_04-grid-cel CMD_04-col-4
+                                        CMD_04-border-right-transparent CMD_04-height CMD_04-box-sizing">
                                 <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
                                     <spring:message code="detailCommande.prd.pTotal"></spring:message>
                                 </div>

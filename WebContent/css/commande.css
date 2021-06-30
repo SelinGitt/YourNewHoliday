@@ -175,6 +175,11 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	border-right: 0.19em solid #000000;
 }
 
+/* bordure à droite transparent pour l'alignement */
+.CMD_04-border-right-transparent {
+	border-right: 0.19em solid #00000000;
+}
+
 /* height 100% */
 .CMD_04-height {
 	height: 100%;
