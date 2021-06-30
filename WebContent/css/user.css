@@ -69,6 +69,35 @@
 	color : #FFFFFF;
 }
 
+.user02-body-general {
+	width: 100%;
+}
+
+.user02-title {
+	text-align: center;
+	margin-right: 6.25em;
+}
+
+.user02-form {
+	align-items: center;
+	justify-content: center;
+}
+
+.user02-lib-champ-taille {
+	width: 20em;
+}
+
+.user02-lib-champ {
+	justify-content: space-between;
+	margin-bottom: 3.125em;
+}
+
+.user02-buttons {
+	align-items: center;
+	margin: auto;
+	width: 80%;
+}
+
 /* USR03 */
 
 /* USR05 */

@@ -3,8 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
-    <div class="user05-body-general">
-        <div class="user05-form display-flex">
+    <div class="user02-body-general">
+        <div class="user02-form display-flex">
             <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilsateur.do">
 
                 <div class="user02-title">
@@ -14,37 +14,37 @@
                 </div>
 
 
-                <div class="user05-lib-champ display-flex">
+                <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.nom" /></span>
-                    <div class="user05-lib-champ-taille">
+                    <div class="user02-lib-champ-taille">
                         <form:input path="nom" />
                     </div>
                 </div>
 
-                <div class="user05-lib-champ display-flex">
+                <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.prenom" /></span>
-                    <div class="user05-lib-champ-taille">
+                    <div class="user02-lib-champ-taille">
                         <form:input path="prenom" />
                     </div>
                 </div>
 
-                <div class="user05-lib-champ display-flex">
+                <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.adresse" /></span>
-                    <div class="user05-lib-champ-taille">
+                    <div class="user02-lib-champ-taille">
                         <form:textarea path="adresse" />
                     </div>
                 </div>
 
-                <div class="user05-lib-champ display-flex">
+                <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.dateNaissance" /></span>
-                    <div class="user05-lib-champ-taille">
+                    <div class="user02-lib-champ-taille">
                         <form:input path="dateNaissance" />
                     </div>
                 </div>
 
-                <div class="user05-lib-champ display-flex">
+                <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.email" /></span>
-                    <div class="user05-lib-champ-taille">
+                    <div class="user02-lib-champ-taille">
                         <form:input path="email" />
                     </div>
                 </div>
@@ -52,16 +52,16 @@
                 <div>
                     <details>
                         <summary>Modification mot de passe</summary>
-                        <div class="user05-lib-champ display-flex">
+                        <div class="user02-lib-champ display-flex">
                             <span><spring:message code="usr02.edit.password" /></span>
-                            <div class="user05-lib-champ-taille">
+                            <div class="user02-lib-champ-taille">
                                 <form:password path="password" />
                             </div>
                         </div>
 
-                        <div class="user05-lib-champ display-flex">
+                        <div class="user02-lib-champ display-flex">
                             <span><spring:message code="usr02.edit.confirmPassword" /></span>
-                            <div class="user05-lib-champ-taille">
+                            <div class="user02-lib-champ-taille">
                                 <form:password path="confirmPassword" />
                             </div>
                         </div>
