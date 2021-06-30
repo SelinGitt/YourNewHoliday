@@ -77,7 +77,7 @@
 
                                     <%--  saisie valeur produit  --%>
                                     <input class="panier-quantite text-align-center" type="text" id="panier-quantite"
-                                        name="panier-quantite" value="${entry.value.getQuantite()}" size="1">
+                                        name="panier-quantite" value="${entry.value.quantite}" size="1">
 
                                     <%--  bouton + --%>
                                     <button type="button">+</button>
@@ -134,7 +134,7 @@
                         <span><spring:message code="pan00.deuxpoints" /></span>
                     </div>
                     <div class="panier-ligne-quantite-box text-align-center">
-                        <span>${entry.value.getQuantite()}</span>
+                        <span>${entry.value.quantite}</span>
                     </div>
                 </div>
 
@@ -156,7 +156,7 @@
                     </div>
                     <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
                     <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
-                    <span>${entry.value.getPrix()} <spring:message code="glb.devise" />
+                    <span>${entry.value.prix} <spring:message code="glb.devise" />
                     </span>
                 </div>
             </c:forEach>
