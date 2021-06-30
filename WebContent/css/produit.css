@@ -12,6 +12,82 @@
 	cursor: pointer;
 }
 
+/* PDT 02-03 Commun */
+.pdt0203Grid-container {
+	display: grid;
+	grid-gap: 0.3em;
+	padding: 0.3em;
+	width: 90%;
+}
+
+.pdt0203Grid-item {
+	text-align: center;
+	padding: 0.3em;
+	font-size: 1.125em;
+}
+
+.pdt0203FormlaireCreerProduit {
+	grid-column: 1/span 2;
+	grid-row: 1/span 2;
+}
+
+.pdt0203ImageProduit {
+	grid-column: 3;
+	grid-row: 1/span 1;
+}
+
+.pdt0203LogoService {
+	grid-column: 3;
+	grid-row: 2/span 1;
+}
+
+.pdt0203FormulaireProduit input {
+	width: 100%
+}
+
+.pdt0203FormulaireProduit {
+	table-layout: auto;
+	text-align: left;
+	line-height: 3.75em;
+}
+
+.pdt0203FormulaireProduit td {
+	padding: 0 0.313em 0 0.313em;
+}
+
+.pdt0203Formpdt0203Radio {
+	justify-content: space-around;
+}
+
+.pdt0203Formpdt0203Radio div {
+	align-items: center;
+}
+
+.pdt0203Formpdt0203Radio div input {
+	margin-right: 0.938em;
+	width: auto;
+}
+
+.pdt0203TextAreapdt0203 textarea {
+	resize: vertical;
+	min-height: 3.75em;
+}
+
+.pdt0203Buttonspdt0203 {
+	width: 100%;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.pdt0203ListeService {
+	width: 100%;
+	line-height: 3em;
+}
+
+.pdt0203ImageCreationProduit {
+	width: 100%;
+}
+
 /* PDT00 */
 .pdt00ContainerVoyage {
 	margin: 0.625em;
@@ -62,8 +138,5 @@ th.pdt01 {
 	height: 3.75em;
 }
 
-/* PDT02 */
-
-/* PDT03 */
 
 /* PDT04 */
