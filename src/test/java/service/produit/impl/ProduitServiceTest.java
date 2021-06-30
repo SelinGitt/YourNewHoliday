@@ -18,6 +18,8 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 
 /**
  * Classe test de {@link ProduitService}
@@ -96,4 +98,24 @@ class ProduitServiceTest {
         assertNull(produitServiceMock.trouverParReference("REFERENCE_FAUSSE"));
     }
 
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduit() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setNom("Test Edition");
+        produitDto.setReference("TEST00000");
+        produitDto.setPrixUnitaire("10.00");
+        produitDto.setServices("1");
+        produitDto.setMiseEnVente("true");
+        produitDto.setHebergement("Hotel Test");
+        produitDto.setDestination("Testmanie");
+        produitDto.setDescription("Test moi");
+        produitDto.setCheminImage("C:/temp/img/test.png");
+        produitDto.setVersion("1");
+        Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
+        assertNotNull(this.produitServiceMock.editerProduit(produitDto));
+    }
 }
