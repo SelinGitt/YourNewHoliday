@@ -92,7 +92,7 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
     public boolean isLastAdmin(final Integer idRole) {
         final var result = (1 == rechercheNombreParRole(3) && (3 == idRole));
         logger.debug("Cet utilisateur est le dernier administrateur : {}", result);
-        return (1 == rechercheNombreParRole(3) && (3 == idRole));
+        return result;
     }
 
     /**
