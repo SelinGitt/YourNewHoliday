@@ -98,3 +98,58 @@
 }
 
 /* PAN08 */
+.panier-retour {
+	font-size: 1.5em;
+	color: #000000;
+	text-decoration: none;
+}
+
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
+.panier-container-Adresse {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	width: 95%;
+}
+
+.panier-block-fieldSet {
+	width: 100%;
+}
+
+.panier-margin-left-3em {
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.panier-formulaire {
+	margin: 0.5em;
+	width: 90%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.panier-formulaire-div {
+	font-size: 1.5em;
+	margin-top: 1em;
+	display: flex;
+	flex-direction: column;
+}
+
+.panier-formulaire-input {
+	height: 1.563em;
+	width: 100%;
+}
+
+.panier-formulaire-textarea {
+	width: 100%;
+}
+
+.panier-100 {
+	width: 100%;
+}
