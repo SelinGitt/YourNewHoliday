@@ -43,8 +43,14 @@ public class ListerPanierProduitsController {
         return modelAndView;
     }
 
-    public String deleteProduct(final HttpSession session, final HttpServletRequest request) {
+    public String choixAction(final HttpSession session, final HttpServletRequest request) {
+        final String action = request.getParameter("action");
+        if ("supprimerProduit".equals(action)) {
+            session.setAttribute("panierDto", this.supprimerProduitPanier);
+        }
         return "listerPanierProduits";
     }
+
+    public void supprimerProduitPanier
 
 }
