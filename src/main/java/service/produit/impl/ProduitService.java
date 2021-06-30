@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
-import presentation.produit.controller.TypeTri;
+import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.ProduitDto;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
@@ -45,23 +45,24 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
+        final var typeTri = TypeTriAlphanumerique.getValue(tri);
         if (!searchTerm.isBlank()) {
             if ("0".equals(tri)) {
                 return rechercherProduits(searchTerm);
             }
-            return listerFiltreTri(TypeTri.checkType(tri), searchTerm);
+            return listerFiltreTri(typeTri.checkType(), searchTerm);
         }
         if (!"0".equals(tri)) {
-            return trierListe(TypeTri.checkType(tri));
+            return trierListe(typeTri.checkType());
         }
         return listerProduitsEnVente();
     }
 
-    private List<ProduitDto> listerFiltreTri(final TypeTri typeFiltre, final String searchTerm) {
+    private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
         return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
     }
 
-    private List<ProduitDto> trierListe(final TypeTri typeFiltre) {
+    private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
         return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
     }
 

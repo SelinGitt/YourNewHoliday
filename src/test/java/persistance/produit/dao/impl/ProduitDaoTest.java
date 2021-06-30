@@ -8,7 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
-import presentation.produit.controller.TypeTri;
+import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
  * Classe représentant les tests unitaires pour produitDao
@@ -122,12 +123,9 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixCroissant() {
-        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierListe(TypeTri.checkType("1"));
-        final ProduitDo produitDo1 = iProduitDao.findById(4);
-        final ProduitDo produitDo2 = iProduitDao.findById(3);
-        final ProduitDo produitDo3 = iProduitDao.findById(5);
-        final ProduitDo produitDo4 = iProduitDao.findById(1);
-        final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("1").checkType();
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierListe(typeTri);
+        final List<ProduitDo> listeTriee = triLocalCroissant();
         assertEquals(listeProduitsCroissant, listeTriee);
     }
 
@@ -136,12 +134,9 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixDecroissant() {
-        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierListe(TypeTri.checkType("2"));
-        final ProduitDo produitDo1 = iProduitDao.findById(1);
-        final ProduitDo produitDo2 = iProduitDao.findById(5);
-        final ProduitDo produitDo3 = iProduitDao.findById(3);
-        final ProduitDo produitDo4 = iProduitDao.findById(4);
-        final List<ProduitDo> listeTriee = Arrays.asList(produitDo1, produitDo2, produitDo3, produitDo4);
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("2").checkType();
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierListe(typeTri);
+        final List<ProduitDo> listeTriee = triLocalDecroissant();
         assertEquals(listeProduitsDecroissant, listeTriee);
     }
 
@@ -151,10 +146,9 @@ class ProduitDaoTest {
     @Test
     void testPrixFiltreDecroissant() {
         //2 correspond au tri desc
-        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierFiltreListe(TypeTri.checkType("2"), "99");
-        final ProduitDo produitDo = iProduitDao.findById(5);
-        final ProduitDo produitDo1 = iProduitDao.findById(4);
-        final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("2").checkType();
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierFiltreListe(typeTri, "99");
+        final List<ProduitDo> listeTriee = triLocalDecroissantAvecFiltre("99");
         assertEquals(listeProduitsDecroissant, listeTriee);
     }
 
@@ -164,10 +158,46 @@ class ProduitDaoTest {
     @Test
     void testPrixFiltreCroissant() {
         //1 correspond au tri asc
-        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierFiltreListe(TypeTri.checkType("1"), "89");
-        final ProduitDo produitDo = iProduitDao.findById(4);
-        final ProduitDo produitDo1 = iProduitDao.findById(3);
-        final List<ProduitDo> listeTriee = Arrays.asList(produitDo, produitDo1);
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("1").checkType();
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierFiltreListe(typeTri, "89");
+        final List<ProduitDo> listeTriee = triLocalCroissantAvecFiltre("89");
         assertEquals(listeProduitsCroissant, listeTriee);
+    }
+
+    private List<ProduitDo> triLocalCroissant() {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
+            return p1.compareTo(p2);
+        });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+
+    }
+
+    private List<ProduitDo> triLocalDecroissant() {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
+            return p2.compareTo(p1);
+        });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+    }
+
+    private List<ProduitDo> triLocalCroissantAvecFiltre(final String searchTerm) {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduits(searchTerm);
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
+            return p1.compareTo(p2);
+        });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+    }
+
+    private List<ProduitDo> triLocalDecroissantAvecFiltre(final String searchTerm) {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduits(searchTerm);
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire, (p1, p2) -> {
+            return p2.compareTo(p1);
+        });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
     }
 }

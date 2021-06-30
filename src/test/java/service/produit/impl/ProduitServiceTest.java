@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
-import presentation.produit.controller.TypeTri;
+import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.ProduitDto;
 
 /**
@@ -92,7 +91,7 @@ class ProduitServiceTest {
         Mockito.when(this.iProduitDaoMock.rechercherProduits("23")).thenReturn(Collections.emptyList());
         final List<ProduitDto> liste = produitServiceMock.findFilter("23", "0");
         assertNotNull(liste);
-        assertEquals(Collections.emptyList(), liste);
+        assertEquals(0, liste.size());
     }
 
     /**
@@ -100,13 +99,11 @@ class ProduitServiceTest {
      */
     @Test
     void testFindFilterWithTri() {
-        final var produitDo = new ProduitDo();
-        produitDo.setPrixUnitaire(125d);
-        final var produitDo2 = new ProduitDo();
-        produitDo2.setPrixUnitaire(126d);
-        Mockito.when(this.iProduitDaoMock.trierListe(TypeTri.ASC)).thenReturn(Arrays.asList(produitDo2, produitDo));
-        final List<ProduitDto> liste = produitServiceMock.findFilter("0", "2");
+
+        Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.ASC)).thenReturn(Collections.emptyList());
+        //0 correspondant au tri par défaut
+        final List<ProduitDto> liste = produitServiceMock.findFilter("", "2");
         assertNotNull(liste);
-        assertEquals(liste, produitServiceMock.findFilter("0", "2"));
+        assertEquals(0, liste.size());
     }
 }
