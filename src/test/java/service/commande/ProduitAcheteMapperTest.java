@@ -30,7 +30,7 @@ class ProduitAcheteMapperTest {
         final var produitDo = new ProduitAcheteDo();
         produitDo.setIdProduit(10);
         produitDo.setIdDeLOriginal(1);
-        produitDo.setReference("125699");
+        produitDo.setReference("GRE125699");
         produitDo.setNom("Voyage en grèce");
         produitDo.setDescription("desciption10");
         produitDo.setDestination("Grèce");
@@ -41,7 +41,7 @@ class ProduitAcheteMapperTest {
         assertNotNull(produitDto);
         assertEquals("10", produitDto.getIdProduit());
         assertEquals("1", produitDto.getIdDeLOriginal());
-        assertEquals("125699", produitDto.getReference());
+        assertEquals("GRE125699", produitDto.getReference());
         assertEquals("Voyage en grèce", produitDto.getNom());
         assertEquals("desciption10", produitDto.getDescription());
         assertEquals("Grèce", produitDto.getDestination());
