@@ -123,7 +123,7 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixCroissant() {
-        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("1").checkType();
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.checkType("1");
         final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierListe(typeTri);
         final List<ProduitDo> listeTriee = triLocalCroissant();
         assertEquals(listeProduitsCroissant, listeTriee);
@@ -134,7 +134,7 @@ class ProduitDaoTest {
      */
     @Test
     void testPrixDecroissant() {
-        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("2").checkType();
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.checkType("2");
         final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierListe(typeTri);
         final List<ProduitDo> listeTriee = triLocalDecroissant();
         assertEquals(listeProduitsDecroissant, listeTriee);
@@ -146,7 +146,7 @@ class ProduitDaoTest {
     @Test
     void testPrixFiltreDecroissant() {
         //2 correspond au tri desc
-        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("2").checkType();
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.checkType("2");
         final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierFiltreListe(typeTri, "99");
         final List<ProduitDo> listeTriee = triLocalDecroissantAvecFiltre("99");
         assertEquals(listeProduitsDecroissant, listeTriee);
@@ -158,7 +158,7 @@ class ProduitDaoTest {
     @Test
     void testPrixFiltreCroissant() {
         //1 correspond au tri asc
-        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.getValue("1").checkType();
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.checkType("1");
         final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierFiltreListe(typeTri, "89");
         final List<ProduitDo> listeTriee = triLocalCroissantAvecFiltre("89");
         assertEquals(listeProduitsCroissant, listeTriee);

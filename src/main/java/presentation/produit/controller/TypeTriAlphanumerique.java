@@ -3,9 +3,6 @@
  */
 package presentation.produit.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Enum représentant des méthodes de tri.
  *
@@ -15,41 +12,21 @@ public enum TypeTriAlphanumerique {
     /**
      * Recherche ascendante
      */
-    ASC("1"),
+    ASC("1", "ASC"),
     /**
      * Recherce descendante
      */
-    DESC("2");
+    DESC("2", "DESC");
 
-    //utilisé pour rechercher un tri depuis son type
-    private static final Map<String, TypeTriAlphanumerique> lookup = new HashMap<>();
-    static {
-        for (final TypeTriAlphanumerique tta : TypeTriAlphanumerique.values()) {
-            lookup.put(tta.getTypeRecherche(), tta);
-        }
-    }
     private String typeDao;
     private String typeRecherche;
 
     /**
      * Constructor
      */
-    TypeTriAlphanumerique(final String type) {
-        typeRecherche = type;
-    }
-
-    /**
-     * Permet de tester et remplir le type d'enum à renvoyer
-     *
-     * @return le typeRecherche correspondant à la base, ASC par défaut si pas trouvé
-     */
-    public TypeTriAlphanumerique checkType() {
-        if ("2".equals(typeRecherche)) {
-            typeDao = "DESC";
-            return DESC;
-        }
-        typeDao = "ASC";
-        return ASC;
+    TypeTriAlphanumerique(final String type, final String typeDao) {
+        this.typeRecherche = type;
+        this.typeDao = typeDao;
     }
 
     /**
@@ -76,8 +53,13 @@ public enum TypeTriAlphanumerique {
      * @param  type le type à trouver
      * @return      le typeTriAlphanumerique
      */
-    public static TypeTriAlphanumerique getValue(final String type) {
-        return lookup.get(type);
+    public static TypeTriAlphanumerique checkType(final String type) {
+        for (final TypeTriAlphanumerique tta : TypeTriAlphanumerique.values()) {
+            if (tta.getTypeRecherche().equals(type)) {
+                return tta;
+            }
+        }
+        return ASC;
     }
 
 }
