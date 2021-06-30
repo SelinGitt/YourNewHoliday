@@ -39,9 +39,9 @@ public interface IProduitService {
     /**
      * Permet de faire une recherche en fonction de leur paramètres
      *
-     * @param  searchTerm
-     * @param  tri
-     * @return
+     * @param  searchTerm la recherche a effectuer
+     * @param  tri        le type de tri à effectuer
+     * @return            la liste de produitDto fitrée
      */
     List<ProduitDto> findFilter(final String searchTerm, final String tri);
 }

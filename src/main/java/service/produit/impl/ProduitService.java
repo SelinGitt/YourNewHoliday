@@ -52,10 +52,10 @@ public class ProduitService implements IProduitService {
             }
             return listerFiltreTri(typeTri.checkType(), searchTerm);
         }
-        if (!"0".equals(tri)) {
-            return trierListe(typeTri.checkType());
+        if ("0".equals(tri)) {
+            return listerProduitsEnVente();
         }
-        return listerProduitsEnVente();
+        return trierListe(typeTri.checkType());
     }
 
     private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
