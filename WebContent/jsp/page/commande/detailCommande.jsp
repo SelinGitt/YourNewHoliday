@@ -22,7 +22,8 @@
                     <c:forEach items="${commande.listCommandeProduitDto}" var="cmdProduit">
                         <%-- un produit acheté --%>
                         <div class="CMD_04-border CMD_04-ligne CMD_04-box-sizing">
-                            <%-- boite contenant les images, le titre du voyage et sa référence ainsi que ça description --%>
+                            <%-- boite contenant les images, le titre du voyage --%>
+                            <%-- et sa référence ainsi que ça description --%>
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-1 CMD_04-border-right CMD_04-grid
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
