@@ -26,7 +26,7 @@
                     <td>+/-</td>
                 </tr>
                 <tr>
-                    <td>AJOUTER</td>
+                    <td><spring:message code="pdt04.ajouter"></spring:message></td>
                 </tr>
             </table>
             <div class="display-flex pdt04IconeServices">
