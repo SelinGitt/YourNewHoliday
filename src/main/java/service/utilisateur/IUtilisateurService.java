@@ -59,5 +59,5 @@ public interface IUtilisateurService {
      * @param  reference Reference de l'utilisateur
      * @return           Utilisateur
      */
-    UtilisateurDto findByReference(final String reference);
+    UtilisateurDto rechercherReference(final String reference);
 }

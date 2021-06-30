@@ -34,15 +34,17 @@ public class EditerUtilisateur {
      */
     @GetMapping
     public ModelAndView modifierUtilisateur(@RequestParam(value = "ref", defaultValue = "") final String reference) {
-        final var modelAndView = new ModelAndView("modifierUtilisateur");
 
-        final var utilisateurDto = this.iUtilisateurService.findByReference(reference);
+        final var utilisateurDto = this.iUtilisateurService.rechercherReference(reference);
 
         if (utilisateurDto == null) {
-            modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
-        } else {
-            modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
+            // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
+            return new ModelAndView("redirect:/listerUtilisateur.do");
         }
+
+        final var modelAndView = new ModelAndView("modifierUtilisateur");
+
+        modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
 
         return modelAndView;
     }
@@ -58,6 +60,7 @@ public class EditerUtilisateur {
     public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
         this.iUtilisateurService.updateUtilisateur(utilisateurDto);
 
+        // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
         return new ModelAndView("redirect:/listerUtilisateur.do");
     }
 }

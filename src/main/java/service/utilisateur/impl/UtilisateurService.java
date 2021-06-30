@@ -96,14 +96,10 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public UtilisateurDto findByReference(final String reference) {
+    public UtilisateurDto rechercherReference(final String reference) {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
 
-        if (utilisateurDo != null) {
-            return UtilisateurMapper.mapperToDto(utilisateurDo);
-        }
-
-        return null;
+        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
     }
 
     /**
