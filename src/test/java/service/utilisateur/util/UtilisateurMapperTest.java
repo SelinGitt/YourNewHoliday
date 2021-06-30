@@ -29,6 +29,7 @@ class UtilisateurMapperTest {
     void testMapToDo() {
         final var utilisateurDto = new UtilisateurDto();
 
+        utilisateurDto.setId(2);
         utilisateurDto.setEmail("email_dto@test.fr");
         utilisateurDto.setReference("123abc");
         utilisateurDto.setDateInscription("12/04/2021");
@@ -50,6 +51,7 @@ class UtilisateurMapperTest {
 
         Assertions.assertNotNull(utilisateurDoMapper);
 
+        Assertions.assertEquals(utilisateurDto.getId(), utilisateurDoMapper.getIdUtilisateur());
         Assertions.assertEquals(utilisateurDto.getEmail(), utilisateurDoMapper.getEmail());
         Assertions.assertEquals(utilisateurDto.getReference(), utilisateurDoMapper.getReference());
         Assertions.assertEquals("Mon Apr 12 00:00:00 CEST 2021", utilisateurDoMapper.getDateInscription().toString());
