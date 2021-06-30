@@ -47,12 +47,12 @@
 
                     <td class="buttonsUser02">
                         <div>
-                            <form:button value="submit" class="editUser05">
+                            <form:button value="submit" class="editUser02">
                                 <spring:message code="usr02.edit.valider" />
                             </form:button>
                         </div>
                         <div>
-                            <form:button type="reset" class="resetUser05">
+                            <form:button type="reset" class="resetUser02">
                                 <spring:message code="usr02.edit.reset" />
                             </form:button>
                         </div>
