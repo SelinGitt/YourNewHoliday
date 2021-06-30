@@ -4,7 +4,7 @@
 <div class="footer-container">
     <%-- lien de redirection vers la page contact vide pour l'instant "contact.do" quand le controlleur sera créé --%>
     <div>
-        <a href=""> <span class="text-responsive"><spring:message code="glb.footer.lien.con" /></span>
+        <a href="contact.do"> <span class="text-responsive"><spring:message code="glb.footer.lien.con" /></span>
         </a>
     </div>
     <%-- lien de redirection vers la page mentions légales vide pour l'instant 
