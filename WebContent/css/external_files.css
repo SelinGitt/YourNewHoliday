@@ -29,12 +29,11 @@
 	text-align: center;
 }
 
-.CGV-button {
-	background: #F0F0F0;
-}
-
-.CGU-button {
+.CG-button-background{
 	background: #615b63;
+}
+.CG-button-clicked-background{
+	background: #F0F0F0;
 }
 
 .mlg-file {
@@ -50,18 +49,4 @@
 
 .CGU-file {
 	display: none;
-}
-.CGv1-background{
-	background: #F0F0F0;
-/* background:#FF0000; */
-}
-.CGv2-background{
-	background: #615b63;
-}
-.CGU1-background{
-	background: #615b63;
-}
-.CGU2-background{
-	background: #F0F0F0;
-	
 }
