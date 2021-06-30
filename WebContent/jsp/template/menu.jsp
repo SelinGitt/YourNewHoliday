@@ -12,7 +12,7 @@
     <%-- a ajouter si connecter --%>
     <c:if test="${!empty sessionScope.utilisateur}">
         <div class="link-container">
-            <a href="#"> <span class="fa fa-user"></span> <span> <spring:message code="menu.lien.profil" />
+            <a href="consulterUtilisateur.do"> <span class="fa fa-user"></span> <span> <spring:message code="menu.lien.profil" />
             </span>
             </a>
         </div>
