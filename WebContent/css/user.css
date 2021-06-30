@@ -70,13 +70,11 @@
 
 .user05-body-general {
 	width: 100%;
-	line-height: 0.313em;
 }
 
 .user05-title {
 	text-align: center;
 	margin-right: 6.25em;
-	margin-bottom: 3.125em;
 }
 
 .user05-form {
@@ -85,7 +83,7 @@
 }
 
 .user05-lib-champ-taille {
-	width: 18.75em;
+	width: 20em;
 }
 
 .user05-lib-champ {
@@ -112,7 +110,9 @@
 }
 
 .user05-rightSide {
-	width: 25%;
+	width: 2%;
+	margin-bottom: 12.5em;
+	margin-left: 12.5em;
 }
 
 /* .user05 .leftSideUser05 { */
