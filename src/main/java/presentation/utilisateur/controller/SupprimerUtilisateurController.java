@@ -27,10 +27,17 @@ public class SupprimerUtilisateurController {
     @Autowired
     private IUtilisateurService iUtilisateurService;
 
+    /**
+     * Permet supprimer un utilisateur
+     *
+     * @param  session            : la session en cours
+     * @param  redirectAttributes : attributs de redirection
+     * @return                    un ModelAndView
+     */
     @GetMapping
-    private ModelAndView supprimerUtilisateur(final HttpSession session, final RedirectAttributes redirectAttributes) {
+    public ModelAndView supprimerUtilisateur(final HttpSession session, final RedirectAttributes redirectAttributes) {
         //On récupère l'utilisateur en session
-        final UtilisateurConnecteDto utilisateurConnecteDto = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
+        final var utilisateurConnecteDto = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         final var id = Integer.valueOf(utilisateurConnecteDto.getIdUtilisateur());
         final var role = Integer.valueOf(utilisateurConnecteDto.getIdRole());
 
