@@ -37,4 +37,5 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste des produits trouvés
      */
     List<ProduitDo> rechercherProduits(final String searchTerm);
+
 }

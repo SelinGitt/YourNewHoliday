@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
+import persistance.produit.entity.ProduitDo;
 import presentation.produit.dto.ProduitDto;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
@@ -45,5 +46,11 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
+    }
+
+    @Override
+    public ProduitDto editerProduit(final ProduitDto produitDto) {
+        final ProduitDo produitDo = ProduitMapper.mapToDo(produitDto);
+        return ProduitMapper.mapToDto(produitDao.update(produitDo));
     }
 }
