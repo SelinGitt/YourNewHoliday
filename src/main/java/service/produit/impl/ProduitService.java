@@ -51,11 +51,12 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
         final var typeTri = TypeTriAlphanumerique.getValue(tri);
         logger.debug("ProduitService {} findFilter", ProduitDto.class);
-        if (!searchTerm.isBlank()) {
-            if ("0".equals(tri)) {
-                return rechercherProduits(searchTerm);
+        if ("0".equals(tri)) {
+            if (!searchTerm.isBlank()) {
+                return listerFiltreTri(typeTri.checkType(), searchTerm);
             }
-            return listerFiltreTri(typeTri.checkType(), searchTerm);
+            return rechercherProduits(searchTerm);
+
         }
         if ("0".equals(tri)) {
             return listerProduitsEnVente();
