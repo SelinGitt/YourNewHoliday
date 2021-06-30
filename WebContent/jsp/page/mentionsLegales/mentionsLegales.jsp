@@ -32,11 +32,18 @@
 						// le cas 1 se produit quand on clique sur la div-onglet CGV
 						case 1:
 							// on éclaire l'onglet CGV
-							document.getElementById("CGV-button").setAttribute(
-									"style", "background: #F0F0F0;");
+// 							document.getElementById("CGV-button").setAttribute(
+// 									"style", "background: #F0F0F0;");
+							document.getElementById("CGV-button").classList.add('CGv1-background');
+							document.getElementById("CGV-button").classList.remove('CGv2-background');
+
 							// on fonce l'onglet CGU
 							document.getElementById("CGU-button").setAttribute(
 									"style", "background: #615b63;");
+// 							document.getElementById("CGU-button").classList.add('CGU1-background');
+// 							document.getElementById("CGU-button").classList.remove('CGU2-background');
+
+
 							// on fait apparaitre la div contenant le fichier CGV
 							document.getElementById("CGV-file").setAttribute(
 									"style", "display: block;");
@@ -47,11 +54,20 @@
 						// le cas 2 se produit quand on clique sur la div-onglet CGU
 						case 2:
 							// on fonce l'onglet CGV
-							document.getElementById("CGV-button").setAttribute(
-									"style", "background: #615b63;");
+// 							document.getElementById("CGV-button") ;
+// 							.setAttribute(
+// 									"style", "background: #615b63;");
+							document.getElementById("CGV-button").classList.add('CGv2-background');
+							document.getElementById("CGV-button").classList.remove('CGv1-background');
+
+
 							// on éclaire l'onglet CGU
 							document.getElementById("CGU-button").setAttribute(
 									"style", "background: #F0F0F0;");
+// 							document.getElementById("CGU-button").classList.add('CGU2-background');
+// 							document.getElementById("CGU-button").classList.remove('CGU1-background');
+
+
 							// on fait disparaitre la div contenant le ficher CGV
 							document.getElementById("CGV-file").setAttribute(
 									"style", "display: none;");
