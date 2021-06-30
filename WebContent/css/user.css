@@ -1,79 +1,115 @@
 @charset "UTF-8";
 /* FEATURE TEAM USER */
 
-/* correctif : le nom des classes spécifique doit commencer par le nom de la FT team */
-
 /* ECRAN ERREUR 404 */
-.div404 {
+.userPage404 {
 	text-align: center;
 	height: 100%;
 }
 
-.div404 .img404 {
+.userPage404 .img404 {
 	height: 100%;
 }
 
 /* USR00 */
+/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
+.user00 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
-/* USR01 */
+.user00 .leftSideUser00 {
+	width: 75%;
+}
+
+.user00 .leftSideUser00 table {
+	width: 100%;
+}
 /* correctif : utiliser des em au lieu des px */
-.usr01searchMenu {
-	margin-bottom: 15px;
+.user00 .leftSideUser00 table tr th {
+	width: 30%;
+	text-align: left;
+	padding: 10px 0;
+}
+
+.user00 .leftSideUser00 table tr td {
+	width: fit-content;
+}
+/* correctif : utiliser des em au lieu des px */
+.user00 .leftSideUser00 table tr td div button {
+	padding: 5px 25px;
+	border-radius: 5px;
+	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
+	color: white;
+}
+
+.user00 .leftSideUser00 table tr .buttonsUser00 {
+	width: 100%;
 	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
+.user00 .leftSideUser00 table tr .buttonsUser00 div .modifierUser00 {
+	background-color: rgb(106, 168, 79);
+}
+/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
+.user00 .leftSideUser00 table tr .buttonsUser00 div .supprimerUser00 {
+	background-color: rgb(224, 102, 102);
+}
+
+.user00 .leftSideUser00 table tr td input {
 	width: 100%;
 }
 
-.usr01AddUser {
+.user00 .rightSideUser00 {
+	width: 25%;
+}
+/* USR01 */
+.user01-searchMenu {
+	margin-bottom: 0.938em;
+	width: 100%;
+}
+
+.user01-searchMenu .user01AddUser {
 	margin-left: auto;
 }
 
-.usr01filterBar {
-	width: 15%;
-	margin-left: 1em;
-}
-
-.usr01filterBar select {
-	width: 70%;
-}
-
-/* correctif : utiliser des em au lieu des px */
-#listeUser {
+.user01-lister {
 	border-collapse: collapse;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border: 1px solid black;
+	border: 0.063em solid #000000;
 	overflow-y: scroll;
 	width: 100%;
 }
-/* correctif : utiliser des em au lieu des px */
-.thUSR01 {
+
+.user01-colonne {
 	font-weight: lighter;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border-bottom: 1px solid black;
-	padding: 7px 0;
+	border-bottom: 0.063em solid #000000;
+	padding: 0.438em 0;
 }
-/* correctif : utiliser des em au lieu des px */
-.bodyUSR01 {
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	border-bottom: 1px solid black;
+
+.user01-body {
+	border-bottom: 0.063em solid #000000;
 	text-align: center;
 	font-weight: bold;
-	padding: 9px 0;
+	padding: 0.563em 0;
 }
-/* correctif : utiliser des em au lieu des px */
-.imageUSR01 {
-	width: 40px;
-	height: 40px;
+
+.user01-image {
+	width: 2.5em;
+	height: 2.5em;
 }
-/* correctif : utiliser des em au lieu des px */
-#imageNonActif {
-	width: 25px;
+
+.user01-imageNonActive {
+	width: 1.563em;
 	height: auto;
 }
-/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-.urs01newUserBouton {
-	background-color: rgb(34, 177, 76);
-	color: white;
+
+.user01-newUserBouton {
+	background-color: #22B14C;
+	color: #FFFFFF;
 }
 
 /* USR02 */
@@ -81,128 +117,114 @@
 /* USR03 */
 
 /* USR05 */
-/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
 .user05 {
-	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.user05 .leftSideUser05 {
-	width: 75%;
-}
-
-.user05 .leftSideUser05 form table {
-	width: 100%;
-}
-/* correctif : utiliser des em au lieu des px */
-.user05 .leftSideUser05 form table tr th {
-	width: 30%;
-	text-align: left;
-	padding: 10px 0;
-}
-
-.user05 .leftSideUser05 form table tr td {
-	width: fit-content;
-}
-/* correctif : utiliser des em au lieu des px */
-.user05 .leftSideUser05 form table tr td div button {
-	padding: 5px 25px;
-	border-radius: 5px;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	color: white;
-}
-
-.user05 .leftSideUser05 form table tr .buttonsUser05 {
-	width: 100%;
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-.user05 .leftSideUser05 form table tr .buttonsUser05 div .creerUser05 {
-	background-color: rgb(106, 168, 79);
-}
-/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-.user05 .leftSideUser05 form table tr .buttonsUser05 div .resetUser05 {
-	background-color: rgb(224, 102, 102);
-}
-
-.user05 .leftSideUser05 form table tr td input {
+.user05-body-general {
 	width: 100%;
 }
 
-.user05 .rightSideUser05 {
-	width: 25%;
-}
-
-/* USR07 */
-.body-general {
-	width: 100%;
-}
-/* correctif : utiliser des em au lieu des px */
-.title {
+.user05-title {
 	text-align: center;
-	margin-right: 100px;
-	margin-bottom: 50px;
+	margin-right: 6.25em;
 }
 
-.form {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
+.user05-form {
 	align-items: center;
 	justify-content: center;
-	margin-top: 10px;
 }
 
-.button {
+.user05-lib-champ-taille {
+	width: 20em;
+}
+
+.user05-lib-champ {
+	justify-content: space-between;
+	margin-bottom: 3.125em;
+}
+
+.user05-buttons {
 	align-items: center;
 	margin: auto;
 	width: 80%;
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-}
-/* correctif : utiliser des em au lieu des px */
-.lib-champ-email {
-	margin-left: 50px;
-	width: 300px;
-}
-/* correctif : utiliser des em au lieu des px */
-.lib-champ-password {
-	margin-left: 50px;
-	width: 300px;
 }
 
-.error {
-	Color: red;
-}
-/* correctif : utiliser des em au lieu des px */
-/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.errorblock {
-	background-color: #ff7f00;
-	border: 2px solid #000000;
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex
-}
-/* correctif : utiliser des em au lieu des px */
-.lib-champ {
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 50px;
-}
-/* correctif : utiliser des em au lieu des px */
-.boutonValiderUSR07 {
+.user05-creer {
 	background-color: #008000;
-	margin-left: 70px;
+	margin-left: 4.375em;
 	margin-right: 20%;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	Color: white;
+	Color: #FFFFFF;
 }
 
-.boutonResetUSR07 {
+.user05-reset {
 	background-color: #FF0000;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	Color: white;
+	Color: #FFFFFF;
+}
+
+.user05-rightSide {
+	width: 2%;
+	margin-bottom: 12.5em;
+	margin-left: 12.5em;
+}
+
+/* USR07 */
+.user07-body-general {
+	width: 100%;
+}
+
+.user07-title {
+	text-align: center;
+	margin-right: 6.25em;
+	margin-bottom: 3.125em;
+}
+
+.user07-form {
+	align-items: center;
+	justify-content: center;
+	margin-top: 0.625em;
+}
+
+.user07-button {
+	align-items: center;
+	margin: auto;
+	width: 80%;
+}
+
+.user07-lib-champ-email {
+	margin-left: 3.125em;
+	width: 18.75em;
+}
+
+.user07-lib-champ-password {
+	margin-left: 3.125em;
+	width: 18.75em;
+}
+
+.user07-error {
+	Color: #FF0000;
+}
+
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.user07-errorblock {
+	background-color: #ff7f00;
+	border: 0.125em solid #000000;
+}
+
+.user07-lib-champ {
+	justify-content: space-between;
+	margin-bottom: 3.125em;
+}
+
+.user07-boutonValider {
+	background-color: #008000;
+	margin-left: 4.375em;
+	margin-right: 20%;
+	Color: #FFFFFF;
+}
+
+.user07-boutonReset {
+	background-color: #FF0000;
+	Color: #FFFFFF;
 }
