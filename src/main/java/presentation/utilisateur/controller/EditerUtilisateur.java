@@ -6,6 +6,7 @@ package presentation.utilisateur.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -46,4 +47,17 @@ public class EditerUtilisateur {
         return modelAndView;
     }
 
+    /**
+     * Permet de traiter les requêtes POST<br/>
+     * et de mettre a jour un utilisateur
+     *
+     * @param  utilisateurDto l'utilisateur à mettre a jour
+     * @return                redirection vers usr01
+     */
+    @PostMapping
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
+        this.iUtilisateurService.updateUtilisateur(utilisateurDto);
+
+        return new ModelAndView("redirect:/listerUtilisateur.do");
+    }
 }
