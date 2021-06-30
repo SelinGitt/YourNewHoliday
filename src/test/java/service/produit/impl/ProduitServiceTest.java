@@ -3,8 +3,8 @@
  */
 package service.produit.impl;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
@@ -18,6 +18,8 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 
 /**
  * Classe test de {@link ProduitService}
@@ -78,5 +80,26 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitEnVente(1));
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduit() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setNom("Test Edition");
+        produitDto.setReference("TEST00000");
+        produitDto.setPrixUnitaire("10.00");
+        produitDto.setServices("1");
+        produitDto.setMiseEnVente("true");
+        produitDto.setHebergement("Hotel Test");
+        produitDto.setDestination("Testmanie");
+        produitDto.setDescription("Test moi");
+        produitDto.setCheminImage("C:/temp/img/test.png");
+        produitDto.setVersion("1");
+        Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
+        assertNotNull(this.produitServiceMock.editerProduit(produitDto));
     }
 }
