@@ -259,6 +259,11 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	text-align: right;
 }
 
+/* aligner le texte à gauche */
+.CMD_04-text-align-left {
+	text-align: left;
+}
+
 /* aligner le texte justify*/
 .CMD_04-text-align-justify {
 	text-align: justify;
@@ -282,6 +287,12 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	height: 80%;
 }
 
+/* text padding à gauche et à droite mais pas en haut et en bas */
+.CMD_04-box-padding {
+	/* pas de padding en haut et en bas, centrage automatique par l'utilisation de grid */
+	padding: 0 0.625em;
+}
+
 /* l'ascensseur à droite vertical */
 .CMD_04-overflow {
 	overflow-y: auto;
@@ -292,6 +303,12 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	height: 33.33%;
 }
 
+/* wrapper de la grille contenant la liste de produit */
 .CMD_04-wrapper {
 	padding: 0.625em;
+}
+
+/* couleur du titre pour la liste des produits */
+.CMD_04-title-text-color {
+	color: #66C5EB;
 }
