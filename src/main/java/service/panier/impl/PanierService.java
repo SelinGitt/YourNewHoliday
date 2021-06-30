@@ -40,7 +40,7 @@ public class PanierService implements IPanierService {
         final Map<ProduitDto, LigneCommandeProduitDto> mapPanier = panier.getMapPanier();
         // On récupère la ligne de commande
         LigneCommandeProduitDto ligneCommande = mapPanier.get(produitAjout);
-        int quantiteProduit = 0;
+        var quantiteProduit = 0;
         // si le produit n'est pas dans le panier 
         if (ligneCommande == null) {
             // on effectue la modification que si la quantité n'est pas nulle ou négative
