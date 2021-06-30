@@ -5,6 +5,8 @@ package service.produit.impl;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -25,8 +27,10 @@ import service.produit.ProduitMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ProduitService implements IProduitService {
 
+    // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
+    private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
     @Autowired
-    private IProduitDao produitDao;
+    private IProduitDao  produitDao;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -46,6 +50,7 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
         final var typeTri = TypeTriAlphanumerique.getValue(tri);
+        logger.debug("ProduitService {} findFilter", ProduitDto.class);
         if (!searchTerm.isBlank()) {
             if ("0".equals(tri)) {
                 return rechercherProduits(searchTerm);
