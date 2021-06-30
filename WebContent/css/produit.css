@@ -81,8 +81,8 @@ th.pdt01 {
 }
 
 .pdt04Image {
-	width: 20em;
-	height: 12em;
+	width: 25em;
+	height: 15em;
 }
 
 .pdt04Hebergement {
@@ -99,6 +99,9 @@ th.pdt01 {
 }
 
 .pdt04IconeServices {
-	width: 2.125em;
-	height: 2.125em;
+	font-size: xx-large;
+}
+
+.pdt04IconeSpace {
+	padding: 0.3em;
 }

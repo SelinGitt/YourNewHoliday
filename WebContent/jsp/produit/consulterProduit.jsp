@@ -29,7 +29,7 @@
                     <td><spring:message code="pdt04.ajouter"></spring:message></td>
                 </tr>
             </table>
-            <div class="display-flex pdt04IconeServices">
+            <div class="display-flex">
                 <div>
                     <table aria-label="descriptionServices">
                         <tr>
@@ -37,15 +37,15 @@
                                 </spring:message></th>
                         </tr>
                         <tr class="pdt04IconeServices">
-                            <td><em class="fa fa-glass"></em></td>
-                            <td><em class="fa fa-bath"></em></td>
-                            <td><em class="fa fa-paw"></em></td>
-                            <td><em class="fa fa-gamepad"></em></td>
-                            <td><em class="fa fa-wifi"></em></td>
-                            <td><em class="fa fa-cutlery"></em></td>
-                            <td><em class="fa fa-wheelchair"></em></td>
-                            <td><em class="fa fa-snowflake-o"></em></td>
-                            <td><em class="fa fa-tv"></em></td>
+                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
                         </tr>
                     </table>
                 </div>
@@ -56,7 +56,7 @@
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="15" cols="50" readonly="readonly" class="pdt04TextArea">
+                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea">
                 ${consulterProduitDto.description}</textarea></td>
             </tr>
         </table>
