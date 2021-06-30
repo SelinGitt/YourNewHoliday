@@ -33,10 +33,10 @@ class FichierDaoTest {
     private IFichierDao iFichier;
 
     /**
-     * Test method for {@link persistance.external_files.impl.FichierDao#trouverFichierContact(java.lang.String)}.
+     * Test method for {@link persistance.external_files.impl.FichierDao#trouverFichier(java.lang.String)}.
      */
     @Test
-    void testTrouverFichierContact() {
+    void testTrouverFichier() {
 
         //les tests marcheront a la condition d'avoir le fichier html dans le repertoire indiquer
         //pour le test le fichier sera directement dans le projet : 
