@@ -33,7 +33,7 @@
                                 <div>
                                     <div>
                                         <%--  nom et référence --%>
-                                        <h2>${entry.key.nom}-${entry.key.reference}</h2>
+                                        <h2>${entry.key.nom}-${entry.key}</h2>
                                     </div>
                                     <%--  description --%>
                                     <div>${entry.key.description}</div>
@@ -95,7 +95,7 @@
 
                                 </div> <%--  image --%>
                                 <div class="justify-content-center display-flex">
-                                    <a href="?action=supprimer_produit&id=${entry.key.id }"><img
+                                    <a href="supprimerProduitPanier.do?id=${entry.key.idProduitOriginal }"><img
                                         class="panier-responsive" src="img/commun/poubelle.jpg"
                                         alt="icone poubelle pour suppression" /></a>
                                 </div></td>
