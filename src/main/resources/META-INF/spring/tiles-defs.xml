@@ -47,6 +47,13 @@
 	</definition>
 
 	<!-- écran utilisateur -->
+
+	<!-- page jsp Écran de consultation de profil USR_00 -->
+	<definition name="consulterUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Écran de consultation de profil" />
+		<put-attribute name="body" value="/jsp/utilisateur/consulterUtilisateur.jsp" />
+	</definition>
+
 	<definition name="listerUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />
 		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp" />
@@ -61,6 +68,11 @@
 	<definition name="creerUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Création de profil" />
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
+	</definition>
+
+	<!-- écran panier -->
+	<definition name="listerPanierAdresses" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierAdresses.jsp" />
 	</definition>
 
 	<!-- écran contact -->
