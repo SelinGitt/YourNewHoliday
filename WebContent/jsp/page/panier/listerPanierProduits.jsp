@@ -95,8 +95,9 @@
 
                                 </div> <%--  image --%>
                                 <div class="justify-content-center display-flex">
-                                    <img class="panier-responsive" src="img/commun/poubelle.jpg"
-                                        alt="icone poubelle pour suppression" />
+                                    <a href="?action=supprimer_produit&id=${entry.key.id }"><img
+                                        class="panier-responsive" src="img/commun/poubelle.jpg"
+                                        alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
                     </c:forEach>

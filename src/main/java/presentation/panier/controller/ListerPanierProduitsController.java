@@ -3,6 +3,8 @@
  */
 package presentation.panier.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.panier.dto.PanierDto;
+import presentation.produit.dto.ProduitDto;
+import service.produit.IProduitService;
+import service.produit.impl.ProduitService;
 
 /**
  * Class represents PanierProduitsController
@@ -22,6 +27,8 @@ import presentation.panier.dto.PanierDto;
 @Controller
 @RequestMapping("/listerPanierProduits.do")
 public class ListerPanierProduitsController {
+
+    private IProduitService produitService = new ProduitService();
 
     /**
      * Permet d'afficher la page PanierProduits
@@ -39,18 +46,23 @@ public class ListerPanierProduitsController {
         } else {
             modelAndView.setViewName("pan_00");
         }
-
         return modelAndView;
     }
 
     public String choixAction(final HttpSession session, final HttpServletRequest request) {
         final String action = request.getParameter("action");
-        if ("supprimerProduit".equals(action)) {
-            session.setAttribute("panierDto", this.supprimerProduitPanier);
+        if ("supprimer_produit".equals(action)) {
+            final PanierDto panier = (PanierDto) session.getAttribute("panierDto");
+            final ProduitDto produitToDelete = produitService.trouverProduitEnVente(Integer.valueOf(request.getParameter("id")));
+            session.setAttribute("panierDto", this.supprimerProduitPanier(panier, produitToDelete));
         }
         return "listerPanierProduits";
     }
 
-    public void supprimerProduitPanier
+    public PanierDto supprimerProduitPanier(final PanierDto panier, final ProduitDto produitToDelete) {
+        final Map<ProduitDto, Integer> mapPanier = panier.getMapPanier();
+        mapPanier.remove(produitToDelete);
+        return panier;
+    }
 
 }
