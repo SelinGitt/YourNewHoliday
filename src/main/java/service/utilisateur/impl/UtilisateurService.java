@@ -95,6 +95,17 @@ public class UtilisateurService implements IUtilisateurService {
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
     }
 
+    @Override
+    public UtilisateurDto findByReference(final String reference) {
+        final var utilisateurDo = iUtilisateurDao.findByReference(reference);
+
+        if (utilisateurDo != null) {
+            return UtilisateurMapper.mapperToDto(utilisateurDo);
+        }
+
+        return null;
+    }
+
     /**
      * Permet de rechercher un utilisateur selon le nom
      *
