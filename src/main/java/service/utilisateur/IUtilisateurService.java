@@ -44,4 +44,12 @@ public interface IUtilisateurService {
      * @return        List d'UtilisateurDto
      */
     List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole);
+
+    /**
+     * Permet de mettre a jour un utilisateur en base de donnees
+     *
+     * @param  utilisateurDto Utilisateur a mettre a jour
+     * @return                UtilisateurDto mis a jour
+     */
+    UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto);
 }

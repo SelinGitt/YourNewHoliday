@@ -90,6 +90,11 @@ public class UtilisateurService implements IUtilisateurService {
         return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
+    @Override
+    public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
+    }
+
     /**
      * Permet de rechercher un utilisateur selon le nom
      *

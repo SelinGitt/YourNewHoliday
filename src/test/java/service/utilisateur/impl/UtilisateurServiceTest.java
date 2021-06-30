@@ -185,4 +185,32 @@ class UtilisateurServiceTest {
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
     }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
+     */
+    @Test
+    void testUpdate() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        utilisateurDto.setReference("ABC123");
+        utilisateurDto.setEmail("test@test.fr");
+        utilisateurDto.setNom("Nom");
+        utilisateurDto.setPrenom("Prenom");
+        utilisateurDto.setPassword("Hash");
+        utilisateurDto.setDateInscription("09/06/2021");
+        utilisateurDto.setDateNaissance("09/06/2021");
+        utilisateurDto.setEstDesactive(true);
+        utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
+
+        final RoleDto role = new RoleDto();
+        role.setIdRole(1);
+
+        utilisateurDto.setRole(role);
+
+        Mockito.when(this.dao.update(Mockito.any(UtilisateurDo.class))).thenReturn(UtilisateurMapper.mapperToDo(utilisateurDto));
+
+        final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
+
+        Assertions.assertNotNull(utilisateurDtoUpdated);
+    }
 }
