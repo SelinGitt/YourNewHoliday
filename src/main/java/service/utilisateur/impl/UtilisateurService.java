@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
@@ -34,6 +35,9 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Autowired
     private IUtilisateurDao     iUtilisateurDao;
+
+    @Autowired
+    private ICommandeDao        iCommandeDao;
 
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
@@ -71,6 +75,24 @@ public class UtilisateurService implements IUtilisateurService {
             logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
         }
         return null;
+    }
+
+    @Override
+    public UtilisateurDto findUtilisateurById(final Integer id) {
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.findById(id));
+    }
+
+    @Override
+    public boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole) {
+        //S'il ne reste qu'un admin et qu'on cherche à le supprimer -> false
+        if (iUtilisateurDao.isLastAdmin(idRole)) {
+            return false;
+        }
+        //On détache les commandes de l'utilisateur
+        iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
+        //On le supprime
+        iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
+        return true;
     }
 
     @Override

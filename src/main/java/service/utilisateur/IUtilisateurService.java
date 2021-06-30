@@ -37,6 +37,23 @@ public interface IUtilisateurService {
     UtilisateurConnecteDto authentify(final String email, final String password);
 
     /**
+     * Permet de renvoyer un UtilisateurDto en le cherchant par l'Id
+     *
+     * @param  id de l'utilisateur provenant de l'utilisateurConnecteDto
+     * @return    un UtilisateurDto, ou null si non trouvé
+     */
+    UtilisateurDto findUtilisateurById(final Integer id);
+
+    /**
+     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id et l'id de son rôle
+     *
+     * @param  idUtilisateur : id de l'utilisateur à supprimer
+     * @param  idRole        l'id du rôle de l'utilisateur à supprimer
+     * @return               true si suppression OK, false si suppression non autorisée (dernier admin)
+     */
+    boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole);
+
+    /**
      * Permet de rechercher un utilisater selon le nom et/ou le role
      *
      * @param  nom    Nom a rechercher

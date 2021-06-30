@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
@@ -32,6 +33,9 @@ class UtilisateurServiceTest {
 
     @Mock
     private IUtilisateurDao    dao;
+
+    @Mock
+    private ICommandeDao       commandeDao;
 
     @InjectMocks
     private UtilisateurService utilisateurService;
@@ -242,5 +246,69 @@ class UtilisateurServiceTest {
         Assertions.assertNotNull(this.utilisateurService.rechercherReference("Ref"));
 
         Assertions.assertNull(this.utilisateurService.rechercherReference("RefKO"));
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#findUtilisateurById(Integer)}
+     */
+    @Test
+    void testFindUtilisateurById() {
+        final var utilisateurDo = new UtilisateurDo();
+
+        utilisateurDo.setEmail("email_do@test.fr");
+        utilisateurDo.setReference("456def");
+        utilisateurDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        utilisateurDo.setNom("Dupond");
+        utilisateurDo.setPrenom("Brice");
+        utilisateurDo.setEstDesactive(true);
+        utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
+        utilisateurDo.setMdpHash("test");
+
+        final var roleDo = new RoleDo();
+
+        roleDo.setIdRole(1);
+        roleDo.setLibelle("client");
+
+        utilisateurDo.setRole(roleDo);
+
+        Mockito.when(this.dao.findById(1)).thenReturn(utilisateurDo);
+        Mockito.when(this.dao.findById(10)).thenReturn(null);
+
+        final UtilisateurDto utilisateurDto = this.utilisateurService.findUtilisateurById(1);
+
+        Assertions.assertNotNull(utilisateurDto);
+        Assertions.assertEquals("email_do@test.fr", utilisateurDto.getEmail());
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+     */
+    @Test
+    void testDeleteUtilisateurById() {
+
+        //On retourne false -> plus d'un admin restant
+        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(false);
+
+        //Au moins un admin restant si suppression -> true 
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 3));
+
+        //Même test mais en supprimant un id=1 (client) -> true
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+     */
+    @Test
+    void testDeleteUtilisateurByIdLastAdmin() {
+        //On retourne true -> un seul admin restant
+        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(true);
+
+        //Dernier admin, suppression impossible -> false 
+        Assertions.assertFalse(this.utilisateurService.deleteUtilisateurById(2, 3));
+
+        //Même test mais en supprimant un id=1 (client) -> true
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
     }
 }
