@@ -32,7 +32,8 @@
                                 </div>
                                 <div class="CMD_04-col-2 CMD_04-height">
                                     <div
-                                        class="CMD_04-bold CMD_04-text-align-left CMD_04-box-title CMD_04-title-text-color">
+                                        class="CMD_04-bold CMD_04-text-align-left
+                                               CMD_04-box-title CMD_04-title-text-color">
                                         ${cmdProduit.produitAcheteDto.nom}
                                         <spring:message code="detailCommande.tiret"></spring:message>
                                         ${cmdProduit.produitAcheteDto.reference}
@@ -58,7 +59,9 @@
                                 <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
                                     <spring:message code="detailCommande.prd.quantite"></spring:message>
                                 </div>
-                                <div class="CMD_04-text-align-center CMD_04-box-text CMD_04-grid CMD_04-box-padding">${cmdProduit.quantite}</div>
+                                <div
+                                    class="CMD_04-text-align-center CMD_04-box-text
+                                           CMD_04-grid CMD_04-box-padding">${cmdProduit.quantite}</div>
                             </div>
                             <div class="CMD_04-grid-cel CMD_04-col-4 CMD_04-height">
                                 <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
