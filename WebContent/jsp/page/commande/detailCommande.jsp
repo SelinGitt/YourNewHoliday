@@ -18,11 +18,15 @@
             </legend>
             <div class="CMD_04-grid CMD_04-height CMD_04-box-sizing CMD_04-overflow">
                 <div class="CMD_04-wrapper CMD_04-box-sizing">
+                    <%-- liste des produits achetés --%>
                     <c:forEach items="${commande.listCommandeProduitDto}" var="cmdProduit">
+                        <%-- un produit acheté --%>
                         <div class="CMD_04-border CMD_04-ligne CMD_04-box-sizing">
+                            <%-- boite contenant les images, le titre du voyage et sa référence ainsi que ça description --%>
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-1 CMD_04-border-right CMD_04-grid
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
+                                <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <a href="#"><img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
@@ -30,6 +34,7 @@
                                              ${cmdProduit.produitAcheteDto.cheminDeLImage}"
                                         class="CMD_04-img"></a>
                                 </div>
+                                <%-- titre du voyage et sa description --%>
                                 <div class="CMD_04-col-2 CMD_04-height">
                                     <div
                                         class="CMD_04-bold CMD_04-text-align-left
@@ -42,6 +47,7 @@
                                         ${cmdProduit.produitAcheteDto.description}</div>
                                 </div>
                             </div>
+                            <%-- boite prix unitaire --%>
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-2 CMD_04-border-right
                                        CMD_04-height CMD_04-box-sizing">
@@ -53,6 +59,7 @@
                                     <spring:message code="glb.devise"></spring:message>
                                 </div>
                             </div>
+                            <%-- boite quantité de produits acheté --%>
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-3 CMD_04-border-right
                                        CMD_04-height CMD_04-box-sizing">
@@ -63,9 +70,10 @@
                                     class="CMD_04-text-align-center CMD_04-box-text
                                            CMD_04-grid CMD_04-box-padding">${cmdProduit.quantite}</div>
                             </div>
+                            <%-- boite prix total --%>
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-4
-                                        CMD_04-border-right-transparent CMD_04-height CMD_04-box-sizing">
+                                       CMD_04-border-right-transparent CMD_04-height CMD_04-box-sizing">
                                 <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
                                     <spring:message code="detailCommande.prd.pTotal"></spring:message>
                                 </div>
