@@ -19,7 +19,8 @@
                     <td><spring:message code="pdt04.reference"></spring:message>${consulterProduitDto.reference}</td>
                 </tr>
                 <tr>
-                    <td><spring:message code="pdt04.prix"></spring:message>${consulterProduitDto.prixUnitaire}&nbsp€</td>
+                    <td><spring:message code="pdt04.prix">
+                        </spring:message>${consulterProduitDto.prixUnitaire}&nbsp€</td>
                 </tr>
                 <tr>
                     <td>+/-</td>
@@ -32,7 +33,8 @@
                 <div>
                     <table aria-label="descriptionServices">
                         <tr>
-                            <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services"></spring:message></th>
+                            <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services">
+                                </spring:message></th>
                         </tr>
                         <tr class="pdt04IconeServices">
                             <td><em class="fa fa-glass"></em></td>
@@ -54,7 +56,8 @@
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="15" cols="50" readonly="readonly" class="pdt04TextArea">${consulterProduitDto.description}</textarea></td>
+                <td><textarea maxlength="250" rows="15" cols="50" readonly="readonly" class="pdt04TextArea">
+                ${consulterProduitDto.description}</textarea></td>
             </tr>
         </table>
 
