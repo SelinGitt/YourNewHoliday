@@ -39,18 +39,16 @@ public class PanierService implements IPanierService {
         }
         final Map<ProduitDto, LigneCommandeProduitDto> mapPanier = panier.getMapPanier();
         // On récupère la ligne de commande
-        LigneCommandeProduitDto ligneCommande = mapPanier.get(produitAjout);
+        LigneCommandeProduitDto ligneCommande = mapPanier.getOrDefault(produitAjout, new LigneCommandeProduitDto());
         var quantiteProduit = 0;
         // si le produit n'est pas dans le panier 
-        if (ligneCommande == null) {
+        if (ligneCommande.getQuantite() == null) {
             // on effectue la modification que si la quantité n'est pas nulle ou négative
             if (quantite < 1) {
                 return panier;
             }
             // le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.            
             quantiteProduit = quantite;
-            // On initialise la ligne de commande
-            ligneCommande = new LigneCommandeProduitDto();
         } else {
             // sinon, on mets à jour la quantité existante            
             quantiteProduit = ligneCommande.getQuantite() + quantite;
