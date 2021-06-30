@@ -5,7 +5,7 @@ package presentation.temp;
 
 import java.util.Locale;
 
-import presentation.panier.dto.LigneCommandeProduit;
+import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.util.DecimalFormatUtils;
@@ -58,17 +58,14 @@ public class RemplirPanier {
         produitDto3.setCheminImage(null);
 
         // ajout des lignes de commande
-        final var ligneCommandeProduit = new LigneCommandeProduit();
+        final var ligneCommandeProduit = new LigneCommandeProduitDto();
         ligneCommandeProduit.setQuantite(6);
-        ligneCommandeProduit.setQuantiteAffichage(String.format("%2d", 6));
         ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
-        final var ligneCommandeProduit2 = new LigneCommandeProduit();
+        final var ligneCommandeProduit2 = new LigneCommandeProduitDto();
         ligneCommandeProduit2.setQuantite(8);
-        ligneCommandeProduit2.setQuantiteAffichage(String.format("%2d", 8));
         ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 9000.00, Locale.FRANCE));
-        final var ligneCommandeProduit3 = new LigneCommandeProduit();
+        final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
         ligneCommandeProduit3.setQuantite(12);
-        ligneCommandeProduit3.setQuantiteAffichage(String.format("%2d", 12));
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
 
         // add products to PanierDto

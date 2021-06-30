@@ -10,15 +10,13 @@ import java.io.Serializable;
  *
  * @author Steve
  */
-public class LigneCommandeProduit implements Serializable {
-
+public class LigneCommandeProduitDto implements Serializable {
     /**
      * Serial Version UID généré automatiquement
      */
-    private static final long serialVersionUID = -2920201985021528588L;
+    private static final long serialVersionUID = 6376789768578611308L;
 
     private Integer           quantite;
-    private String            quantiteAffichage;
     private String            prix;
 
     /**
@@ -56,23 +54,4 @@ public class LigneCommandeProduit implements Serializable {
     public void setPrix(final String prix) {
         this.prix = prix;
     }
-
-    /**
-     * Getter for quantiteAffichage
-     *
-     * @return the quantiteAffichage
-     */
-    public String getQuantiteAffichage() {
-        return quantiteAffichage;
-    }
-
-    /**
-     * Setter for quantiteAffichage
-     *
-     * @param quantiteAffichage the quantiteAffichage to set
-     */
-    public void setQuantiteAffichage(final String quantiteAffichage) {
-        this.quantiteAffichage = quantiteAffichage;
-    }
-
 }
