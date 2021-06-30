@@ -23,7 +23,17 @@
 		<put-attribute name="title" value="Gestion des produits" />
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
+
 	<!-- écran panier -->
+	<definition name="pan_00" extends="base.definition">
+		<put-attribute name="title" value="panier" />
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduits.jsp" />
+	</definition>
+	
+	<definition name="pan_00_vide" extends="base.definition">
+		<put-attribute name="title" value="panier" />
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduitsVide.jsp" />
+	</definition>
 
 	<!-- écran commande -->
 	<definition name="listerCommande" extends="base.definition">
@@ -48,14 +58,24 @@
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
 
+	<!-- écran panier -->
+	<definition name="listerPanierAdresses" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierAdresses.jsp" />
+	</definition>
+
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
-	
+
+	<!-- écran mentions légales -->
+	<definition name="mentionsLegales" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/mentionsLegales/mentionsLegales.jsp" />
+	</definition>
+
 	<!-- écran 404 -->
 	<definition name="404" extends="base.definition">
-		<put-attribute name="title" value="404 Error"/>
+		<put-attribute name="title" value="404 Error" />
 		<put-attribute name="body" value="/jsp/utilisateur/404.jsp" />
 	</definition>
 
