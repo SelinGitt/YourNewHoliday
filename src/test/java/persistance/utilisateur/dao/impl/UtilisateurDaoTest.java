@@ -146,4 +146,15 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDoUpdated.getEmail());
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDoUpdated.getNom());
     }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByReference(String)}.
+     */
+    @Test
+    void testFindByReference() {
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByReference("Administrateur1");
+        assertNotNull(utilisateurDo);
+        assertEquals("Marsial", utilisateurDo.getNom());
+        assertNull(iUtilisateurDao.findByReference("REFEXISTEPASPARCEQUEJELESAIS"));
+    }
 }

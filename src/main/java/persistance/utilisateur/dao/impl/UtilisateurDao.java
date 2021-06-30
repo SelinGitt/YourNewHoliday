@@ -74,4 +74,17 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
         query.setParameter("searchFilter", idRole);
         return query.getResultList();
     }
+
+    @Override
+    public UtilisateurDo findByReference(final String reference) {
+        final TypedQuery<UtilisateurDo> query = entityManager
+                .createQuery("select util from UtilisateurDo util where util.reference = :reference", UtilisateurDo.class);
+        query.setParameter("reference", reference);
+        try {
+            return query.getSingleResult();
+        } catch (final NoResultException exception) {
+            logger.info("Utilisateur avec la reference {} non trouvé en base de données.", reference, exception);
+            return null;
+        }
+    }
 }
