@@ -5,7 +5,7 @@
 <div class="conteneur-ascenseur">
 
     <h1>
-        <spring:message code="pdt0203.titre" />
+        <spring:message code="pdt02.titre" />
     </h1>
     <a href="editerProduitAdmin.do"><spring:message code="pdt0203.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
