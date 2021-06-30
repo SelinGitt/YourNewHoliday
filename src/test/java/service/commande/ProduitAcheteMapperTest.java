@@ -39,7 +39,6 @@ class ProduitAcheteMapperTest {
 
         final var produitDto = ProduitAcheteMapper.mapperToDto(produitDo);
         assertNotNull(produitDto);
-        assertEquals("10", produitDto.getIdProduit());
         assertEquals("1", produitDto.getIdDeLOriginal());
         assertEquals("GRE125699", produitDto.getReference());
         assertEquals("Voyage en grèce", produitDto.getNom());

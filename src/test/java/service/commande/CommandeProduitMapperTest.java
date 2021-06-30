@@ -45,7 +45,6 @@ class CommandeProduitMapperTest {
         assertEquals("cheminImage", produitAcheteDto.getCheminDeLImage());
         assertEquals("description", produitAcheteDto.getDescription());
         assertEquals("destination", produitAcheteDto.getDestination());
-        assertEquals("2", produitAcheteDto.getIdProduit());
         assertEquals("produit", produitAcheteDto.getNom());
         assertEquals("300,00", produitAcheteDto.getPrixUnitaire());
         assertEquals("135699", produitAcheteDto.getReference());

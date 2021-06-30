@@ -15,9 +15,7 @@ public class ProduitAcheteDto implements Serializable {
     /**
      * Générer Automatiquement pour la sérialisation
      */
-    private static final long serialVersionUID = 3233367546229029568L;
-
-    private String            idProduit;
+    private static final long serialVersionUID = -732280963573819257L;
 
     private String            idDeLOriginal;
 
@@ -32,24 +30,6 @@ public class ProduitAcheteDto implements Serializable {
     private String            prixUnitaire;
 
     private String            cheminDeLImage;
-
-    /**
-     * Getter for idProduit
-     *
-     * @return the idProduit
-     */
-    public String getIdProduit() {
-        return idProduit;
-    }
-
-    /**
-     * Setter for idProduit
-     *
-     * @param idProduit the idProduit to set
-     */
-    public void setIdProduit(final String idProduit) {
-        this.idProduit = idProduit;
-    }
 
     /**
      * Getter for idDeLOriginal
