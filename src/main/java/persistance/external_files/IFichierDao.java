@@ -1,14 +1,14 @@
 /**
  * 
  */
-package persistance.contact;
+package persistance.external_files;
 
 /**
- * Classe représentant l'interface de fichierContactDao
+ * Classe représentant l'interface de fichierDao
  *
  * @author Alexandre
  */
-public interface IFichierContactDao {
+public interface IFichierDao {
 
     /**
      * Permet de charger un fichier html
@@ -16,6 +16,6 @@ public interface IFichierContactDao {
      * @param  nomFichier : le nom du fichier
      * @return            : le contenu du fichier html
      */
-    String trouverFichierContact(final String nomFichier);
+    String trouverFichier(final String nomFichier);
 
 }

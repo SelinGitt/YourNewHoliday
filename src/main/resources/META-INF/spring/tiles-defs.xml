@@ -29,7 +29,7 @@
 		<put-attribute name="title" value="panier" />
 		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduits.jsp" />
 	</definition>
-	
+
 	<definition name="pan_00_vide" extends="base.definition">
 		<put-attribute name="title" value="panier" />
 		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduitsVide.jsp" />
@@ -42,6 +42,13 @@
 	</definition>
 
 	<!-- écran utilisateur -->
+
+	<!-- page jsp Écran de consultation de profil USR_00 -->
+	<definition name="consulterUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Écran de consultation de profil" />
+		<put-attribute name="body" value="/jsp/utilisateur/consulterUtilisateur.jsp" />
+	</definition>
+
 	<definition name="listerUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />
 		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp" />
