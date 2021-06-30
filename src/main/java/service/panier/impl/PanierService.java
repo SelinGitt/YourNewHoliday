@@ -47,8 +47,9 @@ public class PanierService implements IPanierService {
             if (quantite > 0) {
                 // on crée la ligne de commande
                 ligneCommande = new LigneCommandeProduit();
-                // on ajoute la quantité
+                // on ajoute la quantité et son affichage
                 ligneCommande.setQuantite(quantite);
+                ligneCommande.setQuantiteAffichage(String.format("%2d", quantite));
                 // On récupère le prix unitaire               
                 final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
                 // On calcule le prix
@@ -58,10 +59,10 @@ public class PanierService implements IPanierService {
                 // on mets à jour la map
                 mapPanier.put(produitAjout, ligneCommande);
             }
-            // sinon, on mets à jour la quantité existante
+            // sinon, on mets à jour la quantité existante et son affichage
         } else {
-            int quantiteProduit = ligneCommande.getQuantite();
-            quantiteProduit += quantite;
+            final Integer quantiteProduit = ligneCommande.getQuantite() + quantite;
+            ligneCommande.setQuantiteAffichage(String.format("%2d", quantiteProduit));
             // si la quantité du produit que l'on met à jour devient nulle ou négative, 
             // alors le produit est supprimé du panier.
             if (quantiteProduit < 1) {

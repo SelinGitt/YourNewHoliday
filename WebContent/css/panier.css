@@ -67,6 +67,14 @@
 	width: 80%;
 }
 
+.panier-ligne-quantite-box {
+	margin-right: 0.8em;
+}
+
+/* .panier-ligne-quantite-valeur { */
+/* 	width: 10%; */
+/* } */
+
 .panier-vider {
 	margin-top: 1.5em;
 	margin-right: 1.5em;

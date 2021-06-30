@@ -15,8 +15,10 @@ public class LigneCommandeProduit implements Serializable {
     /**
      * Serial Version UID généré automatiquement
      */
-    private static final long serialVersionUID = -3358530512736185067L;
+    private static final long serialVersionUID = -2920201985021528588L;
+
     private Integer           quantite;
+    private String            quantiteAffichage;
     private String            prix;
 
     /**
@@ -53,6 +55,24 @@ public class LigneCommandeProduit implements Serializable {
      */
     public void setPrix(final String prix) {
         this.prix = prix;
+    }
+
+    /**
+     * Getter for quantiteAffichage
+     *
+     * @return the quantiteAffichage
+     */
+    public String getQuantiteAffichage() {
+        return quantiteAffichage;
+    }
+
+    /**
+     * Setter for quantiteAffichage
+     *
+     * @param quantiteAffichage the quantiteAffichage to set
+     */
+    public void setQuantiteAffichage(final String quantiteAffichage) {
+        this.quantiteAffichage = quantiteAffichage;
     }
 
 }
