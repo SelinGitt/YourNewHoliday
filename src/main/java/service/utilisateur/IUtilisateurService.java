@@ -45,7 +45,7 @@ public interface IUtilisateurService {
     UtilisateurDto findUtilisateurById(final Integer id);
 
     /**
-     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id
+     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id et l'id de son rôle
      *
      * @param  idUtilisateur : id de l'utilisateur à supprimer
      * @param  idRole        l'id du rôle de l'utilisateur à supprimer
