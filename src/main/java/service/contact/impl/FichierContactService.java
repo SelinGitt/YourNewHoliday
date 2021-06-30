@@ -19,10 +19,10 @@ import service.util.GetPropertyValues;
 public class FichierContactService implements IFichierContactService {
 
     @Autowired
-    private IFichierDao fichierContactDao;
+    private IFichierDao fichierDao;
 
     @Override
     public String trouverFichierContact() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "contact.html");
+        return fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "contact.html");
     }
 }

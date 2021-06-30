@@ -1,7 +1,7 @@
 /**
  * 
  */
-package persistance.contact;
+package persistance.external_files;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -15,8 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import persistance.external_files.IFichierDao;
-
 /**
  * Classe représentant les test de fichierContactDao
  *
@@ -29,7 +27,7 @@ import persistance.external_files.IFichierDao;
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
 //Pour initialiser la base de données avec les bonnes données 
 @WebAppConfiguration("WebContent")
-class FichierContactDaoTest {
+class FichierDaoTest {
 
     @Autowired
     private IFichierDao iFichier;
@@ -44,13 +42,13 @@ class FichierContactDaoTest {
         //pour le test le fichier sera directement dans le projet : 
         //aller dans propriété sur test-contact.html => recuperer le repertoire
         final String nomFichier = "src/test/resources/contact/test-contact.html";
-        assertNotNull(iFichier.trouverFichierContact(nomFichier));
-        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichierContact(nomFichier));
+        assertNotNull(iFichier.trouverFichier(nomFichier));
+        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichier(nomFichier));
 
         //verifier avec un fichier non exisitant
         final String nomFichierFaux = "C:/non/existant.html";
         assertThrows(AssertionError.class, () -> {
-            assertNull(iFichier.trouverFichierContact(nomFichierFaux));
+            assertNull(iFichier.trouverFichier(nomFichierFaux));
         });
     }
 }

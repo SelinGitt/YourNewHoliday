@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import persistance.external_files.IFichierDao;
 
 /**
- * Classe représentant le dao de fichierContactDao
+ * Classe représentant le dao de fichierDao
  *
  * @author Alexandre
  */
@@ -24,7 +24,7 @@ public class FichierDao implements IFichierDao {
     private static final Logger logger = LoggerFactory.getLogger(FichierDao.class);
 
     @Override
-    public String trouverFichierContact(final String nomFichier) {
+    public String trouverFichier(final String nomFichier) {
         final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);

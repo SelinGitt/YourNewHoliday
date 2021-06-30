@@ -28,7 +28,7 @@ class FichierMentionsLegalesServiceTest {
 
     // Mock to be injected
     @Mock
-    private IFichierDao            iFichierContactDao;
+    private IFichierDao                   iFichierContactDao;
 
     @BeforeEach
     private void setup() {
@@ -41,7 +41,7 @@ class FichierMentionsLegalesServiceTest {
      */
     @Test
     void testTrouverFichierCGV() {
-        Mockito.when(iFichierContactDao.trouverFichierContact(Mockito.anyString()))
+        Mockito.when(iFichierContactDao.trouverFichier(Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierMentionsLegalesService);
@@ -55,7 +55,7 @@ class FichierMentionsLegalesServiceTest {
      */
     @Test
     void testTrouverFichierCGU() {
-        Mockito.when(iFichierContactDao.trouverFichierContact(Mockito.anyString()))
+        Mockito.when(iFichierContactDao.trouverFichier(Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierMentionsLegalesService);

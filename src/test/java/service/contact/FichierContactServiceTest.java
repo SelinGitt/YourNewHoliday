@@ -29,7 +29,7 @@ class FichierContactServiceTest {
     // Mock to be injected
 
     @Mock
-    private FichierDao     fichierContactDao;
+    private FichierDao            fichierContactDao;
 
     @BeforeEach
     private void setup() {
@@ -43,7 +43,7 @@ class FichierContactServiceTest {
     @Test
     void testTrouverFichierContact() {
 
-        Mockito.when(fichierContactDao.trouverFichierContact(Mockito.anyString()))
+        Mockito.when(fichierContactDao.trouverFichier(Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierContactService);

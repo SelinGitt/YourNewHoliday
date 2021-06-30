@@ -32,15 +32,15 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     private static final String PATH          = "mentionsLegalesRepo";
 
     @Autowired
-    private IFichierDao  fichierContactDao;
+    private IFichierDao         fichierContactDao;
 
     @Override
     public String trouverFichierCGV() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGV_NAME_FILE);
+        return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGV_NAME_FILE);
     }
 
     @Override
     public String trouverFichierCGU() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGU_NAME_FILE);
+        return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CGU_NAME_FILE);
     }
 }
