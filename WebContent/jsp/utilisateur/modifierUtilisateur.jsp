@@ -5,7 +5,17 @@
 <div class="conteneur-ascenseur">
     <div class="user02-body-general">
         <div class="user02-form display-flex">
-            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilsateur.do">
+            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do">
+                <form:hidden path="dateInscription" value="${dateInscription}" />
+                <form:hidden path="reference" value="${reference}" />
+                <form:hidden path="id" value="${id}" />
+
+                <%-- Role hidden temporaire, a supprimer quand les roles seront geres --%>
+                <form:hidden path="role.idRole" />
+                <form:hidden path="role.libelle" />
+
+                <%-- Temporaire --%>
+                <form:hidden path="estDesactive" value="${estDesactive}" />
 
                 <div class="user02-title">
                     <h1>
