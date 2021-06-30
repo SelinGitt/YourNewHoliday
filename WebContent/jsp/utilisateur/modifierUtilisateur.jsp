@@ -2,70 +2,86 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div class="conteneur-ascenseur">
+    <div class="user05-body-general">
+        <div class="user05-form display-flex">
+            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilsateur.do">
 
-<h1>
-    <spring:message code="usr02.titre" />
-</h1>
+                <div class="user02-title">
+                    <h1>
+                        <spring:message code="usr02.titre" />
+                    </h1>
+                </div>
 
-<div class="user05">
-    <div class="leftSideUser05">
-        <form:form method="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do">
-            <table aria-describedby="ModifierUtilisateur">
-                <tr>
-                    <th><spring:message code="usr02.edit.nom" /></th>
-                    <td><form:input path="nom" /></td>
-                </tr>
-                <tr>
-                    <th><spring:message code="usr02.edit.prenom" /></th>
-                    <td><form:input path="prenom" /></td>
-                </tr>
 
-                <tr>
-                    <th><spring:message code="usr02.edit.adresse" /></th>
-                    <td><form:textarea path="adresse" /></td>
-                </tr>
-                <tr>
-                    <th><spring:message code="usr02.edit.dateNaissance" /></th>
-                    <td><form:input path="dateNaissance" /></td>
-                </tr>
-                <tr>
-                    <th><spring:message code="usr02.edit.email" /></th>
-                    <td><form:input path="email" /></td>
-                </tr>
+                <div class="user05-lib-champ display-flex">
+                    <span><spring:message code="usr02.edit.nom" /></span>
+                    <div class="user05-lib-champ-taille">
+                        <form:input path="nom" />
+                    </div>
+                </div>
 
-               <details>
-  <summary>Modifier mot de passe</summary>
-                <tr>
-                  <th><spring:message code="usr02.edit.password" /></th>
-                    <td><form:password path="password" /></td>
-                </tr>
+                <div class="user05-lib-champ display-flex">
+                    <span><spring:message code="usr02.edit.prenom" /></span>
+                    <div class="user05-lib-champ-taille">
+                        <form:input path="prenom" />
+                    </div>
+                </div>
 
-                <tr>
-                    <th><spring:message code="usr02.edit.confirmPassword" /></th>
-                    <td><form:password path="confirmPassword" /></td>
-                </tr>
-                
+                <div class="user05-lib-champ display-flex">
+                    <span><spring:message code="usr02.edit.adresse" /></span>
+                    <div class="user05-lib-champ-taille">
+                        <form:textarea path="adresse" />
+                    </div>
+                </div>
 
-                <tr>
-                    <td class="buttonsUser02">
-                        <div>
-                            <form:button value="submit" class="editUser02">
-                                <spring:message code="usr02.edit.valider" />
-                            </form:button>
+                <div class="user05-lib-champ display-flex">
+                    <span><spring:message code="usr02.edit.dateNaissance" /></span>
+                    <div class="user05-lib-champ-taille">
+                        <form:input path="dateNaissance" />
+                    </div>
+                </div>
+
+                <div class="user05-lib-champ display-flex">
+                    <span><spring:message code="usr02.edit.email" /></span>
+                    <div class="user05-lib-champ-taille">
+                        <form:input path="email" />
+                    </div>
+                </div>
+
+                <div>
+                    <details>
+                        <summary>Modification mot de passe</summary>
+                        <div class="user05-lib-champ display-flex">
+                            <span><spring:message code="usr02.edit.password" /></span>
+                            <div class="user05-lib-champ-taille">
+                                <form:password path="password" />
+                            </div>
                         </div>
-                        <div>
-                            <form:button type="reset" class="resetUser02">
-                                <spring:message code="usr02.edit.reset" />
-                            </form:button>
+
+                        <div class="user05-lib-champ display-flex">
+                            <span><spring:message code="usr02.edit.confirmPassword" /></span>
+                            <div class="user05-lib-champ-taille">
+                                <form:password path="confirmPassword" />
+                            </div>
                         </div>
+                    </details>
+                </div>
 
-                    </td>
-                </tr>
-            </table>
-        </form:form>
-    </div>
+                <div class="user05-buttons display-flex">
+                    <button class="user02-editValider" onclick="submit">
+                        <spring:message code="usr02.edit.valider" />
+                    </button>
+                    <button class="user02-editReset" type="reset">
+                        <spring:message code="usr02.edit.reset" />
+                    </button>
+                </div>
+            </form:form>
 
-    <div class="rightSideUser05">
-        <p>Section avatar And co</p>
+            <div class="user05-rightSide">
+                <p>Section avatar And co</p>
+            </div>
+
+        </div>
     </div>
 </div>
