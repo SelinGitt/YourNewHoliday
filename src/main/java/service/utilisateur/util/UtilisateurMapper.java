@@ -39,6 +39,7 @@ public class UtilisateurMapper {
     public static UtilisateurDto mapperToDto(final UtilisateurDo utilisateurDo) {
         final var utilisateurDto = new UtilisateurDto();
 
+        utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
         utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
