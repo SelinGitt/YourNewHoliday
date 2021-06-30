@@ -80,4 +80,19 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
     }
+
+    @Override
+    public ProduitDo findByReference(final String reference) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("SELECT pdt FROM ProduitDo pdt WHERE pdt.reference = :ref",
+                ProduitDo.class);
+        query.setParameter("ref", reference);
+        try {
+            return query.getSingleResult();
+
+        } catch (final NoResultException noResultException) {
+            // Si exception 
+            logger.error("Le produit de référence {reference} n'est pas en base.", noResultException);
+            return null;
+        }
+    }
 }

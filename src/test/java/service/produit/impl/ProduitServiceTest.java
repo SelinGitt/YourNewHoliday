@@ -79,4 +79,21 @@ class ProduitServiceTest {
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
     }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverParReference(String)}.
+     */
+    @Test
+    void testTrouverParReference() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        Mockito.when(this.iProduitDaoMock.findByReference("ITA1289967")).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findByReference("REFERENCE_FAUSSE")).thenReturn(null);
+        // On récupére un produit avec une référence inexistante
+        assertNotNull(produitServiceMock.trouverParReference("ITA1289967"));
+        // On récupére un produit avec une référence existante
+        assertNull(produitServiceMock.trouverParReference("REFERENCE_FAUSSE"));
+    }
+
 }

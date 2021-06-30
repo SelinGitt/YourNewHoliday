@@ -51,4 +51,12 @@ public interface IProduitService {
      * @return            le produit édité
      */
     ProduitDto editerProduit(final ProduitDto produitDto);
+
+    /**
+     * Permet de trouver un produit via sa référence
+     *
+     * @param  reference du produit à cherhcer
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverParReference(final String reference);
 }
