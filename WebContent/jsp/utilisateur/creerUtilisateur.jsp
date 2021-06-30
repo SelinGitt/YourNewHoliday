@@ -74,7 +74,7 @@
             </form:form>
 
             <div class="user05-rightSide">
-                <p>Avatar</p>
+                <p>! Avatar and Co</p>
             </div>
 
         </div>
