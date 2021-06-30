@@ -38,14 +38,6 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     List<UtilisateurDo> recherche(final String nom);
 
     /**
-     * Permet de renvoyer le nombre d'utilisateur d'un rôle donnée en le passant en paramètre
-     *
-     * @param  rang : rang de l'utilisateur
-     * @return      : un int le nombre d'utilisateurs ayant ce rôle
-     */
-    int rechercheNombreParRole(final Integer rang);
-
-    /**
      * Permet d'effectue une recherche en base selon le role
      *
      * @param  idRole Role a recherche
@@ -61,4 +53,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return        List d'UtilisateurDo correspondant a la recherche
      */
     List<UtilisateurDo> rechercheNomRole(final String nom, final Integer idRole);
+
+    /**
+     * Permet de savoir un utilisateur est le dernier administrateur
+     *
+     * @param  idRole = id du rôle de l'utilisateur
+     * @return        un boolean true si c'est le dernier administrateur, false sinon
+     */
+    boolean isLastAdmin(final Integer idRole);
 }

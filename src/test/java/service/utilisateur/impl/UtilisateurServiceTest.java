@@ -229,8 +229,8 @@ class UtilisateurServiceTest {
     @Test
     void testDeleteUtilisateurById() {
 
-        //On retourne une Liste de 2 UtilisateursDto étant admins
-        Mockito.when(this.dao.rechercheNombreParRole(3)).thenReturn(2);
+        //On retourne false -> plus d'un admin restant
+        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(false);
 
         //Au moins un admin restant si suppression -> true 
         Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 3));
@@ -244,8 +244,8 @@ class UtilisateurServiceTest {
      */
     @Test
     void testDeleteUtilisateurByIdLastAdmin() {
-        //On retourne une Liste de 1 UtilisateursDto étant admin
-        Mockito.when(this.dao.rechercheNombreParRole(3)).thenReturn(1);
+        //On retourne true -> un seul admin restant
+        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(true);
 
         //Dernier admin, suppression impossible -> false 
         Assertions.assertFalse(this.utilisateurService.deleteUtilisateurById(2, 3));

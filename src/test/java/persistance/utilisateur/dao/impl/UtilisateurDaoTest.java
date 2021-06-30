@@ -123,17 +123,6 @@ class UtilisateurDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#rechercheNombreParRole(Integer)}.
-     */
-    @Test
-    void testRechercheNombreParRole() {
-        //recherche des admins (id role 3)
-        assertEquals(2, iUtilisateurDao.rechercheNombreParRole(3));
-        //recherche des clients (id role 1)
-        assertEquals(4, iUtilisateurDao.rechercheNombreParRole(1));
-    }
-
-    /**
      * Test pour {@link persistance.utilisateur.dao.IUtilisateurDao#rechercheRole(String)}
      */
     @Test

@@ -83,15 +83,15 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurById(final Integer id, final Integer role) {
-        //S'il ne rest qu'un admin et qu'on cherche à le supprimer -> false
-        if (1 == this.iUtilisateurDao.rechercheNombreParRole(3) && (3 == role)) {
+    public boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole) {
+        //S'il ne reste qu'un admin et qu'on cherche à le supprimer -> false
+        if (iUtilisateurDao.isLastAdmin(idRole)) {
             return false;
         }
         //On détache les commandes de l'utilisateur
-        iCommandeDao.updateCommandeDoUserDeletion(id);
+        iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
         //On le supprime
-        iUtilisateurDao.deleteUtilisateurById(id);
+        iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
         return true;
     }
 

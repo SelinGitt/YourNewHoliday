@@ -130,12 +130,12 @@ public class ConnecterController {
         final HttpSession session = request.getSession();
         //Si la session n'est pas null, on y met fin
         if (session != null) {
-            //Si message présent, on le stocke en FlashAttribute de RedirectAttributes
-            if (!code.isBlank()) {
-                redirectAttributes.addFlashAttribute("deletionSuccess", code);
-            }
             sessionStatus.setComplete();
             session.invalidate();
+        }
+        //Si message présent, on le stocke en FlashAttribute de RedirectAttributes 
+        if (!code.isBlank()) {
+            redirectAttributes.addFlashAttribute("deletionSuccess", code);
         }
         return new ModelAndView("redirect:/listerProduits.do");
     }
