@@ -4,6 +4,8 @@
 package service.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -76,5 +78,25 @@ class DecimalFormatUtilsTest {
         //on verifie les locales
         assertEquals("11,115,555.48", DecimalFormatUtils.decimalFormatUtil(bigDecimal, Locale.ENGLISH));
         assertEquals("11 115 555,48", DecimalFormatUtils.decimalFormatUtil(bigDecimal, Locale.FRENCH));
+    }
+
+    /**
+     * Test method for {@link service.util.DecimalFormatUtils#isPrixAVirgule(String)}.
+     */
+    @Test
+    void testIsPrixAVirgurle() {
+        final String prixVirgule = "125,25";
+        final String prixPoint = "125.11";
+        final String prixPointVirgule = "1564.5484,54";
+        final String prixVirgulePoint = "1564,54.54";
+        final String prixDoubleVirgule = "1225,145,25";
+        final String prixDecimalTooLong = "123,124578";
+
+        assertTrue(DecimalFormatUtils.isPrixAVirgule(prixVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixPoint));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixPointVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixVirgulePoint));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDoubleVirgule));
+        assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDecimalTooLong));
     }
 }

@@ -40,6 +40,20 @@ class ProduitMapperTest {
         assertEquals("REFTEST", produitDoCompare.getReference());
         assertEquals(40, produitDoCompare.getServices());
         assertEquals(4, produitDoCompare.getVersion());
+
+        final var produitDtoSansId = initProduitDtoSansId();
+        final var produitDoCompareSansId = ProduitMapper.mapToDo(produitDtoSansId);
+        assertEquals("D:\test", produitDoCompareSansId.getCheminImage());
+        assertEquals("Description de test", produitDoCompareSansId.getDescription());
+        assertEquals("Destination de test", produitDoCompareSansId.getDestination());
+        assertEquals("Hebergement de test", produitDoCompareSansId.getHebergement());
+        assertNull(produitDoCompareSansId.getIdProduitOriginal());
+        assertEquals("nom de test", produitDoCompareSansId.getNom());
+        assertTrue(produitDoCompareSansId.getMiseEnVente());
+        assertEquals(144.44, produitDoCompareSansId.getPrixUnitaire());
+        assertEquals("REFTEST", produitDoCompareSansId.getReference());
+        assertEquals(40, produitDoCompareSansId.getServices());
+        assertEquals(4, produitDoCompareSansId.getVersion());
     }
 
     /**
@@ -95,6 +109,22 @@ class ProduitMapperTest {
         produitDto.setDestination("Destination de test");
         produitDto.setHebergement("Hebergement de test");
         produitDto.setIdProduitOriginal("111");
+        produitDto.setMiseEnVente("true");
+        produitDto.setNom("nom de test");
+        produitDto.setPrixUnitaire("144.44");
+        produitDto.setReference("REFTEST");
+        produitDto.setServices("40");
+        produitDto.setVersion("4");
+        return produitDto;
+    }
+
+    private ProduitDto initProduitDtoSansId() {
+        final var produitDto = new ProduitDto();
+        produitDto.setCheminImage("D:\test");
+        produitDto.setDescription("Description de test");
+        produitDto.setDestination("Destination de test");
+        produitDto.setHebergement("Hebergement de test");
+        produitDto.setIdProduitOriginal(null);
         produitDto.setMiseEnVente("true");
         produitDto.setNom("nom de test");
         produitDto.setPrixUnitaire("144.44");

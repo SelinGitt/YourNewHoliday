@@ -51,4 +51,12 @@ public interface IProduitService {
      * @return             liste de produits associée à la recherche
      */
     List<ProduitDto> rechercherAllProduits(final String pSearchTerm);
+
+    /**
+     * Permet de créer un produit
+     * 
+     * @param  produitDto le produit à créer
+     * @return            le produit créé
+     */
+    ProduitDto creerProduit(final ProduitDto produitDto);
 }
