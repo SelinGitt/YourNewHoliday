@@ -86,7 +86,18 @@
                 <div>
                     <h3>${entry.key.nom}-${entry.key.reference}</h3>
                 </div>
-
+                
+                <%--  quantité --%>
+                <div class="display-flex justify-content-space-between panier-ligne-quantite">
+                    <div class="display-flex justify-content-space-between panier-ligne-label">
+                        <spring:message code="pan00.quantite.bis" />
+                        <span><spring:message code="pan00.deuxpoints" /></span>
+                    </div>
+                    <div class="panier-ligne-quantite-box text-align-center">
+                        <span>${entry.value.quantite}</span>
+                    </div>
+                </div>
+                
                 <%--  prix unitaire --%>
                 <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
                     <div class="display-flex justify-content-space-between panier-ligne-label">
@@ -95,16 +106,7 @@
                     </div>
                     ${entry.key.prixUnitaire}
                     <spring:message code="glb.devise" />
-                </div>
-
-                <%--  quantité --%>
-                <div class="display-flex justify-content-space-between panier-ligne-quantite">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.quantite.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <span>${entry.value}</span>
-                </div>
+                </div>                
 
                 <%--  prix  --%>
                 <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
@@ -114,7 +116,7 @@
                     </div>
                     <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
                     <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
-                    <span>50,50 <spring:message code="glb.devise" />
+                    <span>${entry.value.prix} <spring:message code="glb.devise" />
                     </span>
                 </div>
             </c:forEach>
