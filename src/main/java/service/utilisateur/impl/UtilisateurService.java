@@ -83,9 +83,12 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole) {
+    public boolean deleteUtilisateurByRef(final String referenceUtilisateur) {
+        //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
+        final var idUtilisateur = iUtilisateurDao.rechercheUtilisateurParRef(referenceUtilisateur).getIdUtilisateur();
+
         //S'il ne reste qu'un admin et qu'on cherche à le supprimer -> false
-        if (iUtilisateurDao.isLastAdmin(idRole)) {
+        if (iUtilisateurDao.isLastAdmin(idUtilisateur)) {
             return false;
         }
         //On détache les commandes de l'utilisateur
@@ -149,5 +152,9 @@ public class UtilisateurService implements IUtilisateurService {
     private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer idRole) {
         logger.debug("Recherche par nom et idRole; {} / {}", nom, idRole);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, idRole));
+    }
+
+    private boolean checkIfSameUser(final Integer idUtilisateur1, final Integer idUtilisateur2) {
+        return idUtilisateur1 == idUtilisateur2;
     }
 }

@@ -45,13 +45,12 @@ public interface IUtilisateurService {
     UtilisateurDto findUtilisateurById(final Integer id);
 
     /**
-     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant son Id et l'id de son rôle
-     *
-     * @param  idUtilisateur : id de l'utilisateur à supprimer
-     * @param  idRole        l'id du rôle de l'utilisateur à supprimer
-     * @return               true si suppression OK, false si suppression non autorisée (dernier admin)
+     * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant sa référence
+     * 
+     * @param  referenceUtilisateur : String reference de l'utilisateur à supprimer
+     * @return                      true si suppression OK, false si suppression non autorisée (dernier admin)
      */
-    boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole);
+    boolean deleteUtilisateurByRef(final String referenceUtilisateur);
 
     /**
      * Permet de rechercher un utilisater selon le nom et/ou le role

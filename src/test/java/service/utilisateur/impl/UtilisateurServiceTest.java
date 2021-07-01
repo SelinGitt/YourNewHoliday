@@ -15,6 +15,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import antlr.debug.NewLineListener;
 import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
@@ -227,31 +228,46 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
      */
     @Test
-    void testDeleteUtilisateurById() {
+    void testDeleteUtilisateurByRefAdmin() {
+        //FIXME COMMENTAIRES 3 méthodes de test
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setIdUtilisateur(7);
 
-        //On retourne false -> plus d'un admin restant
-        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(false);
+        Mockito.when(this.dao.rechercheUtilisateurParRef("Administrateur2")).thenReturn(utilisateurDo);
+        //Au moins un admin restant si suppression de cet admin -> false 
+        Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        //Au moins un admin restant si suppression -> true 
-        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 3));
-
-        //Même test mais en supprimant un id=1 (client) -> true
-        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurByRef("Administrateur2"));
     }
 
     /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
      */
     @Test
-    void testDeleteUtilisateurByIdLastAdmin() {
-        //On retourne true -> un seul admin restant
-        Mockito.when(this.dao.isLastAdmin(3)).thenReturn(true);
+    void testDeleteUtilisateurByRefAdminLastAdmin() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setIdUtilisateur(7);
 
-        //Dernier admin, suppression impossible -> false 
-        Assertions.assertFalse(this.utilisateurService.deleteUtilisateurById(2, 3));
+        Mockito.when(this.dao.rechercheUtilisateurParRef("Administrateur2")).thenReturn(utilisateurDo);
+        //Dernier admin -> false
+        Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(true);
 
-        //Même test mais en supprimant un id=1 (client) -> true
-        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
+        //Au moins un admin restant si suppression d'un admin -> true 
+        Assertions.assertFalse(this.utilisateurService.deleteUtilisateurByRef("Administrateur2"));
     }
 
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+     */
+    @Test
+    void testDeleteUtilisateurByRefClient() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setIdUtilisateur(4);
+
+        Mockito.when(this.dao.rechercheUtilisateurParRef("ClientCLIENT753")).thenReturn(utilisateurDo);
+        Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
+
+        //Au moins un admin restant si suppression d'un admin -> true 
+        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurByRef("ClientCLIENT753"));
+    }
 }

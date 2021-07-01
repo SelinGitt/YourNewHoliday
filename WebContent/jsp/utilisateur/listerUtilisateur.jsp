@@ -2,6 +2,16 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<div>
+    <c:if test="${not empty deletionSuccess}">
+        <span class="errorblock"><spring:message code="${deletionSuccess}" /></span>
+    </c:if>
+</div>
+<div>
+    <c:if test="${not empty error}">
+        <span class="errorblock"><spring:message code="${error}" /></span>
+    </c:if>
+</div>
 <h1 id="titreGestion">
     <spring:message code="usr01.titre" />
 </h1>
@@ -87,16 +97,19 @@
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
                             </c:when>
                             <c:otherwise>
-                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png" class="checkboxVide">
+                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png"
+                                    class="checkboxVide">
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="user01-body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"
-                            class="poubelle user01-image">
+                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                            alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
-                    <td class="user01-body"><a href="javascript:void()"> <img alt=""
-                            src="img/commun/poubelle.jpg" class="editer user01-image">
+                    <td class="user01-body"><a
+                        href="supprimerUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"
+                        onclick="return confirm('<spring:message code="usr01.consulter.confirmer_suppression" />')">
+                            <img alt="" src="img/commun/poubelle.jpg" class="editer user01-image">
                     </a></td>
                 </tr>
             </c:forEach>

@@ -144,15 +144,33 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(2, utilisateurDos.size());
     }
 
+    //    @Test
+    //    void testIsLastAdmin() {
+    //        //Il reste deux admins, on teste avec le paramètre 3(idRole pour admin)
+    //        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
+    //        //Suppression d'un des deux admins
+    //        iUtilisateurDao.deleteUtilisateurById(7);
+    //        //Il reste un seul admin, on teste avec le paramètre 3(idRole pour admin)
+    //        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(3));
+    //        //Il reste un seul admin, on teste avec le paramètre 1(idRole pour client)
+    //        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(1));
+    //    }
+
     @Test
     void testIsLastAdmin() {
         //Il reste deux admins, on teste avec le paramètre 3(idRole pour admin)
-        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
+        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(6));
         //Suppression d'un des deux admins
         iUtilisateurDao.deleteUtilisateurById(7);
         //Il reste un seul admin, on teste avec le paramètre 3(idRole pour admin)
-        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(3));
+        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(6));
         //Il reste un seul admin, on teste avec le paramètre 1(idRole pour client)
-        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(1));
+        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
+    }
+
+    @Test
+    void testRechercheUtilisateurParRef() {
+        assertEquals("Marsial", iUtilisateurDao.rechercheUtilisateurParRef("Administrateur1").getNom());
+        assertNull(iUtilisateurDao.rechercheUtilisateurParRef("InvalidReference"));
     }
 }

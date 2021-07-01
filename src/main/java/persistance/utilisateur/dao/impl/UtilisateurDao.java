@@ -88,25 +88,48 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
         return query.getResultList();
     }
 
+    //    @Override
+    //    public boolean isLastAdmin(final Integer idRole) {
+    //        final var result = (1 == rechercheNombreParRole(3) && (3 == idRole));
+    //        logger.debug("Cet utilisateur est le dernier administrateur : {}", result);
+    //        return result;
+    //    }
+    //
+    //    /**
+    //     * Permet de renvoyer le nombre d'utilisateur d'un rôle donnée en le passant en paramètre
+    //     *
+    //     * @param  rang : rang de l'utilisateur
+    //     * @return      : un int le nombre d'utilisateurs ayant ce rôle
+    //     */
+    //    private int rechercheNombreParRole(final Integer rang) {
+    //        final TypedQuery<Long> query = entityManager.createQuery("SELECT COUNT(idRole) From UtilisateurDo WHERE idRole LIKE :searchTerm",
+    //                Long.class);
+    //        query.setParameter("searchTerm", "%" + rang + "%");
+    //        final var result = query.getSingleResult().intValue();
+    //        logger.debug("Nombre d'administrateurs restant : {}", result);
+    //        return result;
+    //    }
+
     @Override
-    public boolean isLastAdmin(final Integer idRole) {
-        final var result = (1 == rechercheNombreParRole(3) && (3 == idRole));
-        logger.debug("Cet utilisateur est le dernier administrateur : {}", result);
-        return result;
+    public boolean isLastAdmin(final Integer idUtilisateur) {
+        final TypedQuery<Long> query = entityManager.createQuery(
+                "SELECT COUNT(idRole) From UtilisateurDo WHERE idRole LIKE 3 AND idUtilisateur NOT LIKE :searchTerm", Long.class);
+        query.setParameter("searchTerm", idUtilisateur);
+        final var result = query.getSingleResult().intValue();
+        logger.debug("Nombre d'administrateurs restant si {} supprimé : {}", idUtilisateur, result);
+        return result == 0;
     }
 
-    /**
-     * Permet de renvoyer le nombre d'utilisateur d'un rôle donnée en le passant en paramètre
-     *
-     * @param  rang : rang de l'utilisateur
-     * @return      : un int le nombre d'utilisateurs ayant ce rôle
-     */
-    private int rechercheNombreParRole(final Integer rang) {
-        final TypedQuery<Long> query = entityManager.createQuery("SELECT COUNT(idRole) From UtilisateurDo WHERE idRole LIKE :searchTerm",
-                Long.class);
-        query.setParameter("searchTerm", "%" + rang + "%");
-        final var result = query.getSingleResult().intValue();
-        logger.debug("Nombre d'administrateurs restant : {}", result);
-        return result;
+    @Override
+    public UtilisateurDo rechercheUtilisateurParRef(final String reference) {
+        final TypedQuery<UtilisateurDo> query = entityManager
+                .createQuery("select util from UtilisateurDo util where util.reference = :reference", UtilisateurDo.class);
+        query.setParameter("reference", reference);
+        try {
+            return query.getSingleResult();
+        } catch (final NoResultException exception) {
+            logger.info("Utilisateur avec la référence {} non trouvé en base de données.", reference, exception);
+            return null;
+        }
     }
 }
