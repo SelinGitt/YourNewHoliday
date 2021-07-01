@@ -8,7 +8,7 @@
             <form:form methode="POST" modelAttribute="utilisateurDto" action="creerUtilsateur.do">
 
                 <div class="user05-title">
-                    <h1>
+                    <h1 class="text-align-center">
                         <spring:message code="usr05.titre" />
                     </h1>
                 </div>

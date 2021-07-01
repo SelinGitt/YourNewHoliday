@@ -12,61 +12,7 @@
 }
 
 /* USR00 */
-/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-.user00 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
 
-.user00 .leftSideUser00 {
-	width: 75%;
-}
-
-.user00 .leftSideUser00 table {
-	width: 100%;
-}
-/* correctif : utiliser des em au lieu des px */
-.user00 .leftSideUser00 table tr th {
-	width: 30%;
-	text-align: left;
-	padding: 10px 0;
-}
-
-.user00 .leftSideUser00 table tr td {
-	width: fit-content;
-}
-/* correctif : utiliser des em au lieu des px */
-.user00 .leftSideUser00 table tr td div button {
-	padding: 5px 25px;
-	border-radius: 5px;
-	/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-	color: white;
-}
-
-.user00 .leftSideUser00 table tr .buttonsUser00 {
-	width: 100%;
-	/*  correctif : utilisez proprieter flex disponible dans le fichier flex. css */
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-.user00 .leftSideUser00 table tr .buttonsUser00 div .modifierUser00 {
-	background-color: rgb(106, 168, 79);
-}
-/* correctif : utiliser l’hexadécimal (pas de nom, ni de rgb) */
-.user00 .leftSideUser00 table tr .buttonsUser00 div .supprimerUser00 {
-	background-color: rgb(224, 102, 102);
-}
-
-.user00 .leftSideUser00 table tr td input {
-	width: 100%;
-}
-
-.user00 .rightSideUser00 {
-	width: 25%;
-}
 /* USR01 */
 .user01-searchMenu {
 	margin-bottom: 0.938em;

@@ -5,6 +5,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link href="img/commun/favicon.ico" rel="icon" />
 <link href="css/commande.css" rel="stylesheet">
 <link href="css/produit.css" rel="stylesheet">
 <link href="css/panier.css" rel="stylesheet">
@@ -25,8 +26,8 @@
         <tiles:insertAttribute name="header" />
     </header>
     <%--regrouper aside et section afin de facilité la manipulation et d'avoir le rendu souhaité sans détours --%>
-    <div class="content">
-        <aside>
+    <div class="content display-flex justify-content-space-between">
+        <aside class="display-flex">
             <tiles:insertAttribute name="menu" />
         </aside>
         <section>
