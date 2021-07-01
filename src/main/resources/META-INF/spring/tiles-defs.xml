@@ -25,7 +25,7 @@
 	</definition>
 
 
-	<definition name="editerProduitsAdmin" extends="base.definition">
+	<definition name="editerProduitAdmin" extends="base.definition">
 		<put-attribute name="title" value="Edition d'un produits" />
 		<put-attribute name="body" value="/jsp/produit/editerProduitAdmin.jsp" />
 	</definition>

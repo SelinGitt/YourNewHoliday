@@ -8,14 +8,16 @@
         <spring:message code="pdt02.titre" />
     </h1>
     <a href="editerProduitAdmin.do"><spring:message code="pdt0203.retour" /></a>
-    <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
+    <form:form method="POST" modelAttribute="produitDto" action="editerProduitAdmin.do">
         <div class="pdt0203Grid-container">
             <div class="pdt0203Grid-item pdt0203FormlaireCreerProduit">
 
+                <form:hidden path="version" value="1" />
+                <form:hidden path="cheminImage" value="${cheminImage}" />
+                <form:hidden path="idProduitOriginal" value="${idProduitOriginal}" />
                 <table class="pdt0203FormulaireProduit" aria-label="Formulaire de création d'un produit">
                     <tr>
-                        <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage"
-                                value="D:/Test" /></th>
+                        <th></th>
                         <th></th>
                     </tr>
                     <tr>

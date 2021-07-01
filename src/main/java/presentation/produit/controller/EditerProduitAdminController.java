@@ -6,10 +6,12 @@ package presentation.produit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.produit.dto.ProduitDto;
 import service.produit.IProduitService;
 
 /**
@@ -36,10 +38,22 @@ public class EditerProduitAdminController {
         final var produitDto = iProduitService.trouverParReference(reference);
 
         if (produitDto == null) {
-            return new ModelAndView("redirect:/listerProduitAdmin");
+            return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
         final var modelAndView = new ModelAndView("editerProduitAdmin");
         modelAndView.getModelMap().addAttribute("produitDto", iProduitService.editerProduit(produitDto));
         return modelAndView;
+    }
+
+    /**
+     * Permet de traiter la methode POST
+     *
+     * @param  produitDto le produit à Màj
+     * @return            le produit Màj
+     */
+    @PostMapping
+    public ModelAndView soumissionFormulaire(final ProduitDto produitDto) {
+        iProduitService.editerProduit(produitDto);
+        return new ModelAndView("redirect:/listerProduitsAdmin.do");
     }
 }
