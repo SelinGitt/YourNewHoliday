@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +17,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.util.GenerateReferenceUtil;
+import service.util.IGenerateReferenceUtil;
 import service.utilisateur.IUtilisateurService;
 import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurMapper;
@@ -31,13 +32,17 @@ import service.utilisateur.util.UtilisateurMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class UtilisateurService implements IUtilisateurService {
 
-    private static final Logger logger = LoggerFactory.getLogger(UtilisateurService.class);
+    private static final Logger    logger = LoggerFactory.getLogger(UtilisateurService.class);
 
     @Autowired
-    private IUtilisateurDao     iUtilisateurDao;
+    private IUtilisateurDao        iUtilisateurDao;
 
     @Autowired
-    private ICommandeDao        iCommandeDao;
+    private ICommandeDao           iCommandeDao;
+
+    @Autowired
+    @Qualifier("USR")
+    private IGenerateReferenceUtil iGenerateReferenceUtil;
 
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
@@ -56,7 +61,7 @@ public class UtilisateurService implements IUtilisateurService {
         utilisateurDto.setEstDesactive(false);
 
         // TODO : Temporaire avec le generateReference
-        utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
+        utilisateurDto.setReference(this.iGenerateReferenceUtil.generateRef());
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
