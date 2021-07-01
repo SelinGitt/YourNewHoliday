@@ -87,12 +87,13 @@
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
                             </c:when>
                             <c:otherwise>
-                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png" class="checkboxVide">
+                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png"
+                                    class="checkboxVide">
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="user01-body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"
-                            class="poubelle user01-image">
+                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                            alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
                     <td class="user01-body"><a href="javascript:void()"> <img alt=""

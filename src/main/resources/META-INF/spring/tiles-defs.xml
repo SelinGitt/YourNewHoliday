@@ -79,6 +79,11 @@
 		<put-attribute name="title" value="Création de profil" />
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
+	
+	<definition name="modifierUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Modification Utilisateur" />
+		<put-attribute name="body" value="/jsp/utilisateur/modifierUtilisateur.jsp"></put-attribute>
+	</definition>
 
 	<!-- écran panier -->
 	<definition name="listerPanierAdresses" extends="base.definition">
