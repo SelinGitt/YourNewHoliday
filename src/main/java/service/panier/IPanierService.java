@@ -32,4 +32,12 @@ public interface IPanierService {
      */
     public ProduitDto findProduitMap(final PanierDto panier, final Integer idProduit);
 
+    /**
+     * Permet de supprimer un produit du panier
+     *
+     * @param panier    : le panier en session
+     * @param idProduit : l'id du produit à supprimer
+     */
+    public void deleteProduitPanier(final PanierDto panier, final Integer idProduit);
+
 }

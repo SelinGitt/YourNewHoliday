@@ -3,8 +3,6 @@
  */
 package presentation.panier.controller;
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
-import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 
 /**
@@ -39,11 +35,8 @@ public class SupprimerProduitPanierController {
      */
     @GetMapping
     public String supprimerProduitPanier(final @SessionAttribute("panierDto") PanierDto panier, final HttpServletRequest request) {
-        final Map<ProduitDto, LigneCommandeProduitDto> mapPanier = panier.getMapPanier();
-        final ProduitDto produitToDelete = panierService.findProduitMap(panier, Integer.valueOf(request.getParameter("id")));
-        final Integer quantite = mapPanier.get(produitToDelete).getQuantite();
-        panierService.updatePanier(panier, Integer.valueOf(request.getParameter("id")), -quantite);
-        if (mapPanier.isEmpty()) {
+        panierService.deleteProduitPanier(panier, Integer.valueOf(request.getParameter("id")));
+        if (panier.getMapPanier().isEmpty()) {
             return "pan_00_vide";
         }
         return "pan_00";
