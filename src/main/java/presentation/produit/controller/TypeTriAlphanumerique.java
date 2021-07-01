@@ -37,7 +37,7 @@ public enum TypeTriAlphanumerique {
      * @param  type le type à trouver
      * @return      le typeTriAlphanumerique trouvé, null si type n'existe pas
      */
-    public static TypeTriAlphanumerique checkType(final String type) {
+    public static TypeTriAlphanumerique findValue(final String type) {
         return Stream.of(TypeTriAlphanumerique.values()).filter(typeTriAlphanumerique -> typeTriAlphanumerique.typeRecherche.equals(type))
                 .findFirst().orElse(null);
     }

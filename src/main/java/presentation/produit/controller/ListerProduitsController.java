@@ -64,7 +64,7 @@ public class ListerProduitsController {
         modelAndView.getModelMap().addAttribute("tri", tri);
         modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
         modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO,
-                this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.checkType(tri)));
+                this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.findValue(tri)));
         return modelAndView;
     }
 }

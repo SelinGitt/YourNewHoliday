@@ -123,7 +123,7 @@ class ProduitServiceTest {
     @Test
     void testFindFilterWithRecherche() {
         Mockito.when(this.iProduitDaoMock.rechercherProduits("23")).thenReturn(Collections.emptyList());
-        final List<ProduitDto> liste = produitServiceMock.findFilter("23", TypeTriAlphanumerique.checkType("not existing"));
+        final List<ProduitDto> liste = produitServiceMock.findFilter("23", TypeTriAlphanumerique.findValue("not existing"));
         assertNotNull(liste);
         assertEquals(0, liste.size());
     }
@@ -146,7 +146,7 @@ class ProduitServiceTest {
         final List<ProduitDo> listeTriee = List.of(produitDo2, produitDo);
         Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.DESC)).thenReturn(listeTriee);
         //attribution des listes de produitDto, une triée, et une non triée qui sera triée par une méthode java
-        final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.checkType("2"));
+        final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.findValue("2"));
         final List<ProduitDto> listeNonTriee = new ArrayList<>();
         listeNonTriee.addAll(List.of(produitDto, produitDto2));
         //création d'un comparator pour préparer le tri via java
