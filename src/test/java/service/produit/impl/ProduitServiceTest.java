@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -109,6 +110,31 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitEnVente(1));
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
+    }
 
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#rechercherAllProduits(java.lang.Integer)}.
+     */
+
+    @Test
+    void testRechercherAllProduits() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        produitDo.setNom("Test en Tanzanie");
+        produitDo.setReference("TEST556789");
+        produitDo.setHebergement("Test BouiBoui and Co.");
+        produitDo.setDestination("Test Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Test super voyage à la découverte de zanzibar");
+        produitDo.setCheminImage("C:/YNH/img");
+        produitDo.setVersion(1);
+        produitDo.setServices(1);
+        Mockito.when(this.iProduitDaoMock.rechercherAllProduits("TEST")).thenReturn(List.of(produitDo));
+        Mockito.when(this.iProduitDaoMock.rechercherAllProduits("ZZZ")).thenReturn(Collections.emptyList());
+        // On récupère un produit en vente
+        assertEquals(1, produitServiceMock.rechercherAllProduits("TEST").size());
+        // On essaie de récupérer un produit qui n'existe pas
+        assertEquals(0, produitServiceMock.rechercherAllProduits("ZZZ").size());
     }
 }

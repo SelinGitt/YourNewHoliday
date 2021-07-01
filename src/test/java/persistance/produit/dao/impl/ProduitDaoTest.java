@@ -115,4 +115,24 @@ class ProduitDaoTest {
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);
     }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits()}.
+     */
+    @Test
+    void testRechercherAllProduits() {
+        //recherche référence existente et en vente
+        final String searchTermEnVente = "ITA";
+        final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherAllProduits(searchTermEnVente);
+        assertEquals(1, listeProduitsRecherchee.size());
+        //recherche référence existente et non en vente
+        final String searchTermNonEnVente = "GRC";
+        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao
+                .rechercherAllProduits(searchTermNonEnVente);
+        assertEquals(1, listeProduitsRechercheeNonEnVente.size());
+        //recherche référence non existente
+        final String searchTermNull = "ZZZ";
+        final List<ProduitDo> listeProduitsRechercheeNull = iProduitDao.rechercherAllProduits(searchTermNull);
+        assertEquals(0, listeProduitsRechercheeNull.size());
+    }
 }
