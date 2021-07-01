@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="conteneur-ascenseur">
-    <h1>
+    <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
     <div class="searchBar display-flex pdt01Search align-content-flex-end ">
