@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="conteneur-ascenseur">
     <div class="user02-title">
@@ -9,9 +8,9 @@
             <spring:message code="usr02.titre" />
         </h1>
     </div>
-    
+
     <%-- A cacher par la suite si client --%>
-    <a href="listerUtilisateur.do" class="user02-retour">&lt; Retour</a>
+    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour"/> </a>
 
     <div class="user02-body-general">
         <div class="user02-form display-flex">
@@ -64,7 +63,7 @@
 
                 <div>
                     <details>
-                        <summary>Modification mot de passe</summary>
+                        <summary><spring:message code="usr02.details"/> </summary>
                         <div class="user02-lib-champ display-flex">
                             <span><spring:message code="usr02.edit.password" /></span>
                             <div class="user02-lib-champ-taille">
