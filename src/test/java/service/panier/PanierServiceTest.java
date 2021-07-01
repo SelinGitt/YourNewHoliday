@@ -47,12 +47,15 @@ class PanierServiceTest {
         final var produitTest1 = new ProduitDto();
         produitTest1.setIdProduitOriginal("1");
         produitTest1.setMiseEnVente("1");
+        produitTest1.setPrixUnitaire("100.50");
         final var produitTest2 = new ProduitDto();
         produitTest2.setIdProduitOriginal("2");
         produitTest2.setMiseEnVente("1");
+        produitTest2.setPrixUnitaire("100.50");
         final var produitTest3 = new ProduitDto();
         produitTest3.setIdProduitOriginal("3");
         produitTest1.setMiseEnVente("1");
+        produitTest3.setPrixUnitaire("100.50");
         Mockito.when(this.iProduitService.trouverProduitEnVente(1)).thenReturn(produitTest1);
         Mockito.when(this.iProduitService.trouverProduitEnVente(2)).thenReturn(produitTest2);
         Mockito.when(this.iProduitService.trouverProduitEnVente(3)).thenReturn(produitTest3);
@@ -67,7 +70,9 @@ class PanierServiceTest {
         panierService.updatePanier(panierTest, 2, 2);
         assertEquals(3, panierTest.getNombreDeReferences());
         // On s'assure que la quantité du produit a bien été mise à jour.
-        assertEquals(9, panierTest.getMapPanier().get(produitTest2));
+        assertEquals(9, panierTest.getMapPanier().get(produitTest2).getQuantite());
+        // On teste le calcul correct des prix
+        assertEquals("904,50", panierTest.getMapPanier().get(produitTest2).getPrix());
         // On teste que l'ajout d'un produit null n'incrémente pas le nombre de référence.
         panierService.updatePanier(panierTest, 99, 12);
         assertEquals(3, panierTest.getNombreDeReferences());
