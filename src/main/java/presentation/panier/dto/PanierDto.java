@@ -18,10 +18,10 @@ public class PanierDto implements Serializable {
     /**
      * Serial Version UID généré automatiquement
      */
-    private static final long        serialVersionUID   = -1559416502575443553L;
+    private static final long                     serialVersionUID   = 6448345912435295054L;
 
-    private Map<ProduitDto, Integer> mapPanier;
-    private Integer                  nombreDeReferences = 0;
+    private Map<ProduitDto, LigneCommandeProduitDto> mapPanier;
+    private Integer                               nombreDeReferences = 0;
 
     /**
      * Constructor
@@ -35,7 +35,7 @@ public class PanierDto implements Serializable {
      *
      * @return the mapPanier
      */
-    public Map<ProduitDto, Integer> getMapPanier() {
+    public Map<ProduitDto, LigneCommandeProduitDto> getMapPanier() {
         return mapPanier;
     }
 
@@ -44,7 +44,7 @@ public class PanierDto implements Serializable {
      *
      * @param mapPanier the mapPanier to set
      */
-    public void setMapPanier(final Map<ProduitDto, Integer> mapPanier) {
+    public void setMapPanier(final Map<ProduitDto, LigneCommandeProduitDto> mapPanier) {
         this.mapPanier = mapPanier;
     }
 
