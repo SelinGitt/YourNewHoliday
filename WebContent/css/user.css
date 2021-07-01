@@ -62,11 +62,13 @@
 .user02-editValider {
 	background-color: #6AA84F;
 	color : #FFFFFF;
+	margin: auto;
 }
 
 .user02-editReset {
 	background-color : #E06666;
 	color : #FFFFFF;
+	margin: auto;
 }
 
 .user02-body-general {
@@ -75,28 +77,30 @@
 
 .user02-title {
 	text-align: center;
-	margin-right: 6.25em;
 }
 
 .user02-form {
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
+	margin : 2em;
 }
 
 .user02-lib-champ-taille {
-	width: 20em;
+	width: 10em;
 }
 
 .user02-lib-champ {
 	justify-content: space-between;
-	margin-bottom: 3.125em;
+	margin: 3em;
+	width: 20em;
 }
 
 .user02-buttons {
 	align-items: center;
-	margin: auto;
+	margin : 1em;
 	width: 80%;
 }
+
 
 /* USR03 */
 

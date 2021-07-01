@@ -78,7 +78,7 @@
                     </details>
                 </div>
 
-                <div class="user05-buttons display-flex">
+                <div class="user02-buttons display-flex">
                     <button class="user02-editValider" onclick="submit">
                         <spring:message code="usr02.edit.valider" />
                     </button>
