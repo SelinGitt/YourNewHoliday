@@ -26,7 +26,7 @@ public interface IPanierService {
     /**
      * Permet de vider le panier
      *
-     * @param panier
+     * @param panier : le panier dans la session qui doit etre vider
      */
     void viderPanier(final PanierDto panier);
 }
