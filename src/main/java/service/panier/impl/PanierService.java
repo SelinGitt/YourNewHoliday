@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe représentant l'interface métier {@link IPanierService}
@@ -35,26 +37,40 @@ public class PanierService implements IPanierService {
         if (produitAjout == null) {
             return panier;
         }
-        final Map<ProduitDto, Integer> mapPanier = panier.getMapPanier();
-        Integer quantiteProduit = mapPanier.get(produitAjout);
-        // si le produit était déjà dans le panier, on met à jour sa quantité.
-        if (quantiteProduit == null) {
+        final Map<ProduitDto, LigneCommandeProduitDto> mapPanier = panier.getMapPanier();
+        // On récupère la ligne de commande
+        LigneCommandeProduitDto ligneCommande = mapPanier.getOrDefault(produitAjout, new LigneCommandeProduitDto());
+        var quantiteProduit = 0;
+        // si le produit n'est pas dans le panier 
+        if (ligneCommande.getQuantite() == null) {
+            // on effectue la modification que si la quantité n'est pas nulle ou négative
+            if (quantite < 1) {
+                return panier;
+            }
+            // le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.            
             quantiteProduit = quantite;
-            // sinon, le nombre de produits ajoutés à la map correspondra à la quantité en paramètre.
         } else {
-            quantiteProduit += quantite;
+            // sinon, on mets à jour la quantité existante            
+            quantiteProduit = ligneCommande.getQuantite() + quantite;
         }
         // si la quantité du produit que l'on met à jour devient nulle ou négative, 
         // alors le produit est supprimé du panier.
         if (quantiteProduit < 1) {
             mapPanier.remove(produitAjout);
-            // on met à jour le produit dans la map du panier avec sa nouvelle quantité.
         } else {
-            mapPanier.put(produitAjout, quantiteProduit);
+            // on modifie la ligne de commande
+            ligneCommande.setQuantite(quantiteProduit);
+            // On récupère le prix unitaire
+            final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+            // On calcule le prix
+            final Double prix = prixUnitaire * quantiteProduit;
+            // on ajoute le prix formaté à la ligne de commande
+            ligneCommande.setPrix(DecimalFormatUtils.decimalFormatUtil(prix));
+            // on mets à jour la map
+            mapPanier.put(produitAjout, ligneCommande);
         }
         // on met à jour le nombre de référence dans le panier.
         panier.setNombreDeReferences(panier.getMapPanier().size());
         return panier;
     }
-
 }

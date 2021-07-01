@@ -6,7 +6,7 @@ package service.contact.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import persistance.contact.IFichierContactDao;
+import persistance.external_files.IFichierDao;
 import service.contact.IFichierContactService;
 import service.util.GetPropertyValues;
 
@@ -19,10 +19,10 @@ import service.util.GetPropertyValues;
 public class FichierContactService implements IFichierContactService {
 
     @Autowired
-    private IFichierContactDao fichierContactDao;
+    private IFichierDao fichierDao;
 
     @Override
     public String trouverFichierContact() {
-        return fichierContactDao.trouverFichierContact(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "test-contact.html");
+        return fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "contact.html");
     }
 }
