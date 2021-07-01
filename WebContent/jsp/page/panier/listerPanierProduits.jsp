@@ -33,7 +33,7 @@
                                 <div>
                                     <div>
                                         <%--  nom et référence --%>
-                                        <h2>${entry.key.nom}-${entry.key}</h2>
+                                        <h2>${entry.key.nom}-${entry.key.reference}</h2>
                                     </div>
                                     <%--  description --%>
                                     <div>${entry.key.description}</div>

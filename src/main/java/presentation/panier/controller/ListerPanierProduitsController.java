@@ -36,6 +36,7 @@ public class ListerPanierProduitsController {
         } else {
             modelAndView.setViewName("pan_00");
         }
+
         return modelAndView;
     }
 
