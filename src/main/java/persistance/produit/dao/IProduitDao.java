@@ -31,18 +31,18 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     ProduitDo findProduitEnVente(final Integer idProduit);
 
     /**
-     * Permet de récupérer la liste des produits recherchés
+     * Permet de récupérer la liste des produits recherchés en vente
      * 
      * @param  searchTerm terme recherché
-     * @return            liste des produits trouvés
+     * @return            liste des produits trouvés en vente
      */
-    List<ProduitDo> rechercherProduits(final String searchTerm);
+    List<ProduitDo> rechercherProduitsEnVente(final String searchTerm);
 
     /**
-     * Permet de récupérer la liste des produits recherchés
+     * Permet de récupérer la liste des produits recherchés en vente ou non
      *
      * @param  searchTerm terme recherché
-     * @return            liste des produits trouvés
+     * @return            liste de tous les produits trouvés en vente ou non
      */
-    List<ProduitDo> rechercherAllProduits(String searchTerm);
+    List<ProduitDo> rechercherAllProduits(final String searchTerm);
 }

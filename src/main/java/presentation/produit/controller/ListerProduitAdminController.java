@@ -48,12 +48,8 @@ public class ListerProduitAdminController {
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        if (searchInput.isEmpty()) {
-            modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.listerAllProduit());
-        } else {
-            modelAndView.getModelMap().addAttribute("listeAllProduitDto",
-                    iProduitService.rechercherAllProduits(searchInput));
-        }
+        modelAndView.getModelMap().addAttribute("listeAllProduitDto",
+                iProduitService.rechercherAllProduits(searchInput));
         return modelAndView;
     }
 }
