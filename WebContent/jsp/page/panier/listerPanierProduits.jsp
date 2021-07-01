@@ -73,14 +73,18 @@
                                 <div class="display-flex">
 
                                     <%--  bouton - --%>
+                                    <a href="modifierQuantite.do?idProduit=${entry.key.nom}&quantite=-1">
                                     <button type="button">-</button>
+                                    </a>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite text-align-center" type="text" id="panier-quantite"
+                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly" id="panier-quantite"
                                         name="panier-quantite" value="${entry.value.quantite}" size="1">
 
                                     <%--  bouton + --%>
+                                    <a href="modifierQuantite.do?idProduit=${entry.key.nom}&quantite=+1">
                                     <button type="button">+</button>
+                                    </a>
                                 </div></td>
 
                             <%--  encart supprimer : label et image --%>
