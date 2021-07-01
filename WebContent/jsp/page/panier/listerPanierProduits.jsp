@@ -170,7 +170,8 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13">
+                ${panierDto.prixTotal} <input type="text" id="total_avant_remise" name="total_avant_remise"
+                    maxlength="13" value="45">
             </div>
 
             <%-- remise --%>

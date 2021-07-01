@@ -18,10 +18,12 @@ public class PanierDto implements Serializable {
     /**
      * Serial Version UID généré automatiquement
      */
-    private static final long                     serialVersionUID   = 6448345912435295054L;
+    private static final long                        serialVersionUID   = 6448345912435295054L;
 
     private Map<ProduitDto, LigneCommandeProduitDto> mapPanier;
-    private Integer                               nombreDeReferences = 0;
+    private Integer                                  nombreDeReferences = 0;
+    private String                                   prixTotal          = "0";
+    private String                                   prixApresRemise    = "0";
 
     /**
      * Constructor
@@ -64,6 +66,42 @@ public class PanierDto implements Serializable {
      */
     public void setNombreDeReferences(final Integer nombreDeReferences) {
         this.nombreDeReferences = nombreDeReferences;
+    }
+
+    /**
+     * Getter for prixTotal
+     *
+     * @return the prixTotal
+     */
+    public String getPrixTotal() {
+        return prixTotal;
+    }
+
+    /**
+     * Setter for prixTotal
+     *
+     * @param prixTotal the prixTotal to set
+     */
+    public void setPrixTotal(final String prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    /**
+     * Getter for prixApresRemise
+     *
+     * @return the prixApresRemise
+     */
+    public String getPrixApresRemise() {
+        return prixApresRemise;
+    }
+
+    /**
+     * Setter for prixApresRemise
+     *
+     * @param prixApresRemise the prixApresRemise to set
+     */
+    public void setPrixApresRemise(final String prixApresRemise) {
+        this.prixApresRemise = prixApresRemise;
     }
 
 }

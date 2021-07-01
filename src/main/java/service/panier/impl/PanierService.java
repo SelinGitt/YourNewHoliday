@@ -80,4 +80,15 @@ public class PanierService implements IPanierService {
         panier.setNombreDeReferences(0);
     }
 
+    @Override
+    public String calculerPrixTotal(final PanierDto panier) {
+        var prixTotal = 0.00;
+        for (final LigneCommandeProduitDto ligne : panier.getMapPanier().values()) {
+            System.out.println(ligne.getPrix());
+            final Double prix = Double.valueOf(ligne.getPrix());
+            prixTotal += prix;
+        }
+        return DecimalFormatUtils.decimalFormatUtil(prixTotal);
+    }
+
 }
