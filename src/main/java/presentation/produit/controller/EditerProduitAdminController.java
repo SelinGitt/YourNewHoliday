@@ -41,7 +41,7 @@ public class EditerProduitAdminController {
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
         final var modelAndView = new ModelAndView("editerProduitAdmin");
-        modelAndView.getModelMap().addAttribute("produitDto", iProduitService.editerProduit(produitDto));
+        modelAndView.getModelMap().addAttribute("produitDto", produitDto);
         return modelAndView;
     }
 
@@ -54,6 +54,7 @@ public class EditerProduitAdminController {
     @PostMapping
     public ModelAndView soumissionFormulaire(final ProduitDto produitDto) {
         iProduitService.editerProduit(produitDto);
+
         return new ModelAndView("redirect:/listerProduitsAdmin.do");
     }
 }

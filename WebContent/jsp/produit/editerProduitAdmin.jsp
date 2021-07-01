@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="conteneur-ascenseur">
 
-    <h1>
+    <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt02.titre" />
     </h1>
     <a href="editerProduitAdmin.do"><spring:message code="pdt0203.retour" /></a>
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt0203.miseEnVente" /></td>
-                        <td class="pdt0203FormPDT03Radio display-flex">
+                        <td class="pdt0203Formpdt0203Radio display-flex">
                             <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="true" />
                                 <spring:message code="form.pdt0203.oui" />
@@ -56,14 +56,14 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt0203.description" /></td>
-                        <td class=pdt0203TextAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td class=pdt0203TextAreaPdt0203><form:textarea path="description" rows="4" cols="100" /></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="pdt0203ButtonsPdt03 display-flex">
+                        <td class="justify-content-space-around display-flex">
                             <div>
                                 <form:button value="submit" class="background-color-green">
-                                    <spring:message code="form.pdt0203.valider" />
+                                    <spring:message code="form.pdt02.valider" />
                                 </form:button>
                             </div>
                             <div>
