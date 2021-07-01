@@ -97,9 +97,9 @@
 	font-weight: bold;
 }
 
-.panier-flex-column {
-	flex-direction: column;
-}
+/* .panier-flex-column { */
+/* 	flex-direction: column; */
+/* } */
 
 /* PAN08 */
 .panier-retour {
@@ -114,9 +114,9 @@
 }
 
 .panier-container-Adresse {
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	flex-direction: row; */
 	width: 95%;
 }
 

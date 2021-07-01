@@ -13,7 +13,7 @@
 
 <div class=" display-flex flex-direction-row panier-100">
     <%-- container de facturation + livraison--%>
-    <div class="panier-container-Adresse">
+    <div class="panier-container-Adresse display-flex justify-content-center flex-direction-row">
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
