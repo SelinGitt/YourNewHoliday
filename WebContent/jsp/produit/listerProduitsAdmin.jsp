@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
-    <h1>
+    <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
@@ -41,10 +41,10 @@
 
                     <td class="pdt01Body"><c:choose>
                             <c:when test="${produitDto.miseEnVente}">
-                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert pdt01Image">
+                                <img alt="" src="img/commun/checkboxVert.jpg" class="pdt01Image">
                             </c:when>
                             <c:otherwise>
-                                <img id="imageNonActif" alt="" src="img/commun/checkboxVide.png" />
+                                <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
                             </c:otherwise>
                         </c:choose></td>
                     <td class="pdt01Body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"

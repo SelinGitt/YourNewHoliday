@@ -29,6 +29,7 @@ public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
     private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
+
     @Autowired
     private IProduitDao  produitDao;
 
@@ -73,5 +74,12 @@ public class ProduitService implements IProduitService {
     private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
         return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
 
+    }
+
+    @Override
+    public ProduitDto creerProduit(final ProduitDto produitDto) {
+        final var produitDo = ProduitMapper.mapToDo(produitDto);
+        this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
+        return ProduitMapper.mapToDto(produitDao.create(produitDo));
     }
 }
