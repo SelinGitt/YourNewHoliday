@@ -99,8 +99,9 @@
 
                                 </div> <%--  image --%>
                                 <div class="justify-content-center display-flex">
-                                    <img class="panier-responsive" src="img/commun/poubelle.jpg"
-                                        alt="icone poubelle pour suppression" />
+                                    <a href="supprimerProduitPanier.do?id=${entry.key.idProduitOriginal }"><img
+                                        class="panier-responsive" src="img/commun/poubelle.jpg"
+                                        alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
                     </c:forEach>
