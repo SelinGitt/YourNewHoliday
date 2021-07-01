@@ -16,9 +16,10 @@
     <div class="panier-container-Adresse">
 
         <%-- formulaire Adresse de livraison--%>
-        <div class="panier-block-fieldSet">
+
             <%-- il faudra ajouter un modelAttribute--%>
-            <form:form method="POST" action="listerPanierAdresses.do">
+            <form:form method="POST" modelAttribute="utilisateurDto" action="listerPanierAdresses.do" id="monFormulaire">
+  <div class="panier-block-fieldSet">
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.livraison" />
@@ -26,8 +27,10 @@
                     <div class="panier-formulaire">
                         <div class="panier-formulaire-div">
                             <%-- mettre les path="exemple" par la suite --%>
-                            <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
-                                class="panier-formulaire-input" type="text" name="nom" id="nom">
+                            <label for="nom"><spring:message code="pan08.label.nom" /></label>
+
+                            <form:input class="panier-formulaire-input" id="livraison-nom"  path="adresse" /> 
+                          
                         </div>
                         <div class="panier-formulaire-div">
                             <label for="prenom"><spring:message code="pan08.label.prenom" /></label> <input
@@ -35,13 +38,14 @@
                         </div>
                         <div class="panier-formulaire-div">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <textarea class="panier-formulaire-textarea" id="adresse" 
-                            name="adresse" rows="12"></textarea>
+                            <textarea class="panier-formulaire-textarea" id="adresse" name="adresse" rows="12"></textarea>
                         </div>
                     </div>
                 </fieldset>
+                        </div>
+                 <input type="reset" value="Reset">
             </form:form>
-        </div>
+
 
         <%-- formulaire Adresse de facturation--%>
         <div class="panier-block-fieldSet">
@@ -63,8 +67,7 @@
                         </div>
                         <div class="panier-formulaire-div">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <textarea class="panier-formulaire-textarea" id="adresse" 
-                            name="adresse" rows="12"></textarea>
+                            <textarea class="panier-formulaire-textarea" id="adresse" name="adresse" rows="12"></textarea>
                         </div>
                     </div>
                 </fieldset>
@@ -156,5 +159,12 @@
         </div>
     </div>
 
+    <%--  --%>
+    <button onclick="informationsLivraison()">Utiliser mes informations personnelles</button>
+
+
+    <button onclick="informationsFacturation()">Utiliser mes informations personnelles</button>
+
+    <%-- Script js qui en fonction sur le bouton ou on clique donne des paths au elements --%>
 
 </div>
