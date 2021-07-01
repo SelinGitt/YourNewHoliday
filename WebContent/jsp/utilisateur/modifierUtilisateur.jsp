@@ -11,7 +11,7 @@
     </div>
     
     <%-- A cacher par la suite si client --%>
-    <a href="listerUtilisateur" class="user02-retour">&lt; Retour</a>
+    <a href="listerUtilisateur.do" class="user02-retour">&lt; Retour</a>
 
     <div class="user02-body-general">
         <div class="user02-form display-flex">
