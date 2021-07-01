@@ -33,8 +33,8 @@
                 </tr>
                 <tr class="display-flex">
                     <td class="display-flex text-responsive">${produitDto.nom}</td>
-                    <td class="pdt00Price text-responsive display-flex justify-content-flex-end">${produitDto.prixUnitaire}
-                        €</td>
+                    <td class="pdt00Price text-responsive display-flex justify-content-flex-end">
+                        ${produitDto.prixUnitaire} €</td>
                 </tr>
                 <tr>
                     <td class="text-responsive">${produitDto.reference}</td>
