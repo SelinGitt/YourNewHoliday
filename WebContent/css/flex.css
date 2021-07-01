@@ -57,6 +57,10 @@ Si vous voulez ajouter des propriétes flex à ce fichier, contacter Hanan.*/
 	flex-direction: row-reverse;
 }
 
+.flex-direction-column {
+	flex-direction: column;
+}
+
 /* align content */
 .align-content-flex-end {
 	align-content: flex-end;

@@ -2,12 +2,14 @@ package persistance.commande.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,22 +22,25 @@ public class CommandeDo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCommande")
-    private Integer    id;
+    private Integer                id;
 
     @Column(name = "reference")
-    private String     reference;
+    private String                 reference;
 
     @Column(name = "prix_avec_remise")
-    private BigDecimal prixTotal;
+    private BigDecimal             prixTotal;
 
     @Column(name = "date_commande")
-    private Date       date;
+    private Date                   date;
 
     @Column(name = "idUtilisateur")
-    private Integer    idUtilisateur;
+    private Integer                idUtilisateur;
+
+    @OneToMany(mappedBy = "commandeDo")
+    private Set<CommandeProduitDo> commandeProduitDoSet;
 
     @Column(name = "quantiteTotale")
-    private Integer    quantiteTotale;
+    private Integer                quantiteTotale;
 
     /**
      * Getter for id
@@ -128,6 +133,24 @@ public class CommandeDo {
     }
 
     /**
+     * Getter for commandeProduitDoSet
+     *
+     * @return the commandeProduitDoSet
+     */
+    public Set<CommandeProduitDo> getCommandeProduitDoSet() {
+        return commandeProduitDoSet;
+    }
+
+    /**
+     * Setter for commandeProduitDoSet
+     *
+     * @param commandeProduitDoSet the commandeProduitDoSet to set
+     */
+    public void setCommandeProduitDoSet(final Set<CommandeProduitDo> commandeProduitDoSet) {
+        this.commandeProduitDoSet = commandeProduitDoSet;
+    }
+
+    /**
      * Getter for quantiteTotale
      * 
      * @return the quantiteTotale
@@ -139,10 +162,10 @@ public class CommandeDo {
     /**
      * Setter for quantiteTotale
      * 
-     * @param quaniteTotale the quantiteTotale to set
+     * @param quantiteTotale the quantiteTotale to set
      */
-    public void setQuantiteTotale(final Integer quaniteTotale) {
-        this.quantiteTotale = quaniteTotale;
+    public void setQuantiteTotale(final Integer quantiteTotale) {
+        this.quantiteTotale = quantiteTotale;
     }
 
 }

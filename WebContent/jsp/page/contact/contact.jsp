@@ -3,7 +3,7 @@
 <%-- div container --%>
 <div class="body conteneur-ascenseur">
     <%-- titre --%>
-    <h1>
+    <h1 class="contact-titre text-align-center">
         <spring:message code="con.titre" />
     </h1>
     <%-- insertion du fichier html --%>

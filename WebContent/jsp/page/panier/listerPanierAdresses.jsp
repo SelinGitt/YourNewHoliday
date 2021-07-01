@@ -13,7 +13,7 @@
 
 <div class=" display-flex flex-direction-row panier-100">
     <%-- container de facturation + livraison--%>
-    <div class="panier-container-Adresse">
+    <div class="panier-container-Adresse display-flex justify-content-center flex-direction-row">
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
@@ -23,17 +23,17 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.livraison" />
                     </legend>
-                    <div class="panier-formulaire">
-                        <div class="panier-formulaire-div">
+                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
                                 class="panier-formulaire-input" type="text" name="nom" id="nom">
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="prenom"><spring:message code="pan08.label.prenom" /></label> <input
                                 class="panier-formulaire-input" type="text" id="prenom" name="prenom">
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
                             <textarea class="panier-formulaire-textarea" id="adresse" 
                             name="adresse" rows="12"></textarea>
@@ -51,17 +51,17 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div class="panier-formulaire">
-                        <div class="panier-formulaire-div">
+                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
                                 class="panier-formulaire-input" type="text" name="nom" id="nom">
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="prenom"><spring:message code="pan08.label.prenom" /></label> <input
                                 class="panier-formulaire-input" type="text" id="prenom" name="prenom">
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
                             <textarea class="panier-formulaire-textarea" id="adresse" 
                             name="adresse" rows="12"></textarea>

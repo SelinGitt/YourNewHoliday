@@ -5,10 +5,12 @@ package service.produit;
 
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import persistance.produit.entity.ProduitDo;
 import presentation.produit.dto.ProduitDto;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe Mapper de produit, mappant un produitDto vers un produitDo et vice versa
@@ -27,17 +29,27 @@ public class ProduitMapper {
      * @return            Le produitDo mappé
      */
     public static ProduitDo mapToDo(final ProduitDto produitDto) {
+
         if (produitDto == null) {
             return null;
         }
+
         final var produitDo = new ProduitDo();
-        produitDo.setIdProduitOriginal(Integer.valueOf(produitDto.getIdProduitOriginal()));
+        final var idOriginal = produitDto.getIdProduitOriginal();
+
+        // En Java 8 : permet de gérer l'id null lors de la création d'un produit et l'id existant pour l'édition
+        produitDo.setIdProduitOriginal(Optional.ofNullable(idOriginal).map(Integer::parseInt).orElse(null));
+
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
         produitDo.setReference(produitDto.getReference());
         produitDo.setNom(produitDto.getNom());
         produitDo.setDescription(produitDto.getDescription());
         produitDo.setDestination(produitDto.getDestination());
-        produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
+        if (DecimalFormatUtils.isPrixAVirgule(produitDto.getPrixUnitaire())) {
+            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire().replace(",", ".")));
+        } else {
+            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
+        }
         produitDo.setHebergement(produitDto.getHebergement());
         produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
         produitDo.setCheminImage(produitDto.getCheminImage());
