@@ -48,19 +48,18 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
-        final var typeTri = TypeTriAlphanumerique.checkType(tri);
+    public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
         logger.debug("ProduitService {} findFilter", ProduitDto.class);
         if (!searchTerm.isBlank()) {
-            if ("0".equals(tri)) {
+            if (tri == null) {
                 return rechercherProduits(searchTerm);
             }
-            return listerFiltreTri(typeTri, searchTerm);
+            return listerFiltreTri(tri, searchTerm);
         }
-        if ("0".equals(tri)) {
+        if (tri == null) {
             return listerProduitsEnVente();
         }
-        return trierListe(typeTri);
+        return trierListe(tri);
     }
 
     private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {

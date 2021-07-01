@@ -89,7 +89,7 @@ class ProduitServiceTest {
     @Test
     void testFindFilterWithRecherche() {
         Mockito.when(this.iProduitDaoMock.rechercherProduits("23")).thenReturn(Collections.emptyList());
-        final List<ProduitDto> liste = produitServiceMock.findFilter("23", "0");
+        final List<ProduitDto> liste = produitServiceMock.findFilter("23", TypeTriAlphanumerique.checkType("not existing"));
         assertNotNull(liste);
         assertEquals(0, liste.size());
     }
@@ -99,10 +99,8 @@ class ProduitServiceTest {
      */
     @Test
     void testFindFilterWithTri() {
-
         Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.ASC)).thenReturn(Collections.emptyList());
-        //0 correspondant au tri par défaut
-        final List<ProduitDto> liste = produitServiceMock.findFilter("", "2");
+        final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.checkType("2"));
         assertNotNull(liste);
         assertEquals(0, liste.size());
     }

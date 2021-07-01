@@ -3,6 +3,8 @@
  */
 package presentation.produit.controller;
 
+import java.util.stream.Stream;
+
 /**
  * Enum représentant des méthodes de tri.
  *
@@ -30,27 +32,23 @@ public enum TypeTriAlphanumerique {
     }
 
     /**
-     * Getter for typeDao
-     *
-     * @return the typeDao
-     */
-    public String getTypeDao() {
-        return typeDao;
-    }
-
-    /**
      * Permet de retrouver un type en fonction d'un string clé
      *
      * @param  type le type à trouver
      * @return      le typeTriAlphanumerique
      */
     public static TypeTriAlphanumerique checkType(final String type) {
-        for (final TypeTriAlphanumerique tta : TypeTriAlphanumerique.values()) {
-            if (tta.typeRecherche.equals(type)) {
-                return tta;
-            }
-        }
-        return ASC;
+        return Stream.of(TypeTriAlphanumerique.values()).filter(typeTriAlphanumerique -> typeTriAlphanumerique.typeRecherche.equals(type))
+                .findFirst().orElse(null);
+    }
+
+    /**
+     * Getter for typeDao
+     *
+     * @return the typeDao
+     */
+    public String getTypeDao() {
+        return typeDao;
     }
 
 }

@@ -5,6 +5,7 @@ package service.produit;
 
 import java.util.List;
 
+import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.ProduitDto;
 
 /**
@@ -43,5 +44,5 @@ public interface IProduitService {
      * @param  tri        le type de tri à effectuer
      * @return            la liste de produitDto fitrée
      */
-    List<ProduitDto> findFilter(final String searchTerm, final String tri);
+    List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri);
 }

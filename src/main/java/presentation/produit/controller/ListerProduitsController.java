@@ -59,11 +59,12 @@ public class ListerProduitsController {
      */
     @PostMapping
     public ModelAndView findFilter(final @RequestParam(value = "searchInput", required = false) String searchTerm,
-            final @RequestParam(value = "tri", required = false) String tri) {
+            final @RequestParam(value = "tri", required = false, defaultValue = "0") String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
         modelAndView.getModelMap().addAttribute("tri", tri);
         modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, this.iProduitService.findFilter(searchTerm, tri));
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO,
+                this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.checkType(tri)));
         return modelAndView;
     }
 
