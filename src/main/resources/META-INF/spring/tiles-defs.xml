@@ -45,6 +45,11 @@
 		<put-attribute name="title" value="liste Des Commandes" />
 		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
 	</definition>
+	<!-- écran CMD_04 -->
+	<definition name="detailCommande" extends="base.definition">
+		<put-attribute name="title" value="détail d'une commande" />
+		<put-attribute name="body" value="/jsp/page/commande/detailCommande.jsp" />
+	</definition>
 
 	<!-- écran utilisateur -->
 
