@@ -17,6 +17,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.util.GenerateReferenceUtil;
 import service.util.IGenerateReferenceUtil;
 import service.utilisateur.IUtilisateurService;
 import service.utilisateur.util.MDPCrypter;
@@ -32,14 +33,14 @@ import service.utilisateur.util.UtilisateurMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class UtilisateurService implements IUtilisateurService {
 
-    private static final Logger    logger = LoggerFactory.getLogger(UtilisateurService.class);
+    private static final Logger logger = LoggerFactory.getLogger(UtilisateurService.class);
 
     @Autowired
-    private IUtilisateurDao        iUtilisateurDao;
+    private IUtilisateurDao     iUtilisateurDao;
 
     @Autowired
-    private ICommandeDao           iCommandeDao;
-
+    private ICommandeDao        iCommandeDao;
+    
     @Autowired
     @Qualifier("USR")
     private IGenerateReferenceUtil iGenerateReferenceUtil;
@@ -61,7 +62,7 @@ public class UtilisateurService implements IUtilisateurService {
         utilisateurDto.setEstDesactive(false);
 
         // TODO : Temporaire avec le generateReference
-        utilisateurDto.setReference(this.iGenerateReferenceUtil.generateRef());
+        utilisateurDto.setReference(GenerateReferenceUtil.generateReference("", GenerateReferenceUtil.TypeReference.UTILISATEUR));
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
