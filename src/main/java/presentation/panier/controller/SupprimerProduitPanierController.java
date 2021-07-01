@@ -55,7 +55,7 @@ public class SupprimerProduitPanierController {
     public ProduitDto findProduitMap(final PanierDto panier, final Integer idProduit) {
         final Map<ProduitDto, LigneCommandeProduitDto> mapPanier = panier.getMapPanier();
         for (final ProduitDto produit : mapPanier.keySet()) {
-            if (Integer.valueOf(produit.getIdProduitOriginal()) == idProduit) {
+            if (Integer.valueOf(produit.getIdProduitOriginal()).equals(idProduit)) {
                 return produit;
             }
         }
