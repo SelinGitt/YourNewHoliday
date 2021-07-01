@@ -107,7 +107,6 @@ th.pdt01 {
 	padding: 0 0.313em 0 0.313em;
 }
 
-<<<<<<< HEAD
 .pdt03FormPDT03Radio {
 	justify-content: space-around;
 }
@@ -140,8 +139,7 @@ th.pdt01 {
 .pdt03ImageCreationProduit {
 	width: 100%;
 }
-/* PDT04 */
-=======
+
 /* PDT04 */
 .pdt04Flex-container {
 	text-align: left;
@@ -181,4 +179,4 @@ th.pdt01 {
 .pdt04IconeSpace {
 	padding: 0.3em;
 }
->>>>>>> develop
+
