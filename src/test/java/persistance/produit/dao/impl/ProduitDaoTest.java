@@ -65,8 +65,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * <<<<<<< HEAD Test method for
-     * {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     * HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
     void testFindProduitEnVente() {
@@ -79,10 +78,10 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduits()}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduitsEnVente(String)}.
      */
     @Test
-    void testRechercherProduits() {
+    void testRechercherProduitsEnVente() {
         //recherche d'une référence 128 existente
         final String searchTerm = "128";
         final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherProduitsEnVente(searchTerm);
@@ -117,7 +116,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits()}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits(String)}.
      */
     @Test
     void testRechercherAllProduits() {

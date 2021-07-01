@@ -98,7 +98,6 @@ class ProduitServiceTest {
     /**
      * Test method for {@link service.produit.impl.ProduitService#trouverProduitEnVente(java.lang.Integer)}.
      */
-
     @Test
     void testTrouverProduitEnVente() {
         final var produitDo = new ProduitDo();
@@ -115,7 +114,6 @@ class ProduitServiceTest {
     /**
      * Test method for {@link service.produit.impl.ProduitService#rechercherAllProduits(java.lang.Integer)}.
      */
-
     @Test
     void testRechercherAllProduits() {
         final var produitDo = new ProduitDo();
