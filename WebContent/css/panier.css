@@ -97,10 +97,6 @@
 	font-weight: bold;
 }
 
-/* .panier-flex-column { */
-/* 	flex-direction: column; */
-/* } */
-
 /* PAN08 */
 .panier-retour {
 	font-size: 1.5em;
@@ -114,9 +110,6 @@
 }
 
 .panier-container-Adresse {
-/* 	display: flex; */
-/* 	justify-content: center; */
-/* 	flex-direction: row; */
 	width: 95%;
 }
 
@@ -132,10 +125,6 @@
 .panier-formulaire {
 	margin: 0.5em;
 	width: 90%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	flex-direction: column;
 }
 
 .panier-formulaire-div {

@@ -23,7 +23,7 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.livraison" />
                     </legend>
-                    <div class="panier-formulaire">
+                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
@@ -51,7 +51,7 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div class="panier-formulaire">
+                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
