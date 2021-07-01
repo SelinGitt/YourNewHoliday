@@ -135,25 +135,26 @@ class ProduitServiceTest {
     void testFindFilterWithTri() {
         //création des produits
         final var produitDo = new ProduitDo();
-        produitDo.setPrixUnitaire(1224d);
+        produitDo.setPrixUnitaire(1274d);
         final var produitDo2 = new ProduitDo();
         produitDo2.setPrixUnitaire(126d);
         final var produitDto = new ProduitDto();
-        produitDto.setPrixUnitaire("1224");
+        produitDto.setPrixUnitaire("1274,00");
         final var produitDto2 = new ProduitDto();
-        produitDto2.setPrixUnitaire("126");
+        produitDto2.setPrixUnitaire("126,00");
         //création de la liste à retourner
         final List<ProduitDo> listeTriee = List.of(produitDo2, produitDo);
         Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.DESC)).thenReturn(listeTriee);
-
+        //attribution des listes de produitDto, une triée, et une non triée qui sera triée par une méthode java
         final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.checkType("2"));
-        System.out.println(liste);
         final List<ProduitDto> listeNonTriee = new ArrayList<>();
         listeNonTriee.addAll(List.of(produitDto, produitDto2));
+        //création d'un comparator pour préparer le tri via java
         final Comparator<ProduitDto> produitDoPrixComparator = Comparator.comparing(ProduitDto::getPrixUnitaire);
         Collections.sort(listeNonTriee, produitDoPrixComparator);
         assertEquals(liste.stream().findFirst().get().getPrixUnitaire(), listeNonTriee.stream().findFirst().get().getPrixUnitaire());
-
+        assertEquals(liste.stream().skip(1).findFirst().get().getPrixUnitaire(),
+                listeNonTriee.stream().skip(1).findFirst().get().getPrixUnitaire());
     }
 
 }
