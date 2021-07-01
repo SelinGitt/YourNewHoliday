@@ -46,4 +46,9 @@ public class ProduitService implements IProduitService {
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
     }
+
+    @Override
+    public List<ProduitDto> rechercherAllProduits(String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
+    }
 }

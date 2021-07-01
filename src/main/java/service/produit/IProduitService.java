@@ -43,4 +43,12 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
+
+    /**
+     * Permet de rechercher produits par reference
+     *
+     * @param  pSearchTerm terme recherché
+     * @return             liste de produits associée à la recherche
+     */
+    List<ProduitDto> rechercherAllProduits(final String pSearchTerm);
 }
