@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -99,9 +101,27 @@ class ProduitServiceTest {
      */
     @Test
     void testFindFilterWithTri() {
-        Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.ASC)).thenReturn(Collections.emptyList());
+        //création des produits
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(1224d);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(126d);
+        final var produitDto = new ProduitDto();
+        produitDto.setPrixUnitaire("1224");
+        final var produitDto2 = new ProduitDto();
+        produitDto2.setPrixUnitaire("126");
+        //création de la liste à retourner
+        final List<ProduitDo> listeTriee = List.of(produitDo2, produitDo);
+        Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.DESC)).thenReturn(listeTriee);
+
         final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.checkType("2"));
-        assertNotNull(liste);
-        assertEquals(0, liste.size());
+        System.out.println(liste);
+        final List<ProduitDto> listeNonTriee = new ArrayList<>();
+        listeNonTriee.addAll(List.of(produitDto, produitDto2));
+        final Comparator<ProduitDto> produitDoPrixComparator = Comparator.comparing(ProduitDto::getPrixUnitaire);
+        Collections.sort(listeNonTriee, produitDoPrixComparator);
+        assertEquals(liste.stream().findFirst().get().getPrixUnitaire(), listeNonTriee.stream().findFirst().get().getPrixUnitaire());
+
     }
+
 }
