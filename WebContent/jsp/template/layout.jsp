@@ -5,6 +5,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="img/commun/favicon.ico" />
 <link href="css/commande.css" rel="stylesheet">
 <link href="css/produit.css" rel="stylesheet">
 <link href="css/panier.css" rel="stylesheet">
