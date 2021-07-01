@@ -4,6 +4,7 @@
 package service.panier.impl;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,7 +78,12 @@ public class PanierService implements IPanierService {
 
     @Override
     public ProduitDto findProduitMap(final PanierDto panier, final Integer idProduit) {
-        return panier.getMapPanier().keySet().stream().filter(p -> p.getIdProduitOriginal().equals(idProduit.toString())).findFirst().get();
+        final Optional<ProduitDto> produit = panier.getMapPanier().keySet().stream()
+                .filter(p -> p.getIdProduitOriginal().equals(idProduit.toString())).findFirst();
+        if (produit.isPresent()) {
+            return produit.get();
+        }
+        return null;
 
     }
 }
