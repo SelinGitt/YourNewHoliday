@@ -122,3 +122,198 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 }
 
 /* CMD04 */
+/* définition de l'affichage d'un bouton retour */
+.CMD_04-bouton-retour {
+	color: #000000;
+	font-size: 1.15em;
+	/* enlève la bordure du bouton */
+	border: 0;
+	border-radius: 0.313em;
+	text-align: center;
+	padding: 0.5em;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+/* définition de l'affichage d'un bouton retour lorsqu'on le survole */
+.CMD_04-bouton-retour:hover {
+	opacity: 1;
+}
+
+/* la grille pour commande */
+.CMD_04-grid {
+	display: grid;
+	align-items: center;
+}
+
+/* container de la page CMD04*/
+.CMD_04-container {
+	width: 95%;
+	height: 75%;
+	max-height: 75%;
+	grid-template-columns: 3fr 1fr;
+	grid-gap: 0.05em;
+}
+
+/* container de la liste des produits */
+.CMD_04-produits {
+	grid-column: 1;
+}
+
+/* container des adresses et des montants payés*/
+.CMD_04-details {
+	grid-column: 2;
+}
+
+/* bordure */
+.CMD_04-border {
+	border: 0.19em solid #000000;
+}
+
+/* bordure à droite */
+.CMD_04-border-right {
+	border-right: 0.19em solid #000000;
+}
+
+/* bordure à droite transparent pour l'alignement */
+.CMD_04-border-right-transparent {
+	border-right: 0.19em solid #00000000;
+}
+
+/* height 100% */
+.CMD_04-height {
+	height: 100%;
+	max-height: 100%;
+}
+
+/* bordure des fieldset */
+.CMD_04-fieldset {
+	padding: 0.625em;
+}
+
+/* couleur et taille du text pour les légendes des fieldsets */
+.CMD_04-fieldset-legend {
+	color: #6FA8DC;
+	font-size: 1.25em;
+}
+
+/* taille et hauteur calculer en tenant compte des bordures des bordures externes */
+.CMD_04-box-sizing {
+	box-sizing: border-box;
+}
+
+/* ligne dans la grille de commande */
+.CMD_04-ligne {
+	display: grid;
+	/* pas d'espacement entre les grilles */
+	grid-gap: 0;
+	grid-template-columns: 4fr repeat(3, 1fr);
+	margin: 0.313em;
+	height: 12.5vh;
+}
+
+/* grille pour afficher l'image à droite */
+.CMD_04-img-grid {
+	/* pas d'espacement entre les grilles */
+	grid-gap: 0;
+	grid-template-columns: 1fr 2fr;
+}
+
+/* cellule d'une grille */
+.CMD_04-grid-cel {
+	padding: 0.313em;
+}
+
+/* grille colonne 1 */
+.CMD_04-col-1 {
+	grid-column: 1;
+}
+
+/* grille colonne 2 */
+.CMD_04-col-2 {
+	grid-column: 2;
+}
+
+/* grille colonne 3 */
+.CMD_04-col-3 {
+	grid-column: 3;
+}
+
+/* grille colonne 4 */
+.CMD_04-col-4 {
+	grid-column: 4;
+}
+
+/* grille colonne 5 */
+.CMD_04-col-5 {
+	grid-column: 5;
+}
+
+/* mettre en gras */
+.CMD_04-bold {
+	font-weight: bold;
+}
+
+/* aligner le texte au centre */
+.CMD_04-text-align-center {
+	text-align: center;
+}
+
+/* aligner le texte à droite */
+.CMD_04-text-align-right {
+	text-align: right;
+}
+
+/* aligner le texte à gauche */
+.CMD_04-text-align-left {
+	text-align: left;
+}
+
+/* aligner le texte justify*/
+.CMD_04-text-align-justify {
+	text-align: justify;
+}
+
+/* padding de la grille */
+
+/* pour afficher les images */
+.CMD_04-img {
+	width: 80%;
+	height: auto;
+}
+
+/* taille des div titres dans les boites */
+.CMD_04-box-title {
+	height: 20%;
+}
+
+/* taille des div textes dans les boites */
+.CMD_04-box-text {
+	height: 80%;
+}
+
+/* text padding à gauche et à droite mais pas en haut et en bas */
+.CMD_04-box-padding {
+	/* pas de padding en haut et en bas, centrage automatique par l'utilisation de grid */
+	padding: 0 0.625em;
+}
+
+/* l'ascensseur à droite vertical */
+.CMD_04-overflow {
+	overflow-y: auto;
+}
+
+/* hauteur d'une taille 1/3 envrion */
+.CMD_04-divise-3-hauteur {
+	height: 33.33%;
+}
+
+/* wrapper de la grille contenant la liste de produit */
+.CMD_04-wrapper {
+	padding: 0.625em;
+}
+
+/* couleur du titre pour la liste des produits */
+.CMD_04-title-text-color {
+	color: #66C5EB;
+}
