@@ -3,8 +3,10 @@
  */
 package service.commande.impl;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +16,10 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import presentation.commande.dto.CommandeDto;
+import presentation.commande.dto.CommandeProduitDto;
 import service.commande.ICommandeService;
+import service.util.DecimalFormatUtils;
 
 /**
  * JUnit pour tester le service de la commande
@@ -48,6 +53,23 @@ class CommandeServiceTest {
     void testListerCommandesUtilisateur() {
 
         assertEquals(2, commandeService.listerCommandesUtilisateur(2).size());
+    }
+
+    /**
+     * Test method for {@link service.commande.impl.CommandeService#chercherCommandeParReference(java.lang.String)}.
+     */
+    @Test
+    void testTrouverCommandeParReference() {
+        final CommandeDto commandeDto = commandeService.chercherCommandeParReference("ABC1");
+        assertNotNull(commandeDto);
+        assertEquals("1", commandeDto.getId());
+        assertEquals("ABC1", commandeDto.getReference());
+        assertEquals("09/02/2021", commandeDto.getDate());
+        final String nombre = DecimalFormatUtils.decimalFormatUtil(1200.00);
+        assertEquals(nombre, commandeDto.getPrixTotal());
+        final List<CommandeProduitDto> listCommandeProduitDto = commandeDto.getListCommandeProduitDto();
+        assertNotNull(listCommandeProduitDto);
+        assertEquals(2, listCommandeProduitDto.size());
     }
 
 }

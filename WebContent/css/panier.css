@@ -8,13 +8,20 @@
 
 /* bordures */
 .panier-bordure-1px {
-	border: 1px solid black;
+	border: 0.063em solid black;
 }
+
+/* legendes */
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
 /* CSS specifique */
 
 /* images responsives */
 .panier-responsive {
-	width: 50px;
+	width: 3.125em;
 	height: auto;
 	margin-bottom: 2em;
 	margin-top: -1em;
@@ -93,12 +100,8 @@
 }
 
 .panier-vide-ligne {
-	font-size: 30px;
+	font-size: 1.875em;
 	font-weight: bold;
-}
-
-.panier-flex-column {
-	flex-direction: column;
 }
 
 /* PAN08 */
@@ -108,15 +111,7 @@
 	text-decoration: none;
 }
 
-.panier-legend {
-	color: #66C5EB;
-	font-size: 1.875em;
-}
-
 .panier-container-Adresse {
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
 	width: 95%;
 }
 
@@ -132,17 +127,11 @@
 .panier-formulaire {
 	margin: 0.5em;
 	width: 90%;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	flex-direction: column;
 }
 
 .panier-formulaire-div {
 	font-size: 1.5em;
 	margin-top: 1em;
-	display: flex;
-	flex-direction: column;
 }
 
 .panier-formulaire-input {

@@ -1,14 +1,24 @@
 package presentation.commande.dto;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Classe représentant une commande pour la vue
  */
-public class CommandeDto {
-    private String id;
-    private String reference;
-    private String prixTotal;
-    private String date;
-    private String quantiteTotale;
+public class CommandeDto implements Serializable {
+
+    /**
+     * Générer Automatiquement pour la sérialisation
+     */
+    private static final long        serialVersionUID = -7225820006767319912L;
+
+    private String                   id;
+    private String                   reference;
+    private String                   prixTotal;
+    private String                   date;
+    private String                   quantiteTotale;
+    private List<CommandeProduitDto> listCommandeProduitDto;
 
     /**
      * Getter for id
@@ -99,6 +109,24 @@ public class CommandeDto {
      */
     public void setQuantiteTotale(final String quantiteTotale) {
         this.quantiteTotale = quantiteTotale;
+    }
+
+    /**
+     * Getter for listCommandeProduitDto
+     *
+     * @return the listCommandeProduitDto
+     */
+    public List<CommandeProduitDto> getListCommandeProduitDto() {
+        return listCommandeProduitDto;
+    }
+
+    /**
+     * Setter for listCommandeProduitDto
+     *
+     * @param listCommandeProduitDto the listCommandeProduitDto to set
+     */
+    public void setListCommandeProduitDto(final List<CommandeProduitDto> listCommandeProduitDto) {
+        this.listCommandeProduitDto = listCommandeProduitDto;
     }
 
 }

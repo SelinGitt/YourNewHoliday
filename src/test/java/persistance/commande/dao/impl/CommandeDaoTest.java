@@ -5,8 +5,13 @@ package persistance.commande.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Set;
+
+import javax.persistence.NoResultException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -20,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
 import persistance.commande.entity.CommandeDo;
+import persistance.commande.entity.CommandeProduitDo;
+import service.util.DateFormatUtil;
 
 /**
  * Classe représentant les tests JUnits de CommandeDao
@@ -60,6 +67,33 @@ class CommandeDaoTest {
     }
 
     /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByRef(java.lang.String)}.
+     */
+    @Test
+    void testFindByRef() {
+        final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
+        assertNotNull(commandeDo);
+        assertEquals(1, commandeDo.getId());
+        assertEquals("ABC1", commandeDo.getReference());
+        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
+        assertEquals(2, commandeDo.getIdUtilisateur());
+        assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
+        assertNotNull(commandeProduitSet);
+        assertEquals(2, commandeProduitSet.size());
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#findByRef(java.lang.String)}.
+     */
+    @Test
+    void testFindByRefWhithWrongRef() {
+        assertThrows(NoResultException.class, () -> {
+            this.iCommandeDao.findByRef("ZZZ1");
+        });
+    }
+
+    /*
      * Test method for {@link persistance.commande.dao.impl.CommandeDao#updateCommandeDoUserDeletion(Integer)}.
      */
     @Test
