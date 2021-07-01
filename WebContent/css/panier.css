@@ -10,6 +10,13 @@
 .panier-bordure-1px {
 	border: 0.063em solid black;
 }
+
+/* legendes */
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
 /* CSS specifique */
 
 /* images responsives */
@@ -102,11 +109,6 @@
 	font-size: 1.5em;
 	color: #000000;
 	text-decoration: none;
-}
-
-.panier-legend {
-	color: #66C5EB;
-	font-size: 1.875em;
 }
 
 .panier-container-Adresse {
