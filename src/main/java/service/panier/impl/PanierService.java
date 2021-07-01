@@ -16,7 +16,6 @@ import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
-import service.produit.impl.ProduitService;
 import service.util.DecimalFormatUtils;
 
 /**
@@ -29,7 +28,7 @@ import service.util.DecimalFormatUtils;
 public class PanierService implements IPanierService {
 
     @Autowired
-    private IProduitService iProduitService = new ProduitService();
+    private IProduitService iProduitService;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
