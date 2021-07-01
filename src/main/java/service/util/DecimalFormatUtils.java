@@ -87,4 +87,15 @@ public class DecimalFormatUtils {
 
         return format.format(nombre);
     }
+
+    /**
+     * Permet de savoir si le prix contient une virgurle
+     * 
+     * @param  prixAVerifier le String à vérifier
+     * @return               true si le prix contient une virgule <br/>
+     *                       false sinon
+     */
+    public static boolean isPrixAVirgule(final String prixAVerifier) {
+        return prixAVerifier.matches("\\d+(?:[,]\\d{2}$)");
+    }
 }
