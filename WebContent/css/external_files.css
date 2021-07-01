@@ -29,10 +29,11 @@
 	text-align: center;
 }
 
-.CG-button-background{
+.CG-button-background {
 	background: #615b63;
 }
-.CG-button-clicked-background{
+
+.CG-button-clicked-background {
 	background: #F0F0F0;
 }
 
