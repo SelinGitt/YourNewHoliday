@@ -10,7 +10,7 @@
     </div>
 
     <div>
-        <h1>
+        <h1 class="title title-responsive text-align-center">
             <spring:message code="pdt00.titre" />
         </h1>
     </div>
