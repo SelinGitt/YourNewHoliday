@@ -67,8 +67,39 @@ class ProduitServiceTest {
     }
 
     /**
+     * Test method for {@link service.produit.impl.ProduitService#creerProduit(presentation.produit.dto.ProduitDto)}.
+     */
+    @Test
+    void testCreerProduit() {
+        final var produitDo = new ProduitDo();
+        produitDo.setNom("Voyage en Tanzanie");
+        produitDo.setReference("0125556789");
+        produitDo.setHebergement("BouiBoui and Co.");
+        produitDo.setDestination("Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Super voyage à la découverte de zanzibar");
+
+        final var produitDoCree = new ProduitDo();
+        produitDo.setIdProduitOriginal(5);
+        produitDo.setNom("Voyage en Tanzanie");
+        produitDo.setReference("0125556789");
+        produitDo.setHebergement("BouiBoui and Co.");
+        produitDo.setDestination("Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Super voyage à la découverte de zanzibar");
+
+        Mockito.when(this.iProduitDaoMock.create(produitDo)).thenReturn(produitDoCree);
+        final ProduitDo nouveauProduit = iProduitDaoMock.create(produitDo);
+        assertNotNull(nouveauProduit);
+        assertEquals(produitDoCree, nouveauProduit);
+    }
+
+    /**
      * Test method for {@link service.produit.impl.ProduitService#trouverProduitEnVente(java.lang.Integer)}.
      */
+
     @Test
     void testTrouverProduitEnVente() {
         final var produitDo = new ProduitDo();
@@ -80,6 +111,7 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitEnVente(1));
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
+
     }
 
     /**

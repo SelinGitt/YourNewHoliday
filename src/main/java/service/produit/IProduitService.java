@@ -59,4 +59,13 @@ public interface IProduitService {
      * @return           le produit trouvé, null sinon
      */
     ProduitDto trouverParReference(final String reference);
+
+    /**
+     * Permet de créer un produit
+     * 
+     * @param  produitDto le produit à créer
+     * @return            le produit créé
+     */
+    ProduitDto creerProduit(final ProduitDto produitDto);
+
 }
