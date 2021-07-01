@@ -41,10 +41,10 @@
 
                     <td class="pdt01Body"><c:choose>
                             <c:when test="${produitDto.miseEnVente}">
-                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert pdt01Image">
+                                <img alt="" src="img/commun/checkboxVert.jpg" class="pdt01Image">
                             </c:when>
                             <c:otherwise>
-                                <img id="imageNonActif" alt="" src="img/commun/checkboxVide.png" />
+                                <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
                             </c:otherwise>
                         </c:choose></td>
                     <td class="pdt01Body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"

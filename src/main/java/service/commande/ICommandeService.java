@@ -10,7 +10,7 @@ import presentation.commande.dto.CommandeDto;
 /**
  * Interface pour les services sur les Commandes
  *
- * @author Ilaitsivery Jacques MADIOMANANA
+ * @author Hanan Anghari
  */
 public interface ICommandeService {
 
@@ -21,4 +21,13 @@ public interface ICommandeService {
      * @return        List<CommandeDto> la liste des commandes
      */
     List<CommandeDto> listerCommandesUtilisateur(final Integer idUser);
+
+    /**
+     * Permet de trouver une commande à partir de sa référence
+     *
+     * @param  reference la référence de la commande qu'on cherche
+     * @return           CommandeDto la commandeDto qu'on a trouvée
+     */
+    CommandeDto chercherCommandeParReference(final String reference);
+
 }

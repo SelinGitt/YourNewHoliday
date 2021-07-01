@@ -24,12 +24,22 @@
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
 
+	<definition name="creerProduitAdmin" extends="base.definition">
+		<put-attribute name="title" value="Gestion des produits" />
+		<put-attribute name="body" value="/jsp/produit/creerProduitAdmin.jsp" />
+	</definition>
+
+	<definition name="consulterProduit" extends="base.definition">
+		<put-attribute name="title" value="Consulter produit" />
+		<put-attribute name="body" value="/jsp/produit/consulterProduit.jsp" />
+	</definition>
+
 	<!-- écran panier -->
 	<definition name="pan_00" extends="base.definition">
 		<put-attribute name="title" value="panier" />
 		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduits.jsp" />
 	</definition>
-	
+
 	<definition name="pan_00_vide" extends="base.definition">
 		<put-attribute name="title" value="panier" />
 		<put-attribute name="body" value="/jsp/page/panier/listerPanierProduitsVide.jsp" />
@@ -40,8 +50,20 @@
 		<put-attribute name="title" value="liste Des Commandes" />
 		<put-attribute name="body" value="/jsp/page/commande/listerCommande.jsp" />
 	</definition>
+	<!-- écran CMD_04 -->
+	<definition name="detailCommande" extends="base.definition">
+		<put-attribute name="title" value="détail d'une commande" />
+		<put-attribute name="body" value="/jsp/page/commande/detailCommande.jsp" />
+	</definition>
 
 	<!-- écran utilisateur -->
+
+	<!-- page jsp Écran de consultation de profil USR_00 -->
+	<definition name="consulterUtilisateur" extends="base.definition">
+		<put-attribute name="title" value="Écran de consultation de profil" />
+		<put-attribute name="body" value="/jsp/utilisateur/consulterUtilisateur.jsp" />
+	</definition>
+
 	<definition name="listerUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />
 		<put-attribute name="body" value="/jsp/utilisateur/listerUtilisateur.jsp" />
@@ -58,6 +80,11 @@
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
 
+	<!-- écran panier -->
+	<definition name="listerPanierAdresses" extends="base.definition">
+		<put-attribute name="body" value="/jsp/page/panier/listerPanierAdresses.jsp" />
+	</definition>
+
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
@@ -67,7 +94,7 @@
 	<definition name="mentionsLegales" extends="base.definition">
 		<put-attribute name="body" value="/jsp/page/mentionsLegales/mentionsLegales.jsp" />
 	</definition>
-	
+
 	<!-- écran 404 -->
 	<definition name="404" extends="base.definition">
 		<put-attribute name="title" value="404 Error" />
