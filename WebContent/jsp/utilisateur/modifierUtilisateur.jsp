@@ -4,11 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="conteneur-ascenseur">
-<div class="user02-title">
-    <h1>
-        <spring:message code="usr02.titre" />
-    </h1>
-</div>
+    <div class="user02-title">
+        <h1>
+            <spring:message code="usr02.titre" />
+        </h1>
+    </div>
+    
+    <%-- A cacher par la suite si client --%>
+    <a href="listerUtilisateur" class="user02-retour">&lt; Retour</a>
 
     <div class="user02-body-general">
         <div class="user02-form display-flex">

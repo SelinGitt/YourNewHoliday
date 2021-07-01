@@ -59,6 +59,11 @@
 }
 
 /* USR02 */
+.user02-retour {
+	text-decoration: none;
+	color: #000000;
+}
+
 .user02-editValider {
 	background-color: #6AA84F;
 	color : #FFFFFF;
