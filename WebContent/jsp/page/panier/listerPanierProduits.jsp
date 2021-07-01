@@ -13,7 +13,7 @@
         <%--  fieldset mon panier : tableau et bouton vider le panier --%>
         <fieldset class="panier-left overflow-auto">
 
-            <legend>
+            <legend class="panier-legend">
                 <spring:message code="pan00.titre.fieldset.panier" />
             </legend>
 
@@ -117,7 +117,7 @@
 
         <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
         <fieldset class="overflow-auto panier-macommande">
-            <legend>
+            <legend class="panier-legend">
                 <spring:message code="pan00.titre.fieldset.commande" />
             </legend>
 
