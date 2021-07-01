@@ -22,4 +22,11 @@ public interface IPanierService {
      */
     PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite);
 
+    
+    /**
+     * Permet de vider le panier
+     *
+     * @param panier
+     */
+    void viderPanier(final PanierDto panier);
 }

@@ -105,9 +105,9 @@
 
             <%--  bouton vider le panier  --%>
             <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
-                <button type="button">
-                    <spring:message code="pan00.vider.panier" />
-                </button>
+                <a href="viderPanier.do"><button type="button">
+                        <spring:message code="pan00.vider.panier" />
+                    </button></a>
             </div>
         </fieldset>
 
