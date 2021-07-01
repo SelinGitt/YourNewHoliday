@@ -8,13 +8,13 @@
 
 /* bordures */
 .panier-bordure-1px {
-	border: 1px solid black;
+	border: 0.063em solid black;
 }
 /* CSS specifique */
 
 /* images responsives */
 .panier-responsive {
-	width: 50px;
+	width: 3.125em;
 	height: auto;
 	margin-bottom: 2em;
 	margin-top: -1em;
@@ -93,7 +93,7 @@
 }
 
 .panier-vide-ligne {
-	font-size: 30px;
+	font-size: 1.875em;
 	font-weight: bold;
 }
 
