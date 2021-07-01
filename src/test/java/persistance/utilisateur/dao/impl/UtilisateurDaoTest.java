@@ -144,7 +144,6 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(2, utilisateurDos.size());
     }
 
-<<<<<<< HEAD
     /**
      * Test pour {@link persistance.communDao.impl.AbstractGenericDao#update(Object)}
      */
@@ -160,7 +159,19 @@ class UtilisateurDaoTest {
         Assertions.assertNotNull(utilisateurDoUpdated);
         Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDoUpdated.getEmail());
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDoUpdated.getNom());
-=======
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByReference(String)}.
+     */
+    @Test
+    void testFindByReference() {
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByReference("Administrateur1");
+        assertNotNull(utilisateurDo);
+        assertEquals("Marsial", utilisateurDo.getNom());
+        assertNull(iUtilisateurDao.findByReference("REFEXISTEPASPARCEQUEJELESAIS"));
+    }
+
     @Test
     void testIsLastAdmin() {
         //Il reste deux admins, on teste avec le paramètre 3(idRole pour admin)
@@ -171,6 +182,5 @@ class UtilisateurDaoTest {
         Assertions.assertTrue(iUtilisateurDao.isLastAdmin(3));
         //Il reste un seul admin, on teste avec le paramètre 1(idRole pour client)
         Assertions.assertFalse(iUtilisateurDao.isLastAdmin(1));
->>>>>>> develop
     }
 }

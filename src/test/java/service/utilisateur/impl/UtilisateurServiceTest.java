@@ -191,7 +191,6 @@ class UtilisateurServiceTest {
     }
 
     /**
-<<<<<<< HEAD
      * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
      */
     @Test
@@ -218,7 +217,38 @@ class UtilisateurServiceTest {
 
         Assertions.assertNotNull(utilisateurDtoUpdated);
     }
-=======
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#findByReference(String)}
+     */
+    @Test
+    void testFindByReference() {
+        final UtilisateurDo utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setReference("ABC123");
+        utilisateurDo.setEmail("test@test.fr");
+        utilisateurDo.setNom("Nom");
+        utilisateurDo.setPrenom("Prenom");
+        utilisateurDo.setMdpHash("Hash");
+        utilisateurDo.setDateInscription(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
+        utilisateurDo.setEstDesactive(true);
+        utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
+
+        final RoleDo role = new RoleDo();
+        role.setIdRole(1);
+        role.setLibelle("Client");
+
+        utilisateurDo.setRole(role);
+
+        Mockito.when(this.dao.findByReference("Ref")).thenReturn(utilisateurDo);
+        Mockito.when(this.dao.findByReference("RefKO")).thenReturn(null);
+
+        Assertions.assertNotNull(this.utilisateurService.rechercherReference("Ref"));
+
+        Assertions.assertNull(this.utilisateurService.rechercherReference("RefKO"));
+    }
+
+    /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#findUtilisateurById(Integer)}
      */
     @Test
@@ -281,6 +311,4 @@ class UtilisateurServiceTest {
         //Même test mais en supprimant un id=1 (client) -> true
         Assertions.assertTrue(this.utilisateurService.deleteUtilisateurById(2, 1));
     }
-
->>>>>>> develop
 }

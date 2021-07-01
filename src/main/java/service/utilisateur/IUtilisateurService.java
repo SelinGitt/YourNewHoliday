@@ -69,4 +69,12 @@ public interface IUtilisateurService {
      * @return                UtilisateurDto mis a jour
      */
     UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto);
+
+    /**
+     * Permet de rechercher un utilisateur avec sa reference
+     *
+     * @param  reference Reference de l'utilisateur
+     * @return           Utilisateur
+     */
+    UtilisateurDto rechercherReference(final String reference);
 }
