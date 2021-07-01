@@ -65,7 +65,7 @@ class ProduitDaoTest {
     }
 
     /**
-     * HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
     void testFindProduitEnVente() {
