@@ -73,4 +73,11 @@ public class PanierService implements IPanierService {
         panier.setNombreDeReferences(panier.getMapPanier().size());
         return panier;
     }
+
+    @Override
+    public void viderPanier(final PanierDto panier) {
+        panier.getMapPanier().clear();
+        panier.setNombreDeReferences(0);
+    }
+
 }

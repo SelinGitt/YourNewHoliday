@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
-    <h1>
+    <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
