@@ -8,14 +8,13 @@
 
 /* Le rouge*/
 .background-color-rouge {
-	background-color: #F00;
+	background-color: #F00000;
 }
 
 /* titre */
 h1 {
-	text-align: center;
 	color: #66C5EB;
-	font-size: 40px;
+	font-size: 2.5em;
 }
 
 h2 {
@@ -39,15 +38,12 @@ html, body, header, aside, section, footer {
 }
 
 .content {
-	display: flex;
-	justify-content: space-between;
 	height: 80%;
 }
 
 /* taille du aside */
 aside {
 	width: 20%;
-	display: flex;
 	overflow: auto;
 }
 

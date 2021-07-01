@@ -40,4 +40,10 @@ public interface IPanierService {
      */
     public void deleteProduitPanier(final PanierDto panier, final Integer idProduit);
 
+    /**
+     * Permet de vider le panier
+     *
+     * @param panier : le panier dans la session qui doit etre vider
+     */
+    void viderPanier(final PanierDto panier);
 }
