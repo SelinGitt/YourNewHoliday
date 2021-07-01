@@ -16,12 +16,6 @@ Si vous voulez ajouter des propriétes flex à ce fichier, contacter Hanan.*/
 .display-inline-flex {
 	display: inline-flex;
 }
-.display-block{
-	display: block;
-}
-.display-none{
-	display: none;
-}
 
 /* alignement horizontale */
 .justify-content-center {

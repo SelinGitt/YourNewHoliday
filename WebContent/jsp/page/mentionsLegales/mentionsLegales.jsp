@@ -3,7 +3,7 @@
 <%-- div container --%>
 <div class="body scroll">
     <%-- titre --%>
-    <h1>
+    <h1 class="text-align-center">
         <spring:message code="mlg.titre" />
     </h1>
 
