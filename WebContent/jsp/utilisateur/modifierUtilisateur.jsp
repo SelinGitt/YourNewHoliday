@@ -2,7 +2,14 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <div class="conteneur-ascenseur">
+<div class="user02-title">
+    <h1>
+        <spring:message code="usr02.titre" />
+    </h1>
+</div>
+
     <div class="user02-body-general">
         <div class="user02-form display-flex">
             <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do">
@@ -16,13 +23,6 @@
 
                 <%-- Temporaire --%>
                 <form:hidden path="estDesactive" value="${estDesactive}" />
-
-                <div class="user02-title">
-                    <h1>
-                        <spring:message code="usr02.titre" />
-                    </h1>
-                </div>
-
 
                 <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.nom" /></span>
@@ -88,7 +88,7 @@
                 </div>
             </form:form>
 
-            <div class="user05-rightSide">
+            <div class="user02-rightSide">
                 <p>Section avatar And co</p>
             </div>
 

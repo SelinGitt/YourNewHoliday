@@ -92,13 +92,20 @@
 .user02-lib-champ {
 	justify-content: space-between;
 	margin: 3em;
-	width: 20em;
+	width: 25em;
+	align-items: center;
 }
 
 .user02-buttons {
 	align-items: center;
 	margin : 1em;
 	width: 80%;
+}
+
+.user02-rightSide {
+	width: 2%;
+	margin-bottom: 12.5em;
+	margin-left: 12.5em;
 }
 
 
