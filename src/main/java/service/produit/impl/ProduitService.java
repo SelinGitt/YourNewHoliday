@@ -50,19 +50,17 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> findFilter(final String searchTerm, final String tri) {
         final var typeTri = TypeTriAlphanumerique.checkType(tri);
-        System.out.println(typeTri.getTypeDao());
         logger.debug("ProduitService {} findFilter", ProduitDto.class);
-        if ("0".equals(tri)) {
-            if (!searchTerm.isBlank()) {
+        if (!searchTerm.isBlank()) {
+            if ("0".equals(tri)) {
                 return rechercherProduits(searchTerm);
             }
+            return listerFiltreTri(typeTri, searchTerm);
+        }
+        if ("0".equals(tri)) {
             return listerProduitsEnVente();
         }
-        if (searchTerm.isBlank()) {
-            return trierListe(typeTri);
-        }
-        return listerFiltreTri(typeTri, searchTerm);
-
+        return trierListe(typeTri);
     }
 
     private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
