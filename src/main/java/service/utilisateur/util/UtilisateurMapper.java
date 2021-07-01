@@ -39,6 +39,7 @@ public class UtilisateurMapper {
     public static UtilisateurDto mapperToDto(final UtilisateurDo utilisateurDo) {
         final var utilisateurDto = new UtilisateurDto();
 
+        utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
         utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
@@ -62,6 +63,7 @@ public class UtilisateurMapper {
     public static UtilisateurDo mapperToDo(final UtilisateurDto utilisateurDto) {
         final var utilisateurDo = new UtilisateurDo();
 
+        utilisateurDo.setIdUtilisateur(utilisateurDto.getId());
         utilisateurDo.setReference(utilisateurDto.getReference());
         utilisateurDo.setEmail(utilisateurDto.getEmail());
         utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));

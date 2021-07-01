@@ -86,4 +86,10 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         return bean;
     }
 
+    @Override
+    public T update(final T bean) {
+        this.entityManager.merge(bean);
+        return bean;
+    }
+
 }
