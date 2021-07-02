@@ -104,7 +104,6 @@ public class PanierService implements IPanierService {
 
         if (modificationAutorisee(modif, quantiteInitiale)) {
             updatePanier(panier, idProduit, modif);
-        } else {
         }
     }
 
