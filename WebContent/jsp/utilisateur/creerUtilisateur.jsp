@@ -61,6 +61,7 @@
             <div class="user05-rightSide">
                 <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
                 <div>
+                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
                     <div style="width: 15em; height: 15em; background-color: red;"></div>
                 </div>
 
