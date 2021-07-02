@@ -10,9 +10,9 @@
     <a href="editerProduitAdmin.do"><spring:message code="pdt0203.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="editerProduitAdmin.do">
         <div class="pdt0203Grid-container">
-            <div class="pdt0203Grid-item pdt0203FormlaireCreerProduit">
+            <div class="pdt0203Grid-item text-align-center pdt0203FormlaireCreerProduit">
 
-                <form:hidden path="version" value="1" />
+                <form:hidden path="version" value="${version}" />
                 <form:hidden path="cheminImage" value="${cheminImage}" />
                 <form:hidden path="idProduitOriginal" value="${idProduitOriginal}" />
                 <table class="pdt0203FormulaireProduit" aria-label="Formulaire de création d'un produit">
@@ -42,7 +42,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt0203.miseEnVente" /></td>
-                        <td class="pdt0203Formpdt0203Radio display-flex">
+                        <td class="pdt0203Formpdt0203Radio display-flex justify-content-space-around">
                             <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="true" />
                                 <spring:message code="form.pdt0203.oui" />
@@ -77,7 +77,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdt0203Grid-item pdt0203ImageProduit">
+            <div class="pdt0203Grid-item text-align-center pdt0203ImageProduit">
                 <table class="pdt0203ImageCreationProduit" aria-label="ajout image produit">
                     <tr>
                         <th><spring:message code="form.pdt0203.image" /></th>
@@ -92,7 +92,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdt0203Grid-item pdt0203LogoService">
+            <div class="pdt0203Grid-item text-align-center pdt0203LogoService">
                 <form:hidden path="services" value="4" />
                 <table class="pdt0203ListeService" aria-label="liste des services disponibles">
                     <tr>

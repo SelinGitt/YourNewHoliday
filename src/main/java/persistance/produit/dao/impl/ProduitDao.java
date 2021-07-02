@@ -87,6 +87,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 ProduitDo.class);
         query.setParameter("ref", reference);
         try {
+            logger.debug("Produit Dao {} findByReference", reference);
             return query.getSingleResult();
 
         } catch (final NoResultException noResultException) {

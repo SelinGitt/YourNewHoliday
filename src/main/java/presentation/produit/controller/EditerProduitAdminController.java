@@ -30,7 +30,8 @@ public class EditerProduitAdminController {
      * Permet de traiter une requête de type GET
      * 
      * @param  reference la référence du produit à éditer
-     * @return           le produit modifié dans le model et la vue associée
+     * @return           le produit modifié dans le model et la vue associée s'il existe <br/>
+     *                   sinon redirection vers listerProduitAdmin.do
      */
     @GetMapping
     public ModelAndView editerProduit(@RequestParam(value = "ref", defaultValue = "") final String reference) {
@@ -49,7 +50,7 @@ public class EditerProduitAdminController {
      * Permet de traiter la methode POST
      *
      * @param  produitDto le produit à Màj
-     * @return            le produit Màj
+     * @return            redirection vers listerProduitsAdmin.do
      */
     @PostMapping
     public ModelAndView soumissionFormulaire(final ProduitDto produitDto) {

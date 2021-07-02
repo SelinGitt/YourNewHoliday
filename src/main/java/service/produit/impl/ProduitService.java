@@ -55,7 +55,7 @@ public class ProduitService implements IProduitService {
     @Override
     public ProduitDto editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverParReference(produitDto.getReference());
-
+        this.logger.debug("Produit Service {} editerProduit, reference : {}", produitFound, produitDto.getReference());
         // Soit le produit est null (la ref est unique), soit la ref reste la même on update  
         if (produitFound == null || (produitFound.getIdProduitOriginal().equals(produitDto.getIdProduitOriginal()))) {
             final var produitDo = ProduitMapper.mapToDo(produitDto);
@@ -67,6 +67,7 @@ public class ProduitService implements IProduitService {
     @Override
     public ProduitDto trouverParReference(final String reference) {
         final var produitDo = produitDao.findByReference(reference);
+        this.logger.debug("Produit Service {} trouverParReference", reference);
         return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
     }
 

@@ -42,7 +42,7 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * Permet de trouver un produit via sa référence
      *
      * @param  reference la référence du produit à trouver
-     * @return           le produit trouvé
+     * @return           le produit trouvé, null sinon
      */
     ProduitDo findByReference(final String reference);
 }

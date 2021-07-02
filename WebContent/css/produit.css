@@ -21,7 +21,6 @@
 }
 
 .pdt0203Grid-item {
-	text-align: center;
 	padding: 0.3em;
 	font-size: 1.125em;
 }
@@ -55,10 +54,6 @@
 	padding: 0 0.313em 0 0.313em;
 }
 
-.pdt0203Formpdt0203Radio {
-	justify-content: space-around;
-}
-
 .pdt0203Formpdt0203Radio div {
 	align-items: center;
 }
@@ -71,12 +66,6 @@
 .pdt0203TextAreapdt0203 textarea {
 	resize: vertical;
 	min-height: 3.75em;
-}
-
-.pdt0203Buttonspdt0203 {
-	width: 100%;
-	justify-content: space-around;
-	align-items: center;
 }
 
 .pdt0203ListeService {

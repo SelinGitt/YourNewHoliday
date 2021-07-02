@@ -48,7 +48,7 @@ public interface IProduitService {
      * Permet de maj un produit
      * 
      * @param  produitDto le produit à éditer
-     * @return            le produit édité
+     * @return            le produit édité, null sinon
      */
     ProduitDto editerProduit(final ProduitDto produitDto);
 
