@@ -43,11 +43,11 @@ class GenerateReferenceUtilisateurUtilTest {
     }
 
     /**
-     * Test method for {@link service.util.impl.AbstractGenerateReferenceUtil#generateRef()}.
+     * Test method for {@link service.util.impl.AbstractGenerateReferenceUtil#generateReference()}.
      */
     @Test
     void testGenerateRef() {
-        final String reference = this.iGenerateReferenceUtil.generateRef();
+        final String reference = this.iGenerateReferenceUtil.generateReference();
         assertTrue(reference.matches(REGEX_USR));
     }
 

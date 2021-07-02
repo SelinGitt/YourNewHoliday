@@ -43,13 +43,13 @@ class GenerateReferenceProduitUtilTest {
     }
 
     /**
-     * Test method for {@link service.util.impl.AbstractGenerateReferenceUtil#generateRef()}.
+     * Test method for {@link service.util.impl.AbstractGenerateReferenceUtil#generateReference()}.
      */
     @Test
     void testGenerateRef() {
         final String destination = "Italie";
         this.iGenerateReferenceUtil.constructPrefix(destination);
-        final String reference = this.iGenerateReferenceUtil.generateRef();
+        final String reference = this.iGenerateReferenceUtil.generateReference();
         assertTrue(reference.matches(destination.substring(0, 3).toUpperCase() + REGEX_SUFIX));
     }
 

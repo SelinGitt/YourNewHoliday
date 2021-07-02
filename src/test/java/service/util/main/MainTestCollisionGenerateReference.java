@@ -28,17 +28,17 @@ public class MainTestCollisionGenerateReference {
     public static void main(final String[] args) {
         // référence générer pour commande
         final IGenerateReferenceUtil referenceCommande = new GenerateReferenceCommandeUtil();
-        final int commandeCollision = compterCollisions(referenceCommande);
+        final int commandeCollision = genererReferenceRetourneNombreCollisions(referenceCommande);
 
         // référence générer pour produit
         final IGenerateReferenceUtil referenceProduit = new GenerateReferenceProduitUtil();
         // construit le préfixe pour produit (les 3 premières lettres en majscule de la destination)
         referenceProduit.constructPrefix("Italie");
-        final int produitCollision = compterCollisions(referenceProduit);
+        final int produitCollision = genererReferenceRetourneNombreCollisions(referenceProduit);
 
         // référence pour utilisateur
         final IGenerateReferenceUtil referenceUtilisateur = new GenerateReferenceUtilisateurUtil();
-        final int utilisateurCollision = compterCollisions(referenceUtilisateur);
+        final int utilisateurCollision = genererReferenceRetourneNombreCollisions(referenceUtilisateur);
 
         // affichage du nombre de collision
         printNbCollision("commande", commandeCollision);
@@ -52,11 +52,11 @@ public class MainTestCollisionGenerateReference {
      * @param  iGenerateReferenceUtil le générateur à tester
      * @return                        int le nobmre de collisions
      */
-    private static int compterCollisions(final IGenerateReferenceUtil iGenerateReferenceUtil) {
+    private static int genererReferenceRetourneNombreCollisions(final IGenerateReferenceUtil iGenerateReferenceUtil) {
         final Set<String> referenceGenerer = new HashSet<>();
         int comptage = 0;
         for (int i = 0; i < NB_ITERATION; i++) {
-            final String reference = iGenerateReferenceUtil.generateRef();
+            final String reference = iGenerateReferenceUtil.generateReference();
             if (!referenceGenerer.add(reference)) {
                 comptage++;
             }

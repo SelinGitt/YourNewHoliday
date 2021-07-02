@@ -29,13 +29,13 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
 
     protected static final int  LONGUEUR_REFERENCE = 10;
 
-    protected static final int  LONGUEUR_SUFIX     = LONGUEUR_REFERENCE - LONGUEUR_PREFIX;
+    protected static final int  LONGUEUR_SUFFIX    = LONGUEUR_REFERENCE - LONGUEUR_PREFIX;
 
     protected String            prefix;
 
     @Override
-    public String generateRef() {
-        final String reference = this.prefix + this.generateSufix();
+    public String generateReference() {
+        final String reference = this.prefix + this.generateSuffix();
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;
     }
@@ -46,11 +46,11 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
     }
 
     /**
-     * Permet de générer les "LONGUEUR_SUFIX" derniers caractères Alphanumérique d'une référence
+     * Permet de générer les "LONGUEUR_SUFFIX" derniers caractères Alphanumérique d'une référence
      * 
      * @return Reference creer
      */
-    private String generateSufix() {
+    private String generateSuffix() {
         // create a string of all characters
         final var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
@@ -60,7 +60,7 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
         try {
             final var random = SecureRandom.getInstanceStrong();
 
-            for (var i = 0; i < LONGUEUR_SUFIX; i++) {
+            for (var i = 0; i < LONGUEUR_SUFFIX; i++) {
 
                 // generate random index number
                 final var index = random.nextInt(alphabet.length());

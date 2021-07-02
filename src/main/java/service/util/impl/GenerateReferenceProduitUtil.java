@@ -19,6 +19,9 @@ public class GenerateReferenceProduitUtil extends AbstractGenerateReferenceUtil 
      * Constructor
      */
     public GenerateReferenceProduitUtil() {
+        // le préfixe est vide pour produit car on doit le générer à partir de la destination
+        // on utilisera la méthode constructPrefix avec comme valeur la destination avant
+        // d'appeler la méthode generateReference()
         this.prefix = "";
     }
 
