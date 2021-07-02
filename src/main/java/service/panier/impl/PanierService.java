@@ -61,7 +61,9 @@ public class PanierService implements IPanierService {
             // on modifie la ligne de commande
             ligneCommande.setQuantite(quantiteProduit);
             // On récupère le prix unitaire
-            final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+            final String prixString = produitAjout.getPrixUnitaire();
+            final String prixStringCorrige = prixString.replaceAll(" ", "").replaceAll(",", ".");
+            final var prixUnitaire = Double.valueOf(prixStringCorrige);
             // On calcule le prix
             final Double prix = prixUnitaire * quantiteProduit;
             // on ajoute le prix formaté à la ligne de commande
@@ -91,5 +93,45 @@ public class PanierService implements IPanierService {
     public void viderPanier(final PanierDto panier) {
         panier.getMapPanier().clear();
         panier.setNombreDeReferences(0);
+    }
+
+    @Override
+    public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
+        System.out.println("Service");
+        // On récupère le produit
+        final ProduitDto produit = findProduitMap(panier, idProduit);
+        // On récupère la quantité avant modification
+        final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
+
+        if (modificationAutorisee(modif, quantiteInitiale)) {
+            System.out.println("Test ok, qte : " + quantiteInitiale);
+            updatePanier(panier, idProduit, modif);
+        } else {
+            System.out.println("Pas de modif");
+        }
+    }
+
+    private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
+        boolean regle_un = true;
+        boolean regle_deux = true;
+
+        // Décrément
+        if (modif == -1) {
+            // On autorise le décrément uniquement si le résultat > 0
+            // pour supprimer un produit du panier
+            // l'utilisateur doit utiliser la corbeille.
+            regle_un = quantiteInitiale > 1;
+        } else {
+            // Incrément
+            if (modif == 1) {
+                // On autorise l'incrément uniquement si le résultat <= 100
+                regle_deux = quantiteInitiale < 100;
+            } else {
+                // On atatndes pas d'autre valeur 
+                return false;
+            }
+        }
+
+        return (regle_un && regle_deux);
     }
 }

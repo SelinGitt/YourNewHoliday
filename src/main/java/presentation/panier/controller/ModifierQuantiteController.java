@@ -3,6 +3,8 @@
  */
 package presentation.panier.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,11 +27,18 @@ public class ModifierQuantiteController {
     @Autowired
     private IPanierService panierService;
 
+    /**
+     * Permets de modifier la quantité d'une produit du panier
+     *
+     * @param  panierDto le panier
+     * @param  request   envoyée
+     * @return           le model and view
+     */
     @GetMapping
-    public ModelAndView modifierQuantite(final @SessionAttribute("panierDto") PanierDto panierDto) {
+    public ModelAndView modifierQuantite(final @SessionAttribute("panierDto") PanierDto panierDto, final HttpServletRequest request) {
         final var modelAndView = new ModelAndView();
-
-        System.out.println("coucou");
+        panierService.modifierQuantite(panierDto, Integer.valueOf(request.getParameter("idProduit")),
+                Integer.valueOf(request.getParameter("quantite")));
         //renvoyer vers listerPanierProduitController
         modelAndView.setViewName("redirect:listerPanierProduits.do");
         return modelAndView;

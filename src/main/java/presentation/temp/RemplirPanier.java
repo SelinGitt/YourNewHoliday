@@ -34,7 +34,7 @@ public class RemplirPanier {
         final var panierDto = new PanierDto();
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
-        produitDto1.setIdProduitOriginal("1");
+        produitDto1.setIdProduitOriginal("11");
         produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
         produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30, Locale.FRANCE));
         produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
@@ -42,7 +42,7 @@ public class RemplirPanier {
         produitDto1.setCheminImage(null);
         // ProduitDto2
         final var produitDto2 = new ProduitDto();
-        produitDto2.setIdProduitOriginal("2");
+        produitDto2.setIdProduitOriginal("12");
         produitDto2.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
         produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(9000.00));
         produitDto2.setNom("Voyage aux Etats Unis d'Amérique");
@@ -50,13 +50,21 @@ public class RemplirPanier {
         produitDto2.setCheminImage(null);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
-        produitDto3.setIdProduitOriginal("3");
+        produitDto3.setIdProduitOriginal("13");
         produitDto3.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(12000.00));
         produitDto3.setNom("Voyage au Canada");
         produitDto3.setReference("AAA1256568");
         produitDto3.setCheminImage(null);
+        // Produit avec équivalence en base 
+        final var produitDto4 = new ProduitDto();
+        produitDto4.setIdProduitOriginal("4");
+        produitDto4.setDescription("La méditérannée, le colysée, les pâtes !");
+        produitDto4.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(300.00));
+        produitDto4.setNom("Voyage en Italie");
+        produitDto4.setReference("ITA1289967");
+        produitDto4.setCheminImage(null);
 
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
@@ -68,8 +76,13 @@ public class RemplirPanier {
         final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
         ligneCommandeProduit3.setQuantite(12);
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
+        final var ligneCommandeProduit4 = new LigneCommandeProduitDto();
+        ligneCommandeProduit4.setQuantite(3);
+        ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(4 * 300.00, Locale.FRANCE));
 
         // add products to PanierDto
+        panierDto.getMapPanier().put(produitDto4, ligneCommandeProduit4);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, ligneCommandeProduit2);

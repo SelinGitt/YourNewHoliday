@@ -82,7 +82,7 @@
                                         name="panier-quantite" value="${entry.value.quantite}" size="1">
 
                                     <%--  bouton + --%>
-                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=+1">
+                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
                                     <button type="button">+</button>
                                     </a>
                                 </div></td>
