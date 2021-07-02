@@ -15,8 +15,9 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -1858474764496664661L;
+    private static final long serialVersionUID = -2412085353414875962L;
 
+    private Integer           id;
     private String            email;
     private String            password;
     private String            confirmPassword;
@@ -225,6 +226,24 @@ public class UtilisateurDto implements Serializable {
      */
     public void setAdresse(final String adresse) {
         this.adresse = adresse;
+    }
+
+    /**
+     * Getter for id
+     *
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * Setter for id
+     *
+     * @param id the id to set
+     */
+    public void setId(final Integer id) {
+        this.id = id;
     }
 
 }

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<h1 id="titreGestion">
+<h1 id="titreGestion" class="text-align-center">
     <spring:message code="usr01.titre" />
 </h1>
 
@@ -87,12 +87,13 @@
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
                             </c:when>
                             <c:otherwise>
-                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png" class="checkboxVide">
+                                <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png"
+                                    class="checkboxVide">
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="user01-body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"
-                            class="poubelle user01-image">
+                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                            alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
                     <td class="user01-body"><a href="javascript:void()"> <img alt=""
