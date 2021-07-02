@@ -102,6 +102,7 @@ th.pdt01 {
 
 .pdt02FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
+	padding-left: 5em;
 }
 
 .pdt02Formpdt02Radio div {
@@ -120,7 +121,7 @@ th.pdt01 {
 
 .pdt02ListeService {
 	width: 100%;
-	line-height: 3em;
+	line-height: 4em;
 }
 
 .pdt02ImageCreationProduit {
