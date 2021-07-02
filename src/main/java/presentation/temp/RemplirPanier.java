@@ -42,7 +42,7 @@ public class RemplirPanier {
         produitDto1.setCheminImage(null);
         // ProduitDto2
         final var produitDto2 = new ProduitDto();
-        produitDto2.setIdProduitOriginal("1");
+        produitDto2.setIdProduitOriginal("2");
         produitDto2.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
         produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(9000.00));
         produitDto2.setNom("Voyage aux Etats Unis d'Amérique");
@@ -50,7 +50,7 @@ public class RemplirPanier {
         produitDto2.setCheminImage(null);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
-        produitDto3.setIdProduitOriginal("1");
+        produitDto3.setIdProduitOriginal("3");
         produitDto3.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(12000.00));
