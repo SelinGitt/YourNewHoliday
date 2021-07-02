@@ -44,7 +44,7 @@ public class RemplirPanier {
         final var produitDto2 = new ProduitDto();
         produitDto2.setIdProduitOriginal("2");
         produitDto2.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
-        produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(9000.00));
+        produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(500.00));
         produitDto2.setNom("Voyage aux Etats Unis d'Amérique");
         produitDto2.setReference("CCC1865521");
         produitDto2.setCheminImage(null);
@@ -53,7 +53,7 @@ public class RemplirPanier {
         produitDto3.setIdProduitOriginal("3");
         produitDto3.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
-        produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(12000.00));
+        produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(700.00));
         produitDto3.setNom("Voyage au Canada");
         produitDto3.setReference("AAA1256568");
         produitDto3.setCheminImage(null);
@@ -75,6 +75,15 @@ public class RemplirPanier {
         produitDto5.setNom("Voyage avec toi");
         produitDto5.setReference("AAA7777777");
         produitDto5.setCheminImage(null);
+        // ProduitDto5
+        final var produitDto6 = new ProduitDto();
+        produitDto6.setIdProduitOriginal("6");
+        produitDto6.setDescription(
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto6.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(1500.00));
+        produitDto6.setNom("Voyage voyage et jamais ne reviens");
+        produitDto6.setReference("AAA6666666");
+        produitDto6.setCheminImage(null);
 
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
@@ -82,16 +91,19 @@ public class RemplirPanier {
         ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
         final var ligneCommandeProduit2 = new LigneCommandeProduitDto();
         ligneCommandeProduit2.setQuantite(8);
-        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 9000.00, Locale.FRANCE));
+        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 500.00, Locale.FRANCE));
         final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
-        ligneCommandeProduit3.setQuantite(12);
-        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
+        ligneCommandeProduit3.setQuantite(1);
+        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 700.00, Locale.FRANCE));
         final var ligneCommandeProduit4 = new LigneCommandeProduitDto();
-        ligneCommandeProduit4.setQuantite(1);
-        ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 1.90, Locale.FRANCE));
+        ligneCommandeProduit4.setQuantite(3);
+        ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(3 * 1.90, Locale.FRANCE));
         final var ligneCommandeProduit5 = new LigneCommandeProduitDto();
-        ligneCommandeProduit5.setQuantite(99);
-        ligneCommandeProduit5.setPrix(DecimalFormatUtils.decimalFormatUtil(99 * 999.00, Locale.FRANCE));
+        ligneCommandeProduit5.setQuantite(2);
+        ligneCommandeProduit5.setPrix(DecimalFormatUtils.decimalFormatUtil(2 * 999.00, Locale.FRANCE));
+        final var ligneCommandeProduit6 = new LigneCommandeProduitDto();
+        ligneCommandeProduit6.setQuantite(3);
+        ligneCommandeProduit6.setPrix(DecimalFormatUtils.decimalFormatUtil(3 * 1500.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
@@ -103,6 +115,8 @@ public class RemplirPanier {
         panierDto.getMapPanier().put(produitDto4, ligneCommandeProduit4);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto5, ligneCommandeProduit5);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto6, ligneCommandeProduit6);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
 
         return panierDto;

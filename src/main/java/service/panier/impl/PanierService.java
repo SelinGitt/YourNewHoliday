@@ -112,7 +112,7 @@ public class PanierService implements IPanierService {
         final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotal());
         // s'il y a 5 références ou plus dans le panier et que son prix total est supérieur ou égal
         // à 2000€, alors on applique une remise de 5%
-        if (panier.getNombreDeReferences() >= 5 && prixTotal >= 2000.00) {
+        if (panier.getNombreDeReferences() >= 5 && prixTotal >= 10000.00) {
             panier.setRemise(DecimalFormatUtils.decimalFormatUtil(prixTotal / 20));
             // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
             // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
