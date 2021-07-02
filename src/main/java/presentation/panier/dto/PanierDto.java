@@ -23,6 +23,7 @@ public class PanierDto implements Serializable {
     private Map<ProduitDto, LigneCommandeProduitDto> mapPanier;
     private Integer                                  nombreDeReferences = 0;
     private String                                   prixTotal          = "0";
+    private String                                   remise             = "0";
     private String                                   prixApresRemise    = "0";
 
     /**
@@ -102,6 +103,24 @@ public class PanierDto implements Serializable {
      */
     public void setPrixApresRemise(final String prixApresRemise) {
         this.prixApresRemise = prixApresRemise;
+    }
+
+    /**
+     * Getter for remise
+     *
+     * @return the remise
+     */
+    public String getRemise() {
+        return remise;
+    }
+
+    /**
+     * Setter for remise
+     *
+     * @param remise the remise to set
+     */
+    public void setRemise(final String remise) {
+        this.remise = remise;
     }
 
 }

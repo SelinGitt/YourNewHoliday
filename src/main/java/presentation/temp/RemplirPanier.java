@@ -57,6 +57,24 @@ public class RemplirPanier {
         produitDto3.setNom("Voyage au Canada");
         produitDto3.setReference("AAA1256568");
         produitDto3.setCheminImage(null);
+        // ProduitDto4
+        final var produitDto4 = new ProduitDto();
+        produitDto4.setIdProduitOriginal("4");
+        produitDto4.setDescription(
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto4.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(1.90));
+        produitDto4.setNom("Voyage au coin de la rue");
+        produitDto4.setReference("ZZZ9696969");
+        produitDto4.setCheminImage(null);
+        // ProduitDto5
+        final var produitDto5 = new ProduitDto();
+        produitDto5.setIdProduitOriginal("5");
+        produitDto5.setDescription(
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto5.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(999.00));
+        produitDto5.setNom("Voyage avec toi");
+        produitDto5.setReference("AAA7777777");
+        produitDto5.setCheminImage(null);
 
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
@@ -68,6 +86,12 @@ public class RemplirPanier {
         final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
         ligneCommandeProduit3.setQuantite(12);
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
+        final var ligneCommandeProduit4 = new LigneCommandeProduitDto();
+        ligneCommandeProduit4.setQuantite(1);
+        ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 1.90, Locale.FRANCE));
+        final var ligneCommandeProduit5 = new LigneCommandeProduitDto();
+        ligneCommandeProduit5.setQuantite(99);
+        ligneCommandeProduit5.setPrix(DecimalFormatUtils.decimalFormatUtil(99 * 999.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
@@ -75,6 +99,10 @@ public class RemplirPanier {
         panierDto.getMapPanier().put(produitDto2, ligneCommandeProduit2);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto3, ligneCommandeProduit3);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto4, ligneCommandeProduit4);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto5, ligneCommandeProduit5);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
 
         return panierDto;

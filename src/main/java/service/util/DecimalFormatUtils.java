@@ -98,8 +98,4 @@ public class DecimalFormatUtils {
     public static boolean isPrixAVirgule(final String prixAVerifier) {
         return prixAVerifier.matches("\\d+(?:[,]\\d{2}$)");
     }
-
-    public static boolean isPrixAEspace(final String prixAVerifier) {
-        return prixAVerifier.matches("\\d{4}(?:[,]\\\\d{2}$)");
-    }
 }

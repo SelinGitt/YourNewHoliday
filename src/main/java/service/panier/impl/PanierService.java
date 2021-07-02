@@ -97,11 +97,22 @@ public class PanierService implements IPanierService {
     public String calculerPrixTotal(final PanierDto panier) {
         var prixTotal = 0.00;
         for (final LigneCommandeProduitDto ligne : panier.getMapPanier().values()) {
-            System.out.println(ligne.getPrix());
-            final Double prix = Double.valueOf(ligne.getPrix());
-            prixTotal += prix;
+            prixTotal += Double.valueOf(ligne.getPrix().replaceAll(" ", "").replaceAll(",", "."));
         }
         return DecimalFormatUtils.decimalFormatUtil(prixTotal);
+    }
+
+    @Override
+    public void appliquerRemise(final PanierDto panier) {
+        final var prixTotal = Double.valueOf(panier.getPrixTotal().replaceAll(" ", "").replaceAll(",", "."));
+        if (panier.getNombreDeReferences() >= 5 && prixTotal >= 2000.00) {
+            panier.setRemise(DecimalFormatUtils.decimalFormatUtil(prixTotal / 20));
+            panier.setPrixApresRemise(DecimalFormatUtils
+                    .decimalFormatUtil(prixTotal - Double.valueOf(panier.getRemise().replaceAll(" ", "").replaceAll(",", "."))));
+        } else {
+            panier.setRemise("0");
+            panier.setPrixApresRemise(panier.getPrixTotal());
+        }
     }
 
 }

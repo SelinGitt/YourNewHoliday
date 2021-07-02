@@ -35,6 +35,8 @@ public class ListerPanierProduitsController {
     public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto) {
         final var modelAndView = new ModelAndView();
         panierDto.setPrixTotal(panierService.calculerPrixTotal(panierDto));
+        panierService.appliquerRemise(panierDto);
+
         //si le panier recuperer est vide
         if (panierDto.getMapPanier().isEmpty()) {
             modelAndView.setViewName("pan_00_vide");
