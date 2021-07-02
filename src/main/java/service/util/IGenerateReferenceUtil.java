@@ -20,7 +20,7 @@ public interface IGenerateReferenceUtil {
     /**
      * Permet de construire un prefix pour la génération de références
      *
-     * @param chaineCaracteres
+     * @param chaineCaracteres la chaînes de caractères à partir de laquelle on veut créer un préfix
      */
     void constructPrefix(final String chaineCaracteres);
 }

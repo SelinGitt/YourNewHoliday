@@ -21,18 +21,26 @@ public class MainTestCollisionGenerateReference {
     private static final int NB_ITERATION = 100000;
 
     /**
-     * Permet d'entrer du test
+     * Point d'entrer du test
      *
      * @param args pas d'argument attendu
      */
     public static void main(final String[] args) {
-        final var referenceCommande = new GenerateReferenceCommandeUtil();
+        // référence générer pour commande
+        final IGenerateReferenceUtil referenceCommande = new GenerateReferenceCommandeUtil();
         final int commandeCollision = compterCollisions(referenceCommande);
-        final var referenceProduit = new GenerateReferenceProduitUtil();
+
+        // référence générer pour produit
+        final IGenerateReferenceUtil referenceProduit = new GenerateReferenceProduitUtil();
+        // construit le préfixe pour produit (les 3 premières lettres en majscule de la destination)
         referenceProduit.constructPrefix("Italie");
         final int produitCollision = compterCollisions(referenceProduit);
-        final var referenceUtilisateur = new GenerateReferenceUtilisateurUtil();
+
+        // référence pour utilisateur
+        final IGenerateReferenceUtil referenceUtilisateur = new GenerateReferenceUtilisateurUtil();
         final int utilisateurCollision = compterCollisions(referenceUtilisateur);
+
+        // affichage du nombre de collision
         printNbCollision("commande", commandeCollision);
         printNbCollision("produit", produitCollision);
         printNbCollision("utilisateur", utilisateurCollision);
@@ -49,10 +57,8 @@ public class MainTestCollisionGenerateReference {
         int comptage = 0;
         for (int i = 0; i < NB_ITERATION; i++) {
             final String reference = iGenerateReferenceUtil.generateRef();
-            if (referenceGenerer.contains(reference)) {
+            if (!referenceGenerer.add(reference)) {
                 comptage++;
-            } else {
-                referenceGenerer.add(reference);
             }
         }
         return comptage;

@@ -12,7 +12,8 @@ import org.slf4j.LoggerFactory;
 import service.util.IGenerateReferenceUtil;
 
 /**
- * Classe abstraite représentant la factorisation des fonctionnalités utilisées pour générer des références
+ * Classe abstraite représentant la factorisation des fonctionnalités utilisées pour générer des références utilisant le
+ * même générateur
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
@@ -35,7 +36,7 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
     @Override
     public String generateRef() {
         final String reference = this.prefix + this.generateSufix();
-        logger.info("Référence générer : {}.", reference);
+        logger.info("Référence {} générer par {}", reference, this.getClass().getSimpleName());
         return reference;
     }
 
@@ -45,9 +46,8 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
     }
 
     /**
-     * Permet de générer les 7 derniers caractères<br>
-     * Alphanumérique d'une référence
-     *
+     * Permet de générer les "LONGUEUR_SUFIX" derniers caractères Alphanumérique d'une référence
+     * 
      * @return Reference creer
      */
     private String generateSufix() {
