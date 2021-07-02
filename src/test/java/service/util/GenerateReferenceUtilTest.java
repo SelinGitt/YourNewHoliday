@@ -22,8 +22,8 @@ class GenerateReferenceUtilTest {
      */
     @Test
     void testGenerateReferenceCommande() {
-        final String reference = GenerateReferenceUtil.generateReference("", GenerateReferenceUtil.TypeReference.COMMANDE);
-        final String regexCommande = GenerateReferenceUtil.TypeReference.COMMANDE.getPrefix() + REGEX_SUFIX;
+        final String reference = "CMD" + GenerateReferenceUtil.generateReference();
+        final String regexCommande = "CMD" + REGEX_SUFIX;
         assertTrue(reference.matches(regexCommande));
     }
 
@@ -33,7 +33,7 @@ class GenerateReferenceUtilTest {
      */
     @Test
     void testGenerateReferenceProduit() {
-        final String reference = GenerateReferenceUtil.generateReference("Italie", GenerateReferenceUtil.TypeReference.PRODUIT);
+        final String reference = "ITA" + GenerateReferenceUtil.generateReference();
         final String regexProduit = "ITA" + REGEX_SUFIX;
         assertTrue(reference.matches(regexProduit));
     }
@@ -44,8 +44,8 @@ class GenerateReferenceUtilTest {
      */
     @Test
     void testGenerateReferenceUtilisateur() {
-        final String reference = GenerateReferenceUtil.generateReference("", GenerateReferenceUtil.TypeReference.UTILISATEUR);
-        final String regexUtilisateur = GenerateReferenceUtil.TypeReference.UTILISATEUR.getPrefix() + REGEX_SUFIX;
+        final String reference = "USR" + GenerateReferenceUtil.generateReference();
+        final String regexUtilisateur = "USR" + REGEX_SUFIX;
         assertTrue(reference.matches(regexUtilisateur));
     }
 
