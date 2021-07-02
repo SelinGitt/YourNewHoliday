@@ -62,7 +62,7 @@ public class PanierService implements IPanierService {
             ligneCommande.setQuantite(quantiteProduit);
             // On récupère le prix unitaire
             final String prixString = produitAjout.getPrixUnitaire();
-            final String prixStringCorrige = prixString.replace(" ", "").replace(",", ".");
+            final String prixStringCorrige = prixString.replace("\u00A0", "").replace(",", ".");
             final var prixUnitaire = Double.valueOf(prixStringCorrige);
             // On calcule le prix
             final Double prix = prixUnitaire * quantiteProduit;
