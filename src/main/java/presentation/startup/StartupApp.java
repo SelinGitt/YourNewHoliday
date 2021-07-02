@@ -13,7 +13,6 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import presentation.utilisateur.dto.PossedeDto;
 import presentation.utilisateur.dto.RoleDto;
 import service.util.GetPropertyValues;
 import service.utilisateur.IDroitService;
@@ -42,8 +41,8 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
         getPropertyValues.getPropValues();
         final var listDroit = this.droitService.findAll();
 
-        listDroit.forEach(droit -> DROITS.put(droit.getUrl(),
-                droit.getPossede().stream().map(PossedeDto::getRoleDto).map(RoleDto::getLibelle).collect(Collectors.toList())));
+        listDroit.forEach(
+                droit -> DROITS.put(droit.getUrl(), droit.getRole().stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
     }
 
 }
