@@ -96,7 +96,10 @@ public class PanierService implements IPanierService {
     @Override
     public String calculerPrixTotal(final PanierDto panier) {
         var prixTotal = 0.00;
+        // on ajoute le sous-total de chaque ligne du panier au prix total
         for (final LigneCommandeProduitDto ligne : panier.getMapPanier().values()) {
+            // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
             prixTotal += Double.valueOf(ligne.getPrix().replace("\u00A0", "").replace(",", "."));
         }
         return DecimalFormatUtils.decimalFormatUtil(prixTotal);
@@ -104,11 +107,18 @@ public class PanierService implements IPanierService {
 
     @Override
     public void appliquerRemise(final PanierDto panier) {
+        // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+        // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
         final var prixTotal = Double.valueOf(panier.getPrixTotal().replace("\u00A0", "").replace(",", "."));
+        // s'il y a 5 références ou plus dans le panier et que son prix total est supérieur ou égal
+        // à 2000€, alors on applique une remise de 5%
         if (panier.getNombreDeReferences() >= 5 && prixTotal >= 2000.00) {
             panier.setRemise(DecimalFormatUtils.decimalFormatUtil(prixTotal / 20));
+            // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
             panier.setPrixApresRemise(DecimalFormatUtils
                     .decimalFormatUtil(prixTotal - Double.valueOf(panier.getRemise().replace("\u00A0", "").replace(",", "."))));
+            // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
         } else {
             panier.setRemise("0");
             panier.setPrixApresRemise(panier.getPrixTotal());

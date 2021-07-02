@@ -34,10 +34,12 @@ public class ListerPanierProduitsController {
     @GetMapping
     public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto) {
         final var modelAndView = new ModelAndView();
+        // on met à jour le prix total du panier
         panierDto.setPrixTotal(panierService.calculerPrixTotal(panierDto));
+        // on applique la remise si les conditions sont réunies
         panierService.appliquerRemise(panierDto);
 
-        //si le panier recuperer est vide
+        // si le panier recuperé est vide
         if (panierDto.getMapPanier().isEmpty()) {
             modelAndView.setViewName("pan_00_vide");
         } else {
