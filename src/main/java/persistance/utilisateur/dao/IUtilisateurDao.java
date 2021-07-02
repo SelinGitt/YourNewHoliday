@@ -58,7 +58,7 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * Permet de rechercher un utilisateur grace a ca reference
      *
      * @param  reference Reference de l'utilisateur
-     * @return           UtilisateurDo
+     * @return           UtilisateurDo correspondant a la recherche
      */
     UtilisateurDo findByReference(final String reference);
 
