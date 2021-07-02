@@ -7,56 +7,56 @@
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt02.titre" />
     </h1>
-    <a href="editerProduitAdmin.do"><spring:message code="pdt0203.retour" /></a>
+    <a href="editerProduitAdmin.do"><spring:message code="pdt02.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="editerProduitAdmin.do">
-        <div class="pdt0203Grid-container">
-            <div class="pdt0203Grid-item text-align-center pdt0203FormlaireCreerProduit">
+        <div class="pdt02Grid-container">
+            <div class="pdt02Grid-item text-align-center pdt02FormlaireCreerProduit">
 
                 <form:hidden path="version" value="${version}" />
                 <form:hidden path="cheminImage" value="${cheminImage}" />
                 <form:hidden path="idProduitOriginal" value="${idProduitOriginal}" />
-                <table class="pdt0203FormulaireProduit" aria-label="Formulaire de création d'un produit">
+                <table class="pdt02FormulaireProduit" aria-label="Formulaire de création d'un produit">
                     <tr>
                         <th></th>
                         <th></th>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.nom" /></td>
+                        <td><spring:message code="form.pdt02.nom" /></td>
                         <td><form:input path="nom" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.reference" /></td>
+                        <td><spring:message code="form.pdt02.reference" /></td>
                         <td><form:input path="reference" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.hebergement" /></td>
+                        <td><spring:message code="form.pdt02.hebergement" /></td>
                         <td><form:input path="hebergement" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.destination" /></td>
+                        <td><spring:message code="form.pdt02.destination" /></td>
                         <td><form:input path="destination" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.prix" /></td>
+                        <td><spring:message code="form.pdt02.prix" /></td>
                         <td><form:input path="prixUnitaire" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.miseEnVente" /></td>
-                        <td class="pdt0203Formpdt0203Radio display-flex justify-content-space-around">
+                        <td><spring:message code="form.pdt02.miseEnVente" /></td>
+                        <td class="pdt02Formpdt02Radio display-flex justify-content-space-around">
                             <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="true" />
-                                <spring:message code="form.pdt0203.oui" />
+                                <spring:message code="form.pdt02.oui" />
                             </div>
                             <div class="display-flex">
                                 <form:radiobutton path="miseEnVente" value="false" />
-                                <spring:message code="form.pdt0203.non" />
+                                <spring:message code="form.pdt02.non" />
                             </div>
 
                         </td>
                     </tr>
                     <tr>
-                        <td><spring:message code="form.pdt0203.description" /></td>
-                        <td class=pdt0203TextAreapdt0203><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td><spring:message code="form.pdt02.description" /></td>
+                        <td class=pdt02TextAreapdt02><form:textarea path="description" rows="4" cols="70" /></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -69,7 +69,7 @@
                             <div>
 
                                 <form:button type="reset" class="background-color-rouge">
-                                    <spring:message code="form.pdt0203.reset" />
+                                    <spring:message code="form.pdt02.reset" />
                                 </form:button>
                             </div>
                         </td>
@@ -77,26 +77,26 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdt0203Grid-item text-align-center pdt0203ImageProduit">
-                <table class="pdt0203ImageCreationProduit" aria-label="ajout image produit">
+            <div class="pdt02Grid-item text-align-center pdt02ImageProduit">
+                <table class="pdt02ImageCreationProduit" aria-label="ajout image produit">
                     <tr>
-                        <th><spring:message code="form.pdt0203.image" /></th>
+                        <th><spring:message code="form.pdt02.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="<spring:message code="form.pdt0203.altImage" />"
-                            class="pdt0203Form-imageProduit" /></td>
+                        <td><img src="" alt="<spring:message code="form.pdt02.altImage" />"
+                            class="pdt02Form-imageProduit" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
-                            value="<spring:message code="form.pdt0203.parcourir" />"></td>
+                            value="<spring:message code="form.pdt02.parcourir" />"></td>
                     </tr>
                 </table>
             </div>
-            <div class="pdt0203Grid-item text-align-center pdt0203LogoService">
+            <div class="pdt02Grid-item text-align-center pdt02LogoService">
                 <form:hidden path="services" value="4" />
-                <table class="pdt0203ListeService" aria-label="liste des services disponibles">
+                <table class="pdt02ListeService" aria-label="liste des services disponibles">
                     <tr>
-                        <th colspan="3"><spring:message code="form.pdt0203.service" /></th>
+                        <th colspan="3"><spring:message code="form.pdt02.service" /></th>
                     </tr>
                     <tr>
                         <td><em class="fa fa-glass"></em></td>
