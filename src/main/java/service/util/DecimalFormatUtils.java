@@ -107,6 +107,6 @@ public class DecimalFormatUtils {
      * @return              : le nombre transformé en Double
      */
     public static Double doubleFormatUtil(final String nombreString) {
-        return Double.valueOf(nombreString.replace("\u00A0", "").replace(",", "."));
+        return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", ""));
     }
 }

@@ -6,7 +6,6 @@ package service.util;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.math.BigDecimal;
 import java.util.Locale;
@@ -100,13 +99,13 @@ class DecimalFormatUtilsTest {
         assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDoubleVirgule));
         assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDecimalTooLong));
     }
-    
+
     /**
      * Test method for {@link service.util.DecimalFormatUtils#doubleFormatUtil(java.lang.String)}.
      */
     @Test
     void testDoubleFormatUtil() {
-       final String nombreString = "123 456 789,00";
-       assertEquals(123456789.00, DecimalFormatUtils.doubleFormatUtil(nombreString));
+        final String nombreString = "123\u00A0456\u00A0789,00";
+        assertEquals(123456789.00, DecimalFormatUtils.doubleFormatUtil(nombreString));
     }
 }
