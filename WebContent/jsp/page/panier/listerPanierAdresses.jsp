@@ -25,7 +25,8 @@
                         <spring:message code="pan08.fieldSet.livraison" />
                     </legend>
                     <div
-                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center
+                         flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
@@ -53,8 +54,8 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div
-                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                    <div class="panier-formulaire display-flex 
+                    flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
@@ -166,13 +167,3 @@
 <button class="panier-margin-left-15" onclick="informationsFacturation()">Utiliser mes informations
     personnelles</button>
 
-<%-- Script js qui en fonction sur le bouton ou on clique donne des paths au elements --%>
-<script type="text/javascript">
-	function informationsLivraison() {
-		document.getElementById("FormulaireLivraison").reset();
-	}
-
-	function informationsFacturation() {
-		document.getElementById("FormulaireFacturation").reset();
-	}
-</script>
