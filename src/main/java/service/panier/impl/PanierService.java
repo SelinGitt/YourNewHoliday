@@ -62,8 +62,7 @@ public class PanierService implements IPanierService {
             ligneCommande.setQuantite(quantiteProduit);
             // On récupère le prix unitaire
             final String prixString = produitAjout.getPrixUnitaire();
-            final String prixStringCorrige = prixString.replace("\u00A0", "").replace(",", ".");
-            final var prixUnitaire = Double.valueOf(prixStringCorrige);
+            final var prixUnitaire = DecimalFormatUtils.doubleFormatUtil(prixString);
             // On calcule le prix
             final Double prix = prixUnitaire * quantiteProduit;
             // on ajoute le prix formaté à la ligne de commande
@@ -107,6 +106,14 @@ public class PanierService implements IPanierService {
         }
     }
 
+    /**
+     * Permets de vérifier si les conditions necessaires à la modification de la quantité d'une produit du panier sont
+     * réunies
+     *
+     * @param  modif            valeur d'incrément
+     * @param  quantiteInitiale du produit dans le panier
+     * @return                  true si c'est ok, false sinon.
+     */
     private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
         boolean regle_un = true;
         boolean regle_deux = true;
@@ -122,7 +129,7 @@ public class PanierService implements IPanierService {
                 // On autorise l'incrément uniquement si le résultat <= 100
                 regle_deux = quantiteInitiale < 100;
             } else {
-                // On atatndes pas d'autre valeur 
+                // On attends pas d'autre valeur 
                 return false;
             }
         }
