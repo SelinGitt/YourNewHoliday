@@ -110,7 +110,6 @@ public class PanierService implements IPanierService {
     private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
         boolean regle_un = true;
         boolean regle_deux = true;
-
         // Décrément
         if (modif == -1) {
             // On autorise le décrément uniquement si le résultat > 0
@@ -127,7 +126,6 @@ public class PanierService implements IPanierService {
                 return false;
             }
         }
-
         return (regle_un && regle_deux);
     }
 }
