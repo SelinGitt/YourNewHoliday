@@ -15,6 +15,10 @@
 <link href="css/flex.css" rel="stylesheet">
 <link href="css/general.css" rel="stylesheet">
 <link href="css/template.css" rel="stylesheet">
+<script type="text/javascript" src="js/commande/commande.js"></script>
+<script type="text/javascript" src="js/panier/panier.js"></script>
+<script type="text/javascript" src="js/produit/produit.js"></script>
+<script type="text/javascript" src="js/utilisateur/utilisateur.js"></script>
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
