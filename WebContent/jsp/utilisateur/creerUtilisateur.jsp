@@ -61,18 +61,20 @@
             <div class="user05-rightSide">
                 <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
                 <div>
-                    <div class="user05-img"></div>
+                    <div style="width: 15em; height: 15em; background-color: red;"></div>
                 </div>
 
                 <div class="display-flex justify-content-space-around">
                     <c:choose>
                         <c:when test="${utilisateur.nomRole == 'administrateur'}">
                             <div>
-                                <form:radiobutton path="role.idRole" value="1" label="Client" />
+                                <form:radiobutton path="role.idRole" value="1" />
+                                <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
                             </div>
 
                             <div>
-                                <form:radiobutton path="role.idRole" value="3" label="Admin" />
+                                <form:radiobutton path="role.idRole" value="3" />
+                                <label for="role.idRole2"><spring:message code="usr05.label.admin" /></label>
                             </div>
                         </c:when>
 
