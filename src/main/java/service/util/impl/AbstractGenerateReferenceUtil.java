@@ -36,7 +36,7 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
     @Override
     public String generateRef() {
         final String reference = this.prefix + this.generateSufix();
-        logger.info("Référence {} générer par {}", reference, this.getClass().getSimpleName());
+        logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;
     }
 
