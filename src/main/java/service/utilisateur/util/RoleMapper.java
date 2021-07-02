@@ -1,5 +1,8 @@
 package service.utilisateur.util;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import persistance.utilisateur.entity.RoleDo;
 import presentation.utilisateur.dto.RoleDto;
 
@@ -46,5 +49,15 @@ public class RoleMapper {
         roleDo.setLibelle(roleDto.getLibelle());
 
         return roleDo;
+    }
+
+    /**
+     * Permet de map une liste de RoleDo en une liste de RoleDto
+     * 
+     * @param  roleDoList Liste a map
+     * @return            Liste mappee
+     */
+    public static List<RoleDto> mapperToListDto(final List<RoleDo> roleDoList) {
+        return roleDoList.stream().map(RoleMapper::mapperToDto).collect(Collectors.toList());
     }
 }
