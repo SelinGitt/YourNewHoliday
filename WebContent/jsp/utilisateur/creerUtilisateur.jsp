@@ -5,9 +5,15 @@
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
 
-        <h1 class="text-align-center">
-            <spring:message code="usr05.titre" />
-        </h1>
+        <div class="display-flex align-item-center">
+            <c:if test="${utilisateur.idRole == '3'}">
+                <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
+                </a>
+            </c:if>
+            <h1 class="user05-titre">
+                <spring:message code="usr05.titre" />
+            </h1>
+        </div>
 
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
             class="display-flex justify-content-space-around">
@@ -67,7 +73,7 @@
 
                 <div class="display-flex justify-content-space-around">
                     <c:choose>
-                        <c:when test="${utilisateur.nomRole == 'administrateur'}">
+                        <c:when test="${utilisateur.idRole == '3'}">
                             <div>
                                 <form:radiobutton path="role.idRole" value="1" />
                                 <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
