@@ -15,6 +15,10 @@
 <link href="css/flex.css" rel="stylesheet">
 <link href="css/general.css" rel="stylesheet">
 <link href="css/template.css" rel="stylesheet">
+<script type="text/javascript" src="js/commande/commande.js"></script>
+<script type="text/javascript" src="js/panier/panier.js"></script>
+<script type="text/javascript" src="js/produit/produit.js"></script>
+<script type="text/javascript" src="js/utilisateur/utilisateur.js"></script>
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
@@ -22,8 +26,8 @@
         <tiles:insertAttribute name="header" />
     </header>
     <%--regrouper aside et section afin de facilité la manipulation et d'avoir le rendu souhaité sans détours --%>
-    <div class="content">
-        <aside>
+    <div class="content display-flex justify-content-space-between">
+        <aside class="display-flex">
             <tiles:insertAttribute name="menu" />
         </aside>
         <section>

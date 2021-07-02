@@ -13,7 +13,7 @@
 
 <div class=" display-flex flex-direction-row panier-100">
     <%-- container de facturation + livraison--%>
-    <div class="panier-container-Adresse">
+    <div class="panier-container-Adresse display-flex justify-content-center flex-direction-row">
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
@@ -24,17 +24,19 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.livraison" />
                     </legend>
-                    <div class="panier-formulaire">
-                        <div class="panier-formulaire-div">
+                    <div
+                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="nom" />
                         </div>
-                        <div class="panier-formulaire-div">
+
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
                             <form:input class="panier-formulaire-input" path="prenom" />
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
                             <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
                         </div>
@@ -51,17 +53,19 @@
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div class="panier-formulaire">
-                        <div class="panier-formulaire-div">
+                    <div
+                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="nom" />
                         </div>
-                        <div class="panier-formulaire-div">
+
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
                             <form:input class="panier-formulaire-input" path="prenom" />
                         </div>
-                        <div class="panier-formulaire-div">
+                        <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
                             <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
                         </div>
@@ -159,7 +163,8 @@
 <button class="panier-margin-left-10" onclick="informationsLivraison()">Utiliser mes informations personnelles</button>
 
 
-<button class="panier-margin-left-15" onclick="informationsFacturation()">Utiliser mes informations personnelles</button>
+<button class="panier-margin-left-15" onclick="informationsFacturation()">Utiliser mes informations
+    personnelles</button>
 
 <%-- Script js qui en fonction sur le bouton ou on clique donne des paths au elements --%>
 <script type="text/javascript">
