@@ -50,16 +50,25 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
-        logger.debug("ProduitService {} findFilter", ProduitDto.class);
+        final StringBuilder buffy = new StringBuilder();
+        buffy.append("Le produit {} findFilter a été appelé avec ");
         if (!searchTerm.isBlank()) {
             if (tri == null) {
+                buffy.append("{} en paramètre de recherche, et aucun paramètre de tri");
+                logger.debug(buffy.toString(), ProduitDto.class, searchTerm);
                 return rechercherProduits(searchTerm);
             }
+            buffy.append("{} en paramètre de recherche et {} en paramètre de tri");
+            logger.debug(buffy.toString(), ProduitDto.class, searchTerm, tri.getTypeDao());
             return listerFiltreTri(tri, searchTerm);
         }
         if (tri == null) {
+            buffy.append("aucun paramètre");
+            logger.debug(buffy.toString(), ProduitDto.class);
             return listerProduitsEnVente();
         }
+        buffy.append("aucun paramètre de recherche et {} en paramètre de tri");
+        logger.debug(buffy.toString(), ProduitDto.class, tri.getTypeDao());
         return trierListe(tri);
     }
 

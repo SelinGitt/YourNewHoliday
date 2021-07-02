@@ -79,6 +79,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         final TypedQuery<ProduitDo> query = entityManager
                 .createQuery("From ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
+        logger.debug("Le produitDo {} a été filtré par {}", ProduitDo.class.getSimpleName(), searchTerm);
         return query.getResultList();
     }
 
@@ -86,7 +87,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     public List<ProduitDo> trierListe(final TypeTriAlphanumerique typeTri) {
         final TypedQuery<ProduitDo> query = entityManager.createQuery(
                 "FROM ProduitDo WHERE mise_en_vente = 1 ORDER BY prix_unitaire ".concat(typeTri.getTypeDao()), ProduitDo.class);
-        logger.debug("ProduitDao {} trierListe", ProduitDo.class.getSimpleName());
+        logger.debug("Le produitDo {} a été trié par {}", ProduitDo.class.getSimpleName(), typeTri.getTypeDao());
         return query.getResultList();
     }
 
@@ -96,7 +97,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 .createQuery("FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire "
                         .concat(typeTri.getTypeDao()), ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
-        logger.debug("ProduitDao {} trierFiltreListe", ProduitDo.class.getSimpleName());
+        logger.debug("Le produit {} a été filtré avec {} trié par {}", ProduitDo.class.getSimpleName(), searchTerm, typeTri.getTypeDao());
         return query.getResultList();
     }
 }
