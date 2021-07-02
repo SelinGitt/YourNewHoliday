@@ -52,4 +52,11 @@ public interface IProduitService {
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
 
+    /**
+     * Permet de supprimer un produit
+     *
+     * @param  idProduit à supprimer
+     * @return           true si supp, sinon false
+     */
+    boolean deleteProduitById(final Integer idProduit);
 }

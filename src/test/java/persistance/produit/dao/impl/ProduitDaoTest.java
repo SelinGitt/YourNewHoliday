@@ -3,8 +3,8 @@
  */
 package persistance.produit.dao.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -65,7 +65,8 @@ class ProduitDaoTest {
     }
 
     /**
-     * <<<<<<< HEAD Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
+     * <<<<<<< HEAD Test method for
+     * {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVente(java.lang.Integer)}.
      */
     @Test
     void testFindProduitEnVente() {
@@ -113,5 +114,17 @@ class ProduitDaoTest {
         assertEquals(1, produitEnVente.getServices());
         final var produitNonExistant = iProduitDao.findById(444);
         assertNull(produitNonExistant);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#deleteProduitById(Integer)}.
+     */
+    @Test
+    void testDeleteProduitById() {
+        assertEquals(6, iProduitDao.findAll().size());
+        assertEquals("MVR1256934", iProduitDao.findById(1).getReference());
+        assertTrue(iProduitDao.deleteProduitById(1));
+        assertEquals(5, iProduitDao.findAll().size());
+        assertNull(iProduitDao.findById(1));
     }
 }

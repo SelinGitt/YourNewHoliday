@@ -5,6 +5,7 @@ package persistance.produit.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
@@ -79,5 +80,17 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 .createQuery("From ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
+    }
+
+    @Override
+    public boolean deleteProduitById(final Integer id) {
+        try {
+            entityManager.remove(entityManager.getReference(ProduitDo.class, id));
+            logger.info("Le produit d'id {} a été supprimé", id);
+            return true;
+        } catch (final EntityNotFoundException exception) {
+            logger.error("Erreur lors de la suppression du produit id {}.", id, exception);
+            return false;
+        }
     }
 }

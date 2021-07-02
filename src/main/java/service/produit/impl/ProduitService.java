@@ -58,4 +58,9 @@ public class ProduitService implements IProduitService {
         this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
         return ProduitMapper.mapToDto(produitDao.create(produitDo));
     }
+
+    @Override
+    public boolean deleteProduitById(final Integer idProduit) {
+        return (produitDao.deleteProduitById(idProduit));
+    }
 }

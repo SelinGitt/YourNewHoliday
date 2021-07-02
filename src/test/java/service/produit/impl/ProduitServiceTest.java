@@ -3,8 +3,10 @@
  */
 package service.produit.impl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.List;
@@ -110,5 +112,16 @@ class ProduitServiceTest {
         // On essaie de récupérer un produit qui n'est pas en vente
         assertNull(produitServiceMock.trouverProduitEnVente(2));
 
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#deleteProduitById(Integer)}.
+     */
+    @Test
+    void testDeleteProduitById() {
+        Mockito.when(this.iProduitDaoMock.deleteProduitById(1)).thenReturn(true);
+        Mockito.when(this.iProduitDaoMock.deleteProduitById(99)).thenReturn(false);
+        assertTrue(iProduitDaoMock.deleteProduitById(1));
+        assertFalse(iProduitDaoMock.deleteProduitById(99));
     }
 }
