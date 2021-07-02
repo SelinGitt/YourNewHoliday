@@ -43,7 +43,6 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
 
         listDroit.forEach(
                 droit -> DROITS.put(droit.getUrl(), droit.getRole().stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
-        System.out.println(DROITS);
     }
 
 }
