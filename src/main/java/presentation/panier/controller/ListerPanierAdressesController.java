@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
-import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -27,18 +27,29 @@ public class ListerPanierAdressesController {
     private IUtilisateurService utilisateurService;
 
     /**
-     * Permet d'afficher la JSP listerPanierAdresses
+     * Permet d'afficher la JSP listerPanierAdresses et de recuperer les infos d'un utilisateur grace a son id
      * 
-     * @param  utilisateurDto :
-     * @return                : le nom de la JSP
+     * @param  utilisateurDto : l'utilisateur en session
+     * @return                : un modelAndView
      */
     @GetMapping
     public ModelAndView listerAdresses(final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateurDto) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerPanierAdresses");
+
+        //on cherche l'utilisateur Connecter grace a l'id
         final var id = Integer.valueOf(utilisateurDto.getIdUtilisateur());
-        final UtilisateurDto utilisateur = utilisateurService.findUtilisateurById(id);
-        modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateur);
+        final var utilisateur = utilisateurService.findUtilisateurById(id);
+        final var adresse = new CommandeAdresseDto();
+
+        //on recupere les informations de l'utilisateur utile pour commande
+        adresse.setAdresse(utilisateur.getAdresse());
+        adresse.setNom(utilisateur.getNom());
+        adresse.setPrenom(utilisateur.getPrenom());
+
+        //la livraison et la facturation
+        modelAndView.getModelMap().addAttribute("CommandeAdresseLivraison", adresse);
+        modelAndView.getModelMap().addAttribute("CommandeAdresseFacturation", adresse);
         return modelAndView;
     }
 

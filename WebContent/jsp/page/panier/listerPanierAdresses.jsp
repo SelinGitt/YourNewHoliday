@@ -17,7 +17,7 @@
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
-            <form:form method="POST" modelAttribute="utilisateurDto" action="listerPanierAdresses.do"
+            <form:form method="POST" modelAttribute="CommandeAdresseLivraison" action="listerPanierAdresses.do"
                 id="FormulaireLivraison">
 
                 <fieldset class="fieldSetPan08">
@@ -48,13 +48,14 @@
 
         <%-- formulaire Adresse de facturation--%>
         <div class="panier-block-fieldSet">
-            <form:form method="POST" modelAttribute="utilisateurDto" action="listerPanierAdresses.do"
+            <form:form method="POST" modelAttribute="CommandeAdresseFacturation" action="listerPanierAdresses.do"
                 class="panier-margin-left-3em" id="FormulaireFacturation">
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div class="panier-formulaire display-flex 
+                    <div
+                        class="panier-formulaire display-flex 
                     flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <%-- mettre les path="exemple" par la suite --%>
@@ -160,10 +161,13 @@
         </div>
     </div>
 </div>
+
 <%-- boutton reset formulaire --%>
-<button class="panier-margin-left-10" onclick="informationsLivraison()">Utiliser mes informations personnelles</button>
+<button class="panier-margin-left-10" onclick="informationsLivraison()">
+    <spring:message code="pan08.boutton.information" />
+</button>
 
-
-<button class="panier-margin-left-15" onclick="informationsFacturation()">Utiliser mes informations
-    personnelles</button>
+<button class="panier-margin-left-15" onclick="informationsFacturation()">
+    <spring:message code="pan08.boutton.information" />
+</button>
 
