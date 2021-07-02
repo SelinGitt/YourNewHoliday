@@ -97,17 +97,14 @@ public class PanierService implements IPanierService {
 
     @Override
     public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
-        System.out.println("Service");
         // On récupère le produit
         final ProduitDto produit = findProduitMap(panier, idProduit);
         // On récupère la quantité avant modification
         final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
 
         if (modificationAutorisee(modif, quantiteInitiale)) {
-            System.out.println("Test ok, qte : " + quantiteInitiale);
             updatePanier(panier, idProduit, modif);
         } else {
-            System.out.println("Pas de modif");
         }
     }
 

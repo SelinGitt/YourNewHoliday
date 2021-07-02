@@ -74,16 +74,17 @@
 
                                     <%--  bouton - --%>
                                     <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
-                                    <button type="button">-</button>
+                                        <button type="button">-</button>
                                     </a>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly" id="panier-quantite"
-                                        name="panier-quantite" value="${entry.value.quantite}" size="1">
+                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly"
+                                        id="panier-quantite" name="panier-quantite" value="${entry.value.quantite}"
+                                        size="1">
 
                                     <%--  bouton + --%>
                                     <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
-                                    <button type="button">+</button>
+                                        <button type="button">+</button>
                                     </a>
                                 </div></td>
 
@@ -118,7 +119,7 @@
 
     </div>
 
-    <div class="panier-right">       
+    <div class="panier-right">
         <%-- Contenu commun avec pan_08 --%>
         <jsp:include page="maCommande.jsp">
             <jsp:param name="commande" value="pan_00" />
