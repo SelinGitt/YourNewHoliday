@@ -56,7 +56,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt0203.description" /></td>
-                        <td class=pdt0203TextAreaPdt0203><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td class=pdt0203TextAreapdt0203><form:textarea path="description" rows="4" cols="100" /></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -83,7 +83,8 @@
                         <th><spring:message code="form.pdt0203.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="Image du produit à ajouter" class="pdt0203Form-imageProduit" /></td>
+                        <td><img src="" alt="<spring:message code="form.pdt0203.altImage" />"
+                            class="pdt0203Form-imageProduit" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
