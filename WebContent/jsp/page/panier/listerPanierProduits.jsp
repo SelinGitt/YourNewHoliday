@@ -57,9 +57,7 @@
                                 </div></td>
 
                             <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <%--  rendu d'affichage uniquement pour l'instant --%>
-                            <%--  TODO : sera à modifier avec form:form, form:input, form:button par la suite --%>
-                            <%--  Ne pas oublier de déclarer la taglib --%>
+                            <%--  rendu d'affichage uniquement pour l'instant --%>                            
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
 
                                     <%--  label --%>

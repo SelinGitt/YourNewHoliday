@@ -101,8 +101,10 @@ public class PanierService implements IPanierService {
         // On récupère la quantité avant modification
         final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
 
-        if (modificationAutorisee(modif, quantiteInitiale)) {
+        if (isModificationAutorisee(modif, quantiteInitiale)) {
             updatePanier(panier, idProduit, modif);
+        } else {
+            // TODO : gestion affichage message produit plus disponible à la vente.
         }
     }
 
@@ -114,7 +116,7 @@ public class PanierService implements IPanierService {
      * @param  quantiteInitiale du produit dans le panier
      * @return                  true si c'est ok, false sinon.
      */
-    private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
+    private boolean isModificationAutorisee(final int modif, final int quantiteInitiale) {
         var regleUne = true;
         var regleDeux = true;
         // Décrément
