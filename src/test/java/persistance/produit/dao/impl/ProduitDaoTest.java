@@ -78,17 +78,17 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduits()}.
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherProduitsEnVente(String)}.
      */
     @Test
-    void testRechercherProduits() {
+    void testRechercherProduitsEnVente() {
         //recherche d'une référence 128 existente
         final String searchTerm = "128";
-        final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherProduits(searchTerm);
+        final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherProduitsEnVente(searchTerm);
         assertEquals(1, listeProduitsRecherchee.size());
         //recherche référence non existente
         final String searchTerm2 = "ZZZ";
-        final List<ProduitDo> listeProduitsRecherchee2 = iProduitDao.rechercherProduits(searchTerm2);
+        final List<ProduitDo> listeProduitsRecherchee2 = iProduitDao.rechercherProduitsEnVente(searchTerm2);
         assertEquals(0, listeProduitsRecherchee2.size());
     }
 
@@ -125,5 +125,25 @@ class ProduitDaoTest {
         assertTrue(iProduitDao.deleteProduitById(1));
         assertEquals(5, iProduitDao.findAll().size());
         assertNull(iProduitDao.findById(1));
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits(String)}.
+     */
+    @Test
+    void testRechercherAllProduits() {
+        //recherche référence existente et en vente
+        final String searchTermEnVente = "ITA";
+        final List<ProduitDo> listeProduitsRecherchee = iProduitDao.rechercherAllProduits(searchTermEnVente);
+        assertEquals(1, listeProduitsRecherchee.size());
+        //recherche référence existente et non en vente
+        final String searchTermNonEnVente = "GRC";
+        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao
+                .rechercherAllProduits(searchTermNonEnVente);
+        assertEquals(1, listeProduitsRechercheeNonEnVente.size());
+        //recherche référence non existente
+        final String searchTermNull = "ZZZ";
+        final List<ProduitDo> listeProduitsRechercheeNull = iProduitDao.rechercherAllProduits(searchTermNull);
+        assertEquals(0, listeProduitsRechercheeNull.size());
     }
 }
