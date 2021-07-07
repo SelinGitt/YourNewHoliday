@@ -58,6 +58,15 @@ public class RemplirPanier {
         produitDto3.setReference("AAA1256568");
         produitDto3.setCheminImage(null);
 
+        // Produit avec équivalence en base 
+        final var produitDto4 = new ProduitDto();
+        produitDto4.setIdProduitOriginal("4");
+        produitDto4.setDescription("La méditérannée, le colysée, les pâtes !");
+        produitDto4.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(300.00));
+        produitDto4.setNom("Voyage en Italie");
+        produitDto4.setReference("ITA1289967");
+        produitDto4.setCheminImage(null);
+
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
         ligneCommandeProduit.setQuantite(6);
@@ -68,6 +77,9 @@ public class RemplirPanier {
         final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
         ligneCommandeProduit3.setQuantite(12);
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(12 * 12000.00, Locale.FRANCE));
+        final var ligneCommandeProduit4 = new LigneCommandeProduitDto();
+        ligneCommandeProduit4.setQuantite(3);
+        ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(4 * 300.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
@@ -75,6 +87,8 @@ public class RemplirPanier {
         panierDto.getMapPanier().put(produitDto2, ligneCommandeProduit2);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto3, ligneCommandeProduit3);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto4, ligneCommandeProduit4);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
 
         return panierDto;

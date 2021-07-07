@@ -77,51 +77,10 @@
     </div>
     <%--  ma Commande  --%>
     <div class="panier-right">
-
-        <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
-        <fieldset class="overflow-auto panier-macommande">
-            <legend class="panier-legend">
-                <spring:message code="pan00.titre.fieldset.commande" />
-            </legend>
-
-            <c:forEach items="${panierDto.mapPanier}" var="entry">
-                <%--  nom et référence --%>
-                <div>
-                    <h3>${entry.key.nom}-${entry.key.reference}</h3>
-                </div>
-
-                <%--  prix unitaire --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.unitaire.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    ${entry.key.prixUnitaire}
-                    <spring:message code="glb.devise" />
-                </div>
-
-                <%--  quantité --%>
-                <div class="display-flex justify-content-space-between panier-ligne-quantite">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.quantite.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <span>${entry.value}</span>
-                </div>
-
-                <%--  prix  --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
-                    <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
-                    <span>50,50 <spring:message code="glb.devise" />
-                    </span>
-                </div>
-            </c:forEach>
-        </fieldset>
+        <%-- Contenu commun avec pan_00 --%>
+       <jsp:include page="maCommande.jsp">
+            <jsp:param name="commande" value="pan_08" />
+        </jsp:include>
 
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
         <div class="panier-elements-a-droite">
