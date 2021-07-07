@@ -22,9 +22,9 @@ public class PanierDto implements Serializable {
 
     private Map<ProduitDto, LigneCommandeProduitDto> mapPanier;
     private Integer                                  nombreDeReferences = 0;
-    private String                                   prixTotal          = "0";
-    private String                                   remise             = "0";
-    private String                                   prixApresRemise    = "0";
+    private String                                   prixTotalAffichage;
+    private String                                   remiseAffichage;
+    private String                                   prixApresRemiseAffichage;
 
     /**
      * Constructor
@@ -70,57 +70,57 @@ public class PanierDto implements Serializable {
     }
 
     /**
-     * Getter for prixTotal
+     * Getter for prixTotalAffichage
      *
-     * @return the prixTotal
+     * @return the prixTotalAffichage
      */
-    public String getPrixTotal() {
-        return prixTotal;
+    public String getPrixTotalAffichage() {
+        return prixTotalAffichage;
     }
 
     /**
-     * Setter for prixTotal
+     * Setter for prixTotalAffichage
      *
-     * @param prixTotal the prixTotal to set
+     * @param prixTotalAffichage the prixTotalAffichage to set
      */
-    public void setPrixTotal(final String prixTotal) {
-        this.prixTotal = prixTotal;
+    public void setPrixTotalAffichage(final String prixTotalAffichage) {
+        this.prixTotalAffichage = prixTotalAffichage;
     }
 
     /**
-     * Getter for prixApresRemise
+     * Getter for remiseAffichage
      *
-     * @return the prixApresRemise
+     * @return the remiseAffichage
      */
-    public String getPrixApresRemise() {
-        return prixApresRemise;
+    public String getRemiseAffichage() {
+        return remiseAffichage;
     }
 
     /**
-     * Setter for prixApresRemise
+     * Setter for remiseAffichage
      *
-     * @param prixApresRemise the prixApresRemise to set
+     * @param remiseAffichage the remiseAffichage to set
      */
-    public void setPrixApresRemise(final String prixApresRemise) {
-        this.prixApresRemise = prixApresRemise;
+    public void setRemiseAffichage(final String remiseAffichage) {
+        this.remiseAffichage = remiseAffichage;
     }
 
     /**
-     * Getter for remise
+     * Getter for prixApresRemiseAffichage
      *
-     * @return the remise
+     * @return the prixApresRemiseAffichage
      */
-    public String getRemise() {
-        return remise;
+    public String getPrixApresRemiseAffichage() {
+        return prixApresRemiseAffichage;
     }
 
     /**
-     * Setter for remise
+     * Setter for prixApresRemiseAffichage
      *
-     * @param remise the remise to set
+     * @param prixApresRemiseAffichage the prixApresRemiseAffichage to set
      */
-    public void setRemise(final String remise) {
-        this.remise = remise;
+    public void setPrixApresRemiseAffichage(final String prixApresRemiseAffichage) {
+        this.prixApresRemiseAffichage = prixApresRemiseAffichage;
     }
 
 }

@@ -26,8 +26,24 @@ import service.util.DecimalFormatUtils;
 @Transactional(propagation = Propagation.REQUIRED)
 public class PanierService implements IPanierService {
 
+    /**
+     * Permet de déterminer le pourcentage de la remise que l'on souhaite appliquer lorsque les conditions sont respectées.
+     */
+    private static final int    POURCENTAGE_REMISE                    = 5;
+    /**
+     * Permet de déterminer le prix total minimum que doit faire le panier pour que la remise soit appliquée. <br />
+     * (à condition de respecter aussi les autres criètres)
+     */
+    private static final double PRIX_TOTAL_MINIMUM_POUR_REMISE        = 10000.00;
+    /**
+     * Permet de déterminer le nombre de références minimum que doit contenir le panier pour que la remise soit appliquée.
+     * <br />
+     * (à condition de respecter aussi les autres criètres)
+     */
+    private static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
+
     @Autowired
-    private IProduitService iProduitService;
+    private IProduitService     iProduitService;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
@@ -109,20 +125,26 @@ public class PanierService implements IPanierService {
     public void appliquerRemise(final PanierDto panier) {
         // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
         // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
-        final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotal());
+        final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage());
         // s'il y a 5 références ou plus dans le panier et que son prix total est supérieur ou égal
         // à 2000€, alors on applique une remise de 5%
-        if (panier.getNombreDeReferences() >= 5 && prixTotal >= 10000.00) {
-            panier.setRemise(DecimalFormatUtils.decimalFormatUtil(prixTotal / 20));
+        if (panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && prixTotal >= PRIX_TOTAL_MINIMUM_POUR_REMISE) {
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotal * POURCENTAGE_REMISE / 100));
             // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
             // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
-            panier.setPrixApresRemise(
-                    DecimalFormatUtils.decimalFormatUtil(prixTotal - DecimalFormatUtils.doubleFormatUtil(panier.getRemise())));
+            panier.setPrixApresRemiseAffichage(
+                    DecimalFormatUtils.decimalFormatUtil(prixTotal - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
             // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
         } else {
-            panier.setRemise("0");
-            panier.setPrixApresRemise(panier.getPrixTotal());
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
+            panier.setPrixApresRemiseAffichage(panier.getPrixTotalAffichage());
         }
+    }
+
+    @Override
+    public void actualiserPrix(final PanierDto panier) {
+        panier.setPrixTotalAffichage(calculerPrixTotal(panier));
+        appliquerRemise(panier);
     }
 
 }

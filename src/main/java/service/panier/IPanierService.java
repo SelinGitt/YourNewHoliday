@@ -61,4 +61,11 @@ public interface IPanierService {
      * @param panier : le panier en session
      */
     void appliquerRemise(final PanierDto panier);
+
+    /**
+     * Permet de mettre à jour le prix total, la remise et le prix après remise du panier
+     *
+     * @param panier : le panier en session
+     */
+    void actualiserPrix(final PanierDto panier);
 }

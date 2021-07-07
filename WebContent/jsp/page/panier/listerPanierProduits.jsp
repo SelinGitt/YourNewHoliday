@@ -172,7 +172,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotal}
+                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -181,7 +181,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
-                <div id="remise" class="prix panier-bordure-1px">${panierDto.remise }
+                <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -190,7 +190,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <div id="total_après_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemise }
+                <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>
