@@ -18,6 +18,7 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.GenerateReferenceUtil;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.impl.UtilisateurServiceReturn.UtilisateurServiceReturnBuilder;
 import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurMapper;
 
@@ -85,27 +86,32 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idUtilisateurConnecte, final String referenceUtilisateur,
             final String origin) {
-        var isSucceeded = false;
-        var isSameUserFromList = false;
+
+        //Instanciation du builder, qui va être renseigné au fil de l'eau avant de construire l'objet retour en retour de méthode
+        final UtilisateurServiceReturnBuilder builder = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder();
 
         //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
         final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
 
-        //Si la page d'origine est la liste USR_01 et que l'admin se supprime lui-même
+        //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
         if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
-            isSameUserFromList = true;
+            builder.withIsSameUserFromList(true);
+        } else {
+            builder.withIsSameUserFromList(false);
         }
 
-        //S'il reste au moins un admin après la suppression demandée
-        if (!iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
+        //On teste si l'utilisateur est le dernier admin
+        if (iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
+            builder.withIsSucceeded(false);
+        } else {
+            //Suppression autorisée
             //On détache les commandes de l'utilisateur
             iCommandeDao.updateCommandeDoUserDeletion(idUtilisateurASupprimer);
             //On le supprime
             iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
-            isSucceeded = true;
+            builder.withIsSucceeded(true);
         }
-        return new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder().withIsSucceeded(isSucceeded)
-                .withIsSameUserFromList(isSameUserFromList).build();
+        return builder.build();
     }
 
     @Override

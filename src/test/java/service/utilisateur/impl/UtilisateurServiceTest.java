@@ -285,7 +285,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin1() {
+    void testDeleteUtilisateurByRef1() {
         //Suppression d'un admin qui se supprime lui-même depuis la liste (USR_01)
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -296,7 +296,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> false 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
         Assertions.assertTrue(result.isSameUserFromList());
         Assertions.assertTrue(result.isSucceeded());
     }
@@ -305,7 +305,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin2() {
+    void testDeleteUtilisateurByRef2() {
         //Suppression d'un admin qui se supprime lui-même depuis la liste (USR_01) en étant le dernier admin
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -316,7 +316,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> true 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(true);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
         Assertions.assertTrue(result.isSameUserFromList());
         Assertions.assertFalse(result.isSucceeded());
     }
@@ -325,7 +325,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin3() {
+    void testDeleteUtilisateurByRef3() {
         //Suppression d'un admin depuis la liste (USR_01)
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -336,7 +336,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> false 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "2");
         Assertions.assertFalse(result.isSameUserFromList());
         Assertions.assertTrue(result.isSucceeded());
     }
@@ -345,7 +345,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin4() {
+    void testDeleteUtilisateurByRef4() {
         //Suppression d'un client depuis la liste (USR_01)
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -356,7 +356,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> false 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Client", "2");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Client", "2");
         Assertions.assertTrue(result.isSameUserFromList());
         Assertions.assertTrue(result.isSucceeded());
     }
@@ -365,7 +365,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin5() {
+    void testDeleteUtilisateurByRef5() {
         //Suppression d'un admin depuis la consultation de son profil (USR_00)
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -376,7 +376,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> false 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "1");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "1");
         Assertions.assertFalse(result.isSameUserFromList());
         Assertions.assertTrue(result.isSucceeded());
     }
@@ -385,7 +385,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin6() {
+    void testDeleteUtilisateurByRef6() {
         //Suppression d'un admin depuis la consultation de son profil (USR_00) en étant le dernier admin
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -396,7 +396,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> true 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(true);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "1");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Administrateur", "1");
         Assertions.assertFalse(result.isSameUserFromList());
         Assertions.assertFalse(result.isSucceeded());
     }
@@ -405,7 +405,7 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, String, String)}
      */
     @Test
-    void testDeleteUtilisateurByRefAdmin7() {
+    void testDeleteUtilisateurByRef7() {
         //Suppression d'un client depuis la consultation de son profil (USR_00)
 
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
@@ -416,7 +416,7 @@ class UtilisateurServiceTest {
         //Dernier admin -> false 
         Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
 
-        UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Client", "1");
+        final UtilisateurServiceReturn result = this.utilisateurService.deleteUtilisateurByRef(idCurrentUtilisateur, "Client", "1");
         Assertions.assertFalse(result.isSameUserFromList());
         Assertions.assertTrue(result.isSucceeded());
     }
