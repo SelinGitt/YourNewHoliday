@@ -92,7 +92,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
 
         } catch (final NoResultException noResultException) {
             // Si exception 
-            logger.error("Le produit de référence {reference} n'est pas en base.", noResultException);
+            logger.info("Le produit de référence {reference} n'est pas en base.", noResultException);
             return null;
         }
     }

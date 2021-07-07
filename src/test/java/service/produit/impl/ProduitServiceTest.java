@@ -148,9 +148,9 @@ class ProduitServiceTest {
         produitDo.setMiseEnVente(true);
         Mockito.when(this.iProduitDaoMock.findByReference("ITA1289967")).thenReturn(produitDo);
         Mockito.when(this.iProduitDaoMock.findByReference("REFERENCE_FAUSSE")).thenReturn(null);
-        // On récupére un produit avec une référence inexistante
-        assertNotNull(produitServiceMock.trouverParReference("ITA1289967"));
         // On récupére un produit avec une référence existante
+        assertNotNull(produitServiceMock.trouverParReference("ITA1289967"));
+        // On récupére un produit avec une référence inexistante
         assertNull(produitServiceMock.trouverParReference("REFERENCE_FAUSSE"));
     }
 
@@ -174,4 +174,22 @@ class ProduitServiceTest {
         Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         assertNotNull(this.produitServiceMock.editerProduit(produitDto));
     }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverProduitById(Integer)}.
+     */
+    @Test
+    void testTrouverProduitByid() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setIdProduitOriginal(50);
+        Mockito.when(this.iProduitDaoMock.findById(50)).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findById(404)).thenReturn(null);
+        // On récupére un produit avec un ID existant
+        assertNotNull(produitServiceMock.trouverProduitById(50));
+        // On récupére un produit avec un ID inexistant
+        assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
 }

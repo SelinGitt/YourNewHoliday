@@ -75,4 +75,12 @@ public interface IProduitService {
      * @return            le produit créé
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
+
+    /**
+     * Permet de trouver un produit via son ID
+     *
+     * @param  idProduit l'id du produit à rechercher
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverProduitById(final Integer idProduit);
 }

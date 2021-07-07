@@ -87,4 +87,11 @@ public class ProduitService implements IProduitService {
         return ProduitMapper.mapToDto(produitDao.create(produitDo));
 
     }
+
+    @Override
+    public ProduitDto trouverProduitById(final Integer idProduit) {
+        final var produitDo = produitDao.findById(idProduit);
+        this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
+        return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
 }
