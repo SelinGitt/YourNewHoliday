@@ -93,11 +93,8 @@ public class UtilisateurService implements IUtilisateurService {
         final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
 
         //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
-        if (isSameUserFromList(origin, idUtilisateurConnecte, idUtilisateurASupprimer)) {
-            builder.withIsSameUserFromList(true);
-        } else {
-            builder.withIsSameUserFromList(false);
-        }
+        final var isSameUserFromList = isSameUserFromList(origin, idUtilisateurConnecte, idUtilisateurASupprimer);
+        builder.withIsSameUserFromList(isSameUserFromList);
 
         //On teste si l'utilisateur est le dernier admin
         if (iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
