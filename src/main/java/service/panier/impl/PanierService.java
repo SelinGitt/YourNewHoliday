@@ -115,24 +115,24 @@ public class PanierService implements IPanierService {
      * @return                  true si c'est ok, false sinon.
      */
     private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
-        boolean regle_un = true;
-        boolean regle_deux = true;
+        boolean regleUne = true;
+        boolean regleDeux = true;
         // Décrément
         if (modif == -1) {
             // On autorise le décrément uniquement si le résultat > 0
             // pour supprimer un produit du panier
             // l'utilisateur doit utiliser la corbeille.
-            regle_un = quantiteInitiale > 1;
+            regleUne = quantiteInitiale > 1;
         } else {
             // Incrément
             if (modif == 1) {
                 // On autorise l'incrément uniquement si le résultat <= 100
-                regle_deux = quantiteInitiale < 100;
+                regleDeux = quantiteInitiale < 100;
             } else {
                 // On attends pas d'autre valeur 
                 return false;
             }
         }
-        return (regle_un && regle_deux);
+        return (regleUne && regleDeux);
     }
 }
