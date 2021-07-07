@@ -117,56 +117,40 @@
 /* USR03 */
 
 /* USR05 */
-.user05 {
-	justify-content: center;
-	align-items: center;
-}
-
 .user05-body-general {
 	width: 100%;
 }
 
-.user05-title {
-	text-align: center;
-	margin-right: 6.25em;
+.user05-titre {
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.user05-form {
-	align-items: center;
-	justify-content: center;
+.user05-leftSide {
+	width: 65%;
 }
 
-.user05-lib-champ-taille {
-	width: 20em;
+.user05-inputs {
+	width: 55%;
+	margin-bottom: 2em;
 }
 
-.user05-lib-champ {
-	justify-content: space-between;
-	margin-bottom: 3.125em;
+.user05-textarea {
+	resize: vertical;
+	height: 5em;
 }
 
 .user05-buttons {
-	align-items: center;
-	margin: auto;
-	width: 80%;
+	width: 56%;
+	float: right;
 }
 
 .user05-creer {
-	background-color: #008000;
-	margin-left: 4.375em;
-	margin-right: 20%;
-	Color: #FFFFFF;
+	color: #FFFFFF;
 }
 
 .user05-reset {
-	background-color: #FF0000;
-	Color: #FFFFFF;
-}
-
-.user05-rightSide {
-	width: 2%;
-	margin-bottom: 12.5em;
-	margin-left: 12.5em;
+	color: #FFFFFF;
 }
 
 /* USR07 */
