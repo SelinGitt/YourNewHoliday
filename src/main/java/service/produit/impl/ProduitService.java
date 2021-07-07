@@ -49,6 +49,11 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
+    }
+
+    @Override
     public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
         final var triString = String.valueOf(tri);
         logger.debug("{} a été appelé avec {} et {} comme paramètres", ProduitDto.class.getSimpleName(), searchTerm, triString);
@@ -73,8 +78,16 @@ public class ProduitService implements IProduitService {
     }
 
     private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
 
+    }
+
+    @Override
+    public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
+        if (pSearchTerm.isEmpty()) {
+            return ProduitMapper.mapToListDto(produitDao.findAll());
+        }
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
     }
 
     @Override

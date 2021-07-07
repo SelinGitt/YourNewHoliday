@@ -32,14 +32,6 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     ProduitDo findProduitEnVente(final Integer idProduit);
 
     /**
-     * Permet de récupérer la liste des produits recherchés
-     * 
-     * @param  searchTerm terme recherché
-     * @return            liste des produits trouvés
-     */
-    List<ProduitDo> rechercherProduits(final String searchTerm);
-
-    /**
      * Permet de trier la liste en fonction de son type de recherche
      *
      * @param  typeTri le type de tri
@@ -56,4 +48,19 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      */
     List<ProduitDo> trierFiltreListe(final TypeTriAlphanumerique typeTri, final String searchTerm);
 
+    /**
+     * Permet de récupérer la liste des produits recherchés en vente
+     * 
+     * @param  searchTerm terme recherché
+     * @return            liste des produits trouvés en vente
+     */
+    List<ProduitDo> rechercherProduitsEnVente(final String searchTerm);
+
+    /**
+     * Permet de récupérer la liste des produits recherchés en vente ou non
+     *
+     * @param  searchTerm terme recherché
+     * @return            liste de tous les produits trouvés en vente ou non
+     */
+    List<ProduitDo> rechercherAllProduits(final String searchTerm);
 }
