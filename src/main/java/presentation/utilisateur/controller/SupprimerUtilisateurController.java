@@ -47,7 +47,6 @@ public class SupprimerUtilisateurController {
         //appel de la méthode de suppression et stockage du retour dans variable result
         final var result = iUtilisateurService.deleteUtilisateurByRef(id, ref, origin);
 
-        System.out.println(result.isSucceeded() + " is same : " + result.isSameUserFromList());
         final var modelAndView = new ModelAndView();
 
         //Si l'admin se supprime depuis la liste et que ça fonctionne
