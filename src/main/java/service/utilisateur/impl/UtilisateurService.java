@@ -87,7 +87,7 @@ public class UtilisateurService implements IUtilisateurService {
             final String origin) {
 
         //Instanciation du builder, qui va être renseigné au fil de l'eau avant de construire l'objet retour en retour de méthode
-        final var builder = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder();
+        final var builder = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder().withIsSameUserFromList(false);
 
         //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
         final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
@@ -95,8 +95,6 @@ public class UtilisateurService implements IUtilisateurService {
         //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
         if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
             builder.withIsSameUserFromList(true);
-        } else {
-            builder.withIsSameUserFromList(false);
         }
 
         //On teste si l'utilisateur est le dernier admin
