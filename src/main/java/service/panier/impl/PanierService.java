@@ -115,8 +115,8 @@ public class PanierService implements IPanierService {
      * @return                  true si c'est ok, false sinon.
      */
     private boolean modificationAutorisee(final int modif, final int quantiteInitiale) {
-        boolean regleUne = true;
-        boolean regleDeux = true;
+        var regleUne = true;
+        var regleDeux = true;
         // Décrément
         if (modif == -1) {
             // On autorise le décrément uniquement si le résultat > 0
