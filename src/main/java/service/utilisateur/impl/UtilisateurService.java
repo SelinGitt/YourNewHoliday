@@ -83,7 +83,7 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idCurrentUtilisateur, final String referenceUtilisateur,
+    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idUtilisateurConnecte, final String referenceUtilisateur,
             final String origin) {
         var isSucceeded = false;
         var isSameUserFromList = false;
@@ -92,7 +92,7 @@ public class UtilisateurService implements IUtilisateurService {
         final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
 
         //Si la page d'origine est la liste USR_01 et que l'admin se supprime lui-même
-        if ("2".equals(origin) && idCurrentUtilisateur.equals(idUtilisateurASupprimer)) {
+        if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
             isSameUserFromList = true;
         }
 

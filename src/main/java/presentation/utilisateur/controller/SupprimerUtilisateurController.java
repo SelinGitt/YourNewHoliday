@@ -42,43 +42,41 @@ public class SupprimerUtilisateurController {
             final @RequestParam(name = "ref") String ref, final RedirectAttributes redirectAttributes) {
 
         final var utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-        final var id = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
+        final var idUtilisateurConnecte = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
 
         //appel de la méthode de suppression et stockage du retour dans variable result
-        final var result = iUtilisateurService.deleteUtilisateurByRef(id, ref, origin);
-
+        final var result = iUtilisateurService.deleteUtilisateurByRef(idUtilisateurConnecte, ref, origin);
+        //Création du ModelAndView
         final var modelAndView = new ModelAndView();
 
-        //Si l'admin se supprime depuis la liste et que ça fonctionne
-        if (result.isSameUserFromList() && result.isSucceeded()) {
-            modelAndView.setViewName("redirect:/deconnecter.do");
-            modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
+        //Si la suppression est un échec
+        if (!result.isSucceeded()) {
+            //Si depuis la vue Consulter son profil
+            if ("1".equals(origin)) {
+                modelAndView.setViewName("forward:/consulterUtilisateur.do");
+                modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
+                return modelAndView;
+            }
+            //Si depuis la vue liste des utilisateurs
+            modelAndView.setViewName("forward:/listerUtilisateur.do");
+            modelAndView.getModelMap().addAttribute("error", "usr01.erreur.last_admin");
             return modelAndView;
         }
-
-        //Si la suppression de fait depuis -> consulter son profil /USR00
-        if ("1".equals(origin)) {
-            if (result.isSucceeded()) {
+        //Si la suppression est un succès
+        if (result.isSucceeded()) {
+            //Si depuis la vue Consulter son profil, ou si l'admin se supprime lui-même depuis la liste des utilisateurs
+            if ("1".equals(origin) || result.isSameUserFromList()) {
                 modelAndView.setViewName("redirect:/deconnecter.do");
                 modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
                 return modelAndView;
             }
-            modelAndView.setViewName("forward:/consulterUtilisateur.do");
-            modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
+            //Si depuis la vue liste des utilisateurs
+            modelAndView.setViewName("forward:/listerUtilisateur.do");
+            modelAndView.getModelMap().addAttribute("deletionSuccess", "usr01.success.deleted");
             return modelAndView;
-        } else
-            if ("2".equals(origin)) {
-                //Si la suppression de fait depuis -> liste des utilisateurs /USR01
-                modelAndView.setViewName("forward:/listerUtilisateur.do");
-                if (result.isSucceeded()) {
-                    modelAndView.getModelMap().addAttribute("deletionSuccess", "usr01.success.deleted");
-                    return modelAndView;
-                }
-                modelAndView.getModelMap().addAttribute("error", "usr01.erreur.last_admin");
-                return modelAndView;
-            } else {
-                modelAndView.setViewName("/404.do");
-                return modelAndView;
-            }
+        }
+        //Si une erreur inconnue est survenue -> 404
+        modelAndView.setViewName("/404.do");
+        return modelAndView;
     }
 }

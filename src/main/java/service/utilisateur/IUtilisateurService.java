@@ -48,13 +48,14 @@ public interface IUtilisateurService {
     /**
      * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant sa référence
      * 
-     * @param  idCurrentUtilisateur : id de l'utilisateur en session
-     * @param  referenceUtilisateur : reference de l'utilisateur à supprimer
-     * @param  origin               : page d'origine
-     * @return                      un objet retour avec deux booléens (isLastAdmin pour vérifier si la suppression supprime
-     *                              le dernier admin, et isSameUserFromList pour voir si l'admin se supprime depuis USR_01
+     * @param  idUtilisateurConnecte : id de l'utilisateur en session
+     * @param  referenceUtilisateur  : reference de l'utilisateur à supprimer
+     * @param  origin                : page d'origine
+     * @return                       un objet retour avec deux booléens (isLastAdmin pour vérifier si la suppression
+     *                               supprime le dernier admin, et isSameUserFromList pour voir si l'admin se supprime
+     *                               depuis USR_01
      */
-    UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idCurrentUtilisateur, final String referenceUtilisateur,
+    UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idUtilisateurConnecte, final String referenceUtilisateur,
             final String origin);
 
     /**
