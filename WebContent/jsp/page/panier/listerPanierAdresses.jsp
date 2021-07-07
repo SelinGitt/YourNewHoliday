@@ -28,7 +28,6 @@
                         class="panier-formulaire display-flex flex-wrap-wrap justify-content-center
                          flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="nom" />
                         </div>
@@ -58,7 +57,6 @@
                         class="panier-formulaire display-flex 
                     flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <%-- mettre les path="exemple" par la suite --%>
                             <label for="nom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="nom" />
                         </div>
