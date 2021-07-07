@@ -98,13 +98,12 @@ public class PanierService implements IPanierService {
     public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
         // On récupère le produit
         final ProduitDto produit = findProduitMap(panier, idProduit);
+
         // On récupère la quantité avant modification
         final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
 
         if (isModificationAutorisee(modif, quantiteInitiale)) {
             updatePanier(panier, idProduit, modif);
-        } else {
-            // TODO : gestion affichage message produit plus disponible à la vente.
         }
     }
 
