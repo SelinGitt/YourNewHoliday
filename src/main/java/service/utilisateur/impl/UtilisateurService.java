@@ -83,24 +83,26 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer id, final String referenceUtilisateur, final String origin) {
+    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idCurrentUtilisateur, final String referenceUtilisateur,
+            final String origin) {
         boolean isSucceeded = false;
         boolean isSameUserFromList = false;
 
         //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
-        final var idUtilisateur = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
+        final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
 
         //Si la page d'origine est la liste USR_01 et que l'admin se supprime lui-même
-        if ("2".equals(origin) && id == idUtilisateur) {
+        if ("2".equals(origin) && idCurrentUtilisateur == idUtilisateurASupprimer) {
             isSameUserFromList = true;
         }
 
         //S'il reste au moins un admin après la suppression demandée
-        if (!iUtilisateurDao.isLastAdmin(idUtilisateur)) {
+        if (!iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
             //On détache les commandes de l'utilisateur
-            iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
+            iCommandeDao.updateCommandeDoUserDeletion(idUtilisateurASupprimer);
             //On le supprime
-            iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
+            iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
+            isSucceeded = true;
         }
 
         final UtilisateurServiceReturn utilisateurServiceReturn = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder()

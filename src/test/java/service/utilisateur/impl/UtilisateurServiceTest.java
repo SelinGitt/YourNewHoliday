@@ -282,21 +282,21 @@ class UtilisateurServiceTest {
         Assertions.assertEquals("email_do@test.fr", utilisateurDto.getEmail());
     }
 
-    //    /**
-    //     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
-    //     */
-    //    @Test
-    //    void testDeleteUtilisateurByRefAdmin() {
-    //        //FIXME COMMENTAIRES 3 méthodes de test
-    //        final UtilisateurDo utilisateurDo = new UtilisateurDo();
-    //        utilisateurDo.setIdUtilisateur(7);
-    //
-    //        Mockito.when(this.dao.rechercheUtilisateurParRef("Administrateur2")).thenReturn(utilisateurDo);
-    //        //Au moins un admin restant si suppression de cet admin -> false 
-    //        Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
-    //
-    //        Assertions.assertTrue(this.utilisateurService.deleteUtilisateurByRef("Administrateur2"));
-    //    }
+    //        /**
+    //         * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
+    //         */
+    //        @Test
+    //        void testDeleteUtilisateurByRefAdmin() {
+    //            final UtilisateurDo utilisateurDo = new UtilisateurDo();
+    //            utilisateurDo.setIdUtilisateur(7);
+    //    
+    //            Mockito.when(this.dao.findByReference("Administrateur2")).thenReturn(utilisateurDo);
+    //            //Au moins un admin restant si suppression de cet admin -> false 
+    //            Mockito.when(this.dao.isLastAdmin(utilisateurDo.getIdUtilisateur())).thenReturn(false);
+    //    
+    //            UtilisateurServiceReturn 
+    //            Assertions.assertTrue(this.utilisateurService.deleteUtilisateurByRef("Administrateur2"));
+    //        }
 
     //    /**
     //     * Test pour {@link service.utilisateur.impl.UtilisateurService#deleteUtilisateurById(Integer, Integer)}
