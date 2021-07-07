@@ -10,7 +10,7 @@
     <%-- lien de redirection vers la page mentions légales vide pour l'instant 
          "mentions_legales.do" quand le controlleur sera créé --%>
     <div>
-        <a href=""> <span class="text-responsive"><spring:message code="glb.footer.lien.mlg" /></span>
+        <a href="mentionsLegales.do"> <span class="text-responsive"><spring:message code="glb.footer.lien.mlg" /></span>
         </a>
     </div>
     <%-- langues --%>

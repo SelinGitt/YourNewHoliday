@@ -89,6 +89,19 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
     }
 
     @Override
+    public UtilisateurDo findByReference(final String reference) {
+        final TypedQuery<UtilisateurDo> query = entityManager
+                .createQuery("select util from UtilisateurDo util where util.reference = :reference", UtilisateurDo.class);
+        query.setParameter("reference", reference);
+        try {
+            return query.getSingleResult();
+        } catch (final NoResultException exception) {
+            logger.info("Utilisateur avec la reference {} non trouvé en base de données.", reference, exception);
+            return null;
+        }
+    }
+
+    @Override
     public boolean isLastAdmin(final Integer idRole) {
         final var result = (1 == rechercheNombreParRole(3) && (3 == idRole));
         logger.debug("Cet utilisateur est le dernier administrateur : {}", result);

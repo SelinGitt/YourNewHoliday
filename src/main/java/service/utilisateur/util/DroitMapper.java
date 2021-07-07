@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.utilisateur.entity.DroitDo;
+import persistance.utilisateur.entity.PossedeDo;
 import presentation.utilisateur.dto.DroitDto;
 
 /**
@@ -34,8 +35,7 @@ public class DroitMapper {
         final var droitDto = new DroitDto();
 
         droitDto.setUrl(droitDo.getUrl());
-        droitDto.setPossede(PossedeMapper.mapperToListDto(droitDo.getPossede()));
-
+        droitDto.setRole(RoleMapper.mapperToListDto(droitDo.getPossede().stream().map(PossedeDo::getRole).collect(Collectors.toList())));
         return droitDto;
     }
 

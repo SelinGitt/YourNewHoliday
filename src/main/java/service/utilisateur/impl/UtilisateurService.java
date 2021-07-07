@@ -47,7 +47,7 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
         final var roleDto = new RoleDto();
-        roleDto.setIdRole(1);
+        roleDto.setIdRole(utilisateurDto.getRole().getIdRole());
 
         utilisateurDto.setRole(roleDto);
 
@@ -110,6 +110,18 @@ public class UtilisateurService implements IUtilisateurService {
             return this.rechercherUtilisateurNom(nom);
         }
         return this.rechercherUtilisateurNomRole(nom, idRole);
+    }
+
+    @Override
+    public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
+    }
+
+    @Override
+    public UtilisateurDto rechercherReference(final String reference) {
+        final var utilisateurDo = iUtilisateurDao.findByReference(reference);
+
+        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
     }
 
     /**
