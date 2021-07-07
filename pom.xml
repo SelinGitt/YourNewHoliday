@@ -60,6 +60,7 @@
 				</sonar.coverage.exclusions>
 				<sonar.exclusions>
 					**/css/**,
+					**/js/**,
 					**/web.xml
 				</sonar.exclusions>
 				<!-- Exclusions Duplicated Lines -->
