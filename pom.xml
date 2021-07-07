@@ -59,7 +59,7 @@
 					**/WebContent/**/*.*
 				</sonar.coverage.exclusions>
 				<sonar.exclusions>
-					**/css/**,					
+					**/css/**,
 					**/web.xml
 				</sonar.exclusions>
 				<!-- Exclusions Duplicated Lines -->
