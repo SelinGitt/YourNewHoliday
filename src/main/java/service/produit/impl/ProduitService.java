@@ -53,7 +53,6 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-
     public ProduitDto editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverParReference(produitDto.getReference());
         this.logger.debug("Produit Service {} editerProduit, reference : {}", produitFound, produitDto.getReference());
