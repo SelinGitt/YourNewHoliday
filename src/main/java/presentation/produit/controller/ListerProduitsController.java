@@ -3,6 +3,8 @@
  */
 package presentation.produit.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.produit.dto.ProduitDto;
 import service.produit.IProduitService;
 
 /**
@@ -38,7 +41,7 @@ public class ListerProduitsController {
         modelAndView.setViewName("listerProduits");
         //Si un message est présent, on le met en attribut du modelandview
         if (!code.isBlank()) {
-            modelAndView.getModelMap().addAttribute("deletionSuccess", code);
+            modelAndView.getModelMap().addAttribute("anySuccess", code);
         }
         modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         return modelAndView;
@@ -57,8 +60,13 @@ public class ListerProduitsController {
         if (searchInput.isEmpty()) {
             modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         } else {
-            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.rechercherProduits(searchInput));
+            final List<ProduitDto> rechercherProduits = iProduitService.rechercherProduits(searchInput);
+            if (rechercherProduits.isEmpty()) {
+                modelAndView.getModelMap().addAttribute("anyError", "pdt00.notexist");
+            }
+            modelAndView.getModelMap().addAttribute("listeProduitDto", rechercherProduits);
         }
+
         return modelAndView;
     }
 }

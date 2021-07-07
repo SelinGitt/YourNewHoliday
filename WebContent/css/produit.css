@@ -32,6 +32,21 @@ td.pdt00Description {
 	max-width: 75%
 }
 
+.pdt00-error {
+	Color: #FF0000;
+}
+
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.pdt00-errorblock {
+	background-color: #00f7FF;
+	color: #ffffff;
+	border: 0.125em solid #000000;
+}
+.pdt00-successblock{
+	background-color: #009e10;
+	color: #ffffff;
+	border: 0.125em solid #000000;
+}
 /* PDT01 */
 .pdtListeProduit {
 	border-collapse: collapse;

@@ -3,11 +3,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
-    <div>
-        <c:if test="${not empty deletionSuccess}">
-            <span><spring:message code="${deletionSuccess}" /></span>
-        </c:if>
-    </div>
+    <c:if test="${not empty anyError}">
+        <div class="pdt00-errorblock">
+            <span><spring:message code="${anyError}" /></span>
+        </div>
+    </c:if>
+    <c:if test="${not empty anySuccess}">
+        <div class="pdt00-successblock">
+            <span><spring:message code="${anySuccess}" /></span>
+        </div>
+    </c:if>
 
     <div>
         <h1 class="title title-responsive text-align-center">
