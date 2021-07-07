@@ -94,7 +94,7 @@ public class UtilisateurService implements IUtilisateurService {
 
         //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
         if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
-            builder.withIsSucceeded(true);
+            builder.withIsSameUserFromList(true);
         } else {
             builder.withIsSameUserFromList(false);
         }
