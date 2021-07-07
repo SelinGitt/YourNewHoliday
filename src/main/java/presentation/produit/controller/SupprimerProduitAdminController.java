@@ -34,7 +34,7 @@ public class SupprimerProduitAdminController {
     public ModelAndView supprimerProduit(final @RequestParam(value = "idProduit") Integer idProduit) {
         final var modelAndView = new ModelAndView();
         final boolean result = iProduitService.deleteProduitById(idProduit);
-        if (result == true) {
+        if (result) {
             modelAndView.setViewName("redirect:/listerProduitsAdmin.do");
             return modelAndView;
         }
