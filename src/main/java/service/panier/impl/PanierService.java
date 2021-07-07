@@ -127,8 +127,8 @@ public class PanierService implements IPanierService {
         // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
         // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
         final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage());
-        // s'il y a 5 références ou plus dans le panier et que son prix total est supérieur ou égal
-        // à 2000€, alors on applique une remise de 5%
+        // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
+        // au minimum imposé, alors on applique la remise fixé en constante.
         if (panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && prixTotal >= PRIX_TOTAL_MINIMUM_POUR_REMISE) {
             panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotal * POURCENTAGE_REMISE / 100));
             // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule

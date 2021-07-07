@@ -9,7 +9,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Classe unitaire pour factoriser l'affichage des dÃ©cimaux
+ * Classe unitaire pour factoriser l'affichage des décimaux
  *
  * @author Alexandre
  */
@@ -91,7 +91,7 @@ public class DecimalFormatUtils {
     /**
      * Permet de savoir si le prix contient une virgurle
      * 
-     * @param  prixAVerifier le String Ã  vÃ©rifier
+     * @param  prixAVerifier le String à  vérifier
      * @return               true si le prix contient une virgule <br/>
      *                       false sinon
      */
