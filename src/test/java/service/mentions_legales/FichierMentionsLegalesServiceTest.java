@@ -47,7 +47,7 @@ class FichierMentionsLegalesServiceTest {
         assertNotNull(fichierMentionsLegalesService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierMentionsLegalesService.trouverFichierCGV());
+                fichierMentionsLegalesService.trouverFichierCGV(null));
     }
 
     /**
@@ -61,7 +61,7 @@ class FichierMentionsLegalesServiceTest {
         assertNotNull(fichierMentionsLegalesService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierMentionsLegalesService.trouverFichierCGU());
+                fichierMentionsLegalesService.trouverFichierCGU(null));
     }
 
 }

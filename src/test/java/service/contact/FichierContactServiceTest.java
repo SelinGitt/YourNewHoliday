@@ -49,7 +49,7 @@ class FichierContactServiceTest {
         assertNotNull(fichierContactService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierContactService.trouverFichierContact());
+                fichierContactService.trouverFichierContact(null));
 
     }
 }
