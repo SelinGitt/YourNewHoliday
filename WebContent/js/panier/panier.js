@@ -10,4 +10,3 @@ function informationsLivraison() {
 function informationsFacturation() {
 	document.getElementById("FormulaireFacturation").reset();
 }
-
