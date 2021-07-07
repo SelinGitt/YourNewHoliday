@@ -19,6 +19,44 @@ public class CommandeDto implements Serializable {
     private String                   date;
     private String                   quantiteTotale;
     private List<CommandeProduitDto> listCommandeProduitDto;
+    private CommandeAdresseDto       adresseLivraison;
+    private CommandeAdresseDto       adresseFacturation;
+
+    /**
+     * Getter for adresseLivraison
+     *
+     * @return the adresseLivraison
+     */
+    public CommandeAdresseDto getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    /**
+     * Setter for adresseLivraison
+     *
+     * @param adresseLivraison the adresseLivraison to set
+     */
+    public void setAdresseLivraison(final CommandeAdresseDto adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    /**
+     * Getter for adresseFacturation
+     *
+     * @return the adresseFacturation
+     */
+    public CommandeAdresseDto getAdresseFacturation() {
+        return adresseFacturation;
+    }
+
+    /**
+     * Setter for adresseFacturation
+     *
+     * @param adresseFacturation the adresseFacturation to set
+     */
+    public void setAdresseFacturation(final CommandeAdresseDto adresseFacturation) {
+        this.adresseFacturation = adresseFacturation;
+    }
 
     /**
      * Getter for id
