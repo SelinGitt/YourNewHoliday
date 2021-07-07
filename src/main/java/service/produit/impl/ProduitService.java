@@ -43,13 +43,21 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        return ProduitMapper.mapToListDto(produitDao.rechercherProduits(pSearchTerm));
+    public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
     }
 
     @Override
     public List<ProduitDto> listerAllProduit() {
         return ProduitMapper.mapToListDto(produitDao.findAll());
+    }
+
+    @Override
+    public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
+        if (pSearchTerm.isEmpty()) {
+            return ProduitMapper.mapToListDto(produitDao.findAll());
+        }
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
     }
 
     @Override

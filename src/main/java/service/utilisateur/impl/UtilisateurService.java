@@ -47,7 +47,7 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
         final var roleDto = new RoleDto();
-        roleDto.setIdRole(1);
+        roleDto.setIdRole(utilisateurDto.getRole().getIdRole());
 
         utilisateurDto.setRole(roleDto);
 
