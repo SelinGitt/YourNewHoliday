@@ -5,7 +5,8 @@
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
         <div class="user05-form display-flex">
-            <form:form methode="POST" modelAttribute="utilisateurDto" action="creerUtilsateur.do">
+            <form:form methode="POST" modelAttribute="utilisateurDto" enctype="multipart/form-data"
+                action="creerUtilsateur.do">
 
                 <div class="user05-title">
                     <h1 class="text-align-center">
@@ -71,12 +72,15 @@
                         <spring:message code="usr05.creer.reset" />
                     </button>
                 </div>
+
+
+                <div class="user05-rightSide">
+                    <img src="#" width="25%" height="25%" hidden="true" /> <br /> <input type="file"
+                        name="fichier" accept=".jpeg, .jpg, .png, .bmp" onchange="readURL(this)"
+                        value="<spring:message code="usr05.parcourir" />" />
+                </div>
             </form:form>
-
-            <div class="user05-rightSide">
-                <p>! Avatar and Co</p>
-            </div>
-
         </div>
     </div>
+
 </div>
