@@ -49,19 +49,6 @@ public class SupprimerUtilisateurController {
         //Création du ModelAndView
         final var modelAndView = new ModelAndView();
 
-        //Si la suppression est un échec
-        if (!result.isSucceeded()) {
-            //Si depuis la vue Consulter son profil
-            if ("1".equals(origin)) {
-                modelAndView.setViewName("forward:/consulterUtilisateur.do");
-                modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
-                return modelAndView;
-            }
-            //Si depuis la vue liste des utilisateurs
-            modelAndView.setViewName("forward:/listerUtilisateur.do");
-            modelAndView.getModelMap().addAttribute("error", "usr01.erreur.last_admin");
-            return modelAndView;
-        }
         //Si la suppression est un succès
         if (result.isSucceeded()) {
             //Si depuis la vue Consulter son profil, ou si l'admin se supprime lui-même depuis la liste des utilisateurs
@@ -75,8 +62,16 @@ public class SupprimerUtilisateurController {
             modelAndView.getModelMap().addAttribute("deletionSuccess", "usr01.success.deleted");
             return modelAndView;
         }
-        //Si une erreur inconnue est survenue -> 404
-        modelAndView.setViewName("/404.do");
+        //La suppression est un échec
+        //Si depuis la vue Consulter son profil
+        if ("1".equals(origin)) {
+            modelAndView.setViewName("forward:/consulterUtilisateur.do");
+            modelAndView.getModelMap().addAttribute("error", "usr00.erreur.last_admin");
+            return modelAndView;
+        }
+        //Si depuis la vue liste des utilisateurs
+        modelAndView.setViewName("forward:/listerUtilisateur.do");
+        modelAndView.getModelMap().addAttribute("error", "usr01.erreur.last_admin");
         return modelAndView;
     }
 }
