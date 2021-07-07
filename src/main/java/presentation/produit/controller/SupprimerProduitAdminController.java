@@ -27,7 +27,7 @@ public class SupprimerProduitAdminController {
     /**
      * Permet de traiter une requête de type GET
      * 
-     * @param  idProduit à supprimer
+     * @param  idProduit du produit à supprimer
      * @return           le model et la vue associée
      */
     @GetMapping
