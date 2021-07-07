@@ -54,7 +54,8 @@
                         <td class="text-responsive">${produitDto.reference}</td>
                     </tr>
                     <tr>
-                        <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
+                        <td class="pdt00Description display-flex text-responsive">
+                        ${produitDto.description}</td>
                     </tr>
                 </table>
             </c:forEach>
