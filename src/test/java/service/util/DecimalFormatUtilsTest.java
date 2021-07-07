@@ -105,7 +105,7 @@ class DecimalFormatUtilsTest {
      */
     @Test
     void testDoubleFormatUtil() {
-        final String nombreString = "123\u00A0456\u00A0789,00";
+        final String nombreString = "1\u202F23\u202F4\u00A056\u00A0789,00";
         assertEquals(123456789.00, DecimalFormatUtils.doubleFormatUtil(nombreString));
     }
 }
