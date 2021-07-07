@@ -104,12 +104,8 @@ public class UtilisateurService implements IUtilisateurService {
             iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
             isSucceeded = true;
         }
-
-        //Construction de l'objet retour avec les deux booleéns
-        final var utilisateurServiceReturn = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder().withIsSucceeded(isSucceeded)
+        return new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder().withIsSucceeded(isSucceeded)
                 .withIsSameUserFromList(isSameUserFromList).build();
-
-        return utilisateurServiceReturn;
     }
 
     @Override
