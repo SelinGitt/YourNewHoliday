@@ -96,10 +96,10 @@ public class UtilisateurService implements IUtilisateurService {
         //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
         if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
             //            builder.withIsSucceeded(true);
-            serviceReturn.setSucceeded(true);
+            serviceReturn.setSameUserFromList(true);
         } else {
             //            builder.withIsSameUserFromList(false);
-            serviceReturn.setSucceeded(false);
+            serviceReturn.setSameUserFromList(false);
         }
 
         //On teste si l'utilisateur est le dernier admin
