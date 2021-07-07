@@ -40,7 +40,6 @@ public class ListerProduitsController {
     public ModelAndView lister(final @ModelAttribute("deletionSuccess") String code) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
-
         //Si un message est présent, on le met en attribut du modelandview
         if (!code.isBlank()) {
             modelAndView.getModelMap().addAttribute("deletionSuccess", code);
