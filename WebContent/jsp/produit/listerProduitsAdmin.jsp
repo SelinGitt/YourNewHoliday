@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <div class="conteneur-ascenseur">
     <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
+    <div class="searchBar display-flex pdt01Search align-content-flex-end ">
+        <form:form action="listerProduitsAdmin.do" method="POST">
+            <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
+                placeholder="<spring:message code='pdt01.searchbar'/>">
+            <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
+        </form:form>
+    </div>
+    <br>
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
         <thead>
             <tr>
