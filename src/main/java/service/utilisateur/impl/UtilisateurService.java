@@ -93,7 +93,7 @@ public class UtilisateurService implements IUtilisateurService {
         final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
 
         //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
-        if ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer)) {
+        if (isSameUserFromList(origin, idUtilisateurConnecte, idUtilisateurASupprimer)) {
             builder.withIsSameUserFromList(true);
         } else {
             builder.withIsSameUserFromList(false);
@@ -111,6 +111,10 @@ public class UtilisateurService implements IUtilisateurService {
             builder.withIsSucceeded(true);
         }
         return builder.build();
+    }
+
+    private boolean isSameUserFromList(final String origin, final Integer idUtilisateurConnecte, final Integer idUtilisateurASupprimer) {
+        return ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer));
     }
 
     @Override
