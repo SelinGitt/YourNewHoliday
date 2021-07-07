@@ -9,7 +9,7 @@ import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 /**
- * Classe unitaire pour factoriser l'affichage des dÃ©cimaux
+ * Classe unitaire pour factoriser l'affichage des décimaux
  *
  * @author Alexandre
  */
@@ -91,7 +91,7 @@ public class DecimalFormatUtils {
     /**
      * Permet de savoir si le prix contient une virgurle
      * 
-     * @param  prixAVerifier le String Ã  vÃ©rifier
+     * @param  prixAVerifier le String à  vérifier
      * @return               true si le prix contient une virgule <br/>
      *                       false sinon
      */
@@ -100,11 +100,11 @@ public class DecimalFormatUtils {
     }
 
     /**
-     * Permet de transformer un nombre contenu dans un string ayant Ã©tÃ© formatÃ© <br />
-     * par la mÃ©thode formatUtil(Big)Decimal en Double exploitable
+     * Permet de transformer un nombre contenu dans un string ayant été formaté <br />
+     * par la méthode formatUtil(Big)Decimal en Double exploitable
      *
-     * @param  nombreString : le nombre Ã  transformer
-     * @return              : le nombre transformÃ© en Double
+     * @param  nombreString : le nombre à  transformer
+     * @return              : le nombre transformé en Double
      */
     public static Double doubleFormatUtil(final String nombreString) {
         return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
