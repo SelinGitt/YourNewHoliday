@@ -4,12 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
     <c:if test="${not empty deletionSuccess}">
-        <span class="errorblock"><spring:message code="${deletionSuccess}" /></span>
+        <span><spring:message code="${deletionSuccess}" /></span>
     </c:if>
 </div>
 <div>
     <c:if test="${not empty error}">
-        <span class="errorblock"><spring:message code="${error}" /></span>
+        <span><spring:message code="${error}" /></span>
     </c:if>
 </div>
 <h1 id="titreGestion" class="text-align-center">
