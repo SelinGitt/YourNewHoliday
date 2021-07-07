@@ -4,11 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="user07-body-general">
 
-    <div>
-        <c:if test="${not empty error}">
-            <span class="user07-errorblock display-flex"><spring:message code="${error}" /></span>
-        </c:if>
-    </div>
+    <c:if test="${not empty error}">
+        <div class="user07-errorblock display-flex">
+            <span class="fa fa-exclamation"></span> <span class="user07-error-message"><spring:message
+                    code="${error}" /></span>
+        </div>
+    </c:if>
 
     <div class="user07-form display-flex">
         <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do" autocomplete="one-time-code">

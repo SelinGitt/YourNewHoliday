@@ -10,6 +10,20 @@
 .background-color-rouge {
 	background-color: #F00000;
 }
+/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
+.user07-errorblock {
+	background-color: #ff7f00;
+	border: 0.125em solid #000000;
+	color: #FFFFFF;
+	margin-right: 1%;
+	margin-left: 1%;
+	padding-left: 1em;
+	height: 3vh;
+}
+
+.user07-error-message {
+	margin-left: 0.625em;
+}
 
 /* titre */
 h1 {
