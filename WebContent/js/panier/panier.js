@@ -11,22 +11,3 @@ function informationsFacturation() {
 	document.getElementById("FormulaireFacturation").reset();
 }
 
-// du contenu pour tester le code dupliqué
-function contenutest() {
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-
-	console.log("plein de truc très interessant"); 
-	console.log("plein de truc très interessant");
-	
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-	console.log("plein de truc très interessant");
-
-}
