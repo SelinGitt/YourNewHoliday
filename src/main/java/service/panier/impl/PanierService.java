@@ -61,7 +61,8 @@ public class PanierService implements IPanierService {
             // on modifie la ligne de commande
             ligneCommande.setQuantite(quantiteProduit);
             // On récupère le prix unitaire
-            final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+            final String prixString = produitAjout.getPrixUnitaire();
+            final var prixUnitaire = DecimalFormatUtils.doubleFormatUtil(prixString);
             // On calcule le prix
             final Double prix = prixUnitaire * quantiteProduit;
             // on ajoute le prix formaté à la ligne de commande
@@ -91,5 +92,47 @@ public class PanierService implements IPanierService {
     public void viderPanier(final PanierDto panier) {
         panier.getMapPanier().clear();
         panier.setNombreDeReferences(0);
+    }
+
+    @Override
+    public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
+        // On récupère le produit
+        final ProduitDto produit = findProduitMap(panier, idProduit);
+
+        // On récupère la quantité avant modification
+        final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
+
+        if (isModificationAutorisee(modif, quantiteInitiale)) {
+            updatePanier(panier, idProduit, modif);
+        }
+    }
+
+    /**
+     * <pre>
+     * Permets de vérifier si les conditions necessaires à la modification
+     * de la quantité d'une produit du panier sont réunies :
+     * - le résultat après décrément doit être > 0
+     * - le résultat après incrément doit être < = 100
+     * </pre>
+     * 
+     * @param  modif            valeur d'incrément
+     * @param  quantiteInitiale du produit dans le panier
+     * @return                  true si c'est ok, false sinon.
+     */
+    private boolean isModificationAutorisee(final int modif, final int quantiteInitiale) {
+        // décrément
+        if (modif == -1) {
+            // On autorise le décrément uniquement si le résultat > 0
+            // pour supprimer un produit du panier
+            // l'utilisateur doit utiliser la corbeille.
+            return quantiteInitiale > 1;
+        }
+        // incrément 
+        if (modif == 1) {
+            // On autorise l'incrément uniquement si le résultat <= 100
+            return quantiteInitiale < 100;
+        }
+        // On attends pas d'autre valeur 
+        return false;
     }
 }
