@@ -102,6 +102,5 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE reference LIKE :searchTerm", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
-
     }
 }

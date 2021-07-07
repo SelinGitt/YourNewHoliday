@@ -191,5 +191,4 @@ class ProduitServiceTest {
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
     }
-
 }

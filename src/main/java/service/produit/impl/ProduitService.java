@@ -77,7 +77,6 @@ public class ProduitService implements IProduitService {
             return ProduitMapper.mapToListDto(produitDao.findAll());
         }
         return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
-
     }
 
     @Override
