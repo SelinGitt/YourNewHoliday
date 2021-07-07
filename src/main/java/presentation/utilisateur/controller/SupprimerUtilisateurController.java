@@ -15,7 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.utilisateur.IUtilisateurService;
-import service.utilisateur.impl.UtilisateurServiceReturn;
 
 /**
  * Controller pour supprimer un Utilisateur
@@ -42,14 +41,14 @@ public class SupprimerUtilisateurController {
     public ModelAndView supprimerUtilisateur(final HttpSession session, final @RequestParam(name = "origin") String origin,
             final @RequestParam(name = "ref") String ref, final RedirectAttributes redirectAttributes) {
 
-        final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-        final Integer id = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
+        final var utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
+        final var id = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
 
         //appel de la méthode de suppression et stockage du retour dans variable result
-        final UtilisateurServiceReturn result = iUtilisateurService.deleteUtilisateurByRef(id, ref, origin);
+        final var result = iUtilisateurService.deleteUtilisateurByRef(id, ref, origin);
 
         System.out.println(result.isSucceeded() + " is same : " + result.isSameUserFromList());
-        final ModelAndView modelAndView = new ModelAndView();
+        final var modelAndView = new ModelAndView();
 
         //Si l'admin se supprime depuis la liste et que ça fonctionne
         if (result.isSameUserFromList() && result.isSucceeded()) {

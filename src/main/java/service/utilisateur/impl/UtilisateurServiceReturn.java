@@ -4,20 +4,32 @@
 package service.utilisateur.impl;
 
 /**
- * Objet Retour pour UtilisateurService
+ * Objet Retour pour UtilisateurService utilisé par la méthode de suppression
  *
- * @author Administrateur
+ * @author Damien D.
  */
 public class UtilisateurServiceReturn {
 
+    /**
+     * boolean pour savoir si la suppression a réussi
+     */
     private boolean isSucceeded;
 
+    /**
+     * boolean pour savoir si l'utilisateur essaie de se supprimer lui-même depuis la liste des utilisateurs (USR_01)
+     */
     private boolean isSameUserFromList;
 
+    /**
+     * Constructeur privé
+     */
     private UtilisateurServiceReturn() {
         // empty
     }
 
+    /**
+     * Builder de l'objet retour
+     */
     static class UtilisateurServiceReturnBuilder {
         private UtilisateurServiceReturn utilisateurServiceReturn = new UtilisateurServiceReturn();
 
