@@ -56,8 +56,7 @@
                                     <spring:message code="glb.devise" />
                                 </div></td>
 
-                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <%--  rendu d'affichage uniquement pour l'instant --%>                            
+                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>                                                     
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
 
                                     <%--  label --%>

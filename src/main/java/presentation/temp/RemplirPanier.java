@@ -81,7 +81,7 @@ public class RemplirPanier {
         ligneCommandeProduit4.setQuantite(3);
         ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(4 * 300.00, Locale.FRANCE));
 
-        // add products to PanierDto        
+        // add products to PanierDto     
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         panierDto.getMapPanier().put(produitDto2, ligneCommandeProduit2);
