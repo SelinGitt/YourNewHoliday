@@ -48,6 +48,28 @@ public interface IPanierService {
     void viderPanier(final PanierDto panier);
 
     /**
+     * Permet de calculer le prix total d'un panier
+     *
+     * @param  panier : le panier en session
+     * @return        : le prix total du panier
+     */
+    String calculerPrixTotal(final PanierDto panier);
+
+    /**
+     * Permet d'appliquer la remise si les conditions sont réunies
+     *
+     * @param panier : le panier en session
+     */
+    void appliquerRemise(final PanierDto panier);
+
+    /**
+     * Permet de mettre à jour le prix total, la remise et le prix après remise du panier
+     *
+     * @param panier : le panier en session
+     */
+    void actualiserPrix(final PanierDto panier);
+
+    /**
      * Permets de modifier la quantité d'un produit depuis le panier
      *
      * @param panier    du client en session

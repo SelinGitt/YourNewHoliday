@@ -91,7 +91,7 @@ public class DecimalFormatUtils {
     /**
      * Permet de savoir si le prix contient une virgurle
      * 
-     * @param  prixAVerifier le String à vérifier
+     * @param  prixAVerifier le String à  vérifier
      * @return               true si le prix contient une virgule <br/>
      *                       false sinon
      */
@@ -103,10 +103,10 @@ public class DecimalFormatUtils {
      * Permet de transformer un nombre contenu dans un string ayant été formaté <br />
      * par la méthode formatUtil(Big)Decimal en Double exploitable
      *
-     * @param  nombreString : le nombre à transformer
+     * @param  nombreString : le nombre à  transformer
      * @return              : le nombre transformé en Double
      */
     public static Double doubleFormatUtil(final String nombreString) {
-        return Double.valueOf(nombreString.replace("\u00A0", "").replace(",", "."));
+        return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
     }
 }
