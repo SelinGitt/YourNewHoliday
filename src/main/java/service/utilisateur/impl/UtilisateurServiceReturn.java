@@ -20,10 +20,17 @@ public class UtilisateurServiceReturn {
      */
     private boolean isSameUserFromList;
 
+    //    /**
+    //     * Constructeur privé
+    //     */
+    //    private UtilisateurServiceReturn() {
+    //        // empty
+    //    }
+
     /**
      * Constructeur privé
      */
-    private UtilisateurServiceReturn() {
+    public UtilisateurServiceReturn() {
         // empty
     }
 
