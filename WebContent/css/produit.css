@@ -38,7 +38,7 @@ td.pdt00Description {
 
 /* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
 .pdt00-errorblock {
-	background-color: #00f7FF;
+	background-color: #ff7f00;
 	color: #ffffff;
 	border: 0.125em solid #000000;
 }
