@@ -144,33 +144,43 @@ class UtilisateurDaoTest {
         Assertions.assertEquals(2, utilisateurDos.size());
     }
 
-    //    @Test
-    //    void testIsLastAdmin() {
-    //        //Il reste deux admins, on teste avec le paramètre 3(idRole pour admin)
-    //        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
-    //        //Suppression d'un des deux admins
-    //        iUtilisateurDao.deleteUtilisateurById(7);
-    //        //Il reste un seul admin, on teste avec le paramètre 3(idRole pour admin)
-    //        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(3));
-    //        //Il reste un seul admin, on teste avec le paramètre 1(idRole pour client)
-    //        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(1));
-    //    }
-
+    /**
+     * Test pour {@link persistance.communDao.impl.AbstractGenericDao#update(Object)}
+     */
     @Test
-    void testIsLastAdmin() {
-        //Il reste deux admins, on teste avec le paramètre 3(idRole pour admin)
-        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(6));
-        //Suppression d'un des deux admins
-        iUtilisateurDao.deleteUtilisateurById(7);
-        //Il reste un seul admin, on teste avec le paramètre 3(idRole pour admin)
-        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(6));
-        //Il reste un seul admin, on teste avec le paramètre 1(idRole pour client)
-        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
+    void testUpdate() {
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findById(1);
+
+        utilisateurDo.setEmail("email@update.fr");
+        utilisateurDo.setNom("Updated");
+
+        final UtilisateurDo utilisateurDoUpdated = iUtilisateurDao.update(utilisateurDo);
+
+        Assertions.assertNotNull(utilisateurDoUpdated);
+        Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDoUpdated.getEmail());
+        Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDoUpdated.getNom());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findByReference(String)}.
+     */
+    @Test
+    void testFindByReference() {
+        final UtilisateurDo utilisateurDo = iUtilisateurDao.findByReference("Administrateur1");
+        assertNotNull(utilisateurDo);
+        assertEquals("Marsial", utilisateurDo.getNom());
+        assertNull(iUtilisateurDao.findByReference("REFEXISTEPASPARCEQUEJELESAIS"));
     }
 
     @Test
-    void testRechercheUtilisateurParRef() {
-        assertEquals("Marsial", iUtilisateurDao.rechercheUtilisateurParRef("Administrateur1").getNom());
-        assertNull(iUtilisateurDao.rechercheUtilisateurParRef("InvalidReference"));
+    void testIsLastAdmin() {
+        //Il reste deux admins, on tente avec l'id d'un admin
+        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(6));
+        //Suppression d'un des deux admins
+        iUtilisateurDao.deleteUtilisateurById(7);
+        //Il reste un seul admin, on tente avec l'id d'un admin
+        Assertions.assertTrue(iUtilisateurDao.isLastAdmin(6));
+        //Il reste un seul admin, on tente avec l'id d'un client
+        Assertions.assertFalse(iUtilisateurDao.isLastAdmin(3));
     }
 }

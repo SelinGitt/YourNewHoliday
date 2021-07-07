@@ -4,6 +4,7 @@
 package service.panier;
 
 import presentation.panier.dto.PanierDto;
+import presentation.produit.dto.ProduitDto;
 
 /**
  * Interface Métier du panier
@@ -22,4 +23,27 @@ public interface IPanierService {
      */
     PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite);
 
+    /**
+     * Permet de retrouver un produit dans la map à partir de son ID
+     *
+     * @param  panier    : le panier en session
+     * @param  idProduit : l'id du produit recherché
+     * @return           : le produit recherché
+     */
+    public ProduitDto findProduitMap(final PanierDto panier, final Integer idProduit);
+
+    /**
+     * Permet de supprimer un produit du panier
+     *
+     * @param panier    : le panier en session
+     * @param idProduit : l'id du produit à supprimer
+     */
+    public void deleteProduitPanier(final PanierDto panier, final Integer idProduit);
+
+    /**
+     * Permet de vider le panier
+     *
+     * @param panier : le panier dans la session qui doit etre vider
+     */
+    void viderPanier(final PanierDto panier);
 }

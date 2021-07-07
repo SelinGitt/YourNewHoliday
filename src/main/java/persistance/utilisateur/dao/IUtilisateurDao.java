@@ -54,14 +54,6 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      */
     List<UtilisateurDo> rechercheNomRole(final String nom, final Integer idRole);
 
-    //    /**
-    //     * Permet de savoir un utilisateur est le dernier administrateur
-    //     *
-    //     * @param  idRole = id du rôle de l'utilisateur
-    //     * @return        un boolean true si c'est le dernier administrateur, false sinon
-    //     */
-    //    boolean isLastAdmin(final Integer idRole);
-
     /**
      * Permet de savoir si un utilisateur devant être supprimé est le dernier administrateur
      *
@@ -71,10 +63,10 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
     boolean isLastAdmin(final Integer idUtilisateur);
 
     /**
-     * Permet de renvoyer l'UtilisateurDo correspondant à la référence en paramètre
+     * Permet de rechercher un utilisateur grace a ca reference
      *
-     * @param  reference : reference de l'utilisateur à trouver
-     * @return           l'UtilisateurDo
+     * @param  reference Reference de l'utilisateur
+     * @return           UtilisateurDo correspondant a la recherche
      */
-    public UtilisateurDo rechercheUtilisateurParRef(final String reference);
+    UtilisateurDo findByReference(final String reference);
 }

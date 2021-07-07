@@ -83,19 +83,30 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurByRef(final String referenceUtilisateur) {
-        //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
-        final var idUtilisateur = iUtilisateurDao.rechercheUtilisateurParRef(referenceUtilisateur).getIdUtilisateur();
+    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer id, final String referenceUtilisateur, final String origin) {
+        boolean isSucceeded = false;
+        boolean isSameUserFromList = false;
 
-        //S'il ne reste qu'un admin et qu'on cherche à le supprimer -> false
-        if (iUtilisateurDao.isLastAdmin(idUtilisateur)) {
-            return false;
+        //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
+        final var idUtilisateur = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
+
+        //Si la page d'origine est la liste USR_01 et que l'admin se supprime lui-même
+        if ("2".equals(origin) && id == idUtilisateur) {
+            isSameUserFromList = true;
         }
-        //On détache les commandes de l'utilisateur
-        iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
-        //On le supprime
-        iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
-        return true;
+
+        //S'il reste au moins un admin après la suppression demandée
+        if (!iUtilisateurDao.isLastAdmin(idUtilisateur)) {
+            //On détache les commandes de l'utilisateur
+            iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
+            //On le supprime
+            iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
+        }
+
+        final UtilisateurServiceReturn utilisateurServiceReturn = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder()
+                .withIsSucceeded(isSucceeded).withIsSameUserFromList(isSameUserFromList).build();
+
+        return utilisateurServiceReturn;
     }
 
     @Override
@@ -113,6 +124,18 @@ public class UtilisateurService implements IUtilisateurService {
             return this.rechercherUtilisateurNom(nom);
         }
         return this.rechercherUtilisateurNomRole(nom, idRole);
+    }
+
+    @Override
+    public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
+    }
+
+    @Override
+    public UtilisateurDto rechercherReference(final String reference) {
+        final var utilisateurDo = iUtilisateurDao.findByReference(reference);
+
+        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
     }
 
     /**
@@ -152,9 +175,5 @@ public class UtilisateurService implements IUtilisateurService {
     private List<UtilisateurDto> rechercherUtilisateurNomRole(final String nom, final Integer idRole) {
         logger.debug("Recherche par nom et idRole; {} / {}", nom, idRole);
         return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.rechercheNomRole(nom, idRole));
-    }
-
-    private boolean checkIfSameUser(final Integer idUtilisateur1, final Integer idUtilisateur2) {
-        return idUtilisateur1 == idUtilisateur2;
     }
 }

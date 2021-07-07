@@ -43,4 +43,13 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
+
+    /**
+     * Permet de créer un produit
+     * 
+     * @param  produitDto le produit à créer
+     * @return            le produit créé
+     */
+    ProduitDto creerProduit(final ProduitDto produitDto);
+
 }

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<<<<<<< HEAD
 <div>
     <c:if test="${not empty deletionSuccess}">
         <span class="errorblock"><spring:message code="${deletionSuccess}" /></span>
@@ -13,6 +14,9 @@
     </c:if>
 </div>
 <h1 id="titreGestion">
+=======
+<h1 id="titreGestion" class="text-align-center">
+>>>>>>> develop
     <spring:message code="usr01.titre" />
 </h1>
 
@@ -94,11 +98,15 @@
 
                     <td class="user01-body"><c:choose>
                             <c:when test="${utilisateurDto.estDesactive}">
-                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
+                                <img class="user01-imageNonActive checkboxVide" alt="" src="img/commun/checkboxVide.png">
                             </c:when>
                             <c:otherwise>
+<<<<<<< HEAD
                                 <img class="user01-imageNonActive" alt="" src="img/commun/checkboxVide.png"
                                     class="checkboxVide">
+=======
+                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
+>>>>>>> develop
                             </c:otherwise>
                         </c:choose></td>
 

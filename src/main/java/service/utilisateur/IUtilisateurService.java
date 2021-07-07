@@ -4,6 +4,7 @@ import java.util.List;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.utilisateur.impl.UtilisateurServiceReturn;
 
 /**
  * Interface IUtilisateurService
@@ -47,10 +48,13 @@ public interface IUtilisateurService {
     /**
      * Permet de supprimer un UtilisateurDo (donc en BD) en utilisant sa référence
      * 
+     * @param  id                   : id de l'utilisateur en session
      * @param  referenceUtilisateur : String reference de l'utilisateur à supprimer
-     * @return                      true si suppression OK, false si suppression non autorisée (dernier admin)
+     * @param  origin               : page d'origine
+     * @return                      un objet retour avec deux booléens (isLastAdmin pour vérifier si la suppression supprime
+     *                              le dernier admin, et isSameUserFromList pour voir si l'admin se supprime depuis USR_01
      */
-    boolean deleteUtilisateurByRef(final String referenceUtilisateur);
+    UtilisateurServiceReturn deleteUtilisateurByRef(final Integer id, final String referenceUtilisateur, final String origin);
 
     /**
      * Permet de rechercher un utilisater selon le nom et/ou le role
@@ -60,4 +64,20 @@ public interface IUtilisateurService {
      * @return        List d'UtilisateurDto
      */
     List<UtilisateurDto> rechercherUtilisateur(final String nom, final Integer idRole);
+
+    /**
+     * Permet de mettre a jour un utilisateur en base de donnees
+     *
+     * @param  utilisateurDto Utilisateur a mettre a jour
+     * @return                UtilisateurDto mis a jour
+     */
+    UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto);
+
+    /**
+     * Permet de rechercher un utilisateur avec sa reference
+     *
+     * @param  reference Reference de l'utilisateur
+     * @return           Utilisateur
+     */
+    UtilisateurDto rechercherReference(final String reference);
 }

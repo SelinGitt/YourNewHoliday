@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.impl.UtilisateurServiceReturn;
 
 /**
  * Controller pour supprimer un Utilisateur
@@ -43,28 +44,22 @@ public class SupprimerUtilisateurController {
 
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         final Integer id = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
-//        final boolean sameUser = iUtilisateurService.checkIfSameUser(id, ref);
-
-        //FIXME 2 appels au Service !!!
 
         //appel de la méthode de suppression et stockage du retour dans variable result
-        final boolean result = iUtilisateurService.deleteUtilisateurByRef(ref);
+        final UtilisateurServiceReturn result = iUtilisateurService.deleteUtilisateurByRef(id, ref, origin);
 
         final ModelAndView modelAndView = new ModelAndView();
 
-        if (sameUser) {
-            if (result) {
-                modelAndView.setViewName("redirect:/deconnecter.do");
-                modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
-                return modelAndView;
-            }
-            modelAndView.setViewName("forward:/listerUtilisateur.do");
-            modelAndView.getModelMap().addAttribute("error", "usr01.erreur.last_admin");
+        //Si l'admin se supprime depuis la liste et que ça fonctionne
+        if (result.isSameUserFromList() && result.isSucceeded()) {
+            modelAndView.setViewName("redirect:/deconnecter.do");
+            modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
             return modelAndView;
         }
 
+        //Si la suppression de fait depuis -> consulter son profil /USR00
         if ("1".equals(origin)) {
-            if (result) {
+            if (result.isSucceeded()) {
                 modelAndView.setViewName("redirect:/deconnecter.do");
                 modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
                 return modelAndView;
@@ -74,8 +69,9 @@ public class SupprimerUtilisateurController {
             return modelAndView;
         } else
             if ("2".equals(origin)) {
+                //Si la suppression de fait depuis -> liste des utilisateurs /USR01
                 modelAndView.setViewName("forward:/listerUtilisateur.do");
-                if (result) {
+                if (result.isSucceeded()) {
                     modelAndView.getModelMap().addAttribute("deletionSuccess", "usr01.success.deleted");
                     return modelAndView;
                 }

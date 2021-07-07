@@ -13,7 +13,7 @@
         <%--  fieldset mon panier : tableau et bouton vider le panier --%>
         <fieldset class="panier-left overflow-auto">
 
-            <legend>
+            <legend class="panier-legend">
                 <spring:message code="pan00.titre.fieldset.panier" />
             </legend>
 
@@ -95,8 +95,9 @@
 
                                 </div> <%--  image --%>
                                 <div class="justify-content-center display-flex">
-                                    <img class="panier-responsive" src="img/commun/poubelle.jpg"
-                                        alt="icone poubelle pour suppression" />
+                                    <a href="supprimerProduitPanier.do?id=${entry.key.idProduitOriginal }"><img
+                                        class="panier-responsive" src="img/commun/poubelle.jpg"
+                                        alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
                     </c:forEach>
@@ -105,9 +106,9 @@
 
             <%--  bouton vider le panier  --%>
             <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
-                <button type="button">
-                    <spring:message code="pan00.vider.panier" />
-                </button>
+                <a href="viderPanier.do"><button type="button">
+                        <spring:message code="pan00.vider.panier" />
+                    </button></a>
             </div>
         </fieldset>
 
@@ -117,7 +118,7 @@
 
         <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
         <fieldset class="overflow-auto panier-macommande">
-            <legend>
+            <legend class="panier-legend">
                 <spring:message code="pan00.titre.fieldset.commande" />
             </legend>
 
