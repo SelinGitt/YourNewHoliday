@@ -108,32 +108,31 @@ public class PanierService implements IPanierService {
     }
 
     /**
-     * Permets de vérifier si les conditions necessaires à la modification de la quantité d'une produit du panier sont
-     * réunies
-     *
+     * <pre>
+     * Permets de vérifier si les conditions necessaires à la modification
+     * de la quantité d'une produit du panier sont réunies :
+     * - le résultat après décrément doit être > 0
+     * - le résultat après incrément doit être < = 100
+     * </pre>
+     * 
      * @param  modif            valeur d'incrément
      * @param  quantiteInitiale du produit dans le panier
      * @return                  true si c'est ok, false sinon.
      */
     private boolean isModificationAutorisee(final int modif, final int quantiteInitiale) {
-        var regleUne = true;
-        var regleDeux = true;
-        // Décrément
+        // décrément
         if (modif == -1) {
             // On autorise le décrément uniquement si le résultat > 0
             // pour supprimer un produit du panier
             // l'utilisateur doit utiliser la corbeille.
-            regleUne = quantiteInitiale > 1;
-        } else {
-            // Incrément
-            if (modif == 1) {
-                // On autorise l'incrément uniquement si le résultat <= 100
-                regleDeux = quantiteInitiale < 100;
-            } else {
-                // On attends pas d'autre valeur 
-                return false;
-            }
+            return quantiteInitiale > 1;
         }
-        return (regleUne && regleDeux);
+        // incrément 
+        if (modif == 1) {
+            // On autorise l'incrément uniquement si le résultat <= 100
+            return quantiteInitiale < 100;
+        }
+        // On attends pas d'autre valeur 
+        return false;
     }
 }
