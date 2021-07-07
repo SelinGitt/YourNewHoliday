@@ -82,7 +82,6 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     }
 
     @Override
-<<<<<<< HEAD
     public ProduitDo findByReference(final String reference) {
         final TypedQuery<ProduitDo> query = entityManager.createQuery("SELECT pdt FROM ProduitDo pdt WHERE pdt.reference = :ref",
                 ProduitDo.class);
@@ -96,12 +95,13 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
             logger.error("Le produit de référence {reference} n'est pas en base.", noResultException);
             return null;
         }
-=======
+    }
+
+    @Override
     public List<ProduitDo> rechercherAllProduits(final String searchTerm) {
-        final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE reference LIKE :searchTerm",
-                ProduitDo.class);
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE reference LIKE :searchTerm", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
->>>>>>> develop
+
     }
 }

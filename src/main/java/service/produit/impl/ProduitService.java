@@ -53,7 +53,7 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-<<<<<<< HEAD
+
     public ProduitDto editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverParReference(produitDto.getReference());
         this.logger.debug("Produit Service {} editerProduit, reference : {}", produitFound, produitDto.getReference());
@@ -70,13 +70,15 @@ public class ProduitService implements IProduitService {
         final var produitDo = produitDao.findByReference(reference);
         this.logger.debug("Produit Service {} trouverParReference", reference);
         return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
-=======
+    }
+
+    @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
         }
         return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
->>>>>>> develop
+
     }
 
     @Override

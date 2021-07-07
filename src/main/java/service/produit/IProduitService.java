@@ -45,7 +45,6 @@ public interface IProduitService {
     List<ProduitDto> listerAllProduit();
 
     /**
-<<<<<<< HEAD
      * Permet de maj un produit
      * 
      * @param  produitDto le produit à éditer
@@ -60,14 +59,14 @@ public interface IProduitService {
      * @return           le produit trouvé, null sinon
      */
     ProduitDto trouverParReference(final String reference);
-=======
+
+    /**
      * Permet de rechercher produits par reference
      *
      * @param  pSearchTerm terme recherché
      * @return             liste de produits associée à la recherche
      */
     List<ProduitDto> rechercherAllProduits(final String pSearchTerm);
->>>>>>> develop
 
     /**
      * Permet de créer un produit

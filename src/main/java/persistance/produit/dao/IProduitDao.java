@@ -36,8 +36,7 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @param  searchTerm terme recherché
      * @return            liste des produits trouvés en vente
      */
-<<<<<<< HEAD
-    List<ProduitDo> rechercherProduits(final String searchTerm);
+    List<ProduitDo> rechercherProduitsEnVente(final String searchTerm);
 
     /**
      * Permet de trouver un produit via sa référence
@@ -46,8 +45,6 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return           le produit trouvé, null sinon
      */
     ProduitDo findByReference(final String reference);
-=======
-    List<ProduitDo> rechercherProduitsEnVente(final String searchTerm);
 
     /**
      * Permet de récupérer la liste des produits recherchés en vente ou non
@@ -56,5 +53,4 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste de tous les produits trouvés en vente ou non
      */
     List<ProduitDo> rechercherAllProduits(final String searchTerm);
->>>>>>> develop
 }

@@ -127,8 +127,6 @@ class ProduitDaoTest {
         assertNull(iProduitDao.findByReference("FausseRef"));
     }
 
-}
-
     /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits(String)}.
      */
