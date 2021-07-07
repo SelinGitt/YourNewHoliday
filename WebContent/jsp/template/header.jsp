@@ -70,7 +70,11 @@
                     <a href="listerPanierProduits.do"> <img src="img/template/header/panierRempli.png"
                         class="logoHeader" alt="icône panier rempli">
                     </a>
-                    <div class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</div>
+                    <div class="headerSousCellNbrPdtContainer">
+                        <div class="headerSousCellNbrPdt">
+                        ${sessionScope.panierDto.nombreDeReferences }
+                        </div>
+                    </div>
                 </c:if>
             </div>
             <%--"Panier" --%>
