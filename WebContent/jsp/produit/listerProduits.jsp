@@ -54,7 +54,7 @@
                                     </a>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly"
+                                    <input class="produit-panier-quantite text-align-center" type="text" readonly="readonly"
                                         id="quantite" name="quantite" value="1" size="1">
 
                                     <%--  bouton + --%>

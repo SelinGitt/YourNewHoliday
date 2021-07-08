@@ -41,6 +41,9 @@ td.pdt00Description {
 .pdt00Bouton {
 	color: #FFFFFF;
 }
+.produit-panier-quantite {
+	width: 1.7em;
+}
 
 /* PDT01 */
 .pdtListeProduit {

@@ -16,7 +16,7 @@ import presentation.panier.dto.PanierDto;
 import service.panier.IPanierService;
 
 /**
- * Classe représentant XX
+ * Classe Controlleur pour ajouter un produit au panier
  *
  * @author Lucas
  */
