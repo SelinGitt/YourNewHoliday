@@ -6,7 +6,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -61,23 +60,22 @@ public class DateFormatUtil {
     }
 
     /**
-     * Permet de XX
+     * Permet de verifier si la date est conforme
      *
-     * @param  date
-     * @return
+     * @param  date Date a verifier
+     * @return      True si la date est conforme, false sinon
      */
     public static boolean checkDate(final String date) {
-        var valid = false;
+        var valide = false;
 
         try {
-            LocalDate.parse(date, DateTimeFormatter.ofPattern(PATTERN).withResolverStyle(ResolverStyle.STRICT));
-
-            valid = true;
+            LocalDate.parse(date, DateTimeFormatter.ofPattern(PATTERN));
+            valide = true;
         } catch (final DateTimeParseException e) {
             e.printStackTrace();
-            valid = false;
+            logger.warn(e.getMessage());
         }
 
-        return valid;
+        return valide;
     }
 }
