@@ -165,12 +165,12 @@ class PanierServiceTest {
         panierService.actualiserPrix(panierTest);
         assertEquals(2345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
         assertEquals("0,00", panierTest.getRemiseAffichage());
-        assertEquals(2345, 00, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
+        assertEquals(2345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
         ligne1.setPrix("10000");
         panierTest.getMapPanier().remove(produitTest5);
         panierTest.setNombreDeReferences(4);
         panierService.actualiserPrix(panierTest);
-        assertEquals(12340, 00, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
+        assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
         assertEquals("0,00", panierTest.getRemiseAffichage());
         assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
     }
