@@ -50,6 +50,7 @@ public class UtilisateurMapper {
         utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
         utilisateurDto.setPassword(utilisateurDo.getMdpHash());
+        utilisateurDto.setCheminAvatar(utilisateurDo.getCheminAvatar());
 
         return utilisateurDto;
     }
