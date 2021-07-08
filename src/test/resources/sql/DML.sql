@@ -71,9 +71,9 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'visiteur');
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'client');
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'administrateur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'Visiteur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'Client');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'Administrateur');
 
 
 
