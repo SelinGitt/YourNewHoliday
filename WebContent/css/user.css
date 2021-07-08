@@ -221,12 +221,6 @@
 	Color: #FF0000;
 }
 
-/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.user07-errorblock {
-	background-color: #ff7f00;
-	border: 0.125em solid #000000;
-}
-
 .user07-lib-champ {
 	justify-content: space-between;
 	margin-bottom: 3.125em;

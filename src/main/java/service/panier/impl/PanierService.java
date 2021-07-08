@@ -123,29 +123,36 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public void appliquerRemise(final PanierDto panier) {
-        // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
-        // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
-        final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage());
+    public boolean isRemiseExpected(final PanierDto panier) {
         // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
-        // au minimum imposé, alors on applique la remise fixé en constante.
-        if (panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && prixTotal >= PRIX_TOTAL_MINIMUM_POUR_REMISE) {
-            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotal * POURCENTAGE_REMISE / 100));
-            // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
-            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
-            panier.setPrixApresRemiseAffichage(
-                    DecimalFormatUtils.decimalFormatUtil(prixTotal - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
-            // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
-        } else {
-            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
-            panier.setPrixApresRemiseAffichage(panier.getPrixTotalAffichage());
-        }
+        // au minimum imposé, alors la remise est applicable.
+        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE
+                && DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
     }
 
     @Override
     public void actualiserPrix(final PanierDto panier) {
-        panier.setPrixTotalAffichage(calculerPrixTotal(panier));
-        appliquerRemise(panier);
+        final var prixTotal = calculerPrixTotal(panier);
+        // (il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+        // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus)
+        final var prixTotalAffichage = DecimalFormatUtils.doubleFormatUtil(prixTotal);
+        // on actualise le prix total du panier
+        panier.setPrixTotalAffichage(prixTotal);
+        // si la remise est applicable...
+        if (isRemiseExpected(panier)) {
+            // ... alors on actualise la valeur de la remise en fonction du pourcentage fixé en constante
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage * POURCENTAGE_REMISE / 100));
+            // (il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus)
+            // on actualise aussi de fait le prix après remise
+            panier.setPrixApresRemiseAffichage(DecimalFormatUtils
+                    .decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
+            // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
+        } else {
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
+            panier.setPrixApresRemiseAffichage(panier.getPrixTotalAffichage());
+
+        }
     }
 
     @Override
