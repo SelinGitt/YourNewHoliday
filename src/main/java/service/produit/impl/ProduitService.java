@@ -84,7 +84,6 @@ public class ProduitService implements IProduitService {
         final var produitDo = ProduitMapper.mapToDo(produitDto);
         this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
         return ProduitMapper.mapToDto(produitDao.create(produitDo));
-
     }
 
     @Override
