@@ -171,9 +171,9 @@ class UtilisateurServiceTest {
      */
     @Test
     void testRechercheRole() {
-        Mockito.when(this.dao.rechercheRole(1)).thenReturn(Collections.emptyList());
+        Mockito.when(this.dao.rechercheRole(UtilisateurRoleEnum.CLIENT.getId())).thenReturn(Collections.emptyList());
 
-        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("", 1);
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("", UtilisateurRoleEnum.CLIENT.getId());
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
@@ -184,9 +184,9 @@ class UtilisateurServiceTest {
      */
     @Test
     void testRechercheNomRole() {
-        Mockito.when(this.dao.rechercheNomRole("Toto", 1)).thenReturn(Collections.emptyList());
+        Mockito.when(this.dao.rechercheNomRole("Toto", UtilisateurRoleEnum.CLIENT.getId())).thenReturn(Collections.emptyList());
 
-        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", 1);
+        final List<UtilisateurDto> response = this.utilisateurService.rechercherUtilisateur("Toto", UtilisateurRoleEnum.CLIENT.getId());
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(0, response.size());
@@ -275,10 +275,10 @@ class UtilisateurServiceTest {
 
         utilisateurDo.setRole(roleDo);
 
-        Mockito.when(this.dao.findById(1)).thenReturn(utilisateurDo);
+        Mockito.when(this.dao.findById(UtilisateurRoleEnum.CLIENT.getId())).thenReturn(utilisateurDo);
         Mockito.when(this.dao.findById(10)).thenReturn(null);
 
-        final UtilisateurDto utilisateurDto = this.utilisateurService.findUtilisateurById(1);
+        final UtilisateurDto utilisateurDto = this.utilisateurService.findUtilisateurById(UtilisateurRoleEnum.CLIENT.getId());
 
         Assertions.assertNotNull(utilisateurDto);
         Assertions.assertEquals("email_do@test.fr", utilisateurDto.getEmail());
