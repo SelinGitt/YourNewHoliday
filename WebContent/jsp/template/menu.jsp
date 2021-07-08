@@ -26,7 +26,7 @@
     </c:if>
 
     <%-- a ajouter pour l'administateur le role 3 corespond a admin : Le changer si l'id du role admin change --%>
-    <c:if test="${sessionScope.utilisateur.idRole =='3'}">
+    <c:if test="${sessionScope.utilisateur.role.id =='3'}">
         <div class="link-container admin">
             <span> <spring:message code="menu.administration" />
             </span>
