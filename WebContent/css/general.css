@@ -10,12 +10,12 @@
 .background-color-rouge {
 	background-color: #F00000;
 }
-/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.error-block {
+/* orange */
+.background-error-block {
 	background-color: #ff7f00;
 }
-/* Permet de créer un bloc de couleur vert en haut de body afin de recevoir des messages de validation*/
-.validation-block {
+/* Le vert*/
+.background-validation-block {
 	background-color: #008000;
 }
 /* permet de mettre un espace entre le message et l'icone*/
