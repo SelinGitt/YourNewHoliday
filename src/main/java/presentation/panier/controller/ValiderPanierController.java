@@ -39,6 +39,8 @@ public class ValiderPanierController {
     @GetMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur) {
+        System.out.println("utilisateur : " + utilisateur);
+        System.out.println("panier : " + panierDto);
         if (this.iUtilisateurService.findUtilisateurById(Integer.parseInt(utilisateur.getIdUtilisateur())) == null) {
             // On détruit la session donc le panier sera vider automatiquement
             return "redirect:deconnecter.do";

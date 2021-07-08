@@ -83,9 +83,27 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
 
     @Override
     public List<ProduitDo> rechercherAllProduits(final String searchTerm) {
-        final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE reference LIKE :searchTerm",
-                ProduitDo.class);
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE reference LIKE :searchTerm", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
+    }
+
+    @Override
+    public ProduitDo findProduitEnVenteAvecVersion(final Integer idProduit, final Integer version) {
+        try {
+            // Une requête JPQL qui cherche un produit en vente en base suivant son ID
+            final TypedQuery<ProduitDo> query = entityManager.createQuery(
+                    "FROM ProduitDo WHERE idProduitOriginal = :id AND version = :version AND mise_en_vente = 1", ProduitDo.class);
+            query.setParameter("id", idProduit);
+            query.setParameter("version", version);
+            // On retourne le produit trouvé
+            return query.getSingleResult();
+            // Si l'id n'existe pas en base ou si le produit recherché n'est pas en vente, on retourne null.
+        } catch (final NoResultException noResultException) {
+            // Si exception 
+            logger.error("Le produit d'ID {idProduit} n'est pas en base ou n'est pas en vente ou n'a pas la bonne version.",
+                    noResultException);
+            return null;
+        }
     }
 }

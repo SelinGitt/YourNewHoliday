@@ -37,6 +37,9 @@ public class UtilisateurMapper {
      * @return               Mapped UtilisateurDto
      */
     public static UtilisateurDto mapperToDto(final UtilisateurDo utilisateurDo) {
+        if (utilisateurDo == null) {
+            return null;
+        }
         final var utilisateurDto = new UtilisateurDto();
 
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
