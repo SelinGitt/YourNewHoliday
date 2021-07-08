@@ -17,6 +17,7 @@ import org.springframework.web.servlet.View;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Controller pour création d'un utilisateur
@@ -44,7 +45,7 @@ public class CreerUtilisateurController {
         final var utilisateurDto = new UtilisateurDto();
 
         final var roleDto = new RoleDto();
-        roleDto.setIdRole(1);
+        roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
 
         utilisateurDto.setRole(roleDto);
 

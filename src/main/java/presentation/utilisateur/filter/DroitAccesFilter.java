@@ -51,12 +51,12 @@ public class DroitAccesFilter implements Filter {
 
         // Si user null = visiteur; sinon check rang
         if (user == null) {
-            if (listRole.contains("visiteur")) {
+            if (listRole.contains("Visiteur")) {
                 chain.doFilter(req, resp);
                 return;
             }
         } else {
-            if (listRole.contains(user.getNomRole())) {
+            if (listRole.contains(user.getRole().getLibelle())) {
                 chain.doFilter(req, resp);
                 return;
             }
