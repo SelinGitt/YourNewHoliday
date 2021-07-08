@@ -68,7 +68,7 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public boolean deleteProduitById(final Integer idProduit) {
-        return (produitDao.deleteProduitById(idProduit));
+    public ProduitDto deleteProduit(final Integer idProduit) {
+        return ProduitMapper.mapToDto(produitDao.delete(idProduit));
     }
 }

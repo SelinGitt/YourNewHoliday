@@ -62,9 +62,9 @@ public interface IProduitService {
 
     /**
      * Permet de supprimer un produit
-     *
-     * @param  idProduit du produit à supprimer
-     * @return           true si supp, sinon false
+     * 
+     * @param  idProduit id du produit à supprimer
+     * @return           le produit supprimé
      */
-    boolean deleteProduitById(final Integer idProduit);
+    ProduitDto deleteProduit(final Integer idProduit);
 }

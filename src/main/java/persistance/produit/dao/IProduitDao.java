@@ -39,14 +39,6 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     List<ProduitDo> rechercherProduitsEnVente(final String searchTerm);
 
     /**
-     * Permet de supprimer un produit via son id
-     *
-     * @param  id du produit à supprimer
-     * @return    true si supp, sinon false
-     */
-    boolean deleteProduitById(final Integer id);
-
-    /**
      * Permet de récupérer la liste des produits recherchés en vente ou non
      *
      * @param  searchTerm terme recherché

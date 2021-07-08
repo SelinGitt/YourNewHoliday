@@ -92,4 +92,9 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
         return bean;
     }
 
+    @Override
+    public T delete(final T bean) {
+        this.entityManager.remove(bean);
+        return bean;
+    }
 }
