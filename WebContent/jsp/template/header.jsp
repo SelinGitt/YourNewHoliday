@@ -60,19 +60,20 @@
     <c:if test="${!empty sessionScope.utilisateur}">
 
         <div class="headerCell headerPanier">
-            <div class="headerSousCell">
+            <div class="headerSousCell" onclick="chargerlien()">
                 <c:if test="${sessionScope.panierDto.nombreDeReferences < 1}">
-                    <a href="listerPanierProduits.do"> <img src="img/template/header/panierVide.png"
-                        class="logoHeader" alt="icône panier vide">
+                    <a href="" id="lien"> <img src="img/template/header/panierVide.png" class="logoHeader"
+                        alt="icône panier vide">
                     </a>
                 </c:if>
                 <c:if test="${sessionScope.panierDto.nombreDeReferences > 0 }">
-                    <a href="listerPanierProduits.do"> <img src="img/template/header/panierRempli.png"
-                        class="logoHeader" alt="icône panier rempli">
-                    </a>
-                    <div class="headerSousCellNbrPdtContainer">
-                        <a href="listerPanierProduits.do" class="headerSousCellNbrPdt">
-                            ${sessionScope.panierDto.nombreDeReferences } </a>
+                    <div>
+                        <a href="" id="lien"> <img src="img/template/header/panierRempli.png" class="logoHeader"
+                            alt="icône panier rempli"></a>
+
+                        <div class="headerSousCellNbrPdtContainer">
+                            <a class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</a>
+                        </div>
                     </div>
                 </c:if>
             </div>
@@ -101,4 +102,10 @@
         </div>
     </c:if>
 </div>
+<script>
+//permet de n'avoir qu'un seul lien pour tous les balise <a> avec l'id="lien"
+function chargerlien() {
+	document.getElementById("lien").href = "listerPanierProduits.do";
+}
+</script>
 <hr />
