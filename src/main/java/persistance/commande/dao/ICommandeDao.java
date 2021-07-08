@@ -19,7 +19,7 @@ public interface ICommandeDao extends IGenericDao<CommandeDo> {
      * Permet de retourner la liste des commandes d'un utilisateurs
      *
      * @param  userId l'identifiant de l'utilisateur
-     * @return        List{@literal<}CommandeDto{@literal>} la liste des commandes trouvées
+     * @return        List{@code<CommandeDto>} la liste des commandes trouvées
      */
     List<CommandeDo> findByUserId(final Integer userId);
 
