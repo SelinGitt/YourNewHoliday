@@ -71,8 +71,8 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'client');
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'visiteur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'visiteur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'client');
 INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'administrateur');
 
 
@@ -126,48 +126,48 @@ INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `qua
 -- Déchargement des données de la table `possede`
 --
 
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (1, 1, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (2, 1, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (1, 1, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (2, 1, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (3, 1, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (4, 2, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (5, 3, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (6, 3, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (5, 3, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (6, 3, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (7, 3, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (8, 4, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (9, 5, 2);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (10, 6, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (9, 5, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (10, 6, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (11, 6, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (13, 7, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (15, 8, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (17, 9, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (18, 10, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (18, 10, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (19, 10, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (20, 11, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (21, 12, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (22, 12, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (21, 12, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (22, 12, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (23, 12, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (24, 13, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (25, 14, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (25, 14, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (26, 14, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (27, 15, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (27, 15, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (28, 15, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (29, 16, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (29, 16, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (30, 16, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (31, 17, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (32, 17, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (31, 17, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (32, 17, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (33, 17, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (37, 19, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (37, 19, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (38, 19, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (39, 20, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (39, 20, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (40, 20, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (41, 21, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (41, 21, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 21, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (43, 22, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (43, 22, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (44, 22, 3);
 
