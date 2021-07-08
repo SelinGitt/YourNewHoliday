@@ -36,11 +36,11 @@ public class DisplayImage {
     /**
      * Permet d'afficher une image en fonction de son id et de son type en paramètre. <br>
      * Le paramètre demandé en <b>GET</b> est l'id recherché ainsi que son type.<br>
-     * ex:<i>id=1&type=pdt</i><br>
+     * ex:{@code <i>id=1&type=pdt</i>}<br>
      * Pour appeler cette méthode depuis une JSP; il suffit juste de prendre une balise img avec le src qui est égal à cette
      * page et l'id et le type de ce que vous voulez. <br>
      * Pour connaitre les types que vous pouvez utiliser, regardez l'enum {@link service.image.TypeImage} <br>
-     * ex: <<i>img src="DisplayImage.do?id=1&type=pdt"</i>><br>
+     * ex: {@code <<i>img src="DisplayImage.do?id=1&type=pdt"</i>>}<br>
      * 
      * @param response permet d'écrire dans une servlet
      * @param id       l'id à rechercher
