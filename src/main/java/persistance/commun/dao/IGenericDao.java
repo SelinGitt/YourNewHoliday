@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * Interface généric du CRUD pour tout entité de la base de données
  *
- * @author   Ilaitsivery Jacques MADIOMANANA
- * @param  T Le type à utiliser pour l'interface
+ * @author     Ilaitsivery Jacques MADIOMANANA
+ * @param  <T> Le type à utiliser pour l'interface
  */
 public interface IGenericDao<T> {
 
