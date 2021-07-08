@@ -36,9 +36,6 @@ public class SupprimerProduitPanierController {
     @GetMapping
     public String supprimerProduitPanier(final @SessionAttribute("panierDto") PanierDto panier, final HttpServletRequest request) {
         panierService.deleteProduitPanier(panier, Integer.valueOf(request.getParameter("id")));
-        if (panier.getMapPanier().isEmpty()) {
-            return "pan_00_vide";
-        }
-        return "pan_00";
+        return "redirect:listerPanierProduits.do";
     }
 }
