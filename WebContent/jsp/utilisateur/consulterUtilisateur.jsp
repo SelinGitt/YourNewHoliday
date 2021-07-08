@@ -52,7 +52,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="supprimerUtilisateur.do"
+                        <a href="supprimerUtilisateur.do?origin=1&ref=${utilisateurDto.reference}"
                             onclick="return confirm('<spring:message code="usr00.consulter.confirmer_suppression" />')">
                             <button class="supprimerUser00">
                                 <spring:message code="usr00.consulter.supprimer" />
