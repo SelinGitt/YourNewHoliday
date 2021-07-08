@@ -23,6 +23,7 @@ import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.util.UtilisateurMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * JUnit test classe pour {@link service.utilisateur.impl.UtilisateurService}
@@ -66,8 +67,8 @@ class UtilisateurServiceTest {
 
         final RoleDo role = new RoleDo();
 
-        role.setIdRole(1);
-        role.setLibelle("Client");
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         userDo.setRole(role);
 
@@ -92,7 +93,8 @@ class UtilisateurServiceTest {
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
 
         final RoleDto role = new RoleDto();
-        role.setIdRole(1);
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDto.setRole(role);
 
@@ -118,8 +120,8 @@ class UtilisateurServiceTest {
         utilisateurDo.setNom("nom");
 
         final RoleDo roleDo = new RoleDo();
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("libelle");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(roleDo);
 
@@ -207,7 +209,8 @@ class UtilisateurServiceTest {
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
 
         final RoleDto role = new RoleDto();
-        role.setIdRole(1);
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDto.setRole(role);
 
@@ -235,8 +238,8 @@ class UtilisateurServiceTest {
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
 
         final RoleDo role = new RoleDo();
-        role.setIdRole(1);
-        role.setLibelle("Client");
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(role);
 
@@ -267,8 +270,8 @@ class UtilisateurServiceTest {
 
         final var roleDo = new RoleDo();
 
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("client");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(roleDo);
 

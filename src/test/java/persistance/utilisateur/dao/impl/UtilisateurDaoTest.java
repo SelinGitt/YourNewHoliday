@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * JUnit class pour {@link persistance.utilisateur.dao.impl.UtilisateurDao}
@@ -73,7 +74,8 @@ class UtilisateurDaoTest {
         utilisateurDo.setCheminAvatar("img/test.png");
 
         final RoleDo role = new RoleDo();
-        role.setIdRole(1);
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(role);
 
