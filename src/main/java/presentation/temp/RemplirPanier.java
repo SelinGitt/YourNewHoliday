@@ -100,10 +100,10 @@ public class RemplirPanier {
         ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
         final var ligneCommandeProduit2 = new LigneCommandeProduitDto();
         ligneCommandeProduit2.setQuantite(8);
-        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 500.00, Locale.FRANCE));
+        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(8 * 700.00, Locale.FRANCE));
         final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
         ligneCommandeProduit3.setQuantite(1);
-        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 700.00, Locale.FRANCE));
+        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 500.00, Locale.FRANCE));
         final var ligneCommandeProduit4 = new LigneCommandeProduitDto();
         ligneCommandeProduit4.setQuantite(3);
         ligneCommandeProduit4.setPrix(DecimalFormatUtils.decimalFormatUtil(3 * 1.90, Locale.FRANCE));
@@ -115,7 +115,7 @@ public class RemplirPanier {
         ligneCommandeProduit6.setPrix(DecimalFormatUtils.decimalFormatUtil(3 * 1500.00, Locale.FRANCE));
         final var ligneCommandeProduit7 = new LigneCommandeProduitDto();
         ligneCommandeProduit7.setQuantite(3);
-        ligneCommandeProduit7.setPrix(DecimalFormatUtils.decimalFormatUtil(4 * 300.00, Locale.FRANCE));
+        ligneCommandeProduit7.setPrix(DecimalFormatUtils.decimalFormatUtil(3 * 300.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);

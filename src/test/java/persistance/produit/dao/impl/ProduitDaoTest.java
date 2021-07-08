@@ -116,6 +116,18 @@ class ProduitDaoTest {
     }
 
     /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findByReference(String)}.
+     */
+    @Test
+    void testFindByReference() {
+        final ProduitDo produitDo = iProduitDao.findByReference("ITA1289967");
+
+        assertNotNull(produitDo);
+        assertEquals("Italie", produitDo.getDestination());
+        assertNull(iProduitDao.findByReference("FausseRef"));
+    }
+
+    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#rechercherAllProduits(String)}.
      */
     @Test
@@ -126,8 +138,7 @@ class ProduitDaoTest {
         assertEquals(1, listeProduitsRecherchee.size());
         //recherche référence existente et non en vente
         final String searchTermNonEnVente = "GRC";
-        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao
-                .rechercherAllProduits(searchTermNonEnVente);
+        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao.rechercherAllProduits(searchTermNonEnVente);
         assertEquals(1, listeProduitsRechercheeNonEnVente.size());
         //recherche référence non existente
         final String searchTermNull = "ZZZ";
