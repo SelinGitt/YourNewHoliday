@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import service.image.Image;
+import service.util.GetPropertyValues;
 
 /**
  * Controller pour upload d'une image
@@ -28,18 +31,32 @@ public class UploadController {
     /**
      * Attribute of Path Name
      */
-    private static final String PATH_NAME = "C:/YNH_Project/external_files/img/utilisateurs/";
+    private static final String PATH_NAME = "C:/YNH_Project/external_files/img/utilisateurs";
 
-    protected void saveImage(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        //si vous voulez créer un dossier spécial par client, vous devrez le placer en paramètre ici, à la place de PATH_NAME (rajouter "\\{ReferenceClient}")
-        final File uploadDir = new File(PATH_NAME);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
-        }
+    //  préparation du logger pour la gestion des erreurs/de la validation
+    private static final Logger logger    = LoggerFactory.getLogger(UploadController.class);
+    
+    public void recupererImage(final HttpServletResponse response, final String type) {
+        
+    }
+    
+
+    /**
+     * Permet de sauvegarder l'image dans le disque dur du PC
+     *
+     * @param  request          la requête
+     * @param  response         la réponse
+     * @throws ServletException la servlet exception
+     * @throws IOException      l'exception
+     */
+    public void saveImage(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
+//        final File uploadDir = new File(PATH_NAME);
+//        if (!uploadDir.exists()) {
+//            uploadDir.mkdirs();
+//        }
         for (final Part part : request.getParts()) {
             final String fileName = Image.getFileName(part);
             final String fullPath = PATH_NAME + File.separator + fileName;
-            request.setAttribute("image_Path", fullPath);
             final File f = new File(fullPath);
             try {
                 part.write(fullPath);
@@ -49,10 +66,10 @@ public class UploadController {
             if (!Image.isOk(f)) {
                 f.delete();
                 //Il n'y a pas de gestion d'erreur, pour l'instant
-                response.sendRedirect("UploadServlet.do");
+                response.sendRedirect("creerUtilisateur.do");
                 return;
             }
-            request.getRequestDispatcher("DisplayImage.do").forward(request, response);
+//            request.getRequestDispatcher("DisplayImage.do").forward(request, response);
         }
     }
 }
