@@ -44,14 +44,12 @@ public enum UtilisateurRoleEnum {
      * @return         {@link UtilisateurRoleEnum}
      */
     public static UtilisateurRoleEnum getRole(final String libelle) {
-        switch (libelle) {
-            case "Visiteur":
-                return UtilisateurRoleEnum.VISITEUR;
-            case "Client":
-                return UtilisateurRoleEnum.CLIENT;
-            default:
-                return UtilisateurRoleEnum.ADMINISTRATEUR;
+        for (final UtilisateurRoleEnum role : UtilisateurRoleEnum.values()) {
+            if (role.getLibelle().equals(libelle)) {
+                return role;
+            }
         }
+        return null;
     }
 
     /**
