@@ -28,21 +28,38 @@ public class UtilisateurServiceReturn {
     }
 
     /**
-     * Builder de l'objet retour
+     * Classe statique interne, Builder de l'objet retour
      */
     static class UtilisateurServiceReturnBuilder {
         private UtilisateurServiceReturn utilisateurServiceReturn = new UtilisateurServiceReturn();
 
+        /**
+         * Pour renseigner le boolean isSucceeded
+         *
+         * @param  isSucceeded : boolean à renseigner
+         * @return             : le builder
+         */
         UtilisateurServiceReturnBuilder withIsSucceeded(final boolean isSucceeded) {
             utilisateurServiceReturn.isSucceeded = isSucceeded;
             return this;
         }
 
+        /**
+         * Pour renseigner le boolean isSameUserFromList
+         *
+         * @param  isSameUserFromList : le boolean à renseigner
+         * @return                    : le builder
+         */
         UtilisateurServiceReturnBuilder withIsSameUserFromList(final boolean isSameUserFromList) {
             utilisateurServiceReturn.isSameUserFromList = isSameUserFromList;
             return this;
         }
 
+        /**
+         * Pour construire l'UtilisateurServiceReturn
+         *
+         * @return l'utilisateurServiceReturn construit
+         */
         UtilisateurServiceReturn build() {
             return utilisateurServiceReturn;
         }

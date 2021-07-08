@@ -42,7 +42,7 @@ public class SupprimerUtilisateurController {
     @GetMapping
     public ModelAndView supprimerUtilisateur(final HttpSession session, final @RequestParam(name = "origin") String origin,
             final @RequestParam(name = "ref") String ref, final RedirectAttributes redirectAttributes,
-            @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateurConnecte) {
+            final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateurConnecte) {
 
         final var idUtilisateurConnecte = Integer.valueOf(utilisateurConnecte.getIdUtilisateur());
 
