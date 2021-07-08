@@ -42,6 +42,38 @@
                 <tr>
                     <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
                 </tr>
+                <c:if test="${not empty utilisateur}">
+                    <tr class="display-flex">
+                        <form:form action="ajouterProduitPanier.do" method="POST">
+                            <input type="hidden" name="id" value="${produitDto.idProduitOriginal}" />
+                            <td class="display-flex text-responsive">
+                                <div class="display-flex">
+                                    <%--  bouton - --%>
+                                    <a onclick="decrement()">
+                                        <button type="button">-</button>
+                                    </a>
+
+                                    <%--  saisie valeur produit  --%>
+                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly"
+                                        id="quantite" name="quantite" value="1" size="1">
+
+                                    <%--  bouton + --%>
+                                    <a onclick="increment()">
+                                        <button type="button">+</button>
+                                    </a>
+                                </div>
+                            </td>
+                            <td colspan="2" class="pdt00Ajouter text-responsive display-flex justify-content-flex-end">
+                                <div>
+                                    <button value="submit"
+                                        class="background-color-green display-flex justify-content-flex-end pdt00Bouton">
+                                        <spring:message code="pdt.addCart" />
+                                    </button>
+                                </div>
+                            </td>
+                        </form:form>
+                    </tr>
+                </c:if>
             </table>
         </c:forEach>
     </div>
