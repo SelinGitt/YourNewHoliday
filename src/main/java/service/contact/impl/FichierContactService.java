@@ -20,18 +20,29 @@ import service.util.GetPropertyValues;
 @Service
 public class FichierContactService implements IFichierContactService {
 
-    @Autowired
-    private IFichierDao fichierDao;
+    private static final String HTML    = ".html";
 
+    private static final String CONTACT_RADICAL = "contact_";
+
+    @Autowired
+    private IFichierDao         fichierDao;
+
+    
+    public String chargerFichierContact() {
+        
+        //
+        return null;
+    }
+    
     @Override
     public String trouverFichierContact(final Locale locale) {
-        final String contactHtml = "contact_" + locale.toString() + ".html";
-        final String nomFichier = fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + contactHtml);
+        final String contactHtml = CONTACT_RADICAL + locale.toString() + HTML;
+        final String contenuFichier = fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + contactHtml);
 
-        //retourne la local fr si le fichier html en si il n'est pas disponible
-        if (nomFichier.isBlank()) {
+        //retourne la local fr si le fichier html "en", si il n'est pas disponible
+        if (contenuFichier.isBlank()) {
             return fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "contact_fr.html");
         }
-        return nomFichier;
+        return contenuFichier;
     }
 }
