@@ -94,7 +94,9 @@
 
                     <td class="user01-body"><c:choose>
                             <c:when test="${utilisateurDto.estDesactive}">
-                                <img class="user01-imageNonActive checkboxVide" alt="" src="img/commun/checkboxVide.png">
+                                <img class="user01-imageNonActive 
+                                checkboxVide" alt=""
+                                    src="img/commun/checkboxVide.png">
                             </c:when>
                             <c:otherwise>
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
