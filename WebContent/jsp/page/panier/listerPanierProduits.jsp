@@ -28,7 +28,8 @@
                                 <div>
                                     <%--  photo --%>
                                     <img class="panier-responsive panier-image-produit"
-                                        src="img/panier/produitSample.jpg" alt="image produit" />
+                                        src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
+                                        alt="image produit ${entry.key.nom}" />
                                 </div>
                                 <div>
                                     <div>
@@ -56,7 +57,7 @@
                                     <spring:message code="glb.devise" />
                                 </div></td>
 
-                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>                                                     
+                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
 
                                     <%--  label --%>
