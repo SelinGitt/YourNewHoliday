@@ -54,10 +54,10 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto editerProduit(final ProduitDto produitDto) {
-        final var produitFound = trouverParReference(produitDto.getReference());
-        this.logger.debug("Produit Service {} editerProduit, reference : {}", produitFound, produitDto.getReference());
-        // Soit le produit est null (la ref est unique), soit la ref reste la même on update  
-        if (produitFound == null || (produitFound.getIdProduitOriginal().equals(produitDto.getIdProduitOriginal()))) {
+        final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
+        this.logger.debug("Produit Service {} editerProduit, id : {}", produitFound, produitDto.getIdProduitOriginal());
+        // On update si le produit existe
+        if (produitFound != null) {
             final var produitDo = ProduitMapper.mapToDo(produitDto);
             return ProduitMapper.mapToDto(produitDao.update(produitDo));
         }
