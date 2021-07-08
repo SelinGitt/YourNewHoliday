@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import presentation.startup.StartupApp;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe DroitAccesFilter
@@ -51,7 +52,7 @@ public class DroitAccesFilter implements Filter {
 
         // Si user null = visiteur; sinon check rang
         if (user == null) {
-            if (listRole.contains("Visiteur")) {
+            if (listRole.contains(UtilisateurRoleEnum.VISITEUR.getLibelle())) {
                 chain.doFilter(req, resp);
                 return;
             }

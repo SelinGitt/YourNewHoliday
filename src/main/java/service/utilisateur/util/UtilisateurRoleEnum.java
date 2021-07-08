@@ -38,6 +38,23 @@ public enum UtilisateurRoleEnum {
     }
 
     /**
+     * Permet de recuperer le role selon le libelle
+     *
+     * @param  libelle Libelle du role
+     * @return         {@link UtilisateurRoleEnum}
+     */
+    public static UtilisateurRoleEnum getRole(final String libelle) {
+        switch (libelle) {
+            case "Visiteur":
+                return UtilisateurRoleEnum.VISITEUR;
+            case "Client":
+                return UtilisateurRoleEnum.CLIENT;
+            default:
+                return UtilisateurRoleEnum.ADMINISTRATEUR;
+        }
+    }
+
+    /**
      * Getter for id
      *
      * @return the id

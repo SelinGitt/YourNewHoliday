@@ -102,18 +102,7 @@ public class UtilisateurMapper {
 
         final var role = utilisateurDo.getRole();
 
-        switch (role.getLibelle()) {
-            case "Visiteur":
-                utilisateurConnecteDto.setRole(UtilisateurRoleEnum.VISITEUR);
-                break;
-            case "Client":
-                utilisateurConnecteDto.setRole(UtilisateurRoleEnum.CLIENT);
-                break;
-            default:
-                utilisateurConnecteDto.setRole(UtilisateurRoleEnum.ADMINISTRATEUR);
-                break;
-        }
-
+        utilisateurConnecteDto.setRole(UtilisateurRoleEnum.getRole(role.getLibelle()));
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
         utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
