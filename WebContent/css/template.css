@@ -65,13 +65,13 @@ header, footer {
 	text-align: center;
 	left: 1.65em;
 	width: 2em;
-	height: 2em;
+	height: 1.8em;
 	background-color: #bd2ad2;
 	border-radius: 90%;
 }
 
 .headerSousCellNbrPdt {
-	margin-top: 0.12em;
+	text-decoration: none;
 	color: #ffffff;
 	font-size: 1.5em;
 	font-weight: bold;

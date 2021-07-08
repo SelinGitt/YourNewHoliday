@@ -71,9 +71,8 @@
                         class="logoHeader" alt="icône panier rempli">
                     </a>
                     <div class="headerSousCellNbrPdtContainer">
-                        <div class="headerSousCellNbrPdt">
-                        ${sessionScope.panierDto.nombreDeReferences }
-                        </div>
+                        <a href="listerPanierProduits.do" class="headerSousCellNbrPdt">
+                            ${sessionScope.panierDto.nombreDeReferences } </a>
                     </div>
                 </c:if>
             </div>
