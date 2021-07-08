@@ -99,4 +99,13 @@ class DecimalFormatUtilsTest {
         assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDoubleVirgule));
         assertFalse(DecimalFormatUtils.isPrixAVirgule(prixDecimalTooLong));
     }
+
+    /**
+     * Test method for {@link service.util.DecimalFormatUtils#doubleFormatUtil(java.lang.String)}.
+     */
+    @Test
+    void testDoubleFormatUtil() {
+        final String nombreString = "1\u202F23\u202F4\u00A056\u00A0789,00";
+        assertEquals(123456789.00, DecimalFormatUtils.doubleFormatUtil(nombreString));
+    }
 }

@@ -62,6 +62,10 @@ th.pdt01 {
 	height: 3.75em;
 }
 
+.pdt01Search {
+	justify-content: flex-start;
+}
+
 /* PDT02 */
 
 /* PDT03 */

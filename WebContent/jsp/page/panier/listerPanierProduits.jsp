@@ -56,10 +56,7 @@
                                     <spring:message code="glb.devise" />
                                 </div></td>
 
-                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <%--  rendu d'affichage uniquement pour l'instant --%>
-                            <%--  TODO : sera à modifier avec form:form, form:input, form:button par la suite --%>
-                            <%--  Ne pas oublier de déclarer la taglib --%>
+                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>                                                     
                             <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
 
                                     <%--  label --%>
@@ -73,14 +70,19 @@
                                 <div class="display-flex">
 
                                     <%--  bouton - --%>
-                                    <button type="button">-</button>
+                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
+                                        <button type="button">-</button>
+                                    </a>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="panier-quantite text-align-center" type="text" id="panier-quantite"
-                                        name="panier-quantite" value="${entry.value.quantite}" size="1">
+                                    <input class="panier-quantite text-align-center" type="text" readonly="readonly"
+                                        id="panier-quantite" name="panier-quantite" value="${entry.value.quantite}"
+                                        size="1">
 
                                     <%--  bouton + --%>
-                                    <button type="button">+</button>
+                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
+                                        <button type="button">+</button>
+                                    </a>
                                 </div></td>
 
                             <%--  encart supprimer : label et image --%>
@@ -112,56 +114,14 @@
             </div>
         </fieldset>
 
+
     </div>
 
     <div class="panier-right">
-
-        <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
-        <fieldset class="overflow-auto panier-macommande">
-            <legend class="panier-legend">
-                <spring:message code="pan00.titre.fieldset.commande" />
-            </legend>
-
-            <c:forEach items="${panierDto.mapPanier}" var="entry">
-                <%--  nom et référence --%>
-                <div>
-                    <h3>${entry.key.nom}-${entry.key.reference}</h3>
-                </div>
-
-                <%--  quantité --%>
-                <div class="display-flex justify-content-space-between panier-ligne-quantite">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.quantite.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <div class="panier-ligne-quantite-box text-align-center">
-                        <span>${entry.value.quantite}</span>
-                    </div>
-                </div>
-
-                <%--  prix unitaire --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.unitaire.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    ${entry.key.prixUnitaire}
-                    <spring:message code="glb.devise" />
-                </div>
-
-                <%--  prix  --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
-                    <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
-                    <span>${entry.value.prix} <spring:message code="glb.devise" />
-                    </span>
-                </div>
-            </c:forEach>
-        </fieldset>
+        <%-- Contenu commun avec pan_08 --%>
+        <jsp:include page="maCommande.jsp">
+            <jsp:param name="commande" value="pan_00" />
+        </jsp:include>
 
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
         <div class="panier-elements-a-droite">
@@ -171,25 +131,28 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13">
+                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%-- remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
-                <input type="text" id="remise" name="remise" maxlength="13">
+                <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%--  total après remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <input type="text" id="total_après_remise" name="total_après_remise" maxlength="13">
+                <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
                 <button type="button">

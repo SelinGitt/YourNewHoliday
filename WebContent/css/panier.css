@@ -6,6 +6,12 @@
 /* PAN00 */
 /* CSS factorisé */
 
+/* texte aligné à droite */
+.prix {
+	text-align: right;
+	width: 10em;
+}
+
 /* bordures */
 .panier-bordure-1px {
 	border: 0.063em solid black;
@@ -122,6 +128,14 @@
 .panier-margin-left-3em {
 	margin-left: 1em;
 	margin-right: 1em;
+}
+.panier-margin-left-15 {
+	margin-left: 15%;
+	
+}
+.panier-margin-left-10 {
+	margin-left: 10%;
+	
 }
 
 .panier-formulaire {
