@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
@@ -107,5 +108,14 @@ class DecimalFormatUtilsTest {
     void testDoubleFormatUtil() {
         final String nombreString = "1\u202F23\u202F4\u00A056\u00A0789,00";
         assertEquals(123456789.00, DecimalFormatUtils.doubleFormatUtil(nombreString));
+    }
+
+    /**
+     * Test method for {@link service.util.DecimalFormatUtils#bigDecimalFormatUtil(java.lang.String)}.
+     */
+    @Test
+    void testBigDecimalFormatUtil() {
+        final String nombreString = "1\u202F23\u202F4\u00A056\u00A0789,00";
+        assertEquals(new BigDecimal(123456789.00).setScale(2, RoundingMode.FLOOR), DecimalFormatUtils.bigDecimalFormatUtil(nombreString));
     }
 }

@@ -3,6 +3,7 @@
  */
 package persistance.commande.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class CommandeProduitDo {
     @JoinColumn(name = "idCommande")
     private CommandeDo      commandeDo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "idProduit")
     private ProduitAcheteDo produitAcheteDo;
 

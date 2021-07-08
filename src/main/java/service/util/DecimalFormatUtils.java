@@ -6,6 +6,7 @@ package service.util;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.Locale;
 
 /**
@@ -108,5 +109,30 @@ public class DecimalFormatUtils {
      */
     public static Double doubleFormatUtil(final String nombreString) {
         return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
+    }
+
+    /**
+     * Permet de transformer un nombre contenu dans un string ayant été formaté <br />
+     * par la méthode formatUtil(Big)Decimal en BigDecimal exploitable
+     *
+     * @param  nombreString : le nombre à  transformer
+     * @return              : le nombre transformé en BigDecimal
+     */
+    public static BigDecimal bigDecimalFormatUtil(final String nombreString) {
+        //affichage de la langue
+        final var symbols = new DecimalFormatSymbols(Locale.ENGLISH);
+
+        //garder uniquement 2 chiffres apres la virgule
+        //decimalFormat ###,###.#
+        final var format = new DecimalFormat("###,###.#", symbols);
+        // defini le nb de chiffres apres la virgule
+        format.setMinimumFractionDigits(2);
+        format.setParseBigDecimal(true);
+        try {
+            return (BigDecimal) format.parse(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
+        } catch (ParseException exception) {
+            exception.printStackTrace();
+            return BigDecimal.valueOf(0);
+        }
     }
 }
