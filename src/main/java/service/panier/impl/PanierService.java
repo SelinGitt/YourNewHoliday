@@ -26,8 +26,24 @@ import service.util.DecimalFormatUtils;
 @Transactional(propagation = Propagation.REQUIRED)
 public class PanierService implements IPanierService {
 
+    /**
+     * Permet de déterminer le pourcentage de la remise que l'on souhaite appliquer lorsque les conditions sont respectées.
+     */
+    private static final int    POURCENTAGE_REMISE                    = 5;
+    /**
+     * Permet de déterminer le prix total minimum que doit faire le panier pour que la remise soit appliquée. <br />
+     * (à condition de respecter aussi les autres criètres)
+     */
+    private static final double PRIX_TOTAL_MINIMUM_POUR_REMISE        = 10000.00;
+    /**
+     * Permet de déterminer le nombre de références minimum que doit contenir le panier pour que la remise soit appliquée.
+     * <br />
+     * (à condition de respecter aussi les autres criètres)
+     */
+    private static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
+
     @Autowired
-    private IProduitService iProduitService;
+    private IProduitService     iProduitService;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
@@ -61,7 +77,8 @@ public class PanierService implements IPanierService {
             // on modifie la ligne de commande
             ligneCommande.setQuantite(quantiteProduit);
             // On récupère le prix unitaire
-            final var prixUnitaire = Double.valueOf(produitAjout.getPrixUnitaire());
+            final var prixString = produitAjout.getPrixUnitaire();
+            final var prixUnitaire = DecimalFormatUtils.doubleFormatUtil(prixString);
             // On calcule le prix
             final Double prix = prixUnitaire * quantiteProduit;
             // on ajoute le prix formaté à la ligne de commande
@@ -91,5 +108,85 @@ public class PanierService implements IPanierService {
     public void viderPanier(final PanierDto panier) {
         panier.getMapPanier().clear();
         panier.setNombreDeReferences(0);
+    }
+
+    @Override
+    public String calculerPrixTotal(final PanierDto panier) {
+        var prixTotal = 0.00;
+        // on ajoute le sous-total de chaque ligne du panier au prix total
+        for (final LigneCommandeProduitDto ligne : panier.getMapPanier().values()) {
+            // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
+            prixTotal += DecimalFormatUtils.doubleFormatUtil(ligne.getPrix());
+        }
+        return DecimalFormatUtils.decimalFormatUtil(prixTotal);
+    }
+
+    @Override
+    public void appliquerRemise(final PanierDto panier) {
+        // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+        // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
+        final var prixTotal = DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage());
+        // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
+        // au minimum imposé, alors on applique la remise fixé en constante.
+        if (panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && prixTotal >= PRIX_TOTAL_MINIMUM_POUR_REMISE) {
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotal * POURCENTAGE_REMISE / 100));
+            // il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
+            // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus
+            panier.setPrixApresRemiseAffichage(
+                    DecimalFormatUtils.decimalFormatUtil(prixTotal - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
+            // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
+        } else {
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
+            panier.setPrixApresRemiseAffichage(panier.getPrixTotalAffichage());
+        }
+    }
+
+    @Override
+    public void actualiserPrix(final PanierDto panier) {
+        panier.setPrixTotalAffichage(calculerPrixTotal(panier));
+        appliquerRemise(panier);
+    }
+
+    @Override
+    public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
+        // On récupère le produit
+        final ProduitDto produit = findProduitMap(panier, idProduit);
+
+        // On récupère la quantité avant modification
+        final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
+
+        if (isModificationAutorisee(modif, quantiteInitiale)) {
+            updatePanier(panier, idProduit, modif);
+        }
+    }
+
+    /**
+     * <pre>
+     * Permets de vérifier si les conditions necessaires à la modification
+     * de la quantité d'une produit du panier sont réunies :
+     * - le résultat après décrément doit être > 0
+     * - le résultat après incrément doit être < = 100
+     * </pre>
+     * 
+     * @param  modif            valeur d'incrément
+     * @param  quantiteInitiale du produit dans le panier
+     * @return                  true si c'est ok, false sinon.
+     */
+    private boolean isModificationAutorisee(final int modif, final int quantiteInitiale) {
+        // décrément
+        if (modif == -1) {
+            // On autorise le décrément uniquement si le résultat > 0
+            // pour supprimer un produit du panier
+            // l'utilisateur doit utiliser la corbeille.
+            return quantiteInitiale > 1;
+        }
+        // incrément 
+        if (modif == 1) {
+            // On autorise l'incrément uniquement si le résultat <= 100
+            return quantiteInitiale < 100;
+        }
+        // On attends pas d'autre valeur 
+        return false;
     }
 }
