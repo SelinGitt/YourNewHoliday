@@ -3,6 +3,8 @@
  */
 package service.panier;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,10 +14,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import service.panier.impl.PanierService;
 import service.produit.IProduitService;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe test de {@link PanierService}
@@ -79,6 +83,96 @@ class PanierServiceTest {
         // On teste que si la quantité d'un produit devient inférieure à 1, il est alors supprimé du panier.
         panierService.updatePanier(panierTest, 2, -9);
         assertEquals(2, panierTest.getNombreDeReferences());
+    }
+
+    /**
+     * Test method for {@link service.panier.impl.PanierService#calculerPrixTotal(presentation.panier.dto.PanierDto)}.
+     */
+    @Test
+    void testCalculerPrixTotal() {
+        final var panierTest = new PanierDto();
+        final var produitTest1 = new ProduitDto();
+        produitTest1.setIdProduitOriginal("1");
+        final var produitTest2 = new ProduitDto();
+        produitTest2.setIdProduitOriginal("2");
+        final var produitTest3 = new ProduitDto();
+        produitTest3.setIdProduitOriginal("3");
+        final var ligne1 = new LigneCommandeProduitDto();
+        final var ligne2 = new LigneCommandeProduitDto();
+        final var ligne3 = new LigneCommandeProduitDto();
+        ligne1.setPrix("100");
+        ligne2.setPrix("20");
+        ligne3.setPrix("3");
+        panierTest.getMapPanier().put(produitTest1, ligne1);
+        panierTest.getMapPanier().put(produitTest2, ligne2);
+        panierTest.getMapPanier().put(produitTest3, ligne3);
+        assertEquals("123,00", panierService.calculerPrixTotal(panierTest));
+    }
+
+    /**
+     * Test method for {@link service.panier.impl.PanierService#isRemiseExpected(presentation.panier.dto.PanierDto)}.
+     */
+    @Test
+    void testIsRemiseExpected() {
+        final var panierTest = new PanierDto();
+        panierTest.setPrixTotalAffichage("999.99");
+        assertFalse(panierService.isRemiseExpected(panierTest));
+        panierTest.setNombreDeReferences(5);
+        assertFalse(panierService.isRemiseExpected(panierTest));
+        panierTest.setPrixTotalAffichage("10000.00");
+        assertTrue(panierService.isRemiseExpected(panierTest));
+        panierTest.setNombreDeReferences(4);
+        assertFalse(panierService.isRemiseExpected(panierTest));
+    }
+
+    /**
+     * Test method for {@link service.panier.impl.PanierService#actualiserPrix(presentation.panier.dto.PanierDto)}.
+     */
+    @Test
+    void testActualiserPrix() {
+        final var panierTest = new PanierDto();
+        final var produitTest1 = new ProduitDto();
+        produitTest1.setIdProduitOriginal("1");
+        final var produitTest2 = new ProduitDto();
+        produitTest2.setIdProduitOriginal("2");
+        final var produitTest3 = new ProduitDto();
+        produitTest3.setIdProduitOriginal("3");
+        final var produitTest4 = new ProduitDto();
+        produitTest4.setIdProduitOriginal("4");
+        final var produitTest5 = new ProduitDto();
+        produitTest5.setIdProduitOriginal("5");
+        final var ligne1 = new LigneCommandeProduitDto();
+        final var ligne2 = new LigneCommandeProduitDto();
+        final var ligne3 = new LigneCommandeProduitDto();
+        final var ligne4 = new LigneCommandeProduitDto();
+        final var ligne5 = new LigneCommandeProduitDto();
+        ligne1.setPrix("10000");
+        ligne2.setPrix("2000");
+        ligne3.setPrix("300");
+        ligne4.setPrix("40");
+        ligne5.setPrix("5");
+        panierTest.getMapPanier().put(produitTest1, ligne1);
+        panierTest.getMapPanier().put(produitTest2, ligne2);
+        panierTest.getMapPanier().put(produitTest3, ligne3);
+        panierTest.getMapPanier().put(produitTest4, ligne4);
+        panierTest.getMapPanier().put(produitTest5, ligne5);
+        panierTest.setNombreDeReferences(5);
+        panierService.actualiserPrix(panierTest);
+        assertEquals(12345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
+        assertEquals("617,25", panierTest.getRemiseAffichage());
+        assertEquals("11 727,75", panierTest.getPrixApresRemiseAffichage());
+        ligne1.setPrix("0");
+        panierService.actualiserPrix(panierTest);
+        assertEquals(2345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
+        assertEquals("0,00", panierTest.getRemiseAffichage());
+        assertEquals(2345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
+        ligne1.setPrix("10000");
+        panierTest.getMapPanier().remove(produitTest5);
+        panierTest.setNombreDeReferences(4);
+        panierService.actualiserPrix(panierTest);
+        assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
+        assertEquals("0,00", panierTest.getRemiseAffichage());
+        assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
     }
 
 }
