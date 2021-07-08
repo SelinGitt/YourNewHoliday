@@ -171,6 +171,7 @@ class ProduitServiceTest {
         produitDto.setDescription("Test moi");
         produitDto.setCheminImage("C:/temp/img/test.png");
         produitDto.setVersion("1");
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(ProduitMapper.mapToDo(produitDto));
         Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         assertNotNull(this.produitServiceMock.editerProduit(produitDto));
     }
