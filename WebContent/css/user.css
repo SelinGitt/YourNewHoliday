@@ -16,13 +16,33 @@
 	width: 100%;
 }
 
-.user00-titre {
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .user00-leftSide {
 	width: 65%;
+}
+
+.user00-infos {
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
+	margin-bottom: 1em;
+	text-align: left;
+}
+
+.user00-buttons {
+	width: 56%;
+	float: right;
+}
+
+.user00-modifier {
+	background-color: #6AA84F;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.user00-supprimer {
+	background-color: #E06666;
+	color: #FFFFFF;
+	margin: auto;
 }
 
 /* USR01 */
