@@ -1,8 +1,10 @@
 package service.util;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -70,5 +72,11 @@ class DateFormatUtilTest {
         assertThrows(NullPointerException.class, () -> {
             DateFormatUtil.formaterStringToDate(null);
         });
+    }
+
+    @Test
+    void testCheckPattern() {
+        assertTrue(DateFormatUtil.checkDate("25/06/1995"));
+        assertFalse(DateFormatUtil.checkDate("84/39/1995"));
     }
 }
