@@ -48,12 +48,6 @@
 		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
-	<!-- Déclaration du logger pour le package de Test -->
-	<!-- A Supprimer ensuite ! -->
-	<logger name="pocLogBack" level="trace">
-		<appender-ref ref="FILE-ROLLING" />
-	</logger>
-
 	<!-- Gère les logs de LogBack -->
 	<logger name="ch.qos" level="warn">
 		<appender-ref ref="FILE-ROLLING" />
