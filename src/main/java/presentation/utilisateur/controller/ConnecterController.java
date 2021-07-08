@@ -60,7 +60,6 @@ public class ConnecterController {
 
     //TODO methode temporaire pour creer un panier remplis
     private PanierDto creerPanier() {
-
         //ajout d'un panier vide en session        
         return RemplirPanier.echantillon();
     }
