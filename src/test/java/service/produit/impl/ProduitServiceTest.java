@@ -19,6 +19,8 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 
 /**
  * Classe test de {@link ProduitService}
@@ -134,5 +136,60 @@ class ProduitServiceTest {
         assertEquals(1, produitServiceMock.rechercherAllProduits("TEST").size());
         // On essaie de récupérer un produit qui n'existe pas
         assertEquals(0, produitServiceMock.rechercherAllProduits("ZZZ").size());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverParReference(String)}.
+     */
+    @Test
+    void testTrouverParReference() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        Mockito.when(this.iProduitDaoMock.findByReference("ITA1289967")).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findByReference("REFERENCE_FAUSSE")).thenReturn(null);
+        // On récupére un produit avec une référence existante
+        assertNotNull(produitServiceMock.trouverParReference("ITA1289967"));
+        // On récupére un produit avec une référence inexistante
+        assertNull(produitServiceMock.trouverParReference("REFERENCE_FAUSSE"));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduit() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setNom("Test Edition");
+        produitDto.setReference("TEST00000");
+        produitDto.setPrixUnitaire("10.00");
+        produitDto.setServices("1");
+        produitDto.setMiseEnVente("true");
+        produitDto.setHebergement("Hotel Test");
+        produitDto.setDestination("Testmanie");
+        produitDto.setDescription("Test moi");
+        produitDto.setCheminImage("C:/temp/img/test.png");
+        produitDto.setVersion("1");
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(ProduitMapper.mapToDo(produitDto));
+        Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
+        assertNotNull(this.produitServiceMock.editerProduit(produitDto));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#trouverProduitById(Integer)}.
+     */
+    @Test
+    void testTrouverProduitByid() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setIdProduitOriginal(50);
+        Mockito.when(this.iProduitDaoMock.findById(50)).thenReturn(produitDo);
+        Mockito.when(this.iProduitDaoMock.findById(404)).thenReturn(null);
+        // On récupére un produit avec un ID existant
+        assertNotNull(produitServiceMock.trouverProduitById(50));
+        // On récupére un produit avec un ID inexistant
+        assertNull(produitServiceMock.trouverProduitById(404));
     }
 }

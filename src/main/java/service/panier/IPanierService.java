@@ -56,11 +56,12 @@ public interface IPanierService {
     String calculerPrixTotal(final PanierDto panier);
 
     /**
-     * Permet d'appliquer la remise si les conditions sont réunies
+     * Permet de vérifier si les conditions d'application de la remise sont réunies
      *
-     * @param panier : le panier en session
+     * @param  panier : le panier en session
+     * @return        : true si la remise est applicable, sinon false
      */
-    void appliquerRemise(final PanierDto panier);
+    boolean isRemiseExpected(final PanierDto panier);
 
     /**
      * Permet de mettre à jour le prix total, la remise et le prix après remise du panier
