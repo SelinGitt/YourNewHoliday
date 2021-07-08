@@ -3,6 +3,7 @@
  */
 package service.panier.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import service.commande.ICommandeService;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.util.DecimalFormatUtils;
+import service.utilisateur.IUtilisateurService;
 
 /**
  * Classe représentant l'interface métier {@link IPanierService}
@@ -44,6 +47,12 @@ public class PanierService implements IPanierService {
 
     @Autowired
     private IProduitService     iProduitService;
+
+    @Autowired
+    private ICommandeService    iCommandeService;
+
+    @Autowired
+    private IUtilisateurService iUtilisateurService;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
@@ -188,5 +197,13 @@ public class PanierService implements IPanierService {
         }
         // On attends pas d'autre valeur 
         return false;
+    }
+
+    @Override
+    public List<Integer> validerPanier(final PanierDto panier, final Integer idUtilisateur) {
+        if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
+            return null;
+        }
+        return this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier());
     }
 }

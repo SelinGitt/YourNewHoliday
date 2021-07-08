@@ -3,6 +3,8 @@
  */
 package presentation.panier.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.panier.IPanierService;
-import service.utilisateur.IUtilisateurService;
 
 /**
  * Classe représentant le Controlleur pour Valider le panier
@@ -24,10 +25,7 @@ import service.utilisateur.IUtilisateurService;
 public class ValiderPanierController {
 
     @Autowired
-    private IUtilisateurService iUtilisateurService;
-
-    @Autowired
-    private IPanierService      panierService;
+    private IPanierService panierService;
 
     /**
      * Permet de passer un Panier à commande si toutes les conditions sont remplies
@@ -39,12 +37,17 @@ public class ValiderPanierController {
     @GetMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur) {
-        System.out.println("utilisateur : " + utilisateur);
-        System.out.println("panier : " + panierDto);
-        if (this.iUtilisateurService.findUtilisateurById(Integer.parseInt(utilisateur.getIdUtilisateur())) == null) {
+        final List<Integer> listProduitErreur = this.panierService.validerPanier(panierDto,
+                Integer.parseInt(utilisateur.getIdUtilisateur()));
+        if (listProduitErreur == null) {
             // On détruit la session donc le panier sera vider automatiquement
             return "redirect:deconnecter.do";
         }
-        return "forward:detailCommande.do?ref=ABC3";
+        if (listProduitErreur.size() == 0) {
+            // TODO changer le type de retour récupérer la référence commande
+            return "forward:detailCommande.do?ref=ABC3";
+        }
+        // en cas d'erreur renvoie au panier
+        return "redirect:listerPanierProduits.do";
     }
 }

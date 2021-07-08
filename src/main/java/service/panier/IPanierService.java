@@ -3,6 +3,8 @@
  */
 package service.panier;
 
+import java.util.List;
+
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 
@@ -77,5 +79,15 @@ public interface IPanierService {
      * @param quantite  +1/-1 pour incrémenter/décrémenter la quantité
      */
     void modifierQuantite(final PanierDto panier, final Integer idProduit, final int quantite);
+
+    /**
+     * Permet d'enregistrer le panier en une commande
+     *
+     * @param  panier        : le panier en sesion
+     * @param  idUtilisateur : l'identifiant de l'utilisateur en session
+     * @return               List{@code<Integer>} : null si utilisateur KO, vide si panier OK, liste des identifiants de
+     *                       produits non valide
+     */
+    List<Integer> validerPanier(final PanierDto panier, final Integer idUtilisateur);
 
 }
