@@ -80,6 +80,70 @@ th.pdt01 {
 }
 
 /* PDT02 */
+.pdt02Grid-container {
+	display: grid;
+	grid-gap: 0.3em;
+	padding: 0.3em;
+	width: 90%;
+}
+
+.pdt02Grid-item {
+	padding: 0.3em;
+	font-size: 1.125em;
+}
+
+.pdt02FormlaireCreerProduit {
+	grid-column: 1/span 2;
+	grid-row: 1/span 2;
+}
+
+.pdt02ImageProduit {
+	grid-column: 3;
+	grid-row: 1/span 1;
+}
+
+.pdt02LogoService {
+	grid-column: 3;
+	grid-row: 2/span 1;
+}
+
+.pdt02FormulaireProduit input {
+	width: 100%
+}
+
+.pdt02FormulaireProduit {
+	table-layout: auto;
+	text-align: left;
+	line-height: 3.75em;
+}
+
+.pdt02FormulaireProduit td {
+	padding: 0 0.313em 0 0.313em;
+	padding-left: 5em;
+}
+
+.pdt02Formpdt02Radio div {
+	align-items: center;
+}
+
+.pdt02Formpdt02Radio div input {
+	margin-right: 0.938em;
+	width: auto;
+}
+
+.pdt02TextAreapdt02 textarea {
+	resize: vertical;
+	min-height: 3.75em;
+}
+
+.pdt02ListeService {
+	width: 100%;
+	line-height: 4em;
+}
+
+.pdt02ImageCreationProduit {
+	width: 100%;
+}
 
 /* PDT03 */
 .pdt03Grid-container {

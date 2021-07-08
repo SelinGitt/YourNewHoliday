@@ -24,6 +24,12 @@
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
 
+
+	<definition name="editerProduitAdmin" extends="base.definition">
+		<put-attribute name="title" value="Edition d'un produits" />
+		<put-attribute name="body" value="/jsp/produit/editerProduitAdmin.jsp" />
+	</definition>
+
 	<definition name="creerProduitAdmin" extends="base.definition">
 		<put-attribute name="title" value="Gestion des produits" />
 		<put-attribute name="body" value="/jsp/produit/creerProduitAdmin.jsp" />
@@ -79,10 +85,10 @@
 		<put-attribute name="title" value="Création de profil" />
 		<put-attribute name="body" value="/jsp/utilisateur/creerUtilisateur.jsp" />
 	</definition>
-	
+
 	<definition name="modifierUtilisateur" extends="base.definition">
 		<put-attribute name="title" value="Modification Utilisateur" />
-		<put-attribute name="body" value="/jsp/utilisateur/modifierUtilisateur.jsp"></put-attribute>
+		<put-attribute name="body" value="/jsp/utilisateur/modifierUtilisateur.jsp" />
 	</definition>
 
 	<!-- écran panier -->
@@ -92,11 +98,13 @@
 
 	<!-- écran contact -->
 	<definition name="contact" extends="base.definition">
+		<put-attribute name="title" value="Contact" />
 		<put-attribute name="body" value="/jsp/page/contact/contact.jsp" />
 	</definition>
 
 	<!-- écran mentions légales -->
 	<definition name="mentionsLegales" extends="base.definition">
+		<put-attribute name="title" value="Mentions Légales" />
 		<put-attribute name="body" value="/jsp/page/mentionsLegales/mentionsLegales.jsp" />
 	</definition>
 
@@ -109,6 +117,6 @@
 	<!-- Ecran test pour afficherImage -->
 	<definition name="showImage" extends="base.definition">
 		<put-attribute name="title" value="Liste Utilisateur" />
-		<put-attribute name="body" value="/jsp/page/temp/showImage.jsp"></put-attribute>
+		<put-attribute name="body" value="/jsp/page/temp/showImage.jsp" />
 	</definition>
 </tiles-definitions>

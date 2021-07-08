@@ -66,13 +66,13 @@
 
 .user02-editValider {
 	background-color: #6AA84F;
-	color : #FFFFFF;
+	color: #FFFFFF;
 	margin: auto;
 }
 
 .user02-editReset {
-	background-color : #E06666;
-	color : #FFFFFF;
+	background-color: #E06666;
+	color: #FFFFFF;
 	margin: auto;
 }
 
@@ -87,7 +87,7 @@
 .user02-form {
 	align-items: center;
 	justify-content: space-evenly;
-	margin : 2em;
+	margin: 2em;
 }
 
 .user02-lib-champ-taille {
@@ -103,7 +103,7 @@
 
 .user02-buttons {
 	align-items: center;
-	margin : 1em;
+	margin: 1em;
 	width: 80%;
 }
 
@@ -112,7 +112,6 @@
 	margin-bottom: 12.5em;
 	margin-left: 12.5em;
 }
-
 
 /* USR03 */
 
@@ -188,12 +187,6 @@
 
 .user07-error {
 	Color: #FF0000;
-}
-
-/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.user07-errorblock {
-	background-color: #ff7f00;
-	border: 0.125em solid #000000;
 }
 
 .user07-lib-champ {
