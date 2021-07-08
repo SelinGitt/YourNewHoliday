@@ -39,7 +39,7 @@ public class AjouterProduitPanier {
     public ModelAndView ajouterProduit(final @RequestParam("id") String idProduit, final @RequestParam("quantite") String quantite,
             final HttpServletRequest request) {
         final var modelAndView = new ModelAndView("redirect:" + request.getHeader("Referer"));
-        if (!quantite.matches("[1-9][0-9]*") && Integer.parseInt(quantite) < 100) {
+        if (!quantite.matches("[1-9][0-9]*") || Integer.parseInt(quantite) >= 100) {
             modelAndView.getModelMap().addAttribute("anyError", "pdt.quantity.notAllowed");
             return modelAndView;
         }
