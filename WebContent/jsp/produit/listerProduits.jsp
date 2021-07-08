@@ -55,7 +55,7 @@
 
                                     <%--  saisie valeur produit  --%>
                                     <input class="produit-panier-quantite text-align-center" type="text"
-                                        readonly="readonly" name="quantite" value="1" size="1">
+                                        readonly="readonly" id="quantite" name="quantite" value="1" size="1">
 
                                     <%--  bouton + --%>
                                     <a onclick="increment()">
