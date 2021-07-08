@@ -94,15 +94,18 @@
 
                     <td class="user01-body"><c:choose>
                             <c:when test="${utilisateurDto.estDesactive}">
-                                <img class="user01-imageNonActive checkboxVide" alt="" src="img/commun/checkboxVide.png">
+                                <img class="user01-imageNonActive checkboxVide" alt=""
+                                    src="img/commun/checkboxVide.png">
                             </c:when>
                             <c:otherwise>
-                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
+                                <img alt="" src="img/commun/checkboxVert.jpg"
+                                    class="checkboxVert user01-image">
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
-                            alt="" src="img/commun/editer.png" class="poubelle user01-image">
+                    <td class="bodyUSR01"><a
+                        href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img alt=""
+                            src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
                     <td class="user01-body"><a
