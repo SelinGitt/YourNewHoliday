@@ -30,12 +30,12 @@ public interface IProduitService {
     ProduitDto trouverProduitEnVente(final Integer idProduit);
 
     /**
-     * Permet de rechercher produits par reference
+     * Permet de rechercher produits en vente par reference
      * 
      * @param  pSearchTerm terme recherché
-     * @return             liste de produits associée à la recherche
+     * @return             liste de produits en vente associée à la recherche
      */
-    List<ProduitDto> rechercherProduits(final String pSearchTerm);
+    List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm);
 
     /**
      * Permet de lister tous les produits
@@ -45,6 +45,30 @@ public interface IProduitService {
     List<ProduitDto> listerAllProduit();
 
     /**
+     * Permet de maj un produit
+     * 
+     * @param  produitDto le produit à éditer
+     * @return            le produit édité, null sinon
+     */
+    ProduitDto editerProduit(final ProduitDto produitDto);
+
+    /**
+     * Permet de trouver un produit via sa référence
+     *
+     * @param  reference du produit à cherhcer
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverParReference(final String reference);
+
+    /**
+     * Permet de rechercher produits par reference
+     *
+     * @param  pSearchTerm terme recherché
+     * @return             liste de produits associée à la recherche
+     */
+    List<ProduitDto> rechercherAllProduits(final String pSearchTerm);
+
+    /**
      * Permet de créer un produit
      * 
      * @param  produitDto le produit à créer
@@ -52,4 +76,11 @@ public interface IProduitService {
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
 
+    /**
+     * Permet de trouver un produit via son ID
+     *
+     * @param  idProduit l'id du produit à rechercher
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverProduitById(final Integer idProduit);
 }
