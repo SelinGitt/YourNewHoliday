@@ -83,16 +83,35 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public boolean deleteUtilisateurById(final Integer idUtilisateur, final Integer idRole) {
-        //S'il ne reste qu'un admin et qu'on cherche à le supprimer -> false
-        if (iUtilisateurDao.isLastAdmin(idRole)) {
-            return false;
+    public UtilisateurServiceReturn deleteUtilisateurByRef(final Integer idUtilisateurConnecte, final String referenceUtilisateur,
+            final String origin) {
+
+        //Instanciation du builder, qui va être renseigné au fil de l'eau avant de construire l'objet retour en retour de méthode
+        final var builder = new UtilisateurServiceReturn.UtilisateurServiceReturnBuilder();
+
+        //On récupère l'id de l'utilisateurDo correspondant à l'utilisateurDto
+        final var idUtilisateurASupprimer = iUtilisateurDao.findByReference(referenceUtilisateur).getIdUtilisateur();
+
+        //On teste si la page d'origine est la liste USR_01 et si l'admin se supprime lui-même
+        final var isSameUserFromList = isSameUserFromList(origin, idUtilisateurConnecte, idUtilisateurASupprimer);
+        builder.withIsSameUserFromList(isSameUserFromList);
+
+        //On teste si l'utilisateur est le dernier admin
+        if (iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
+            builder.withIsSucceeded(false);
+        } else {
+            //Suppression autorisée
+            //On détache les commandes de l'utilisateur
+            iCommandeDao.updateCommandeDoUserDeletion(idUtilisateurASupprimer);
+            //On le supprime
+            iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
+            builder.withIsSucceeded(true);
         }
-        //On détache les commandes de l'utilisateur
-        iCommandeDao.updateCommandeDoUserDeletion(idUtilisateur);
-        //On le supprime
-        iUtilisateurDao.deleteUtilisateurById(idUtilisateur);
-        return true;
+        return builder.build();
+    }
+
+    private boolean isSameUserFromList(final String origin, final Integer idUtilisateurConnecte, final Integer idUtilisateurASupprimer) {
+        return ("2".equals(origin) && idUtilisateurConnecte.equals(idUtilisateurASupprimer));
     }
 
     @Override
