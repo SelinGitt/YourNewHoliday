@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
+import presentation.temp.RemplirPanier;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
@@ -55,6 +56,13 @@ public class ConnecterController {
             return logout(request, sessionStatus, code, redirectAttributes);
         }
         return voirConnecter();
+    }
+
+    //TODO methode temporaire pour creer un panier remplis
+    private PanierDto creerPanier() {
+
+        //ajout d'un panier vide en session        
+        return RemplirPanier.echantillon();
     }
 
     /**
