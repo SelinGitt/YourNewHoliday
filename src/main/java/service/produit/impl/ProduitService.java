@@ -53,6 +53,25 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public ProduitDto editerProduit(final ProduitDto produitDto) {
+        final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
+        this.logger.debug("Produit Service {} editerProduit, id : {}", produitFound, produitDto.getIdProduitOriginal());
+        // On update si le produit existe
+        if (produitFound != null) {
+            final var produitDo = ProduitMapper.mapToDo(produitDto);
+            return ProduitMapper.mapToDto(produitDao.update(produitDo));
+        }
+        return null;
+    }
+
+    @Override
+    public ProduitDto trouverParReference(final String reference) {
+        final var produitDo = produitDao.findByReference(reference);
+        this.logger.debug("Produit Service {} trouverParReference", reference);
+        return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
@@ -70,5 +89,12 @@ public class ProduitService implements IProduitService {
     @Override
     public ProduitDto deleteProduit(final Integer idProduit) {
         return ProduitMapper.mapToDto(produitDao.delete(idProduit));
+    }
+
+    @Override
+    public ProduitDto trouverProduitById(final Integer idProduit) {
+        final var produitDo = produitDao.findById(idProduit);
+        this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
+        return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
     }
 }
