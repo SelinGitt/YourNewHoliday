@@ -6,6 +6,8 @@ package service.mentions_legales;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Locale;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -47,7 +49,7 @@ class FichierMentionsLegalesServiceTest {
         assertNotNull(fichierMentionsLegalesService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierMentionsLegalesService.trouverFichierCGV(null));
+                fichierMentionsLegalesService.trouverFichierCGV(Locale.FRANCE));
     }
 
     /**
@@ -61,7 +63,7 @@ class FichierMentionsLegalesServiceTest {
         assertNotNull(fichierMentionsLegalesService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierMentionsLegalesService.trouverFichierCGU(null));
+                fichierMentionsLegalesService.trouverFichierCGU(Locale.FRANCE));
     }
 
 }

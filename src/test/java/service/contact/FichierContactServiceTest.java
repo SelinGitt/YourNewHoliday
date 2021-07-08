@@ -6,6 +6,8 @@ package service.contact;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Locale;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -49,7 +51,7 @@ class FichierContactServiceTest {
         assertNotNull(fichierContactService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierContactService.trouverFichierContact(null));
+                fichierContactService.trouverFichierContact(Locale.FRANCE));
 
     }
 }

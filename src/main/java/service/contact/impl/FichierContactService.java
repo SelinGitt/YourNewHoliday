@@ -23,23 +23,14 @@ public class FichierContactService implements IFichierContactService {
     @Autowired
     private IFichierDao fichierDao;
 
-    private String determinerNom(final Locale locale) {
-
-        if (locale.toString().equals("en")) {
-            return "contact_en.html";
-        }
-        return "contact_fr.html";
-
-    }
-
     @Override
     public String trouverFichierContact(final Locale locale) {
+        final String contactHtml = "contact_" + locale.toString() + ".html";
+        final String nomFichier = fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + contactHtml);
 
-        final String nomFichier = fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + determinerNom(locale));
-
-        //retourne la local fr si le fichier html en n'est pas disponible
+        //retourne la local fr si le fichier html en si il n'est pas disponible
         if (nomFichier.isBlank()) {
-            return fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + determinerNom(Locale.FRANCE));
+            return fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get("contactRepo") + "contact_fr.html");
         }
         return nomFichier;
     }
