@@ -5,9 +5,8 @@
 <div class="user07-body-general">
 
     <c:if test="${not empty error}">
-        <div class="user07-errorblock display-flex">
-            <span class="fa fa-exclamation"></span> <span class="user07-error-message"><spring:message
-                    code="${error}" /></span>
+        <div class="error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
         </div>
     </c:if>
 

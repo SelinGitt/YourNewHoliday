@@ -11,18 +11,25 @@
 	background-color: #F00000;
 }
 /* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.user07-errorblock {
+.error-block {
 	background-color: #ff7f00;
+}
+/* Permet de créer un bloc de couleur vert en haut de body afin de recevoir des messages de validation*/
+.validation-block {
+	background-color: #008000;
+}
+/* permet de mettre un espace entre le message et l'icone*/
+.message {
+	margin-left: 0.625em;
+}
+/* permet de mettre une bordure et des marges pour le bloc d'affichage*/
+.block-message-commun {
 	border: 0.125em solid #000000;
 	color: #FFFFFF;
 	margin-right: 1%;
 	margin-left: 1%;
 	padding-left: 1em;
 	height: 3vh;
-}
-
-.user07-error-message {
-	margin-left: 0.625em;
 }
 
 /* titre */
