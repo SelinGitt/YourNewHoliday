@@ -35,5 +35,5 @@ public interface IFichierMentionsLegalesService {
      * @param  radical : radical pour trouver pour CGU et CGV
      * @return         : le fichier trouver
      */
-    String trouverFichier(Locale locale, final String radical);
+    String trouverFichier(final Locale locale, final String radical);
 }
