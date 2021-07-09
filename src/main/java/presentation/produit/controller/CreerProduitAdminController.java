@@ -49,6 +49,11 @@ public class CreerProduitAdminController {
      */
     @PostMapping
     public ModelAndView creerProduit(final @ModelAttribute("produitDto") ProduitDto produitDto) {
+
+        // Si le formulaire possède des erreurs
+
+        // Si le produit n'est pas créé (retour null)
+        // Ajout de l'attribut "ErrorCreate" utilisé dans la jsp en cas d'erreur de création
         if (iProduitService.creerProduit(produitDto) != null) {
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
