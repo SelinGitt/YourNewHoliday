@@ -23,8 +23,8 @@
                 <span><spring:message code="usr07.label.email" /></span>
                 <div class="user07-lib-champ-email">
                     <form:input path="email" />
-                    <div class="error">
-                        <form:errors path="email" cssClass="user07-error" />
+                    <div>
+                        <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
             </div>
@@ -33,8 +33,8 @@
                 <span><spring:message code="usr07.label.password" /></span>
                 <div class="user07-lib-champ-password">
                     <form:password path="password" />
-                    <div class="user07-psw-error">
-                        <form:errors path="password" cssClass="user07-error" />
+                    <div>
+                        <form:errors path="password" cssClass="text-color-rouge" />
                     </div>
                 </div>
             </div>
