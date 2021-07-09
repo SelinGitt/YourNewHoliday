@@ -39,6 +39,11 @@
 		<appender-ref ref="CONSOLE" />
 	</logger>
 
+	<!-- Gère les logs des requêtes Hibernate -->
+	<logger name="org.hibernate.SQL" level="trace">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
 	<!-- Root : logger par défaut, indispensable et unique -->
 	<root level="info">
 		<appender-ref ref="CONSOLE" />
