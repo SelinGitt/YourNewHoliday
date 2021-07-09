@@ -78,11 +78,11 @@
     <%--  ma Commande  --%>
     <div class="panier-right">
         <%-- Contenu commun avec pan_00 --%>
-       <jsp:include page="maCommande.jsp">
+        <jsp:include page="maCommande.jsp">
             <jsp:param name="commande" value="pan_08" />
         </jsp:include>
 
-       <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
+        <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
         <div class="panier-elements-a-droite">
 
             <%--  total avant remise --%>
@@ -114,10 +114,10 @@
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
-            <a href="validerPanier.do">
-                <button type="button">
-                    <spring:message code="pan00.valider.panier" />
-                </button>
+                <a href="validerPanier.do">
+                    <button type="button">
+                        <spring:message code="pan00.valider.panier" />
+                    </button>
                 </a>
             </div>
         </div>
