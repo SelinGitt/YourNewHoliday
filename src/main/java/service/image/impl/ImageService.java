@@ -47,6 +47,7 @@ public class ImageService implements IImageService {
         if (TypeImage.UTILISATEUR.type.equals(type)) {
             final var userDo = utilisateurDao.findById(Integer.valueOf(id));
             path = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + userDo.getCheminAvatar();
+            return imageDao.getImage(path);
         }
         // il faut ajouter le produitAcheteDao, indisponible à l'heure actuelle
         return null;
@@ -58,6 +59,7 @@ public class ImageService implements IImageService {
             if (TypeImage.UTILISATEUR.type.equals(type)) {
                 final var file = image.getAbsolutePath();
                 final var cheminComplet = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + File.separator + file;
+                imageDao.saveImage(cheminComplet, image);
                 return true;
             }
         }
