@@ -28,9 +28,10 @@
             <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
                 aria-label="Produit">
                 <tr>
-                    <th colspan="2"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}"><img
+                    <th colspan="2"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}"> <img
                             src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                            alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" /></a></th>
+                            alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
+                    </a></th>
                 </tr>
                 <tr class="display-flex">
                     <td class="display-flex text-responsive">${produitDto.nom}</td>
