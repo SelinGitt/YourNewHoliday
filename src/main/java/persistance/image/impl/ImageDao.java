@@ -4,6 +4,8 @@
 package persistance.image.impl;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,10 +25,14 @@ public class ImageDao implements IImageDao {
     }
 
     @Override
-    public boolean saveImage(String cheminTotal, final File image) {
+    public boolean saveImage(final String cheminTotal, final File image) {
         if (image != null) {
-            final String file = image.getAbsolutePath();
-            //cheminTotal = PATH_NAME + File.separator + file;
+            try (final FileOutputStream fos = new FileOutputStream(cheminTotal)) {
+                final ObjectOutputStream save = new ObjectOutputStream(fos);
+                save.writeObject(image);
+            } catch (final Exception e) {
+                //TODO
+            }
             return true;
         }
         return false;

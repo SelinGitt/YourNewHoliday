@@ -55,13 +55,12 @@ public class ImageService implements IImageService {
 
     @Override
     public boolean saveImage(final File image, final String type) {
-        if (image != null) {
-            if (TypeImage.UTILISATEUR.type.equals(type)) {
-                final var file = image.getAbsolutePath();
-                final var cheminComplet = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + File.separator + file;
-                imageDao.saveImage(cheminComplet, image);
-                return true;
-            }
+        //on test dans la couche présentation si image est null
+        if (TypeImage.UTILISATEUR.type.equals(type)) {
+            final var fileName = image.getAbsolutePath();
+            final var cheminComplet = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + File.separator + fileName;
+            imageDao.saveImage(cheminComplet, image);
+            return true;
         }
         return false;
     }
