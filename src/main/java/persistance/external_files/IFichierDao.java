@@ -21,7 +21,7 @@ public interface IFichierDao {
     /**
      * Permet de trouver un fichier
      *
-     * @param  nomFichier
+     * @param  nomFichier : le nom du fichier a trouver
      * @return            : un nom de fichier
      */
     boolean trouverFichier(final String nomFichier);

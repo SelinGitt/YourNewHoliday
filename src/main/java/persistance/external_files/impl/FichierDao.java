@@ -26,8 +26,10 @@ public class FichierDao implements IFichierDao {
     @Override
     public String chargerFichier(final String nomFichier) {
         final var strBuilder = new StringBuilder();
+        logger.error("Creation d'un StringBuilder : ", strBuilder);
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);
+        logger.error("On cherche le fichier : ", file);
         try (final var scanner = new Scanner(file)) {
             //passe le contenu du fichier html dans la string contenuHtml
             while (scanner.hasNext()) {
@@ -44,6 +46,7 @@ public class FichierDao implements IFichierDao {
     @Override
     public boolean trouverFichier(final String nomFichier) {
         final var file = new File(nomFichier);
+        logger.error("On cherche le fichier :", file);
         //on verifie que le fichier peut etre lu
         return file.canRead();
     }
