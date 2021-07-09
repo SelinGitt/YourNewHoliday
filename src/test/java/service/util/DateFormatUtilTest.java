@@ -81,10 +81,10 @@ class DateFormatUtilTest {
     void testCheckPattern() {
         assertTrue(DateFormatUtil.checkDate("25/06/1995"));
         assertTrue(DateFormatUtil.checkDate("08/07/2021"));
-
         assertTrue(DateFormatUtil.checkDate("25/12/2221"));
 
         assertFalse(DateFormatUtil.checkDate("31/02/2000"));
+        assertFalse(DateFormatUtil.checkDate("29/02/2001"));
         assertFalse(DateFormatUtil.checkDate("84/39/1995"));
     }
 }

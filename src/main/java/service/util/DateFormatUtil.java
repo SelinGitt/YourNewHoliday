@@ -1,11 +1,9 @@
 package service.util;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -69,9 +67,11 @@ public class DateFormatUtil {
         var valide = false;
 
         try {
-            LocalDate.parse(date, DateTimeFormatter.ofPattern(PATTERN));
+            final DateFormat dateFormat = new SimpleDateFormat(PATTERN);
+            dateFormat.setLenient(false);
+            dateFormat.parse(date);
             valide = true;
-        } catch (final DateTimeParseException e) {
+        } catch (final ParseException e) {
             e.printStackTrace();
             logger.warn(e.getMessage());
         }
