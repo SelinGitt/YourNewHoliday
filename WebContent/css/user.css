@@ -12,6 +12,47 @@
 }
 
 /* USR00 */
+.user00-title {
+	text-align: center;
+}
+
+.user00-body-general {
+	width: 100%
+}
+
+.user00-leftSide {
+	width: 65%;
+}
+
+.user00-infos {
+	margin-left: 3em;
+	margin-bottom: 2em;
+	justify-content: space-between;
+	display: flex;
+}
+
+.user00-infos-input {
+	width: 55%;
+}
+
+.user00-buttons {
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
+}
+
+.user00-modifier {
+	background-color: #6AA84F;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.user00-supprimer {
+	background-color: #E06666;
+	color: #FFFFFF;
+	margin: auto;
+}
 
 /* USR01 */
 .user01-searchMenu {
