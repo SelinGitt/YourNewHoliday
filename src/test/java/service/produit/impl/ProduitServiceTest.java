@@ -19,7 +19,10 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.ProduitMapper;
 
 /**
@@ -33,6 +36,8 @@ class ProduitServiceTest {
     private ProduitService produitServiceMock;
     @Mock
     private IProduitDao    iProduitDaoMock;
+    @Mock
+    private IPanierService iPanierService;
 
     @BeforeEach
     void initMock() {
@@ -191,5 +196,46 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitById(50));
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierInvalideNegatif() {
+        final PanierDto panier = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("-100");
+        assertNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierInvalideTropGrand() {
+        final PanierDto panier = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("200");
+        assertNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierValide() {
+        final PanierDto panier = new PanierDto();
+        final PanierDto panierUpdated = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("94");
+        panierUpdated.setPrixApresRemiseAffichage("1000");
+        panierUpdated.setPrixTotalAffichage("1000");
+        panierUpdated.setRemiseAffichage("0");
+        Mockito.when(this.iPanierService.updatePanier(panier, 1, 94)).thenReturn(panierUpdated);
+        assertNotNull(produitServiceMock.updatePanier(panier, beanQuantite));
     }
 }

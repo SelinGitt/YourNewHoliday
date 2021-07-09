@@ -57,8 +57,7 @@ public class ListerProduitsController {
         if (searchInput.isEmpty()) {
             modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         } else {
-            modelAndView.getModelMap().addAttribute("listeProduitDto",
-                    iProduitService.rechercherProduitsEnVente(searchInput));
+            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.rechercherProduitsEnVente(searchInput));
         }
         return modelAndView;
     }
