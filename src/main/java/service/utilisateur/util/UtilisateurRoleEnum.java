@@ -41,7 +41,7 @@ public enum UtilisateurRoleEnum {
      * Permet de recuperer le role selon le libelle
      *
      * @param  libelle Libelle du role
-     * @return         {@link UtilisateurRoleEnum}
+     * @return         {@link UtilisateurRoleEnum} ou Null
      */
     public static UtilisateurRoleEnum getRole(final String libelle) {
         for (final UtilisateurRoleEnum role : UtilisateurRoleEnum.values()) {
