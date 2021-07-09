@@ -22,6 +22,8 @@ class NumberUtilsTest {
     void testValidate() {
         assertTrue(NumberUtils.validate("14"));
         assertFalse(NumberUtils.validate("sdqd"));
+        //test avec nombre + string
+        assertFalse(NumberUtils.validate("14sdqd"));
     }
 
 }
