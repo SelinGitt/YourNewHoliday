@@ -36,7 +36,7 @@ public class ContactController {
 
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("contact");
-        modelAndView.getModelMap().addAttribute("fichierHtml", iContactService.trouverFichierContact(locale));
+        modelAndView.getModelMap().addAttribute("fichierHtml", iContactService.chargerFichierContact(locale));
         return modelAndView;
     }
 

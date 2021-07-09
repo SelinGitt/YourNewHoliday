@@ -18,7 +18,7 @@ public interface IFichierMentionsLegalesService {
      * @param  locale : la locale pour connaitre la langue
      * @return        : le contenu du fichier html
      */
-    String trouverFichierCGV(final Locale locale);
+    String chargerFichierCGV(final Locale locale);
 
     /**
      * Permet de trouver un fichier html
@@ -26,5 +26,14 @@ public interface IFichierMentionsLegalesService {
      * @param  locale : la locale pour connaitre la langue
      * @return        : le contenu du fichier html
      */
-    String trouverFichierCGU(final Locale locale);
+    String chargerFichierCGU(final Locale locale);
+
+    /**
+     * Permet de savoir si on trouve un fichier ou non
+     *
+     * @param  locale  : la locale pour connaitre la langue
+     * @param  radical : radical pour trouver pour CGU et CGV
+     * @return         : le fichier trouver
+     */
+    String trouverFichier(Locale locale, final String radical);
 }

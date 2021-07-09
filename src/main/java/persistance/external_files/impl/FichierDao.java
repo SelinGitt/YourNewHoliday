@@ -24,7 +24,7 @@ public class FichierDao implements IFichierDao {
     private static final Logger logger = LoggerFactory.getLogger(FichierDao.class);
 
     @Override
-    public String trouverFichier(final String nomFichier) {
+    public String chargerFichier(final String nomFichier) {
         final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);
@@ -41,4 +41,10 @@ public class FichierDao implements IFichierDao {
         return strBuilder.toString();
     }
 
+    @Override
+    public boolean trouverFichier(final String nomFichier) {
+        final var file = new File(nomFichier);
+        //on verifie que le fichier peut etre lu
+        return file.canRead();
+    }
 }

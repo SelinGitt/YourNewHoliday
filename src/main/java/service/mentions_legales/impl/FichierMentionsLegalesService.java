@@ -25,35 +25,36 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
      */
     private static final String PATH        = "mentionsLegalesRepo";
 
-    private static final String HTML        = "html";
+    private static final String HTML        = ".html";
 
-    private static final String CGU_RADICAL = "CGU";
+    private static final String CGU_RADICAL = "CGU_";
 
-    private static final String CGV_RADICAL = "CGV";
+    private static final String CGV_RADICAL = "CGV_";
 
     @Autowired
-    private IFichierDao         fichierContactDao;
+    private IFichierDao         fichierDao;
 
     @Override
-    public String trouverFichierCGV(final Locale locale) {
+    public String chargerFichierCGV(final Locale locale) {
         //je retourne le nom du fichier + la local 
-        final String CgvNameFile = CGV_RADICAL + locale.toString() + HTML;
-        final String contenuFichier = fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CgvNameFile);
-        if (contenuFichier.isBlank()) {
-            return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + "CGV_fr.html");
-        }
-        return contenuFichier;
+        final String CgvNameFile = trouverFichier(locale, CGV_RADICAL);
+        return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CgvNameFile);
     }
 
     @Override
-    public String trouverFichierCGU(final Locale locale) {
+    public String chargerFichierCGU(final Locale locale) {
         //je retourne le nom du fichier + la local 
-        final String CguNameFile = CGU_RADICAL + locale.toString() + HTML;
-        final String nomFichier = fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CguNameFile);
-        if (nomFichier.isBlank()) {
-            return fichierContactDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + "CGU_fr.html");
+        final String CguNameFile = trouverFichier(locale, CGU_RADICAL);
+        return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CguNameFile);
+    }
+
+    @Override
+    public String trouverFichier(final Locale locale, final String radical) {
+        final String nomFichier = radical + locale.toString() + HTML;
+        if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
+            return nomFichier;
         }
-        return nomFichier;
+        return radical + "fr" + HTML;
     }
 
 }

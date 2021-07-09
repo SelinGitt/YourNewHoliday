@@ -35,8 +35,8 @@ public class MentionsLegalesController {
     public ModelAndView afficherContact(final Locale locale) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("mentionsLegales");
-        modelAndView.getModelMap().addAttribute("fichierCGV", iFichierMentionsLegalesService.trouverFichierCGV(locale));
-        modelAndView.getModelMap().addAttribute("fichierCGU", iFichierMentionsLegalesService.trouverFichierCGU(locale));
+        modelAndView.getModelMap().addAttribute("fichierCGV", iFichierMentionsLegalesService.chargerFichierCGV(locale));
+        modelAndView.getModelMap().addAttribute("fichierCGU", iFichierMentionsLegalesService.chargerFichierCGU(locale));
         return modelAndView;
     }
 
