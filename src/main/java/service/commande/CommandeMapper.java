@@ -1,10 +1,13 @@
 package service.commande;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
+import presentation.panier.dto.LigneCommandeProduitDto;
+import presentation.panier.dto.PanierDto;
 import service.util.DateFormatUtil;
 import service.util.DecimalFormatUtils;
 
@@ -48,5 +51,34 @@ public class CommandeMapper {
     public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
         return listeCommandeDo.stream().map(CommandeMapper::mapperToDto).collect(Collectors.toList());
 
+    }
+
+    /**
+     * Permet de mapper un Panier en CommandeDo
+     *
+     * @param  panier        le panier en session
+     * @param  reference     la reference de la commande qui a été généré en ammon
+     * @param  idUtilisateur l'id de l'utilisateur en session
+     * @return               CommandeDo la commande qui doit être enregistré en base de donnée
+     */
+    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final String reference, final Integer idUtilisateur) {
+        final var commandeDo = new CommandeDo();
+        commandeDo.setId(null);
+        commandeDo.setReference(reference);
+        commandeDo.setDate(new Date());
+        commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
+        commandeDo.setPrixTotal(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
+        commandeDo.setQuantiteTotale(calculerQuantiteTotal(panier));
+        commandeDo.setIdUtilisateur(idUtilisateur);
+        commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
+        return commandeDo;
+    }
+
+    private static int calculerQuantiteTotal(final PanierDto panier) {
+        int quantiteTotal = 0;
+        for (LigneCommandeProduitDto ligneProduit : panier.getMapPanier().values()) {
+            quantiteTotal += ligneProduit.getQuantite();
+        }
+        return quantiteTotal;
     }
 }

@@ -28,6 +28,9 @@ public class CommandeDo {
     @Column(name = "reference")
     private String                 reference;
 
+    @Column(name = "prix_total_ante_remise")
+    private BigDecimal             prixSansRemise;
+
     @Column(name = "prix_avec_remise")
     private BigDecimal             prixTotal;
 
@@ -77,6 +80,24 @@ public class CommandeDo {
      */
     public void setReference(final String reference) {
         this.reference = reference;
+    }
+
+    /**
+     * Getter for prixSansRemise
+     *
+     * @return the prixSansRemise
+     */
+    public BigDecimal getPrixSansRemise() {
+        return prixSansRemise;
+    }
+
+    /**
+     * Setter for prixSansRemise
+     *
+     * @param prixSansRemise the prixSansRemise to set
+     */
+    public void setPrixSansRemise(BigDecimal prixSansRemise) {
+        this.prixSansRemise = prixSansRemise;
     }
 
     /**
