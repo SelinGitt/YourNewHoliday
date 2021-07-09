@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * JUnit class pour {@link persistance.utilisateur.dao.impl.UtilisateurDao}
@@ -73,7 +74,8 @@ class UtilisateurDaoTest {
         utilisateurDo.setCheminAvatar("img/test.png");
 
         final RoleDo role = new RoleDo();
-        role.setIdRole(1);
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(role);
 
@@ -127,7 +129,7 @@ class UtilisateurDaoTest {
      */
     @Test
     void testRechercheRole() {
-        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheRole(1);
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheRole(UtilisateurRoleEnum.CLIENT.getId());
 
         Assertions.assertNotNull(utilisateurDos);
         Assertions.assertEquals(4, utilisateurDos.size());
@@ -138,7 +140,7 @@ class UtilisateurDaoTest {
      */
     @Test
     void testRechercheNomRole() {
-        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheNomRole("Ma", 3);
+        final List<UtilisateurDo> utilisateurDos = iUtilisateurDao.rechercheNomRole("Ma", UtilisateurRoleEnum.ADMINISTRATEUR.getId());
 
         Assertions.assertNotNull(utilisateurDos);
         Assertions.assertEquals(2, utilisateurDos.size());

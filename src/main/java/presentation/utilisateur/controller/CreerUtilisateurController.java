@@ -19,6 +19,7 @@ import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.CreerUtilisateurValidator;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Controller pour création d'un utilisateur
@@ -36,7 +37,7 @@ public class CreerUtilisateurController {
     private CreerUtilisateurValidator validator;
 
     /**
-     * Permet de traiter les requêtes GET<br/>
+     * Permet de traiter les requêtes GET<br>
      * et de mettre un UtilisateurDto vide dans le modèle
      * 
      * @return le Model and View
@@ -49,7 +50,7 @@ public class CreerUtilisateurController {
         final var utilisateurDto = new UtilisateurDto();
 
         final var roleDto = new RoleDto();
-        roleDto.setIdRole(1);
+        roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
 
         utilisateurDto.setRole(roleDto);
 
@@ -59,7 +60,7 @@ public class CreerUtilisateurController {
     }
 
     /**
-     * Permet de traiter les requêtes POST<br/>
+     * Permet de traiter les requêtes POST<br>
      * et de créer un utilisateur
      *
      * @param  utilisateurDto l'utilisateur à créer
