@@ -17,7 +17,7 @@ class UtilisateurRoleEnumTest {
      * Test pour {@link UtilisateurRoleEnum#getRole(String)}
      */
     @Test
-    void test() {
+    void testGetRole() {
         Assertions.assertEquals(UtilisateurRoleEnum.VISITEUR, UtilisateurRoleEnum.getRole("Visiteur"));
         Assertions.assertEquals(UtilisateurRoleEnum.CLIENT, UtilisateurRoleEnum.getRole("Client"));
         Assertions.assertEquals(UtilisateurRoleEnum.ADMINISTRATEUR, UtilisateurRoleEnum.getRole("Administrateur"));
