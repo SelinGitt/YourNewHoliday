@@ -5,14 +5,24 @@
 <div class="conteneur-ascenseur">
     <div class="user00-body-general">
 
-        <div class="display-flex align-item-center justify-content-center">
+        <div class="align-item-center justify-content-center">
             <c:if test="${not empty error}">
-                <span class="errorblock"><spring:message code="${error}" /></span>
+                <div class="background-error-block block-message-commun">
+                    <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+                </div>
             </c:if>
-            <h1 class="user00-titre">
-                <spring:message code="usr00.titre" />
-                - ${fn:toUpperCase(utilisateurDto.role.libelle)}
-            </h1>
+            <div class="user00-title">
+                <h1>
+                    <c:choose>
+                        <c:when test="${utilisateurDto.role.idRole=='1'}">
+                            <spring:message code="usr00.titre.client" />
+                        </c:when>
+                        <c:otherwise>
+                            <spring:message code="usr00.titre.admin" />
+                        </c:otherwise>
+                    </c:choose>
+                </h1>
+            </div>
         </div>
 
         <div class="display-flex justify-content-space-around">
@@ -20,35 +30,35 @@
 
                 <div class="user00-infos">
                     <label for="nom"><spring:message code="usr00.consulter.nom" /></label> <input
-                        value="${utilisateurDto.nom}" disabled="disabled">
+                        class="user00-infos-input" value="${utilisateurDto.nom}" disabled="disabled">
                 </div>
 
                 <div class="user00-infos">
                     <label for="prenom"> <spring:message code="usr00.consulter.prenom" /></label> <input
-                        value="${utilisateurDto.prenom}" disabled="disabled">
+                        class="user00-infos-input" value="${utilisateurDto.prenom}" disabled="disabled">
                 </div>
 
                 <div class="user00-infos">
                     <label for="adresse"> <spring:message code="usr00.consulter.adresse" /></label>
-                    <textarea rows="5" cols="52">${utilisateurDto.adresse}</textarea>
+                    <textarea class="user00-infos-input" disabled="disabled">${utilisateurDto.adresse}</textarea>
                 </div>
 
                 <div class="user00-infos">
                     <label for="dateNaissance"> <spring:message code="usr00.consulter.dateNaissance" /></label> <input
-                        value="${utilisateurDto.dateNaissance}" disabled="disabled">
+                        class="user00-infos-input" value="${utilisateurDto.dateNaissance}" disabled="disabled">
                 </div>
 
                 <div class="user00-infos">
                     <label for="email"> <spring:message code="usr00.consulter.email" /></label> <input
-                        value="${utilisateurDto.email}" disabled="disabled">
+                        class="user00-infos-input" value="${utilisateurDto.email}" disabled="disabled">
                 </div>
 
                 <div class="user00-infos">
                     <label for="password"> <spring:message code="usr00.consulter.password" /></label> <input
-                        value="**********" disabled="disabled">
+                        class="user00-infos-input" value="**********" disabled="disabled">
                 </div>
 
-                <div class="display-flex justify-content-space-between user00-buttons">
+                <div class="user00-buttons">
                     <div>
                         <a href="#">
                             <button class="user00-modifier">
@@ -67,8 +77,12 @@
                 </div>
 
             </div>
-            <div class="rightSideUser00">
-                <p>Section avatar And co</p>
+            <div>
+                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
+                <div>
+                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
+                    <div style="width: 15em; height: 15em; background-color: red;"></div>
+                </div>
             </div>
         </div>
     </div>

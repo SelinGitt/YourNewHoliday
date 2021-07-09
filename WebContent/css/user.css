@@ -12,8 +12,12 @@
 }
 
 /* USR00 */
+.user00-title {
+	text-align: center;
+}
+
 .user00-body-general {
-	width: 100%;
+	width: 100%
 }
 
 .user00-leftSide {
@@ -21,16 +25,21 @@
 }
 
 .user00-infos {
-	display: flex;
+	margin-left: 3em;
+	margin-bottom: 2em;
 	justify-content: space-between;
+	display: flex;
+}
+
+.user00-infos-input {
 	width: 55%;
-	margin-bottom: 1em;
-	text-align: left;
 }
 
 .user00-buttons {
-	width: 56%;
 	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
 }
 
 .user00-modifier {
