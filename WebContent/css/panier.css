@@ -26,6 +26,24 @@
 	font-size: 1.875em;
 }
 
+.panier-buttons {
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
+}
+
+.panier-valider {
+	background-color: #6AA84F;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.panier-vider {
+	background-color: #E06666;
+	color: #FFFFFF;
+	margin: auto;
+}
 /* CSS specifique */
 
 /* images responsives */
