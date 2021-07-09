@@ -31,7 +31,7 @@ public class CreerUtilisateurController {
     private IUtilisateurService service;
 
     /**
-     * Permet de traiter les requêtes GET<br/>
+     * Permet de traiter les requêtes GET<br>
      * et de mettre un UtilisateurDto vide dans le modèle
      * 
      * @return le Model and View
@@ -54,7 +54,7 @@ public class CreerUtilisateurController {
     }
 
     /**
-     * Permet de traiter les requêtes POST<br/>
+     * Permet de traiter les requêtes POST<br>
      * et de créer un utilisateur
      *
      * @param  utilisateurDto l'utilisateur à créer

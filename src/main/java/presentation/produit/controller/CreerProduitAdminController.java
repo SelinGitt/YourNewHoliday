@@ -27,7 +27,7 @@ public class CreerProduitAdminController {
     private IProduitService iProduitService;
 
     /**
-     * Permet de traiter une requête de type GET<br/>
+     * Permet de traiter une requête de type GET<br>
      * et de mettre un ProduitDto vide dans la modelMap
      *
      * @return le model et la vue associée
@@ -41,7 +41,7 @@ public class CreerProduitAdminController {
     }
 
     /**
-     * Méthode POST pour la création d'un produit via un formulaire<br/>
+     * Méthode POST pour la création d'un produit via un formulaire<br>
      * et de creer un nouveau produit
      *
      * @param  produitDto le produit Dto utilisé pour le binding
