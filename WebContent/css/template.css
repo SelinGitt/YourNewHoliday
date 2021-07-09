@@ -160,3 +160,8 @@ aside {
 	/* alignement du texte "langue" et des images */
 	vertical-align: middle;
 }
+
+.langue-button-clicked {
+	border: 0.2em solid black;
+    border-radius: 2em;
+}
