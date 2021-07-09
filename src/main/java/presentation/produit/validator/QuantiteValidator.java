@@ -24,10 +24,7 @@ public class QuantiteValidator implements Validator {
         final var beanQuantite = (BeanQuantite) target;
         if (!beanQuantite.getQuantite().matches("\\d+")) {
             errors.rejectValue("quantite", "default error");
-            return;
         }
-
-        errors.rejectValue("quantite", "default error");
     }
 
     @Override

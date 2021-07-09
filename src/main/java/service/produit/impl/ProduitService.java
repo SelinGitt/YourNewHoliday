@@ -104,6 +104,5 @@ public class ProduitService implements IProduitService {
             return null;
         }
         return panierService.updatePanier(panierDto, Integer.parseInt(beanQuantite.getId()), Integer.parseInt(beanQuantite.getQuantite()));
-
     }
 }

@@ -45,6 +45,7 @@
                 <c:if test="${not empty utilisateur}">
                     <tr class="display-flex">
                         <form:form action="ajouterProduitPanier.do" requestParam="beanQuantite" method="POST">
+                            <input type="hidden" name="location" value="lister" />
                             <input type="hidden" name="id" value="${produitDto.idProduitOriginal}" />
                             <td class="display-flex text-responsive">
                                 <div class="display-flex">

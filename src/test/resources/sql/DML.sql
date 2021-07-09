@@ -171,6 +171,6 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (41, 21, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 21, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (43, 22, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (44, 22, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (45, 23, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (45, 23, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (46, 23, 3);
 

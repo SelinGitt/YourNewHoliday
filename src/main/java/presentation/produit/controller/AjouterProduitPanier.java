@@ -50,7 +50,7 @@ public class AjouterProduitPanier {
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
         if ("lister".equals(location)) {
-            modelAndView.setViewName("listerProduits.do");
+            modelAndView.setViewName("redirect:listerProduits.do");
         } else
             if ("consulter".equals(location)) {
                 modelAndView.setViewName("consulterProduit.do");
