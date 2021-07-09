@@ -26,9 +26,8 @@ public class QuantiteValidator implements Validator {
             errors.rejectValue("quantite", "default error");
             return;
         }
-        if (Integer.valueOf(beanQuantite.getQuantite()) >= 100 || Integer.valueOf(beanQuantite.getQuantite()) <= 0) {
-            errors.rejectValue("quantite", "default error");
-        }
+
+        errors.rejectValue("quantite", "default error");
     }
 
     @Override
