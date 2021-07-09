@@ -13,7 +13,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
 
@@ -27,10 +30,13 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao  produitDao;
+    private IProduitDao    produitDao;
+
+    @Autowired
+    private IPanierService panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -91,5 +97,14 @@ public class ProduitService implements IProduitService {
         final var produitDo = produitDao.findById(idProduit);
         this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
         return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
+    public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
+        final var quantite = Integer.valueOf(beanQuantite.getQuantite());
+        final var id = Integer.parseInt(beanQuantite.getId());
+        return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 }
