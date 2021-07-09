@@ -51,18 +51,22 @@ public class CreerUtilisateurValidator implements Validator {
             errors.rejectValue("email", "usr05.erreur.email_format", new Object[] {email}, defaultError);
         }
 
-        // TODO : Check format mdp
+        // Check si la date est valide
+        if (!user.getDateNaissance().isEmpty() && !DateFormatUtil.checkDate(user.getDateNaissance())) {
+            errors.rejectValue("dateNaissance", "usr05.erreur.date_format", defaultError);
+        }
+
+        // Check format du mot de passe
+        final var patternPwd = Pattern.compile("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])).{8,20}$");
+        final var matcherPwd = patternPwd.matcher(user.getPassword());
+
+        if (!matcherPwd.matches()) {
+            errors.rejectValue("password", "usr05.erreur.password_format", defaultError);
+        }
 
         // Check si password et confirm password sont egaux
         if (!(user.getPassword().equals(user.getConfirmPassword()))) {
-            errors.rejectValue("confirmPassword", "usr05.erreur.password_match");
-        }
-
-        // Check si la date est valide
-        if (!user.getDateNaissance().isEmpty()) {
-            if (!DateFormatUtil.checkDate(user.getDateNaissance())) {
-                errors.rejectValue("dateNaissance", "usr05.erreur.date_format");
-            }
+            errors.rejectValue("confirmPassword", "usr05.erreur.password_match", defaultError);
         }
     }
 }

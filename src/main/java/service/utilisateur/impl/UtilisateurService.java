@@ -46,6 +46,11 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
+        // Verifie si l'email est deja pris
+        if (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null) {
+            return null;
+        }
+
         final var roleDto = new RoleDto();
         roleDto.setIdRole(utilisateurDto.getRole().getIdRole());
 

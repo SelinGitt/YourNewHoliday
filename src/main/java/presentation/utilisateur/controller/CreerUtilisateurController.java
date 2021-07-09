@@ -79,7 +79,14 @@ public class CreerUtilisateurController {
             return modelAndView;
         }
 
-        this.service.createUtilisateur(utilisateurDto);
+        final var utilisateurCreer = this.service.createUtilisateur(utilisateurDto);
+
+        // Si utilisateur == null, l'email est deja pris
+        if (utilisateurCreer == null) {
+            final var modelAndView = new ModelAndView("creerUtilisateur");
+            modelAndView.getModelMap().addAttribute("email", "usr05.erreur.email_taken");
+            return modelAndView;
+        }
 
         if (request.getSession().getAttribute("utilisateur") == null) {
             request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
