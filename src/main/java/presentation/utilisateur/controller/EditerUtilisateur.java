@@ -50,7 +50,7 @@ public class EditerUtilisateur {
     }
 
     /**
-     * Permet de traiter les requêtes POST<br/>
+     * Permet de traiter les requêtes POST<br>
      * et de mettre a jour un utilisateur
      *
      * @param  utilisateurDto l'utilisateur à mettre a jour
