@@ -36,9 +36,9 @@
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Client --%>
-                    <option value="1"><spring:message code="usr01.filter.1" /></option>
                     <%-- Visiteur --%>
+                    <option value="1"><spring:message code="usr01.filter.1" /></option>
+                    <%-- Client --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
                     <%-- Admin --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
