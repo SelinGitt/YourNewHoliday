@@ -51,6 +51,8 @@ public class CreerUtilisateurValidator implements Validator {
             errors.rejectValue("email", "usr05.erreur.email_format", new Object[] {email}, defaultError);
         }
 
+        // TODO : Check format mdp
+
         // Check si password et confirm password sont egaux
         if (!(user.getPassword().equals(user.getConfirmPassword()))) {
             errors.rejectValue("confirmPassword", "usr05.erreur.password_match");
@@ -61,5 +63,9 @@ public class CreerUtilisateurValidator implements Validator {
             errors.rejectValue("dateNaissance", "usr05.erreur.date_format");
         }
 
+        // S'il y a des erreurs
+        if (errors.hasErrors()) {
+            errors.reject("usr05.erreur.creation", defaultError);
+        }
     }
 }
