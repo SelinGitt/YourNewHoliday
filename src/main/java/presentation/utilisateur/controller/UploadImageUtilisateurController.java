@@ -3,16 +3,21 @@
  */
 package presentation.utilisateur.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import service.image.IImageService;
+import service.image.Image;
 
 /**
  * Controller pour upload d'une image
@@ -21,15 +26,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/upload.do")
-public class UploadController {
+public class UploadImageUtilisateurController {
+
+    @Autowired
+    private IImageService       iImageService;
 
     /**
      * Attribute of Path Name
      */
     private static final String PATH_NAME = "C:/YNH_Project/external_files/img/utilisateurs";
-
-    //  préparation du logger pour la gestion des erreurs/de la validation
-    private static final Logger logger    = LoggerFactory.getLogger(UploadController.class);
 
     /**
      * Permet de XX
@@ -49,7 +54,13 @@ public class UploadController {
      * @throws ServletException la servlet exception
      * @throws IOException      l'exception
      */
+    @PostMapping
     public void saveImage(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        //EMPTY
+        for (final Part part : request.getParts()) {
+            final String fileName = Image.getFileName(part);
+            final File f = new File(fileName);
+            final var result = iImageService.saveImage(f, "usr");
+            System.out.println(result);
+        }
     }
 }
