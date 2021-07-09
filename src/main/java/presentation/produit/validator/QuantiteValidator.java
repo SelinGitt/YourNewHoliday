@@ -9,6 +9,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import presentation.produit.dto.BeanQuantite;
+import service.util.NumberUtils;
 
 /**
  * Classe validator de {@link BeanQuantite}
@@ -22,7 +23,7 @@ public class QuantiteValidator implements Validator {
     public void validate(final Object target, final Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quantite", "Default error");
         final var beanQuantite = (BeanQuantite) target;
-        if (!QuantiteUtils.quantiteValid(beanQuantite)) {
+        if (!NumberUtils.validate(beanQuantite.getQuantite())) {
             errors.rejectValue("quantite", "default error");
         }
     }
