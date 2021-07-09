@@ -21,4 +21,13 @@ public interface IImageDao {
      * @return      l'image dans un fichier
      */
     File getImage(final String path);
+
+    /**
+     * Permet de sauvegarder une image dans le disque dur du PC.
+     *
+     * @param  cheminTotal chemin complet de l'avatar
+     * @param  image       le fichier à sauvegarder
+     * @return             le fichier sauvegardé
+     */
+    File saveImage(final String cheminTotal, final File image);
 }

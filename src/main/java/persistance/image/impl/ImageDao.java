@@ -21,4 +21,11 @@ public class ImageDao implements IImageDao {
     public File getImage(final String path) {
         return new File(path);
     }
+
+    @Override
+    public File saveImage(final String cheminTotal, final File image) {
+
+        return null;
+    }
+
 }
