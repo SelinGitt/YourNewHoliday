@@ -98,7 +98,7 @@ public class ConnecterController {
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
 
             //pour tester le panier vide remplacer creerPanier() par new PanierDto()
-            modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+            modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
 
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
