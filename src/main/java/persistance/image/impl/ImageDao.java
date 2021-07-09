@@ -25,8 +25,8 @@ public class ImageDao implements IImageDao {
     @Override
     public boolean saveImage(String cheminTotal, final File image) {
         if (image != null) {
-           final  String file = image.getAbsolutePath();
-            cheminTotal = PATH_NAME + File.separator + file;
+            final String file = image.getAbsolutePath();
+            //cheminTotal = PATH_NAME + File.separator + file;
             return true;
         }
         return false;
