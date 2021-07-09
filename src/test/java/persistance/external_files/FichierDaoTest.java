@@ -3,9 +3,9 @@
  */
 package persistance.external_files;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -43,12 +43,15 @@ class FichierDaoTest {
         //aller dans propriété sur test-contact.html => recuperer le repertoire
         final String nomFichier = "src/test/resources/contact/test-contact.html";
         assertNotNull(iFichier.trouverFichier(nomFichier));
-        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichier(nomFichier));
+        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichier(
+                nomFichier));
 
         //verifier avec un fichier non exisitant
         final String nomFichierFaux = "C:/non/existant.html";
+        final String fichier = iFichier.trouverFichier(nomFichierFaux);
+        assertEquals("", fichier);
         assertThrows(AssertionError.class, () -> {
-            assertNull(iFichier.trouverFichier(nomFichierFaux));
+            assertNull(fichier);
         });
     }
 }
