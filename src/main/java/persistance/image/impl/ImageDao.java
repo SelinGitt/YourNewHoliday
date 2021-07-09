@@ -26,16 +26,14 @@ public class ImageDao implements IImageDao {
 
     @Override
     public boolean saveImage(final String cheminTotal, final File image) {
-        if (image != null) {
-            try (final FileOutputStream fos = new FileOutputStream(cheminTotal)) {
-                final ObjectOutputStream save = new ObjectOutputStream(fos);
-                save.writeObject(image);
-            } catch (final Exception e) {
-                //TODO
-            }
-            return true;
-        }
-        return false;
-    }
 
+        try (final FileOutputStream fos = new FileOutputStream(cheminTotal)) {
+            final ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(image);
+        } catch (final Exception e) {
+            //TODO
+            return false;
+        }
+        return true;
+    }
 }
