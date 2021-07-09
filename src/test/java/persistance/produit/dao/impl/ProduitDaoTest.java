@@ -3,8 +3,8 @@
  */
 package persistance.produit.dao.impl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -116,18 +116,6 @@ class ProduitDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#deleteProduitById(Integer)}.
-     */
-    @Test
-    void testDeleteProduitById() {
-        assertEquals(6, iProduitDao.findAll().size());
-        assertEquals("MVR1256934", iProduitDao.findById(1).getReference());
-        assertTrue(iProduitDao.deleteProduitById(1));
-        assertEquals(5, iProduitDao.findAll().size());
-        assertNull(iProduitDao.findById(1));
-    }
-
-    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#findByReference(String)}.
      */
     @Test
@@ -157,5 +145,17 @@ class ProduitDaoTest {
         final String searchTermNull = "ZZZ";
         final List<ProduitDo> listeProduitsRechercheeNull = iProduitDao.rechercherAllProduits(searchTermNull);
         assertEquals(0, listeProduitsRechercheeNull.size());
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#delete(ProduitDo)}.
+     */
+    @Test
+    void testDelete() {
+        assertEquals(6, iProduitDao.findAll().size());
+        assertNotNull(iProduitDao.findById(1));
+        iProduitDao.delete(iProduitDao.findById(1).getIdProduitOriginal());
+        assertEquals(5, iProduitDao.findAll().size());
+        assertNull(iProduitDao.findById(1));
     }
 }

@@ -87,14 +87,15 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public ProduitDto deleteProduit(final Integer idProduit) {
-        return ProduitMapper.mapToDto(produitDao.delete(idProduit));
-    }
-
-    @Override
     public ProduitDto trouverProduitById(final Integer idProduit) {
         final var produitDo = produitDao.findById(idProduit);
         this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
         return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
+    public boolean deleteProduit(final Integer id) {
+        produitDao.delete(id);
+        return true;
     }
 }

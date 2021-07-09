@@ -3,10 +3,9 @@
  */
 package service.produit.impl;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Collections;
@@ -141,17 +140,6 @@ class ProduitServiceTest {
     }
 
     /**
-     * Test method for {@link persistance.produit.dao.impl.ProduitDao#deleteProduitById(Integer)}.
-     */
-    @Test
-    void testDeleteProduitById() {
-        Mockito.when(this.iProduitDaoMock.deleteProduitById(1)).thenReturn(true);
-        Mockito.when(this.iProduitDaoMock.deleteProduitById(99)).thenReturn(false);
-        assertTrue(iProduitDaoMock.deleteProduitById(1));
-        assertFalse(iProduitDaoMock.deleteProduitById(99));
-    }
-
-    /**
      * Test method for {@link service.produit.impl.ProduitService#trouverParReference(String)}.
      */
     @Test
@@ -205,5 +193,26 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitById(50));
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#deleteProduit(ProduitDto)}.
+     */
+    @Test
+    void testDeleteProduit() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        produitDo.setNom("Test en Tanzanie");
+        produitDo.setReference("TEST556789");
+        produitDo.setHebergement("Test BouiBoui and Co.");
+        produitDo.setDestination("Test Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Test super voyage à la découverte de zanzibar");
+        produitDo.setCheminImage("C:/YNH/img");
+        produitDo.setVersion(1);
+        produitDo.setServices(1);
+        Mockito.doNothing().when(iProduitDaoMock).delete(Mockito.any(ProduitDo.class).getIdProduitOriginal());
+        assertDoesNotThrow(() -> produitServiceMock.deleteProduit(produitDo.getIdProduitOriginal()));
     }
 }
