@@ -86,5 +86,7 @@ class DateFormatUtilTest {
         assertFalse(DateFormatUtil.checkDate("31/02/2000"));
         assertFalse(DateFormatUtil.checkDate("29/02/2001"));
         assertFalse(DateFormatUtil.checkDate("84/39/1995"));
+
+        assertFalse(DateFormatUtil.checkDate("2012/02/05"));
     }
 }
