@@ -62,6 +62,7 @@ public class CommandeMapper {
      * @param  idUtilisateur l'id de l'utilisateur en session
      * @return               CommandeDo la commande qui doit être enregistré en base de donnée
      */
+    // TODO : ajouter List<CommandeAdresseDto> 
     public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final String reference, final Integer idUtilisateur) {
         final var commandeDo = new CommandeDo();
         commandeDo.setId(null);
@@ -73,6 +74,7 @@ public class CommandeMapper {
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
         final CommandeAdresseDto adresseFacturation = new CommandeAdresseDto();
+        // FIXME remplacez les adresses par celles reçues en paramètre
         adresseFacturation.setAdresse("123 nous irons au bois");
         commandeDo.setAdresseFacturation(adresseFacturation);
         final CommandeAdresseDto adresseLivraison = new CommandeAdresseDto();

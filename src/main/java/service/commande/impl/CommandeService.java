@@ -71,12 +71,15 @@ public class CommandeService implements ICommandeService {
         return listProduitEnErreur;
     }
 
+    // TODO ajouter List<CommandeAdresseDto> 
     @Override
     public CommandeDo passerCommande(final PanierDto panier, final Integer idUtilisateur) {
         String reference = null;
         do {
             reference = this.referenceCommande.generateReference();
+            // Passer les adresses à la méthode
         } while (this.iCommandeDao.findByRef(reference) != null);
+        // Passer les adresses à la méthode
         return this.iCommandeDao.create(CommandeMapper.mapperPanierDtoToDo(panier, reference, idUtilisateur));
     }
 

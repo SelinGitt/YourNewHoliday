@@ -50,5 +50,6 @@ public interface ICommandeService {
      * @param  idUtilisateur l'utilisateur en session
      * @return               CommandeDo la commande enregistrée en base
      */
+    // TODO : ajouter List<CommandeAdresseDto> 
     CommandeDo passerCommande(final PanierDto panier, final Integer idUtilisateur);
 }
