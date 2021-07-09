@@ -34,44 +34,43 @@
 	</appender>
 
 	<!-- Déclaration du logger pour la couche Service -->
-	<logger name="service" level="debug" additivity="false">
+	<logger name="service" level="trace">
 		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Déclaration du logger pour la couche Presentation -->
-	<logger name="presentation" level="debug" additivity="false">
+	<logger name="presentation" level="trace">
 		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Déclaration du logger pour la couche Persistance -->
-	<logger name="persistance" level="debug" additivity="false">
-		<appender-ref ref="FILE-ROLLING" />
-	</logger>
-
-	<!-- Déclaration du logger pour le package de Test -->
-	<!-- A Supprimer ensuite ! -->
-	<logger name="pocLogBack" level="debug" additivity="false">
+	<logger name="persistance" level="trace">
 		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Gère les logs de LogBack -->
 	<logger name="ch.qos" level="warn">
-		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Gère les logs de Spring -->
 	<logger name="org.springframework" level="warn">
-		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Gère les logs de Hibernate -->
 	<logger name="org.hibernate" level="warn">
-		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-ROLLING" />
+	</logger>
+
+	<!-- Gère les logs des requêtes Hibernate -->
+	<logger name="org.hibernate.SQL" level="trace">
+		<appender-ref ref="FILE-ROLLING" />
 	</logger>
 
 	<!-- Root : logger par défaut, indispensable et unique -->
 	<root level="info">
-		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-ROLLING" />
 	</root>
 
 </configuration>
