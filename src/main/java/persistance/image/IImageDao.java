@@ -27,7 +27,7 @@ public interface IImageDao {
      *
      * @param  cheminTotal chemin complet de l'avatar
      * @param  image       le fichier à sauvegarder
-     * @return             le fichier sauvegardé
+     * @return             vrai si fichier sauvegardé
      */
-    File saveImage(final String cheminTotal, final File image);
+    boolean saveImage(final String cheminTotal, final File image);
 }
