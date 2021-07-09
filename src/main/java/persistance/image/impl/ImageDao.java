@@ -17,11 +17,6 @@ import persistance.image.IImageDao;
 @Repository
 public class ImageDao implements IImageDao {
 
-    /**
-     * Attribute of Path Name
-     */
-    private static final String PATH_NAME = "C:/YNH_Project/external_files/img/utilisateurs";
-
     @Override
     public File getImage(final String path) {
         return new File(path);
