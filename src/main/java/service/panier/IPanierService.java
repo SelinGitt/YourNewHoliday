@@ -3,8 +3,7 @@
  */
 package service.panier;
 
-import java.util.List;
-
+import presentation.commande.dto.CommandePanierListProduitErreur;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 
@@ -86,9 +85,9 @@ public interface IPanierService {
      *
      * @param  panier        : le panier en sesion
      * @param  idUtilisateur : l'identifiant de l'utilisateur en session
-     * @return               List{@code<Integer>} : null si utilisateur KO, vide si panier OK, liste des identifiants de
-     *                       produits non valide
+     * @return               CommandePanierListProduitErreur : null si utilisateur KO, avec reference si panier OK, sinon
+     *                       liste des identifiants de produits non valide non vide
      */
-    List<Integer> validerPanier(final PanierDto panier, final Integer idUtilisateur);
+    CommandePanierListProduitErreur validerPanier(final PanierDto panier, final Integer idUtilisateur);
 
 }

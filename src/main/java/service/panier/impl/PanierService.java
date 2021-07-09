@@ -3,7 +3,6 @@
  */
 package service.panier.impl;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.CommandePanierListProduitErreur;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -207,10 +208,16 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public List<Integer> validerPanier(final PanierDto panier, final Integer idUtilisateur) {
+    public CommandePanierListProduitErreur validerPanier(final PanierDto panier, final Integer idUtilisateur) {
         if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
             return null;
         }
-        return this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier());
+        final var commandePanierListProduitErreur = new CommandePanierListProduitErreur();
+        commandePanierListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
+        if (commandePanierListProduitErreur.getIdProduitNonConcordant().size() == 0) {
+            final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, idUtilisateur);
+            commandePanierListProduitErreur.setReference(commandeDo.getReference());
+        }
+        return commandePanierListProduitErreur;
     }
 }

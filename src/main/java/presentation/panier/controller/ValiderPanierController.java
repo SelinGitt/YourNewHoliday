@@ -3,8 +3,6 @@
  */
 package presentation.panier.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,15 +35,14 @@ public class ValiderPanierController {
     @GetMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur) {
-        final List<Integer> listProduitErreur = this.panierService.validerPanier(panierDto,
-                Integer.parseInt(utilisateur.getIdUtilisateur()));
+        final var listProduitErreur = this.panierService.validerPanier(panierDto, Integer.parseInt(utilisateur.getIdUtilisateur()));
         if (listProduitErreur == null) {
             // On détruit la session donc le panier sera vider automatiquement
             return "redirect:deconnecter.do";
         }
-        if (listProduitErreur.size() == 0) {
+        if (listProduitErreur.getReference() != null) {
             // TODO changer le type de retour récupérer la référence commande
-            return "forward:detailCommande.do?ref=ABC3";
+            return "forward:detailCommande.do?ref=" + listProduitErreur.getReference();
         }
         // en cas d'erreur renvoie au panier
         return "redirect:listerPanierProduits.do";

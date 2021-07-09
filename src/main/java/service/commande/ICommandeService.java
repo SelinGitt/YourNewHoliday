@@ -6,6 +6,7 @@ package service.commande;
 import java.util.List;
 import java.util.Map;
 
+import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -45,8 +46,9 @@ public interface ICommandeService {
     /**
      * Permet de générer la commande à partir d'un panier
      *
-     * @param  panier le panier en session
-     * @return        String la référence de la commande
+     * @param  panier        le panier en session
+     * @param  idUtilisateur l'utilisateur en session
+     * @return               CommandeDo la commande enregistrée en base
      */
-    String passerCommande(final PanierDto panier);
+    CommandeDo passerCommande(final PanierDto panier, final Integer idUtilisateur);
 }
