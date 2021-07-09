@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
+
+    <c:if test="${not empty error}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${errorCreationProduit}" /></span>
+        </div>
+    </c:if>
 
     <h1>
         <spring:message code="pdt03.titre" />
@@ -20,22 +27,27 @@
                     <tr>
                         <td><spring:message code="form.pdt03.nom" /></td>
                         <td><form:input path="nom" /></td>
+                        <td><form:errors path="nom" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.reference" /></td>
                         <td><form:input path="reference" /></td>
+                        <td><form:errors path="reference" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.hebergement" /></td>
                         <td><form:input path="hebergement" /></td>
+                        <td><form:errors path="hebergement" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.destination" /></td>
                         <td><form:input path="destination" /></td>
+                        <td><form:errors path="destination" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.prix" /></td>
                         <td><form:input path="prixUnitaire" /></td>
+                        <td><form:errors path="prixUnitaire" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.miseEnVente" /></td>
@@ -54,6 +66,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
                         <td class=pdt03TextAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
+                        <td><form:errors path="description" cssClass="text-color-rouge" /></td>
                     </tr>
                     <tr>
                         <td></td>

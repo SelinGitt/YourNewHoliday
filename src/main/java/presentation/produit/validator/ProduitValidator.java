@@ -4,6 +4,7 @@
 package presentation.produit.validator;
 
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import presentation.produit.dto.ProduitDto;
@@ -22,7 +23,8 @@ public class ProduitValidator implements Validator {
 
     @Override
     public void validate(final Object target, final Errors errors) {
-        // TODO Auto-generated method stub
+        //errors, le field à checker, le message d'erreur, message par défaut
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nom", "pdt03.nom.vide", "Fieldname is required");
 
     }
 
