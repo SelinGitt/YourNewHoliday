@@ -3,7 +3,7 @@
  */
 package service.panier;
 
-import presentation.commande.dto.CommandePanierListProduitErreur;
+import presentation.commande.dto.CommandePanierListProduitErreurDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 
@@ -88,6 +88,6 @@ public interface IPanierService {
      * @return               CommandePanierListProduitErreur : null si utilisateur KO, avec reference si panier OK, sinon
      *                       liste des identifiants de produits non valide non vide
      */
-    CommandePanierListProduitErreur validerPanier(final PanierDto panier, final Integer idUtilisateur);
+    CommandePanierListProduitErreurDto validerPanier(final PanierDto panier, final Integer idUtilisateur);
 
 }

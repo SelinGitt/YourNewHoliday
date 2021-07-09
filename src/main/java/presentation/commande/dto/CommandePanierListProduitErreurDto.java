@@ -10,7 +10,7 @@ import java.util.List;
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-public class CommandePanierListProduitErreur {
+public class CommandePanierListProduitErreurDto {
 
     // La reference de la commande
     private String        reference              = null;
