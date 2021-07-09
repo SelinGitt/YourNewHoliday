@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.View;
 
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import presentation.utilisateur.validator.CreerUtilisateurValidator;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -28,7 +30,10 @@ import service.utilisateur.IUtilisateurService;
 public class CreerUtilisateurController {
 
     @Autowired
-    private IUtilisateurService service;
+    private IUtilisateurService       service;
+
+    @Autowired
+    private CreerUtilisateurValidator validator;
 
     /**
      * Permet de traiter les requêtes GET<br/>
@@ -59,10 +64,18 @@ public class CreerUtilisateurController {
      *
      * @param  utilisateurDto l'utilisateur à créer
      * @param  request        HtppServletRequest pour gerer la redirection vers ConnecterController
+     * @param  result         Resultats du binding utilisé pour gérer les erreurs
      * @return                redirection vers connecter.do
      */
     @PostMapping
-    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, final HttpServletRequest request) {
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, final HttpServletRequest request, final BindingResult result) {
+        validator.validate(utilisateurDto, result);
+
+        //Si le formulaire a des erreurs
+        if (result.hasErrors()) {
+            return new ModelAndView("creerUtilisateur");
+        }
+
         this.service.createUtilisateur(utilisateurDto);
 
         if (request.getSession().getAttribute("utilisateur") == null) {
