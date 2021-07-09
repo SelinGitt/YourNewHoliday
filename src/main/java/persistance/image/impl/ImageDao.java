@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import persistance.image.IImageDao;
@@ -18,6 +20,8 @@ import persistance.image.IImageDao;
  */
 @Repository
 public class ImageDao implements IImageDao {
+
+    private static final Logger logger = LoggerFactory.getLogger(ImageDao.class);
 
     @Override
     public File getImage(final String path) {
@@ -31,7 +35,8 @@ public class ImageDao implements IImageDao {
             final ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(image);
         } catch (final Exception e) {
-            //TODO
+            e.printStackTrace();
+            logger.warn("Le fichier {} n'a pas pu être sauvegardé.", image);
             return false;
         }
         return true;
