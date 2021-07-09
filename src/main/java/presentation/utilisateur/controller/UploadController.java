@@ -26,8 +26,14 @@ public class UploadController {
     //  préparation du logger pour la gestion des erreurs/de la validation
     private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
 
+    /**
+     * Permet de XX
+     *
+     * @param response une réponse
+     * @param type     le type d'image
+     */
     public void recupererImage(final HttpServletResponse response, final String type) {
-
+        //empty now
     }
 
     /**
