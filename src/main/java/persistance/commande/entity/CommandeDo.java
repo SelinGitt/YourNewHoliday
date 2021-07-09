@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import presentation.commande.dto.CommandeAdresseDto;
+
 /**
  * Classe représentant une Commande en BD
  */
@@ -45,6 +47,11 @@ public class CommandeDo {
 
     @Column(name = "quantiteTotale")
     private Integer                quantiteTotale;
+
+    @Column(name = "adesse_livraison")
+    private CommandeAdresseDto     adresseLivraison;
+    @Column(name = "adesse_facturation")
+    private CommandeAdresseDto     adresseFacturation;
 
     /**
      * Getter for id
@@ -96,7 +103,7 @@ public class CommandeDo {
      *
      * @param prixSansRemise the prixSansRemise to set
      */
-    public void setPrixSansRemise(BigDecimal prixSansRemise) {
+    public void setPrixSansRemise(final BigDecimal prixSansRemise) {
         this.prixSansRemise = prixSansRemise;
     }
 
@@ -188,6 +195,42 @@ public class CommandeDo {
      */
     public void setQuantiteTotale(final Integer quantiteTotale) {
         this.quantiteTotale = quantiteTotale;
+    }
+
+    /**
+     * Getter for adresseLivraison
+     *
+     * @return the adresseLivraison
+     */
+    public CommandeAdresseDto getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    /**
+     * Getter for adresseFacturation
+     *
+     * @return the adresseFacturation
+     */
+    public CommandeAdresseDto getAdresseFacturation() {
+        return adresseFacturation;
+    }
+
+    /**
+     * Setter for adresseLivraison
+     *
+     * @param adresseLivraison the adresseLivraison to set
+     */
+    public void setAdresseLivraison(final CommandeAdresseDto adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    /**
+     * Setter for adresseFacturation
+     *
+     * @param adresseFacturation the adresseFacturation to set
+     */
+    public void setAdresseFacturation(final CommandeAdresseDto adresseFacturation) {
+        this.adresseFacturation = adresseFacturation;
     }
 
 }

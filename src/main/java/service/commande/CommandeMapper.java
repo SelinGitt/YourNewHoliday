@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -71,6 +72,12 @@ public class CommandeMapper {
         commandeDo.setQuantiteTotale(calculerQuantiteTotal(panier));
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
+        final CommandeAdresseDto adresseFacturation = new CommandeAdresseDto();
+        adresseFacturation.setAdresse("123 nous irons au bois");
+        commandeDo.setAdresseFacturation(adresseFacturation);
+        final CommandeAdresseDto adresseLivraison = new CommandeAdresseDto();
+        adresseLivraison.setAdresse("123 nous irons au bois");
+        commandeDo.setAdresseLivraison(adresseLivraison);
         return commandeDo;
     }
 
