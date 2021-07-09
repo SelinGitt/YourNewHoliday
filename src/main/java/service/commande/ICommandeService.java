@@ -22,7 +22,7 @@ public interface ICommandeService {
      * Permet de lister les commandes d'un utilisateur
      *
      * @param  idUser l'identifiant de l'utilisateur
-     * @return        List<CommandeDto> la liste des commandes
+     * @return        List{@literal<}CommandeDto{@literal>} la liste des commandes
      */
     List<CommandeDto> listerCommandesUtilisateur(final Integer idUser);
 

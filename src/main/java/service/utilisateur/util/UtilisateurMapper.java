@@ -105,9 +105,7 @@ public class UtilisateurMapper {
 
         final var role = utilisateurDo.getRole();
 
-        utilisateurConnecteDto.setIdRole(role.getIdRole().toString());
-        utilisateurConnecteDto.setNomRole(role.getLibelle());
-
+        utilisateurConnecteDto.setRole(UtilisateurRoleEnum.getRole(role.getLibelle()));
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
         utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());

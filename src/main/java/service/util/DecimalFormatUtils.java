@@ -93,7 +93,7 @@ public class DecimalFormatUtils {
      * Permet de savoir si le prix contient une virgurle
      * 
      * @param  prixAVerifier le String à  vérifier
-     * @return               true si le prix contient une virgule <br/>
+     * @return               true si le prix contient une virgule <br>
      *                       false sinon
      */
     public static boolean isPrixAVirgule(final String prixAVerifier) {
@@ -101,7 +101,7 @@ public class DecimalFormatUtils {
     }
 
     /**
-     * Permet de transformer un nombre contenu dans un string ayant été formaté <br />
+     * Permet de transformer un nombre contenu dans un string ayant été formaté <br>
      * par la méthode formatUtil(Big)Decimal en Double exploitable
      *
      * @param  nombreString : le nombre à  transformer

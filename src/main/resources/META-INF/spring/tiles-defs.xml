@@ -24,6 +24,12 @@
 		<put-attribute name="body" value="/jsp/produit/listerProduitsAdmin.jsp" />
 	</definition>
 
+
+	<definition name="editerProduitAdmin" extends="base.definition">
+		<put-attribute name="title" value="Edition d'un produits" />
+		<put-attribute name="body" value="/jsp/produit/editerProduitAdmin.jsp" />
+	</definition>
+
 	<definition name="creerProduitAdmin" extends="base.definition">
 		<put-attribute name="title" value="Gestion des produits" />
 		<put-attribute name="body" value="/jsp/produit/creerProduitAdmin.jsp" />

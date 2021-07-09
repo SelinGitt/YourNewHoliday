@@ -26,7 +26,7 @@ public class MDPCrypter {
     }
 
     /**
-     * Permet de crypter un mot de passe avec un algorithme<br/>
+     * Permet de crypter un mot de passe avec un algorithme<br>
      * de chiffrement de type SHA-512
      *
      * @param  password le mot de passe à crypter
