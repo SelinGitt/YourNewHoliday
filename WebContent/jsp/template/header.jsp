@@ -20,7 +20,7 @@
         </div>
         <%--         de son statut (visiteur, client, administrateur) --%>
         <div>
-            <strong><spring:message code="header.statut" /></strong> ${utilisateur.nomRole }
+            <strong><spring:message code="header.statut" /></strong> ${utilisateur.role.libelle }
         </div>
     </div>
 
