@@ -8,7 +8,7 @@ package service.util;
  *
  * @author Valentin
  */
-public class GenerateReferenceUtil {
+public class GenerateReferenceUtil13 {
     //
     //    private static final Logger logger = LoggerFactory.getLogger(GenerateReferenceUtil.class);
     //
