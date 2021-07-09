@@ -2,10 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1>
-    <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
-    <spring:message code="pan00.titre" />
-</h1>
+<div class="panier-title">
+    <h1>
+        <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
+        <spring:message code="pan00.titre" />
+    </h1>
+</div>
 
 <div class="display-flex">
     <div>

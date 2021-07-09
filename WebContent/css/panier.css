@@ -5,6 +5,9 @@
 
 /* PAN00 */
 /* CSS factorisé */
+.panier-title {
+	text-align: center;
+}
 
 /* texte aligné à droite */
 .prix {
@@ -129,13 +132,13 @@
 	margin-left: 1em;
 	margin-right: 1em;
 }
+
 .panier-margin-left-15 {
 	margin-left: 15%;
-	
 }
+
 .panier-margin-left-10 {
 	margin-left: 10%;
-	
 }
 
 .panier-formulaire {
