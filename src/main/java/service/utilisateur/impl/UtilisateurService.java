@@ -16,7 +16,7 @@ import persistance.utilisateur.dao.IUtilisateurDao;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.util.GenerateReferenceUtil;
+import service.util.impl.GenerateReferenceUtilisateurUtil;
 import service.utilisateur.IUtilisateurService;
 import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurMapper;
@@ -55,8 +55,7 @@ public class UtilisateurService implements IUtilisateurService {
 
         utilisateurDto.setEstDesactive(false);
 
-        // TODO : Temporaire avec le generateReference
-        utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
+        utilisateurDto.setReference(new GenerateReferenceUtilisateurUtil().generateReference());
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
