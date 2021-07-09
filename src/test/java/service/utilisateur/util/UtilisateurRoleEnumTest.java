@@ -3,8 +3,7 @@
  */
 package service.utilisateur.util;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -14,9 +13,15 @@ import org.junit.jupiter.api.Test;
  */
 class UtilisateurRoleEnumTest {
 
+    /**
+     * Test pour {@link UtilisateurRoleEnum#getRole(String)}
+     */
     @Test
     void test() {
-        fail("Not yet implemented");
+        Assertions.assertEquals(UtilisateurRoleEnum.VISITEUR, UtilisateurRoleEnum.getRole("Visiteur"));
+        Assertions.assertEquals(UtilisateurRoleEnum.CLIENT, UtilisateurRoleEnum.getRole("Client"));
+        Assertions.assertEquals(UtilisateurRoleEnum.ADMINISTRATEUR, UtilisateurRoleEnum.getRole("Administrateur"));
+        Assertions.assertNull(UtilisateurRoleEnum.getRole("ROLE"));
     }
 
 }
