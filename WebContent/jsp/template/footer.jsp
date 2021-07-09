@@ -26,3 +26,5 @@
             class="footer-lang footer-responsive" src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /></a>
     </div>
 </div>
+
+<script type="text/javascript" src="js/footer/langues.js"></script>
