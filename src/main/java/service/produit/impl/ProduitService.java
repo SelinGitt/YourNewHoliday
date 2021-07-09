@@ -100,6 +100,8 @@ public class ProduitService implements IProduitService {
 
     @Override
     public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
         if (Integer.valueOf(beanQuantite.getQuantite()) >= 100 || Integer.valueOf(beanQuantite.getQuantite()) <= 0) {
             return null;
         }
