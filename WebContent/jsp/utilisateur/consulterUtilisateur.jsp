@@ -15,7 +15,7 @@
             <div class="user00-title">
                 <h1>
                     <c:choose>
-                        <c:when test="${utilisateurDto.role.idRole=='1'}">
+                        <c:when test="${utilisateurDto.role.idRole=='2'}">
                             <spring:message code="usr00.titre.client" />
                         </c:when>
                         <c:otherwise>
