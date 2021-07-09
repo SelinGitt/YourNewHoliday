@@ -23,8 +23,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/upload.do")
 public class UploadController {
 
+    /**
+     * Attribute of Path Name
+     */
+    private static final String PATH_NAME = "C:/YNH_Project/external_files/img/utilisateurs";
+
     //  préparation du logger pour la gestion des erreurs/de la validation
-    private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
+    private static final Logger logger    = LoggerFactory.getLogger(UploadController.class);
 
     public void recupererImage(final HttpServletResponse response, final String type) {
 
