@@ -74,7 +74,9 @@ public class CreerUtilisateurController {
 
         //Si le formulaire a des erreurs
         if (result.hasErrors()) {
-            return new ModelAndView("creerUtilisateur");
+            final var modelAndView = new ModelAndView("creerUtilisateur");
+            modelAndView.getModelMap().addAttribute("error", "usr05.erreur.creation");
+            return modelAndView;
         }
 
         this.service.createUtilisateur(utilisateurDto);

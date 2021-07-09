@@ -170,9 +170,12 @@
 	width: 65%;
 }
 
+.user05-form-field {
+	margin-bottom: 1em;
+}
+
 .user05-inputs {
 	width: 55%;
-	margin-bottom: 2em;
 }
 
 .user05-textarea {

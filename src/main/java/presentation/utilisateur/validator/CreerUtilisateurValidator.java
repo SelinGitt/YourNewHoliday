@@ -59,13 +59,10 @@ public class CreerUtilisateurValidator implements Validator {
         }
 
         // Check si la date est valide
-        if (!DateFormatUtil.checkDate(user.getDateNaissance())) {
-            errors.rejectValue("dateNaissance", "usr05.erreur.date_format");
-        }
-
-        // S'il y a des erreurs
-        if (errors.hasErrors()) {
-            errors.reject("usr05.erreur.creation", defaultError);
+        if (!user.getDateNaissance().isEmpty()) {
+            if (!DateFormatUtil.checkDate(user.getDateNaissance())) {
+                errors.rejectValue("dateNaissance", "usr05.erreur.date_format");
+            }
         }
     }
 }
