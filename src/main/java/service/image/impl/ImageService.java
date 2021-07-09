@@ -5,6 +5,8 @@ package service.image.impl;
 
 import java.io.File;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -26,14 +28,16 @@ import service.util.GetPropertyValues;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ImageService implements IImageService {
 
-    @Autowired
-    private IImageDao       imageDao;
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
 
     @Autowired
-    private IProduitDao     produitDao;
+    private IImageDao           imageDao;
 
     @Autowired
-    private IUtilisateurDao utilisateurDao;
+    private IProduitDao         produitDao;
+
+    @Autowired
+    private IUtilisateurDao     utilisateurDao;
 
     @Override
     public File getImage(final String id, final String type) {
@@ -62,6 +66,7 @@ public class ImageService implements IImageService {
             imageDao.saveImage(cheminComplet, image);
             return true;
         }
+        logger.debug("Le type {} du fichier ne correspond pas à utilisateur", type);
         return false;
     }
 
