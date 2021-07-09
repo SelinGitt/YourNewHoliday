@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,7 +83,7 @@ public class CreerUtilisateurController {
 
         // Si utilisateur == null, l'email est deja pris
         if (utilisateurCreer == null) {
-            result.addError(new FieldError("email", "email", "usr05.erreur.email_taken"));
+            result.rejectValue("email", "usr05.erreur.email_taken", "Default Errror");
             final var modelAndView = new ModelAndView("creerUtilisateur");
             modelAndView.getModelMap().addAttribute("error", "usr05.erreur.creation");
             return modelAndView;
