@@ -1,8 +1,9 @@
-function decrement() {
-	quantite = parseInt(document.getElementById("quantite").value) - 1;
-	document.getElementById("quantite").value = Math.max(quantite, 1);
+function decrement(type) {
+	quantite = parseInt(document.getElementById("quantite"+type).value) - 1;
+	document.getElementById("quantite"+type).value = Math.max(quantite, 1);
 }
-function increment() {
-	quantite = parseInt(document.getElementById("quantite").value) + 1;
-	document.getElementById("quantite").value = Math.min(quantite, 99);
+function increment(type) {
+	quantite = parseInt(document.getElementById("quantite"+type).value) + 1;
+	document.getElementById("quantite"+type).value = Math.min(quantite, 99);
+	console.log("quantite"+type);
 }

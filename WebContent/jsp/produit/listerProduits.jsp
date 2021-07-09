@@ -50,16 +50,16 @@
                             <td class="display-flex text-responsive">
                                 <div class="display-flex">
                                     <%--  bouton - --%>
-                                    <a onclick="decrement()">
+                                    <a onclick="decrement('${produitDto.idProduitOriginal}')">
                                         <button type="button">-</button>
                                     </a>
 
                                     <%--  saisie valeur produit  --%>
-                                    <input class="pdt00-pan-quantite text-align-center" type="text"
-                                        readonly="readonly" id="quantite" name="quantite" value="1" size="1">
+                                    <input class="pdt00-pan-quantite text-align-center" type="text" readonly="readonly"
+                                        id="quantite${produitDto.idProduitOriginal}" name="quantite" value="1" size="1">
 
                                     <%--  bouton + --%>
-                                    <a onclick="increment()">
+                                    <a onclick="increment('${produitDto.idProduitOriginal}')">
                                         <button type="button">+</button>
                                     </a>
                                 </div>

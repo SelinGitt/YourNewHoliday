@@ -22,7 +22,7 @@ public class QuantiteValidator implements Validator {
     public void validate(final Object target, final Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "quantite", "Default error");
         final var beanQuantite = (BeanQuantite) target;
-        if (!beanQuantite.getQuantite().matches("\\d+")) {
+        if (!QuantiteUtils.quantiteValid(beanQuantite)) {
             errors.rejectValue("quantite", "default error");
         }
     }

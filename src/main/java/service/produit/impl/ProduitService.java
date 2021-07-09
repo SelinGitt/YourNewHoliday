@@ -34,6 +34,7 @@ public class ProduitService implements IProduitService {
 
     @Autowired
     private IProduitDao    produitDao;
+
     @Autowired
     private IPanierService panierService;
 
@@ -102,9 +103,8 @@ public class ProduitService implements IProduitService {
     public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
         logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
                 beanQuantite.getId());
-        if (Integer.valueOf(beanQuantite.getQuantite()) >= 100 || Integer.valueOf(beanQuantite.getQuantite()) <= 0) {
-            return null;
-        }
-        return panierService.updatePanier(panierDto, Integer.parseInt(beanQuantite.getId()), Integer.parseInt(beanQuantite.getQuantite()));
+        final var quantite = Integer.valueOf(beanQuantite.getQuantite());
+        final var id = Integer.parseInt(beanQuantite.getId());
+        return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 }
