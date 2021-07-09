@@ -108,8 +108,8 @@
             </table>
 
             <%--  bouton vider le panier  --%>
-            <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
-                <a href="viderPanier.do"><button type="button">
+            <div class="panier-buttons">
+                <a href="viderPanier.do"><button type="button" class="panier-vider">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
             </div>
@@ -155,8 +155,8 @@
                 </div>
             </div>
             <%--  bouton valider le panier --%>
-            <div class="justify-content-center display-flex align-item-center">
-                <button type="button">
+            <div class="panier-buttons">
+                <button type="button" class="panier-valider">
                     <spring:message code="pan00.valider.panier" />
                 </button>
             </div>
