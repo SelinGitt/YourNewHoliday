@@ -24,6 +24,7 @@ public class ValiderPanierProduitsController {
      */
     @GetMapping
     public ModelAndView validatePanierProduits() {
+        //TODO : ajouter les controles de validation et la gestion des erreurs  
         return new ModelAndView("redirect:listerPanierAdresses.do");
     }
 }
