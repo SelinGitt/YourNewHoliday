@@ -3,6 +3,7 @@
  */
 package presentation.commande.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,12 @@ import java.util.List;
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-public class CommandePanierListProduitErreurDto {
+public class CommandePanierListProduitErreurDto implements Serializable {
+
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 5752473383893036404L;
 
     // La reference de la commande
     private String        reference              = null;
