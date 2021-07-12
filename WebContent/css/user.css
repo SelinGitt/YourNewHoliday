@@ -67,7 +67,6 @@
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
-	overflow-y: scroll;
 	width: 100%;
 }
 
@@ -76,6 +75,7 @@
 	border-bottom: 0.063em solid #000000;
 	padding: 0.438em 0;
 }
+
 
 .user01-body {
 	border-bottom: 0.063em solid #000000;
@@ -88,6 +88,7 @@
 	width: 2.5em;
 	height: 2.5em;
 }
+
 
 .user01-imageNonActive {
 	width: 1.563em;
