@@ -34,12 +34,12 @@ header, footer {
 }
 
 .headerStatut {
-	width: 35%;
+	width: 33%;
 	top: 20%;
 }
 
 .headerConnexion {
-	width: 15%;
+	width: 17%;
 }
 
 .headerPanier {
@@ -59,14 +59,22 @@ header, footer {
 	vertical-align: middle;
 }
 
-.headerSousCellNbrPdt {
+.headerSousCellNbrPdtContainer {
 	position: absolute;
 	display: inline-block;
-	left: 1.65em;
-	top: 1.65em;
-	font-size: 0.8em;
 	text-align: center;
-	width: 1.65em;
+	left: 1.65em;
+	width: 2em;
+	height: 1.8em;
+	background-color: #bd2ad2;
+	border-radius: 90%;
+}
+
+.headerSousCellNbrPdt {
+	text-decoration: none;
+	color: #ffffff;
+	font-size: 1.5em;
+	font-weight: bold;
 }
 
 /* MENU */

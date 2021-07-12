@@ -19,7 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
-import presentation.temp.RemplirPanier;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.utilisateur.IUtilisateurService;
@@ -58,12 +57,6 @@ public class ConnecterController {
         return voirConnecter();
     }
 
-    //TODO methode temporaire pour creer un panier remplis
-    private PanierDto creerPanier() {
-        //ajout d'un panier vide en session        
-        return RemplirPanier.echantillon();
-    }
-
     /**
      * Permet de mettre logger un utilisateur en session
      *
@@ -81,6 +74,8 @@ public class ConnecterController {
         //Si le formulaire a des erreurs
         if (result.hasErrors()) {
             modelAndView.setViewName("connecter");
+            //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
+            modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             return modelAndView;
         }
 
@@ -95,10 +90,8 @@ public class ConnecterController {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
 
-            //TODO ajout d'un panier Remplis en session pour les TESTS
-            //remplacer par un panier vide par la suite
-            //pour tester le panier vide remplacer creerPanier() par new PanierDto()
-            modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
+            //Ajout d'un panier vide à la session
+            modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
 
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
