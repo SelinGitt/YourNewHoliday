@@ -29,34 +29,6 @@ public class UtilisateurDto implements Serializable {
     private String            dateNaissance;
     private Boolean           estDesactive;
     private RoleDto           role;
-    private String            lang             = getLangue();
-
-    /**
-     * Permet de recup la langue
-     *
-     * @return String langue
-     */
-    public String getLangue() {
-        return System.getProperty("user.language");
-    }
-
-    /**
-     * Getter for lang
-     *
-     * @return the lang
-     */
-    public String getLang() {
-        return lang;
-    }
-
-    /**
-     * Setter for lang
-     *
-     * @param lang the lang to set
-     */
-    public void setLang(final String lang) {
-        this.lang = lang;
-    }
 
     /**
      * Getter for email

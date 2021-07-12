@@ -14,7 +14,6 @@
             <spring:message code="pdt00.titre" />
         </h1>
     </div>
-      <div>langue = ${utilisateurDto.lang}</div>
     <br />
     <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
         <form:form action="listerProduits.do" method="POST">
