@@ -220,6 +220,7 @@ public class PanierService implements IPanierService {
             // passer les adresses à la méthode 
             final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, idUtilisateur);
             commandePanierListProduitErreur.setReference(commandeDo.getReference());
+            this.viderPanier(panier);
         }
         return commandePanierListProduitErreur;
     }

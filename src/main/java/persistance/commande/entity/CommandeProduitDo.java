@@ -28,7 +28,7 @@ public class CommandeProduitDo {
     @Column(name = "idListeCommande")
     private Integer         idCommandeProduit;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
+    @ManyToOne
     @JoinColumn(name = "idCommande")
     private CommandeDo      commandeDo;
 

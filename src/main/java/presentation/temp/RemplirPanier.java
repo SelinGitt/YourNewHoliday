@@ -36,11 +36,15 @@ public class RemplirPanier {
         final var produitDto1 = new ProduitDto();
         produitDto1.setIdProduitOriginal("1");
         produitDto1.setVersion("2");
+        produitDto1.setDestination("Maldives");
         produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
         produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30, Locale.FRANCE));
-        produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
-        produitDto1.setReference("ABC1234567");
-        produitDto1.setCheminImage(null);
+        produitDto1.setNom("Voyage au Maldives");
+        produitDto1.setReference("MVR1256934");
+        produitDto1.setServices("1");
+        produitDto1.setHebergement("Maison dHotes");
+        produitDto1.setCheminImage("maldives.jpg");
+        produitDto1.setMiseEnVente("true");
         // ProduitDto2
         //        final var produitDto2 = new ProduitDto();
         //        produitDto2.setIdProduitOriginal("2");
@@ -57,9 +61,13 @@ public class RemplirPanier {
         produitDto3.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(700.00));
+        produitDto3.setDestination("espagne");
         produitDto3.setNom("Voyage au Canada");
-        produitDto3.setReference("AAA1256568");
-        produitDto3.setCheminImage(null);
+        produitDto3.setReference("SPA1278951");
+        produitDto3.setServices("2");
+        produitDto3.setCheminImage("espagne.jpg");
+        produitDto3.setHebergement("chambre dhôtel");
+        produitDto3.setMiseEnVente("true");
         // ProduitDto4
         //        final var produitDto4 = new ProduitDto();
         //        produitDto4.setIdProduitOriginal("4");
@@ -76,10 +84,14 @@ public class RemplirPanier {
         produitDto5.setVersion("1");
         produitDto5.setDescription(
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto5.setDestination("tokyo");
         produitDto5.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(999.00));
         produitDto5.setNom("Voyage avec toi");
-        produitDto5.setReference("AAA7777777");
-        produitDto5.setCheminImage(null);
+        produitDto5.setReference("TYO1299974");
+        produitDto5.setServices("3");
+        produitDto5.setCheminImage("tokyo.jpg");
+        produitDto5.setHebergement("Appartement");
+        produitDto5.setMiseEnVente("true");
         // ProduitDto6
         //        final var produitDto6 = new ProduitDto();
         //        produitDto6.setIdProduitOriginal("6");

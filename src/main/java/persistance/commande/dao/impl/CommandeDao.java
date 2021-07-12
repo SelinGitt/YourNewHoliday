@@ -5,6 +5,7 @@ package persistance.commande.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
@@ -72,8 +73,12 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         query.setParameter("reference", reference);
 
         logger.info("Recherche la commande avec le référence {} en base de données.", reference);
-
-        return query.getSingleResult();
+        try {
+            return query.getSingleResult();
+        } catch (final NoResultException exception) {
+            logger.info("Pas de référence : {} ", exception.getMessage());
+            return null;
+        }
     }
 
     //Méthode utilisée à la suppression d'un utilisateur

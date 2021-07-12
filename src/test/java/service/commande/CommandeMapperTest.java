@@ -173,8 +173,8 @@ class CommandeMapperTest {
         assertEquals(9, commandeDo.getQuantiteTotale());
         assertEquals(panierDto.getNombreDeReferences(), commandeDo.getCommandeProduitDoSet().size());
         assertEquals(1, commandeDo.getIdUtilisateur());
-        assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation().getAdresse());
-        assertEquals("123 nous irons au bois", commandeDo.getAdresseLivraison().getAdresse());
+        assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation());
+        assertEquals("123 nous irons au bois", commandeDo.getAdresseLivraison());
     }
 
 }

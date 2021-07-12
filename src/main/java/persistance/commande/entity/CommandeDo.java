@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import presentation.commande.dto.CommandeAdresseDto;
-
 /**
  * Classe représentant une Commande en BD
  */
@@ -48,10 +46,10 @@ public class CommandeDo {
     @Column(name = "quantiteTotale")
     private Integer                quantiteTotale;
 
-    @Column(name = "adesse_livraison")
-    private CommandeAdresseDto     adresseLivraison;
-    @Column(name = "adesse_facturation")
-    private CommandeAdresseDto     adresseFacturation;
+    @Column(name = "adresse_livraison")
+    private String                 adresseLivraison;
+    @Column(name = "adresse_facturation")
+    private String                 adresseFacturation;
 
     /**
      * Getter for id
@@ -202,7 +200,7 @@ public class CommandeDo {
      *
      * @return the adresseLivraison
      */
-    public CommandeAdresseDto getAdresseLivraison() {
+    public String getAdresseLivraison() {
         return adresseLivraison;
     }
 
@@ -211,7 +209,7 @@ public class CommandeDo {
      *
      * @return the adresseFacturation
      */
-    public CommandeAdresseDto getAdresseFacturation() {
+    public String getAdresseFacturation() {
         return adresseFacturation;
     }
 
@@ -220,7 +218,7 @@ public class CommandeDo {
      *
      * @param adresseLivraison the adresseLivraison to set
      */
-    public void setAdresseLivraison(final CommandeAdresseDto adresseLivraison) {
+    public void setAdresseLivraison(final String adresseLivraison) {
         this.adresseLivraison = adresseLivraison;
     }
 
@@ -229,7 +227,7 @@ public class CommandeDo {
      *
      * @param adresseFacturation the adresseFacturation to set
      */
-    public void setAdresseFacturation(final CommandeAdresseDto adresseFacturation) {
+    public void setAdresseFacturation(final String adresseFacturation) {
         this.adresseFacturation = adresseFacturation;
     }
 

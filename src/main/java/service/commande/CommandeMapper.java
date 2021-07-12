@@ -76,10 +76,10 @@ public class CommandeMapper {
         final CommandeAdresseDto adresseFacturation = new CommandeAdresseDto();
         // FIXME remplacez les adresses par celles reçues en paramètre
         adresseFacturation.setAdresse("123 nous irons au bois");
-        commandeDo.setAdresseFacturation(adresseFacturation);
+        commandeDo.setAdresseFacturation(adresseFacturation.getAdresse());
         final CommandeAdresseDto adresseLivraison = new CommandeAdresseDto();
         adresseLivraison.setAdresse("123 nous irons au bois");
-        commandeDo.setAdresseLivraison(adresseLivraison);
+        commandeDo.setAdresseLivraison(adresseLivraison.getAdresse());
         return commandeDo;
     }
 
