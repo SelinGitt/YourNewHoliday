@@ -5,7 +5,7 @@
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
         <div class="display-flex align-item-center">
-            <c:if test="${utilisateur.idRole == '3'}">
+            <c:if test="${utilisateur.role.id == '3'}">
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
                 </a>
             </c:if>
@@ -76,7 +76,7 @@
 
                     <div class="display-flex justify-content-space-around">
                         <c:choose>
-                            <c:when test="${utilisateur.idRole == '3'}">
+                            <c:when test="${utilisateur.role.id == '3'}">
                                 <div>
                                     <form:radiobutton path="role.idRole" value="1" />
                                     <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
