@@ -61,6 +61,12 @@ public class UploadImageUtilisateurController {
             final File f = new File(fileName);
             final var result = iImageService.saveImage(f, "usr");
             System.out.println(result);
+
+            //  si l'image n'est pas conforme, le fichier est supprimé
+            if (!Image.isOk(f)) {
+                f.delete();
+                return;
+            }
         }
     }
 }
