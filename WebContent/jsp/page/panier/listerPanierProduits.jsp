@@ -42,7 +42,7 @@
                                         <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                     </div>
                                     <%--  description --%>
-                                    <div>${entry.key.description}</div>
+                                    <div class="panier-description-produit">${entry.key.description}</div>
                                 </div>
                             </th>
 
@@ -160,15 +160,10 @@
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
                 <a href="validerPanierProduits.do">
-                    <button type="button">
-                        <spring:message code="pan00.valider.panier" />
-                    </button>
-                </a>
-                <div class="panier-buttons">
                     <button type="button" class="panier-valider">
                         <spring:message code="pan00.valider.panier" />
                     </button>
-                </div>
+                </a>
             </div>
         </div>
     </div>

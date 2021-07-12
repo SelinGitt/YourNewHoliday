@@ -63,21 +63,21 @@
 }
 
 .panier-format {
-	width: 6em;
+	width: 6.25em;
 }
 
 .panier-image-produit-container {
-	position: relative;
-	overflow: hidden;
 	margin-left: 1vh;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
 	height: 10em;
-	width: 10em;
+}
+
+.panier-description-produit {
+	width: 49vh;
 }
 
 .panier-image-produit {
-	position: absolute;
 	top: 0em;
 	left: 0em;
 	height: 10em;
@@ -85,7 +85,7 @@
 
 .panier-left {
 	height: 60vh;
-	width: 95%;
+	width: 120vh;
 }
 
 .panier-macommande {
