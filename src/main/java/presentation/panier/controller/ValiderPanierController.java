@@ -35,13 +35,13 @@ public class ValiderPanierController {
     @GetMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur) {
-        final var listProduitErreur = this.panierService.validerPanier(panierDto, Integer.parseInt(utilisateur.getIdUtilisateur()));
-        if (listProduitErreur == null) {
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, Integer.parseInt(utilisateur.getIdUtilisateur()));
+        if (referenceCommandeOuListProduitErreur == null) {
             // On détruit la session donc le panier sera vider automatiquement
             return "redirect:deconnecter.do";
         }
-        if (listProduitErreur.getReference() != null) {
-            return "forward:detailCommande.do?ref=" + listProduitErreur.getReference();
+        if (referenceCommandeOuListProduitErreur.getReference() != null) {
+            return "forward:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
         }
         // en cas d'erreur renvoie au panier
         return "redirect:listerPanierProduits.do";

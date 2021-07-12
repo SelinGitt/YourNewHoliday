@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.entity.CommandeDo;
-import presentation.commande.dto.CommandePanierListProduitErreurDto;
+import presentation.commande.dto.CommandeReferenceOuListProduitErreurDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -208,11 +208,11 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public CommandePanierListProduitErreurDto validerPanier(final PanierDto panier, final Integer idUtilisateur) {
+    public CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final Integer idUtilisateur) {
         if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
             return null;
         }
-        final var commandePanierListProduitErreur = new CommandePanierListProduitErreurDto();
+        final var commandePanierListProduitErreur = new CommandeReferenceOuListProduitErreurDto();
         commandePanierListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
         if (commandePanierListProduitErreur.getIdProduitNonConcordant().size() == 0) {
             // TODO :

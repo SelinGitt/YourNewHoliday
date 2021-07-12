@@ -11,12 +11,12 @@ import java.util.List;
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-public class CommandePanierListProduitErreurDto implements Serializable {
+public class CommandeReferenceOuListProduitErreurDto implements Serializable {
 
     /**
      * 
      */
-    private static final long serialVersionUID = 5752473383893036404L;
+    private static final long serialVersionUID = 7530116138793985507L;
 
     // La reference de la commande
     private String        reference              = null;
