@@ -70,7 +70,7 @@
 	margin-left: 1vh;
 	margin-top: 1vh;
 	margin-bottom: 1vh;
-	height: 10em;
+	height: 9em;
 }
 
 .panier-description-produit {
@@ -80,7 +80,7 @@
 .panier-image-produit {
 	top: 0em;
 	left: 0em;
-	height: 10em;
+	height: 9em;
 }
 
 .panier-left {
@@ -126,6 +126,7 @@
 
 .panier-td {
 	width: 6em;
+	height: 9em;
 }
 
 .panier-vide-img {
