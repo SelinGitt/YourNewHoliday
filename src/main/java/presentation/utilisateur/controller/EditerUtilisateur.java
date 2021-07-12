@@ -54,13 +54,17 @@ public class EditerUtilisateur {
      * et de mettre a jour un utilisateur
      *
      * @param  utilisateurDto l'utilisateur à mettre a jour
+     * @param  origin
      * @return                redirection vers usr01
      */
     @PostMapping
-    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, @RequestParam(value = "origin") final String origin) {
         this.iUtilisateurService.updateUtilisateur(utilisateurDto);
 
         // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
-        return new ModelAndView("redirect:/listerUtilisateur.do");
+        if ("2".equals(origin)) {
+            return new ModelAndView("redirect:/listerUtilisateur.do");
+        }
+        return new ModelAndView("redirect:/consulterUtilisateur.do");
     }
 }
