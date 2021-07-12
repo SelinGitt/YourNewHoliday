@@ -64,6 +64,10 @@
 	margin-left: auto;
 }
 
+.searchBarInside {
+	border-radius: 6.25em;
+}
+
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
