@@ -163,5 +163,9 @@ aside {
 
 .langue-button-clicked {
 	border: 0.2em solid black;
-    border-radius: 2em;
+	border-radius: 2em;
+}
+
+.langue-visibility {
+	visibility: hidden;
 }

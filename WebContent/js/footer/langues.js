@@ -1,33 +1,24 @@
 /**
  * JS pour le choix de la langue
  */
+//const lang = document.getElementById("lang");
+//const frButton = document.getElementById("FR-button");
+//const enButton = document.getElementById("EN-button");
+//console.log(lang);
+//function selectLG() {
+//	if (lang.getAttribute == "fr") {
+//		frButton.className += " langue-button-clicked";
+//	} else {
+//		enButton.className += " langue-button-clicked";
+//	}
+const lang = document.getElementById("lang");
 const frButton = document.getElementById("FR-button");
 const enButton = document.getElementById("EN-button");
-
-function selectLG(n) {
-		
-	switch (n) {
-		// le cas 1 se produit quand on clique sur la langue FR
-		case 1:
-			// on entoure la langue selectionnée
-			frButton.className = "langue-button-clicked";
-			enButton.className = '';
-
-			// on rend le bouton selectionné non cliquable
-			frButton.classList.remove(frButton);
-
-			break;
-		// le cas 2 se produit quand on clique sur la langue EN
-		case 2:
-			// on entoure la langue selectionnée
-			enButton.className = "langue-button-clicked";
-			frButton.className = '';
-
-			// on rend le bouton selectionné non cliquable
-			frButton.classList.remove(enButton);
-
-			break;
-		default:
-			break;
+console.log(lang);
+function selectLG() {
+	if (lang === "fr") {
+		frButton.className += " langue-button-clicked";
+	} else if(lang === "en") {
+		enButton.className += " langue-button-clicked";
 	}
 }
