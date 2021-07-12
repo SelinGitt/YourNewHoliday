@@ -158,10 +158,17 @@
                 </div>
             </div>
             <%--  bouton valider le panier --%>
-            <div class="panier-buttons">
-                <button type="button" class="panier-valider">
-                    <spring:message code="pan00.valider.panier" />
-                </button>
+            <div class="justify-content-center display-flex align-item-center">
+                <a href="validerPanierProduits.do">
+                    <button type="button">
+                        <spring:message code="pan00.valider.panier" />
+                    </button>
+                </a>
+                <div class="panier-buttons">
+                    <button type="button" class="panier-valider">
+                        <spring:message code="pan00.valider.panier" />
+                    </button>
+                </div>
             </div>
         </div>
     </div>

@@ -128,6 +128,15 @@
 	width: 6em;
 }
 
+.panier-vide-img {
+	width: 50vh;
+	height: 50vh;
+}
+
+.panier-prix-unitaire {
+	width: 18%;
+}
+
 .panier-quantite {
 	width: 1.7em;
 }
