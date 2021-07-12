@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import persistance.external_files.IFichierDao;
-import persistance.external_files.impl.FichierDao;
 import service.contact.IFichierContactService;
 import service.util.GetPropertyValues;
 
@@ -23,8 +22,8 @@ import service.util.GetPropertyValues;
 @Service
 public class FichierContactService implements IFichierContactService {
 
-    private static final Logger logger = LoggerFactory.getLogger(FichierDao.class);
-    
+    private static final Logger logger          = LoggerFactory.getLogger(FichierContactService.class);
+
     private static final String PATH            = "contactRepo";
 
     private static final String HTML            = ".html";
@@ -37,14 +36,13 @@ public class FichierContactService implements IFichierContactService {
     @Override
     public String chargerFichierContact(final Locale locale) {
         final String nomFichier = trouverFichierContact(locale);
-        logger.error("On cherche le fichier : ", nomFichier);
+        logger.info("methode chargerFichierContact qui charge le fichier : {} ", nomFichier);
         return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier);
     }
 
     @Override
     public String trouverFichierContact(final Locale locale) {
         final String nomFichier = CONTACT_RADICAL + locale.toString() + HTML;
-        logger.error("On cherche le fichier : ", nomFichier);
         if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
             return nomFichier;
         }

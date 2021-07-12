@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import persistance.external_files.IFichierDao;
-import persistance.external_files.impl.FichierDao;
 import service.mentions_legales.IFichierMentionsLegalesService;
 import service.util.GetPropertyValues;
 
@@ -23,7 +22,7 @@ import service.util.GetPropertyValues;
 @Service
 public class FichierMentionsLegalesService implements IFichierMentionsLegalesService {
 
-    private static final Logger logger      = LoggerFactory.getLogger(FichierDao.class);
+    private static final Logger logger      = LoggerFactory.getLogger(FichierMentionsLegalesService.class);
 
     /**
      * clé permettant de charger le chemin dans le fichier YNH-application.properties
@@ -43,7 +42,7 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String chargerFichierCGV(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CgvNameFile = trouverFichier(locale, CGV_RADICAL);
-        logger.error("On charge le fichier : ", CgvNameFile);
+        logger.info("methode chargerFichierCGV qui charge le fichier : {} ", CgvNameFile);
         return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CgvNameFile);
     }
 
@@ -51,7 +50,7 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String chargerFichierCGU(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CguNameFile = trouverFichier(locale, CGU_RADICAL);
-        logger.error("On charge le fichier : ", CguNameFile);
+        logger.info("methode chargerFichierCGU qui charge le fichier : {} ", CguNameFile);
         return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CguNameFile);
 
     }
@@ -59,7 +58,6 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     @Override
     public String trouverFichier(final Locale locale, final String radical) {
         final String nomFichier = radical + locale.toString() + HTML;
-        logger.error("On cherche le fichier : ", nomFichier);
         if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
             return nomFichier;
         }
