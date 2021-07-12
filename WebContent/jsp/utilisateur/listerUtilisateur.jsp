@@ -2,21 +2,21 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
-    <c:if test="${not empty deletionSuccess}">
-        <span><spring:message code="${deletionSuccess}" /></span>
-    </c:if>
-</div>
-<div>
-    <c:if test="${not empty error}">
-        <span><spring:message code="${error}" /></span>
-    </c:if>
-</div>
-<h1 id="titreGestion" class="text-align-center">
-    <spring:message code="usr01.titre" />
-</h1>
 
 <div class="conteneur-ascenseur">
+    <div>
+        <c:if test="${not empty deletionSuccess}">
+            <span><spring:message code="${deletionSuccess}" /></span>
+        </c:if>
+    </div>
+    <div>
+        <c:if test="${not empty error}">
+            <span><spring:message code="${error}" /></span>
+        </c:if>
+    </div>
+    <h1 id="titreGestion" class="text-align-center">
+        <spring:message code="usr01.titre" />
+    </h1>
     <div class="user01-searchMenu display-flex">
         <div class="usr01searchBar">
             <form:form action="listerUtilisateur.do" method="POST">
