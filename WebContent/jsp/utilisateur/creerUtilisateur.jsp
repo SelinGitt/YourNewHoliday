@@ -4,7 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
-
         <c:if test="${not empty error}">
             <div class="background-error-block block-message-commun">
                 <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
@@ -53,7 +52,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs text-center">
-                        <form:input path="dateNaissance" class="user05-inputs" />
+                        <form:input path="dateNaissance" class="user05-inputs" value="01/01/1970" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>

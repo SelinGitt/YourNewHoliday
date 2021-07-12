@@ -4,15 +4,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
     <c:if test="${not empty userSuccess}">
-        <span><spring:message code="${userSuccess}" /></span>
+        <div class="background-validation-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+        </div>
+    </c:if>
+
+    <c:if test="${not empty error}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+        </div>
     </c:if>
 </div>
 
-<div>
-    <c:if test="${not empty error}">
-        <span><spring:message code="${error}" /></span>
-    </c:if>
-</div>
 <h1 id="titreGestion" class="text-align-center">
     <spring:message code="usr01.titre" />
 </h1>
