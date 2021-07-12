@@ -174,8 +174,12 @@
 	margin-bottom: 1em;
 }
 
+.user05-form-inputs {
+	width: 70%;	
+}
+
 .user05-inputs {
-	width: 55%;
+	width: 100%;
 }
 
 .user05-textarea {
@@ -184,7 +188,7 @@
 }
 
 .user05-buttons {
-	width: 56%;
+	width: 70%;
 	float: right;
 }
 

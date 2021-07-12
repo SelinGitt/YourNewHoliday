@@ -26,60 +26,60 @@
 
             <div class="user05-leftSide">
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="nom"><spring:message code="usr05.creer.nom" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="nom"><spring:message code="usr05.creer.nom" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:input path="nom" class="user05-inputs" />
+                        <form:errors path="nom" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="nom" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="prenom"><spring:message code="usr05.creer.prenom" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="prenom"><spring:message code="usr05.creer.prenom" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:input path="prenom" class="user05-inputs" />
+                        <form:errors path="prenom" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="prenom" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:textarea path="adresse" class="user05-inputs user05-textarea" />
+                        <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="adresse" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:input path="dateNaissance" class="user05-inputs" />
+                        <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="email"><spring:message code="usr05.creer.email" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="email"><spring:message code="usr05.creer.email" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:input path="email" class="user05-inputs" />
+                        <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="email" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="password"><spring:message code="usr05.creer.password" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="password"><spring:message code="usr05.creer.password" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:password path="password" class="user05-inputs" />
+                        <form:errors path="password" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="password" cssClass="text-color-rouge" />
                 </div>
 
-                <div class="text-center user05-form-field">
-                    <div class="display-flex justify-content-space-between">
-                        <label for="confirmPassword"><spring:message code="usr05.creer.confirmPassword" /></label>
+                <div class="user05-form-field display-flex justify-content-space-between">
+                    <label for="confirmPassword"><spring:message code="usr05.creer.confirmPassword" /></label>
+                    <div class="user05-form-inputs text-center">
                         <form:password path="confirmPassword" class="user05-inputs" />
+                        <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                     </div>
-                    <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                 </div>
 
                 <div class="display-flex justify-content-space-around user05-buttons">
