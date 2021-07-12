@@ -42,8 +42,8 @@ class UtilisateurMapperTest {
 
         final var roleDto = new RoleDto();
 
-        roleDto.setIdRole(1);
-        roleDto.setLibelle("client");
+        roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDto.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDto.setRole(roleDto);
 
@@ -89,8 +89,8 @@ class UtilisateurMapperTest {
 
         final var roleDo = new RoleDo();
 
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("client");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(roleDo);
 
@@ -133,8 +133,8 @@ class UtilisateurMapperTest {
 
         final var roleDo = new RoleDo();
 
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("client");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo1.setRole(roleDo);
 
@@ -151,8 +151,8 @@ class UtilisateurMapperTest {
 
         final var roleDo2 = new RoleDo();
 
-        roleDo2.setIdRole(1);
-        roleDo2.setLibelle("client");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo2.setRole(roleDo2);
 
@@ -178,8 +178,8 @@ class UtilisateurMapperTest {
 
         final var roleDo = new RoleDo();
 
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("libelle");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         utilisateurDo.setRole(roleDo);
 

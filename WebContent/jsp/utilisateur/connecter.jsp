@@ -4,11 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="user07-body-general">
 
-    <div>
-        <c:if test="${not empty error}">
-            <span class="user07-errorblock display-flex"><spring:message code="${error}" /></span>
-        </c:if>
-    </div>
+    <c:if test="${not empty error}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+        </div>
+    </c:if>
 
     <div class="user07-form display-flex">
         <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do" autocomplete="one-time-code">
@@ -23,8 +23,8 @@
                 <span><spring:message code="usr07.label.email" /></span>
                 <div class="user07-lib-champ-email">
                     <form:input path="email" />
-                    <div class="error">
-                        <form:errors path="email" cssClass="user07-error" />
+                    <div>
+                        <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
             </div>
@@ -33,8 +33,8 @@
                 <span><spring:message code="usr07.label.password" /></span>
                 <div class="user07-lib-champ-password">
                     <form:password path="password" />
-                    <div class="user07-psw-error">
-                        <form:errors path="password" cssClass="user07-error" />
+                    <div>
+                        <form:errors path="password" cssClass="text-color-rouge" />
                     </div>
                 </div>
             </div>

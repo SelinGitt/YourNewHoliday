@@ -13,8 +13,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
+import presentation.panier.dto.PanierDto;
 import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
 
@@ -28,10 +31,13 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao  produitDao;
+    private IProduitDao    produitDao;
+
+    @Autowired
+    private IPanierService panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -56,17 +62,18 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
         final var triString = String.valueOf(tri);
-        logger.debug("{} a été appelé avec {} et {} comme paramètres", ProduitDto.class.getSimpleName(), searchTerm, triString);
-        if (!searchTerm.isBlank()) {
+        logger.debug("Produit Service findFilter, searchTerm : {} ; tri : {}", searchTerm, triString);
+        if (searchTerm.isBlank()) {
             if (tri == null) {
-                return rechercherProduits(searchTerm);
+                return listerProduitsEnVente();
             }
-            return listerFiltreTri(tri, searchTerm);
+            return trierListe(tri);
         }
+
         if (tri == null) {
-            return listerProduitsEnVente();
+            return rechercherProduits(searchTerm);
         }
-        return trierListe(tri);
+        return listerFiltreTri(tri, searchTerm);
     }
 
     private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
@@ -83,6 +90,25 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public ProduitDto editerProduit(final ProduitDto produitDto) {
+        final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
+        this.logger.debug("Produit Service {} editerProduit, id : {}", produitFound, produitDto.getIdProduitOriginal());
+        // On update si le produit existe
+        if (produitFound != null) {
+            final var produitDo = ProduitMapper.mapToDo(produitDto);
+            return ProduitMapper.mapToDto(produitDao.update(produitDo));
+        }
+        return null;
+    }
+
+    @Override
+    public ProduitDto trouverParReference(final String reference) {
+        final var produitDo = produitDao.findByReference(reference);
+        this.logger.debug("Produit Service {} trouverParReference", reference);
+        return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
@@ -95,5 +121,21 @@ public class ProduitService implements IProduitService {
         final var produitDo = ProduitMapper.mapToDo(produitDto);
         this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
         return ProduitMapper.mapToDto(produitDao.create(produitDo));
+    }
+
+    @Override
+    public ProduitDto trouverProduitById(final Integer idProduit) {
+        final var produitDo = produitDao.findById(idProduit);
+        this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
+        return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
+    public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
+        final var quantite = Integer.valueOf(beanQuantite.getQuantite());
+        final var id = Integer.parseInt(beanQuantite.getId());
+        return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 }

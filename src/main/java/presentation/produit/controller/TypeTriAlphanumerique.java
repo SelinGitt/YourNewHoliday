@@ -25,6 +25,9 @@ public enum TypeTriAlphanumerique {
 
     /**
      * Constructor
+     *
+     * @param type    le type de recherche, 1 pour asc - 2 pour desc
+     * @param typeDao
      */
     TypeTriAlphanumerique(final String type, final String typeDao) {
         this.typeRecherche = type;

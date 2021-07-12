@@ -57,8 +57,8 @@
                                 <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
                             </c:otherwise>
                         </c:choose></td>
-                    <td class="pdt01Body"><a href="javascript:void()"> <img alt="" src="img/commun/editer.png"
-                            class="pdt01Image">
+                    <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img
+                            alt="" src="img/commun/editer.png" class="pdt01Image">
                     </a></td>
                     <td class="pdt01Body"><a href="javascript:void()"> <img alt=""
                             src="img/commun/poubelle.jpg" class="pdt01Image">

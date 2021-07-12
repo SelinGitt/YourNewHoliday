@@ -87,7 +87,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     public List<ProduitDo> trierListe(final TypeTriAlphanumerique typeTri) {
         final TypedQuery<ProduitDo> query = entityManager.createQuery(
                 "FROM ProduitDo WHERE mise_en_vente = 1 ORDER BY prix_unitaire ".concat(typeTri.getTypeDao()), ProduitDo.class);
-        logger.debug("Le produitDo {} a été trié par {}", ProduitDo.class.getSimpleName(), typeTri.getTypeDao());
+        logger.debug("Produit Dao trierListe, typeTri : {}", typeTri.getTypeDao());
         return query.getResultList();
     }
 
@@ -97,8 +97,24 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 .createQuery("FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire "
                         .concat(typeTri.getTypeDao()), ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
-        logger.debug("Le produit {} a été filtré avec {} trié par {}", ProduitDo.class.getSimpleName(), searchTerm, typeTri.getTypeDao());
+        logger.debug("Produit Dao trierFiltreListe {} trié par {}", ProduitDo.class.getSimpleName(), searchTerm, typeTri.getTypeDao());
         return query.getResultList();
+    }
+
+    @Override
+    public ProduitDo findByReference(final String reference) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("SELECT pdt FROM ProduitDo pdt WHERE pdt.reference = :ref",
+                ProduitDo.class);
+        query.setParameter("ref", reference);
+        try {
+            logger.debug("Produit Dao {} findByReference", reference);
+            return query.getSingleResult();
+
+        } catch (final NoResultException noResultException) {
+            // Si exception 
+            logger.info("Le produit de référence {reference} n'est pas en base.", noResultException);
+            return null;
+        }
     }
 
     @Override

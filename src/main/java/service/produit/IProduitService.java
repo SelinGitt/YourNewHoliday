@@ -5,7 +5,9 @@ package service.produit;
 
 import java.util.List;
 
+import presentation.panier.dto.PanierDto;
 import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 
 /**
@@ -55,6 +57,22 @@ public interface IProduitService {
     List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri);
 
     /**
+     * Permet de maj un produit
+     * 
+     * @param  produitDto le produit à éditer
+     * @return            le produit édité, null sinon
+     */
+    ProduitDto editerProduit(final ProduitDto produitDto);
+
+    /**
+     * Permet de trouver un produit via sa référence
+     *
+     * @param  reference du produit à cherhcer
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverParReference(final String reference);
+
+    /**
      * Permet de rechercher produits par reference
      *
      * @param  pSearchTerm terme recherché
@@ -69,4 +87,22 @@ public interface IProduitService {
      * @return            le produit créé
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
+
+    /**
+     * Permet de trouver un produit via son ID
+     *
+     * @param  idProduit l'id du produit à rechercher
+     * @return           le produit trouvé, null sinon
+     */
+    ProduitDto trouverProduitById(final Integer idProduit);
+
+    /**
+     * Permet d'ajouter un produit au panier, en testant les règles de gestions
+     *
+     * @param  panierDto    le panier où il faut ajouter les produits
+     * @param  beanQuantite le bean contenant la quantité et l'id du produit à ajouter
+     * @return              <code>true</code> si le bean est correct, de par sa quantité ou son ID<br>
+     *                      <code>false</code> dans le cas contraire
+     */
+    PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
 }

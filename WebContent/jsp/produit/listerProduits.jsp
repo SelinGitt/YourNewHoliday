@@ -32,32 +32,66 @@
             <script>
             		document.getElementById("triSelect").options[${tri}].selected=true;          	
             </script>
-            <input type="submit" form="tri" value="<spring:message code='pdt00.recherche.OK'/>">
+            <input type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
-    <div class="container">
-        <br />
-        <div class="display-flex flex-wrap-wrap justify-content-center">
-            <c:forEach items="${listeProduitDto}" var="produitDto">
-                <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
-                    aria-label="Produit">
-                    <tr>
-                        <th colspan="2"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                            alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" /></th>
-                    </tr>
+    <br />
+    <div class="display-flex flex-wrap-wrap justify-content-center">
+        <c:forEach items="${listeProduitDto}" var="produitDto">
+            <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
+                aria-label="Produit">
+                <tr>
+                    <th colspan="2"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}"> <img
+                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                            alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
+                    </a></th>
+                </tr>
+                <tr class="display-flex">
+                    <td class="display-flex text-responsive">${produitDto.nom}</td>
+                    <td class="pdt00Price text-responsive display-flex justify-content-flex-end">
+                        ${produitDto.prixUnitaire} €</td>
+                </tr>
+                <tr>
+                    <td class="text-responsive">${produitDto.reference}</td>
+                </tr>
+                <tr>
+                    <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
+                </tr>
+                <c:if test="${not empty utilisateur}">
                     <tr class="display-flex">
-                        <td class="display-flex text-responsive">${produitDto.nom}</td>
-                        <td class="pdt00Price text-responsive display-flex justify-content-flex-end">
-                            ${produitDto.prixUnitaire} €</td>
+                        <form:form action="ajouterProduitPanier.do" requestParam="beanQuantite" method="POST">
+                            <input type="hidden" name="location" value="lister" />
+                            <input type="hidden" name="id" value="${produitDto.idProduitOriginal}" />
+                            <td class="display-flex text-responsive">
+                                <div class="display-flex">
+                                    <%--  bouton - --%>
+                                    <a onclick="decrement('${produitDto.idProduitOriginal}')">
+                                        <button type="button">-</button>
+                                    </a>
+
+                                    <%--  saisie valeur produit  --%>
+                                    <input class="pdt00-pan-quantite text-align-center" type="text" readonly="readonly"
+                                        id="quantite${produitDto.idProduitOriginal}" name="quantite" value="1" size="1">
+
+                                    <%--  bouton + --%>
+                                    <a onclick="increment('${produitDto.idProduitOriginal}')">
+                                        <button type="button">+</button>
+                                    </a>
+                                </div>
+                            </td>
+                            <td colspan="2" class="pdt00Ajouter text-responsive display-flex justify-content-flex-end">
+                                <div>
+                                    <button value="submit"
+                                        class="background-color-green display-flex justify-content-flex-end pdt00Bouton">
+                                        <spring:message code="pdt.addCart" />
+                                    </button>
+                                </div>
+                            </td>
+                        </form:form>
                     </tr>
-                    <tr>
-                        <td class="text-responsive">${produitDto.reference}</td>
-                    </tr>
-                    <tr>
-                        <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
-                    </tr>
-                </table>
-            </c:forEach>
-        </div>
+                </c:if>
+            </table>
+        </c:forEach>
+<!-- >>>>>>> develop -->
     </div>
 </div>
