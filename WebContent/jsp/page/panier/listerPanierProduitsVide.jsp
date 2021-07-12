@@ -11,7 +11,6 @@
     <spring:message code="pan00.titre" />
 </h1>
 <div class="display-flex align-item-center justify-content-center flex-direction-column ">
-
     <p class="panier-vide-ligne">
         <spring:message code="pan00.paragraphe.panierVide" />
     </p>
