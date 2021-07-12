@@ -25,7 +25,7 @@ import service.image.Image;
  * @author Selin
  */
 @Controller
-@RequestMapping("/upload.do")
+@RequestMapping("/uploadImageUtilisateur.do")
 public class UploadImageUtilisateurController {
 
     @Autowired
@@ -57,10 +57,16 @@ public class UploadImageUtilisateurController {
     @PostMapping
     public void saveImage(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         for (final Part part : request.getParts()) {
+            System.out.println(part);
             final String fileName = Image.getFileName(part);
             final File f = new File(fileName);
             final var result = iImageService.saveImage(f, "usr");
             System.out.println(result);
+            try {
+                part.write(fileName);
+            } catch (final IOException ioe) {
+                ioe.printStackTrace();
+            }
 
             //  si l'image n'est pas conforme, le fichier est supprimé
             if (!Image.isOk(f)) {

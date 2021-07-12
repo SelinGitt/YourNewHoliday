@@ -64,37 +64,38 @@
 
                 <div class="user05-rightSide">
                     <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                        <div>
-                            <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                            <div style="width: 15em; height: 15em; background-color: red;"></div>
-                        </div>
-                        <img src="#" width="25%" height="25%" hidden="true" /> <br /> <input type="file"
-                            name="fichier" accept=".jpeg, .jpg, .png, .bmp" id="imgInp" onchange="readURL(this)"
-                            value="<spring:message code="usr05.parcourir" />" />
-
+                    <div>
+                        <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
+                        <div style="width: 15em; height: 15em; background-color: red;"></div>
                     </div>
 
-                    <div class="display-flex justify-content-space-around">
-                        <c:choose>
-                            <c:when test="${utilisateur.role.id == '3'}">
-                                <div>
-                                    <form:radiobutton path="role.idRole" value="1" />
-                                    <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
-                                </div>
-
-                                <div>
-                                    <form:radiobutton path="role.idRole" value="3" />
-                                    <label for="role.idRole2"><spring:message code="usr05.label.admin" /></label>
-                                </div>
-                            </c:when>
-
-                            <c:otherwise>
-                                <form:hidden path="role.idRole" value="1" />
-                            </c:otherwise>
-                        </c:choose>
-                    </div>
                 </div>
+
+                <div class="display-flex justify-content-space-around">
+                    <c:choose>
+                        <c:when test="${utilisateur.role.id == '3'}">
+                            <div>
+                                <form:radiobutton path="role.idRole" value="1" />
+                                <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
+                            </div>
+
+                            <div>
+                                <form:radiobutton path="role.idRole" value="3" />
+                                <label for="role.idRole2"><spring:message code="usr05.label.admin" /></label>
+                            </div>
+                        </c:when>
+
+                        <c:otherwise>
+                            <form:hidden path="role.idRole" value="1" />
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
         </form:form>
+        <form action="uploadImageUtilisateur.do" enctype="multipart/form-data" method="post">
+            <input type="file" accept=".jpeg, .jpg, .png, .bmp" value="<spring:message code="usr05.parcourir" />" /> <input
+                type="submit" value="submit" />
+        </form>
     </div>
 </div>
 
