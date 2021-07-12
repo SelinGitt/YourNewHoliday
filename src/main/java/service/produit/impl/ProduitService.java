@@ -13,7 +13,11 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
 
@@ -27,10 +31,13 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao  produitDao;
+    private IProduitDao    produitDao;
+
+    @Autowired
+    private IPanierService panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -43,13 +50,43 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public List<ProduitDto> listerAllProduit() {
+        return ProduitMapper.mapToListDto(produitDao.findAll());
+    }
+
+    @Override
     public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
         return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
     }
 
     @Override
-    public List<ProduitDto> listerAllProduit() {
-        return ProduitMapper.mapToListDto(produitDao.findAll());
+    public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
+        final var triString = String.valueOf(tri);
+        logger.debug("Produit Service findFilter, searchTerm : {} ; tri : {}", searchTerm, triString);
+        if (searchTerm.isBlank()) {
+            if (tri == null) {
+                return listerProduitsEnVente();
+            }
+            return trierListe(tri);
+        }
+
+        if (tri == null) {
+            return rechercherProduits(searchTerm);
+        }
+        return listerFiltreTri(tri, searchTerm);
+    }
+
+    private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
+    }
+
+    private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
+        return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
+    }
+
+    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
+
     }
 
     @Override
@@ -97,5 +134,14 @@ public class ProduitService implements IProduitService {
     public boolean deleteProduit(final Integer id) {
         produitDao.delete(id);
         return true;
+    }
+
+    @Override
+    public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(),
+                beanQuantite.getQuantite(), beanQuantite.getId());
+        final var quantite = Integer.valueOf(beanQuantite.getQuantite());
+        final var id = Integer.parseInt(beanQuantite.getId());
+        return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 }

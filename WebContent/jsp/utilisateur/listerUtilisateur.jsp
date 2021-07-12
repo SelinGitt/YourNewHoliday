@@ -2,21 +2,21 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
-    <c:if test="${not empty deletionSuccess}">
-        <span><spring:message code="${deletionSuccess}" /></span>
-    </c:if>
-</div>
-<div>
-    <c:if test="${not empty error}">
-        <span><spring:message code="${error}" /></span>
-    </c:if>
-</div>
-<h1 id="titreGestion" class="text-align-center">
-    <spring:message code="usr01.titre" />
-</h1>
 
 <div class="conteneur-ascenseur">
+    <div>
+        <c:if test="${not empty deletionSuccess}">
+            <span><spring:message code="${deletionSuccess}" /></span>
+        </c:if>
+    </div>
+    <div>
+        <c:if test="${not empty error}">
+            <span><spring:message code="${error}" /></span>
+        </c:if>
+    </div>
+    <h1 id="titreGestion" class="text-align-center">
+        <spring:message code="usr01.titre" />
+    </h1>
     <div class="user01-searchMenu display-flex">
         <div class="usr01searchBar">
             <form:form action="listerUtilisateur.do" method="POST">
@@ -36,9 +36,9 @@
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Client --%>
-                    <option value="1"><spring:message code="usr01.filter.1" /></option>
                     <%-- Visiteur --%>
+                    <option value="1"><spring:message code="usr01.filter.1" /></option>
+                    <%-- Client --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
                     <%-- Admin --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
@@ -94,14 +94,16 @@
 
                     <td class="user01-body"><c:choose>
                             <c:when test="${utilisateurDto.estDesactive}">
-                                <img class="user01-imageNonActive checkboxVide" alt="" src="img/commun/checkboxVide.png">
+                                <img class="user01-imageNonActive 
+                                checkboxVide" alt=""
+                                    src="img/commun/checkboxVide.png">
                             </c:when>
                             <c:otherwise>
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                    <td class="user01-body"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 

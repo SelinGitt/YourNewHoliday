@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
  * Classe représentant les tests unitaires pour produitDao
@@ -116,12 +119,93 @@ class ProduitDaoTest {
     }
 
     /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerCroissant()}.
+     */
+    @Test
+    void testPrixCroissant() {
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.findValue("1");
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierListe(typeTri);
+        final List<ProduitDo> listeTriee = triLocalCroissant();
+        assertEquals(listeProduitsCroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerDecroissant()}.
+     */
+    @Test
+    void testPrixDecroissant() {
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.findValue("2");
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierListe(typeTri);
+        final List<ProduitDo> listeTriee = triLocalDecroissant();
+        assertEquals(listeProduitsDecroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerFiltreTriDecroissant()}.
+     */
+    @Test
+    void testPrixFiltreDecroissant() {
+        //2 correspond au tri desc
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.findValue("2");
+        final List<ProduitDo> listeProduitsDecroissant = iProduitDao.trierFiltreListe(typeTri, "99");
+        final List<ProduitDo> listeTriee = triLocalDecroissantAvecFiltre("99");
+        assertEquals(listeProduitsDecroissant, listeTriee);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#listerFiltreTriCroissant()}.
+     */
+    @Test
+    void testPrixFiltreCroissant() {
+        //1 correspond au tri asc
+        final TypeTriAlphanumerique typeTri = TypeTriAlphanumerique.findValue("1");
+        final List<ProduitDo> listeProduitsCroissant = iProduitDao.trierFiltreListe(typeTri, "89");
+        final List<ProduitDo> listeTriee = triLocalCroissantAvecFiltre("89");
+        assertEquals(listeProduitsCroissant, listeTriee);
+    }
+
+    private List<ProduitDo> triLocalCroissant() {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire);
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+
+    }
+
+    private List<ProduitDo> triLocalDecroissant() {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.findAllProduitsEnVente();
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire,
+                (prixProduitInferieur, prixProduitSuperieur) -> {
+                    return prixProduitSuperieur.compareTo(prixProduitInferieur);
+                });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+    }
+
+    private List<ProduitDo> triLocalCroissantAvecFiltre(final String searchTerm) {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduitsEnVente(searchTerm);
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire);
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+        return listeProduitDoEnVente;
+    }
+
+    private List<ProduitDo> triLocalDecroissantAvecFiltre(final String searchTerm) {
+        final List<ProduitDo> listeProduitDoEnVente = iProduitDao.rechercherProduitsEnVente(searchTerm);
+        final Comparator<ProduitDo> produitDoPrixComparator = Comparator.comparing(ProduitDo::getPrixUnitaire,
+                (prixProduitInferieur, prixProduitSuperieur) -> {
+                    return prixProduitSuperieur.compareTo(prixProduitInferieur);
+                });
+        Collections.sort(listeProduitDoEnVente, produitDoPrixComparator);
+
+        return listeProduitDoEnVente;
+    }
+
+    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#findByReference(String)}.
      */
     @Test
     void testFindByReference() {
         final ProduitDo produitDo = iProduitDao.findByReference("ITA1289967");
-
         assertNotNull(produitDo);
         assertEquals("Italie", produitDo.getDestination());
         assertNull(iProduitDao.findByReference("FausseRef"));
