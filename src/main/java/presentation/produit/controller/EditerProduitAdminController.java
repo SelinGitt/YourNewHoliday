@@ -30,7 +30,7 @@ public class EditerProduitAdminController {
      * Permet de traiter une requête de type GET
      * 
      * @param  reference la référence du produit à éditer
-     * @return           le produit modifié dans le model et la vue associée s'il existe <br>
+     * @return           le produit modifié dans le model et la vue associée s'il existe <br/>
      *                   sinon redirection vers listerProduitAdmin.do
      */
     @GetMapping
