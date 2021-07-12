@@ -6,6 +6,7 @@ package service.produit;
 import java.util.List;
 
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 
@@ -45,6 +46,15 @@ public interface IProduitService {
      * @return la liste de tous les produits
      */
     List<ProduitDto> listerAllProduit();
+
+    /**
+     * Permet de faire une recherche en fonction de leur paramètres
+     *
+     * @param  searchTerm la recherche a effectuer
+     * @param  tri        le type de tri à effectuer
+     * @return            la liste de produitDto fitrée
+     */
+    List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri);
 
     /**
      * Permet de maj un produit

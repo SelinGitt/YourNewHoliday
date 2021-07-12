@@ -26,8 +26,12 @@ import service.produit.IProduitService;
 @RequestMapping(value = {"/listerProduits.do", "/"})
 public class ListerProduitsController {
 
+    /**
+     * Utilisation d'une constante pour stocker l'attribut
+     */
+    private static final String LISTE_PRODUIT_DTO = "listeProduitDto";
     @Autowired
-    private IProduitService iProduitService;
+    private IProduitService     iProduitService;
 
     /**
      * Permet de traiter une requête de type GET
@@ -43,28 +47,29 @@ public class ListerProduitsController {
         if (!code.isBlank()) {
             modelAndView.getModelMap().addAttribute("anySuccess", code);
         }
-        modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
+        modelAndView.getModelMap().addAttribute("tri", 0);
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
         return modelAndView;
     }
 
     /**
      * Permet de traiter une requete de type POST
      * 
-     * @param  searchInput terme recherché
-     * @return             liste de produits pour le model et la vue associée
+     * @param  searchTerm le terme recherché
+     * @param  tri        le tri à effectuer
+     * @return            liste de produits pour le model et la vue associée
      */
     @PostMapping
-    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+    public ModelAndView findFilter(final @RequestParam(value = "searchInput", required = false) String searchTerm,
+            final @RequestParam(value = "tri", defaultValue = "0") String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        if (searchInput.isEmpty()) {
-            modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
-        } else {
-            final List<ProduitDto> rechercherProduits = iProduitService.rechercherProduitsEnVente(searchInput);
-            if (rechercherProduits.isEmpty()) {
-                modelAndView.getModelMap().addAttribute("anyError", "pdt00.notexist");
-            }
-            modelAndView.getModelMap().addAttribute("listeProduitDto", rechercherProduits);
+        final List<ProduitDto> rechercherProduits = this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.findValue(tri));
+
+        modelAndView.getModelMap().addAttribute("tri", tri);
+        modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, rechercherProduits);
+        if (rechercherProduits.isEmpty()) {
+            modelAndView.getModelMap().addAttribute("anyError", "pdt00.notexist");
         }
 
         return modelAndView;
