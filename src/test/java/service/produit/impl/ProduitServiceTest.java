@@ -165,12 +165,16 @@ class ProduitServiceTest {
         //création des produits
         final var produitDo = new ProduitDo();
         produitDo.setPrixUnitaire(1274d);
+        produitDo.setIdProduitOriginal(10);
         final var produitDo2 = new ProduitDo();
         produitDo2.setPrixUnitaire(126d);
+        produitDo2.setIdProduitOriginal(11);
         final var produitDto = new ProduitDto();
         produitDto.setPrixUnitaire("1274,00");
+        produitDto.setIdProduitOriginal("10");
         final var produitDto2 = new ProduitDto();
         produitDto2.setPrixUnitaire("126,00");
+        produitDto2.setIdProduitOriginal("11");
         //création de la liste à retourner
         final List<ProduitDo> listeTriee = List.of(produitDo2, produitDo);
         Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.DESC)).thenReturn(listeTriee);
@@ -181,9 +185,7 @@ class ProduitServiceTest {
         //création d'un comparator pour préparer le tri via java
         final Comparator<ProduitDto> produitDoPrixComparator = Comparator.comparing(ProduitDto::getPrixUnitaire);
         Collections.sort(listeNonTriee, produitDoPrixComparator);
-        assertEquals(liste.stream().findFirst().get().getPrixUnitaire(), listeNonTriee.stream().findFirst().get().getPrixUnitaire());
-        assertEquals(liste.stream().skip(1).findFirst().get().getPrixUnitaire(),
-                listeNonTriee.stream().skip(1).findFirst().get().getPrixUnitaire());
+        assertEquals(liste, listeNonTriee);
     }
 
     /**

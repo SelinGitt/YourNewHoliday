@@ -97,7 +97,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 .createQuery("FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire "
                         .concat(typeTri.getTypeDao()), ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
-        logger.debug("Produit Dao trierFiltreListe {} trié par {}", ProduitDo.class.getSimpleName(), searchTerm, typeTri.getTypeDao());
+        logger.debug("Produit Dao trierFiltreListe {} trié par {}", searchTerm, typeTri.getTypeDao());
         return query.getResultList();
     }
 

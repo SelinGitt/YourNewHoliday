@@ -92,6 +92,5 @@
                 </c:if>
             </table>
         </c:forEach>
-<!-- >>>>>>> develop -->
     </div>
 </div>
