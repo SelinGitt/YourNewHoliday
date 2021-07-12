@@ -21,10 +21,10 @@
         <%-- texte indiquant les drapeaux permettant de changer de langue --%>
         <span class="text-responsive"><spring:message code="glb.footer.texte.langue" /></span>
         <%-- image du drapeau français permettant de basculer le site en français. --%>
-        <a href="?language=fr"><img id="FR-button" class="footer-lang footer-responsive"
+        <a id="lienLangueFr" href="?language=fr"><img id="FR-button" class="footer-lang footer-responsive"
             src="img/template/footer/france.svg" alt="drapeau français" /></a>
         <%-- image du drapeau anglais permettant de basculer le site en anglais.--%>
-        <a href="?language=en"><img id="EN-button" class="footer-lang footer-responsive"
+        <a id="lienLangueEn" href="?language=en"><img id="EN-button" class="footer-lang footer-responsive"
             src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /></a>
     </div>
 </div>

@@ -166,3 +166,7 @@ aside {
 	border: 0.2em solid black;
 	border-radius: 2em;
 }
+
+.langue-pointer {
+	pointer-events: none;
+}
