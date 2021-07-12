@@ -5,6 +5,9 @@
 
 /* PAN00 */
 /* CSS factorisé */
+.panier-title {
+	text-align: center;
+}
 
 /* texte aligné à droite */
 .prix {
@@ -23,6 +26,24 @@
 	font-size: 1.875em;
 }
 
+.panier-buttons {
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
+}
+
+.panier-valider {
+	background-color: #6AA84F;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.panier-vider {
+	background-color: #E06666;
+	color: #FFFFFF;
+	margin: auto;
+}
 /* CSS specifique */
 
 /* images responsives */
@@ -129,13 +150,13 @@
 	margin-left: 1em;
 	margin-right: 1em;
 }
+
 .panier-margin-left-15 {
 	margin-left: 15%;
-	
 }
+
 .panier-margin-left-10 {
 	margin-left: 10%;
-	
 }
 
 .panier-formulaire {

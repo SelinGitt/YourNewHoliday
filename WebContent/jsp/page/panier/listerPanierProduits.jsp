@@ -2,10 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1>
-    <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
-    <spring:message code="pan00.titre" />
-</h1>
+<div class="panier-title">
+    <h1>
+        <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
+        <spring:message code="pan00.titre" />
+    </h1>
+</div>
 
 <div class="display-flex">
     <div>
@@ -27,9 +29,11 @@
                             <th class="panier-tab-ligne panier-bordure-1px display-flex">
                                 <div>
                                     <%--  photo --%>
-                                    <img class="panier-responsive panier-image-produit"
+                                    <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}"><img
+                                        class="panier-responsive panier-image-produit"
                                         src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                        alt="image produit ${entry.key.nom}" />
+                                        alt="${entry.key.destination}" /></a>
+
                                 </div>
                                 <div>
                                     <div>
@@ -108,8 +112,8 @@
             </table>
 
             <%--  bouton vider le panier  --%>
-            <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
-                <a href="viderPanier.do"><button type="button">
+            <div class="panier-buttons">
+                <a href="viderPanier.do"><button type="button" class="panier-vider">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
             </div>
@@ -155,10 +159,17 @@
                 </div>
             </div>
             <%--  bouton valider le panier --%>
-            <div class="justify-content-center display-flex align-item-center">                
+            <div class="justify-content-center display-flex align-item-center">
+                <a href="validerPanierProduits.do">
                     <button type="button">
                         <spring:message code="pan00.valider.panier" />
-                    </button>                
+                    </button>
+                </a>
+                <div class="panier-buttons">
+                    <button type="button" class="panier-valider">
+                        <spring:message code="pan00.valider.panier" />
+                    </button>
+                </div>
             </div>
         </div>
     </div>
