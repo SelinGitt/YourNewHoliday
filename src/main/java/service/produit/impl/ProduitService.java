@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
@@ -49,13 +50,43 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public List<ProduitDto> listerAllProduit() {
+        return ProduitMapper.mapToListDto(produitDao.findAll());
+    }
+
+    @Override
     public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
         return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
     }
 
     @Override
-    public List<ProduitDto> listerAllProduit() {
-        return ProduitMapper.mapToListDto(produitDao.findAll());
+    public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
+        final var triString = String.valueOf(tri);
+        logger.debug("Produit Service findFilter, searchTerm : {} ; tri : {}", searchTerm, triString);
+        if (searchTerm.isBlank()) {
+            if (tri == null) {
+                return listerProduitsEnVente();
+            }
+            return trierListe(tri);
+        }
+
+        if (tri == null) {
+            return rechercherProduits(searchTerm);
+        }
+        return listerFiltreTri(tri, searchTerm);
+    }
+
+    private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
+    }
+
+    private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
+        return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
+    }
+
+    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
+
     }
 
     @Override

@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.commun.dao.impl.AbstractGenericDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
  * Classe représentant l'implémentation de IProduitDao
@@ -78,6 +79,25 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         final TypedQuery<ProduitDo> query = entityManager
                 .createQuery("From ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
+        logger.debug("Le produitDo {} a été filtré par {}", ProduitDo.class.getSimpleName(), searchTerm);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProduitDo> trierListe(final TypeTriAlphanumerique typeTri) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery(
+                "FROM ProduitDo WHERE mise_en_vente = 1 ORDER BY prix_unitaire ".concat(typeTri.getTypeDao()), ProduitDo.class);
+        logger.debug("Produit Dao trierListe, typeTri : {}", typeTri.getTypeDao());
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProduitDo> trierFiltreListe(final TypeTriAlphanumerique typeTri, final String searchTerm) {
+        final TypedQuery<ProduitDo> query = entityManager
+                .createQuery("FROM ProduitDo WHERE reference LIKE :searchTerm AND mise_en_vente = 1 ORDER BY prix_unitaire "
+                        .concat(typeTri.getTypeDao()), ProduitDo.class);
+        query.setParameter("searchTerm", "%" + searchTerm + "%");
+        logger.debug("Produit Dao trierFiltreListe {} trié par {}", searchTerm, typeTri.getTypeDao());
         return query.getResultList();
     }
 
