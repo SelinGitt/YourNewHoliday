@@ -69,7 +69,8 @@
                             <td colspan="2" class="pdt00Ajouter text-responsive display-flex justify-content-flex-end">
                                 <div>
                                     <button value="submit"
-                                        class="background-color-green display-flex justify-content-flex-end pdt00Bouton">
+                                        class="background-color-green display-flex 
+                                               justify-content-flex-end pdt00Bouton">
                                         <spring:message code="pdt.addCart" />
                                     </button>
                                 </div>
