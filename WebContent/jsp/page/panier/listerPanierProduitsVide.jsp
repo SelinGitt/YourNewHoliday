@@ -6,7 +6,7 @@
 <h1>
     <spring:message code="pan00.titre" />
 </h1>
-<div class="display-flex align-item-center justify-content-center panier-flex-column ">
+<div class="display-flex align-item-center justify-content-center flex-column ">
     <p class="panier-vide-ligne">
         <spring:message code="pan00.paragraphe.panierVide" />
     </p>

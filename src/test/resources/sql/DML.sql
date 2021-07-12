@@ -66,14 +66,15 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (19, 'supprimerUtilisateur.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (20, 'supprimerProduitPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (21, 'viderPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (23, 'ajouterProduitPanier.do');
 
 --
 -- Déchargement des données de la table `role`
 --
 
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'client');
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'visiteur');
-INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'administrateur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (1, 'Visiteur');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (2, 'Client');
+INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'Administrateur');
 
 
 
@@ -81,11 +82,11 @@ INSERT INTO `role` (`idRole`, `libelle`) VALUES (3, 'administrateur');
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (1, 'VISITEUR0000001', '2021-04-12 11:30:51', 'Visiteur01', 'Visiteur', '2021-04-12 11:30:51', 'En Visite', 'visiteur@gmail.com', 'NoPassWord', '/img/visiteur01.png', 0, 2);
-INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (2, 'ClientCLIENT123', '2021-04-01 16:30:02', 'Barathéon', 'Robert', '2000-10-17 22:30:46', '13 rue de Port Réal\r\n59000 Lille', 'baratheon.robert@hotmail.com', '46E43F808CF3CAB2C8AC6321D7FF743F43A13A412C38FAFFDDD8252D711113E2', '/img/image_01.png', 0, 1);
-INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (3, 'ClientCLIENT456', '2021-04-12 11:30:51', 'Lanister', 'Cersey', '2002-05-30 11:25:12', '28 rue de Port Réal\r\n59000 Lille', 'cersey.lanister@gmail.com', '89CB729B086227098038A94DFA0302264F1AC476A47F170FF36E4E424704E98F', '/img/image_02.png', 0, 1);
-INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (4, 'ClientCLIENT753', '2021-04-06 11:14:03', 'Jackson', 'Persey', '1985-12-31 00:00:00', '12 rue de la toison d\or\r\n59200 Villeneuve d\Ascq', 'persey.jackson@gmail.com', '24E66925A7BCDB8F1F0DB288ED0A141876342E9C63EEA506C0680CBF1FDBA99C', '/img/image_03.png', 0, 1);
-INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (5, 'clientCLIENT789', '2020-12-09 11:18:02', 'Maimai', 'Maiko', '1995-08-12 00:30:30', '14 rue de la marmelade\r\n59100 ROUBAIX', 'maiko.maimai@gmail.com', 'D631ABB9C855BF981CB65F57557E0B27B43D458C58F6DCDA8416E922F5A01AD9', '/img/image_04.png', 1, 1);
+INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (1, 'VISITEUR0000001', '2021-04-12 11:30:51', 'Visiteur01', 'Visiteur', '2021-04-12 11:30:51', 'En Visite', 'visiteur@gmail.com', 'NoPassWord', '/img/visiteur01.png', 0, 1);
+INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (2, 'ClientCLIENT123', '2021-04-01 16:30:02', 'Barathéon', 'Robert', '2000-10-17 22:30:46', '13 rue de Port Réal\r\n59000 Lille', 'baratheon.robert@hotmail.com', '46E43F808CF3CAB2C8AC6321D7FF743F43A13A412C38FAFFDDD8252D711113E2', '/img/image_01.png', 0, 2);
+INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (3, 'ClientCLIENT456', '2021-04-12 11:30:51', 'Lanister', 'Cersey', '2002-05-30 11:25:12', '28 rue de Port Réal\r\n59000 Lille', 'cersey.lanister@gmail.com', '89CB729B086227098038A94DFA0302264F1AC476A47F170FF36E4E424704E98F', '/img/image_02.png', 0, 2);
+INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (4, 'ClientCLIENT753', '2021-04-06 11:14:03', 'Jackson', 'Persey', '1985-12-31 00:00:00', '12 rue de la toison d\or\r\n59200 Villeneuve d\Ascq', 'persey.jackson@gmail.com', '24E66925A7BCDB8F1F0DB288ED0A141876342E9C63EEA506C0680CBF1FDBA99C', '/img/image_03.png', 0, 2);
+INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (5, 'clientCLIENT789', '2020-12-09 11:18:02', 'Maimai', 'Maiko', '1995-08-12 00:30:30', '14 rue de la marmelade\r\n59100 ROUBAIX', 'maiko.maimai@gmail.com', 'D631ABB9C855BF981CB65F57557E0B27B43D458C58F6DCDA8416E922F5A01AD9', '/img/image_04.png', 1, 2);
 INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (6, 'Administrateur1', '1999-07-05 10:40:42', 'Marsial', 'Tony', '1978-06-06 00:00:00', '15 rue de Venon\r\n59000 Lille', 'marsial.tony@gmail.com', '7A69AC317999979CB5FB116A797C41A4207348FA7B26DAB94FF4EED5AE0BDB7D', '/img/image_05.png', 0, 3);
 INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `nom`, `prenom`, `date_de_naissance`, `adresse`, `email`, `password`, `chemin_de_lavatar`, `est_desactive`, `idRole`) VALUES (7, 'Administrateur2', '2021-03-01 11:26:30', 'Marly', 'Cynthia', '2001-01-16 18:02:09', '59 rue du ciel\r\n59100 Roubaix', 'cynthia.marly@gmail.com', '6F482F6246F6095B77E654F902F8AD31C739D32F1ED1CF4FF754052CE7D79D38', '/img/image_06.png', 1, 3);
 
@@ -126,48 +127,50 @@ INSERT INTO `liste_commande` (`idListeCommande`, `idProduit`, `idCommande`, `qua
 -- Déchargement des données de la table `possede`
 --
 
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (1, 1, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (2, 1, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (1, 1, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (2, 1, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (3, 1, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (4, 2, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (5, 3, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (6, 3, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (5, 3, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (6, 3, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (7, 3, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (8, 4, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (9, 5, 2);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (10, 6, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (9, 5, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (10, 6, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (11, 6, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (12, 7, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (13, 7, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (14, 8, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (15, 8, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (16, 9, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (17, 9, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (18, 10, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (18, 10, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (19, 10, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (20, 11, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (21, 12, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (22, 12, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (21, 12, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (22, 12, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (23, 12, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (24, 13, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (25, 14, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (25, 14, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (26, 14, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (27, 15, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (27, 15, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (28, 15, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (29, 16, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (29, 16, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (30, 16, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (31, 17, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (32, 17, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (31, 17, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (32, 17, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (33, 17, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 1);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (34, 18, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (35, 18, 1);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (36, 18, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (37, 19, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (37, 19, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (38, 19, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (39, 20, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (39, 20, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (40, 20, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (41, 21, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (41, 21, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (42, 21, 3);
-INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (43, 22, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (43, 22, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (44, 22, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (45, 23, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (46, 23, 3);
 

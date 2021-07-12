@@ -5,6 +5,8 @@ package presentation.utilisateur.dto;
 
 import java.io.Serializable;
 
+import service.utilisateur.util.UtilisateurRoleEnum;
+
 /**
  * Classe UtilisateurConnecteDto <br>
  * Contient les informations mise en session
@@ -16,14 +18,13 @@ public class UtilisateurConnecteDto implements Serializable {
     /**
      * Generated serial version UID
      */
-    private static final long serialVersionUID = 1424694129404702994L;
+    private static final long   serialVersionUID = 1424694129404702994L;
 
-    private String            idRole;
-    private String            nomRole;
-    private String            idUtilisateur;
-    private String            nom;
-    private String            prenom;
-    private String            nbProduitPanier;
+    private UtilisateurRoleEnum role;
+    private String              idUtilisateur;
+    private String              nom;
+    private String              prenom;
+    private String              nbProduitPanier;
 
     /**
      * Constructor
@@ -33,39 +34,21 @@ public class UtilisateurConnecteDto implements Serializable {
     }
 
     /**
-     * Getter for idRole
+     * Getter for role
      *
-     * @return the idRole
+     * @return the role
      */
-    public String getIdRole() {
-        return idRole;
+    public UtilisateurRoleEnum getRole() {
+        return role;
     }
 
     /**
-     * Setter for idRole
+     * Setter for role
      *
-     * @param idRole the idRole to set
+     * @param role the role to set
      */
-    public void setIdRole(final String idRole) {
-        this.idRole = idRole;
-    }
-
-    /**
-     * Getter for nomRole
-     *
-     * @return the nomRole
-     */
-    public String getNomRole() {
-        return nomRole;
-    }
-
-    /**
-     * Setter for nomRole
-     *
-     * @param nomRole the nomRole to set
-     */
-    public void setNomRole(final String nomRole) {
-        this.nomRole = nomRole;
+    public void setRole(final UtilisateurRoleEnum role) {
+        this.role = role;
     }
 
     /**

@@ -60,5 +60,6 @@ class FichierDaoTest {
 
         //verifier avec un fichier non exisitant
         assertEquals("", iFichier.chargerFichier("C:/non/existant.html"));
+
     }
 }

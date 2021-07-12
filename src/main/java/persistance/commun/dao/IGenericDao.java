@@ -16,7 +16,7 @@ public interface IGenericDao<T> {
     /**
      * Permet de retourner une liste d'élément de Type T provenant de la base de données
      *
-     * @return List<T> la liste de bean Pojo de Type T que l'on retourne
+     * @return List{@code <T>} la liste de bean Pojo de Type T que l'on retourne
      */
     List<T> findAll();
 

@@ -14,6 +14,7 @@ import persistance.utilisateur.dao.IDroitDao;
 import persistance.utilisateur.entity.DroitDo;
 import persistance.utilisateur.entity.PossedeDo;
 import persistance.utilisateur.entity.RoleDo;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * JUnit test classe pour {@link service.utilisateur.impl.DroitService}
@@ -54,8 +55,8 @@ class DroitServiceTest {
 
         final RoleDo roleDo = new RoleDo();
 
-        roleDo.setIdRole(1);
-        roleDo.setLibelle("libelle");
+        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         final PossedeDo possedeDo = new PossedeDo();
 
