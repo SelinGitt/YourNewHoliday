@@ -59,9 +59,12 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String trouverFichier(final Locale locale, final String radical) {
         final String nomFichier = radical + locale.toString() + HTML;
         if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
+            logger.info(" on a trouver le fichier : {} ", nomFichier);
             return nomFichier;
         }
-        return radical + "fr" + HTML;
+        final String fichierfr = radical + "fr" + HTML;
+        logger.info(" le fichier : {} n'est pas present ,on charge le fichier par default : {} ", nomFichier, fichierfr);
+        return fichierfr;
     }
 
 }

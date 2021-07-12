@@ -44,8 +44,11 @@ public class FichierContactService implements IFichierContactService {
     public String trouverFichierContact(final Locale locale) {
         final String nomFichier = CONTACT_RADICAL + locale.toString() + HTML;
         if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
+            logger.info(" on a trouver le fichier : {} ", nomFichier);
             return nomFichier;
         }
-        return CONTACT_RADICAL + "fr" + HTML;
+        final String fichierfr = CONTACT_RADICAL + "fr" + HTML;
+        logger.info(" le fichier : {} n'est pas present ,on charge le fichier par default : {} ", nomFichier, fichierfr);
+        return fichierfr;
     }
 }
