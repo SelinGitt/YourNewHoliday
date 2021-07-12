@@ -13,6 +13,9 @@
 
 <form:form method="POST" action="validerPanier.do" modelAttribute="adresses"
     class="display-flex flex-direction-row panier-100">
+    <form:hidden path="defaultAdresse.nom" id="defaultNom" />
+    <form:hidden path="defaultAdresse.prenom" id="defaultPrenom" />
+    <form:hidden path="defaultAdresse.adresse" id="defaultAdresse" />
     <%-- container de facturation + livraison--%>
     <div class="panier-container-Adresse display-flex justify-content-center flex-direction-row">
 
@@ -122,9 +125,6 @@
             </div>
         </div>
     </div>
-    <form:hidden path="defaultAdresse.nom" id="defaultNom" />
-    <form:hidden path="defaultAdresse.prenom" id="defaultPrenom" />
-    <form:hidden path="defaultAdresse.adresse" id="defaultAdresse" />
 </form:form>
 
 <%-- boutton reset formulaire --%>
