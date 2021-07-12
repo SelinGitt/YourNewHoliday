@@ -27,7 +27,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="nom"><spring:message code="usr05.creer.nom" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:input path="nom" class="user05-inputs" />
                         <form:errors path="nom" cssClass="text-color-rouge" />
                     </div>
@@ -35,7 +35,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="prenom"><spring:message code="usr05.creer.prenom" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:input path="prenom" class="user05-inputs" />
                         <form:errors path="prenom" cssClass="text-color-rouge" />
                     </div>
@@ -43,7 +43,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:textarea path="adresse" class="user05-inputs user05-textarea" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
@@ -51,7 +51,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:input path="dateNaissance" class="user05-inputs" value="01/01/1970" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
@@ -59,7 +59,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="email"><spring:message code="usr05.creer.email" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:input path="email" class="user05-inputs" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
@@ -67,7 +67,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="password"><spring:message code="usr05.creer.password" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:password path="password" class="user05-inputs" />
                         <form:errors path="password" cssClass="text-color-rouge" />
                     </div>
@@ -75,7 +75,7 @@
 
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="confirmPassword"><spring:message code="usr05.creer.confirmPassword" /></label>
-                    <div class="user05-form-inputs text-center">
+                    <div class="user05-form-inputs">
                         <form:password path="confirmPassword" class="user05-inputs" />
                         <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                     </div>
