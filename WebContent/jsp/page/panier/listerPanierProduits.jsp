@@ -26,19 +26,20 @@
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-tab-ligne panier-bordure-1px display-flex">
+                            <th class="panier-bordure-1px display-flex">
                                 <div>
-                                    <%--  photo --%>
-                                    <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}"><img
-                                        class="panier-responsive panier-image-produit"
-                                        src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                        alt="${entry.key.destination}" /></a>
-
+                                    <div class="panier-image-produit-container">
+                                        <%--  photo --%>
+                                        <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}"><img
+                                            class="panier-image-produit"
+                                            src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
+                                            alt="${entry.key.destination}" /></a>
+                                    </div>
                                 </div>
                                 <div>
                                     <div>
                                         <%--  nom et référence --%>
-                                        <h2>${entry.key.nom}-${entry.key.reference}</h2>
+                                        <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                     </div>
                                     <%--  description --%>
                                     <div>${entry.key.description}</div>
@@ -46,33 +47,31 @@
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-prix-unitaire"><div>
+                            <td class="panier-bordure-1px panier-td text-align-center">
+                                <%--  label --%>
+                                <div>
+                                    <h3 class="panier-prix-unitaire-center">
+                                        <spring:message code="pan00.prix.unitaire" />
+                                    </h3>
+                                </div> <%--  valeur --%>
+                                <div class="justify-content-center">
+                                    ${entry.key.prixUnitaire}
+                                    <spring:message code="glb.devise" />
+                                </div>
+                            </td>
+
+                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
+                            <td class="panier-bordure-1px panier-td text-align-center"><div>
 
                                     <%--  label --%>
                                     <div class="display-flex justify-content-center">
                                         <h3>
-                                            <spring:message code="pan00.prix.unitaire" />
-                                        </h3>
-                                    </div>
-
-                                </div> <%--  valeur --%>
-                                <div class="justify-content-center display-flex">
-                                    ${entry.key.prixUnitaire}
-                                    <spring:message code="glb.devise" />
-                                </div></td>
-
-                            <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
-
-                                    <%--  label --%>
-                                    <div class="display-flex justify-content-center">
-                                        <h3 class="panier-quantite-label">
                                             <spring:message code="pan00.quantite" />
                                         </h3>
                                     </div>
 
                                 </div>
-                                <div class="display-flex">
+                                <div class="display-flex justify-content-center">
 
                                     <%--  bouton - --%>
                                     <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
@@ -91,11 +90,11 @@
                                 </div></td>
 
                             <%--  encart supprimer : label et image --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-td-delete"><div>
+                            <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-supprimer display-flex justify-content-center">
-                                        <h3>
+                                    <div class="display-flex justify-content-center">
+                                        <h3 class="panier-label">
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
                                     </div>
