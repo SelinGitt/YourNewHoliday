@@ -60,28 +60,27 @@ public class CreerProduitAdminController {
      * Méthode POST pour la création d'un produit via un formulaire<br>
      * et de creer un nouveau produit
      *
-     * @param  produitDto   le produit Dto utilisé pour le binding
-     * @param  result       le binding result
-     * @param  status       le status de la session
-     * @param  modelAndView le model et le nom de la jsp associée
-     * @return              vers une creerProduitAdmin.jsp
+     * @param  produitDto le produit Dto utilisé pour le binding
+     * @param  result     le binding result
+     * @param  status     le status de la session
+     * @return            vers une creerProduitAdmin.jsp
      */
     @PostMapping
     public ModelAndView creerProduit(final @Validated @ModelAttribute("produitDto") ProduitDto produitDto, final BindingResult result,
-            final SessionStatus status, final ModelAndView modelAndView) {
-
-        // Si le formulaire possède des erreurs
+            final SessionStatus status) {
+        final var modelAndView = new ModelAndView();
+        // Si le formulaire possède des erreurs : Ajout de l'attribut "errorCreationProduit" utilisé dans la jsp en cas d'erreur de création
         if (result.hasErrors()) {
             modelAndView.setViewName("creerProduitAdmin");
-            modelAndView.getModelMap().addAttribute("errorCreationProduit", "pdt03.erreurCreation");
+            modelAndView.getModelMap().addAttribute("error", "pdt03.erreurCreation");
             return modelAndView;
         }
 
-        // Si le produit n'est pas créé (retour null)
-        // Ajout de l'attribut "ErrorCreate" utilisé dans la jsp en cas d'erreur de création
         if (iProduitService.creerProduit(produitDto) != null) {
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
-        return new ModelAndView("creerProduitAdmin");
+        result.rejectValue("reference", "pdt03.reference.dejaExistant");
+        modelAndView.setViewName("creerProduitAdmin");
+        return modelAndView;
     }
 }

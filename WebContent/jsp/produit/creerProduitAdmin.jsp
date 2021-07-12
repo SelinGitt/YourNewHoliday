@@ -6,11 +6,11 @@
 
     <c:if test="${not empty error}">
         <div class="background-error-block block-message-commun">
-            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${errorCreationProduit}" /></span>
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
         </div>
     </c:if>
 
-    <h1>
+    <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt03.titre" />
     </h1>
     <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
@@ -26,28 +26,53 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.nom" /></td>
-                        <td><form:input path="nom" /></td>
-                        <td><form:errors path="nom" cssClass="text-color-rouge" /></td>
+                        <td><div>
+                                <form:input path="nom" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="nom" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.reference" /></td>
-                        <td><form:input path="reference" /></td>
-                        <td><form:errors path="reference" cssClass="text-color-rouge" /></td>
+                        <td><div>
+                                <form:input path="reference" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="reference" cssClass="text-color-rouge" />
+                            </div></td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.hebergement" /></td>
-                        <td><form:input path="hebergement" /></td>
-                        <td><form:errors path="hebergement" cssClass="text-color-rouge" /></td>
+                        <td>
+                            <div>
+                                <form:input path="hebergement" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="hebergement" cssClass="text-color-rouge" />
+                            </div>
+                        </td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.destination" /></td>
-                        <td><form:input path="destination" /></td>
-                        <td><form:errors path="destination" cssClass="text-color-rouge" /></td>
+                        <td><div>
+                                <form:input path="destination" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="destination" cssClass="text-color-rouge" />
+                            </div></td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.prix" /></td>
-                        <td><form:input path="prixUnitaire" /></td>
-                        <td><form:errors path="prixUnitaire" cssClass="text-color-rouge" /></td>
+                        <td><div>
+                                <form:input path="prixUnitaire" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="prixUnitaire" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.miseEnVente" /></td>
@@ -57,20 +82,23 @@
                                 <spring:message code="form.pdt03.oui" />
                             </div>
                             <div class="display-flex">
-                                <form:radiobutton path="miseEnVente" value="false" />
+                                <form:radiobutton path="miseEnVente" value="false" checked="checked" />
                                 <spring:message code="form.pdt03.non" />
                             </div>
-
                         </td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
-                        <td class=pdt03TextAreaPDT03><form:textarea path="description" rows="4" cols="100" /></td>
-                        <td><form:errors path="description" cssClass="text-color-rouge" /></td>
+                        <td class=pdt03TextAreaPDT03><div>
+                                <form:textarea path="description" rows="4" cols="70" />
+                            </div>
+                            <div class="pdt03formError">
+                                <form:errors path="description" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td class="pdt03ButtonsPdt03 display-flex">
+                        <td class="justify-content-space-around display-flex">
                             <div>
                                 <form:button value="submit" class="background-color-green">
                                     <spring:message code="form.pdt03.valider" />
@@ -108,19 +136,19 @@
                         <th colspan="3"><spring:message code="form.pdt03.service" /></th>
                     </tr>
                     <tr>
-                        <td><em class="fa fa-glass"></em></td>
-                        <td><em class="fa fa-bath"></em></td>
-                        <td><em class="fa fa-paw"></em></td>
+                        <td><em class="fa fa-glass fa-2x"></em></td>
+                        <td><em class="fa fa-bath fa-2x"></em></td>
+                        <td><em class="fa fa-paw fa-2x"></em></td>
                     </tr>
                     <tr>
-                        <td><em class="fa fa-gamepad"></em></td>
-                        <td><em class="fa fa-wifi"></em></td>
-                        <td><em class="fa fa-cutlery"></em></td>
+                        <td><em class="fa fa-gamepad fa-2x"></em></td>
+                        <td><em class="fa fa-wifi fa-2x"></em></td>
+                        <td><em class="fa fa-cutlery fa-2x"></em></td>
                     </tr>
                     <tr>
-                        <td><em class="fa fa-wheelchair"></em></td>
-                        <td><em class="fa fa-snowflake-o"></em></td>
-                        <td><em class="fa fa-tv"></em></td>
+                        <td><em class="fa fa-wheelchair fa-2x"></em></td>
+                        <td><em class="fa fa-snowflake-o fa-2x"></em></td>
+                        <td><em class="fa fa-tv fa-2x"></em></td>
                     </tr>
                 </table>
             </div>
