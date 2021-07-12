@@ -39,10 +39,13 @@ public class ListerPanierProduitsController {
         // si le panier recuperé est vide
         if (panierDto.getMapPanier().isEmpty()) {
             modelAndView.setViewName("pan_00_vide");
+            modelAndView.getModelMap().addAttribute("errorPanVide", "pan00.erreur.vide");
         } else {
             modelAndView.setViewName("pan_00");
         }
 
+   
+        
         return modelAndView;
     }
 
