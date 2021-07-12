@@ -16,12 +16,11 @@ public class DroitDto implements Serializable {
     /**
      * Generated Serial UID
      */
-
-    private static final long serialVersionUID = 525091163774644464L;
+    private static final long serialVersionUID = 2929848773606000408L;
 
     private String            url;
 
-    private List<PossedeDto>  possede;
+    private List<RoleDto>     role;
 
     /**
      * Getter for url
@@ -42,21 +41,21 @@ public class DroitDto implements Serializable {
     }
 
     /**
-     * Getter for possede
+     * Getter for role
      *
-     * @return the possede
+     * @return the role
      */
-    public List<PossedeDto> getPossede() {
-        return possede;
+    public List<RoleDto> getRole() {
+        return role;
     }
 
     /**
-     * Setter for possede
+     * Setter for role
      *
-     * @param possede the possede to set
+     * @param role the role to set
      */
-    public void setPossede(final List<PossedeDto> possede) {
-        this.possede = possede;
+    public void setRole(final List<RoleDto> role) {
+        this.role = role;
     }
 
 }

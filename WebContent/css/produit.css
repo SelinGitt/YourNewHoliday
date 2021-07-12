@@ -47,6 +47,19 @@ td.pdt00Description {
 	color: #ffffff;
 	border: 0.125em solid #000000;
 }
+.pdt00Ajouter {
+	width: 100%;
+	flex: 2 1 auto;
+	padding: 0;
+}
+
+.pdt00Bouton {
+	color: #FFFFFF;
+}
+.pdt00-pan-quantite {
+	width: 1.7em;
+}
+
 /* PDT01 */
 .pdtListeProduit {
 	border-collapse: collapse;
@@ -77,7 +90,75 @@ th.pdt01 {
 	height: 3.75em;
 }
 
+.pdt01Search {
+	justify-content: flex-start;
+}
+
 /* PDT02 */
+.pdt02Grid-container {
+	display: grid;
+	grid-gap: 0.3em;
+	padding: 0.3em;
+	width: 90%;
+}
+
+.pdt02Grid-item {
+	padding: 0.3em;
+	font-size: 1.125em;
+}
+
+.pdt02FormlaireCreerProduit {
+	grid-column: 1/span 2;
+	grid-row: 1/span 2;
+}
+
+.pdt02ImageProduit {
+	grid-column: 3;
+	grid-row: 1/span 1;
+}
+
+.pdt02LogoService {
+	grid-column: 3;
+	grid-row: 2/span 1;
+}
+
+.pdt02FormulaireProduit input {
+	width: 100%
+}
+
+.pdt02FormulaireProduit {
+	table-layout: auto;
+	text-align: left;
+	line-height: 3.75em;
+}
+
+.pdt02FormulaireProduit td {
+	padding: 0 0.313em 0 0.313em;
+	padding-left: 5em;
+}
+
+.pdt02Formpdt02Radio div {
+	align-items: center;
+}
+
+.pdt02Formpdt02Radio div input {
+	margin-right: 0.938em;
+	width: auto;
+}
+
+.pdt02TextAreapdt02 textarea {
+	resize: vertical;
+	min-height: 3.75em;
+}
+
+.pdt02ListeService {
+	width: 100%;
+	line-height: 4em;
+}
+
+.pdt02ImageCreationProduit {
+	width: 100%;
+}
 
 /* PDT03 */
 .pdt03Grid-container {

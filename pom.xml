@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Projet_YNH</groupId>
 	<artifactId>Projet_YNH</artifactId>
-	<version>0.1.18-SNAPSHOT</version>
+	<version>0.1.21-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
@@ -60,6 +60,7 @@
 				</sonar.coverage.exclusions>
 				<sonar.exclusions>
 					**/css/**,
+					**/js/**,
 					**/web.xml
 				</sonar.exclusions>
 				<!-- Exclusions Duplicated Lines -->
@@ -146,6 +147,15 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<!-- Génération Javadoc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<show>public</show>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

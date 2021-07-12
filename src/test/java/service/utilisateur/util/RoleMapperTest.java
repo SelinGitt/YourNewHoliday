@@ -23,8 +23,8 @@ class RoleMapperTest {
     void testMapperToDto() {
         final RoleDo role = new RoleDo();
 
-        role.setIdRole(1);
-        role.setLibelle("Client");
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
 
         final var roleDtoMapper = RoleMapper.mapperToDto(role);
 
@@ -42,8 +42,8 @@ class RoleMapperTest {
     void testMapperToDo() {
         final RoleDto roleDto = new RoleDto();
 
-        roleDto.setIdRole(2);
-        roleDto.setLibelle("roleDto");
+        roleDto.setIdRole(UtilisateurRoleEnum.ADMINISTRATEUR.getId());
+        roleDto.setLibelle(UtilisateurRoleEnum.ADMINISTRATEUR.getLibelle());
 
         final var roleDoMapper = RoleMapper.mapperToDo(roleDto);
 

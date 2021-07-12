@@ -17,26 +17,28 @@
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
-            <%-- il faudra ajouter un modelAttribute--%>
-            <form:form method="POST" action="listerPanierAdresses.do">
+            <form:form method="POST" modelAttribute="CommandeAdresseLivraison" action="listerPanierAdresses.do"
+                id="FormulaireLivraison">
+
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.livraison" />
                     </legend>
-                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                    <div
+                        class="panier-formulaire display-flex flex-wrap-wrap justify-content-center
+                         flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <%-- mettre les path="exemple" par la suite --%>
-                            <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
-                                class="panier-formulaire-input" type="text" name="nom" id="nom">
+                            <label for="nom"><spring:message code="pan08.label.nom" /></label>
+                            <form:input class="panier-formulaire-input" path="nom" />
                         </div>
+
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label> <input
-                                class="panier-formulaire-input" type="text" id="prenom" name="prenom">
+                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
+                            <form:input class="panier-formulaire-input" path="prenom" />
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <textarea class="panier-formulaire-textarea" id="adresse" 
-                            name="adresse" rows="12"></textarea>
+                            <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
                         </div>
                     </div>
                 </fieldset>
@@ -45,26 +47,27 @@
 
         <%-- formulaire Adresse de facturation--%>
         <div class="panier-block-fieldSet">
-            <%-- il faudra ajouter un modelAttribute--%>
-            <form:form method="POST" action="listerPanierAdresses.do" class="panier-margin-left-3em">
+            <form:form method="POST" modelAttribute="CommandeAdresseFacturation" action="listerPanierAdresses.do"
+                class="panier-margin-left-3em" id="FormulaireFacturation">
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
                     </legend>
-                    <div class="panier-formulaire display-flex flex-wrap-wrap justify-content-center flex-direction-column">
+                    <div
+                        class="panier-formulaire display-flex 
+                    flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <%-- mettre les path="exemple" par la suite --%>
-                            <label for="nom"><spring:message code="pan08.label.nom" /></label> <input
-                                class="panier-formulaire-input" type="text" name="nom" id="nom">
+                            <label for="nom"><spring:message code="pan08.label.nom" /></label>
+                            <form:input class="panier-formulaire-input" path="nom" />
                         </div>
+
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label> <input
-                                class="panier-formulaire-input" type="text" id="prenom" name="prenom">
+                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
+                            <form:input class="panier-formulaire-input" path="prenom" />
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <textarea class="panier-formulaire-textarea" id="adresse" 
-                            name="adresse" rows="12"></textarea>
+                            <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
                         </div>
                     </div>
                 </fieldset>
@@ -74,51 +77,10 @@
     </div>
     <%--  ma Commande  --%>
     <div class="panier-right">
-
-        <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
-        <fieldset class="overflow-auto panier-macommande">
-            <legend class="panier-legend">
-                <spring:message code="pan00.titre.fieldset.commande" />
-            </legend>
-
-            <c:forEach items="${panierDto.mapPanier}" var="entry">
-                <%--  nom et référence --%>
-                <div>
-                    <h3>${entry.key.nom}-${entry.key.reference}</h3>
-                </div>
-
-                <%--  prix unitaire --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.unitaire.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    ${entry.key.prixUnitaire}
-                    <spring:message code="glb.devise" />
-                </div>
-
-                <%--  quantité --%>
-                <div class="display-flex justify-content-space-between panier-ligne-quantite">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.quantite.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <span>${entry.value}</span>
-                </div>
-
-                <%--  prix  --%>
-                <div class="display-flex justify-content-space-between panier-ligne-prix-unitaire">
-                    <div class="display-flex justify-content-space-between panier-ligne-label">
-                        <spring:message code="pan00.prix.bis" />
-                        <span><spring:message code="pan00.deuxpoints" /></span>
-                    </div>
-                    <%-- Affichage en dur provisoire pour visualiser l'alignement --%>
-                    <%-- Cette valeur sera implémentée par la suite dans le panierDto --%>
-                    <span>50,50 <spring:message code="glb.devise" />
-                    </span>
-                </div>
-            </c:forEach>
-        </fieldset>
+        <%-- Contenu commun avec pan_00 --%>
+       <jsp:include page="maCommande.jsp">
+            <jsp:param name="commande" value="pan_08" />
+        </jsp:include>
 
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
         <div class="panier-elements-a-droite">
@@ -155,6 +117,14 @@
             </div>
         </div>
     </div>
-
-
 </div>
+
+<%-- boutton reset formulaire --%>
+<button class="panier-margin-left-10" onclick="informationsLivraison()">
+    <spring:message code="pan08.boutton.information" />
+</button>
+
+<button class="panier-margin-left-15" onclick="informationsFacturation()">
+    <spring:message code="pan08.boutton.information" />
+</button>
+

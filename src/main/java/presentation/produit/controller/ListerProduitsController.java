@@ -60,7 +60,7 @@ public class ListerProduitsController {
         if (searchInput.isEmpty()) {
             modelAndView.getModelMap().addAttribute("listeProduitDto", iProduitService.listerProduitsEnVente());
         } else {
-            final List<ProduitDto> rechercherProduits = iProduitService.rechercherProduits(searchInput);
+            final List<ProduitDto> rechercherProduits = iProduitService.rechercherProduitsEnVente(searchInput);
             if (rechercherProduits.isEmpty()) {
                 modelAndView.getModelMap().addAttribute("anyError", "pdt00.notexist");
             }

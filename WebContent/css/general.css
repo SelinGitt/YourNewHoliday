@@ -6,9 +6,38 @@
 	background-color: #008000;
 }
 
-/* Le rouge*/
+/* Le background rouge */
 .background-color-rouge {
 	background-color: #F00000;
+}
+
+/* Le texte rouge */
+.text-color-rouge {
+	color: #F00000;
+}
+
+/* orange */
+.background-error-block {
+	background-color: #ff7f00;
+}
+
+/* Le vert*/
+.background-validation-block {
+	background-color: #008000;
+}
+
+/* permet de mettre un espace entre le message et l'icone*/
+.message {
+	margin-left: 0.625em;
+}
+
+/* permet de mettre une bordure et des marges pour le bloc d'affichage*/
+.block-message-commun {
+	border: 0.125em solid #000000;
+	color: #FFFFFF;
+	margin-right: 1%;
+	margin-left: 1%;
+	padding-left: 1em;
 }
 
 /* titre */

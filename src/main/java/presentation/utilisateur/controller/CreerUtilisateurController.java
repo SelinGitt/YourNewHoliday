@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Controller pour création d'un utilisateur
@@ -30,21 +32,30 @@ public class CreerUtilisateurController {
     private IUtilisateurService service;
 
     /**
-     * Permet de traiter les requêtes GET<br/>
+     * Permet de traiter les requêtes GET<br>
      * et de mettre un UtilisateurDto vide dans le modèle
      * 
      * @return le Model and View
      */
     @GetMapping
     public ModelAndView afficher() {
-        final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("creerUtilisateur");
-        modelAndView.getModelMap().addAttribute("utilisateurDto", new UtilisateurDto());
+        final var modelAndView = new ModelAndView("creerUtilisateur");
+
+        // On creer l'utilisateur ici et lui affecte un role pour avoir une valeur par defaut dans le formulaire
+        final var utilisateurDto = new UtilisateurDto();
+
+        final var roleDto = new RoleDto();
+        roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+
+        utilisateurDto.setRole(roleDto);
+
+        modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
+
         return modelAndView;
     }
 
     /**
-     * Permet de traiter les requêtes POST<br/>
+     * Permet de traiter les requêtes POST<br>
      * et de créer un utilisateur
      *
      * @param  utilisateurDto l'utilisateur à créer
