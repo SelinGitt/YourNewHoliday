@@ -36,16 +36,21 @@ public class ListerProduitsController {
     /**
      * Permet de traiter une requête de type GET
      * 
-     * @param  code : String optionnel correspondant à un code erreur à afficher
-     * @return      liste de produits pour le model et la vue associée
+     * @param  code  : String optionnel correspondant à un code erreur à afficher
+     * @param  error les potentielles erreurs stockées
+     * @return       liste de produits pour le model et la vue associée
      */
     @GetMapping
-    public ModelAndView lister(final @ModelAttribute("deletionSuccess") String code) {
+    public ModelAndView lister(final @ModelAttribute("anySuccess") String code, final @ModelAttribute("anyError") String error) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduits");
         //Si un message est présent, on le met en attribut du modelandview
         if (!code.isBlank()) {
             modelAndView.getModelMap().addAttribute("anySuccess", code);
+        }
+        if (!error.isBlank()) {
+            modelAndView.getModelMap().addAttribute("anyError", error);
+
         }
         modelAndView.getModelMap().addAttribute("tri", 0);
         modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, iProduitService.listerProduitsEnVente());
