@@ -3,10 +3,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div>
-    <c:if test="${not empty deletionSuccess}">
-        <span><spring:message code="${deletionSuccess}" /></span>
+    <c:if test="${not empty userSuccess}">
+        <span><spring:message code="${userSuccess}" /></span>
     </c:if>
 </div>
+
 <div>
     <c:if test="${not empty error}">
         <span><spring:message code="${error}" /></span>
