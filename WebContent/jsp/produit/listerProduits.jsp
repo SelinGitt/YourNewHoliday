@@ -4,8 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <c:if test="${not empty anyError}">
-        <div class="pdt00-errorblock">
-            <span><spring:message code="${anyError}" /></span>
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span><spring:message code="${anyError}" /></span>
         </div>
     </c:if>
     <c:if test="${not empty anySuccess}">
