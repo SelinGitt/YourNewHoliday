@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -66,10 +67,12 @@ public class CreerUtilisateurController {
      * @param  utilisateurDto l'utilisateur à créer
      * @param  request        HtppServletRequest pour gerer la redirection vers ConnecterController
      * @param  result         Resultats du binding utilisé pour gérer les erreurs
+     * @param  attribute      Permet de transmettre a travers la redirection
      * @return                redirection vers connecter.do
      */
     @PostMapping
-    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, final HttpServletRequest request, final BindingResult result) {
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, final HttpServletRequest request, final BindingResult result,
+            final RedirectAttributes attribute) {
         validator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
@@ -79,20 +82,23 @@ public class CreerUtilisateurController {
             return modelAndView;
         }
 
-        final var utilisateurCreer = this.service.createUtilisateur(utilisateurDto);
-
         // Si utilisateur == null, l'email est deja pris
-        if (utilisateurCreer == null) {
+        if (this.service.createUtilisateur(utilisateurDto) == null) {
             result.rejectValue("email", "usr05.erreur.email_taken", "Default Errror");
             final var modelAndView = new ModelAndView("creerUtilisateur");
             modelAndView.getModelMap().addAttribute("error", "usr05.erreur.creation");
             return modelAndView;
         }
 
+        // Redirection si pas d'utilisateur
         if (request.getSession().getAttribute("utilisateur") == null) {
             request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.TEMPORARY_REDIRECT);
-            return new ModelAndView("redirect:/connecter.do");
+            final var modelAndView = new ModelAndView("redirect:/connecter.do");
+            modelAndView.getModelMap().addAttribute("anySuccess", "usr05.success.creation");
+            return modelAndView;
         }
+
+        attribute.addFlashAttribute("userSuccess", "usr05.success.creation");
 
         return new ModelAndView("redirect:/listerUtilisateur.do");
     }

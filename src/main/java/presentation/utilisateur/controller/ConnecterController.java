@@ -74,8 +74,7 @@ public class ConnecterController {
      */
     @PostMapping
     public ModelAndView loggerUtilisateur(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
-            final ModelAndView modelAndView) {
-
+            final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
         connecterValidator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
@@ -100,8 +99,10 @@ public class ConnecterController {
             //pour tester le panier vide remplacer creerPanier() par new PanierDto()
             modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
 
+            modelAndView.getModelMap().addAttribute("anySuccess", anySuccess);
+
             //Redirection vers page d'accueil
-            modelAndView.setViewName("redirect:listerProduits.do");
+            modelAndView.setViewName("redirect:/listerProduits.do");
         }
         return modelAndView;
     }
