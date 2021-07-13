@@ -81,6 +81,7 @@ public class CommandeService implements ICommandeService {
             // Passer les adresses à la méthode
         } while (this.iCommandeDao.findByRef(reference) != null);
         // Passer les adresses à la méthode
+        logger.info("Création de commande avec la réference {}", reference);
         return this.iCommandeDao.create(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur));
     }
 

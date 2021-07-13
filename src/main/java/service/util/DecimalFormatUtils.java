@@ -9,6 +9,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
 import java.util.Locale;
 
+import org.slf4j.LoggerFactory;
+
 /**
  * Classe unitaire pour factoriser l'affichage des décimaux
  *
@@ -131,7 +133,8 @@ public class DecimalFormatUtils {
         try {
             return (BigDecimal) format.parse(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
         } catch (ParseException exception) {
-            exception.printStackTrace();
+            final var logger = LoggerFactory.getLogger(DecimalFormatUtils.class);
+            logger.error("Formatage de {} en erreur", nombreString, exception);
             return BigDecimal.valueOf(0);
         }
     }
