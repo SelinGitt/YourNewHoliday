@@ -48,7 +48,7 @@ public class UtilisateurService implements IUtilisateurService {
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
         // Verifie si l'email est deja pris
         if (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null) {
-            logger.info("Erreur création d'utilisateur. Email déjà pris");
+            logger.info("Erreur création d'utilisateur. Email déjà pris {}", utilisateurDto.getEmail());
             return null;
         }
 
