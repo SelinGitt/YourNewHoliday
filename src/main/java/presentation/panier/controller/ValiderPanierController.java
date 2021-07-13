@@ -46,7 +46,7 @@ public class ValiderPanierController {
             return "redirect:deconnecter.do";
         }
         if (referenceCommandeOuListProduitErreur.getReference() != null) {
-            return "forward:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
+            return "redirect:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
         }
         // en cas d'erreur renvoie au panier
         return "redirect:listerPanierProduits.do";
