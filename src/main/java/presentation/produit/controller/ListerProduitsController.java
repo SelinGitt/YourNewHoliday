@@ -68,12 +68,12 @@ public class ListerProduitsController {
     public ModelAndView findFilter(final @RequestParam(value = "searchInput", required = false) String searchTerm,
             final @RequestParam(value = "tri", defaultValue = "0") String tri) {
         final var modelAndView = new ModelAndView("listerProduits");
-        final List<ProduitDto> rechercherProduits = this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.findValue(tri));
+        final List<ProduitDto> listeProduitsTrouves = this.iProduitService.findFilter(searchTerm, TypeTriAlphanumerique.findValue(tri));
 
         modelAndView.getModelMap().addAttribute("tri", tri);
         modelAndView.getModelMap().addAttribute("searchTerm", searchTerm);
-        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, rechercherProduits);
-        if (rechercherProduits.isEmpty()) {
+        modelAndView.getModelMap().addAttribute(LISTE_PRODUIT_DTO, listeProduitsTrouves);
+        if (listeProduitsTrouves.isEmpty()) {
             modelAndView.getModelMap().addAttribute("anyError", "pdt00.notexist");
         }
 
