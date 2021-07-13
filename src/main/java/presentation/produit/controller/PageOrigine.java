@@ -18,7 +18,7 @@ public enum PageOrigine {
     /**
      * La page de ListerProduitsAdmin (PDT_01)
      */
-    LISTE_PRODUITS_ADMIN("listeProduitsAdmin", "listerProduitsAdmin.do"),
+    LISTE_PRODUITS_ADMIN("listerProduitsAdmin", "listerProduitsAdmin.do"),
     /**
      * La page de ListePanierProduits (PAN_00)
      */
