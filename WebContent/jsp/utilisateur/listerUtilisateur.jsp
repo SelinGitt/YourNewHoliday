@@ -2,25 +2,24 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
-    <c:if test="${not empty userSuccess}">
-        <div class="background-validation-block block-message-commun">
-            <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
-        </div>
-    </c:if>
-
-    <c:if test="${not empty error}">
-        <div class="background-error-block block-message-commun">
-            <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
-        </div>
-    </c:if>
-</div>
-
-<h1 id="titreGestion" class="text-align-center">
-    <spring:message code="usr01.titre" />
-</h1>
-
 <div class="conteneur-ascenseur">
+    <div>
+        <c:if test="${not empty userSuccess}">
+            <div class="background-validation-block block-message-commun">
+                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+            </div>
+        </c:if>
+
+        <c:if test="${not empty error}">
+            <div class="background-error-block block-message-commun">
+                <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+            </div>
+        </c:if>
+    </div>
+
+    <h1 id="titreGestion" class="text-align-center">
+        <spring:message code="usr01.titre" />
+    </h1>
     <div class="user01-searchMenu display-flex">
         <div class="usr01searchBar">
             <form:form action="listerUtilisateur.do" method="POST">
@@ -107,7 +106,7 @@
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                    <td class="user01-body"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
