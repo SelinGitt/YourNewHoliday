@@ -45,22 +45,27 @@ class CommandeMapperTest {
         final CommandeDo commandeDo = new CommandeDo();
 
         commandeDo.setId(20);
-        commandeDo.setReference("ABC9");
+        commandeDo.setReference("CMD9874561");
         final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setAdresseLivraison("12 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo.setAdresseFacturation("4/103 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDto commandeDto = CommandeMapper.mapperToDto(commandeDo);
 
         assertNotNull(commandeDto);
         assertEquals("20", commandeDto.getId());
-        assertEquals("ABC9", commandeDto.getReference());
+        assertEquals("CMD9874561", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
         assertEquals("200,40", commandeDto.getPrixTotal());
         assertEquals("5", commandeDto.getQuantiteTotale());
         assertEquals(Collections.emptyList(), commandeDto.getListCommandeProduitDto());
+
+        assertEquals("12 rue de la toison d'or, 59100 ROUBAIX", commandeDto.getAdresseLivraison().getAdresse());
+        assertEquals("4/103 rue du Barreau, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
     }
 
     /**
@@ -81,21 +86,25 @@ class CommandeMapperTest {
 
         final CommandeDo commandeDo = new CommandeDo();
         commandeDo.setId(20);
-        commandeDo.setReference("ABC9");
+        commandeDo.setReference("CMD9876541");
         final Date date = DateFormatUtil.formaterStringToDate("12/12/1990");
         commandeDo.setDate(date);
         commandeDo.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setAdresseLivraison("18 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo.setAdresseFacturation("4/203 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDo commandeDo2 = new CommandeDo();
         commandeDo2.setId(23);
-        commandeDo2.setReference("EFG4");
+        commandeDo2.setReference("CMD4569873");
         final Date date2 = DateFormatUtil.formaterStringToDate("13/06/1990");
         commandeDo2.setDate(date2);
         commandeDo2.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
         commandeDo2.setCommandeProduitDoSet(null);
+        commandeDo2.setAdresseLivraison("19 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo2.setAdresseFacturation("4/303 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         assertEquals(2, CommandeMapper.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
     }
@@ -115,7 +124,7 @@ class CommandeMapperTest {
         produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
         produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30, Locale.FRANCE));
         produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
-        produitDto1.setReference("ABC1234567");
+        produitDto1.setReference("ROY1234567");
         produitDto1.setCheminImage("RoyaumeUni.jpg");
         produitDto1.setServices("5");
         // ProduitDto2
@@ -126,7 +135,7 @@ class CommandeMapperTest {
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(700.00));
         produitDto2.setNom("Voyage au Canada");
-        produitDto2.setReference("AAA1256568");
+        produitDto2.setReference("CAN1256568");
         produitDto2.setCheminImage("Canada.jpg");
         produitDto2.setServices("1");
         // ProduitDto3
@@ -137,7 +146,7 @@ class CommandeMapperTest {
                 "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
         produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(999.00));
         produitDto3.setNom("Voyage avec toi");
-        produitDto3.setReference("AAA7777777");
+        produitDto3.setReference("VIR7777777");
         produitDto3.setCheminImage("virtual.jpg");
         produitDto3.setServices("6");
 

@@ -6,7 +6,6 @@ package service.commande;
 import java.util.List;
 import java.util.Map;
 
-import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -50,7 +49,7 @@ public interface ICommandeService {
      * @param  panier        le panier en session
      * @param  adresses      les adresses entrées par l'utilisateur
      * @param  idUtilisateur l'utilisateur en session
-     * @return               CommandeDo la commande enregistrée en base
+     * @return               CommandeDto la commande enregistrée en base
      */
-    CommandeDo validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
+    CommandeDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 }

@@ -5,6 +5,7 @@ package service.commande.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 import java.util.Locale;
@@ -174,15 +175,15 @@ class CommandeServiceTest {
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
         ligneCommandeProduit.setQuantite(6);
-        ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
+        ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 900.00, Locale.FRANCE));
 
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
 
         panierDto.setRemiseAffichage("0");
-        panierDto.setPrixTotalAffichage(DecimalFormatUtils.decimalFormatUtil(1201.80, Locale.FRANCE));
-        panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(1201.80, Locale.FRANCE));
+        panierDto.setPrixTotalAffichage(DecimalFormatUtils.decimalFormatUtil(5400.00, Locale.FRANCE));
+        panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(5400.00, Locale.FRANCE));
 
         final var adresses = new AdressesDto();
         final var livraison = new CommandeAdresseDto();
@@ -205,10 +206,15 @@ class CommandeServiceTest {
         adresses.setCommandeAdresseLivraison(livraison);
         adresses.setCommandeAdresseFacturation(facturation);
 
-        final var commandeDo = this.commandeService.validerPanier(panierDto, adresses, 1);
-        assertNotNull(commandeDo);
-        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDo.getAdresseLivraison());
-        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDo.getAdresseFacturation());
+        final var commandeDto = this.commandeService.validerPanier(panierDto, adresses, 1);
+        assertNotNull(commandeDto);
+        assertNotNull(commandeDto.getId());
+        assertTrue(commandeDto.getReference().matches("CMD[A-Z0-9]{7}"));
+        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseLivraison().getAdresse());
+        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
+        assertEquals(1, commandeDto.getListCommandeProduitDto().size());
+        assertEquals("6", commandeDto.getQuantiteTotale());
+        assertEquals("5 400,00", commandeDto.getPrixTotal());
     }
 
 }

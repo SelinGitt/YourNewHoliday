@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -40,6 +41,13 @@ public class CommandeMapper {
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
 
+        final var livraisonAdresse = new CommandeAdresseDto();
+        livraisonAdresse.setAdresse(commandeDo.getAdresseLivraison());
+        commandeDto.setAdresseLivraison(livraisonAdresse);
+
+        final var facturationAdresse = new CommandeAdresseDto();
+        facturationAdresse.setAdresse(commandeDo.getAdresseFacturation());
+        commandeDto.setAdresseFacturation(facturationAdresse);
         return commandeDto;
     }
 

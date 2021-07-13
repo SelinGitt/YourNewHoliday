@@ -3,10 +3,10 @@
  */
 package service.panier;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -206,11 +206,11 @@ class PanierServiceTest {
         panier.setNombreDeReferences(1);
         final List<Integer> listInteger = new ArrayList<>();
         final var adresses = new AdressesDto();
-        final var commandeDo = new CommandeDo();
-        commandeDo.setReference("CMD1234567");
+        final var commandeDto = new CommandeDto();
+        commandeDto.setReference("CMD1234567");
         Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
         Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
-        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDto);
 
         final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
         assertEquals("CMD1234567", referenceCommandeOuListProduitErreur.getReference());
@@ -232,11 +232,11 @@ class PanierServiceTest {
         panier.setNombreDeReferences(1);
         final List<Integer> listInteger = new ArrayList<>();
         final var adresses = new AdressesDto();
-        final var commandeDo = new CommandeDo();
-        commandeDo.setReference("CMD1234567");
+        final var commande = new CommandeDto();
+        commande.setReference("CMD1234567");
         Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(null);
         Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
-        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commande);
 
         final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
         assertNull(referenceCommandeOuListProduitErreur);
@@ -255,11 +255,11 @@ class PanierServiceTest {
         final List<Integer> listInteger = new ArrayList<>();
         listInteger.add(3);
         final var adresses = new AdressesDto();
-        final var commandeDo = new CommandeDo();
-        commandeDo.setReference("CMD1234567");
+        final var commande = new CommandeDto();
+        commande.setReference("CMD1234567");
         Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
         Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
-        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commande);
 
         final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
         assertNull(referenceCommandeOuListProduitErreur.getReference());

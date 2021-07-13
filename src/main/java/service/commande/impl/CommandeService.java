@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
-import persistance.commande.entity.CommandeDo;
 import persistance.produit.dao.IProduitDao;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
@@ -73,7 +72,7 @@ public class CommandeService implements ICommandeService {
     }
 
     @Override
-    public CommandeDo validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
+    public CommandeDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
         String reference = null;
         do {
             reference = this.referenceCommande.generateReference();
@@ -81,7 +80,8 @@ public class CommandeService implements ICommandeService {
         } while (this.iCommandeDao.findByRef(reference) != null);
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
-        return this.iCommandeDao.create(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur));
+        return CommandeMapper
+                .mapperToDto(this.iCommandeDao.create(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur)));
     }
 
 }
