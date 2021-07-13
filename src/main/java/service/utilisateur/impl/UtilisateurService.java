@@ -41,7 +41,7 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
-        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAllTriAlpha());
     }
 
     @Override

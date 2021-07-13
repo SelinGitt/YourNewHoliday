@@ -69,4 +69,12 @@ public interface IUtilisateurDao extends IGenericDao<UtilisateurDo> {
      * @return           UtilisateurDo correspondant a la recherche
      */
     UtilisateurDo findByReference(final String reference);
+    
+    /**
+     * Permet de trier la liste des utilisateurs par nom dans l'ordre alphabétique.
+     *
+     * @return la liste triée 
+     */
+    List<UtilisateurDo> findAllTriAlpha();
+    
 }

@@ -6,6 +6,8 @@ package service.contact;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.Locale;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -26,8 +28,6 @@ class FichierContactServiceTest {
     @InjectMocks
     private FichierContactService fichierContactService;
 
-    // Mock to be injected
-
     @Mock
     private FichierDao            fichierContactDao;
 
@@ -42,14 +42,27 @@ class FichierContactServiceTest {
      */
     @Test
     void testTrouverFichierContact() {
+        //on teste qu'il renvoie bien le nom du fichier html avec la locale
+        Mockito.when(fichierContactDao.trouverFichier(Mockito.anyString())).thenReturn(true);
+        assertNotNull(fichierContactService.trouverFichierContact(Locale.ENGLISH));
+        assertEquals("contact_en.html", fichierContactService.trouverFichierContact(Locale.ENGLISH));
 
-        Mockito.when(fichierContactDao.trouverFichier(Mockito.anyString()))
+        //on teste qu'il retourne l'element par default quand il est a false
+        Mockito.when(fichierContactDao.trouverFichier(Mockito.anyString())).thenReturn(false);
+        assertEquals("contact_fr.html", fichierContactService.trouverFichierContact(Locale.CHINESE));
+    }
+
+    /**
+     * Test method for {@link service.contact.impl.FichierContactService#chargerFichierContact()}.
+     */
+    @Test
+    void testChargerFichierContact() {
+        Mockito.when(fichierContactDao.chargerFichier(Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierContactService);
         //si egale a
         assertEquals("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>",
-                fichierContactService.trouverFichierContact());
-
+                fichierContactService.chargerFichierContact(Locale.FRANCE));
     }
 }
