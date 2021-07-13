@@ -51,7 +51,7 @@ class UtilisateurServiceTest {
      */
     @Test
     void testFindAll() {
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.emptyList());
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.emptyList());
         Assertions.assertEquals(0, this.utilisateurService.findAllUtilisateurs().size());
     }
 
@@ -72,7 +72,7 @@ class UtilisateurServiceTest {
 
         userDo.setRole(role);
 
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(userDo));
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.singletonList(userDo));
         Assertions.assertEquals(1, this.utilisateurService.findAllUtilisateurs().size());
     }
 
