@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
-        <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
+        <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
     </div>
     <c:choose>
         <c:when test="${not empty typeParam}">

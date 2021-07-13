@@ -168,3 +168,13 @@ aside {
 	/* alignement du texte "langue" et des images */
 	vertical-align: middle;
 }
+
+/* entourage de la langue selectionnee */
+.langue-button-clicked {
+	border: 0.2em solid black;
+	border-radius: 2em;
+}
+
+.langue-pointer {
+	pointer-events: none;
+}
