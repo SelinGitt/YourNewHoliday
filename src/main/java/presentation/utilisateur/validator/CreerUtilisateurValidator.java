@@ -3,8 +3,6 @@
  */
 package presentation.utilisateur.validator;
 
-import java.util.regex.Pattern;
-
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -12,6 +10,7 @@ import org.springframework.validation.Validator;
 
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.util.EmailUtil;
+import presentation.utilisateur.util.PasswordUtil;
 import service.util.DateFormatUtil;
 
 /**
@@ -43,7 +42,7 @@ public class CreerUtilisateurValidator implements Validator {
         final var user = (UtilisateurDto) target;
 
         //Si email n'est pas valide
-        if (EmailUtil.isEmailValid(user.getEmail())) {
+        if (EmailUtil.isValidEmail(user.getEmail())) {
             errors.rejectValue("email", "usr05.erreur.email_format", defaultError);
         }
 
@@ -53,10 +52,7 @@ public class CreerUtilisateurValidator implements Validator {
         }
 
         // Check format du mot de passe
-        final var patternPwd = Pattern.compile("^((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])).{8,20}$");
-        final var matcherPwd = patternPwd.matcher(user.getPassword());
-
-        if (!matcherPwd.matches()) {
+        if (PasswordUtil.isValidPassword(user.getPassword())) {
             errors.rejectValue("password", "usr05.erreur.password_format", defaultError);
         }
 
