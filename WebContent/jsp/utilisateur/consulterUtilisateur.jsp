@@ -8,8 +8,7 @@
         <div class="align-item-center justify-content-center">
             <c:if test="${not empty error}">
                 <div class="background-error-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> 
-                    <span class="message"><spring:message code="${error}" /></span>
+                    <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
                 </div>
             </c:if>
             <div class="user00-title">
@@ -79,11 +78,7 @@
 
             </div>
             <div>
-                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                <div>
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
-                </div>
+                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr" />
             </div>
         </div>
     </div>

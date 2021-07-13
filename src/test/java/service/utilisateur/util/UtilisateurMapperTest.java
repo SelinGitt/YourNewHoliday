@@ -39,6 +39,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDto.setPassword("test");
+        utilisateurDto.setCheminAvatar("avatar.jpg");
 
         final var roleDto = new RoleDto();
 
@@ -66,7 +67,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()), utilisateurDoMapper.getMdpHash());
 
         // TODO : Changer quand upload img ok
-        Assertions.assertEquals("img/test.png", utilisateurDoMapper.getCheminAvatar());
+        Assertions.assertEquals(utilisateurDto.getCheminAvatar(), utilisateurDoMapper.getCheminAvatar());
     }
 
     /**

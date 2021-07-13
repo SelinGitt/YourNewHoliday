@@ -29,6 +29,7 @@ public class UtilisateurDto implements Serializable {
     private String            dateNaissance;
     private Boolean           estDesactive;
     private RoleDto           role;
+    private String            cheminAvatar;
 
     /**
      * Getter for email
@@ -246,4 +247,21 @@ public class UtilisateurDto implements Serializable {
         this.id = id;
     }
 
+    /**
+     * Getter for cheminAvatar
+     *
+     * @return the cheminAvatar
+     */
+    public String getCheminAvatar() {
+        return cheminAvatar;
+    }
+
+    /**
+     * Setter for cheminAvatar
+     *
+     * @param cheminAvatar the cheminAvatar to set
+     */
+    public void setCheminAvatar(final String cheminAvatar) {
+        this.cheminAvatar = cheminAvatar;
+    }
 }
