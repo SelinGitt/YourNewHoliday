@@ -39,7 +39,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDto.setPassword("test");
-        utilisateurDto.setCheminAvatar("avatar.jpg");
+        utilisateurDto.setCheminAvatar("default_avatar.jpg");
 
         final var roleDto = new RoleDto();
 
