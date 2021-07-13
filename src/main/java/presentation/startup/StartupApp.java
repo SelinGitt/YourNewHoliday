@@ -28,7 +28,7 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
     /**
      * Map qui contient url + droits
      */
-    public static final Map<String, List<String>> DROITS = new HashMap<>();
+    private static final Map<String, List<String>> DROITS = new HashMap<>();
 
     @Autowired
     private IDroitService                         droitService;
@@ -42,7 +42,16 @@ public class StartupApp implements ApplicationListener<ContextRefreshedEvent> {
         final var listDroit = this.droitService.findAll();
 
         listDroit.forEach(
-                droit -> DROITS.put(droit.getUrl(), droit.getRole().stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
+                droit -> getDroits().put(droit.getUrl(), droit.getRole().stream().map(RoleDto::getLibelle).collect(Collectors.toList())));
+    }
+
+    /**
+     * Getter for droits
+     *
+     * @return the droits
+     */
+    public static Map<String, List<String>> getDroits() {
+        return DROITS;
     }
 
 }
