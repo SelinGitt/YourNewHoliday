@@ -14,5 +14,6 @@
     <p class="panier-vide-ligne">
         <spring:message code="pan00.paragraphe.panierVide" />
     </p>
-    <img src="img/panier/oups.png" alt="image panier vide">
+    <a href="listerProduits.do"> <img class="panier-vide-img" src="img/panier/oups.png" alt="image panier vide">
+    </a>
 </div>
