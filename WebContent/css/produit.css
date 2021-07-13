@@ -36,17 +36,6 @@ td.pdt00Description {
 	Color: #FF0000;
 }
 
-/* Permet de créer un bloc de couleur orange en haut de body afin de recevoir des messages d'erreurs*/
-.pdt00-errorblock {
-	background-color: #ff7f00;
-	color: #ffffff;
-	border: 0.125em solid #000000;
-}
-.pdt00-successblock{
-	background-color: #009e10;
-	color: #ffffff;
-	border: 0.125em solid #000000;
-}
 .pdt00Ajouter {
 	width: 100%;
 	flex: 2 1 auto;
@@ -56,6 +45,7 @@ td.pdt00Description {
 .pdt00Bouton {
 	color: #FFFFFF;
 }
+
 .pdt00-pan-quantite {
 	width: 1.7em;
 }

@@ -10,8 +10,8 @@
         </div>
     </c:if>
     <c:if test="${not empty anySuccess}">
-        <div class="pdt00-successblock">
-            <span><spring:message code="${anySuccess}" /></span>
+        <div class="background-validation-block block-message-commun">
+           <span class="fa fa-check"></span>  <span><spring:message code="${anySuccess}" /></span>
         </div>
     </c:if>
 
