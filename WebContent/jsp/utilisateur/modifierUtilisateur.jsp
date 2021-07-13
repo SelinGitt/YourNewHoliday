@@ -1,20 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div class="conteneur-ascenseur">
-    <div class="user02-title">
-        <h1>
-            <spring:message code="usr02.titre" />
-        </h1>
-    </div>
 
-    <%-- A cacher par la suite si client --%>
-    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour"/> </a>
+    <c:choose>
+        <c:when test="${origin=='1'}">
+            <div class="user02-title">
+                <h1>
+                    <spring:message code="usr02.titre.client" />
+                </h1>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="user02-title">
+                <h1>
+                    <spring:message code="usr02.titre.admin" />
+                </h1>
+            </div>
+            <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
+            </a>
+        </c:otherwise>
+    </c:choose>
 
     <div class="user02-body-general">
         <div class="user02-form display-flex">
-            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do">
+            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do?origin=${origin}">
                 <form:hidden path="dateInscription" value="${dateInscription}" />
                 <form:hidden path="reference" value="${reference}" />
                 <form:hidden path="id" value="${id}" />
@@ -32,7 +44,6 @@
                         <form:input path="nom" />
                     </div>
                 </div>
-
                 <div class="user02-lib-champ display-flex">
                     <span><spring:message code="usr02.edit.prenom" /></span>
                     <div class="user02-lib-champ-taille">
@@ -63,7 +74,9 @@
 
                 <div>
                     <details>
-                        <summary><spring:message code="usr02.details"/> </summary>
+                        <summary>
+                            <spring:message code="usr02.details" />
+                        </summary>
                         <div class="user02-lib-champ display-flex">
                             <span><spring:message code="usr02.edit.password" /></span>
                             <div class="user02-lib-champ-taille">
