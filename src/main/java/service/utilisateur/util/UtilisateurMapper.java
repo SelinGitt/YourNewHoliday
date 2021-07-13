@@ -77,7 +77,7 @@ public class UtilisateurMapper {
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
         // TODO : Remplacer quand upload img ok
-        utilisateurDo.setCheminAvatar("avatar.jpg");
+        utilisateurDo.setCheminAvatar("default_avatar.jpg");
 
         return utilisateurDo;
     }
