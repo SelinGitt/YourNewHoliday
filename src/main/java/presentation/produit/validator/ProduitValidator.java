@@ -34,8 +34,14 @@ public class ProduitValidator implements Validator {
         //Cast pour vérification plus fine
         final var produitDto = (ProduitDto) target;
 
-        final var ref = produitDto.getReference();
+        // Test du format de prix
+        try {
+            Double.valueOf(produitDto.getPrixUnitaire());
+        } catch (NumberFormatException exception) {
+            errors.rejectValue("prixUnitaire", "pdt03.prix.format");
+        }
 
+        final var ref = produitDto.getReference();
         // Les règles de valdation sont appliqués si le champs référence n'est pas vide
         if (!ref.isBlank()) {
             if (!ref.matches("([A-Z]){3}([1-9A-Z]){7}")) {
