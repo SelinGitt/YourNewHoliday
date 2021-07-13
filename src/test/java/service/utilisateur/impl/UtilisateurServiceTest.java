@@ -103,6 +103,10 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurCreated = this.utilisateurService.createUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurCreated);
+
+        Mockito.when(this.dao.findByEmail(utilisateurDto.getEmail())).thenReturn(new UtilisateurDo());
+
+        Assertions.assertNull(this.utilisateurService.createUtilisateur(utilisateurDto));
     }
 
     /**
