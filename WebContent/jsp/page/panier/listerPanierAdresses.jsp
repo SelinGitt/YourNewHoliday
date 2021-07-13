@@ -11,14 +11,18 @@
 <%-- lien Retour --%>
 <a class="panier-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
 
-<div class=" display-flex flex-direction-row panier-100">
+<form:form method="POST" action="validerPanier.do" modelAttribute="adresses"
+    class="display-flex flex-direction-row panier-100">
+    <%-- champ caché permettant la réinitialisation des données --%>
+    <form:hidden path="defaultAdresse.nom" id="defaultNom" />
+    <form:hidden path="defaultAdresse.prenom" id="defaultPrenom" />
+    <form:hidden path="defaultAdresse.adresse" id="defaultAdresse" />
     <%-- container de facturation + livraison--%>
     <div class="panier-container-Adresse display-flex justify-content-center flex-direction-row">
 
         <%-- formulaire Adresse de livraison--%>
         <div class="panier-block-fieldSet">
-            <form:form method="POST" modelAttribute="CommandeAdresseLivraison" action="listerPanierAdresses.do"
-                id="FormulaireLivraison">
+            <div>
 
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
@@ -28,27 +32,29 @@
                         class="panier-formulaire display-flex flex-wrap-wrap justify-content-center
                          flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="nom"><spring:message code="pan08.label.nom" /></label>
-                            <form:input class="panier-formulaire-input" path="nom" />
+                            <label for="livraisonNom"><spring:message code="pan08.label.nom" /></label>
+                            <form:input class="panier-formulaire-input" path="commandeAdresseLivraison.nom"
+                                id="livraisonNom" />
                         </div>
 
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
-                            <form:input class="panier-formulaire-input" path="prenom" />
+                            <label for="livraisonPrenom"><spring:message code="pan08.label.prenom" /></label>
+                            <form:input class="panier-formulaire-input" path="commandeAdresseLivraison.prenom"
+                                id="livraisonPrenom" />
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
+                            <label for="livraisonAdresse"><spring:message code="pan08.label.adresse" /></label>
+                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseLivraison.adresse"
+                                rows="12" id="livraisonAdresse" />
                         </div>
                     </div>
                 </fieldset>
-            </form:form>
+            </div>
         </div>
 
         <%-- formulaire Adresse de facturation--%>
         <div class="panier-block-fieldSet">
-            <form:form method="POST" modelAttribute="CommandeAdresseFacturation" action="listerPanierAdresses.do"
-                class="panier-margin-left-3em" id="FormulaireFacturation">
+            <div class="panier-margin-left-3em" id="FormulaireFacturation">
                 <fieldset class="fieldSetPan08">
                     <legend class="panier-legend">
                         <spring:message code="pan08.fieldSet.facturation" />
@@ -57,21 +63,24 @@
                         class="panier-formulaire display-flex 
                     flex-wrap-wrap justify-content-center flex-direction-column">
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="nom"><spring:message code="pan08.label.nom" /></label>
-                            <form:input class="panier-formulaire-input" path="nom" />
+                            <label for="facturationNom"><spring:message code="pan08.label.nom" /></label>
+                            <form:input class="panier-formulaire-input" path="commandeAdresseFacturation.nom"
+                                id="facturationNom" />
                         </div>
 
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="prenom"><spring:message code="pan08.label.prenom" /></label>
-                            <form:input class="panier-formulaire-input" path="prenom" />
+                            <label for="facturationPrenom"><spring:message code="pan08.label.prenom" /></label>
+                            <form:input class="panier-formulaire-input" path="commandeAdresseFacturation.prenom"
+                                id="facturationPrenom" />
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
-                            <label for="adresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="adresse" rows="12" />
+                            <label for="facturationAdresse"><spring:message code="pan08.label.adresse" /></label>
+                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseFacturation.adresse"
+                                rows="12" id="facturationAdresse" />
                         </div>
                     </div>
                 </fieldset>
-            </form:form>
+            </div>
         </div>
 
     </div>
@@ -114,15 +123,13 @@
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
-                <a href="validerPanier.do">
-                    <button type="button">
-                        <spring:message code="pan00.valider.panier" />
-                    </button>
-                </a>
+                <button type="submit">
+                    <spring:message code="pan00.valider.panier" />
+                </button>
             </div>
         </div>
     </div>
-</div>
+</form:form>
 
 <%-- boutton reset formulaire --%>
 <button class="panier-margin-left-10" onclick="informationsLivraison()">
