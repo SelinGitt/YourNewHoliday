@@ -207,6 +207,8 @@ class CommandeServiceTest {
 
         final var commandeDo = this.commandeService.validerPanier(panierDto, adresses, 1);
         assertNotNull(commandeDo);
+        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDo.getAdresseLivraison());
+        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDo.getAdresseFacturation());
     }
 
 }
