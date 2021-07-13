@@ -214,13 +214,13 @@ public class PanierService implements IPanierService {
         if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
             return null;
         }
-        final var commandePanierListProduitErreur = new CommandeReferenceOuListProduitErreurDto();
-        commandePanierListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
-        if (commandePanierListProduitErreur.getIdProduitNonConcordant().size() == 0) {
+        final var commandeReferenceOuListProduitErreur = new CommandeReferenceOuListProduitErreurDto();
+        commandeReferenceOuListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
+        if (commandeReferenceOuListProduitErreur.getIdProduitNonConcordant().size() == 0) {
             final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
-            commandePanierListProduitErreur.setReference(commandeDo.getReference());
+            commandeReferenceOuListProduitErreur.setReference(commandeDo.getReference());
             this.viderPanier(panier);
         }
-        return commandePanierListProduitErreur;
+        return commandeReferenceOuListProduitErreur;
     }
 }
