@@ -75,14 +75,20 @@ class DateFormatUtilTest {
     }
 
     /**
-     * Test pour {@link service.util.DateFormatUtil#checkDate(String)}.
+     * Test pour OK {@link service.util.DateFormatUtil#checkDate(String)}.
      */
     @Test
-    void testCheckPattern() {
+    void testCheckPatternOK() {
         assertTrue(DateFormatUtil.checkDate("25/06/1995"));
         assertTrue(DateFormatUtil.checkDate("08/07/2021"));
         assertTrue(DateFormatUtil.checkDate("25/12/2221"));
+    }
 
+    /**
+     * Test pour KO {@link service.util.DateFormatUtil#checkDate(String)}.
+     */
+    @Test
+    void testCheckPatternKO() {
         assertFalse(DateFormatUtil.checkDate("31/02/2000"));
         assertFalse(DateFormatUtil.checkDate("29/02/2001"));
         assertFalse(DateFormatUtil.checkDate("84/39/1995"));
