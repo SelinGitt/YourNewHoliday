@@ -80,7 +80,7 @@ public class CommandeMapper {
     }
 
     private static int calculerQuantiteTotal(final PanierDto panier) {
-        int quantiteTotal = 0;
+        var quantiteTotal = 0;
         for (LigneCommandeProduitDto ligneProduit : panier.getMapPanier().values()) {
             quantiteTotal += ligneProduit.getQuantite();
         }
