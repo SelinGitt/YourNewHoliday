@@ -1,6 +1,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <hr />
-<input id="localeCode" type="hidden" value="${pageContext.response.locale}"></input>
+<%-- Permet de récupérer la locale en session --%>
+<input id="localeCode" type="hidden"
+    value='${sessionScope["org.springframework.web.servlet.i18n.SessionLocaleResolver.LOCALE"]}' />
 <%-- conteneur pour le footer --%>
 <div class="footer-container">
     <%-- lien de redirection vers la page contact vide pour l'instant "contact.do" quand le controlleur sera créé --%>
@@ -29,5 +31,5 @@
 </div>
 <script type="text/javascript" src="js/footer/langues.js"></script>
 <script>
-	selectLG()
+	selectLG();
 </script>
