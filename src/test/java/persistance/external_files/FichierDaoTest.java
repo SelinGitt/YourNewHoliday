@@ -3,10 +3,10 @@
  */
 package persistance.external_files;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -38,20 +38,28 @@ class FichierDaoTest {
     @Test
     void testTrouverFichier() {
 
+        //mettre le chemin complet ici pour que cela fonctionne
+        assertTrue(iFichier.trouverFichier("src/test/resources/contact/test-contact.html"));
+
+        //verifier avec un fichier non exisitant
+        assertFalse(iFichier.trouverFichier("nemarcherapas.html"));
+
+    }
+
+    /**
+     * Test method for {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String)}.
+     */
+    @Test
+    void testChargerFichier() {
         //les tests marcheront a la condition d'avoir le fichier html dans le repertoire indiquer
         //pour le test le fichier sera directement dans le projet : 
         //aller dans propriété sur test-contact.html => recuperer le repertoire
         final String nomFichier = "src/test/resources/contact/test-contact.html";
-        assertNotNull(iFichier.trouverFichier(nomFichier));
-        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.trouverFichier(
-                nomFichier));
+        assertNotNull(iFichier.chargerFichier(nomFichier));
+        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.chargerFichier(nomFichier));
 
         //verifier avec un fichier non exisitant
-        final String nomFichierFaux = "C:/non/existant.html";
-        final String fichier = iFichier.trouverFichier(nomFichierFaux);
-        assertEquals("", fichier);
-        assertThrows(AssertionError.class, () -> {
-            assertNull(fichier);
-        });
+        assertEquals("", iFichier.chargerFichier("C:/non/existant.html"));
+
     }
 }
