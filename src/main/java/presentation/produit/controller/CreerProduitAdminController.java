@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.produit.dto.ProduitDto;
 import presentation.produit.validator.ProduitValidator;
@@ -60,14 +60,14 @@ public class CreerProduitAdminController {
      * Méthode POST pour la création d'un produit via un formulaire<br>
      * et de creer un nouveau produit
      *
-     * @param  produitDto le produit Dto utilisé pour le binding
-     * @param  result     le binding result
-     * @param  status     le status de la session
-     * @return            vers une creerProduitAdmin.jsp
+     * @param  produitDto         le produit Dto utilisé pour le binding
+     * @param  result             le binding result
+     * @param  redirectAttributes le message si la création est OK
+     * @return                    vers une creerProduitAdmin.jsp
      */
     @PostMapping
     public ModelAndView creerProduit(final @Validated @ModelAttribute("produitDto") ProduitDto produitDto, final BindingResult result,
-            final SessionStatus status) {
+            final RedirectAttributes redirectAttributes) {
         final var modelAndView = new ModelAndView();
         // Si le formulaire possède des erreurs : Ajout de l'attribut "errorCreationProduit" utilisé dans la jsp en cas d'erreur de création
         if (result.hasErrors()) {
@@ -77,6 +77,8 @@ public class CreerProduitAdminController {
         }
 
         if (iProduitService.creerProduit(produitDto) != null) {
+            //Ajout d'un FlashAttribute pour le bandeau de validation sur PDT_01
+            redirectAttributes.addFlashAttribute("successCreateProduit", "pdt03.creationOK");
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
         result.rejectValue("reference", "pdt03.reference.dejaExistant");
