@@ -7,10 +7,10 @@
     </div>
     <c:choose>
         <c:when test="${not empty typeParam}">
-            <a href="${redir}?${typeParam}=${value}"><spring:message code="pdt04.retour"></spring:message></a>
+            <a href="${redirection}?${typeParam}=${value}"><spring:message code="pdt04.retour"></spring:message></a>
         </c:when>
         <c:otherwise>
-            <a href="${redir}"><spring:message code="pdt04.retour"></spring:message></a>
+            <a href="${redirection}"><spring:message code="pdt04.retour"></spring:message></a>
         </c:otherwise>
     </c:choose>
 

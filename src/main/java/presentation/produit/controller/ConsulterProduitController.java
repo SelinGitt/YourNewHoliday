@@ -21,10 +21,6 @@ import service.produit.IProduitService;
 @RequestMapping(value = "/consulterProduit.do")
 public class ConsulterProduitController {
 
-    /**
-     * 
-     */
-    private static final String REDIRECTION_PARAM_NAME = "redir";
     @Autowired
     private IProduitService iProduitService;
 
@@ -33,35 +29,33 @@ public class ConsulterProduitController {
      * 
      * @param  idProduit du produit à consulter
      * @param  location  page d'origine
-     * @param  param     : test
+     * @param  param     le potentiel paramètre à récupérer
      * @return           le produit à consulter dans le model et la vue associée
      */
     @GetMapping
     public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit,
-            final @RequestParam("location") String location,
+            final @RequestParam(value = "location", required = false) String location,
             final @RequestParam(value = "paramValue", required = false, defaultValue = "") String param) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
-        switch (location) {
-            case "listerProduits":
-                modelAndView.getModelMap().addAttribute(REDIRECTION_PARAM_NAME, "listerProduits.do");
-                break;
-            case "listerProduitsAdmin":
-                modelAndView.getModelMap().addAttribute(REDIRECTION_PARAM_NAME, "listerProduitsAdmin.do");
-                break;
-            case "detail":
-                modelAndView.getModelMap().addAttribute(REDIRECTION_PARAM_NAME, "detailCommande.do");
-                modelAndView.getModelMap().addAttribute("typeParam", "ref");
-                modelAndView.getModelMap().addAttribute("value", param);
-                break;
-            case "panier":
-                modelAndView.getModelMap().addAttribute(REDIRECTION_PARAM_NAME, "listerPanierProduits.do");
-                break;
-            default:
-                modelAndView.getModelMap().addAttribute(REDIRECTION_PARAM_NAME, "listeProduits.do");
-        }
+        selectReturnPage(PageOrigine.findValue(location), param, modelAndView);
         return modelAndView;
 
+    }
+
+    /**
+     * Permet de trouver la page de retour en fonction de sa location et de ses paramètres
+     *
+     * @param pageOrigine  page d'origine
+     * @param param        paramètre de requête sauvegardé pour le retour
+     * @param modelAndView le modelAndView pour enregistrer les attributs
+     */
+    private void selectReturnPage(final PageOrigine pageOrigine, final String param, final ModelAndView modelAndView) {
+        modelAndView.getModelMap().addAttribute("redirection", pageOrigine.getPageConcrete());
+        if (PageOrigine.DETAIL_COMMANDE == pageOrigine) {
+            modelAndView.getModelMap().addAttribute("typeParam", "ref");
+            modelAndView.getModelMap().addAttribute("value", param);
+        }
     }
 }
