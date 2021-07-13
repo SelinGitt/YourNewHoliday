@@ -103,7 +103,7 @@
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="user01-body"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
+                    <td class="user01-body"><a href="modifierUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 

@@ -6,6 +6,7 @@ package presentation.utilisateur.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,7 +44,6 @@ public class EditerUtilisateur {
         }
 
         final var modelAndView = new ModelAndView("modifierUtilisateur");
-
         modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
 
         return modelAndView;
@@ -58,13 +58,10 @@ public class EditerUtilisateur {
      * @return                redirection vers usr01
      */
     @PostMapping
-    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, @RequestParam(value = "origin") final String origin) {
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
         this.iUtilisateurService.updateUtilisateur(utilisateurDto);
 
         // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
-        if ("2".equals(origin)) {
-            return new ModelAndView("redirect:/listerUtilisateur.do");
-        }
-        return new ModelAndView("redirect:/consulterUtilisateur.do");
+        return new ModelAndView("redirect:/listerUtilisateur.do");
     }
 }
