@@ -217,9 +217,6 @@ public class PanierService implements IPanierService {
         final var commandePanierListProduitErreur = new CommandeReferenceOuListProduitErreurDto();
         commandePanierListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
         if (commandePanierListProduitErreur.getIdProduitNonConcordant().size() == 0) {
-            // TODO :
-
-            // passer les adresses à la méthode 
             final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
             commandePanierListProduitErreur.setReference(commandeDo.getReference());
             this.viderPanier(panier);
