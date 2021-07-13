@@ -4,8 +4,12 @@
 package service.panier;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +18,17 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import presentation.utilisateur.dto.UtilisateurDto;
+import service.commande.ICommandeService;
 import service.panier.impl.PanierService;
 import service.produit.IProduitService;
 import service.util.DecimalFormatUtils;
+import service.utilisateur.IUtilisateurService;
 
 /**
  * Classe test de {@link PanierService}
@@ -29,11 +38,17 @@ import service.util.DecimalFormatUtils;
 class PanierServiceTest {
 
     @InjectMocks
-    private PanierService   panierService;
+    private PanierService       panierService;
 
     // Mock à injecter
     @Mock
-    private IProduitService iProduitService;
+    private IProduitService     iProduitService;
+
+    @Mock
+    private ICommandeService    iCommandeService;
+
+    @Mock
+    private IUtilisateurService iUtilisateurService;
 
     @BeforeEach
     private void setup() {
@@ -173,6 +188,82 @@ class PanierServiceTest {
         assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
         assertEquals("0,00", panierTest.getRemiseAffichage());
         assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#validerPanier(presentation.panier.dto.PanierDto, presentation.commande.dto.AdressesDto, java.lang.Integer)}.
+     */
+    @Test
+    void testValiderPanier() {
+        final var utilisateur = new UtilisateurDto();
+        final var panier = new PanierDto();
+        final var produitTest = new ProduitDto();
+        produitTest.setIdProduitOriginal("1");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("10000");
+        panier.getMapPanier().put(produitTest, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        final var adresses = new AdressesDto();
+        final var commandeDo = new CommandeDo();
+        commandeDo.setReference("CMD1234567");
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertEquals("CMD1234567", referenceCommandeOuListProduitErreur.getReference());
+        assertEquals(0, referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant().size());
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#validerPanier(presentation.panier.dto.PanierDto, presentation.commande.dto.AdressesDto, java.lang.Integer)}.
+     */
+    @Test
+    void testValiderPanierUserNull() {
+        final var panier = new PanierDto();
+        final var produit = new ProduitDto();
+        produit.setIdProduitOriginal("2");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("1000");
+        panier.getMapPanier().put(produit, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        final var adresses = new AdressesDto();
+        final var commandeDo = new CommandeDo();
+        commandeDo.setReference("CMD1234567");
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(null);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertNull(referenceCommandeOuListProduitErreur);
+    }
+
+    @Test
+    void testValiderPanierWithOneError() {
+        final var utilisateur = new UtilisateurDto();
+        final var panier = new PanierDto();
+        final var produitTest = new ProduitDto();
+        produitTest.setIdProduitOriginal("3");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("100000");
+        panier.getMapPanier().put(produitTest, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        listInteger.add(3);
+        final var adresses = new AdressesDto();
+        final var commandeDo = new CommandeDo();
+        commandeDo.setReference("CMD1234567");
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, 1)).thenReturn(commandeDo);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertNull(referenceCommandeOuListProduitErreur.getReference());
+        assertEquals(1, referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant().size());
     }
 
 }

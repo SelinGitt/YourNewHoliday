@@ -17,6 +17,8 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.commande.dto.CommandeProduitDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -145,6 +147,66 @@ class CommandeServiceTest {
         panierDto.getMapPanier().put(produitDto7, ligneCommandeProduit7);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
         assertEquals(3, this.commandeService.verifierProduitsAvecVersion(panierDto.getMapPanier()).size());
+    }
+
+    /**
+     * Test method for
+     * {@link service.commande.impl.CommandeService#validerPanier(presentation.panier.dto.PanierDto, presentation.commande.dto.AdressesDto, java.lang.Integer)}.
+     */
+    @Test
+    void testValiderPanier() {
+        // PanierDto
+        final var panierDto = new PanierDto();
+        // ProduitDto1
+        final var produitDto1 = new ProduitDto();
+        produitDto1.setIdProduitOriginal("1");
+        produitDto1.setVersion("2");
+        produitDto1.setDescription("description1");
+        produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(900.00, Locale.FRANCE));
+        produitDto1.setNom("Voyage aux Maldives");
+        produitDto1.setReference("MVR1256934");
+        produitDto1.setCheminImage("maldives.jpg");
+        produitDto1.setDestination("Maldives");
+        produitDto1.setMiseEnVente("true");
+        produitDto1.setServices("1");
+        produitDto1.setHebergement("Maison dHotes");
+
+        // ajout des lignes de commande
+        final var ligneCommandeProduit = new LigneCommandeProduitDto();
+        ligneCommandeProduit.setQuantite(6);
+        ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
+
+        // add products to PanierDto
+        panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+
+        panierDto.setRemiseAffichage("0");
+        panierDto.setPrixTotalAffichage(DecimalFormatUtils.decimalFormatUtil(1201.80, Locale.FRANCE));
+        panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(1201.80, Locale.FRANCE));
+
+        final var adresses = new AdressesDto();
+        final var livraison = new CommandeAdresseDto();
+        final var facturation = new CommandeAdresseDto();
+        final var defautAdresse = new CommandeAdresseDto();
+
+        defautAdresse.setAdresse("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq");
+        defautAdresse.setNom("Dalton");
+        defautAdresse.setPrenom("Timothé");
+
+        livraison.setAdresse(defautAdresse.getAdresse());
+        livraison.setNom(defautAdresse.getNom());
+        livraison.setPrenom(defautAdresse.getPrenom());
+
+        facturation.setAdresse(defautAdresse.getAdresse());
+        facturation.setNom(defautAdresse.getNom());
+        facturation.setPrenom(defautAdresse.getPrenom());
+
+        adresses.setDefaultAdresse(defautAdresse);
+        adresses.setCommandeAdresseLivraison(livraison);
+        adresses.setCommandeAdresseFacturation(facturation);
+
+        final var commandeDo = this.commandeService.validerPanier(panierDto, adresses, 1);
+        assertNotNull(commandeDo);
     }
 
 }
