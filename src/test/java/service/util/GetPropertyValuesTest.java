@@ -33,11 +33,11 @@ class GetPropertyValuesTest {
     @Test
     void testGetPropValues() {
         getPropertyValues.getPropValues();
-        assertEquals(4, GetPropertyValues.PROPERTIESMAP.size());
-        assertEquals("C:/YNH_Project/external_files/contact/", GetPropertyValues.PROPERTIESMAP.get("contactRepo"));
-        assertEquals("C:/YNH_Project/external_files/mentionsLegales/", GetPropertyValues.PROPERTIESMAP.get("mentionsLegalesRepo"));
-        assertEquals("C:/YNH_Project/external_files/img/produits/", GetPropertyValues.PROPERTIESMAP.get("imagesProduitsRepo"));
-        assertEquals("C:/YNH_Project/external_files/img/utilisateurs/", GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo"));
+        assertEquals(4, GetPropertyValues.getPropertiesmap().size());
+        assertEquals("C:/YNH_Project/external_files/contact/", GetPropertyValues.getPropertiesmap().get("contactRepo"));
+        assertEquals("C:/YNH_Project/external_files/mentionsLegales/", GetPropertyValues.getPropertiesmap().get("mentionsLegalesRepo"));
+        assertEquals("C:/YNH_Project/external_files/img/produits/", GetPropertyValues.getPropertiesmap().get("imagesProduitsRepo"));
+        assertEquals("C:/YNH_Project/external_files/img/utilisateurs/", GetPropertyValues.getPropertiesmap().get("imagesUtilisateursRepo"));
     }
 
 }

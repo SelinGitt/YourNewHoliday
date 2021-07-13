@@ -43,7 +43,7 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
         //je retourne le nom du fichier + la local 
         final String CgvNameFile = trouverFichier(locale, CGV_RADICAL);
         logger.info("methode chargerFichierCGV qui charge le fichier : {} ", CgvNameFile);
-        return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CgvNameFile);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesmap().get(PATH) + CgvNameFile);
     }
 
     @Override
@@ -51,14 +51,14 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
         //je retourne le nom du fichier + la local 
         final String CguNameFile = trouverFichier(locale, CGU_RADICAL);
         logger.info("methode chargerFichierCGU qui charge le fichier : {} ", CguNameFile);
-        return fichierDao.chargerFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + CguNameFile);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesmap().get(PATH) + CguNameFile);
 
     }
 
     @Override
     public String trouverFichier(final Locale locale, final String radical) {
         final String nomFichier = radical + locale.toString() + HTML;
-        if (fichierDao.trouverFichier(GetPropertyValues.PROPERTIESMAP.get(PATH) + nomFichier)) {
+        if (fichierDao.trouverFichier(GetPropertyValues.getPropertiesmap().get(PATH) + nomFichier)) {
             logger.info(" on a trouver le fichier : {} ", nomFichier);
             return nomFichier;
         }
