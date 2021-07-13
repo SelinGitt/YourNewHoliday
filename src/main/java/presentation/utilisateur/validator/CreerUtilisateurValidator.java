@@ -42,7 +42,7 @@ public class CreerUtilisateurValidator implements Validator {
         final var user = (UtilisateurDto) target;
 
         //Si email n'est pas valide
-        if (EmailUtil.isValidEmail(user.getEmail())) {
+        if (!EmailUtil.isValidEmail(user.getEmail())) {
             errors.rejectValue("email", "usr05.erreur.email_format", defaultError);
         }
 
