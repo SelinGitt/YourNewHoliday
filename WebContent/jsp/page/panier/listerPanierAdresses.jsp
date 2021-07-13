@@ -13,6 +13,7 @@
 
 <form:form method="POST" action="validerPanier.do" modelAttribute="adresses"
     class="display-flex flex-direction-row panier-100">
+    <%-- champ caché permettant la réinitialisation des données --%>
     <form:hidden path="defaultAdresse.nom" id="defaultNom" />
     <form:hidden path="defaultAdresse.prenom" id="defaultPrenom" />
     <form:hidden path="defaultAdresse.adresse" id="defaultAdresse" />
