@@ -63,7 +63,6 @@ public class EditerUtilisateur {
     @PostMapping
     public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, @RequestParam("origin") final String origin) {
         this.iUtilisateurService.updateUtilisateur(utilisateurDto);
-        // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
         if ("1".equals(origin)) {
             return new ModelAndView("redirect:/consulterUtilisateur.do");
         }
