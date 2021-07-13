@@ -44,6 +44,19 @@ class UtilisateurDaoTest {
     private IUtilisateurDao iUtilisateurDao;
 
     /**
+     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findAll()}.
+     */
+    @Test
+    void testFindAll() {
+        // On récupère les données
+        final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAll();
+        // On teste la conformitée du nombre de données
+        Assertions.assertEquals(7, listUtilisateur.size());
+
+        listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
+    }
+
+    /**
      * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findAllTriAlpha()}.
      */
     @Test
@@ -52,8 +65,11 @@ class UtilisateurDaoTest {
         final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAllTriAlpha();
         // On teste la conformitée du nombre de données
         Assertions.assertEquals(7, listUtilisateur.size());
-
-        listUtilisateur.stream().map(UtilisateurDo::getRole).forEach(Assertions::assertNotNull);
+        //On test si les noms des utilisateurs sont bien rangés par ordre alphabétique
+        //Dand une liste non-triée, l'utilisateur Persey Jackson doit apparaitre en quatrième position</br>
+        //du tableau regroupant la liste des utilisateurs. Si la liste est triée, il sera en deuxième position
+        final UtilisateurDo utilisateurDo = listUtilisateur.get(1);
+        Assertions.assertEquals("Jackson", utilisateurDo.getNom());
     }
 
     /**
