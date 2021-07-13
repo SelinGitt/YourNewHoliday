@@ -16,6 +16,13 @@ public interface IFichierDao {
      * @param  nomFichier : le nom du fichier
      * @return            : le contenu du fichier html
      */
-    String trouverFichier(final String nomFichier);
+    String chargerFichier(final String nomFichier);
 
+    /**
+     * Permet de trouver un fichier
+     *
+     * @param  nomFichier : le nom du fichier a trouver
+     * @return            : un nom de fichier
+     */
+    boolean trouverFichier(final String nomFichier);
 }
