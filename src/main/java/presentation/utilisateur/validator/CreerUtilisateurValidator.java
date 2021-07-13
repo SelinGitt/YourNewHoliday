@@ -11,6 +11,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import presentation.utilisateur.dto.UtilisateurDto;
+import presentation.utilisateur.util.EmailUtil;
 import service.util.DateFormatUtil;
 
 /**
@@ -41,14 +42,9 @@ public class CreerUtilisateurValidator implements Validator {
 
         final var user = (UtilisateurDto) target;
 
-        //Vérification du format de l'adresse email
-        final var email = user.getEmail();
-        final var pattern = Pattern.compile("^\\S{1,318}@\\S{1,318}+$");
-        final var matcher = pattern.matcher(email);
-
-        //Si email n'est pas blank et n'est pas au bon format
-        if (!email.isBlank() && !matcher.matches()) {
-            errors.rejectValue("email", "usr05.erreur.email_format", new Object[] {email}, defaultError);
+        //Si email n'est pas valide
+        if (EmailUtil.isEmailValid(user.getEmail())) {
+            errors.rejectValue("email", "usr05.erreur.email_format", defaultError);
         }
 
         // Check si la date est valide
