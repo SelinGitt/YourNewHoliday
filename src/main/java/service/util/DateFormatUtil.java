@@ -72,7 +72,6 @@ public class DateFormatUtil {
             dateFormat.parse(date);
             valide = true;
         } catch (final ParseException e) {
-            e.printStackTrace();
             logger.warn(e.getMessage());
         }
 
