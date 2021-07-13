@@ -28,7 +28,7 @@ public class CommandeDo {
     private String                 reference;
 
     @Column(name = "prix_avec_remise")
-    private BigDecimal             prixTotal;
+    private BigDecimal             prixTotalApresRemise;
 
     @Column(name = "date_commande")
     private Date                   date;
@@ -41,6 +41,9 @@ public class CommandeDo {
 
     @Column(name = "quantiteTotale")
     private Integer                quantiteTotale;
+
+    @Column(name = "prix_total_ante_remise")
+    private BigDecimal             prixTotalAvantRemise;
 
     /**
      * Getter for id
@@ -76,24 +79,6 @@ public class CommandeDo {
      */
     public void setReference(final String reference) {
         this.reference = reference;
-    }
-
-    /**
-     * Getter for prixTotal
-     *
-     * @return the prixTotal
-     */
-    public BigDecimal getPrixTotal() {
-        return prixTotal;
-    }
-
-    /**
-     * Setter for prixTotal
-     *
-     * @param prixTotal the prixTotal to set
-     */
-    public void setPrixTotal(final BigDecimal prixTotal) {
-        this.prixTotal = prixTotal;
     }
 
     /**
@@ -166,6 +151,42 @@ public class CommandeDo {
      */
     public void setQuantiteTotale(final Integer quantiteTotale) {
         this.quantiteTotale = quantiteTotale;
+    }
+
+    /**
+     * Getter for prixTotalApresRemise
+     *
+     * @return the prixTotalApresRemise
+     */
+    public BigDecimal getPrixTotalApresRemise() {
+        return prixTotalApresRemise;
+    }
+
+    /**
+     * Setter for prixTotalApresRemise
+     *
+     * @param prixTotalApresRemise the prixTotalApresRemise to set
+     */
+    public void setPrixTotalApresRemise(final BigDecimal prixTotalApresRemise) {
+        this.prixTotalApresRemise = prixTotalApresRemise;
+    }
+
+    /**
+     * Getter for prixTotalAvantRemise
+     *
+     * @return the prixTotalAvantRemise
+     */
+    public BigDecimal getPrixTotalAvantRemise() {
+        return prixTotalAvantRemise;
+    }
+
+    /**
+     * Setter for prixTotalAvantRemise
+     *
+     * @param prixTotalAvantRemise the prixTotalAvantRemise to set
+     */
+    public void setPrixTotalAvantRemise(final BigDecimal prixTotalAvantRemise) {
+        this.prixTotalAvantRemise = prixTotalAvantRemise;
     }
 
 }

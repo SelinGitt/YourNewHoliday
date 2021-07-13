@@ -79,7 +79,7 @@
                                     <spring:message code="detailCommande.prd.pTotal"></spring:message>
                                 </div>
                                 <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">
-                                    ${cmdProduit.prixTotal}
+                                    ${cmdProduit.prixTotalApresRemise}
                                     <spring:message code="glb.devise"></spring:message>
                                 </div>
                             </div>
@@ -104,6 +104,36 @@
                 </legend>
             </fieldset>
         </div>
-        <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing"></div>
+        <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
+        <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">
+
+            <%--  total avant remise --%>
+            <div class="justify-content-space-between display-flex align-item-center">
+                <h3>
+                    <spring:message code="pan00.titre.fieldset.total.avant.remise" />
+                </h3>
+                <div id="total_avant_remise" class="prix panier-bordure-1px">${commande.prixTotalAvantRemise}
+                    <spring:message code="glb.devise" />
+                </div>
+            </div>
+            <%-- remise --%>
+            <div class="justify-content-space-between display-flex align-item-center">
+                <h3>
+                    <spring:message code="pan00.titre.fieldset.remise" />
+                </h3>
+                <div id="remise" class="prix panier-bordure-1px">${remise }
+                    <spring:message code="glb.devise" />
+                </div>
+            </div>
+            <%--  total après remise --%>
+            <div class="justify-content-space-between display-flex align-item-center">
+                <h3>
+                    <spring:message code="pan00.titre.fieldset.total.apres.remise" />
+                </h3>
+                <div id="total_apres_remise" class="prix panier-bordure-1px">${commande.prixApresRemise }
+                    <spring:message code="glb.devise" />
+                </div>
+            </div>
+        </div>
     </div>
 </div>

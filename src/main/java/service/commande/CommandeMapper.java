@@ -27,14 +27,16 @@ public class CommandeMapper {
     public static CommandeDto mapperToDto(final CommandeDo commandeDo) {
         if (commandeDo == null) {
             return null;
-        }
+        }       
         final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
+        commandeDto.setPrixTotalAvantRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotalAvantRemise()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
-        commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
+        commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo
+                .getCommandeProduitDoSet()));
+        commandeDto.setPrixTotalApresRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotalApresRemise()));
 
         return commandeDto;
     }

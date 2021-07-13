@@ -39,14 +39,17 @@ public class DetailCommandeController {
      * @return           ModelAndView le modèle qui sera utiliser par la vue
      */
     @GetMapping
-    public ModelAndView detaillerCommande(final @RequestParam(name = "ref", required = true, defaultValue = "") String reference,
+    public ModelAndView detaillerCommande(
+            final @RequestParam(name = "ref", required = true, defaultValue = "") String reference,
             final HttpSession session) {
         final var modelAndView = new ModelAndView();
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-        this.logger.debug("detailler la commande {} de l'utilisateur : {} ", reference, utilisateurConnecte.getIdUtilisateur());
+        this.logger.debug("detailler la commande {} de l'utilisateur : {} ", reference, utilisateurConnecte
+                .getIdUtilisateur());
         final var commandeDto = this.iCommandeService.chercherCommandeParReference(reference);
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
+        modelAndView.getModelMap().addAttribute("remise", iCommandeService.calculerRemise(commandeDto));
         return modelAndView;
     }
 

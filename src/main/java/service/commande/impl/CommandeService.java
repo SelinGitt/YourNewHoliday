@@ -16,6 +16,7 @@ import persistance.commande.dao.ICommandeDao;
 import presentation.commande.dto.CommandeDto;
 import service.commande.CommandeMapper;
 import service.commande.ICommandeService;
+import service.util.DecimalFormatUtils;
 
 /**
  * Classe représentant l'implémentation des services pour les commandes
@@ -40,6 +41,12 @@ public class CommandeService implements ICommandeService {
     public CommandeDto chercherCommandeParReference(final String reference) {
         logger.info("Recherche de la commande avec la réference {}", reference);
         return CommandeMapper.mapperToDto(iCommandeDao.findByRef(reference));
+    }
+
+    @Override
+    public String calculerRemise(final CommandeDto commande) {
+        return DecimalFormatUtils.decimalFormatUtil(DecimalFormatUtils.doubleFormatUtil(commande
+                .getPrixTotalAvantRemise()) - DecimalFormatUtils.doubleFormatUtil(commande.getPrixApresRemise()));
     }
 
 }
