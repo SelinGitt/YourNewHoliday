@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -221,7 +220,7 @@ public class PanierService implements IPanierService {
         final var retourValiderPanier = new RetourValiderPanierDto();
         retourValiderPanier.setListIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
         if (retourValiderPanier.getListIdProduitNonConcordant().isEmpty()) {
-            final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
+            final var commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
             retourValiderPanier.setReference(commandeDo.getReference());
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDo.getReference());
