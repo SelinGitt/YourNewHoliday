@@ -33,7 +33,7 @@ DELETE FROM `produit`;
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 2, 'MVR1256934', 'Voyage aux Maldives', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy', 'Maldives', '900.00', 'Maison dHotes', 1, 'maldives.jpg', 1);
+INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (1, 2, 'MVR1256934', 'Voyage aux Maldives', 'description1', 'Maldives', '900.00', 'Maison dHotes', 1, 'maldives.jpg', 1);
 INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (2, 1, 'GRC1267941', 'Voyage en Grèce', 'description2', 'Grèce', '500.00', 'Suite', 0, 'greece.jpg', 1);
 INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (3, 1, 'SPA1278951', 'Voyage en Espagne', 'description3', 'Espagne', '450.00', 'chambre dhôtel', 1, 'espagne.jpg', 1);
 INSERT INTO `produit` (`idProduitOriginal`, `version`, `reference`, `nom`, `description`, `destination`, `prix_unitaire`, `hebergement`, `mise_en_vente`, `chemin_de_l_image`, `services`) VALUES (4, 3, 'ITA1289967', 'Voyage en Italie', 'description4', 'Italie', '300.00', 'chambre dhôtel', 1, 'italy.jpg', 1);
