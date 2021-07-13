@@ -17,9 +17,22 @@
     <br />
     <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
         <form:form action="listerProduits.do" method="POST">
+            <input type="hidden" name="tri" value="${tri}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
+        </form:form>
+        <form:form action="listerProduits.do" method="POST" id="tri">
+            <input type="hidden" name="searchInput" value="${searchTerm}" />
+            <select id="triSelect" name="tri">
+                <option disabled><spring:message code="pdt00.tri.default" /></option>
+                <option value="1"><spring:message code="pdt00.tri.asc"></spring:message></option>
+                <option value="2"><spring:message code="pdt00.tri.desc"></spring:message></option>
+            </select>
+            <script>
+            		document.getElementById("triSelect").options[${tri}].selected=true;          	
+            </script>
+            <input type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
     <br />
@@ -44,6 +57,40 @@
                 <tr>
                     <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
                 </tr>
+                <c:if test="${not empty utilisateur}">
+                    <tr class="display-flex">
+                        <form:form action="ajouterProduitPanier.do" requestParam="beanQuantite" method="POST">
+                            <input type="hidden" name="location" value="lister" />
+                            <input type="hidden" name="id" value="${produitDto.idProduitOriginal}" />
+                            <td class="display-flex text-responsive">
+                                <div class="display-flex">
+                                    <%--  bouton - --%>
+                                    <a onclick="decrement('${produitDto.idProduitOriginal}')">
+                                        <button type="button">-</button>
+                                    </a>
+
+                                    <%--  saisie valeur produit  --%>
+                                    <input class="pdt00-pan-quantite text-align-center" type="text" readonly="readonly"
+                                        id="quantite${produitDto.idProduitOriginal}" name="quantite" value="1" size="1">
+
+                                    <%--  bouton + --%>
+                                    <a onclick="increment('${produitDto.idProduitOriginal}')">
+                                        <button type="button">+</button>
+                                    </a>
+                                </div>
+                            </td>
+                            <td colspan="2" class="pdt00Ajouter text-responsive display-flex justify-content-flex-end">
+                                <div>
+                                    <button value="submit"
+                                        class="background-color-green display-flex 
+                                               justify-content-flex-end pdt00Bouton">
+                                        <spring:message code="pdt.addCart" />
+                                    </button>
+                                </div>
+                            </td>
+                        </form:form>
+                    </tr>
+                </c:if>
             </table>
         </c:forEach>
     </div>
