@@ -3,6 +3,8 @@
  */
 package presentation.mentions_legales;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +28,15 @@ public class MentionsLegalesController {
     /**
      * Permet de passer en attributs la methode trouverFichierContact de iProduitService
      * 
-     * @return Le produit dans le model et la vue associée
+     * @param  locale : on recuperer la locale pour definir le nom du fichier html a charger
+     * @return        Le produit dans le model et la vue associée
      */
     @GetMapping
-    public ModelAndView afficherContact() {
+    public ModelAndView afficherContact(final Locale locale) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("mentionsLegales");
-        modelAndView.getModelMap().addAttribute("fichierCGV", iFichierMentionsLegalesService.trouverFichierCGV());
-        modelAndView.getModelMap().addAttribute("fichierCGU", iFichierMentionsLegalesService.trouverFichierCGU());
+        modelAndView.getModelMap().addAttribute("fichierCGV", iFichierMentionsLegalesService.chargerFichierCGV(locale));
+        modelAndView.getModelMap().addAttribute("fichierCGU", iFichierMentionsLegalesService.chargerFichierCGU(locale));
         return modelAndView;
     }
 

@@ -3,6 +3,8 @@
  */
 package presentation.contact;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,13 +28,15 @@ public class ContactController {
     /**
      * Permet de passer en attributs la methode trouverFichierContact de iProduitService
      * 
-     * @return Le produit dans le model et la vue associée
+     * @param  locale : on recuperer la locale pour definir le nom du fichier html a charger
+     * @return        Le produit dans le model et la vue associée
      */
     @GetMapping
-    public ModelAndView afficherContact() {
+    public ModelAndView afficherContact(final Locale locale) {
+
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("contact");
-        modelAndView.getModelMap().addAttribute("fichierHtml", iContactService.trouverFichierContact());
+        modelAndView.getModelMap().addAttribute("fichierHtml", iContactService.chargerFichierContact(locale));
         return modelAndView;
     }
 
