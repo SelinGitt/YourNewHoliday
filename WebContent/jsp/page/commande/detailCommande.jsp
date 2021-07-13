@@ -1,9 +1,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<h1>
+<h1 class="CMD_00-commande">
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
-<div>
+<div class="CMD_04-bouton-retour-margin">
     <a href="listerCommande.do">
         <button class="CMD_04-bouton-retour">
             <spring:message code="detailCommande.btn.retour" />

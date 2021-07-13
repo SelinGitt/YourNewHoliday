@@ -317,3 +317,7 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 .CMD_04-title-text-color {
 	color: #66C5EB;
 }
+
+.CMD_04-bouton-retour-margin {
+	margin-bottom: 25px;
+}
