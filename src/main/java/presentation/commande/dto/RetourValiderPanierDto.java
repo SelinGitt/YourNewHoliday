@@ -11,18 +11,18 @@ import java.util.List;
  *
  * @author Ilaitsivery Jacques MADIOMANANA
  */
-public class CommandeReferenceOuListProduitErreurDto implements Serializable {
+public class RetourValiderPanierDto implements Serializable {
 
     /**
      * Serial ID généré automatiquement
      */
-    private static final long serialVersionUID = 7530116138793985507L;
+    private static final long serialVersionUID = -7543566244365676007L;
 
     // La reference de la commande
     private String            reference;
 
     // la liste des produits qui ne sont plus en base
-    private List<Integer>     idProduitNonConcordant;
+    private List<Integer>     listIdProduitNonConcordant;
 
     /**
      * Getter for reference
@@ -43,20 +43,20 @@ public class CommandeReferenceOuListProduitErreurDto implements Serializable {
     }
 
     /**
-     * Getter for idProduitNonConcordant
+     * Getter for listIdProduitNonConcordant
      *
-     * @return the idProduitNonConcordant
+     * @return the listIdProduitNonConcordant
      */
-    public List<Integer> getIdProduitNonConcordant() {
-        return idProduitNonConcordant;
+    public List<Integer> getListIdProduitNonConcordant() {
+        return listIdProduitNonConcordant;
     }
 
     /**
-     * Setter for idProduitNonConcordant
+     * Setter for listIdProduitNonConcordant
      *
-     * @param idProduitNonConcordant the idProduitNonConcordant to set
+     * @param listIdProduitNonConcordant the listIdProduitNonConcordant to set
      */
-    public void setIdProduitNonConcordant(final List<Integer> idProduitNonConcordant) {
-        this.idProduitNonConcordant = idProduitNonConcordant;
+    public void setListIdProduitNonConcordant(final List<Integer> listIdProduitNonConcordant) {
+        this.listIdProduitNonConcordant = listIdProduitNonConcordant;
     }
 }

@@ -5,6 +5,8 @@ package service.panier.impl;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -12,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
-import presentation.commande.dto.CommandeReferenceOuListProduitErreurDto;
+import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -46,6 +48,8 @@ public class PanierService implements IPanierService {
      * (à condition de respecter aussi les autres criètres)
      */
     private static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
+
+    private final Logger        logger                                = LoggerFactory.getLogger(PanierService.class);
 
     @Autowired
     private IProduitService     iProduitService;
@@ -209,18 +213,21 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final AdressesDto adresses,
-            final Integer idUtilisateur) {
+    public RetourValiderPanierDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
         if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
+            logger.warn("Utilisateur effacé {}", idUtilisateur);
             return null;
         }
-        final var commandeReferenceOuListProduitErreur = new CommandeReferenceOuListProduitErreurDto();
-        commandeReferenceOuListProduitErreur.setIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
-        if (commandeReferenceOuListProduitErreur.getIdProduitNonConcordant().size() == 0) {
+        final var retourValiderPanier = new RetourValiderPanierDto();
+        retourValiderPanier.setListIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
+        if (retourValiderPanier.getListIdProduitNonConcordant().isEmpty()) {
             final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
-            commandeReferenceOuListProduitErreur.setReference(commandeDo.getReference());
+            retourValiderPanier.setReference(commandeDo.getReference());
             this.viderPanier(panier);
+            logger.info("Commande de référence {} passée avec succès.", commandeDo.getReference());
         }
-        return commandeReferenceOuListProduitErreur;
+        logger.info("Fin de validation Commande avec {} produits non concordant.",
+                retourValiderPanier.getListIdProduitNonConcordant().size());
+        return retourValiderPanier;
     }
 }
