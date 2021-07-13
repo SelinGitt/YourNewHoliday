@@ -32,10 +32,6 @@ td.pdt00Description {
 	max-width: 75%
 }
 
-.pdt00-error {
-	Color: #FF0000;
-}
-
 .pdt00Ajouter {
 	width: 100%;
 	flex: 2 1 auto;
