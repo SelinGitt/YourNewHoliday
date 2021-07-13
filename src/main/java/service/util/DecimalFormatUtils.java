@@ -132,9 +132,9 @@ public class DecimalFormatUtils {
         format.setParseBigDecimal(true);
         try {
             return (BigDecimal) format.parse(nombreString.replace(",", ".").replace(" ", "").replace("\u00A0", "").replace("\u202F", ""));
-        } catch (ParseException exception) {
+        } catch (final ParseException exception) {
             final var logger = LoggerFactory.getLogger(DecimalFormatUtils.class);
-            logger.error("Formatage de {} en erreur", nombreString, exception);
+            logger.error("Formatage de {} en erreur : {}", nombreString, exception.getMessage());
             return BigDecimal.valueOf(0);
         }
     }
