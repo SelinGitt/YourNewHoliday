@@ -22,7 +22,7 @@ public enum PageOrigine {
     /**
      * La page de ListePanierProduits (PAN_00)
      */
-    LISTE_PANIER("listePanierProduits", "listePanierProduits.do"),
+    LISTE_PANIER("listerPanierProduits", "listerPanierProduits.do"),
     /**
      * La page de DetailCommande (CMD_04)
      */
