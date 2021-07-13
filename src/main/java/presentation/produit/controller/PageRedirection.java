@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  *
  * @author Lucas
  */
-public enum PageOrigine {
+public enum PageRedirection {
     /**
      * La page de ListerProduits (PDT_00)
      */
@@ -29,21 +29,21 @@ public enum PageOrigine {
     DETAIL_COMMANDE("detail", "detailCommande.do");
 
     private String pageUrl;
-    private String pageConcrete;
+    private String pageDestination;
 
-    PageOrigine(final String pageUrl, final String pageConcrete) {
+    PageRedirection(final String pageUrl, final String pageConcrete) {
         this.pageUrl = pageUrl;
-        this.pageConcrete = pageConcrete;
+        this.pageDestination = pageConcrete;
     }
 
     /**
      * Permet de trouver la value de l'enum en fonction de sa page d'origine
      *
      * @param  pageUrl La page url à retrouver
-     * @return         la pageOrgine trouvée, LISTE_PRODUITS si aucun résultat n'est trouvé
+     * @return         la PageRedirection trouvée, LISTE_PRODUITS si aucun résultat n'est trouvé
      */
-    public static PageOrigine findValue(final String pageUrl) {
-        return Stream.of(PageOrigine.values()).filter(pageOrigine -> pageOrigine.pageUrl.equals(pageUrl)).findFirst()
+    public static PageRedirection findValue(final String pageUrl) {
+        return Stream.of(PageRedirection.values()).filter(pageRedirection -> pageRedirection.pageUrl.equals(pageUrl)).findFirst()
                 .orElse(LISTE_PRODUITS);
     }
 
@@ -53,7 +53,7 @@ public enum PageOrigine {
      * @return the pageConcrete
      */
     public String getPageConcrete() {
-        return pageConcrete;
+        return pageDestination;
     }
 
 }

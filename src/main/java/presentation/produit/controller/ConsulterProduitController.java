@@ -39,9 +39,9 @@ public class ConsulterProduitController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
-        final PageOrigine pageOrigine = PageOrigine.findValue(location);
+        final PageRedirection pageOrigine = PageRedirection.findValue(location);
         modelAndView.getModelMap().addAttribute("redirection", pageOrigine.getPageConcrete());
-        if (PageOrigine.DETAIL_COMMANDE == pageOrigine) {
+        if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
             modelAndView.getModelMap().addAttribute("typeParam", "ref");
             modelAndView.getModelMap().addAttribute("value", param);
         }
