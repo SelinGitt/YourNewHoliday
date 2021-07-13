@@ -18,6 +18,8 @@ import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -163,7 +165,27 @@ class CommandeMapperTest {
         panierDto.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(369.98, Locale.FRANCE));
         panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(3329.82, Locale.FRANCE));
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, "CMD1234567", 1);
+        final var adresses = new AdressesDto();
+        final var adresseLivraison = new CommandeAdresseDto();
+        final var adresseFacturation = new CommandeAdresseDto();
+        final var defaultAdresse = new CommandeAdresseDto();
+        defaultAdresse.setNom("Dupont");
+        defaultAdresse.setPrenom("Marchant");
+        defaultAdresse.setAdresse("123 nous irons au bois");
+
+        adresseLivraison.setNom(defaultAdresse.getNom());
+        adresseLivraison.setPrenom(defaultAdresse.getPrenom());
+        adresseLivraison.setAdresse(defaultAdresse.getAdresse());
+
+        adresseFacturation.setNom(defaultAdresse.getNom());
+        adresseFacturation.setPrenom(defaultAdresse.getPrenom());
+        adresseFacturation.setAdresse(defaultAdresse.getAdresse());
+
+        adresses.setDefaultAdresse(defaultAdresse);
+        adresses.setCommandeAdresseLivraison(adresseLivraison);
+        adresses.setCommandeAdresseFacturation(adresseFacturation);
+
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CMD1234567", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
         assertEquals("CMD1234567", commandeDo.getReference());

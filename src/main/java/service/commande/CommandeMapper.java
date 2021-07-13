@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
-import presentation.commande.dto.CommandeAdresseDto;
+import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -58,12 +58,14 @@ public class CommandeMapper {
      * Permet de mapper un Panier en CommandeDo
      *
      * @param  panier        le panier en session
+     * @param  adresses      les adresses entrées par l'utilisateur
      * @param  reference     la reference de la commande qui a été généré en ammon
      * @param  idUtilisateur l'id de l'utilisateur en session
      * @return               CommandeDo la commande qui doit être enregistré en base de donnée
      */
     // TODO : ajouter List<CommandeAdresseDto> 
-    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final String reference, final Integer idUtilisateur) {
+    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final String reference,
+            final Integer idUtilisateur) {
         final var commandeDo = new CommandeDo();
         commandeDo.setId(null);
         commandeDo.setReference(reference);
@@ -73,13 +75,8 @@ public class CommandeMapper {
         commandeDo.setQuantiteTotale(calculerQuantiteTotal(panier));
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
-        final CommandeAdresseDto adresseFacturation = new CommandeAdresseDto();
-        // FIXME remplacez les adresses par celles reçues en paramètre
-        adresseFacturation.setAdresse("123 nous irons au bois");
-        commandeDo.setAdresseFacturation(adresseFacturation.getAdresse());
-        final CommandeAdresseDto adresseLivraison = new CommandeAdresseDto();
-        adresseLivraison.setAdresse("123 nous irons au bois");
-        commandeDo.setAdresseLivraison(adresseLivraison.getAdresse());
+        commandeDo.setAdresseFacturation(adresses.getCommandeAdresseFacturation().getAdresse());
+        commandeDo.setAdresseLivraison(adresses.getCommandeAdresseLivraison().getAdresse());
         return commandeDo;
     }
 

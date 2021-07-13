@@ -3,6 +3,7 @@
  */
 package service.panier;
 
+import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeReferenceOuListProduitErreurDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -84,10 +85,11 @@ public interface IPanierService {
      * Permet d'enregistrer le panier en une commande
      *
      * @param  panier        : le panier en sesion
+     * @param  adresses      : objet contenant les adresses entrées par l'utilisateur
      * @param  idUtilisateur : l'identifiant de l'utilisateur en session
      * @return               CommandePanierListProduitErreur : null si utilisateur KO, avec reference si panier OK, sinon
      *                       liste des identifiants de produits non valide non vide
      */
-    CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final Integer idUtilisateur);
+    CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 
 }

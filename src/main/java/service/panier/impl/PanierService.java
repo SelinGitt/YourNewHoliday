@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeReferenceOuListProduitErreurDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -208,7 +209,8 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final Integer idUtilisateur) {
+    public CommandeReferenceOuListProduitErreurDto validerPanier(final PanierDto panier, final AdressesDto adresses,
+            final Integer idUtilisateur) {
         if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
             return null;
         }
@@ -218,7 +220,7 @@ public class PanierService implements IPanierService {
             // TODO :
 
             // passer les adresses à la méthode 
-            final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, idUtilisateur);
+            final CommandeDo commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
             commandePanierListProduitErreur.setReference(commandeDo.getReference());
             this.viderPanier(panier);
         }

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -47,9 +48,9 @@ public interface ICommandeService {
      * Permet de générer la commande à partir d'un panier
      *
      * @param  panier        le panier en session
+     * @param  adresses      les adresses entrées par l'utilisateur
      * @param  idUtilisateur l'utilisateur en session
      * @return               CommandeDo la commande enregistrée en base
      */
-    // TODO : ajouter List<CommandeAdresseDto> 
-    CommandeDo passerCommande(final PanierDto panier, final Integer idUtilisateur);
+    CommandeDo passerCommande(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 }

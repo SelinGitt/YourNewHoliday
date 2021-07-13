@@ -5,10 +5,12 @@ package presentation.panier.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import presentation.commande.dto.AdressesDto;
 import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.panier.IPanierService;
@@ -30,12 +32,15 @@ public class ValiderPanierController {
      *
      * @param  panierDto   le panier de l'utilisateur
      * @param  utilisateur l'utilisateur connecté
+     * @param  adresses    liste des adresses récupérer du formulaire
      * @return             String l'url vers lequel on doit se rendre
      */
-    @GetMapping
+    @PostMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
-            final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur) {
-        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, Integer.parseInt(utilisateur.getIdUtilisateur()));
+            final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur,
+            final @ModelAttribute("adresses") AdressesDto adresses) {
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, adresses,
+                Integer.parseInt(utilisateur.getIdUtilisateur()));
         if (referenceCommandeOuListProduitErreur == null) {
             // On détruit la session donc le panier sera vider automatiquement
             return "redirect:deconnecter.do";
