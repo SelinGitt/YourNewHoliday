@@ -38,7 +38,7 @@
         <tbody class="pdt01Body">
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
-                    <td class="pdt01Body">${produitDto.reference}</td>
+                    <td class="pdt01Body"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}">${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
 
@@ -59,7 +59,7 @@
                         </c:choose></td>
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="pdt01Image">
-                    </a></td>
+                    </a>
                     <td class="pdt01Body"><a href="javascript:void()"> <img alt=""
                             src="img/commun/poubelle.jpg" class="pdt01Image">
                     </a></td>
