@@ -24,8 +24,7 @@ public class UtilisateurConnecteDto implements Serializable {
     private String              idUtilisateur;
     private String              nom;
     private String              prenom;
-    //FIXME
-    //    private String              nbProduitPanier;
+    private String              nbProduitPanier;
 
     /**
      * Constructor
@@ -106,24 +105,23 @@ public class UtilisateurConnecteDto implements Serializable {
         this.prenom = prenom;
     }
 
-    //FIXME
-    //    /**
-    //     * Getter for nbProduitPanier
-    //     *
-    //     * @return the nbProduitPanier
-    //     */
-    //    public String getNbProduitPanier() {
-    //        return nbProduitPanier;
-    //    }
-    //
-    //    /**
-    //     * Setter for nbProduitPanier
-    //     *
-    //     * @param nbProduitPanier the nbProduitPanier to set
-    //     */
-    //    public void setNbProduitPanier(final String nbProduitPanier) {
-    //        this.nbProduitPanier = nbProduitPanier;
-    //    }
+    /**
+     * Getter for nbProduitPanier
+     *
+     * @return the nbProduitPanier
+     */
+    public String getNbProduitPanier() {
+        return nbProduitPanier;
+    }
+
+    /**
+     * Setter for nbProduitPanier
+     *
+     * @param nbProduitPanier the nbProduitPanier to set
+     */
+    public void setNbProduitPanier(final String nbProduitPanier) {
+        this.nbProduitPanier = nbProduitPanier;
+    }
 
     /**
      * Getter for serialversionuid

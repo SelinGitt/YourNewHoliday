@@ -44,6 +44,10 @@ public class ImageService implements IImageService {
             return imageDao.getImage(path);
         }
         if (TypeImage.UTILISATEUR.type.equals(type)) {
+            if ("0".equals(id)) {
+                path = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + "default_avatar.jpg";
+                return imageDao.getImage(path);
+            }
             final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
             path = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
             return imageDao.getImage(path);

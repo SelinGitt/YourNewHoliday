@@ -8,7 +8,8 @@
         <div class="align-item-center justify-content-center">
             <c:if test="${not empty error}">
                 <div class="background-error-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+                    <span class="fa fa-exclamation"></span> 
+                    <span class="message"><spring:message code="${error}" /></span>
                 </div>
             </c:if>
             <div class="user00-title">
@@ -78,7 +79,7 @@
 
             </div>
             <div>
-                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr" alt="${utilisateurDto.reference}"/>
+                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr" alt="displayImage.do?id=0&type=usr"/>
             </div>
         </div>
     </div>
