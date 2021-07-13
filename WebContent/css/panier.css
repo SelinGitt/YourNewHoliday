@@ -1,15 +1,58 @@
 @charset "UTF-8";
 /* FEATURE TEAM PANIER */
 
-/* correctif : le nom des classes spécifique doit commencer par le nom de la FT team */
-
-/* PAN00 */
-/* CSS factorisé */
+/* CSS FACTORISE ENTRE PAN_00, PAN_00 vide et PAN_08 */
 .panier-title {
 	text-align: center;
 }
 
-/* texte aligné à droite */
+/* CSS FACTORISE ENTRE PAN_00, maCommande et PAN_08 */
+.panier-legend {
+	color: #66C5EB;
+	font-size: 1.875em;
+}
+
+/* PAN_00 vide */
+.panier-vide-ligne {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.panier-vide-img {
+	width: 50vh;
+	height: 50vh;
+}
+
+/* CSS FACTORISE ENTRE PAN_00 et PAN_08 */
+.panier-elements-a-droite {
+	width: 90%;
+	padding-left: 5%;
+}
+
+/* Encart Ma Commande (cf maCommande.jsp, inséré dans PAN_00 et PAN_08) */
+.panier-ligne-prix-unitaire {
+	width: 80%;
+}
+
+.panier-ligne-quantite {
+	width: 80%;
+}
+
+.panier-ligne-quantite-box {
+	margin-right: 0.8em;
+}
+
+.panier-macommande {
+	height: 30vh;
+	width: 85%;
+	padding-left: 5%;
+}
+
+.panier-ligne-label {
+	width: 50%;
+}
+
+/* PAN_00 */
 .prix {
 	text-align: right;
 	width: 10em;
@@ -19,19 +62,12 @@
 	text-align: center;
 }
 
-/* bordures */
 .panier-bordure-1px {
 	border: 0.063em solid black;
 }
 
 .panier-titre-produit {
 	color: #66C5EB;
-}
-
-/* legendes */
-.panier-legend {
-	color: #66C5EB;
-	font-size: 1.875em;
 }
 
 .panier-buttons {
@@ -52,13 +88,10 @@
 	color: #FFFFFF;
 	margin: auto;
 }
-/* CSS specifique */
 
-/* images responsives */
-.panier-responsive {
+.panier-image-responsive {
 	width: 3.125em;
 	height: auto;
-	margin-bottom: 2em;
 	margin-top: -1em;
 }
 
@@ -67,14 +100,16 @@
 }
 
 .panier-image-produit-container {
-	margin-left: 1vh;
-	margin-top: 1vh;
-	margin-bottom: 1vh;
+	margin: 1vh;
 	height: 9em;
 }
 
+.panier-div-image {
+	width: 28.41vh;
+}
+
 .panier-description-produit {
-	width: 49vh;
+	width: 58.5vh;
 }
 
 .panier-image-produit {
@@ -88,37 +123,6 @@
 	width: 120vh;
 }
 
-.panier-macommande {
-	height: 30vh;
-	width: 85%;
-	padding-left: 5%;
-}
-
-.panier-elements-a-droite {
-	width: 90%;
-	padding-left: 5%;
-}
-
-.panier-cellules-ligne {
-	width: 80%;
-}
-
-.panier-ligne-prix-unitaire {
-	width: 80%;
-}
-
-.panier-ligne-label {
-	width: 50%;
-}
-
-.panier-ligne-quantite {
-	width: 80%;
-}
-
-.panier-ligne-quantite-box {
-	margin-right: 0.8em;
-}
-
 .panier-vider {
 	margin-top: 1.5em;
 	margin-right: 1.5em;
@@ -126,33 +130,32 @@
 
 .panier-td {
 	width: 6em;
-	height: 9em;
 }
 
-.panier-vide-img {
-	width: 50vh;
-	height: 50vh;
-}
-
-.panier-prix-unitaire {
-	width: 18%;
+.panier-th {
+	width: 85.6vh;
 }
 
 .panier-quantite {
 	width: 1.7em;
+	height: 1.125em;
+}
+
+.panier-antimarge-prix-unitaire {
+	margin-top: 0.5em;
+	margin-bottom: 0em;
 }
 
 .panier-label {
-	padding-top: 2.5em;
+	height: 3.75em;
+}
+
+.panier-td-component {
+	height: 3.125em;
 }
 
 .panier-supprimer {
 	padding-top: 0.21em;
-}
-
-.panier-vide-ligne {
-	font-size: 1.5em;
-	font-weight: bold;
 }
 
 /* PAN08 */

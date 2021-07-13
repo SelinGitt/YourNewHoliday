@@ -26,8 +26,8 @@
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-bordure-1px display-flex">
-                                <div>
+                            <th class="panier-bordure-1px display-flex panier-th">
+                                <div class="panier-div-image">
                                     <div class="panier-image-produit-container">
                                         <%--  photo --%>
                                         <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}"><img
@@ -36,25 +36,25 @@
                                             alt="${entry.key.destination}" /></a>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="panier-description-produit">
                                     <div>
                                         <%--  nom et référence --%>
                                         <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                     </div>
                                     <%--  description --%>
-                                    <div class="panier-description-produit">${entry.key.description}</div>
+                                    <div>${entry.key.description}</div>
                                 </div>
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
                             <td class="panier-bordure-1px panier-td text-align-center">
                                 <%--  label --%>
-                                <div>
-                                    <h3 class="panier-prix-unitaire-center">
+                                <div class="panier-label display-flex justify-content-center">
+                                    <h3 class="panier-antimarge-prix-unitaire">
                                         <spring:message code="pan00.prix.unitaire" />
                                     </h3>
                                 </div> <%--  valeur --%>
-                                <div class="justify-content-center">
+                                <div class="panier-td-component justify-content-center display-flex">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
                                 </div>
@@ -64,14 +64,14 @@
                             <td class="panier-bordure-1px panier-td text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center">
                                         <h3>
                                             <spring:message code="pan00.quantite" />
                                         </h3>
                                     </div>
 
                                 </div>
-                                <div class="display-flex justify-content-center">
+                                <div class="panier-td-component justify-content-center display-flex">
 
                                     <%--  bouton - --%>
                                     <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
@@ -93,14 +93,14 @@
                             <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="display-flex justify-content-center">
-                                        <h3 class="panier-label">
+                                    <div class="panier-label display-flex justify-content-center">
+                                        <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
                                     </div>
 
                                 </div> <%--  image --%>
-                                <div class="justify-content-center display-flex">
+                                <div class="panier-td-component justify-content-center display-flex">
                                     <a href="supprimerProduitPanier.do?id=${entry.key.idProduitOriginal }"><img
                                         class="panier-responsive" src="img/commun/poubelle.jpg"
                                         alt="icone poubelle pour suppression" /></a>
