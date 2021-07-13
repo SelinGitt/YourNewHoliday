@@ -13,7 +13,7 @@ import java.io.Serializable;
 public class AdressesDto implements Serializable {
 
     /**
-     * 
+     * id automatique pour la sérialisation
      */
     private static final long  serialVersionUID = -5129924225575835325L;
 
