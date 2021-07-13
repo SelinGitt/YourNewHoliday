@@ -72,7 +72,6 @@ public class CommandeService implements ICommandeService {
         return listProduitEnErreur;
     }
 
-    // TODO ajouter List<CommandeAdresseDto> 
     @Override
     public CommandeDo passerCommande(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
         String reference = null;

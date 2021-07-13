@@ -63,7 +63,6 @@ public class CommandeMapper {
      * @param  idUtilisateur l'id de l'utilisateur en session
      * @return               CommandeDo la commande qui doit être enregistré en base de donnée
      */
-    // TODO : ajouter List<CommandeAdresseDto> 
     public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final String reference,
             final Integer idUtilisateur) {
         final var commandeDo = new CommandeDo();

@@ -14,15 +14,15 @@ import java.util.List;
 public class CommandeReferenceOuListProduitErreurDto implements Serializable {
 
     /**
-     * 
+     * Serial ID généré automatiquement
      */
     private static final long serialVersionUID = 7530116138793985507L;
 
     // La reference de la commande
-    private String        reference              = null;
+    private String            reference;
 
     // la liste des produits qui ne sont plus en base
-    private List<Integer> idProduitNonConcordant = null;
+    private List<Integer>     idProduitNonConcordant;
 
     /**
      * Getter for reference
