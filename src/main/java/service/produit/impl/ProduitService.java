@@ -8,6 +8,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.util.IGenerateReferenceUtil;
 
 /**
  * Classe représentant l'interface métier {@link IProduitService}
@@ -31,13 +33,17 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger           logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao    produitDao;
+    private IProduitDao            produitDao;
 
     @Autowired
-    private IPanierService panierService;
+    private IPanierService         panierService;
+
+    @Autowired
+    @Qualifier("PRD")
+    private IGenerateReferenceUtil generateReferenceProduit;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -118,10 +124,16 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto creerProduit(final ProduitDto produitDto) {
-        final var refProduit = this.trouverParReference(produitDto.getReference());
-        if (refProduit == null) {
+        // Une référence est générée automatiquement si elle n'est pas renseignée
+        if (produitDto.getReference().isBlank()) {
+            this.generateReferenceProduit.constructPrefix(produitDto.getDestination());
+            produitDto.setReference(generateReferenceProduit.generateReference());
+        }
+
+        final var produitDtoTrouve = this.trouverParReference(produitDto.getReference());
+        if (produitDtoTrouve == null) {
             final var produitDo = ProduitMapper.mapToDo(produitDto);
-            this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
+            this.logger.debug("La référence : {} a été utilisé dans la méthode creerProduit", produitDto.getReference());
             return ProduitMapper.mapToDto(produitDao.create(produitDo));
         }
         this.logger.info(" La référence  {} existe déjà en BdD ", produitDto.getReference());

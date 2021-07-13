@@ -30,19 +30,21 @@ public class ProduitValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "miseEnVente", "pdt03.miseEnVente.vide", "Put On Sale is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "pdt03.description.vide", "Description is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "prixUnitaire", "pdt03.prix.vide", "Price is required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "reference", "pdt03.reference.vide", "Reference is required");
 
         //Cast pour vérification plus fine
         final var produitDto = (ProduitDto) target;
 
-        if (!produitDto.getReference().matches("([A-Z]){3}([1-9]){7}")) {
-            errors.rejectValue("reference", "pdt03.reference.format");
-        }
+        final var ref = produitDto.getReference();
 
-        if (produitDto.getReference().length() != 10) {
-            errors.rejectValue("reference", "pdt03.reference.nbCaractere");
-        }
+        // Les règles de valdation sont appliqués si le champs référence n'est pas vide
+        if (!ref.isBlank()) {
+            if (!ref.matches("([A-Z]){3}([1-9A-Z]){7}")) {
+                errors.rejectValue("reference", "pdt03.reference.format");
+            }
 
+            if (ref.length() != 10) {
+                errors.rejectValue("reference", "pdt03.reference.nbCaractere");
+            }
+        }
     }
-
 }

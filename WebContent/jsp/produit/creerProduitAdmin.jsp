@@ -36,7 +36,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.reference" /></td>
                         <td><div>
-                                <form:input path="reference" />
+                                <form:input path="reference"/>
                             </div>
                             <div class="pdt03formError">
                                 <form:errors path="reference" cssClass="text-color-rouge" />
