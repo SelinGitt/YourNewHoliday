@@ -29,7 +29,8 @@
                             <th class="panier-tab-ligne panier-bordure-1px display-flex">
                                 <div>
                                     <%--  photo --%>
-                                    <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}"><img
+                                    <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}
+                                    &location=listerPanierProduits"><img
                                         class="panier-responsive panier-image-produit"
                                         src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
                                         alt="${entry.key.destination}" /></a>

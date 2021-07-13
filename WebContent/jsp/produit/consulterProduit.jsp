@@ -1,10 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div>
         <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
     </div>
-    <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message></a>
+    <c:choose>
+        <c:when test="${not empty typeParam}">
+            <a href="${redir}?${typeParam}=${value}"><spring:message code="pdt04.retour"></spring:message></a>
+        </c:when>
+        <c:otherwise>
+            <a href="${redir}"><spring:message code="pdt04.retour"></spring:message></a>
+        </c:otherwise>
+    </c:choose>
+
     <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
         <div>
             <table aria-label="consulterProduit">
