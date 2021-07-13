@@ -52,7 +52,7 @@ public class CreerUtilisateurValidator implements Validator {
         }
 
         // Check format du mot de passe
-        if (PasswordUtil.isValidPassword(user.getPassword())) {
+        if (!PasswordUtil.isValidPassword(user.getPassword())) {
             errors.rejectValue("password", "usr05.erreur.password_format", defaultError);
         }
 
