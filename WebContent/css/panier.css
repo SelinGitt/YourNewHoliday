@@ -109,13 +109,20 @@
 }
 
 .panier-description-produit {
-	width: 58.5vh;
+	width: 57vh;
 }
 
 .panier-image-produit {
 	top: 0em;
 	left: 0em;
 	height: 9em;
+}
+
+.panier-responsive {
+	width: 3.125em;
+	height: auto;
+	margin-bottom: 2em;
+	margin-top: -1em;
 }
 
 .panier-left {
