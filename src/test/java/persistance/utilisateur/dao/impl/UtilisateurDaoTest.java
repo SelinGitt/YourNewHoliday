@@ -44,12 +44,12 @@ class UtilisateurDaoTest {
     private IUtilisateurDao iUtilisateurDao;
 
     /**
-     * Test method for {@link persistance.commun.dao.impl.AbstractGenericDao#findAll()}.
+     * Test method for {@link persistance.utilisateur.dao.impl.UtilisateurDao#findAllTriAlpha()}.
      */
     @Test
-    void testFindAll() {
+    void testFindAllTriAlpha() {
         // On récupère les données
-        final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAll();
+        final List<UtilisateurDo> listUtilisateur = this.iUtilisateurDao.findAllTriAlpha();
         // On teste la conformitée du nombre de données
         Assertions.assertEquals(7, listUtilisateur.size());
 
