@@ -51,10 +51,10 @@ public class GetPropertyValues {
             // On lit le fichier YNH-application.properties
             prop.load(inputStream);
             // On place dans la map chaque couple clé/valeur du fichier properties
-            getPropertiesmap().put("contactRepo", prop.getProperty("contactRepo"));
-            getPropertiesmap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
-            getPropertiesmap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
-            getPropertiesmap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
+            getPropertiesMap().put("contactRepo", prop.getProperty("contactRepo"));
+            getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
+            getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
+            getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
             // On catch les éventuelles exceptions générées par le stream
         } catch (final Exception e) {
             logger.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);
@@ -66,7 +66,7 @@ public class GetPropertyValues {
      *
      * @return the propertiesmap
      */
-    public static Map<String, String> getPropertiesmap() {
+    public static Map<String, String> getPropertiesMap() {
         return PROPERTIESMAP;
     }
 }

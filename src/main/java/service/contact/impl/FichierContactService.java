@@ -37,13 +37,13 @@ public class FichierContactService implements IFichierContactService {
     public String chargerFichierContact(final Locale locale) {
         final String nomFichier = trouverFichierContact(locale);
         logger.info("methode chargerFichierContact qui charge le fichier : {} ", nomFichier);
-        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesmap().get(PATH) + nomFichier);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + nomFichier);
     }
 
     @Override
     public String trouverFichierContact(final Locale locale) {
         final String nomFichier = CONTACT_RADICAL + locale.toString() + HTML;
-        if (fichierDao.trouverFichier(GetPropertyValues.getPropertiesmap().get(PATH) + nomFichier)) {
+        if (fichierDao.trouverFichier(GetPropertyValues.getPropertiesMap().get(PATH) + nomFichier)) {
             logger.info(" on a trouver le fichier : {} ", nomFichier);
             return nomFichier;
         }
