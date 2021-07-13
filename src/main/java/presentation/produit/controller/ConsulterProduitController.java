@@ -39,23 +39,14 @@ public class ConsulterProduitController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
-        selectReturnPage(PageOrigine.findValue(location), param, modelAndView);
-        return modelAndView;
-
-    }
-
-    /**
-     * Permet de trouver la page de retour en fonction de sa location et de ses paramètres
-     *
-     * @param pageOrigine  page d'origine
-     * @param param        paramètre de requête sauvegardé pour le retour
-     * @param modelAndView le modelAndView pour enregistrer les attributs
-     */
-    private void selectReturnPage(final PageOrigine pageOrigine, final String param, final ModelAndView modelAndView) {
+        final PageOrigine pageOrigine = PageOrigine.findValue(location);
         modelAndView.getModelMap().addAttribute("redirection", pageOrigine.getPageConcrete());
         if (PageOrigine.DETAIL_COMMANDE == pageOrigine) {
             modelAndView.getModelMap().addAttribute("typeParam", "ref");
             modelAndView.getModelMap().addAttribute("value", param);
         }
+        return modelAndView;
+
     }
+
 }
