@@ -128,7 +128,7 @@ public class ConnecterController {
         }
         //Si message présent, on le stocke en FlashAttribute de RedirectAttributes 
         if (!code.isBlank()) {
-            redirectAttributes.addFlashAttribute("deletionSuccess", code);
+            redirectAttributes.addFlashAttribute("anySuccess", code);
         }
         return new ModelAndView("redirect:/listerProduits.do");
     }
