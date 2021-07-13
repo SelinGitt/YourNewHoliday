@@ -16,22 +16,22 @@ import presentation.utilisateur.util.EmailUtil;
 class EmailUtilTest {
 
     /**
-     * Test OK pour {@link persistance.utilisateur.util.EmailUtil#isEmailValid(String)}
+     * Test OK pour {@link persistance.utilisateur.util.EmailUtil#isValidEmail(String)}
      */
     @Test
     void testIsValidEmailOK() {
-        Assertions.assertTrue(EmailUtil.isEmailValid("test@test.fr"));
-        Assertions.assertTrue(EmailUtil.isEmailValid("Aeztzet949@test.fr"));
-        Assertions.assertTrue(EmailUtil.isEmailValid("198494@ezrzerzer.com"));
+        Assertions.assertTrue(EmailUtil.isValidEmail("test@test.fr"));
+        Assertions.assertTrue(EmailUtil.isValidEmail("Aeztzet949@test.fr"));
+        Assertions.assertTrue(EmailUtil.isValidEmail("198494@ezrzerzer.com"));
     }
 
     /**
-     * Test KO pour {@link persistance.utilisateur.util.EmailUtil#isEmailValid(String)}
+     * Test KO pour {@link persistance.utilisateur.util.EmailUtil#isValidEmail(String)}
      */
     @Test
     void testIsValidEmailKO() {
-        Assertions.assertFalse(EmailUtil.isEmailValid(""));
-        Assertions.assertFalse(EmailUtil.isEmailValid("test"));
-        Assertions.assertFalse(EmailUtil.isEmailValid("test.test"));
+        Assertions.assertFalse(EmailUtil.isValidEmail(""));
+        Assertions.assertFalse(EmailUtil.isValidEmail("test"));
+        Assertions.assertFalse(EmailUtil.isValidEmail("test.test"));
     }
 }
