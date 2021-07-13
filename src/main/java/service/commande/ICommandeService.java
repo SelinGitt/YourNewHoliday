@@ -52,5 +52,5 @@ public interface ICommandeService {
      * @param  idUtilisateur l'utilisateur en session
      * @return               CommandeDo la commande enregistrée en base
      */
-    CommandeDo passerCommande(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
+    CommandeDo validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 }

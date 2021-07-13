@@ -220,7 +220,7 @@ public class PanierService implements IPanierService {
         final var retourValiderPanier = new RetourValiderPanierDto();
         retourValiderPanier.setListIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
         if (retourValiderPanier.getListIdProduitNonConcordant().isEmpty()) {
-            final var commandeDo = this.iCommandeService.passerCommande(panier, adresses, idUtilisateur);
+            final var commandeDo = this.iCommandeService.validerPanier(panier, adresses, idUtilisateur);
             retourValiderPanier.setReference(commandeDo.getReference());
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDo.getReference());

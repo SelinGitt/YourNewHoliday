@@ -73,7 +73,7 @@ public class CommandeService implements ICommandeService {
     }
 
     @Override
-    public CommandeDo passerCommande(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
+    public CommandeDo validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
         String reference = null;
         do {
             reference = this.referenceCommande.generateReference();
