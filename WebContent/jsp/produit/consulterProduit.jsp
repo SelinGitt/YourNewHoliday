@@ -24,7 +24,8 @@
                             alt="${consulterProduitDto.destination}" class="pdt04Image" /></td>
                     </tr>
                     <tr>
-                        <td><spring:message code="pdt04.reference"></spring:message>${consulterProduitDto.reference}</td>
+                        <td><spring:message code="pdt04.reference"></spring:message>
+                        ${consulterProduitDto.reference}</td>
                     </tr>
                     <tr>
                         <td><spring:message code="pdt04.prix">
