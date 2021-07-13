@@ -70,6 +70,7 @@ public class ConnecterController {
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
      * @param  result         : resultats du binding utilisé pour gérer les erreurs
      * @param  modelAndView   : ModelAndView du controller
+     * @param  anySuccess     : Message de success
      * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
