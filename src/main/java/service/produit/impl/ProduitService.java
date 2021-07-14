@@ -115,7 +115,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
-        logger.debug("Produit Service / méthode trierListe, pSearchTerm : {}", pSearchTerm);
+        logger.debug("Produit Service / méthode rechercherAllProduits, pSearchTerm : {}", pSearchTerm);
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
         }
