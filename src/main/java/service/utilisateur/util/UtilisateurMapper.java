@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.util.DateFormatUtil;
 
 /**
  * Classe UtilisateurMapper <br>
@@ -42,7 +43,7 @@ public class UtilisateurMapper {
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
-        utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
+        utilisateurDto.setDateInscription(DateFormatUtil.formaterDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
         utilisateurDto.setEstDesactive(utilisateurDo.getEstDesactive());
@@ -66,7 +67,7 @@ public class UtilisateurMapper {
         utilisateurDo.setIdUtilisateur(utilisateurDto.getId());
         utilisateurDo.setReference(utilisateurDto.getReference());
         utilisateurDo.setEmail(utilisateurDto.getEmail());
-        utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));
+        utilisateurDo.setDateInscription(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateInscription()));
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
         utilisateurDo.setEstDesactive(utilisateurDto.getEstDesactive());
