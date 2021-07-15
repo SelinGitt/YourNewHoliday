@@ -37,7 +37,7 @@ public class FichierDao implements IFichierDao {
             }
         } catch (final IOException exception) {
             //si exception 
-            logger.error("IOException Error : {}", exception);
+            logger.error("IOException Error : ", exception);
         }
         return strBuilder.toString();
     }
