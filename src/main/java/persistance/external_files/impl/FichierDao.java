@@ -28,7 +28,7 @@ public class FichierDao implements IFichierDao {
         final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);
-        logger.info("methode chargerFichier de FichierDao qui charge :{} ", nomFichier);
+        logger.info("Méthode chargerFichier de FichierDao qui charge le fichier : {}", nomFichier);
         try (final var scanner = new Scanner(file)) {
             //passe le contenu du fichier html dans la string contenuHtml
             while (scanner.hasNext()) {
@@ -37,7 +37,7 @@ public class FichierDao implements IFichierDao {
             }
         } catch (final IOException exception) {
             //si exception 
-            logger.error("IOException Error :", exception);
+            logger.error("IOException Error : {}", exception);
         }
         return strBuilder.toString();
     }
@@ -45,7 +45,7 @@ public class FichierDao implements IFichierDao {
     @Override
     public boolean trouverFichier(final String nomFichier) {
         final var file = new File(nomFichier);
-        logger.info("methode trouverFichier de FichierDao qui recherche :{} ", nomFichier);
+        logger.info("Méthode trouverFichier de FichierDao qui recherche le fichier :{} ", nomFichier);
         //on verifie que le fichier peut etre lu
         return file.canRead();
     }
