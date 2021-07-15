@@ -45,7 +45,7 @@ public class FichierDao implements IFichierDao {
     @Override
     public boolean trouverFichier(final String nomFichier) {
         final var file = new File(nomFichier);
-        logger.info("Méthode trouverFichier de FichierDao qui recherche le fichier :{} ", nomFichier);
+        logger.info("Méthode trouverFichier de FichierDao qui recherche le fichier : {}", nomFichier);
         //on verifie que le fichier peut etre lu
         return file.canRead();
     }
