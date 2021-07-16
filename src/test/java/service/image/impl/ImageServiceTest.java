@@ -3,6 +3,7 @@
  */
 package service.image.impl;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -53,4 +54,18 @@ class ImageServiceTest {
 
     }
 
+    /**
+     * Test method for {@link service.image.impl.ImageService#getImage(java.lang.String)}.
+     */
+    @Test
+    void testGetImageReturnsNull() {
+        final var produitDo = new ProduitDo();
+        produitDo.setCheminImage("c:/temp/img/maldives.jpg");
+        when(this.iProduitDao.findById(Mockito.anyInt())).thenReturn(produitDo);
+
+        when(this.imageDao.getImage(Mockito.anyString())).thenReturn(new File("src/test/resources/img/dummyImage.jpg"));
+        final var file = imageService.getImage("1", "ShouldReturnNull");
+        assertNull(file);
+
+    }
 }
