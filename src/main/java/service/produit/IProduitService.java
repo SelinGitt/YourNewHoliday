@@ -105,4 +105,13 @@ public interface IProduitService {
      *                      <code>false</code> dans le cas contraire
      */
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * Permet de choisir la méthode pour consulter un produit selon le role
+     * 
+     * @param  idRole    id du role de l'utilisateur
+     * @param  idProduit id du produit à consulter
+     * @return           produit à consulter
+     */
+    ProduitDto choixConsulterProduit(final Integer idRole, final Integer idProduit);
 }
