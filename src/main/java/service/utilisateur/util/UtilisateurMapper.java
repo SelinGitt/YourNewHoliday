@@ -3,9 +3,6 @@ package service.utilisateur.util;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
@@ -18,8 +15,6 @@ import service.util.DateFormatUtil;
  * @author Valentin
  */
 public class UtilisateurMapper {
-
-    private static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
 
     /**
      * Constructor
