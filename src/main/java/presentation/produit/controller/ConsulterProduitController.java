@@ -47,13 +47,6 @@ public class ConsulterProduitController {
         }
         switch (id) {
             case 1:
-                if (iProduitService.trouverProduitEnVente(idProduit) != null) {
-                    modelAndView.getModelMap().addAttribute("consulterProduitDto",
-                            iProduitService.choixConsulterProduit(id, idProduit));
-                    return modelAndView;
-                }
-                return new ModelAndView("redirect:/404.do");
-
             case 2:
                 if (iProduitService.trouverProduitEnVente(idProduit) != null) {
                     modelAndView.getModelMap().addAttribute("consulterProduitDto",
@@ -61,16 +54,13 @@ public class ConsulterProduitController {
                     return modelAndView;
                 }
                 return new ModelAndView("redirect:/404.do");
-
             case 3:
                 if (iProduitService.trouverProduitById(idProduit) != null) {
                     modelAndView.getModelMap().addAttribute("consulterProduitDto",
                             iProduitService.choixConsulterProduit(id, idProduit));
                     return modelAndView;
-
                 }
                 return new ModelAndView("redirect:/404.do");
-
             default:
                 break;
         }
