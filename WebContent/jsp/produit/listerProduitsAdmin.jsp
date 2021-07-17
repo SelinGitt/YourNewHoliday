@@ -60,7 +60,7 @@
                         </c:choose></td>
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="pdt01Image">
-                    </a>
+                    </a></td>
                     <td class="pdt01Body"><a href="javascript:void()"> <img alt=""
                             src="img/commun/poubelle.jpg" class="pdt01Image">
                     </a></td>
