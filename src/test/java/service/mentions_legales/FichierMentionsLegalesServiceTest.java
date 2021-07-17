@@ -44,7 +44,7 @@ class FichierMentionsLegalesServiceTest {
      */
     @Test
     void testChargerFichierCGV() {
-        Mockito.when(iFichierContactDao.chargerFichier(Mockito.anyString()))
+        Mockito.when(iFichierContactDao.chargerFichier(Mockito.anyString(), Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierMentionsLegalesService);
@@ -59,7 +59,7 @@ class FichierMentionsLegalesServiceTest {
      */
     @Test
     void testChargerFichierCGU() {
-        Mockito.when(iFichierContactDao.chargerFichier(Mockito.anyString()))
+        Mockito.when(iFichierContactDao.chargerFichier(Mockito.anyString(), Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierMentionsLegalesService);

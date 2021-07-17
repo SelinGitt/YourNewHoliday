@@ -47,7 +47,8 @@ class FichierDaoTest {
     }
 
     /**
-     * Test method for {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String)}.
+     * Test method for
+     * {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String, java.lang.String)}.
      */
     @Test
     void testChargerFichier() {
@@ -55,11 +56,29 @@ class FichierDaoTest {
         //pour le test le fichier sera directement dans le projet : 
         //aller dans propriété sur test-contact.html => recuperer le repertoire
         final String nomFichier = "src/test/resources/contact/test-contact.html";
-        assertNotNull(iFichier.chargerFichier(nomFichier));
-        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.chargerFichier(nomFichier));
+        assertNotNull(iFichier.chargerFichier(nomFichier, "Cp1252"));
+        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.chargerFichier(nomFichier, "Cp1252"));
 
         //verifier avec un fichier non exisitant
-        assertEquals("", iFichier.chargerFichier("C:/non/existant.html"));
+        assertEquals("", iFichier.chargerFichier("C:/non/existant.html", "Cp1252"));
+
+    }
+
+    /**
+     * Test method for
+     * {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String, java.lang.String)}.
+     */
+    @Test
+    void testChargerFichierUtf8() {
+        //les tests marcheront a la condition d'avoir le fichier html dans le repertoire indiquer
+        //pour le test le fichier sera directement dans le projet : 
+        //aller dans propriété sur test-contact.html => recuperer le repertoire
+        final String nomFichier = "src/test/resources/contact/test-contact_utf-8.html";
+        assertNotNull(iFichier.chargerFichier(nomFichier, "UTF-8"));
+        assertEquals("<h1>téàûst@€£%</h1><h2>titre>test</h2><p>fichier html de test</p>", iFichier.chargerFichier(nomFichier, "UTF-8"));
+
+        //verifier avec un fichier non exisitant
+        assertEquals("", iFichier.chargerFichier("C:/non/existant.html", "UTF-8"));
 
     }
 }

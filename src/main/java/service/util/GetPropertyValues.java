@@ -25,7 +25,7 @@ public class GetPropertyValues {
      */
     private static final Map<String, String> PROPERTIESMAP = new HashMap<>();
 
-    private static final Logger             logger        = LoggerFactory.getLogger(GetPropertyValues.class);
+    private static final Logger              logger        = LoggerFactory.getLogger(GetPropertyValues.class);
 
     /**
      * Constructor
@@ -51,7 +51,9 @@ public class GetPropertyValues {
             // On lit le fichier YNH-application.properties
             prop.load(inputStream);
             // On place dans la map chaque couple clé/valeur du fichier properties
+            getPropertiesMap().put("contactEncodage", prop.getProperty("contactEncodage"));
             getPropertiesMap().put("contactRepo", prop.getProperty("contactRepo"));
+            getPropertiesMap().put("mentionsLegalesEncodage", prop.getProperty("mentionsLegalesEncodage"));
             getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
             getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
             getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));

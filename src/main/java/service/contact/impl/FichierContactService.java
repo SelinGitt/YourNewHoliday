@@ -26,6 +26,8 @@ public class FichierContactService implements IFichierContactService {
 
     private static final String PATH            = "contactRepo";
 
+    private static final String ENCODAGE        = "contactEncodage";
+
     private static final String HTML            = ".html";
 
     private static final String CONTACT_RADICAL = "contact_";
@@ -36,8 +38,9 @@ public class FichierContactService implements IFichierContactService {
     @Override
     public String chargerFichierContact(final Locale locale) {
         final String nomFichier = trouverFichierContact(locale);
-        logger.info("methode chargerFichierContact qui charge le fichier : {} ", nomFichier);
-        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + nomFichier);
+        final String encodage = "" + GetPropertyValues.getPropertiesMap().get(ENCODAGE);
+        logger.info("methode chargerFichierContact qui charge le fichier : {} encoder en {}", nomFichier, encodage);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + nomFichier, encodage);
     }
 
     @Override

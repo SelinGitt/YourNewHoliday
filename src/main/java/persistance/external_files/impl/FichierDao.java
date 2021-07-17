@@ -24,12 +24,12 @@ public class FichierDao implements IFichierDao {
     private static final Logger logger = LoggerFactory.getLogger(FichierDao.class);
 
     @Override
-    public String chargerFichier(final String nomFichier) {
+    public String chargerFichier(final String nomFichier, final String encodage) {
         final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);
-        logger.info("Méthode chargerFichier de FichierDao qui charge le fichier : {}", nomFichier);
-        try (final var scanner = new Scanner(file)) {
+        logger.info("Méthode chargerFichier de FichierDao qui charge le fichier : {}, encodé en {}", nomFichier, encodage);
+        try (final var scanner = new Scanner(file, encodage)) {
             //passe le contenu du fichier html dans la string contenuHtml
             while (scanner.hasNext()) {
                 final String line = scanner.nextLine();
