@@ -22,7 +22,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.utilisateur.util.UtilisateurMapper;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
