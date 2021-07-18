@@ -49,15 +49,13 @@ public class ConsulterProduitController {
             case 1:
             case 2:
                 if (iProduitService.trouverProduitEnVente(idProduit) != null) {
-                    modelAndView.getModelMap().addAttribute("consulterProduitDto",
-                            iProduitService.choixConsulterProduit(id, idProduit));
+                    extracted(idProduit, modelAndView, id);
                     return modelAndView;
                 }
                 return new ModelAndView("redirect:/404.do");
             case 3:
                 if (iProduitService.trouverProduitById(idProduit) != null) {
-                    modelAndView.getModelMap().addAttribute("consulterProduitDto",
-                            iProduitService.choixConsulterProduit(id, idProduit));
+                    extracted(idProduit, modelAndView, id);
                     return modelAndView;
                 }
                 return new ModelAndView("redirect:/404.do");
@@ -65,5 +63,17 @@ public class ConsulterProduitController {
                 break;
         }
         return modelAndView;
+    }
+
+    /**
+     * Permet d'ajouter un attribut au model and view
+     *
+     * @param idProduit    id du produit à consulter
+     * @param modelAndView model et vue associée
+     * @param id           id du role utilisateur
+     */
+    public void extracted(final Integer idProduit, final ModelAndView modelAndView, int id) {
+        modelAndView.getModelMap().addAttribute("consulterProduitDto",
+                iProduitService.choixConsulterProduit(id, idProduit));
     }
 }
