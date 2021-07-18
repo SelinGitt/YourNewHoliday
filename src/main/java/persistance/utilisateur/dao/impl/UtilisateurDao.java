@@ -110,4 +110,10 @@ public class UtilisateurDao extends AbstractGenericDao<UtilisateurDo> implements
             return null;
         }
     }
+
+    @Override
+    public List<UtilisateurDo> findAllTriAlpha() {
+        final TypedQuery<UtilisateurDo> query = entityManager.createQuery("FROM UtilisateurDo ORDER BY nom ASC", UtilisateurDo.class);
+        return query.getResultList();
+    }
 }

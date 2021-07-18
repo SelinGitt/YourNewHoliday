@@ -47,6 +47,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto trouverProduitEnVente(final Integer idProduit) {
+        logger.debug("Produit Service / méthode trouverProduitEnVente, idProduit : {}", idProduit);
         return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
     }
 
@@ -57,6 +58,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherProduitsEnVente, pSearchTerm : {}", pSearchTerm);
         return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
     }
 
@@ -78,14 +80,17 @@ public class ProduitService implements IProduitService {
     }
 
     private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
+        logger.debug("Produit Service / méthode listerFiltreTri, typeFiltre : {} ; searchTerm : {}", typeFiltre, searchTerm);
         return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
     }
 
     private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
+        logger.debug("Produit Service / méthode trierListe, typeFiltre : {}", typeFiltre);
         return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
     }
 
     private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherProduits, pSearchTerm : {}", pSearchTerm);
         return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
 
     }
@@ -111,6 +116,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherAllProduits, pSearchTerm : {}", pSearchTerm);
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
         }
