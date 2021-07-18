@@ -10,7 +10,7 @@
     </div>
 
     <%-- A cacher par la suite si client --%>
-    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour"/> </a>
+    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" /> </a>
 
     <div class="user02-body-general">
         <div class="user02-form display-flex">
@@ -63,7 +63,9 @@
 
                 <div>
                     <details>
-                        <summary><spring:message code="usr02.details"/> </summary>
+                        <summary>
+                            <spring:message code="usr02.details" />
+                        </summary>
                         <div class="user02-lib-champ display-flex">
                             <span><spring:message code="usr02.edit.password" /></span>
                             <div class="user02-lib-champ-taille">

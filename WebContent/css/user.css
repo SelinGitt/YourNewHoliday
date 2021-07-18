@@ -17,7 +17,7 @@
 }
 
 .user00-body-general {
-	width: 100%
+	width: 100%;
 }
 
 .user00-leftSide {
@@ -28,11 +28,14 @@
 	margin-left: 3em;
 	margin-bottom: 2em;
 	justify-content: space-between;
-	display: flex;
 }
 
 .user00-infos-input {
 	width: 55%;
+}
+
+.user00-textarea {
+	resize: none;
 }
 
 .user00-buttons {
