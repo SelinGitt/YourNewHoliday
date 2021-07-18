@@ -14,15 +14,15 @@ public enum PageRedirection {
     /**
      * La page de ListerProduits (PDT_00)
      */
-    LISTE_PRODUITS("listerProduits", "listerProduits.do"),
+    LISTE_PRODUITS("liste", "listerProduits.do"),
     /**
      * La page de ListerProduitsAdmin (PDT_01)
      */
-    LISTE_PRODUITS_ADMIN("listerProduitsAdmin", "listerProduitsAdmin.do"),
+    LISTE_PRODUITS_ADMIN("listeAdmin", "listerProduitsAdmin.do"),
     /**
      * La page de ListePanierProduits (PAN_00)
      */
-    LISTE_PANIER("listerPanierProduits", "listerPanierProduits.do"),
+    LISTE_PANIER("pan", "listerPanierProduits.do"),
     /**
      * La page de DetailCommande (CMD_04)
      */

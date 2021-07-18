@@ -31,8 +31,8 @@
                                     <div class="panier-image-produit-container">
                                         <%--  photo --%>
                                         <a
-                                            href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}
-                                    &location=listerPanierProduits"><img
+                                          href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                            <img
                                             class="panier-image-produit"
                                             src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
                                             alt="${entry.key.destination}" /></a>

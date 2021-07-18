@@ -34,7 +34,7 @@ public class ConsulterProduitController {
      */
     @GetMapping
     public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit,
-            final @RequestParam(value = "location", required = false) String location,
+            final @RequestParam(value = "from", required = false) String location,
             final @RequestParam(value = "paramValue", required = false, defaultValue = "") String param) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");

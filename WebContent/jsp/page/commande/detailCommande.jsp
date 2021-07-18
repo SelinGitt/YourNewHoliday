@@ -31,7 +31,7 @@
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <a
                                         href="consulterProduit.do?idProduit=${cmdProduit.produitAcheteDto.idDeLOriginal}
-                                        &location=detail&paramValue=${commande.reference}">
+                                        &from=detail&paramValue=${commande.reference}">
                                         <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
                                         alt="${cmdProduit.produitAcheteDto.destination} :

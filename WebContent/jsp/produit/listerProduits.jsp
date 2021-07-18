@@ -48,8 +48,7 @@
                 aria-label="Produit">
                 <tr>
                     <th colspan="2"><a
-                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}
-                        &location=listerProduits">
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=liste">
                             <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                             alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
                     </a></th>
