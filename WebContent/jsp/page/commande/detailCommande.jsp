@@ -95,6 +95,20 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
+                <div class="livraison-infos">
+                    <div class="livraison-info-element">
+                        <div class="livraison-info-element-titre">  Nom</div>
+                        <div class="livraison-info-element-contenue"> Jean </div>
+                    </div>
+                    <div class="livraison-info-element">
+                        <div class="livraison-info-element-titre"> Prénom</div>
+                       <div class="livraison-info-element-contenue"> Durand </div>
+                    </div>
+                     <div class="livraison-info-element">
+                       <div class="livraison-info-element-titre"> Adresse</div>
+                       <div class="livraison-info-element-contenue"> 325 rue du louvre 59230 saint-amand-les-Eeaux </div>
+                    </div>
+                </div>
             </fieldset>
         </div>
         <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">

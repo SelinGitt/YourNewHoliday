@@ -148,7 +148,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 /* container de la page CMD04*/
 .CMD_04-container {
-	width: 95%;
 	height: 75%;
 	max-height: 75%;
 	grid-template-columns: 3fr 1fr;
@@ -320,4 +319,20 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 .CMD_04-bouton-retour-margin {
 	margin-bottom: 25px;
+}
+.livraison-info-element {
+	display: flex;
+	margin-bottom: 5px;
+}
+.livraison-info-element-contenue {
+	width: 65%;
+}
+.livraison-info-element-titre {
+	width: 35%;
+	font-weight: bold;
+}
+.livraison-infos {
+	width:90%;
+	margin: auto;
+	
 }
