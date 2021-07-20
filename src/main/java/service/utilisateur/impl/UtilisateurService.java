@@ -18,8 +18,8 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.GenerateReferenceUtil;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.MDPCrypter;
-import service.utilisateur.util.UtilisateurMapper;
 
 /**
  * Classe UtilisateurService <br>
