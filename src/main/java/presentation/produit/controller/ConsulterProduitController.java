@@ -39,7 +39,7 @@ public class ConsulterProduitController {
         modelAndView.setViewName("consulterProduit");
         modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
         final var pageOrigine = PageRedirection.findValue(location);
-        final StringBuilder urlToBuild = new StringBuilder();
+        final var urlToBuild = new StringBuilder();
         urlToBuild.append(pageOrigine.getPageConcrete());
         if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
             urlToBuild.append("?ref=" + param);
