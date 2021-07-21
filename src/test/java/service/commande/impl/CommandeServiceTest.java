@@ -205,15 +205,9 @@ class CommandeServiceTest {
         adresses.setCommandeAdresseLivraison(livraison);
         adresses.setCommandeAdresseFacturation(facturation);
 
-        final var commandeDto = this.commandeService.validerPanier(panierDto, adresses, 1);
-        assertNotNull(commandeDto);
-        assertNotNull(commandeDto.getId());
-        assertTrue(commandeDto.getReference().matches("CMD[A-Z0-9]{7}"));
-        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseLivraison().getAdresse());
-        assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
-        assertEquals(1, commandeDto.getListCommandeProduitDto().size());
-        assertEquals("1", commandeDto.getQuantiteTotale());
-        assertEquals("5 400,00", commandeDto.getPrixTotal());
+        final var commandeDtoReference = this.commandeService.validerPanier(panierDto, adresses, 1);
+        assertNotNull(commandeDtoReference);
+        assertTrue(commandeDtoReference.matches("CMD[A-Z0-9]{7}"));
     }
 
 }

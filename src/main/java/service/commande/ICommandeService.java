@@ -49,7 +49,7 @@ public interface ICommandeService {
      * @param  panier        le panier en session
      * @param  adresses      les adresses entrées par l'utilisateur
      * @param  idUtilisateur l'utilisateur en session
-     * @return               CommandeDto la commande enregistrée en base
+     * @return               String la référence de la commande
      */
-    CommandeDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
+    String validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 }

@@ -78,7 +78,7 @@ public class CommandeService implements ICommandeService {
     }
 
     @Override
-    public CommandeDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
+    public String validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
         String reference = null;
         do {
             reference = this.referenceCommande.generateReference();
@@ -86,8 +86,8 @@ public class CommandeService implements ICommandeService {
         } while (this.iCommandeDao.isCommandeExist(reference));
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
-        return CommandeMapper.mapperToDto(this.iCommandeDao.create(
-                this.recupereProduitAchetePourCommande(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur))));
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur);
+        return this.iCommandeDao.create(this.recupereProduitAchetePourCommande(commandeDo)).getReference();
     }
 
     /**
