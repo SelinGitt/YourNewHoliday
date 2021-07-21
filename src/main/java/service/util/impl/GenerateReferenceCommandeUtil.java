@@ -42,31 +42,37 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
 
     private boolean isConform(final Object... param) {
         // Pour être conforme, il faut :
-        // un UtilisateurDto
-        if (!(param[0] instanceof UtilisateurDto)) {
+        // un UtilisateurDto, un nombre de produit et une date conforme.
+        return isUserConform(param[0]) && isNombreConform(param[1]) && isDateConforme(param[2]);
+
+    }
+
+    private boolean isUserConform(final Object utilisateurAttendu) {
+        if (!(utilisateurAttendu instanceof UtilisateurDto)) {
             return false;
         }
-        final var utilisateur = (UtilisateurDto) param[0];
-        // non null
-        if (null == utilisateur) {
+        // Utilisateur
+        final var utilisateur = (UtilisateurDto) utilisateurAttendu;
+        // dont les noms et prénoms sont non nulls
+        return null != utilisateur.getNom() && null != utilisateur.getPrenom();
+    }
+
+    private boolean isNombreConform(final Object nombreAttendu) {
+        if (!(nombreAttendu instanceof Integer)) {
             return false;
         }
-        // un Integer
-        if (!(param[1] instanceof Integer)) {
-            return false;
-        }
-        final var nombreDeProduit = (Integer) param[1];
+        // Nombre
+        final var nombre = (Integer) nombreAttendu;
         // positif
-        if (nombreDeProduit < 0) {
+        return nombre >= 0;
+    }
+
+    private boolean isDateConforme(final Object dateAttendue) {
+        // Une date
+        if (!(dateAttendue instanceof Date)) {
             return false;
         }
-        // une date
-        if (!(param[2] instanceof Date)) {
-            return false;
-        }
-        final var date = (Date) param[2];
-        // non nulle        
-        return null != date;
+        return true;
     }
 
     private String hash(final Object... param) {
