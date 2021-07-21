@@ -109,11 +109,11 @@
                     </details>
                 </div>
 
-                <div class="user02-buttons display-flex">
-                    <button class="user02-editValider" onclick="submit">
+                <div class="display-flex justify-content-space-around user05-buttons">
+                    <button class="user02-valider background-color-green" onclick="submit">
                         <spring:message code="usr02.edit.valider" />
                     </button>
-                    <button class="user02-editReset" type="reset">
+                    <button class="user02-reset background-color-rouge" type="reset">
                         <spring:message code="usr02.edit.reset" />
                     </button>
                 </div>

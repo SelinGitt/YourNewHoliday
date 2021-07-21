@@ -142,6 +142,19 @@
 	height: 5em;
 }
 
+.user02-buttons {
+	width: 70%;
+	float: right;
+}
+
+.user02-valider {
+	color: #FFFFFF;
+}
+
+.user02-reset {
+	color: #FFFFFF;
+}
+
 /* USR03 */
 
 /* USR05 */
