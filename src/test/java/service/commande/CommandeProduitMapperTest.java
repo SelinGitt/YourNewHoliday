@@ -80,7 +80,7 @@ class CommandeProduitMapperTest {
         commandeDo.setDate(date);
         commandeDo.setId(1);
         commandeDo.setIdUtilisateur(1);
-        commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixTotalApresRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setReference("ABC5");
         return commandeDo;

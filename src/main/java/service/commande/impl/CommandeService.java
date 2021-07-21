@@ -46,7 +46,7 @@ public class CommandeService implements ICommandeService {
     @Override
     public String calculerRemise(final CommandeDto commande) {
         return DecimalFormatUtils.decimalFormatUtil(DecimalFormatUtils.doubleFormatUtil(commande
-                .getPrixTotalAvantRemise()) - DecimalFormatUtils.doubleFormatUtil(commande.getPrixApresRemise()));
+                .getPrixTotalAvantRemise()) - DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalApresRemise()));
     }
 
 }

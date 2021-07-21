@@ -75,7 +75,7 @@ class CommandeDaoTest {
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
         assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
+        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotalAvantRemise()));
         assertEquals(2, commandeDo.getIdUtilisateur());
         assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();

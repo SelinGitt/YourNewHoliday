@@ -85,7 +85,7 @@
                                     <spring:message code="detailCommande.prd.pTotal"></spring:message>
                                 </div>
                                 <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">
-                                    ${cmdProduit.prixTotalApresRemise}
+                                    ${cmdProduit.prixTotal}
                                     <spring:message code="glb.devise"></spring:message>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <div id="total_apres_remise" class="prix panier-bordure-1px">${commande.prixApresRemise }
+                <div id="total_apres_remise" class="prix panier-bordure-1px">${commande.prixTotalApresRemise }
                     <spring:message code="glb.devise" />
                 </div>
             </div>

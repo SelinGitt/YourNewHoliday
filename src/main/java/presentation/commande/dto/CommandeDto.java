@@ -19,28 +19,9 @@ public class CommandeDto implements Serializable {
     private String                   prixTotalAvantRemise;
     private String                   date;
     private String                   quantiteTotale;
-    private String                   prixApresRemise;
     private List<CommandeProduitDto> listCommandeProduitDto;
     private CommandeAdresseDto       adresseLivraison;
     private CommandeAdresseDto       adresseFacturation;
-
-    /**
-     * Getter for prixApresRemise
-     *
-     * @return the prixApresRemise
-     */
-    public String getPrixApresRemise() {
-        return prixApresRemise;
-    }
-
-    /**
-     * Setter for prixApresRemise
-     *
-     * @param prixApresRemise the prixApresRemise to set
-     */
-    public void setPrixApresRemise(final String prixApresRemise) {
-        this.prixApresRemise = prixApresRemise;
-    }
 
     /**
      * Getter for adresseLivraison
