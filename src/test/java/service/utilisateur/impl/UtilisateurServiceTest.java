@@ -204,6 +204,7 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurDto = new UtilisateurDto();
         utilisateurDto.setReference("ABC123");
         utilisateurDto.setEmail("test@test.fr");
+        utilisateurDto.setEmailBase("test@test.fr");
         utilisateurDto.setNom("Nom");
         utilisateurDto.setPrenom("Prenom");
         utilisateurDto.setPassword("Hash");
@@ -223,6 +224,20 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurDtoUpdated);
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
+     */
+    @Test
+    void testUpdateKO() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        utilisateurDto.setEmail("test@ko.fr");
+        utilisateurDto.setEmailBase("test@test.fr");
+
+        Mockito.when(this.dao.findByEmail("test@ko.fr")).thenReturn(new UtilisateurDo());
+
+        Assertions.assertNull(this.utilisateurService.updateUtilisateur(utilisateurDto));
     }
 
     /**
