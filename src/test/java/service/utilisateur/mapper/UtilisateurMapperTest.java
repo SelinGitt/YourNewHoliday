@@ -68,7 +68,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()), utilisateurDoMapper.getMdpHash());
 
         // TODO : Changer quand upload img ok
-        Assertions.assertEquals("default_avatar.jpg", utilisateurDoMapper.getCheminAvatar());
+        Assertions.assertEquals("img/test.png", utilisateurDoMapper.getCheminAvatar());
     }
 
     /**
