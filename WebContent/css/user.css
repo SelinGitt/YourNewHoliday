@@ -28,7 +28,7 @@
 	margin-left: 3em;
 	margin-bottom: 2em;
 	justify-content: space-between;
-	display:flex;
+	display: flex;
 }
 
 .user00-infos-input {
@@ -182,7 +182,7 @@
 }
 
 .user05-form-inputs {
-	width: 70%;	
+	width: 70%;
 }
 
 .user05-inputs {
