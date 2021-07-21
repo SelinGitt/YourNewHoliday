@@ -33,15 +33,18 @@ public class ConsulterProduitController {
      * 
      * @param  idProduit du produit à consulter
      * @param  session   pour recuperer le role de l'utilisateur en session
+     * @param  location  page d'origine
+     * @param  param     le potentiel paramètre à récupérer
      * @return           le produit à consulter dans le model et la vue associée
      */
     @GetMapping
-    public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit,
-            final HttpSession session) {
+    public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit, final HttpSession session,
+            final @RequestParam(value = "from") String location, final @RequestParam(value = "paramValue", required = false) String param) {
         final var user = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         final var modelAndView = new ModelAndView();
         int id = UtilisateurRoleEnum.VISITEUR.getId();
         modelAndView.setViewName("consulterProduit");
+
         if (user != null) {
             id = user.getRole().getId();
         }
@@ -62,7 +65,18 @@ public class ConsulterProduitController {
             default:
                 break;
         }
+
+        modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
+        final var pageOrigine = PageRedirection.findValue(location);
+        final var urlToBuild = new StringBuilder();
+        urlToBuild.append(pageOrigine.getPageConcrete());
+        if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
+            urlToBuild.append("?ref=" + param);
+        }
+        modelAndView.getModelMap().addAttribute("retour", urlToBuild);
+
         return modelAndView;
+
     }
 
     /**
@@ -73,7 +87,7 @@ public class ConsulterProduitController {
      * @param id           id du role utilisateur
      */
     public void extracted(final Integer idProduit, final ModelAndView modelAndView, final int id) {
-        modelAndView.getModelMap().addAttribute("consulterProduitDto",
-                iProduitService.choixConsulterProduit(id, idProduit));
+        modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.choixConsulterProduit(id, idProduit));
     }
+
 }
