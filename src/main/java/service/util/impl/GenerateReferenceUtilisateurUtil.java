@@ -21,4 +21,5 @@ public class GenerateReferenceUtilisateurUtil extends AbstractGenerateReferenceU
     public GenerateReferenceUtilisateurUtil() {
         this.prefix = "USR";
     }
+
 }
