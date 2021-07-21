@@ -77,10 +77,10 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         final var nombreDeProduit = (Integer) param[1];
         // gestion de la date
         final var date = (Date) param[2];
-        final Calendar calendar = Calendar.getInstance();
+        final var calendar = Calendar.getInstance();
         calendar.setTime(date);
         // le hash est composé de :
-        final StringBuilder hash = new StringBuilder();
+        final var hash = new StringBuilder();
         // la première lettre du nom
         hash.append(utilisateur.getNom().charAt(0));
         // la première lettre du prénom
