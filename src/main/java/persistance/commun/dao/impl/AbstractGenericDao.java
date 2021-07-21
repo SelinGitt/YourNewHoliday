@@ -82,12 +82,14 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
     // les autres méthodes du CRUD à ajouter
     @Override
     public T create(final T bean) {
+        this.logger.debug("Generic Dao {} create; bean : {}", this.entiteClass.getSimpleName(), bean);
         this.entityManager.persist(bean);
         return bean;
     }
 
     @Override
     public T update(final T bean) {
+        this.logger.debug("Generic Dao {} update; bean : {}", this.entiteClass.getSimpleName(), bean);
         this.entityManager.merge(bean);
         return bean;
     }

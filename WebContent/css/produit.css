@@ -41,6 +41,7 @@ td.pdt00Description {
 .pdt00Bouton {
 	color: #FFFFFF;
 }
+
 .pdt00-pan-quantite {
 	width: 1.7em;
 }
@@ -77,6 +78,15 @@ th.pdt01 {
 
 .pdt01Search {
 	justify-content: flex-start;
+}
+
+.pdt01AddProduit {
+	margin-left: auto;
+}
+
+.pdt01-newProduitButton {
+	background-color: #22B14C;
+	color: #FFFFFF;
 }
 
 /* PDT02 */

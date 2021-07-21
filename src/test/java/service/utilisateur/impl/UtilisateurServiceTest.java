@@ -22,7 +22,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.utilisateur.util.UtilisateurMapper;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -51,7 +51,7 @@ class UtilisateurServiceTest {
      */
     @Test
     void testFindAll() {
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.emptyList());
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.emptyList());
         Assertions.assertEquals(0, this.utilisateurService.findAllUtilisateurs().size());
     }
 
@@ -72,7 +72,7 @@ class UtilisateurServiceTest {
 
         userDo.setRole(role);
 
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(userDo));
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.singletonList(userDo));
         Assertions.assertEquals(1, this.utilisateurService.findAllUtilisateurs().size());
     }
 
@@ -103,6 +103,10 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurCreated = this.utilisateurService.createUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurCreated);
+
+        Mockito.when(this.dao.findByEmail(utilisateurDto.getEmail())).thenReturn(new UtilisateurDo());
+
+        Assertions.assertNull(this.utilisateurService.createUtilisateur(utilisateurDto));
     }
 
     /**

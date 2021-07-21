@@ -108,3 +108,8 @@ section {
 .display-none {
 	display: none;
 }
+
+/* alignement du texte au centre */
+.text-center {
+	text-align: center;
+}

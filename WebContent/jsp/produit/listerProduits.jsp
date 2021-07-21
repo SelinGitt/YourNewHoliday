@@ -3,11 +3,16 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
-    <div>
-        <c:if test="${not empty deletionSuccess}">
-            <span><spring:message code="${deletionSuccess}" /></span>
-        </c:if>
-    </div>
+    <c:if test="${not empty anyError}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
+        </div>
+    </c:if>
+    <c:if test="${not empty anySuccess}">
+        <div class="background-validation-block block-message-commun">
+           <span class="fa fa-check"></span>  <span><spring:message code="${anySuccess}" /></span>
+        </div>
+    </c:if>
 
     <div>
         <h1 class="title title-responsive text-align-center">
@@ -41,8 +46,9 @@
             <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
                 aria-label="Produit">
                 <tr>
-                    <th colspan="2"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}"> <img
-                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                    <th colspan="2"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=liste"> 
+                        <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                             alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
                     </a></th>
                 </tr>
