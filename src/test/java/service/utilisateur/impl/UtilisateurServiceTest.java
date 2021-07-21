@@ -230,6 +230,37 @@ class UtilisateurServiceTest {
      * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
      */
     @Test
+    void testUpdateOK() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        utilisateurDto.setReference("ABC123");
+        utilisateurDto.setEmail("test@ok.fr");
+        utilisateurDto.setEmailBase("test@test.fr");
+        utilisateurDto.setNom("Nom");
+        utilisateurDto.setPrenom("Prenom");
+        utilisateurDto.setPassword("Hash");
+        utilisateurDto.setDateInscription("09/06/2021");
+        utilisateurDto.setDateNaissance("09/06/2021");
+        utilisateurDto.setEstDesactive(true);
+        utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
+
+        final RoleDto role = new RoleDto();
+        role.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
+        role.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
+
+        utilisateurDto.setRole(role);
+
+        Mockito.when(this.dao.findByEmail("test@ok.fr")).thenReturn(null);
+        Mockito.when(this.dao.update(Mockito.any(UtilisateurDo.class))).thenReturn(UtilisateurMapper.mapperToDo(utilisateurDto));
+
+        final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
+
+        Assertions.assertNotNull(utilisateurDtoUpdated);
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
+     */
+    @Test
     void testUpdateKO() {
         final UtilisateurDto utilisateurDto = new UtilisateurDto();
         utilisateurDto.setEmail("test@ko.fr");
