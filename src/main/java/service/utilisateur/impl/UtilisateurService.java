@@ -61,9 +61,11 @@ public class UtilisateurService implements IUtilisateurService {
 
         utilisateurDto.setEstDesactive(false);
 
-        utilisateurDto.setReference(new GenerateReferenceUtilisateurUtil().generateReference());
+        final String reference = new GenerateReferenceUtilisateurUtil().generateReference();
+        utilisateurDto.setReference(reference);
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
+        logger.debug("Utilisateur ref : {} créé.", reference);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
     }
 
@@ -75,6 +77,7 @@ public class UtilisateurService implements IUtilisateurService {
             final String passwordCheck = utilisateurDo.getMdpHash();
             //On compare avec le mot de passe saisi qu'on hashe
             if (passwordCheck.equals(MDPCrypter.crypterMDPV1(password))) {
+                logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
                 return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
             }
             logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
@@ -84,6 +87,7 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDto findUtilisateurById(final Integer id) {
+        logger.debug("Recherche de l'utilisateur d'id : {}.", id);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.findById(id));
     }
 
@@ -103,6 +107,7 @@ public class UtilisateurService implements IUtilisateurService {
 
         //On teste si l'utilisateur est le dernier admin
         if (iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
+            logger.info("L'utilisateur ref : {} est le dernier administrateur, suppression impossible", referenceUtilisateur);
             builder.withIsSucceeded(false);
         } else {
             //Suppression autorisée
@@ -110,6 +115,7 @@ public class UtilisateurService implements IUtilisateurService {
             iCommandeDao.updateCommandeDoUserDeletion(idUtilisateurASupprimer);
             //On le supprime
             iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
+            logger.debug("L'utilisateur ref : {} a été supprimé.", referenceUtilisateur);
             builder.withIsSucceeded(true);
         }
         return builder.build();
@@ -124,28 +130,37 @@ public class UtilisateurService implements IUtilisateurService {
         // Si nom empty on fait une recherche par filtre
         if (nom.isEmpty()) {
             if (idRole == 0) {
+                logger.debug("Recherche de tous les utilisateurs.");
                 return this.findAllUtilisateurs();
             }
+            logger.debug("Recherche de tous les utilisateurs de rôle d'id {}.", idRole);
             return this.rechercherUtilisateurRole(idRole);
         }
 
         // Nom pas empty, donc recherche par nom ou nom + role
         if (idRole == 0) {
+            logger.debug("Recherche de tous les utilisateurs de nom {}.", nom);
             return this.rechercherUtilisateurNom(nom);
         }
+        logger.debug("Recherche de tous les utilisateurs de nom {} et de rôle d'id {}.", nom, idRole);
         return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
     @Override
     public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        logger.info("L'utilisateur ref : {} a été mis à jour", utilisateurDto.getReference());
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
     }
 
     @Override
     public UtilisateurDto rechercherReference(final String reference) {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
-
-        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
+        if (utilisateurDo == null) {
+            logger.debug("Utilisateur {} non trouvé.", reference);
+            return null;
+        }
+        logger.debug("Utilisateur {} trouvé.", reference);
+        return UtilisateurMapper.mapperToDto(utilisateurDo);
     }
 
     /**
