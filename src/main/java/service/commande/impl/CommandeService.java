@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
+import persistance.commande.dao.IProduitAcheteDao;
+import persistance.commande.entity.CommandeDo;
+import persistance.commande.entity.CommandeProduitDo;
 import persistance.produit.dao.IProduitDao;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
@@ -46,6 +49,9 @@ public class CommandeService implements ICommandeService {
 
     @Autowired
     private IProduitDao            iProduitDao;
+
+    @Autowired
+    private IProduitAcheteDao      iProduitAchete;
 
     @Override
     public List<CommandeDto> listerCommandesUtilisateur(final Integer idUser) {
@@ -80,8 +86,25 @@ public class CommandeService implements ICommandeService {
         } while (this.iCommandeDao.isCommandeExist(reference));
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
-        return CommandeMapper
-                .mapperToDto(this.iCommandeDao.create(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur)));
+        return CommandeMapper.mapperToDto(this.iCommandeDao.create(
+                this.recupereProduitAchetePourCommande(CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur))));
     }
 
+    /**
+     * Permet de mettre les produits achetés déjà en base dans la commande
+     *
+     * @param  commande la commande à persister
+     * @return          CommandeDo la commande avec les produits acheté en base si ils ont déjà été enregistré
+     */
+    private CommandeDo recupereProduitAchetePourCommande(final CommandeDo commande) {
+        for (final CommandeProduitDo commandeProduit : commande.getCommandeProduitDoSet()) {
+            final var produitAcheteDo = commandeProduit.getProduitAcheteDo();
+            final var produitAcheteDoEnBase = this.iProduitAchete.recupererProduitAcheteDo(produitAcheteDo.getIdDeLOriginal(),
+                    produitAcheteDo.getVersion());
+            if (produitAcheteDoEnBase != null) {
+                commandeProduit.setProduitAcheteDo(produitAcheteDoEnBase);
+            }
+        }
+        return commande;
+    }
 }
