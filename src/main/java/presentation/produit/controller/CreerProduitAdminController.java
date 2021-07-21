@@ -78,7 +78,7 @@ public class CreerProduitAdminController {
 
         if (iProduitService.creerProduit(produitDto) != null) {
             //Ajout d'un FlashAttribute pour le bandeau de validation sur PDT_01
-            redirectAttributes.addFlashAttribute("successCreateProduit", "pdt03.creationOK");
+            redirectAttributes.addFlashAttribute("anySuccess", "pdt03.creationOK");
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
         result.rejectValue("reference", "pdt03.reference.dejaExistant");
