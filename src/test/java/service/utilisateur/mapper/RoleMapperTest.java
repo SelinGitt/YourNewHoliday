@@ -1,23 +1,24 @@
 /**
  * 
  */
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import persistance.utilisateur.entity.RoleDo;
 import presentation.utilisateur.dto.RoleDto;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
- * JUnit test pour {@link service.utilisateur.util.RoleMapper}
+ * JUnit test pour {@link service.utilisateur.mapper.RoleMapper}
  *
  * @author Selin
  */
 class RoleMapperTest {
 
     /**
-     * Test method for {@link service.utilisateur.util.RoleMapper#mapperToDto(persistance.utilisateur.entity.RoleDo)}.
+     * Test method for {@link service.utilisateur.mapper.RoleMapper#mapperToDto(persistance.utilisateur.entity.RoleDo)}.
      */
     @Test
     void testMapperToDto() {
@@ -36,7 +37,7 @@ class RoleMapperTest {
     }
 
     /**
-     * Test method for {@link service.utilisateur.util.RoleMapper#mapperToDo(presentation.utilisateur.dto.RoleDto)}.
+     * Test method for {@link service.utilisateur.mapper.RoleMapper#mapperToDo(presentation.utilisateur.dto.RoleDto)}.
      */
     @Test
     void testMapperToDo() {
