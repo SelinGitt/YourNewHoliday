@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <div class="conteneur-ascenseur">
     <div>
-        <h1 class="title title-responsive">${consulterProduitDto.nom}</h1>
+        <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
     </div>
     <a href="listerProduits.do"><spring:message code="pdt04.retour"></spring:message></a>
     <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">

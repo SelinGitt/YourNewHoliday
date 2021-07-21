@@ -24,7 +24,6 @@ public class UtilisateurConnecteDto implements Serializable {
     private String              idUtilisateur;
     private String              nom;
     private String              prenom;
-    private String              nbProduitPanier;
 
     /**
      * Constructor
@@ -103,24 +102,6 @@ public class UtilisateurConnecteDto implements Serializable {
      */
     public void setPrenom(final String prenom) {
         this.prenom = prenom;
-    }
-
-    /**
-     * Getter for nbProduitPanier
-     *
-     * @return the nbProduitPanier
-     */
-    public String getNbProduitPanier() {
-        return nbProduitPanier;
-    }
-
-    /**
-     * Setter for nbProduitPanier
-     *
-     * @param nbProduitPanier the nbProduitPanier to set
-     */
-    public void setNbProduitPanier(final String nbProduitPanier) {
-        this.nbProduitPanier = nbProduitPanier;
     }
 
     /**

@@ -40,7 +40,7 @@ public class ImageService implements IImageService {
         String path;
         if (TypeImage.PRODUIT.type.equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
-            path = GetPropertyValues.PROPERTIESMAP.get("imagesProduitsRepo") + produitDo.getCheminImage();
+            path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
         if (TypeImage.UTILISATEUR.type.equals(type)) {
