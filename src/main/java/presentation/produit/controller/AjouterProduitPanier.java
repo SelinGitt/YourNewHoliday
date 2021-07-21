@@ -27,19 +27,9 @@ import service.produit.IProduitService;
 @RequestMapping("/ajouterProduitPanier.do")
 public class AjouterProduitPanier {
     @Autowired
-    private IProduitService     iProduitService;
+    private IProduitService   iProduitService;
     @Autowired
-    private QuantiteValidator   quantiteValidator;
-
-    /**
-     * contient Produit pour la redirection
-     */
-    private static final String PRODUIT = "Produit";
-
-    /**
-     * contient .do pour la redirection
-     */
-    private static final String DO      = ".do";
+    private QuantiteValidator quantiteValidator;
 
     /**
      * Permet d'ajouter un produit au panier
@@ -78,8 +68,8 @@ public class AjouterProduitPanier {
 
     private String determinerJSP(final String location) {
         if ("lister".equals(location)) {
-            return location + PRODUIT + "s" + DO;
+            return location + "Produits.do";
         }
-        return location + PRODUIT + DO;
+        return location + "Produit.do";
     }
 }
