@@ -2,8 +2,17 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
 <div class="conteneur-ascenseur">
+    <c:if test="${not empty anyError}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
+        </div>
+    </c:if>
+    <c:if test="${not empty anySuccess}">
+        <div class="background-validation-block block-message-commun">
+            <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
+        </div>
+    </c:if>
     <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
