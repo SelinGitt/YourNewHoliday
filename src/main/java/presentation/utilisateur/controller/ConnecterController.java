@@ -63,12 +63,12 @@ public class ConnecterController {
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
      * @param  result         : resultats du binding utilisé pour gérer les erreurs
      * @param  modelAndView   : ModelAndView du controller
+     * @param  anySuccess     : Message de success
      * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
     public ModelAndView loggerUtilisateur(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
-            final ModelAndView modelAndView) {
-
+            final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
         connecterValidator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
@@ -93,8 +93,10 @@ public class ConnecterController {
             //Ajout d'un panier vide à la session
             modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
 
+            modelAndView.getModelMap().addAttribute("anySuccess", anySuccess);
+
             //Redirection vers page d'accueil
-            modelAndView.setViewName("redirect:listerProduits.do");
+            modelAndView.setViewName("redirect:/listerProduits.do");
         }
         return modelAndView;
     }
