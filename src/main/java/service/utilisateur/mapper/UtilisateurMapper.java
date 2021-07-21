@@ -1,17 +1,12 @@
 package service.utilisateur.mapper;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.util.DateFormatUtil;
 import service.utilisateur.util.MDPCrypter;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
@@ -22,8 +17,6 @@ import service.utilisateur.util.UtilisateurRoleEnum;
  * @author Valentin
  */
 public class UtilisateurMapper {
-
-    private static final Logger logger = LoggerFactory.getLogger(UtilisateurMapper.class);
 
     /**
      * Constructor
@@ -44,12 +37,12 @@ public class UtilisateurMapper {
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
-        utilisateurDto.setDateInscription(formatDateToString(utilisateurDo.getDateInscription()));
+        utilisateurDto.setDateInscription(DateFormatUtil.formaterDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
         utilisateurDto.setEstDesactive(utilisateurDo.getEstDesactive());
         utilisateurDto.setRole(RoleMapper.mapperToDto(utilisateurDo.getRole()));
-        utilisateurDto.setDateNaissance(formatDateToString(utilisateurDo.getDateNaissance()));
+        utilisateurDto.setDateNaissance(DateFormatUtil.formaterDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
         utilisateurDto.setPassword(utilisateurDo.getMdpHash());
 
@@ -68,12 +61,12 @@ public class UtilisateurMapper {
         utilisateurDo.setIdUtilisateur(utilisateurDto.getId());
         utilisateurDo.setReference(utilisateurDto.getReference());
         utilisateurDo.setEmail(utilisateurDto.getEmail());
-        utilisateurDo.setDateInscription(formatStringToDate(utilisateurDto.getDateInscription()));
+        utilisateurDo.setDateInscription(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateInscription()));
         utilisateurDo.setNom(utilisateurDto.getNom());
         utilisateurDo.setPrenom(utilisateurDto.getPrenom());
         utilisateurDo.setEstDesactive(utilisateurDto.getEstDesactive());
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
-        utilisateurDo.setDateNaissance(formatStringToDate(utilisateurDto.getDateNaissance()));
+        utilisateurDo.setDateNaissance(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
@@ -112,34 +105,5 @@ public class UtilisateurMapper {
         //        utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
-    }
-
-    /**
-     * Permet de formater une date au format dd/mm/yyyy
-     *
-     * @param  date Date a formater
-     * @return      Date formater au format String
-     */
-    private static String formatDateToString(final Date date) {
-        final var pattern = "dd/MM/yyyy";
-        final var simpleDateFormat = new SimpleDateFormat(pattern);
-
-        return simpleDateFormat.format(date);
-    }
-
-    /**
-     * Permet de formater un string en date
-     *
-     * @param  date           Date a formater
-     * @return                Date formater au format Date
-     * @throws ParseException Throw quand on parse la date
-     */
-    private static Date formatStringToDate(final String date) {
-        try {
-            return new SimpleDateFormat("dd/MM/yyyy").parse(date);
-        } catch (final ParseException exception) {
-            logger.warn(exception.getMessage());
-        }
-        return new Date();
     }
 }
