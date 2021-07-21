@@ -144,5 +144,4 @@ public class ProduitService implements IProduitService {
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
-
 }
