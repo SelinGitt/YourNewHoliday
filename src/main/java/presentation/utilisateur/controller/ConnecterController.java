@@ -76,7 +76,6 @@ public class ConnecterController {
     public ModelAndView loggerUtilisateur(final HttpServletRequest request,
             final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
             final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
-
         connecterValidator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
@@ -135,7 +134,6 @@ public class ConnecterController {
     private ModelAndView logout(final HttpServletRequest request, final SessionStatus sessionStatus,
             final @ModelAttribute("deletionSuccess") String code, final RedirectAttributes redirectAttributes) {
         final HttpSession session = request.getSession();
-
         //Si la session n'est pas null, on y met fin
         if (session != null) {
             sessionStatus.setComplete();
