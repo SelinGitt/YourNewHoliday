@@ -15,7 +15,18 @@
                 <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
             </form:form>
         </div>
-        
+        <form:form action="listerProduitsAdmin.do" method="POST" id="tri">
+            <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
+            <select id="triSelect" name="tri">
+                <option disabled selected><spring:message code="pdt01.tri.default" /></option>
+                <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+            </select>
+            <script>
+                    document.getElementById("triSelect").options[${tri}].selected=true;             
+            </script>
+            <input type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
+        </form:form>
         <div class="pdt01AddProduit">
             <a href="creerProduitAdmin.do">
                 <button type="button" class="pdt01-newProduitButton">
