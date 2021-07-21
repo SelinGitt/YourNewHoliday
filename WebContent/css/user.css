@@ -28,6 +28,7 @@
 	margin-left: 3em;
 	margin-bottom: 2em;
 	justify-content: space-between;
+	display:flex;
 }
 
 .user00-infos-input {
