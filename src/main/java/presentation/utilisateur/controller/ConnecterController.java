@@ -36,7 +36,7 @@ public class ConnecterController {
     /**
      * le temps maximimum en minutes d'inactivité d'un utilisateur avant expiration de la session
      */
-    private int                 tempsAvantDeconnection = 5;
+    private int                 tempsAvantDeconnection = 20;
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
