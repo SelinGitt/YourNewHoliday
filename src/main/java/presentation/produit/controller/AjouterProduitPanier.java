@@ -46,7 +46,8 @@ public class AjouterProduitPanier {
             final @ModelAttribute("beanQuantite") BeanQuantite beanQuantite, final BindingResult result,
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:" + determinerJSP(location));
+        final String nomJspACharger = determinerJSP(location);
+        modelAndView.setViewName("redirect:" + nomJspACharger);
 
         //si dans la jsp location = "consulter"
         if ("consulter".equals(location)) {
@@ -54,8 +55,8 @@ public class AjouterProduitPanier {
             modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
         }
         //gestion erreur 404
-        if ("404.do".equals(determinerJSP(location))) {
-            return new ModelAndView(determinerJSP(location));
+        if ("404.do".equals(nomJspACharger)) {
+            return new ModelAndView(nomJspACharger);
         }
 
         quantiteValidator.validate(beanQuantite, result);
