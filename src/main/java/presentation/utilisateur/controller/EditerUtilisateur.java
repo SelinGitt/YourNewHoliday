@@ -77,6 +77,7 @@ public class EditerUtilisateur {
         if (result.hasErrors()) {
             final var modelAndView = new ModelAndView("modifierUtilisateur");
             modelAndView.getModelMap().addAttribute("error", "usr02.erreur.edit");
+            modelAndView.getModelMap().addAttribute("origin", origin);
             return modelAndView;
         }
 
@@ -85,6 +86,7 @@ public class EditerUtilisateur {
             result.rejectValue("email", "usr02.erreur.email_taken", "Default Errror");
             final var modelAndView = new ModelAndView("modifierUtilisateur");
             modelAndView.getModelMap().addAttribute("error", "usr02.erreur.edit");
+            modelAndView.getModelMap().addAttribute("origin", origin);
             return modelAndView;
         }
 
