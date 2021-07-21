@@ -72,7 +72,7 @@ public class ConsulterProduitController {
      * @param modelAndView model et vue associée
      * @param id           id du role utilisateur
      */
-    public void extracted(final Integer idProduit, final ModelAndView modelAndView, int id) {
+    public void extracted(final Integer idProduit, final ModelAndView modelAndView, final int id) {
         modelAndView.getModelMap().addAttribute("consulterProduitDto",
                 iProduitService.choixConsulterProduit(id, idProduit));
     }
