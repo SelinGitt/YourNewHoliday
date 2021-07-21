@@ -60,7 +60,7 @@
 
                 <div class="user00-buttons">
                     <div>
-                        <a href="#">
+                        <a href="modifierUtilisateur.do?origin=1&ref=${utilisateurDto.reference}">
                             <button class="user00-modifier">
                                 <spring:message code="usr00.consulter.modifier" />
                             </button>
