@@ -15,18 +15,20 @@
                 <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
             </form:form>
         </div>
-        <form:form action="listerProduitsAdmin.do" method="POST" id="tri">
-            <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
-            <select id="triSelect" name="tri">
-                <option disabled selected><spring:message code="pdt01.tri.default" /></option>
-                <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
-            </select>
-            <script>
+        <div>
+            <form:form action="listerProduitsAdmin.do" method="POST">
+                <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
+                <select id="triSelect" name="tri">
+                    <option value="0" disabled selected><spring:message code="pdt01.tri.default" /></option>
+                    <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                    <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+                </select>
+                <script>
                     document.getElementById("triSelect").options[${tri}].selected=true;             
             </script>
-            <input type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
-        </form:form>
+                <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
+            </form:form>
+        </div>
         <div class="pdt01AddProduit">
             <a href="creerProduitAdmin.do">
                 <button type="button" class="pdt01-newProduitButton">
@@ -65,9 +67,9 @@
                     <td class="pdt01Body">${produitDto.nom}</td>
 
                     <td class="pdt01Body"><a
-                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin">
-                            <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                            alt="${produitDto.nom}" class="pdt01Icone" />
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin"> <img
+                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt" alt="${produitDto.nom}"
+                            class="pdt01Icone" />
                     </a></td>
 
                     <td class="pdt01Body">${produitDto.destination}</td>

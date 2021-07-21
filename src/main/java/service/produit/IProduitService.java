@@ -105,4 +105,12 @@ public interface IProduitService {
      *                      <code>false</code> dans le cas contraire
      */
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * Permet de filtrer la liste des produits en fonction du statut de vente
+     * 
+     * @param  tri string tri
+     * @return     liste filtrée
+     */
+    List<ProduitDto> filtrerEnVente(final String tri);
 }
