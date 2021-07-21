@@ -80,6 +80,25 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         }
     }
 
+    @Override
+    public CommandeDo isCommandeExist(final String reference) {
+        final var request = new StringBuilder("SELECT c.reference FROM CommandeDo c");
+        request.append(" WHERE c.reference = :reference");
+        final TypedQuery<String> query = entityManager.createQuery(request.toString(), String.class);
+        query.setParameter("reference", reference);
+
+        logger.info("Recherche la commande avec le référence {} en base de données.", reference);
+        try {
+            final String existingReference = query.getSingleResult();
+            final var commandeDo = new CommandeDo();
+            commandeDo.setReference(existingReference);
+            return commandeDo;
+        } catch (final NoResultException exception) {
+            logger.info("La commande avec la référence {} n'existe pas.", reference, exception);
+            return null;
+        }
+    }
+
     //Méthode utilisée à la suppression d'un utilisateur
     @Override
     public void updateCommandeDoUserDeletion(final Integer idUtilisateur) {

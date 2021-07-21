@@ -42,13 +42,14 @@ public class ValiderPanierController {
         final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, adresses,
                 Integer.parseInt(utilisateur.getIdUtilisateur()));
         if (referenceCommandeOuListProduitErreur == null) {
-            // On détruit la session donc le panier sera vider automatiquement
+            // On détruit la session donc le panier sera vider automatiquement (ici l'utilisateur a été supprimé et est null)
             return "redirect:deconnecter.do";
         }
-        if (referenceCommandeOuListProduitErreur.getReference() != null) {
-            return "redirect:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
+        if (referenceCommandeOuListProduitErreur.getReference() == null) {
+            // en cas d'erreur renvoie au panier
+            return "redirect:listerPanierProduits.do";
         }
-        // en cas d'erreur renvoie au panier
-        return "redirect:listerPanierProduits.do";
+        // renvoie à la page de détail des commandes
+        return "redirect:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
     }
 }

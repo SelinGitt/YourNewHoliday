@@ -24,12 +24,20 @@ public interface ICommandeDao extends IGenericDao<CommandeDo> {
     List<CommandeDo> findByUserId(final Integer userId);
 
     /**
-     * Permet de retourner une commande selon sa référence
+     * Permet de retourner une commande avec ses produits selon sa référence
      *
      * @param  reference la réference de la commande
      * @return           CommandeDo la commande trouvé, null sinon
      */
     CommandeDo findByRef(final String reference);
+
+    /**
+     * Permet de retourner une commande sans ses produits et juste la référence afin de vérifier que celle ci existe bien
+     *
+     * @param  reference la référence de produit à vérifier
+     * @return           CommandeDo la commande avec sa référence sans les produits, null sinon
+     */
+    CommandeDo isCommandeExist(final String reference);
 
     //Méthode utilisée à la suppression d'un utilisateur
     /**

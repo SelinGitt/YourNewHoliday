@@ -77,7 +77,7 @@ public class CommandeService implements ICommandeService {
         do {
             reference = this.referenceCommande.generateReference();
             // Passer les adresses à la méthode
-        } while (this.iCommandeDao.findByRef(reference) != null);
+        } while (this.iCommandeDao.isCommandeExist(reference) != null);
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
         return CommandeMapper

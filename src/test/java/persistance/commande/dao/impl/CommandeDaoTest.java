@@ -89,6 +89,26 @@ class CommandeDaoTest {
         assertNull(this.iCommandeDao.findByRef("ZZZ1"));
     }
 
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExist() {
+        final CommandeDo commandeDo = this.iCommandeDao.isCommandeExist("ABC1");
+        assertNotNull(commandeDo);
+        assertEquals("ABC1", commandeDo.getReference());
+        final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
+        assertNull(commandeProduitSet);
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExistWhithWrongRef() {
+        assertNull(this.iCommandeDao.isCommandeExist("ZZZ1"));
+    }
+
     /*
      * Test method for {@link persistance.commande.dao.impl.CommandeDao#updateCommandeDoUserDeletion(Integer)}.
      */
