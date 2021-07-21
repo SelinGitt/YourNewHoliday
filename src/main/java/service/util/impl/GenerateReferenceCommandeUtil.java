@@ -68,11 +68,8 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
     }
 
     private boolean isDateConforme(final Object dateAttendue) {
-        // Une date
-        if (!(dateAttendue instanceof Date)) {
-            return false;
-        }
-        return true;
+        // Une date        
+        return (dateAttendue instanceof Date);
     }
 
     private String hash(final Object... param) {
