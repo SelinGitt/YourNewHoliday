@@ -47,21 +47,13 @@ public class AjouterProduitPanier {
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:" + iProduitService.determinerJSP(location));
-        System.out.println(iProduitService.determinerJSP(location));
-            //si dans la jsp location = "consulter"
-        System.out.println(result);
-            if ("consulter".equals(location)) {
-             
-                //recuperer l'id de la quantité pour mettre la valeur de l'id en attribut
-                modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
-            } 
-            if(iProduitService.determinerJSP(location).equals(null)) {
-                
-                return new ModelAndView("404.do");
-            }
-            
-         
-            
+
+        //si dans la jsp location = "consulter"
+        if ("consulter".equals(location)) {
+            //recuperer l'id de la quantité pour mettre la valeur de l'id en attribut
+            modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
+        }
+
         quantiteValidator.validate(beanQuantite, result);
         if (result.hasErrors()) {
             modelAndView.getModelMap().addAttribute("anyError", "pdt.quantity.notAllowed");

@@ -31,12 +31,16 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     /**
-     * 
+     * contient Produit pour la redirection
      */
-    private static final String PRODUITS_DO = "Produits.do";
+    private static final String PRODUIT = "Produit";
 
+    /**
+     * contient .do pour la redirection
+     */
+    private static final String DO      = ".do";
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger        logger      = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger        logger  = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
     private IProduitDao         produitDao;
@@ -152,10 +156,9 @@ public class ProduitService implements IProduitService {
 
     @Override
     public String determinerJSP(final String location) {
-        if (location.equals(null)) {
-            return null;
+        if ("lister".equals(location)) {
+            return location + PRODUIT + "s" + DO;
         }
-        return location + PRODUITS_DO;
-       
+        return location + PRODUIT + DO;
     }
 }
