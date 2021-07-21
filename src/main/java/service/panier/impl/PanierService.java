@@ -29,21 +29,21 @@ public class PanierService implements IPanierService {
     /**
      * Permet de déterminer le pourcentage de la remise que l'on souhaite appliquer lorsque les conditions sont respectées.
      */
-    public static final int    POURCENTAGE_REMISE                    = 5;
+    private static final int    POURCENTAGE_REMISE                    = 5;
     /**
      * Permet de déterminer le prix total minimum que doit faire le panier pour que la remise soit appliquée. <br />
      * (à condition de respecter aussi les autres criètres)
      */
-    public static final double PRIX_TOTAL_MINIMUM_POUR_REMISE        = 10000.00;
+    private static final double PRIX_TOTAL_MINIMUM_POUR_REMISE        = 10000.00;
     /**
      * Permet de déterminer le nombre de références minimum que doit contenir le panier pour que la remise soit appliquée.
      * <br />
      * (à condition de respecter aussi les autres criètres)
      */
-    public static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
+    private static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
 
     @Autowired
-    private IProduitService    iProduitService;
+    private IProduitService     iProduitService;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
