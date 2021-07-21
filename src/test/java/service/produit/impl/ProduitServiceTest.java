@@ -27,6 +27,7 @@ import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.ProduitMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe test de {@link ProduitService}
@@ -283,5 +284,33 @@ class ProduitServiceTest {
         panierUpdated.setRemiseAffichage("0");
         Mockito.when(this.iPanierService.updatePanier(panier, 1, 94)).thenReturn(panierUpdated);
         assertNotNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for
+     * {@link service.produit.impl.ProduitService#choixConsulterProduit(service.utilisateur.util.UtilisateurRoleEnum, Integer)}.
+     */
+    @Test
+    void testChoixConsulterProduit() {
+
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        produitDo.setNom("Test en Tanzanie");
+        produitDo.setReference("TEST556789");
+        produitDo.setHebergement("Test BouiBoui and Co.");
+        produitDo.setDestination("Test Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Test super voyage à la découverte de zanzibar");
+        produitDo.setCheminImage("C:/YNH/img");
+        produitDo.setVersion(1);
+        produitDo.setServices(1);
+
+        Mockito.when(iProduitDaoMock.findById(1)).thenReturn(produitDo);
+        Mockito.when(iProduitDaoMock.findProduitEnVente(1)).thenReturn(null);
+
+        assertNotNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.ADMINISTRATEUR, 1));
+        assertNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.VISITEUR, 1));
+        assertNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.CLIENT, 1));
     }
 }
