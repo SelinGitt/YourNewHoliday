@@ -53,6 +53,10 @@ public class AjouterProduitPanier {
             //recuperer l'id de la quantité pour mettre la valeur de l'id en attribut
             modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
         }
+        //gestion erreur 404
+        if ("404.do".equals(determinerJSP(location))) {
+            return new ModelAndView(determinerJSP(location));
+        }
 
         quantiteValidator.validate(beanQuantite, result);
         if (result.hasErrors()) {
@@ -68,8 +72,11 @@ public class AjouterProduitPanier {
 
     private String determinerJSP(final String location) {
         if ("lister".equals(location)) {
-            return location + "Produits.do";
+            return "listerProduits.do";
         }
-        return location + "Produit.do";
+        if ("consulter".equals(location)) {
+            return "consulterProduit.do";
+        }
+        return "404.do";
     }
 }
