@@ -19,6 +19,7 @@ public class CommandeDto implements Serializable {
     private String                   prixTotalAvantRemise;
     private String                   date;
     private String                   quantiteTotale;
+    private String                   remise;
     private List<CommandeProduitDto> listCommandeProduitDto;
     private CommandeAdresseDto       adresseLivraison;
     private CommandeAdresseDto       adresseFacturation;
@@ -184,6 +185,24 @@ public class CommandeDto implements Serializable {
      */
     public void setPrixTotalAvantRemise(final String prixTotalAvantRemise) {
         this.prixTotalAvantRemise = prixTotalAvantRemise;
+    }
+
+    /**
+     * Getter for remise
+     *
+     * @return the remise
+     */
+    public String getRemise() {
+        return remise;
+    }
+
+    /**
+     * Setter for remise
+     *
+     * @param remise the remise to set
+     */
+    public void setRemise(String remise) {
+        this.remise = remise;
     }
 
 }

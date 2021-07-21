@@ -47,7 +47,7 @@ public class DetailCommandeController {
         final var commandeDto = this.iCommandeService.chercherCommandeParReference(reference);
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
-        modelAndView.getModelMap().addAttribute("remise", iCommandeService.calculerRemise(commandeDto));
+        modelAndView.getModelMap().addAttribute("remise", commandeDto.getRemise());
         return modelAndView;
     }
 

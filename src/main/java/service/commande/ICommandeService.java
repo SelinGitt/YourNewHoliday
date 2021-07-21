@@ -30,12 +30,4 @@ public interface ICommandeService {
      */
     CommandeDto chercherCommandeParReference(final String reference);
 
-    /**
-     * Permet de la remise de la commande
-     *
-     * @param  commande : la commande en attribut du ModelAndView
-     * @return          : le montant de la remise
-     */
-    String calculerRemise(final CommandeDto commande);
-
 }

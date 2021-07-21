@@ -3,6 +3,10 @@ package service.commande;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 import service.util.DateFormatUtil;
@@ -13,10 +17,9 @@ import service.util.DecimalFormatUtils;
  *
  * @author Hanan Anghari
  */
+@Service
+@Transactional(propagation = Propagation.REQUIRED)
 public class CommandeMapper {
-    private CommandeMapper() {
-        // emprty
-    }
 
     /**
      * Permet de mapper une commandeDto en commande Do
@@ -36,6 +39,7 @@ public class CommandeMapper {
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
         commandeDto.setPrixTotalApresRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotalApresRemise()));
+        commandeDto.setRemise(calculerRemise(commandeDto));
 
         return commandeDto;
     }
@@ -49,5 +53,10 @@ public class CommandeMapper {
     public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
         return listeCommandeDo.stream().map(CommandeMapper::mapperToDto).collect(Collectors.toList());
 
+    }
+
+    private static String calculerRemise(final CommandeDto commande) {
+        return DecimalFormatUtils.decimalFormatUtil(DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalAvantRemise())
+                - DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalApresRemise()));
     }
 }
