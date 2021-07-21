@@ -89,7 +89,7 @@
     <c:if test="${empty sessionScope.utilisateur}">
         <div class="headerCell headerPanier">
             <div class="headerSousCell">
-                <a href=""> <img src="img/template/header/creerCompte.png" class="logoHeader"
+                <a href="creerUtilisateur.do"> <img src="img/template/header/creerCompte.png" class="logoHeader"
                     alt="icône créer compte">
                 </a>
             </div>
