@@ -37,7 +37,9 @@ public class EditerUtilisateurValidator implements Validator {
 
         final var user = (UtilisateurDto) target;
 
-        // Si on souhaite changer le mot de passe 
+        // Si on souhaite changer le mot de passe
+        // On ne le met pas dans le commun car il peut etre empty
+        // On ne check pas le confirm password car l'update utilise password
         if (!user.getPassword().isEmpty()) {
             // On reject si la confirmation de mot de passe n'est pas renseignee
             ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "usr02.erreur.confirmPassword_required", defaultError);
