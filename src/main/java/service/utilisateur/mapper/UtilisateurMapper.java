@@ -1,4 +1,4 @@
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +12,8 @@ import org.slf4j.LoggerFactory;
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.utilisateur.util.MDPCrypter;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe UtilisateurMapper <br>

@@ -18,8 +18,8 @@ import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.impl.GenerateReferenceUtilisateurUtil;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.MDPCrypter;
-import service.utilisateur.util.UtilisateurMapper;
 
 /**
  * Classe UtilisateurService <br>
@@ -46,6 +46,12 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
+        // Verifie si l'email est deja pris
+        if (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null) {
+            logger.info("Erreur création d'utilisateur. Email déjà pris {}", utilisateurDto.getEmail());
+            return null;
+        }
+
         final var roleDto = new RoleDto();
         roleDto.setIdRole(utilisateurDto.getRole().getIdRole());
 

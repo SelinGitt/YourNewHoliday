@@ -23,7 +23,7 @@ public class GetPropertyValues {
     /**
      * Map contennant les chemins d'accès aux répertoires
      */
-    public static final Map<String, String> PROPERTIESMAP = new HashMap<>();
+    private static final Map<String, String> PROPERTIESMAP = new HashMap<>();
 
     private static final Logger             logger        = LoggerFactory.getLogger(GetPropertyValues.class);
 
@@ -51,13 +51,22 @@ public class GetPropertyValues {
             // On lit le fichier YNH-application.properties
             prop.load(inputStream);
             // On place dans la map chaque couple clé/valeur du fichier properties
-            PROPERTIESMAP.put("contactRepo", prop.getProperty("contactRepo"));
-            PROPERTIESMAP.put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
-            PROPERTIESMAP.put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
-            PROPERTIESMAP.put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
+            getPropertiesMap().put("contactRepo", prop.getProperty("contactRepo"));
+            getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
+            getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
+            getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
             // On catch les éventuelles exceptions générées par le stream
         } catch (final Exception e) {
             logger.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);
         }
+    }
+
+    /**
+     * Getter for propertiesmap
+     *
+     * @return the propertiesmap
+     */
+    public static Map<String, String> getPropertiesMap() {
+        return PROPERTIESMAP;
     }
 }
