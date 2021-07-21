@@ -15,7 +15,7 @@ public interface IGenerateReferenceUtil {
      *
      * @return String la référence
      */
-    String generateReference();
+    String generateReference(final String... param);
 
     /**
      * Permet de construire un prefix pour la génération de références

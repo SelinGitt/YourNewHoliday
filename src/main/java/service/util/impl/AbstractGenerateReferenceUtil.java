@@ -34,7 +34,7 @@ public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenc
     protected String            prefix;
 
     @Override
-    public String generateReference() {
+    public String generateReference(final String... param) {
         final String reference = this.prefix + this.generateSuffix();
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;
