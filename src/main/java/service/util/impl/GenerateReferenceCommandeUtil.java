@@ -31,6 +31,11 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
 
     @Override
     public String generateReference(final Object... param) {
+        this.utilisateur = (UtilisateurDto) param[0];
+        this.nombreDeProduit = (Integer) param[1];
+        // FIXME : debug
+        System.out.println("Utilisateur : " + utilisateur + " nombre de produits : " + nombreDeProduit);
+
         final String reference = "REFERENCETEST58";
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;

@@ -14,6 +14,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.IGenerateReferenceUtil;
 
 /**
@@ -47,7 +48,10 @@ class GenerateReferenceCommandeUtilTest {
      */
     @Test
     void testGenerateRef() {
-        final String reference = this.iGenerateReferenceUtil.generateReference();
+        final UtilisateurDto utilisateur = new UtilisateurDto();
+        utilisateur.setNom("NomDuCLient");
+        utilisateur.setPrenom("PrenomDuClient");
+        final String reference = this.iGenerateReferenceUtil.generateReference(utilisateur, 5);
         assertTrue(reference.matches(REGEX));
     }
 
