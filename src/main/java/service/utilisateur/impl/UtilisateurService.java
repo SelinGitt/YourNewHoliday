@@ -131,15 +131,19 @@ public class UtilisateurService implements IUtilisateurService {
         // Si nom empty on fait une recherche par filtre
         if (nom.isEmpty()) {
             if (idRole == 0) {
+                logger.debug("Recherche de tous les utilisateurs.");
                 return this.findAllUtilisateurs();
             }
+            logger.debug("Recherche de tous les utilisateurs de rôle d'id {}.", idRole);
             return this.rechercherUtilisateurRole(idRole);
         }
 
         // Nom pas empty, donc recherche par nom ou nom + role
         if (idRole == 0) {
+            logger.debug("Recherche de tous les utilisateurs de nom {}.", nom);
             return this.rechercherUtilisateurNom(nom);
         }
+        logger.debug("Recherche de tous les utilisateurs de nom {} et de rôle d'id {}.", nom, idRole);
         return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
@@ -152,7 +156,11 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public UtilisateurDto rechercherReference(final String reference) {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
-
+        if (utilisateurDo == null) {
+            logger.debug("Utilisateur {} non trouvé.", reference);
+        } else {
+            logger.debug("Utilisateur {} trouvé.", reference);
+        }
         return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
     }
 
