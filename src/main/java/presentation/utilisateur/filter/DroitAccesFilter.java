@@ -40,7 +40,7 @@ public class DroitAccesFilter implements Filter {
         }
 
         final var response = (HttpServletResponse) resp;
-        final var listRole = StartupApp.DROITS.get(uri);
+        final var listRole = StartupApp.getDroits().get(uri);
 
         // Si listRole null redirection, le lien n'existe pas donc 404
         if (listRole == null) {

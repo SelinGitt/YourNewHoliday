@@ -29,11 +29,17 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-                                    <a href="#"><img
+                                    <c:url value="consulterProduit.do" var="destination">
+                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
+                                        <c:param name="from" value="detail"/>
+                                        <c:param name="paramValue" value="${commande.reference}"/>
+                                    </c:url>
+                                    <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
                                         alt="${cmdProduit.produitAcheteDto.destination} :
                                              ${cmdProduit.produitAcheteDto.cheminDeLImage}"
-                                        class="CMD_04-img"></a>
+                                        class="CMD_04-img">
+                                    </a>
                                 </div>
                                 <%-- titre du voyage et sa description --%>
                                 <div class="CMD_04-col-2 CMD_04-height">
