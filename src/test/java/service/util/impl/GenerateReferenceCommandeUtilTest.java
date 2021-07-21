@@ -3,6 +3,7 @@
  */
 package service.util.impl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -50,12 +51,23 @@ class GenerateReferenceCommandeUtilTest {
      */
     @Test
     void testGenerateRef() {
-        final UtilisateurDto utilisateur = new UtilisateurDto();
-        utilisateur.setNom("NomDuCLient");
-        utilisateur.setPrenom("PrenomDuClient");
-        final Date date = new Date();
+        UtilisateurDto utilisateur = new UtilisateurDto();
+        utilisateur.setNom("nomDuCLient");
+        utilisateur.setPrenom("prenomDuClient");
+        Date date = new Date();
         final String reference = this.iGenerateReferenceUtil.generateReference(utilisateur, 5, date);
         assertTrue(reference.matches(REGEX));
+
+        // Vérification du controle des données
+        String referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, -2, date);
+        assertEquals(null, referenceImpossibleACree);
+        date = null;
+        referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
+        assertEquals(null, referenceImpossibleACree);
+        utilisateur = null;
+        date = new Date();
+        referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
+        assertEquals(null, referenceImpossibleACree);
     }
 
 }

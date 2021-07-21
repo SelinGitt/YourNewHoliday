@@ -65,11 +65,8 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
             return false;
         }
         final var date = (Date) param[2];
-        // non nulle
-        if (null == date) {
-            return false;
-        }
-        return true;
+        // non nulle        
+        return null != date;
     }
 
     private String hash(final Object... param) {
@@ -82,9 +79,9 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         // le hash est composé de :
         final var hash = new StringBuilder();
         // la première lettre du nom
-        hash.append(utilisateur.getNom().charAt(0));
+        hash.append(utilisateur.getNom().toUpperCase().charAt(0));
         // la première lettre du prénom
-        hash.append(utilisateur.getPrenom().charAt(0));
+        hash.append(utilisateur.getPrenom().toUpperCase().charAt(0));
         // le nombre de produit dans le panier
         hash.append(String.format("%02d", nombreDeProduit));
         // le jour du mois
