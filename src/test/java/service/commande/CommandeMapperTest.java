@@ -41,6 +41,7 @@ class CommandeMapperTest {
         commandeDo.setReference("ABC9");
         final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
+        commandeDo.setPrixTotalAvantRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setPrixTotalApresRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
         commandeDo.setCommandeProduitDoSet(null);
@@ -77,6 +78,7 @@ class CommandeMapperTest {
         commandeDo.setReference("ABC9");
         final Date date = DateFormatUtil.formaterStringToDate("12/12/1990");
         commandeDo.setDate(date);
+        commandeDo.setPrixTotalAvantRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setCommandeProduitDoSet(null);
@@ -86,6 +88,7 @@ class CommandeMapperTest {
         commandeDo2.setReference("EFG4");
         final Date date2 = DateFormatUtil.formaterStringToDate("13/06/1990");
         commandeDo2.setDate(date2);
+        commandeDo2.setPrixTotalAvantRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
         commandeDo2.setCommandeProduitDoSet(null);
