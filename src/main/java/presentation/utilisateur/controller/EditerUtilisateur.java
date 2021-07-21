@@ -30,10 +30,12 @@ public class EditerUtilisateur {
      * Permet de recuperer l'utilisateur et d'afficher la jsp
      * 
      * @param  reference Reference a rechercher
+     * @param  origin    String la page d'origine (1 pour USR00, 2 pour USR01)
      * @return           ModelAndView avec le nom de la jsp et l'utilisateur en attribut
      */
     @GetMapping
-    public ModelAndView modifierUtilisateur(@RequestParam(value = "ref", defaultValue = "") final String reference) {
+    public ModelAndView modifierUtilisateur(@RequestParam(value = "ref", defaultValue = "") final String reference,
+            @RequestParam("origin") final String origin) {
 
         final var utilisateurDto = this.iUtilisateurService.rechercherReference(reference);
 
@@ -43,7 +45,8 @@ public class EditerUtilisateur {
         }
 
         final var modelAndView = new ModelAndView("modifierUtilisateur");
-
+        //On met la page d'origine en attribut
+        modelAndView.getModelMap().addAttribute("origin", origin);
         modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
 
         return modelAndView;
@@ -52,15 +55,17 @@ public class EditerUtilisateur {
     /**
      * Permet de traiter les requêtes POST<br>
      * et de mettre a jour un utilisateur
-     *
+     * 
+     * @param  origin         String la page d'origine (1 pour USR00, 2 pour USR01)
      * @param  utilisateurDto l'utilisateur à mettre a jour
-     * @return                redirection vers usr01
+     * @return                redirection vers usr01 ou usr00 en fonction de la page d'origine
      */
     @PostMapping
-    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto) {
+    public ModelAndView processSubmit(final UtilisateurDto utilisateurDto, @RequestParam("origin") final String origin) {
         this.iUtilisateurService.updateUtilisateur(utilisateurDto);
-
-        // Redirection temporaire, il faut par la suite verifier le rang de l'utilisateur connecte
+        if ("1".equals(origin)) {
+            return new ModelAndView("redirect:/consulterUtilisateur.do");
+        }
         return new ModelAndView("redirect:/listerUtilisateur.do");
     }
 }
