@@ -17,7 +17,7 @@
 }
 
 .user00-body-general {
-	width: 100%
+	width: 100%;
 }
 
 .user00-leftSide {
@@ -33,6 +33,10 @@
 
 .user00-infos-input {
 	width: 55%;
+}
+
+.user00-textarea {
+	resize: none;
 }
 
 .user00-buttons {
@@ -173,9 +177,16 @@
 	width: 65%;
 }
 
+.user05-form-field {
+	margin-bottom: 1em;
+}
+
+.user05-form-inputs {
+	width: 70%;
+}
+
 .user05-inputs {
-	width: 55%;
-	margin-bottom: 2em;
+	width: 100%;
 }
 
 .user05-textarea {
@@ -184,7 +195,7 @@
 }
 
 .user05-buttons {
-	width: 56%;
+	width: 70%;
 	float: right;
 }
 

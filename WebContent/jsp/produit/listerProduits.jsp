@@ -6,7 +6,6 @@
     <c:if test="${not empty anyError}">
         <div class="background-error-block block-message-commun">
             <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
-            
         </div>
     </c:if>
     <c:if test="${not empty anySuccess}">
@@ -47,8 +46,9 @@
             <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
                 aria-label="Produit">
                 <tr>
-                    <th colspan="2"><a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}"> <img
-                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                    <th colspan="2"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=liste"> 
+                        <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                             alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
                     </a></th>
                 </tr>
