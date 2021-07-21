@@ -5,25 +5,6 @@
 
 <div class="conteneur-ascenseur">
 
-    <c:choose>
-        <c:when test="${origin=='2'}">
-            <div class="user02-title">
-                <h1>
-                    <spring:message code="usr02.titre.admin" />
-                </h1>
-            </div>
-            <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
-            </a>
-        </c:when>
-        <c:otherwise>
-            <div class="user02-title">
-                <h1>
-                    <spring:message code="usr02.titre.client" />
-                </h1>
-            </div>
-        </c:otherwise>
-    </c:choose>
-
     <div class="user02-body-general">
         <c:if test="${not empty error}">
             <div class="background-error-block block-message-commun">
@@ -31,8 +12,28 @@
             </div>
         </c:if>
 
-        <div class="user02-form display-flex">
-            <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do?origin=${origin}">
+        <c:choose>
+            <c:when test="${origin=='2'}">
+                <div class="display-flex align-item-center">
+                    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" /></a>
+                    <h1 class="user02-title">
+                        <spring:message code="usr02.titre.admin" />
+                    </h1>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="user02-title">
+                    <h1>
+                        <spring:message code="usr02.titre.client" />
+                    </h1>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
+        <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do?origin=${origin}"
+            class="display-flex justify-content-space-around">
+
+            <div class="user02-leftSide">
                 <form:hidden path="dateInscription" value="${dateInscription}" />
                 <form:hidden path="reference" value="${reference}" />
                 <form:hidden path="id" value="${id}" />
@@ -45,41 +46,42 @@
                 <%-- Temporaire --%>
                 <form:hidden path="estDesactive" value="${estDesactive}" />
 
-                <div class="user02-lib-champ display-flex">
-                    <span><spring:message code="usr02.edit.nom" /></span>
-                    <div class="user02-lib-champ-taille">
-                        <form:input path="nom" />
+                <div class="user02-form-field display-flex justify-content-space-between">
+                    <label for="nom"><spring:message code="usr02.edit.nom" /></label>
+                    <div class="user02-form-inputs">
+                        <form:input path="nom" class="user02-inputs" />
                         <form:errors path="nom" cssClass="text-color-rouge" />
                     </div>
                 </div>
-                <div class="user02-lib-champ display-flex">
-                    <span><spring:message code="usr02.edit.prenom" /></span>
-                    <div class="user02-lib-champ-taille">
-                        <form:input path="prenom" />
+
+                <div class="user02-form-field display-flex justify-content-space-between">
+                    <label for="prenom"><spring:message code="usr02.edit.prenom" /></label>
+                    <div class="user02-form-inputs">
+                        <form:input path="prenom" class="user02-inputs" />
                         <form:errors path="prenom" cssClass="text-color-rouge" />
                     </div>
                 </div>
 
-                <div class="user02-lib-champ display-flex">
-                    <span><spring:message code="usr02.edit.adresse" /></span>
-                    <div class="user02-lib-champ-taille">
-                        <form:textarea path="adresse" />
+                <div class="user02-form-field display-flex justify-content-space-between">
+                    <label for="adresse"><spring:message code="usr02.edit.adresse" /></label>
+                    <div class="user02-form-inputs">
+                        <form:textarea path="adresse" class="user02-inputs user02-textarea" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
                 </div>
 
-                <div class="user02-lib-champ display-flex">
-                    <span><spring:message code="usr02.edit.dateNaissance" /></span>
-                    <div class="user02-lib-champ-taille">
-                        <form:input path="dateNaissance" />
+                <div class="user02-form-field display-flex justify-content-space-between">
+                    <label for="dateNaissance"><spring:message code="usr02.edit.dateNaissance" /></label>
+                    <div class="user02-form-inputs">
+                        <form:input path="dateNaissance" class="user02-inputs" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
 
-                <div class="user02-lib-champ display-flex">
-                    <span><spring:message code="usr02.edit.email" /></span>
-                    <div class="user02-lib-champ-taille">
-                        <form:input path="email" />
+                <div class="user02-form-field display-flex justify-content-space-between">
+                    <label for="email"><spring:message code="usr02.edit.email" /></label>
+                    <div class="user02-form-inputs">
+                        <form:input path="email" class="user02-inputs" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -115,12 +117,12 @@
                         <spring:message code="usr02.edit.reset" />
                     </button>
                 </div>
-            </form:form>
+            </div>
+
 
             <div class="user02-rightSide">
                 <p>Section avatar And co</p>
             </div>
-
-        </div>
+        </form:form>
     </div>
 </div>
