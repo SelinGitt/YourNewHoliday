@@ -23,7 +23,7 @@ public class GetPropertyValues {
     /**
      * Le nom du fichier contenant les chemins d'accès aux répertoires contenant les fichiers de l'application
      */
-    public static final String               YNH_APPLICATION_PROPERTIES = "YNH-application.properties";
+    private static final String              YNH_APPLICATION_PROPERTIES = "YNH-application.properties";
 
     /**
      * Map contennant les chemins d'accès aux répertoires
@@ -47,7 +47,7 @@ public class GetPropertyValues {
         // On instancie une Properties
         final var prop = new Properties();
         // On précise le nom du fichier Properties
-        final var propFileName = this.getYnhApplicationProperties();
+        final var propFileName = YNH_APPLICATION_PROPERTIES;
         // On crée un stream sur le fichier Properties
         try (final var inputStream = getClass().getClassLoader().getResourceAsStream(propFileName)) {
             // Si le stream est null, on lance un FileNotFoundException
@@ -75,14 +75,5 @@ public class GetPropertyValues {
      */
     public static Map<String, String> getPropertiesMap() {
         return PROPERTIES_MAP;
-    }
-
-    /**
-     * Getter for ynhApplicationProperties
-     *
-     * @return the ynhApplicationProperties
-     */
-    public String getYnhApplicationProperties() {
-        return YNH_APPLICATION_PROPERTIES;
     }
 }
