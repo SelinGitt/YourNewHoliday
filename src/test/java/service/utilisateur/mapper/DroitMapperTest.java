@@ -1,7 +1,7 @@
 /**
  * 
  */
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,14 +14,14 @@ import persistance.utilisateur.entity.DroitDo;
 import presentation.utilisateur.dto.DroitDto;
 
 /**
- * JUnit test pour {@link service.utilisateur.util.DroitMapper}
+ * JUnit test pour {@link service.utilisateur.mapper.DroitMapper}
  * 
  * @author Chamalo
  */
 class DroitMapperTest {
 
     /**
-     * Test method for {@link service.utilisateur.util.DroitMapper#mapperToDto(persistance.utilisateur.entity.DroitDo)}.
+     * Test method for {@link service.utilisateur.mapper.DroitMapper#mapperToDto(persistance.utilisateur.entity.DroitDo)}.
      */
     @Test
     void testMapperToDto() {
@@ -40,7 +40,7 @@ class DroitMapperTest {
     }
 
     /**
-     * Test method for {@link service.utilisateur.util.DroitMapper#mapperToDo(presentation.utilisateur.dto.DroitDto)}.
+     * Test method for {@link service.utilisateur.mapper.DroitMapper#mapperToDo(presentation.utilisateur.dto.DroitDto)}.
      */
     @Test
     void testMapperToDo() {
@@ -56,7 +56,7 @@ class DroitMapperTest {
     }
 
     /**
-     * Test method for {@link service.utilisateur.util.DroitMapper#mapperToListDto(List)}.
+     * Test method for {@link service.utilisateur.mapper.DroitMapper#mapperToListDto(List)}.
      */
     @Test
     void testMapperListe() {

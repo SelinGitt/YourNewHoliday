@@ -22,7 +22,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.utilisateur.util.UtilisateurMapper;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -103,6 +103,10 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurCreated = this.utilisateurService.createUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurCreated);
+
+        Mockito.when(this.dao.findByEmail(utilisateurDto.getEmail())).thenReturn(new UtilisateurDo());
+
+        Assertions.assertNull(this.utilisateurService.createUtilisateur(utilisateurDto));
     }
 
     /**
