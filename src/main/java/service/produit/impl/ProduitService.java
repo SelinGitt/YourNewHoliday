@@ -139,16 +139,16 @@ public class ProduitService implements IProduitService {
 
     @Override
     public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
-        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(),
-                beanQuantite.getQuantite(), beanQuantite.getId());
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 
     @Override
-    public ProduitDto choixConsulterProduit(final Integer idRole, final Integer idProduit) {
-        if (idRole == UtilisateurRoleEnum.ADMINISTRATEUR.getId()) {
+    public ProduitDto choixConsulterProduit(final UtilisateurRoleEnum role, final Integer idProduit) {
+        if (UtilisateurRoleEnum.ADMINISTRATEUR == role) {
             return ProduitMapper.mapToDto(produitDao.findById(idProduit));
         }
         return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
