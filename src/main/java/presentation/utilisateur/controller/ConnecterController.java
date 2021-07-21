@@ -33,6 +33,11 @@ import service.utilisateur.IUtilisateurService;
 @SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
 
+    /**
+     * le temps maximimum en minutes d'inactivité d'un utilisateur avant expiration de la session
+     */
+    private int                 tempsAvantDeconnection = 5;
+
     @Autowired
     private IUtilisateurService iUtilisateurService;
 
@@ -59,14 +64,16 @@ public class ConnecterController {
 
     /**
      * Permet de mettre logger un utilisateur en session
-     *
+     * 
+     * @param  request        : la requete HTTP
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
      * @param  result         : resultats du binding utilisé pour gérer les erreurs
      * @param  modelAndView   : ModelAndView du controller
      * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
-    public ModelAndView loggerUtilisateur(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
+    public ModelAndView loggerUtilisateur(final HttpServletRequest request,
+            final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
             final ModelAndView modelAndView) {
 
         connecterValidator.validate(utilisateurDto, result);
@@ -92,6 +99,10 @@ public class ConnecterController {
 
             //Ajout d'un panier vide à la session
             modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+
+            //ajout d'un intervale maximum autorisé avant deconection automatique
+            final HttpSession session = request.getSession();
+            session.setMaxInactiveInterval(tempsAvantDeconnection * 60);
 
             //Redirection vers page d'accueil
             modelAndView.setViewName("redirect:listerProduits.do");
@@ -121,6 +132,7 @@ public class ConnecterController {
     private ModelAndView logout(final HttpServletRequest request, final SessionStatus sessionStatus,
             final @ModelAttribute("deletionSuccess") String code, final RedirectAttributes redirectAttributes) {
         final HttpSession session = request.getSession();
+
         //Si la session n'est pas null, on y met fin
         if (session != null) {
             sessionStatus.setComplete();
