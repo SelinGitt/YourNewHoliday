@@ -27,7 +27,6 @@ import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.ProduitMapper;
-import service.util.impl.GenerateReferenceProduitUtil;
 
 /**
  * Classe test de {@link ProduitService}
@@ -37,13 +36,11 @@ import service.util.impl.GenerateReferenceProduitUtil;
 class ProduitServiceTest {
 
     @InjectMocks
-    private ProduitService               produitServiceMock;
+    private ProduitService produitServiceMock;
     @Mock
-    private IProduitDao                  iProduitDaoMock;
+    private IProduitDao    iProduitDaoMock;
     @Mock
-    private IPanierService               iPanierService;
-    @Mock
-    private GenerateReferenceProduitUtil generateRefProduitUtil;
+    private IPanierService iPanierService;
 
     @BeforeEach
     void initMock() {
