@@ -8,7 +8,6 @@ import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
-import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import service.util.DateFormatUtil;
 import service.util.DecimalFormatUtils;
@@ -79,19 +78,11 @@ public class CommandeMapper {
         commandeDo.setDate(new Date());
         commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
         commandeDo.setPrixTotal(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
-        commandeDo.setQuantiteTotale(calculerQuantiteTotal(panier));
+        commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
         commandeDo.setAdresseFacturation(adresses.getCommandeAdresseFacturation().getAdresse());
         commandeDo.setAdresseLivraison(adresses.getCommandeAdresseLivraison().getAdresse());
         return commandeDo;
-    }
-
-    private static int calculerQuantiteTotal(final PanierDto panier) {
-        var quantiteTotal = 0;
-        for (LigneCommandeProduitDto ligneProduit : panier.getMapPanier().values()) {
-            quantiteTotal += ligneProduit.getQuantite();
-        }
-        return quantiteTotal;
     }
 }

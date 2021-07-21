@@ -113,7 +113,7 @@ public class ProduitAcheteDo {
      *
      * @param version the version to set
      */
-    public void setVersion(Integer version) {
+    public void setVersion(final Integer version) {
         this.version = version;
     }
 
@@ -221,7 +221,7 @@ public class ProduitAcheteDo {
      *
      * @param hebergement the hebergement to set
      */
-    public void setHebergement(String hebergement) {
+    public void setHebergement(final String hebergement) {
         this.hebergement = hebergement;
     }
 
@@ -239,7 +239,7 @@ public class ProduitAcheteDo {
      *
      * @param miseEnVente the miseEnVente to set
      */
-    public void setMiseEnVente(Boolean miseEnVente) {
+    public void setMiseEnVente(final Boolean miseEnVente) {
         this.miseEnVente = miseEnVente;
     }
 
@@ -275,7 +275,7 @@ public class ProduitAcheteDo {
      *
      * @param services the services to set
      */
-    public void setServices(Integer services) {
+    public void setServices(final Integer services) {
         this.services = services;
     }
 

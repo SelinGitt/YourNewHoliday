@@ -80,7 +80,7 @@ public class CommandeProduitMapper {
     public static Set<CommandeProduitDo> mapperMapDtoToSetDo(final Map<ProduitDto, LigneCommandeProduitDto> contenuPanier,
             final CommandeDo commandeAffilie) {
         final Set<CommandeProduitDo> setCommandeProduitDo = new HashSet<>();
-        for (Map.Entry<ProduitDto, LigneCommandeProduitDto> entry : contenuPanier.entrySet()) {
+        for (final Map.Entry<ProduitDto, LigneCommandeProduitDto> entry : contenuPanier.entrySet()) {
             setCommandeProduitDo.add(mapperLignePanierToCommandeProduitDo(entry.getKey(), entry.getValue(), commandeAffilie));
         }
         return setCommandeProduitDo;

@@ -75,7 +75,7 @@ public class CommandeDao extends AbstractGenericDao<CommandeDo> implements IComm
         try {
             return query.getSingleResult();
         } catch (final NoResultException exception) {
-            logger.info("Pas de référence : {} ", exception.getMessage());
+            logger.error("Pas de commande avec la référence {}.", reference, exception);
             return null;
         }
     }

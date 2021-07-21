@@ -140,7 +140,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
             // Si l'id n'existe pas en base ou si le produit recherché n'est pas en vente, on retourne null.
         } catch (final NoResultException noResultException) {
             // Si exception 
-            logger.error("Le produit d'ID {idProduit} n'est pas en base ou n'est pas en vente ou n'a pas la bonne version.",
+            logger.info("Le produit d'ID {idProduit} n'est pas en base, n'est pas en vente ou n'a pas la bonne version.",
                     noResultException);
             return null;
         }
