@@ -53,8 +53,11 @@
 
                     <td class="pdt01Body">${produitDto.nom}</td>
 
-                    <td class="pdt01Body"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                        alt="${produitDto.nom}" class="pdt01Icone" /></td>
+                    <td class="pdt01Body"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin">
+                            <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                            alt="${produitDto.nom}" class="pdt01Icone" />
+                    </a></td>
 
                     <td class="pdt01Body">${produitDto.destination}</td>
 
