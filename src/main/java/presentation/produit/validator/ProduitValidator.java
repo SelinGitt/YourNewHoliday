@@ -19,7 +19,7 @@ public class ProduitValidator implements Validator {
     /**
      * Le nombre de caractère autorisé pour la référence
      */
-    private static final int LONGEUR_REFERENCE = 10;
+    private static final int LONGUEUR_REFERENCE = 10;
 
     @Override
     public boolean supports(final Class<?> clazz) {
@@ -54,7 +54,7 @@ public class ProduitValidator implements Validator {
                 errors.rejectValue("reference", "pdt03.reference.format");
             }
 
-            if (ref.length() != LONGEUR_REFERENCE) {
+            if (ref.length() != LONGUEUR_REFERENCE) {
                 errors.rejectValue("reference", "pdt03.reference.nbCaractere");
             }
         }
