@@ -6,6 +6,8 @@ package service.util.impl;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Date;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +53,8 @@ class GenerateReferenceCommandeUtilTest {
         final UtilisateurDto utilisateur = new UtilisateurDto();
         utilisateur.setNom("NomDuCLient");
         utilisateur.setPrenom("PrenomDuClient");
-        final String reference = this.iGenerateReferenceUtil.generateReference(utilisateur, 5);
+        final Date date = new Date();
+        final String reference = this.iGenerateReferenceUtil.generateReference(utilisateur, 5, date);
         assertTrue(reference.matches(REGEX));
     }
 

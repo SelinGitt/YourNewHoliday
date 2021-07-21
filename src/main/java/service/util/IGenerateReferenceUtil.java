@@ -18,7 +18,8 @@ public interface IGenerateReferenceUtil {
      *         <pre>
      *  paramètres necessaires seulement pour la ref commande :
      *  _  param[0] : utilisateurDto
-     *  _  param[1] : nombre de produits achetés (= nombre de produits dans le panier)     *
+     *  _  param[1] : nombre de produits achetés (= nombre de produits dans le panier) 
+     *  _  param[2] : la date (jour et heure)
      *         </pre>
      * 
      * @return       String la référence

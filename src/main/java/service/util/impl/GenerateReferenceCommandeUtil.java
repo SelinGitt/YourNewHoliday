@@ -17,29 +17,26 @@ import presentation.utilisateur.dto.UtilisateurDto;
 @Qualifier("CMD")
 public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil {
 
-    private UtilisateurDto utilisateur;
-    private Integer        nombreDeProduit;
-
     /**
      * Constructor
      */
     public GenerateReferenceCommandeUtil() {
         // le préfixe est vide pour commande car on doit générer la référence à partir du hash
-        // de nom Client, prénom Client, nombre de produits dans le panier, date d'achat.        
+        // de : nom Client, prénom Client, nombre de produits dans le panier et date d'achat.        
         this.prefix = "";
     }
 
     @Override
     public String generateReference(final Object... param) {
-        this.utilisateur = (UtilisateurDto) param[0];
-        this.nombreDeProduit = (Integer) param[1];
+        final var utilisateur = (UtilisateurDto) param[0];
+        final var nombreDeProduit = param[1].toString();
+        final var date = param[2].toString();
         // FIXME : debug
-        System.out.println(
-                "Nom : " + utilisateur.getNom() + " Prénom : " + utilisateur.getPrenom() + " nombre de produits : " + nombreDeProduit);
-        // TODO : récupérer l'adresse
+        System.out.println("Nom : " + utilisateur.getNom() + " Prénom : " + utilisateur.getPrenom() + " nombre de produits : "
+                + nombreDeProduit + " Date : " + date);
 
         // TODO : Hashage 
-        final String reference = "REFERENCETEST15";
+        final var reference = "REFERENCETEST15";
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;
     }
