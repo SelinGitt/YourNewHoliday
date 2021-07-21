@@ -27,9 +27,19 @@ import service.produit.IProduitService;
 @RequestMapping("/ajouterProduitPanier.do")
 public class AjouterProduitPanier {
     @Autowired
-    private IProduitService   iProduitService;
+    private IProduitService     iProduitService;
     @Autowired
-    private QuantiteValidator quantiteValidator;
+    private QuantiteValidator   quantiteValidator;
+
+    /**
+     * contient Produit pour la redirection
+     */
+    private static final String PRODUIT = "Produit";
+
+    /**
+     * contient .do pour la redirection
+     */
+    private static final String DO      = ".do";
 
     /**
      * Permet d'ajouter un produit au panier
@@ -46,7 +56,7 @@ public class AjouterProduitPanier {
             final @ModelAttribute("beanQuantite") BeanQuantite beanQuantite, final BindingResult result,
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:" + iProduitService.determinerJSP(location));
+        modelAndView.setViewName("redirect:" + determinerJSP(location));
 
         //si dans la jsp location = "consulter"
         if ("consulter".equals(location)) {
@@ -66,4 +76,10 @@ public class AjouterProduitPanier {
         return modelAndView;
     }
 
+    private String determinerJSP(final String location) {
+        if ("lister".equals(location)) {
+            return location + PRODUIT + "s" + DO;
+        }
+        return location + PRODUIT + DO;
+    }
 }

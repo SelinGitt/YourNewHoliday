@@ -30,23 +30,14 @@ import service.produit.ProduitMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ProduitService implements IProduitService {
 
-    /**
-     * contient Produit pour la redirection
-     */
-    private static final String PRODUIT = "Produit";
-
-    /**
-     * contient .do pour la redirection
-     */
-    private static final String DO      = ".do";
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger        logger  = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao         produitDao;
+    private IProduitDao    produitDao;
 
     @Autowired
-    private IPanierService      panierService;
+    private IPanierService panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -154,11 +145,4 @@ public class ProduitService implements IProduitService {
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
     }
 
-    @Override
-    public String determinerJSP(final String location) {
-        if ("lister".equals(location)) {
-            return location + PRODUIT + "s" + DO;
-        }
-        return location + PRODUIT + DO;
-    }
 }
