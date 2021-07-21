@@ -96,18 +96,18 @@
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
                 <div class="CMD_04-livraison-infos">
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element  display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Nom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Jean</div>
+                        <div class="CMD_04-livraison-info-element-contenue">Meunier</div>
                     </div>
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element  display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Prénom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Durand</div>
+                        <div class="CMD_04-livraison-info-element-contenue">Pierre</div>
                     </div>
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element  display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Adresse</div>
-                        <div class="CMD_04-livraison-info-element-contenue">325 rue du louvre 59230
-                            saint-amand-les-Eeaux</div>
+                        <div class="CMD_04-livraison-info-element-contenue">457 rue du faubourg de Douai 33000
+                            Bordeaux</div>
                     </div>
                 </div>
             </fieldset>
@@ -118,18 +118,18 @@
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
                 <div class="CMD_04-livraison-infos">
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Nom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Jean</div>
+                        <div class="CMD_04-livraison-info-element-contenue">Meunier</div>
                     </div>
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element  display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Prénom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Durand</div>
+                        <div class="CMD_04-livraison-info-element-contenue">Pierre</div>
                     </div>
-                    <div class="CMD_04-livraison-info-element">
+                    <div class="CMD_04-livraison-info-element  display-flex">
                         <div class="CMD_04-livraison-info-element-titre">Adresse</div>
-                        <div class="CMD_04-livraison-info-element-contenue">325 rue du louvre 59230
-                            saint-amand-les-Eeaux</div>
+                        <div class="CMD_04-livraison-info-element-contenue">457 rue du faubourg de Douai 33000
+                            Bordeaux</div>
                     </div>
                 </div>
             </fieldset>
@@ -142,7 +142,7 @@
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>Total avant remise</h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">4 800,00</div>
+                    <div class="text-align-center CMD_04-padding-prix">1 000,00</div>
                 </div>
             </div>
 
@@ -158,7 +158,7 @@
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>Total après remise</h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">4 320,00</div>
+                    <div class="text-align-center CMD_04-padding-prix">520,00</div>
                 </div>
             </div>
 

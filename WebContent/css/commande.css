@@ -317,13 +317,13 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	color: #66C5EB;
 }
 
+/* margin pour le bouton de retour */
 .CMD_04-bouton-retour-margin {
-	margin-bottom: 25px;
+	margin-bottom: 1.563em;
 }
 
 .CMD_04-livraison-info-element {
-	display: flex;
-	margin-bottom: 12px;
+	margin-bottom: 0.75em;
 }
 
 .CMD_04-livraison-info-element-contenue {
@@ -349,7 +349,7 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 .CMD_04-padding-prix {
 	padding-top: 0.5vh;
 }
-/* est ce que je peux le mettre dans le general*/
+
 .CMD_04-elements-a-droite {
 	width: 90%;
 	padding-left: 5%;
