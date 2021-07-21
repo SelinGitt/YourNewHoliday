@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.utilisateur.dao.IDroitDao;
 import presentation.utilisateur.dto.DroitDto;
 import service.utilisateur.IDroitService;
-import service.utilisateur.util.DroitMapper;
+import service.utilisateur.mapper.DroitMapper;
 
 /**
  * Classe UtilisateurService <br>

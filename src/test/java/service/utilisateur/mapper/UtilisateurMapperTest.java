@@ -1,4 +1,4 @@
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -14,16 +14,18 @@ import persistance.utilisateur.entity.RoleDo;
 import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.utilisateur.util.MDPCrypter;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
- * JUnit test pour {@link service.utilisateur.util.UtilisateurMapper}
+ * JUnit test pour {@link service.utilisateur.mapper.UtilisateurMapper}
  *
  * @author Valentin
  */
 class UtilisateurMapperTest {
 
     /**
-     * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToDo(presentation.utilisateur.dto.UtilisateurDto)}
+     * Test de {@link service.utilisateur.mapper.UtilisateurMapper#mapperToDo(presentation.utilisateur.dto.UtilisateurDto)}
      */
     @Test
     void testMapToDo() {
@@ -70,7 +72,7 @@ class UtilisateurMapperTest {
     }
 
     /**
-     * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToDto(UtilisateurDo)}
+     * Test de {@link service.utilisateur.mapper.UtilisateurMapper#mapperToDto(UtilisateurDo)}
      */
     @Test
     void testMapToDto() {
@@ -114,7 +116,7 @@ class UtilisateurMapperTest {
     }
 
     /**
-     * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToListDto(java.util.List)}
+     * Test de {@link service.utilisateur.mapper.UtilisateurMapper#mapperToListDto(java.util.List)}
      */
     @Test
     void testMapToListDto() {
@@ -162,7 +164,7 @@ class UtilisateurMapperTest {
     }
 
     /**
-     * Test de {@link service.utilisateur.util.UtilisateurMapper#mapperToConnecteDto(java.util.List)}
+     * Test de {@link service.utilisateur.mapper.UtilisateurMapper#mapperToConnecteDto(java.util.List)}
      */
     @Test
     void testMapToConnecteDto() {
