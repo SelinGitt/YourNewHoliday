@@ -109,7 +109,7 @@ public interface IProduitService {
     /**
      * determine la jsp a renvoyer dans le controller
      *
-     * @param  location : consulter ou lister ou rien
+     * @param  location : consulter ou lister
      * @return          le nom de la jsp a renvoyer
      */
     String determinerJSP(final String location);
