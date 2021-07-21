@@ -27,13 +27,24 @@ public class ListerProduitAdminController {
 
     /**
      * Permet de traiter une requête de type GET
-     *
-     * @return la liste de tous les produit dans le model et la vue associée
+     * 
+     * @param  codeSuccess le code success des pages
+     * @param  codeError   le code d'erreur des pages
+     * @return             la liste de tous les produit dans le model et la vue associée
      */
     @GetMapping
-    public ModelAndView listerAllProduit() {
+    public ModelAndView listerAllProduit(final @RequestParam(value = "anySuccess", required = false, defaultValue = "") String codeSuccess,
+            final @RequestParam(value = "anyError", required = false, defaultValue = "") String codeError) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerProduitsAdmin");
+        //Si un message est présent, on le met en attribut du modelandview
+        if (!codeSuccess.isBlank()) {
+            modelAndView.getModelMap().addAttribute("anySuccess", codeSuccess);
+        }
+        if (!codeError.isBlank()) {
+            modelAndView.getModelMap().addAttribute("anyError", codeError);
+
+        }
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.listerAllProduit());
         return modelAndView;
     }
@@ -48,8 +59,7 @@ public class ListerProduitAdminController {
     public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        modelAndView.getModelMap().addAttribute("listeAllProduitDto",
-                iProduitService.rechercherAllProduits(searchInput));
+        modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.rechercherAllProduits(searchInput));
         return modelAndView;
     }
 }
