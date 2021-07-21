@@ -29,6 +29,7 @@ class UtilisateurMapperTest {
      */
     @Test
     void testMapToDo() {
+        //TODO : Quand upload img ok, tester également le chemin de l'avatar dans ce test
         final var utilisateurDto = new UtilisateurDto();
 
         utilisateurDto.setId(2);
@@ -41,8 +42,6 @@ class UtilisateurMapperTest {
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDto.setPassword("test");
-        //TODO : Gérer quand upload img ok, pour l'instant, la ligne est commentée
-        //utilisateurDto.setCheminAvatar("default_avatar.jpg");
 
         final var roleDto = new RoleDto();
 
@@ -68,9 +67,6 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getAdresse(), utilisateurDoMapper.getAdresse());
 
         Assertions.assertEquals(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()), utilisateurDoMapper.getMdpHash());
-
-        //TODO : Gérer quand upload img ok, pour l'instant, la ligne est commentée
-        //Assertions.assertEquals(utilisateurDto.getCheminAvatar(), utilisateurDoMapper.getCheminAvatar());
     }
 
     /**
