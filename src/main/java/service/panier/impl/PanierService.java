@@ -27,8 +27,7 @@ import service.util.DecimalFormatUtils;
 public class PanierService implements IPanierService {
 
     /**
-     * Permet de déterminer le pourcentage de la remise que l'on souhaite appliquer lorsque les conditions sont
-     * respectées.
+     * Permet de déterminer le pourcentage de la remise que l'on souhaite appliquer lorsque les conditions sont respectées.
      */
     public static final int    POURCENTAGE_REMISE                    = 5;
     /**
@@ -37,8 +36,8 @@ public class PanierService implements IPanierService {
      */
     public static final double PRIX_TOTAL_MINIMUM_POUR_REMISE        = 10000.00;
     /**
-     * Permet de déterminer le nombre de références minimum que doit contenir le panier pour que la remise soit
-     * appliquée. <br />
+     * Permet de déterminer le nombre de références minimum que doit contenir le panier pour que la remise soit appliquée.
+     * <br />
      * (à condition de respecter aussi les autres criètres)
      */
     public static final int    NOMBRE_REFERENCES_MINIMUM_POUR_REMISE = 5;
@@ -94,8 +93,8 @@ public class PanierService implements IPanierService {
 
     @Override
     public ProduitDto findProduitMap(final PanierDto panier, final Integer idProduit) {
-        return panier.getMapPanier().keySet().stream().filter(p -> p.getIdProduitOriginal().equals(idProduit
-                .toString())).findFirst().orElse(null);
+        return panier.getMapPanier().keySet().stream().filter(p -> p.getIdProduitOriginal().equals(idProduit.toString())).findFirst()
+                .orElse(null);
 
     }
 
@@ -127,8 +126,8 @@ public class PanierService implements IPanierService {
     public boolean isRemiseExpected(final PanierDto panier) {
         // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
         // au minimum imposé, alors la remise est applicable.
-        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && DecimalFormatUtils
-                .doubleFormatUtil(panier.getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
+        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && DecimalFormatUtils.doubleFormatUtil(panier
+                .getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
     }
 
     @Override
@@ -142,13 +141,12 @@ public class PanierService implements IPanierService {
         // si la remise est applicable...
         if (isRemiseExpected(panier)) {
             // ... alors on actualise la valeur de la remise en fonction du pourcentage fixé en constante
-            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage * POURCENTAGE_REMISE
-                    / 100));
+            panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage * POURCENTAGE_REMISE / 100));
             // (il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
             // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus)
             // on actualise aussi de fait le prix après remise
-            panier.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage
-                    - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
+            panier.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils
+                    .doubleFormatUtil(panier.getRemiseAffichage())));
             // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
         } else {
             panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));

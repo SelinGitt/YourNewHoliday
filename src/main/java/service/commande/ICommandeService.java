@@ -33,8 +33,8 @@ public interface ICommandeService {
     /**
      * Permet de la remise de la commande
      *
-     * @param commande : la commande en attribut du ModelAndView
-     * @return : le montant de la remise
+     * @param  commande : la commande en attribut du ModelAndView
+     * @return          : le montant de la remise
      */
     String calculerRemise(final CommandeDto commande);
 
