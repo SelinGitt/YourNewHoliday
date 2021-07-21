@@ -21,6 +21,10 @@ import service.util.DecimalFormatUtils;
 @Transactional(propagation = Propagation.REQUIRED)
 public class CommandeMapper {
 
+    private CommandeMapper() {
+        // void
+    }
+
     /**
      * Permet de mapper une commandeDto en commande Do
      *
