@@ -3,6 +3,8 @@
  */
 package presentation.produit.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,16 +45,12 @@ public class ConsulterProduitController {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
 
-        UtilisateurRoleEnum role;
+        // Pour définir le role: on test le userConnecté (null ou pas), on mappe ensuite soit le role du userConnecté ou visiteur par défaut
+        final UtilisateurRoleEnum role = Optional.ofNullable(user).map(type -> UtilisateurRoleEnum.getRole(type.getRole().getLibelle()))
+                .orElse(UtilisateurRoleEnum.VISITEUR);
 
         // Récupération du role de l'utilisateur connecté (visiteur par défaut)
-        if (user == null) {
-            role = UtilisateurRoleEnum.VISITEUR;
-        } else {
-            role = UtilisateurRoleEnum.getRole(user.getRole().getLibelle());
-        }
-
-        final var produitTrouve = iProduitService.choixConsulterProduit(role, idProduit);
+        final var produitTrouve = iProduitService.consulterProduitWithRole(role, idProduit);
 
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");

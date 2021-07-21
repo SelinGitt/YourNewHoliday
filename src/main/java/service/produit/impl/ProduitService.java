@@ -147,7 +147,7 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public ProduitDto choixConsulterProduit(final UtilisateurRoleEnum role, final Integer idProduit) {
+    public ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit) {
         if (UtilisateurRoleEnum.ADMINISTRATEUR == role) {
             return ProduitMapper.mapToDto(produitDao.findById(idProduit));
         }

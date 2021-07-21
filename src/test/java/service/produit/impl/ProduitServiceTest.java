@@ -309,8 +309,8 @@ class ProduitServiceTest {
         Mockito.when(iProduitDaoMock.findById(1)).thenReturn(produitDo);
         Mockito.when(iProduitDaoMock.findProduitEnVente(1)).thenReturn(null);
 
-        assertNotNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.ADMINISTRATEUR, 1));
-        assertNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.VISITEUR, 1));
-        assertNull(produitServiceMock.choixConsulterProduit(UtilisateurRoleEnum.CLIENT, 1));
+        assertNotNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.ADMINISTRATEUR, 1));
+        assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.VISITEUR, 1));
+        assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.CLIENT, 1));
     }
 }

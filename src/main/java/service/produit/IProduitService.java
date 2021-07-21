@@ -114,5 +114,5 @@ public interface IProduitService {
      * @param  idProduit id du produit à consulter
      * @return           produit à consulter
      */
-    ProduitDto choixConsulterProduit(final UtilisateurRoleEnum role, final Integer idProduit);
+    ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit);
 }
