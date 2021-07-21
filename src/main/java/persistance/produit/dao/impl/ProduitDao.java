@@ -126,4 +126,5 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         return query.getResultList();
     }
+
 }
