@@ -102,6 +102,7 @@ class UtilisateurMapperTest {
 
         Assertions.assertEquals(utilisateurDo.getIdUtilisateur(), utilisateurDtoMapper.getId());
         Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDtoMapper.getEmail());
+        Assertions.assertEquals(utilisateurDo.getEmail(), utilisateurDtoMapper.getEmailBase());
         Assertions.assertEquals(utilisateurDo.getReference(), utilisateurDtoMapper.getReference());
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateInscription());
         Assertions.assertEquals(utilisateurDo.getNom(), utilisateurDtoMapper.getNom());
