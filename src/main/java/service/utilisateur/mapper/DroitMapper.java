@@ -1,7 +1,7 @@
 /**
  * 
  */
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
