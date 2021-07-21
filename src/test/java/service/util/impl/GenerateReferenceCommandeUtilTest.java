@@ -32,7 +32,7 @@ class GenerateReferenceCommandeUtilTest {
     @Qualifier("CMD")
     private IGenerateReferenceUtil iGenerateReferenceUtil;
 
-    private static final String    REGEX = "CMD[A-Z0-9]{7}";
+    private static final String    REGEX = "[A-Z0-9]{7}";
 
     /**
      * Test method for {@link service.util.impl.GenerateReferenceCommandeUtil}.
