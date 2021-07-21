@@ -6,14 +6,7 @@
 <div class="conteneur-ascenseur">
 
     <c:choose>
-        <c:when test="${origin=='1'}">
-            <div class="user02-title">
-                <h1>
-                    <spring:message code="usr02.titre.client" />
-                </h1>
-            </div>
-        </c:when>
-        <c:otherwise>
+        <c:when test="${origin=='2'}">
             <div class="user02-title">
                 <h1>
                     <spring:message code="usr02.titre.admin" />
@@ -21,6 +14,13 @@
             </div>
             <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
             </a>
+        </c:when>
+        <c:otherwise>
+            <div class="user02-title">
+                <h1>
+                    <spring:message code="usr02.titre.client" />
+                </h1>
+            </div>
         </c:otherwise>
     </c:choose>
 
