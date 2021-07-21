@@ -79,7 +79,8 @@
 
             </div>
             <div>
-                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr" alt="displayImage.do?id=0&type=usr"/>
+                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr"
+                    alt="avatar utilisateur ${utilisateurDto.reference}" />
             </div>
         </div>
     </div>
