@@ -76,7 +76,7 @@ public class UtilisateurMapper {
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
         // TODO : Remplacer quand upload img ok
-        utilisateurDo.setCheminAvatar("img/test.png");
+        utilisateurDo.setCheminAvatar("default_avatar.jpg");
 
         return utilisateurDo;
     }
@@ -107,7 +107,7 @@ public class UtilisateurMapper {
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
         utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
         //TODO gestion du panier à travailler avec l'équipe Panier
-        utilisateurConnecteDto.setNbProduitPanier("0");
+        //        utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
     }
