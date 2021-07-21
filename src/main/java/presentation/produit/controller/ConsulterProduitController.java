@@ -39,11 +39,12 @@ public class ConsulterProduitController {
         modelAndView.setViewName("consulterProduit");
         modelAndView.getModelMap().addAttribute("consulterProduitDto", iProduitService.trouverProduitEnVente(idProduit));
         final var pageOrigine = PageRedirection.findValue(location);
-        modelAndView.getModelMap().addAttribute("redirection", pageOrigine.getPageConcrete());
+        final StringBuilder urlToBuild = new StringBuilder();
+        urlToBuild.append(pageOrigine.getPageConcrete());
         if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
-            modelAndView.getModelMap().addAttribute("typeParam", "ref");
-            modelAndView.getModelMap().addAttribute("value", param);
+            urlToBuild.append("?ref=" + param);
         }
+        modelAndView.getModelMap().addAttribute("retour", urlToBuild);
         return modelAndView;
 
     }

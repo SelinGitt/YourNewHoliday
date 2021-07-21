@@ -5,15 +5,7 @@
     <div>
         <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
     </div>
-    <c:choose>
-        <c:when test="${not empty typeParam}">
-            <a href="${redirection}?${typeParam}=${value}"><spring:message code="pdt04.retour"></spring:message></a>
-        </c:when>
-        <c:otherwise>
-            <a href="${redirection}"><spring:message code="pdt04.retour"></spring:message></a>
-        </c:otherwise>
-    </c:choose>
-
+    <a href="${retour}"><spring:message code="pdt04.retour"></spring:message></a>
     <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
         <div>
             <table aria-label="consulterProduit">
