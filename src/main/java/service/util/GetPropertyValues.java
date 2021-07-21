@@ -30,7 +30,8 @@ public class GetPropertyValues {
      */
     private static final Map<String, String> PROPERTIES_MAP             = new HashMap<>();
 
-    private static final Logger              LOGGER                     = LoggerFactory.getLogger(GetPropertyValues.class);
+    private static final Logger              LOGGER                     = LoggerFactory.getLogger(
+            GetPropertyValues.class);
 
     /**
      * Constructor
@@ -46,7 +47,7 @@ public class GetPropertyValues {
         // On instancie une Properties
         final var prop = new Properties();
         // On précise le nom du fichier Properties
-        final var propFileName = YNH_APPLICATION_PROPERTIES;
+        final var propFileName = this.getYnhApplicationProperties();
         // On crée un stream sur le fichier Properties
         try (final var inputStream = getClass().getClassLoader().getResourceAsStream(propFileName)) {
             // Si le stream est null, on lance un FileNotFoundException
@@ -74,5 +75,14 @@ public class GetPropertyValues {
      */
     public static Map<String, String> getPropertiesMap() {
         return PROPERTIES_MAP;
+    }
+
+    /**
+     * Getter for ynhApplicationProperties
+     *
+     * @return the ynhApplicationProperties
+     */
+    public String getYnhApplicationProperties() {
+        return YNH_APPLICATION_PROPERTIES;
     }
 }
