@@ -91,18 +91,19 @@
                         <summary>
                             <spring:message code="usr02.details" />
                         </summary>
-                        <div class="user02-lib-champ display-flex">
-                            <span><spring:message code="usr02.edit.password" /></span>
-                            <div class="user02-lib-champ-taille">
-                                <form:password path="password" />
+
+                        <div class="user02-form-field display-flex justify-content-space-between">
+                            <label for="password"><spring:message code="usr02.edit.password" /></label>
+                            <div class="user02-form-inputs">
+                                <form:password path="password" class="user02-inputs" />
                                 <form:errors path="password" cssClass="text-color-rouge" />
                             </div>
                         </div>
 
-                        <div class="user02-lib-champ display-flex">
-                            <span><spring:message code="usr02.edit.confirmPassword" /></span>
-                            <div class="user02-lib-champ-taille">
-                                <form:password path="confirmPassword" />
+                        <div class="user02-form-field display-flex justify-content-space-between">
+                            <label for="confirmPassword"><spring:message code="usr02.edit.confirmPassword" /></label>
+                            <div class="user02-form-inputs">
+                                <form:password path="confirmPassword" class="user02-inputs" />
                                 <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                             </div>
                         </div>
