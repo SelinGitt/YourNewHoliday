@@ -21,6 +21,9 @@ import service.util.DecimalFormatUtils;
 @Transactional(propagation = Propagation.REQUIRED)
 public class CommandeMapper {
 
+    /**
+     * Constructor
+     */
     private CommandeMapper() {
         // void
     }
