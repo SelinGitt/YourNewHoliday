@@ -16,6 +16,11 @@ import presentation.produit.dto.ProduitDto;
  */
 public class ProduitValidator implements Validator {
 
+    /**
+     * Le nombre de caractère autorisé pour la référence
+     */
+    private static final int LONGEUR_REFERENCE = 10;
+
     @Override
     public boolean supports(final Class<?> clazz) {
         return ProduitDto.class.isAssignableFrom(clazz);
@@ -30,6 +35,7 @@ public class ProduitValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "miseEnVente", "pdt03.miseEnVente.vide", "Put On Sale is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "pdt03.description.vide", "Description is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "prixUnitaire", "pdt03.prix.vide", "Price is required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "reference", "pdt03.reference.vide", "Reference is required");
 
         //Cast pour vérification plus fine
         final var produitDto = (ProduitDto) target;
@@ -37,7 +43,7 @@ public class ProduitValidator implements Validator {
         // Test du format de prix
         try {
             Double.valueOf(produitDto.getPrixUnitaire());
-        } catch (NumberFormatException exception) {
+        } catch (final NumberFormatException exception) {
             errors.rejectValue("prixUnitaire", "pdt03.prix.format");
         }
 
@@ -48,7 +54,7 @@ public class ProduitValidator implements Validator {
                 errors.rejectValue("reference", "pdt03.reference.format");
             }
 
-            if (ref.length() != 10) {
+            if (ref.length() != LONGEUR_REFERENCE) {
                 errors.rejectValue("reference", "pdt03.reference.nbCaractere");
             }
         }

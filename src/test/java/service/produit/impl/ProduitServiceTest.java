@@ -109,48 +109,6 @@ class ProduitServiceTest {
      * Test method for {@link service.produit.impl.ProduitService#creerProduit(presentation.produit.dto.ProduitDto)}.
      */
     @Test
-    void testCreerProduitInexistantEnBaseSansRef() {
-        final var produitDto = new ProduitDto();
-        produitDto.setIdProduitOriginal("99");
-        produitDto.setNom("Test Edition");
-        produitDto.setReference("");
-        produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
-        produitDto.setMiseEnVente("true");
-        produitDto.setHebergement("Hotel Test");
-        produitDto.setDestination("Testmanie");
-        produitDto.setDescription("Test moi");
-        produitDto.setCheminImage("C:/temp/img/test.png");
-        produitDto.setVersion("1");
-
-        final var produitDtoCree = new ProduitDto();
-        produitDtoCree.setIdProduitOriginal("99");
-        produitDtoCree.setNom("Test Edition");
-        produitDtoCree.setReference("AAA1234567");
-        produitDtoCree.setPrixUnitaire("10.00");
-        produitDtoCree.setServices("1");
-        produitDtoCree.setMiseEnVente("true");
-        produitDtoCree.setHebergement("Hotel Test");
-        produitDtoCree.setDestination("Testmanie");
-        produitDtoCree.setDescription("Test moi");
-        produitDtoCree.setCheminImage("C:/temp/img/test.png");
-        produitDtoCree.setVersion("1");
-
-        Mockito.when(this.iProduitDaoMock.findByReference(produitDto.getReference())).thenReturn(null);
-        Mockito.when(this.generateRefProduitUtil.generateReference()).thenReturn("AAA1234567");
-        Mockito.when(this.iProduitDaoMock.create(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDtoCree));
-
-        final var produitApresCreation = produitServiceMock.creerProduit(produitDto);
-        assertNotNull(produitApresCreation);
-        assertEquals("1", produitApresCreation.getServices());
-        assertEquals("AAA1234567", produitApresCreation.getReference());
-
-    }
-
-    /**
-     * Test method for {@link service.produit.impl.ProduitService#creerProduit(presentation.produit.dto.ProduitDto)}.
-     */
-    @Test
     void testCreerProduitDejaEnBase() {
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal("99");
