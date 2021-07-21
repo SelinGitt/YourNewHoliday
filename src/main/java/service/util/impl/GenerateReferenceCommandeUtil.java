@@ -34,9 +34,12 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         this.utilisateur = (UtilisateurDto) param[0];
         this.nombreDeProduit = (Integer) param[1];
         // FIXME : debug
-        System.out.println("Utilisateur : " + utilisateur + " nombre de produits : " + nombreDeProduit);
+        System.out.println(
+                "Nom : " + utilisateur.getNom() + " Prénom : " + utilisateur.getPrenom() + " nombre de produits : " + nombreDeProduit);
+        // TODO : récupérer l'adresse
 
-        final String reference = "REFERENCETEST58";
+        // TODO : Hashage 
+        final String reference = "REFERENCETEST15";
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;
     }
