@@ -29,7 +29,7 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-                                    <a href="#"><img
+                                    <a href="consulterProduit.do?idProduit=${cmdProduit.produitAcheteDto.idDeLOriginal}"><img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
                                         alt="${cmdProduit.produitAcheteDto.destination} :
                                              ${cmdProduit.produitAcheteDto.cheminDeLImage}"
