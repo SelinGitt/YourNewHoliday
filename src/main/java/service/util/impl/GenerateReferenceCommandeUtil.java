@@ -29,4 +29,11 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         this.prefix = "";
     }
 
+    @Override
+    public String generateReference(final Object... param) {
+        final String reference = this.prefix;
+        logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
+        return reference;
+    }
+
 }
