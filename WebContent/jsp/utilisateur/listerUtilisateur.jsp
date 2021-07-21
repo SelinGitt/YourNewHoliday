@@ -2,18 +2,21 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <div class="conteneur-ascenseur">
     <div>
-        <c:if test="${not empty deletionSuccess}">
-            <span><spring:message code="${deletionSuccess}" /></span>
+        <c:if test="${not empty userSuccess}">
+            <div class="background-validation-block block-message-commun">
+                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+            </div>
         </c:if>
-    </div>
-    <div>
+
         <c:if test="${not empty error}">
-            <span><spring:message code="${error}" /></span>
+            <div class="background-error-block block-message-commun">
+                <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+            </div>
         </c:if>
     </div>
+
     <h1 id="titreGestion" class="text-align-center">
         <spring:message code="usr01.titre" />
     </h1>
