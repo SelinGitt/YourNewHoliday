@@ -105,4 +105,12 @@ public interface IProduitService {
      *                      <code>false</code> dans le cas contraire
      */
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * determine la jsp a renvoyer dans le controller
+     *
+     * @param  location : consulter ou lister ou rien
+     * @return          le nom de la jsp a renvoyer
+     */
+    String determinerJSP(final String location);
 }

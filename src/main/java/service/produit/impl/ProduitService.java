@@ -30,14 +30,19 @@ import service.produit.ProduitMapper;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ProduitService implements IProduitService {
 
+    /**
+     * 
+     */
+    private static final String PRODUITS_DO = "Produits.do";
+
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger        logger      = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao    produitDao;
+    private IProduitDao         produitDao;
 
     @Autowired
-    private IPanierService panierService;
+    private IPanierService      panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -137,5 +142,14 @@ public class ProduitService implements IProduitService {
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public String determinerJSP(final String location) {
+        if (location.equals(null)) {
+            return null;
+        }
+        return location + PRODUITS_DO;
+       
     }
 }

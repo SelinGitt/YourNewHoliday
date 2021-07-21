@@ -46,17 +46,22 @@ public class AjouterProduitPanier {
             final @ModelAttribute("beanQuantite") BeanQuantite beanQuantite, final BindingResult result,
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
-        if ("lister".equals(location)) {
-            modelAndView.setViewName("redirect:listerProduits.do");
-        } else
+        modelAndView.setViewName("redirect:" + iProduitService.determinerJSP(location));
+        System.out.println(iProduitService.determinerJSP(location));
             //si dans la jsp location = "consulter"
+        System.out.println(result);
             if ("consulter".equals(location)) {
-                modelAndView.setViewName("redirect:consulterProduit.do");
+             
                 //recuperer l'id de la quantité pour mettre la valeur de l'id en attribut
                 modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
-            } else {
+            } 
+            if(iProduitService.determinerJSP(location).equals(null)) {
+                
                 return new ModelAndView("404.do");
             }
+            
+         
+            
         quantiteValidator.validate(beanQuantite, result);
         if (result.hasErrors()) {
             modelAndView.getModelMap().addAttribute("anyError", "pdt.quantity.notAllowed");
