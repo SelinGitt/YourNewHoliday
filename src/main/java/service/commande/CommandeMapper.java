@@ -3,10 +3,6 @@ package service.commande;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import persistance.commande.entity.CommandeDo;
 import presentation.commande.dto.CommandeDto;
 import service.util.DateFormatUtil;
@@ -17,8 +13,6 @@ import service.util.DecimalFormatUtils;
  *
  * @author Hanan Anghari
  */
-@Service
-@Transactional(propagation = Propagation.REQUIRED)
 public class CommandeMapper {
 
     /**
