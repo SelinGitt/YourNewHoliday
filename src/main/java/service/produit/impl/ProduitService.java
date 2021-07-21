@@ -118,11 +118,6 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto creerProduit(final ProduitDto produitDto) {
-        // Une référence est générée automatiquement si elle n'est pas renseignée
-        if (produitDto.getReference().isBlank()) {
-            this.generateReferenceProduit.constructPrefix(produitDto.getDestination());
-            produitDto.setReference(generateReferenceProduit.generateReference());
-        }
 
         final var produitDtoTrouve = this.trouverParReference(produitDto.getReference());
         if (produitDtoTrouve == null) {
