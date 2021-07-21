@@ -149,7 +149,8 @@ public class UtilisateurService implements IUtilisateurService {
     @Override
     public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
         // Verifie si l'email est deja pris
-        if (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null) {
+        if (!(utilisateurDto.getEmail().equals(utilisateurDto.getEmailBase())
+                && this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null)) {
             logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}", utilisateurDto.getEmail());
             return null;
         }
