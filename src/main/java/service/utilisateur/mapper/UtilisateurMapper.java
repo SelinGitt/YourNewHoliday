@@ -101,8 +101,6 @@ public class UtilisateurMapper {
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
         utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
-        //TODO gestion du panier à travailler avec l'équipe Panier
-        //        utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
     }
