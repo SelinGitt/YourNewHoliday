@@ -158,10 +158,10 @@ public class UtilisateurService implements IUtilisateurService {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
         if (utilisateurDo == null) {
             logger.debug("Utilisateur {} non trouvé.", reference);
-        } else {
-            logger.debug("Utilisateur {} trouvé.", reference);
+            return null;
         }
-        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
+        logger.debug("Utilisateur {} trouvé.", reference);
+        return UtilisateurMapper.mapperToDto(utilisateurDo);
     }
 
     /**
