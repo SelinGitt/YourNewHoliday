@@ -84,11 +84,8 @@
 
             </div>
             <div>
-                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                <div>
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
-                </div>
+                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr"
+                    alt="avatar utilisateur ${utilisateurDto.reference}" />
             </div>
         </div>
     </div>
