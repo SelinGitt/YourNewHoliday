@@ -1,4 +1,4 @@
-package service.utilisateur.util;
+package service.utilisateur.mapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,6 +7,8 @@ import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.DateFormatUtil;
+import service.utilisateur.util.MDPCrypter;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe UtilisateurMapper <br>
