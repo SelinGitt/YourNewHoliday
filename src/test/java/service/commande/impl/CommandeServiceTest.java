@@ -185,23 +185,22 @@ class CommandeServiceTest {
         panierDto.setPrixTotalAffichage(DecimalFormatUtils.decimalFormatUtil(5400.00, Locale.FRANCE));
         panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(5400.00, Locale.FRANCE));
 
-        final var adresses = new AdressesDto();
-        final var livraison = new CommandeAdresseDto();
-        final var facturation = new CommandeAdresseDto();
         final var defautAdresse = new CommandeAdresseDto();
-
         defautAdresse.setAdresse("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq");
         defautAdresse.setNom("Dalton");
         defautAdresse.setPrenom("Timothé");
 
+        final var livraison = new CommandeAdresseDto();
         livraison.setAdresse(defautAdresse.getAdresse());
         livraison.setNom(defautAdresse.getNom());
         livraison.setPrenom(defautAdresse.getPrenom());
 
+        final var facturation = new CommandeAdresseDto();
         facturation.setAdresse(defautAdresse.getAdresse());
         facturation.setNom(defautAdresse.getNom());
         facturation.setPrenom(defautAdresse.getPrenom());
 
+        final var adresses = new AdressesDto();
         adresses.setDefaultAdresse(defautAdresse);
         adresses.setCommandeAdresseLivraison(livraison);
         adresses.setCommandeAdresseFacturation(facturation);
