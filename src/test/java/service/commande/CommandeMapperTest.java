@@ -201,7 +201,7 @@ class CommandeMapperTest {
         assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotal());
-        assertEquals(9, commandeDo.getQuantiteTotale());
+        assertEquals(3, commandeDo.getQuantiteTotale());
         assertEquals(panierDto.getNombreDeReferences(), commandeDo.getCommandeProduitDoSet().size());
         assertEquals(1, commandeDo.getIdUtilisateur());
         assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation());

@@ -213,7 +213,7 @@ class CommandeServiceTest {
         assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseLivraison().getAdresse());
         assertEquals("22Bis rue du chemin vert, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
         assertEquals(1, commandeDto.getListCommandeProduitDto().size());
-        assertEquals("6", commandeDto.getQuantiteTotale());
+        assertEquals("1", commandeDto.getQuantiteTotale());
         assertEquals("5 400,00", commandeDto.getPrixTotal());
     }
 

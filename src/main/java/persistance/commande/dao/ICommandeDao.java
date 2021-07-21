@@ -32,12 +32,12 @@ public interface ICommandeDao extends IGenericDao<CommandeDo> {
     CommandeDo findByRef(final String reference);
 
     /**
-     * Permet de retourner une commande sans ses produits et juste la référence afin de vérifier que celle ci existe bien
+     * Permet de vérifier si une commande existe à partir de sa référence
      *
      * @param  reference la référence de produit à vérifier
-     * @return           CommandeDo la commande avec sa référence sans les produits, null sinon
+     * @return           boolean vrai si la référence existe, faux sinon
      */
-    CommandeDo isCommandeExist(final String reference);
+    boolean isCommandeExist(final String reference);
 
     //Méthode utilisée à la suppression d'un utilisateur
     /**

@@ -4,8 +4,10 @@
 package persistance.commande.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -94,11 +96,7 @@ class CommandeDaoTest {
      */
     @Test
     void testIsCommandeExist() {
-        final CommandeDo commandeDo = this.iCommandeDao.isCommandeExist("ABC1");
-        assertNotNull(commandeDo);
-        assertEquals("ABC1", commandeDo.getReference());
-        final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
-        assertNull(commandeProduitSet);
+        assertTrue(this.iCommandeDao.isCommandeExist("ABC1"));
     }
 
     /**
@@ -106,7 +104,7 @@ class CommandeDaoTest {
      */
     @Test
     void testIsCommandeExistWhithWrongRef() {
-        assertNull(this.iCommandeDao.isCommandeExist("ZZZ1"));
+        assertFalse(this.iCommandeDao.isCommandeExist("ZZZ1"));
     }
 
     /*
