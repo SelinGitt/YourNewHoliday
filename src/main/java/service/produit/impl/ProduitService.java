@@ -125,9 +125,15 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto creerProduit(final ProduitDto produitDto) {
-        final var produitDo = ProduitMapper.mapToDo(produitDto);
-        this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
-        return ProduitMapper.mapToDto(produitDao.create(produitDo));
+
+        final var produitDtoTrouve = this.trouverParReference(produitDto.getReference());
+        if (produitDtoTrouve == null) {
+            final var produitDo = ProduitMapper.mapToDo(produitDto);
+            this.logger.debug("La référence : {} a été utilisé dans la méthode creerProduit", produitDto.getReference());
+            return ProduitMapper.mapToDto(produitDao.create(produitDo));
+        }
+        this.logger.info(" La référence  {} existe déjà en BdD ", produitDto.getReference());
+        return null;
     }
 
     @Override

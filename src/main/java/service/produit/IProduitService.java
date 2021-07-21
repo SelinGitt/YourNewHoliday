@@ -85,7 +85,7 @@ public interface IProduitService {
      * Permet de créer un produit
      * 
      * @param  produitDto le produit à créer
-     * @return            le produit créé
+     * @return            le produit créé, null sinon
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
 

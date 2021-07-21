@@ -19,6 +19,8 @@ import org.mockito.MockitoAnnotations;
 import persistance.image.IImageDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.UtilisateurDo;
 import service.image.IImageService;
 
 /**
@@ -33,6 +35,8 @@ class ImageServiceTest {
     private IImageDao                  imageDao;
     @Mock
     private IProduitDao                iProduitDao;
+    @Mock
+    private IUtilisateurDao            iUtilisateurDao;
 
     @BeforeEach
     void initMock() {
@@ -62,6 +66,36 @@ class ImageServiceTest {
         final var produitDo = new ProduitDo();
         produitDo.setCheminImage("c:/temp/img/maldives.jpg");
         when(this.iProduitDao.findById(Mockito.anyInt())).thenReturn(produitDo);
+
+        when(this.imageDao.getImage(Mockito.anyString())).thenReturn(new File("src/test/resources/img/dummyImage.jpg"));
+        final var file = imageService.getImage("1", "ShouldReturnNull");
+        assertNull(file);
+
+    }
+
+    /**
+     * Test method for {@link service.image.impl.ImageService#getImage(java.lang.String)}.
+     */
+    @Test
+    void testGetImageUtilisateur() {
+        final var utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setCheminAvatar("c:/temp/img/utilisateurs/avatar.jpg");
+        when(this.iUtilisateurDao.findById(Mockito.anyInt())).thenReturn(utilisateurDo);
+
+        when(this.imageDao.getImage(Mockito.anyString())).thenReturn(new File("src/test/resources/img/dummyImage.jpg"));
+        final var file = imageService.getImage("1", "usr");
+        assertTrue(file.exists());
+
+    }
+
+    /**
+     * Test method for {@link service.image.impl.ImageService#getImage(java.lang.String)}.
+     */
+    @Test
+    void testGetImageUtilisateurReturnsNull() {
+        final var utilisateurDo = new UtilisateurDo();
+        utilisateurDo.setCheminAvatar("c:/temp/img/utilisateurs/avatar.jpg");
+        when(this.iUtilisateurDao.findById(Mockito.anyInt())).thenReturn(utilisateurDo);
 
         when(this.imageDao.getImage(Mockito.anyString())).thenReturn(new File("src/test/resources/img/dummyImage.jpg"));
         final var file = imageService.getImage("1", "ShouldReturnNull");
