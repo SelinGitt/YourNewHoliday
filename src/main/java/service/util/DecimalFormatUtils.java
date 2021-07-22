@@ -4,6 +4,7 @@
 package service.util;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.ParseException;
@@ -110,7 +111,7 @@ public class DecimalFormatUtils {
      * @return              : le nombre transformé en Double
      */
     public static Double doubleFormatUtil(final String nombreString) {
-        return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
+        return Double.valueOf(stringFormatedToStringNumber(nombreString));
     }
 
     /**
@@ -131,11 +132,21 @@ public class DecimalFormatUtils {
         format.setMinimumFractionDigits(2);
         format.setParseBigDecimal(true);
         try {
-            return (BigDecimal) format.parse(nombreString.replace(",", ".").replace(" ", "").replace("\u00A0", "").replace("\u202F", ""));
+            return (BigDecimal) format.parse(stringFormatedToStringNumber(nombreString));
         } catch (final ParseException exception) {
             final var logger = LoggerFactory.getLogger(DecimalFormatUtils.class);
             logger.error("Formatage de {} en erreur", nombreString, exception);
-            return BigDecimal.valueOf(0);
+            return new BigDecimal(0.00).setScale(2, RoundingMode.FLOOR);
         }
+    }
+
+    /**
+     * Permet de passer un String de la forme "xxx xxx,xx" à "xxxxxx.xx"
+     *
+     * @param  nombreString la chaîne de charactère à convertir
+     * @return              String la chaîne convertie
+     */
+    private static String stringFormatedToStringNumber(final String nombreString) {
+        return nombreString.replace(",", ".").replace(" ", "").replace("\u00A0", "").replace("\u202F", "");
     }
 }

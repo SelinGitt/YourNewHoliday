@@ -115,8 +115,6 @@ class CommandeMapperTest {
      */
     @Test
     void testMapperPanierDtoToDo() {
-        // PanierDto
-        final var panierDto = new PanierDto();
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
         produitDto1.setIdProduitOriginal("1");
@@ -161,6 +159,8 @@ class CommandeMapperTest {
         ligneCommandeProduit3.setQuantite(2);
         ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(2 * 999.00, Locale.FRANCE));
 
+        // PanierDto
+        final var panierDto = new PanierDto();
         // add products to PanierDto
         panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
         panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
@@ -174,22 +174,22 @@ class CommandeMapperTest {
         panierDto.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(369.98, Locale.FRANCE));
         panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(3329.82, Locale.FRANCE));
 
-        final var adresses = new AdressesDto();
-        final var adresseLivraison = new CommandeAdresseDto();
-        final var adresseFacturation = new CommandeAdresseDto();
         final var defaultAdresse = new CommandeAdresseDto();
         defaultAdresse.setNom("Dupont");
         defaultAdresse.setPrenom("Marchant");
         defaultAdresse.setAdresse("123 nous irons au bois");
 
+        final var adresseLivraison = new CommandeAdresseDto();
         adresseLivraison.setNom(defaultAdresse.getNom());
         adresseLivraison.setPrenom(defaultAdresse.getPrenom());
         adresseLivraison.setAdresse(defaultAdresse.getAdresse());
 
+        final var adresseFacturation = new CommandeAdresseDto();
         adresseFacturation.setNom(defaultAdresse.getNom());
         adresseFacturation.setPrenom(defaultAdresse.getPrenom());
         adresseFacturation.setAdresse(defaultAdresse.getAdresse());
 
+        final var adresses = new AdressesDto();
         adresses.setDefaultAdresse(defaultAdresse);
         adresses.setCommandeAdresseLivraison(adresseLivraison);
         adresses.setCommandeAdresseFacturation(adresseFacturation);

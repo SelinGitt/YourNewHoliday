@@ -103,7 +103,8 @@ public class CommandeService implements ICommandeService {
                     produitAcheteDo.getVersion());
             if (produitAcheteDoEnBase != null) {
                 commandeProduit.setProduitAcheteDo(produitAcheteDoEnBase);
-                logger.info("Produit {} de référence {} déjà en base.", produitAcheteDo.getIdDeLOriginal(), produitAcheteDo.getVersion());
+                logger.info("Produit de référence {} et de version {} existe déjà en base.", produitAcheteDo.getIdDeLOriginal(),
+                        produitAcheteDo.getVersion());
             }
         }
         return commande;
