@@ -229,4 +229,17 @@ class ProduitDaoTest {
         final List<ProduitDo> listeProduitsRechercheeNull = iProduitDao.rechercherAllProduits(searchTermNull);
         assertEquals(0, listeProduitsRechercheeNull.size());
     }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVenteAvecVersion(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitEnVenteAvecVersion() {
+        // On récupère un produit en vente
+        final ProduitDo produitDoEnVente = iProduitDao.findProduitEnVenteAvecVersion(3, 1);
+        assertNotNull(produitDoEnVente);
+        // On essaie de récupérer un produit qui n'est pas en vente
+        final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVenteAvecVersion(1, 1);
+        assertNull(produitDoPasEnVente);
+    }
 }
