@@ -40,7 +40,7 @@ public class ConsulterProduitController {
      */
     @GetMapping
     public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit,
-            final @RequestParam(value = "from") String location, final @RequestParam(value = "paramValue", required = false) String param,
+            final @RequestParam(value="from", required=false) String location, final @RequestParam(value = "paramValue", required = false) String param,
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
