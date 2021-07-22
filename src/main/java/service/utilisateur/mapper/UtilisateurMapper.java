@@ -45,6 +45,7 @@ public class UtilisateurMapper {
         utilisateurDto.setDateNaissance(DateFormatUtil.formaterDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
         utilisateurDto.setPassword(utilisateurDo.getMdpHash());
+        utilisateurDto.setCheminAvatar(utilisateurDo.getCheminAvatar());
 
         return utilisateurDto;
     }
@@ -68,6 +69,7 @@ public class UtilisateurMapper {
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
         utilisateurDo.setDateNaissance(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
+        utilisateurDo.setCheminAvatar(utilisateurDto.getCheminAvatar());
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
         // TODO : Quand upload img ok, gérer le chemin de l'avatar ici 
