@@ -68,7 +68,7 @@ public class EditerProduitAdminController {
      *
      * @param  produitDto         le produit à Màj
      * @param  result             le binding result
-     * @param  redirectAttributes le messagesi l'édition est ok
+     * @param  redirectAttributes le message si l'édition est ok
      * @return                    redirection vers la liste des produit (admin) sinon vers l'écran d'édition
      */
     @PostMapping
@@ -76,7 +76,7 @@ public class EditerProduitAdminController {
             final RedirectAttributes redirectAttributes) {
 
         final var modelAndView = new ModelAndView();
-        // Si le formulaire possède des erreurs : Ajout de l'attribut "errorCreationProduit" utilisé dans la jsp en cas d'erreur de création
+        // Si le formulaire possède des erreurs : Ajout de l'attribut "errorEdition" utilisé dans la jsp en cas d'erreur d'édition
         if (result.hasErrors()) {
             modelAndView.setViewName("editerProduitAdmin");
             modelAndView.getModelMap().addAttribute("error", "pdt02.erreurEdition");

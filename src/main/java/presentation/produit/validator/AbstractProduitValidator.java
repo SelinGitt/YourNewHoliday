@@ -1,8 +1,7 @@
-package presentation.produit.validator;
-
 /**
  * 
  */
+package presentation.produit.validator;
 
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
