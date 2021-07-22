@@ -38,7 +38,7 @@ import service.util.DateFormatUtil;
 //Et de déclarer le fichier de conf à utiliser
 @ContextConfiguration(locations = {"/META-INF/spring/applicationContext.xml", "/spring/hibernate-context-test.xml"})
 //Pour initialiser la base de données avec les bonnes données 
-@Sql("/sql/DML.sql")
+@Sql("/sql/DML_demo.sql")
 @WebAppConfiguration("WebContent")
 //Nécessaire car les Dao sont en Mandatory
 @Transactional(propagation = Propagation.REQUIRED)
@@ -63,7 +63,7 @@ class CommandeDaoTest {
         // On récupère les données
         final List<CommandeDo> listCommande = this.iCommandeDao.findAll();
         // On teste la conformitée du nombre de données
-        assertEquals(6, listCommande.size());
+        assertEquals(12, listCommande.size());
     }
 
     /**
@@ -71,16 +71,23 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRef() {
-        final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
+        final CommandeDo commandeDo = this.iCommandeDao.findByRef("MP5009052150411");
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
-        assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixSansRemise()));
-        assertEquals(2, commandeDo.getIdUtilisateur());
-        assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals("MP5009052150411", commandeDo.getReference());
+        assertEquals("Meunier", commandeDo.getNomFacturation());
+        assertEquals("Pierre", commandeDo.getPrenomFacturation());
+        assertEquals("457 rue du faubourg de Douai 33000 Bordeaux", commandeDo.getAdresseFacturation());
+        assertEquals("Meunier", commandeDo.getNomLivraison());
+        assertEquals("Pierre", commandeDo.getPrenomLivraison());
+        assertEquals("457 rue du faubourg de Douai 33000 Bordeaux", commandeDo.getAdresseLivraison());
+        assertEquals(0, BigDecimal.valueOf(17110.00).compareTo(commandeDo.getPrixSansRemise()));
+        assertEquals(0, BigDecimal.valueOf(16254.50).compareTo(commandeDo.getPrixTotalApresRemise()));
+        assertEquals(7, commandeDo.getIdUtilisateur());
+        assertEquals("09/05/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
         assertNotNull(commandeProduitSet);
-        assertEquals(2, commandeProduitSet.size());
+        assertEquals(5, commandeProduitSet.size());
     }
 
     /**
@@ -88,7 +95,7 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRefWhithWrongRef() {
-        assertNull(this.iCommandeDao.findByRef("ZZZ1"));
+        assertNull(this.iCommandeDao.findByRef("SH0502022146895"));
     }
 
     /**
@@ -96,7 +103,7 @@ class CommandeDaoTest {
      */
     @Test
     void testIsCommandeExist() {
-        assertTrue(this.iCommandeDao.isCommandeExist("ABC1"));
+        assertTrue(this.iCommandeDao.isCommandeExist("SH0502022146892"));
     }
 
     /**
@@ -104,7 +111,7 @@ class CommandeDaoTest {
      */
     @Test
     void testIsCommandeExistWhithWrongRef() {
-        assertFalse(this.iCommandeDao.isCommandeExist("ZZZ1"));
+        assertFalse(this.iCommandeDao.isCommandeExist("SH0502022146895"));
     }
 
     /*
@@ -112,13 +119,13 @@ class CommandeDaoTest {
      */
     @Test
     void testUpdateCommandeDoUserDeletion() {
-        //on récupère le nombre de commandes de la liste de l'utilisateur d'id 2
-        int nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(2).size();
-        assertEquals(2, nombreCommandesUtilisateur);
+        //on récupère le nombre de commandes de la liste de l'utilisateur d'id 3
+        int nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(3).size();
+        assertEquals(1, nombreCommandesUtilisateur);
         //On le détache de ses commandes
-        this.iCommandeDao.updateCommandeDoUserDeletion(2);
-        //on récupère à nouveau le nombre de commandes de la liste de l'utilisateur d'id 2
-        nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(2).size();
+        this.iCommandeDao.updateCommandeDoUserDeletion(3);
+        //on récupère à nouveau le nombre de commandes de la liste de l'utilisateur d'id 3
+        nombreCommandesUtilisateur = this.iCommandeDao.findByUserId(3).size();
         assertEquals(0, nombreCommandesUtilisateur);
     }
 }
