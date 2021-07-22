@@ -109,54 +109,6 @@ class UtilisateurServiceTest {
         Assertions.assertNull(this.utilisateurService.createUtilisateur(utilisateurDto));
     }
 
-    //    /**
-    //     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
-    //     */
-    //    @ParameterizedTest
-    //    @CsvSource({"email, password, true", "email, wrong password, false"})
-    //    void testAuthentifyEmailOK(final String email, final String password, final String check) {
-    //
-    //        //On crée l'utilisateurDo qu'on récupère en BD
-    //        final UtilisateurDo utilisateurDo = new UtilisateurDo();
-    //        utilisateurDo.setEmail("email");
-    //        //Correspond au hash de "password"
-    //        utilisateurDo.setMdpHash("B0FBB24B2497D66890D0BBF15034768B8BD7557E094D512A52AD0F0C58FA0AB8");
-    //        utilisateurDo.setNom("nom");
-    //
-    //        final RoleDo roleDo = new RoleDo();
-    //        roleDo.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
-    //        roleDo.setLibelle(UtilisateurRoleEnum.CLIENT.getLibelle());
-    //
-    //        utilisateurDo.setRole(roleDo);
-    //
-    //        Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
-    //
-    //        //On tente une authentification 
-    //        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
-    //
-    //        //L'argument "true" sert à indiquer qu'on attend une authentification réussie
-    //        if (check.equals("true")) {
-    //            Assertions.assertNotNull(utilisateurConnecteDto);
-    //            Assertions.assertEquals("nom", utilisateurConnecteDto.getNom());
-    //        } else {
-    //            Assertions.assertNull(utilisateurConnecteDto);
-    //        }
-    //    }
-    //
-    //    /**
-    //     * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
-    //     */
-    //    @ParameterizedTest
-    //    @CsvSource({"wrong email, password", "wrong email, wrong password"})
-    //    void testAuthentifyEmailKO(final String email, final String password) {
-    //
-    //        //On teste avec un email non valide, findByEmail renvoie ddonc toujours null
-    //        Mockito.when(this.dao.findByEmail(email)).thenReturn(null);
-    //
-    //        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
-    //        Assertions.assertNull(utilisateurConnecteDto);
-    //    }
-
     /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
      */

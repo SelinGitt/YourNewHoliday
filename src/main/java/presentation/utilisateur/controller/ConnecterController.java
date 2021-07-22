@@ -86,7 +86,7 @@ public class ConnecterController {
         //Le boolean
         final var isDesactive = utilisateurServiceAuthReturn.isDesactive();
 
-        //Si l'utilisateur n'est pas trouvé en BD, et donc null
+        //Si l'utilisateur n'est pas trouvé en BD, ou si le compte est désactivé, il est null
         if (null == utilisateurConnecteDto) {
             if (isDesactive) {
                 //Si l'utilisateur est désactivé
