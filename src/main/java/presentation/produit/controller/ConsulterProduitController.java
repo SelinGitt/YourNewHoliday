@@ -3,8 +3,6 @@
  */
 package presentation.produit.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
@@ -19,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.produit.IProduitService;
+import service.produit.ProduitMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -71,8 +70,7 @@ public class ConsulterProduitController {
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-        final var services = Integer.parseInt(produitTrouve.getServices());
-        modelAndView.getModelMap().addAttribute("listeServices", genererListeServices(services));
+        modelAndView.getModelMap().addAttribute("listeServices", ProduitMapper.genererListeServices(produitTrouve, mapServices));
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitTrouve);
         final var pageOrigine = PageRedirection.findValue(location);
         final var urlToBuild = new StringBuilder();
@@ -85,19 +83,4 @@ public class ConsulterProduitController {
 
     }
 
-    private List<String> genererListeServices(final Integer number) {
-        var numberToEdit = number;
-        //création d'une arrayList de Integer
-        final List<String> liste = new ArrayList<>();
-        //set de l'exposant à 1
-        var exposant = 1;
-        while (numberToEdit != 0) {
-            if ((numberToEdit & 1) != 0) {
-                liste.add(mapServices.get(exposant));
-            }
-            numberToEdit >>= 1;
-            exposant <<= 1;
-        }
-        return liste;
-    }
 }

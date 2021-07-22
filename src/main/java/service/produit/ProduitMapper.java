@@ -3,7 +3,9 @@
  */
 package service.produit;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -87,5 +89,28 @@ public class ProduitMapper {
      */
     public static List<ProduitDto> mapToListDto(final List<ProduitDo> listeProduit) {
         return listeProduit.stream().map(ProduitMapper::mapToDto).collect(Collectors.toList());
+    }
+
+    /**
+     * Permet de renvoyer la liste de services en fonction du service
+     *
+     * @param  produitDto  le nombre "service" dans le dto
+     * @param  mapServices la map de services disponibles
+     * @return             la liste de services générés
+     */
+    public static List<String> genererListeServices(final ProduitDto produitDto, final Map<Integer, String> mapServices) {
+        var numberToEdit = Integer.parseInt(produitDto.getIdProduitOriginal());
+        //création d'une arrayList de Integer
+        final List<String> liste = new ArrayList<>();
+        //set de l'exposant à 1
+        var exposant = 1;
+        while (numberToEdit != 0) {
+            if ((numberToEdit & 1) != 0) {
+                liste.add(mapServices.get(exposant));
+            }
+            numberToEdit >>= 1;
+            exposant <<= 1;
+        }
+        return liste;
     }
 }
