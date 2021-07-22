@@ -82,8 +82,8 @@ public class UtilisateurService implements IUtilisateurService {
         } else {
             //On compare avec le mot de passe saisi qu'on hashe
             if (checkPassword(password, utilisateurDo)) {
-                final var isDesactive = utilisateurDo.getEstDesactive();
-                if (isDesactive) {
+                //Les mots de passe correspondent, on vérifie si l'utilisateur est désactivé ou non
+                if (Boolean.TRUE.equals(utilisateurDo.getEstDesactive())) {
                     logger.debug("Utilisateur avec login : {} est désactivé.", email);
                     builder.withUtilisateurConnecteDto(null).withIsDesactive(true);
                 } else {
