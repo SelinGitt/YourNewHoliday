@@ -111,17 +111,18 @@
 .panier-description-produit {
 	width: 57vh;
 }
-.panier-description-produit-paragraphe{
 
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    max-height: 3em;
-    line-height: 1em;
-    padding-right: 2em;
+.panier-description-produit-paragraphe {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	max-height: 3em;
+	line-height: 1em;
+	padding-right: 2em;
 }
+
 .panier-image-produit {
 	top: 0em;
 	left: 0em;
