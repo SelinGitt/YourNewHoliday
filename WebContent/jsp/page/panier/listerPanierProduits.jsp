@@ -107,10 +107,16 @@
                                         alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
-                        <div>
-                            <c:if test="${listIdError}.contains(${entry.key.idProduitOriginal })"></c:if>
-                            produitKO
-                        </div>
+
+
+                        <tr>
+                            <c:forEach items="${listIdError}" var="idTest">
+                                <c:if test="${entry.key.idProduitOriginal == entry.key.idProduitOriginal }">
+                            ahahah
+                            <spring:message code="pan00.erreur.produit_modifie" />
+                                </c:if>
+                            </c:forEach>
+                        </tr>
                     </c:forEach>
                 </tbody>
             </table>
