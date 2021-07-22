@@ -3,8 +3,6 @@
  */
 package presentation.produit.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -38,7 +36,6 @@ public class AjouterProduitPanier {
      *
      * @param  beanQuantite la quantité de produits à ajouter, stocké dans un bean car impossible d'utiliser directement un
      *                      string
-     * @param  request      la requête pour récupérer la page d'où l'on vient (PDT04 ou PDT00)
      * @param  panierDto    le panierDto de la session de l'utilisateur
      * @param  result       le résultat de la validation
      * @param  location     page d'origine
@@ -46,18 +43,22 @@ public class AjouterProduitPanier {
      */
     @PostMapping
     public ModelAndView ajouterProduit(final @SessionAttribute("panierDto") PanierDto panierDto,
-            final @ModelAttribute("beanQuantite") BeanQuantite beanQuantite, final HttpServletRequest request, final BindingResult result,
+            final @ModelAttribute("beanQuantite") BeanQuantite beanQuantite, final BindingResult result,
             final @RequestParam("location") String location) {
         final var modelAndView = new ModelAndView();
-        if ("lister".equals(location)) {
-            modelAndView.setViewName("redirect:listerProduits.do");
-        } else
-            if ("consulter".equals(location)) {
-                modelAndView.setViewName("consulterProduit.do");
-                modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
-            } else {
-                return new ModelAndView("404.do");
-            }
+        final String nomJspACharger = determinerJSP(location);
+        modelAndView.setViewName("redirect:" + nomJspACharger);
+
+        //si dans la jsp location = "consulter"
+        if ("consulter".equals(location)) {
+            //recuperer l'id de la quantité pour mettre la valeur de l'id en attribut
+            modelAndView.getModelMap().addAttribute("idProduit", Integer.valueOf(beanQuantite.getId()));
+        }
+        //gestion erreur 404
+        if ("404.do".equals(nomJspACharger)) {
+            return new ModelAndView(nomJspACharger);
+        }
+
         quantiteValidator.validate(beanQuantite, result);
         if (result.hasErrors()) {
             modelAndView.getModelMap().addAttribute("anyError", "pdt.quantity.notAllowed");
@@ -70,4 +71,13 @@ public class AjouterProduitPanier {
         return modelAndView;
     }
 
+    private String determinerJSP(final String location) {
+        if ("lister".equals(location)) {
+            return "listerProduits.do";
+        }
+        if ("consulter".equals(location)) {
+            return "consulterProduit.do";
+        }
+        return "404.do";
+    }
 }

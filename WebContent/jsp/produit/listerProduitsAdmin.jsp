@@ -72,7 +72,9 @@
         <tbody class="pdt01Body">
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
-                    <td class="pdt01Body">${produitDto.reference}</td>
+                    <td class="pdt01Body">
+                    <a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                            ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
 
@@ -84,7 +86,7 @@
 
                     <td class="pdt01Body">${produitDto.destination}</td>
 
-                    <td class="pdt01Body">${produitDto.prixUnitaire}€</td>
+                    <td class="pdt01Body">${produitDto.prixUnitaire}&nbsp€</td>
 
                     <td class="pdt01Body"><c:choose>
                             <c:when test="${produitDto.miseEnVente}">

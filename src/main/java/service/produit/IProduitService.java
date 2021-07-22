@@ -9,6 +9,7 @@ import presentation.panier.dto.PanierDto;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Interface Métier du produit
@@ -114,11 +115,20 @@ public interface IProduitService {
     List<ProduitDto> listerProduitsNonEnVente();
 
     /**
-     * Permet de filtrer la liste des produits en fonction du statut de vente * @param searchTerm terme recherché
+     * Permet de filtrer la liste des produits en fonction du statut de vente
      * 
      * @param  searchTerm terme recherché
      * @param  tri        tri effectué
      * @return            liste filtrée
      */
     List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri);
+
+    /**
+     * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role
+     * 
+     * @param  role      role de l'utilisateur
+     * @param  idProduit id du produit à consulter
+     * @return           produit à consulter
+     */
+    ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit);
 }

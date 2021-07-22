@@ -20,6 +20,7 @@ import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe représentant l'interface métier {@link IProduitService}
@@ -170,5 +171,13 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> listerProduitsNonEnVente() {
         return ProduitMapper.mapToListDto(produitDao.findAllProduitsNonEnVente());
+    }
+
+    @Override
+    public ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit) {
+        if (UtilisateurRoleEnum.ADMINISTRATEUR == role) {
+            return ProduitMapper.mapToDto(produitDao.findById(idProduit));
+        }
+        return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
     }
 }

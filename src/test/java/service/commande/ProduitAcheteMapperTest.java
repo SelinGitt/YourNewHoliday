@@ -6,6 +6,7 @@ package service.commande;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -13,6 +14,7 @@ import java.math.RoundingMode;
 import org.junit.jupiter.api.Test;
 
 import persistance.commande.entity.ProduitAcheteDo;
+import presentation.produit.dto.ProduitDto;
 
 /**
  * JUnit pour tester le Mapper de ProduitAchete
@@ -55,6 +57,47 @@ class ProduitAcheteMapperTest {
     @Test
     void testMapperToDtoWithDoNull() {
         assertNull(ProduitAcheteMapper.mapperToDto(null));
+    }
+
+    /**
+     * Test method for {@link service.commande.ProduitAcheteMapper#mapperToDo(presentation.produit.dto.ProduitDto)}.
+     */
+    @Test
+    void testMapperToDo() {
+        final var produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("10");
+        produitDto.setVersion("2");
+        produitDto.setReference("GRE1234567");
+        produitDto.setNom("Voyage en Grèce");
+        produitDto.setDescription("Description voyage 10");
+        produitDto.setDestination("Grèce");
+        produitDto.setPrixUnitaire("200,00");
+        produitDto.setHebergement("Chambre d'hôtel");
+        produitDto.setMiseEnVente("true");
+        produitDto.setCheminImage("grece.jpg");
+        produitDto.setServices("5");
+
+        final var produitDo = ProduitAcheteMapper.mapperToDo(produitDto);
+        assertNull(produitDo.getIdProduit());
+        assertEquals(10, produitDo.getIdDeLOriginal());
+        assertEquals(2, produitDo.getVersion());
+        assertEquals("GRE1234567", produitDo.getReference());
+        assertEquals("Voyage en Grèce", produitDo.getNom());
+        assertEquals("Description voyage 10", produitDo.getDescription());
+        assertEquals("Grèce", produitDo.getDestination());
+        assertEquals(new BigDecimal(200.00).setScale(2, RoundingMode.FLOOR), produitDo.getPrixUnitaire());
+        assertEquals("Chambre d'hôtel", produitDo.getHebergement());
+        assertTrue(produitDo.getMiseEnVente());
+        assertEquals("grece.jpg", produitDo.getCheminImage());
+        assertEquals(5, produitDo.getServices());
+    }
+
+    /**
+     * Test method for {@link service.commande.ProduitAcheteMapper#mapperToDo(presentation.produit.dto.ProduitDto)}.
+     */
+    @Test
+    void testMapperToDoWithNullDto() {
+        assertNull(ProduitAcheteMapper.mapperToDo(null));
     }
 
 }

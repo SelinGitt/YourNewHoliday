@@ -2,8 +2,8 @@ package service.utilisateur;
 
 import java.util.List;
 
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
+import service.utilisateur.impl.UtilisateurServiceAuthReturn;
 import service.utilisateur.impl.UtilisateurServiceReturn;
 
 /**
@@ -33,9 +33,11 @@ public interface IUtilisateurService {
      * 
      * @param  email    : l'email saisi par l'utilisateur
      * @param  password : le mot de passe saisi par l'utilisateur
-     * @return          un UtilisateurConnecteDto à mettre en session si l'authentification est valide, null sinon
+     * @return          un objet retour composé d'un UtilisateurConnecteDto à mettre en session si l'authentification est
+     *                  valide, null sinon, et d'un booléen de valeur true si l'utilisateur est désactivé et que
+     *                  l'authentification avait réussie, false sinon
      */
-    UtilisateurConnecteDto authentify(final String email, final String password);
+    UtilisateurServiceAuthReturn authentify(final String email, final String password);
 
     /**
      * Permet de renvoyer un UtilisateurDto en le cherchant par l'Id
