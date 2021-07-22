@@ -81,13 +81,23 @@ public class ConnecterController {
             return modelAndView;
         }
 
-        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        //Récupération de l'objet retour de la méthode authentify (UtilisateurConnecteDto et boolean)
+        final var utilisateurServiceAuthReturn = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        //Le UtilisateurConnecteDto
+        final var utilisateurConnecteDto = utilisateurServiceAuthReturn.getUtilisateurConnecteDto();
+        //Le boolean
+        final var isDesactive = utilisateurServiceAuthReturn.isDesactive();
 
-        //Si l'utilisateur n'est pas trouvé en BD, et donc null
+        //Si l'utilisateur n'est pas trouvé en BD, ou si le compte est désactivé, il est null
         if (null == utilisateurConnecteDto) {
-            //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
-            modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             modelAndView.setViewName("connecter");
+            if (isDesactive) {
+                //Si l'utilisateur est désactivé
+                modelAndView.getModelMap().addAttribute("error", "usr07.erreur.deactivated");
+            } else {
+                //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
+                modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
+            }
         } else {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);

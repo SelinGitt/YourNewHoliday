@@ -36,9 +36,12 @@ class GetPropertyValuesTest {
         assertEquals(5, GetPropertyValues.getPropertiesMap().size());
         assertEquals("20", GetPropertyValues.getPropertiesMap().get("tempsAvantDeconnection"));
         assertEquals("C:/YNH_Project/external_files/contact/", GetPropertyValues.getPropertiesMap().get("contactRepo"));
-        assertEquals("C:/YNH_Project/external_files/mentionsLegales/", GetPropertyValues.getPropertiesMap().get("mentionsLegalesRepo"));
-        assertEquals("C:/YNH_Project/external_files/img/produits/", GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo"));
-        assertEquals("C:/YNH_Project/external_files/img/utilisateurs/", GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo"));
+        assertEquals("C:/YNH_Project/external_files/mentionsLegales/", GetPropertyValues.getPropertiesMap().get(
+                "mentionsLegalesRepo"));
+        assertEquals("C:/YNH_Project/external_files/img/produits/", GetPropertyValues.getPropertiesMap().get(
+                "imagesProduitsRepo"));
+        assertEquals("C:/YNH_Project/external_files/img/utilisateurs/", GetPropertyValues.getPropertiesMap().get(
+                "imagesUtilisateursRepo"));
     }
 
 }
