@@ -6,6 +6,7 @@ package service.commande;
 import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.ProduitAcheteDto;
 import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 import service.util.DecimalFormatUtils;
 
 /**
@@ -63,14 +64,8 @@ public class ProduitAcheteMapper {
         produitAcheteDo.setHebergement(produitPanier.getHebergement());
         produitAcheteDo.setMiseEnVente(Boolean.valueOf(produitPanier.getMiseEnVente()));
         produitAcheteDo.setCheminImage(produitPanier.getCheminImage());
-        produitAcheteDo.setServices(conversionBoolToInt(produitPanier.getServices()));
+        produitAcheteDo.setServices(ProduitMapper.conversionBoolToInt(produitPanier.getServices()));
         return produitAcheteDo;
     }
 
-    private static Integer conversionBoolToInt(final Boolean[] booleanArray) {
-        Integer numberToConvert = 0;
-        for (final Boolean b : booleanArray)
-            numberToConvert = (numberToConvert << 1) | (b ? 1 : 0);
-        return numberToConvert;
-    }
 }

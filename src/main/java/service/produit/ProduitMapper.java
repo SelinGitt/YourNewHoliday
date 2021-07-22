@@ -89,11 +89,17 @@ public class ProduitMapper {
         return listeProduit.stream().map(ProduitMapper::mapToDto).collect(Collectors.toList());
     }
 
-    private static Boolean[] genererServices(final Integer value) {
-        final Boolean[] services = new Boolean[9];
+    /**
+     * Permet de convertir un entier en tableau de bits
+     *
+     * @param  value la valeur à convertir
+     * @return       le tableau de bits (sur 9 bits)
+     */
+    public static Boolean[] genererServices(final Integer value) {
+        final var services = new Boolean[9];
         var numberToEdit = value;
         if (value != null) {
-            for (int i = 8; i >= 0; i--) {
+            for (var i = 8; i >= 0; i--) {
                 if ((numberToEdit & 1) != 0) {
                     services[i] = true;
                 } else {
@@ -104,13 +110,25 @@ public class ProduitMapper {
             }
             return services;
         }
-        return null;
+        return new Boolean[9];
     }
 
-    private static Integer conversionBoolToInt(final Boolean[] booleanArray) {
-        Integer numberToConvert = 0;
-        for (final Boolean b : booleanArray)
-            numberToConvert = (numberToConvert << 1) | (b ? 1 : 0);
+    /**
+     * Permet de convertir un tableau de bits en entier
+     *
+     * @param  booleanArray le tableau de bits à converir
+     * @return              l'entier correspondant
+     */
+    public static Integer conversionBoolToInt(final Boolean[] booleanArray) {
+        var numberToConvert = 0;
+        for (final Boolean bitToConvert : booleanArray) {
+            final var nbr = numberToConvert << 1;
+            var number = 0;
+            if (Boolean.TRUE.equals(bitToConvert)) {
+                number = 1;
+            }
+            numberToConvert = nbr | number;
+        }
         return numberToConvert;
     }
 }
