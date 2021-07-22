@@ -174,6 +174,14 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        final var userFound = this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail());
+        // Verifie si l'email est deja pris par un autre utilisateur
+        if (userFound != null && (!userFound.getIdUtilisateur().equals(utilisateurDto.getId()))) {
+            logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}. Ref utilisateur : {}", utilisateurDto.getEmail(),
+                    utilisateurDto.getReference());
+            return null;
+        }
+
         logger.info("L'utilisateur ref : {} a été mis à jour", utilisateurDto.getReference());
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
     }

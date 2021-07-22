@@ -240,6 +240,26 @@ class UtilisateurServiceTest {
     }
 
     /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
+     */
+    @Test
+    void testUpdateKO() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        utilisateurDto.setId(1);
+        utilisateurDto.setEmail("test@test.fr");
+
+        final UtilisateurDo utilisateurDoReturn = new UtilisateurDo();
+        utilisateurDoReturn.setIdUtilisateur(2);
+        utilisateurDoReturn.setEmail("test@test.fr");
+
+        Mockito.when(this.dao.findByEmail("test@test.fr")).thenReturn(utilisateurDoReturn);
+
+        final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
+
+        Assertions.assertNull(utilisateurDtoUpdated);
+    }
+
+    /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#findByReference(String)}
      */
     @Test
