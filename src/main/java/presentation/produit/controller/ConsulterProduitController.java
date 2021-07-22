@@ -90,7 +90,7 @@ public class ConsulterProduitController {
         //création d'une arrayList de Integer
         final List<String> liste = new ArrayList<>();
         //set de l'exposant à 1
-        int exposant = 1;
+        var exposant = 1;
         while (numberToEdit != 0) {
             if ((numberToEdit & 1) != 0) {
                 liste.add(mapServices.get(exposant));
