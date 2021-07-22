@@ -3,9 +3,7 @@
  */
 package presentation.produit.controller;
 
-import java.util.Map;
 import java.util.Optional;
-import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,18 +25,6 @@ import service.utilisateur.util.UtilisateurRoleEnum;
 @Controller
 @RequestMapping(value = "/consulterProduit.do")
 public class ConsulterProduitController {
-    private static Map<Integer, String> mapServices = new TreeMap<>();
-    static {
-        mapServices.put(1, "fa fa-glass");
-        mapServices.put(2, "fa fa-bath");
-        mapServices.put(4, "fa fa-paw");
-        mapServices.put(8, "fa fa-gamepad");
-        mapServices.put(16, "fa fa-wifi");
-        mapServices.put(32, "fa fa-cutlery");
-        mapServices.put(64, "fa fa-wheelchair");
-        mapServices.put(128, "fa fa-snowflake-o");
-        mapServices.put(256, "fa fa-tv");
-    }
 
     @Autowired
     private IProduitService iProduitService;
