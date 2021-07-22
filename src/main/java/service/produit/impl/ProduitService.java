@@ -74,6 +74,9 @@ public class ProduitService implements IProduitService {
         }
 
         if (tri == null) {
+            if (searchTerm.isBlank()) {
+                return listerAllProduit();
+            }
             return rechercherProduits(searchTerm);
         }
         return listerFiltreTri(tri, searchTerm);
@@ -153,24 +156,24 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri) {
-        if (searchTerm == null || searchTerm.isBlank()) {
-            switch (tri) {
-                case "1":
-                    return listerAllProduit();
-                case "2":
-                    return listerProduitsEnVente();
-                case "3":
-                    return listerProduitsNonEnVente();
-                default:
-                    break;
+        if (searchTerm.isBlank()) {
+            if ("".equals(tri)) {
+                return listerAllProduit();
             }
+            return trouverProduitsFiltre(tri);
         }
-        return rechercherProduits(searchTerm);
+        if ("".equals(tri)) {
+            return rechercherProduits(searchTerm);
+        }
+        return trouverProduitsFiltreRecherche(tri, searchTerm);
     }
 
-    @Override
-    public List<ProduitDto> listerProduitsNonEnVente() {
-        return ProduitMapper.mapToListDto(produitDao.findAllProduitsNonEnVente());
+    private List<ProduitDto> trouverProduitsFiltre(final String filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
+    }
+
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String filtre, final String tri) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(filtre, tri));
     }
 
     @Override

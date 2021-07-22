@@ -108,13 +108,6 @@ public interface IProduitService {
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
 
     /**
-     * Permet de lister les produits non en vente
-     *
-     * @return liste des produits non en vente
-     */
-    List<ProduitDto> listerProduitsNonEnVente();
-
-    /**
      * Permet de filtrer la liste des produits en fonction du statut de vente
      * 
      * @param  searchTerm terme recherché

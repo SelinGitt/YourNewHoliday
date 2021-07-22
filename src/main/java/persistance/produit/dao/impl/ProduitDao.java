@@ -128,12 +128,6 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     }
 
     @Override
-    public List<ProduitDo> findAllProduitsNonEnVente() {
-        final TypedQuery<ProduitDo> query = entityManager.createQuery("From ProduitDo WHERE mise_en_vente = 0", ProduitDo.class);
-        return query.getResultList();
-    }
-
-    @Override
     public ProduitDo findProduitEnVenteAvecVersion(final Integer idProduit, final Integer version) {
         try {
             // Une requête JPQL qui cherche un produit en vente en base suivant son ID
@@ -150,5 +144,22 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                     noResultException);
             return null;
         }
+    }
+
+    @Override
+    public List<ProduitDo> trouverProduitsFiltre(final String filtre) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo WHERE mise_en_vente = :filtre", ProduitDo.class);
+        query.setParameter("filtre", filtre);
+        logger.debug("ProduitDao trouverProduitFiltre; filtre ; {}", filtre);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProduitDo> trouverProduitsRechercheFiltre(final String searchTerm, final String filtre) {
+        final TypedQuery<ProduitDo> query = entityManager
+                .createQuery("FROM ProduitDo WHERE reference = :searchTerm AND mise_en_vente = :filtre", ProduitDo.class);
+        query.setParameter("filtre", filtre);
+        query.setParameter("searchTerm", searchTerm);
+        return query.getResultList();
     }
 }

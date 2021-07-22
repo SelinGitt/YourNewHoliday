@@ -19,6 +19,7 @@
     <div class="display-flex">
         <div class="searchBar display-flex pdt01Search align-content-flex-end ">
             <form:form action="listerProduitsAdmin.do" method="POST">
+                <input type="hidden" name="tri" value="${tri}" />
                 <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                     placeholder="<spring:message code='pdt01.searchbar'/>">
                 <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
@@ -26,12 +27,13 @@
         </div>
         <div>
             <form:form action="listerProduitsAdmin.do" method="POST">
+                <input type="hidden" name="searchInput" value="${searchTerm}" />
                 <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
                 <select id="triSelect" name="tri">
-                    <option value="0" disabled selected><spring:message code="pdt01.tri.default" /></option>
-                    <option value="1"><spring:message code="pdt01.tri.tous"></spring:message></option>
-                    <option value="2"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                    <option value="3"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+                    <option disabled selected><spring:message code="pdt01.tri.default" /></option>
+                    <option value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
+                    <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                    <option value="0"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
                 </select>
                 <script>
                     document.getElementById("triSelect").options[${tri}].selected=true;             
@@ -73,7 +75,7 @@
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
                     <td class="pdt01Body"><a
-                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin">
                             ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
