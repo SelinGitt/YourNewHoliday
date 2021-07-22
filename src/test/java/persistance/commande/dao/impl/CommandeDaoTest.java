@@ -71,7 +71,7 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRef() {
-        final CommandeDo commandeDo = this.iCommandeDao.findByRef("MP5009052150411");
+        final var commandeDo = this.iCommandeDao.findByRef("MP5009052150411");
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
         assertEquals("MP5009052150411", commandeDo.getReference());
