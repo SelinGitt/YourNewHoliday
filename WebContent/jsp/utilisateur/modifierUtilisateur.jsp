@@ -98,7 +98,8 @@
                         <div class="user02-form-field display-flex justify-content-space-between">
                             <label for="password"><spring:message code="usr02.edit.password" /></label>
                             <div class="user02-form-inputs">
-                                <form:password path="password" class="user02-inputs" />
+                                <form:password path="password" class="user02-inputs" readonly="true"
+                                    onfocus="this.removeAttribute('readonly')" />
                                 <form:errors path="password" cssClass="text-color-rouge" />
                             </div>
                         </div>
