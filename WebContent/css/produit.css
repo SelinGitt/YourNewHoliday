@@ -156,6 +156,10 @@ th.pdt01 {
 	width: 100%;
 }
 
+.pdt02formError {
+	line-height:1em;
+ }
+
 /* PDT03 */
 .pdt03Grid-container {
 	display: grid;
