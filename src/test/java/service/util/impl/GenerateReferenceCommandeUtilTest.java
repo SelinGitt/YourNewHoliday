@@ -80,6 +80,7 @@ class GenerateReferenceCommandeUtilTest {
         referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
         assertNull(referenceImpossibleACree);
         utilisateur.setNom("");
+        utilisateur.setPrenom("prénomDuClient");
         referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
         assertNull(referenceImpossibleACree);
         utilisateur.setNom("nomDuCLient");

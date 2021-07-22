@@ -53,8 +53,12 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         }
         // Utilisateur
         final var utilisateur = (UtilisateurDto) utilisateurAttendu;
-        // dont les noms et prénoms sont non nulls
-        return null != utilisateur.getNom() && null != utilisateur.getPrenom();
+        // dont les noms et prénoms sont non nulls et non vides
+        return isStringConforme(utilisateur.getNom()) && isStringConforme(utilisateur.getPrenom());
+    }
+
+    private boolean isStringConforme(final String string) {
+        return !(null == string || string == "");
     }
 
     private boolean isNombreConform(final Object nombreAttendu) {
