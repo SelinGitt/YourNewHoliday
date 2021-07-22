@@ -4,14 +4,14 @@
 package persistance.commande.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.NoResultException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -75,7 +75,7 @@ class CommandeDaoTest {
         assertNotNull(commandeDo);
         assertEquals(1, commandeDo.getId());
         assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotalAvantRemise()));
+        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixSansRemise()));
         assertEquals(2, commandeDo.getIdUtilisateur());
         assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
@@ -88,9 +88,23 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRefWhithWrongRef() {
-        assertThrows(NoResultException.class, () -> {
-            this.iCommandeDao.findByRef("ZZZ1");
-        });
+        assertNull(this.iCommandeDao.findByRef("ZZZ1"));
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExist() {
+        assertTrue(this.iCommandeDao.isCommandeExist("ABC1"));
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExistWhithWrongRef() {
+        assertFalse(this.iCommandeDao.isCommandeExist("ZZZ1"));
     }
 
     /*

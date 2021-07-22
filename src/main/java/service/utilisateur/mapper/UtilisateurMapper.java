@@ -32,6 +32,9 @@ public class UtilisateurMapper {
      * @return               Mapped UtilisateurDto
      */
     public static UtilisateurDto mapperToDto(final UtilisateurDo utilisateurDo) {
+        if (utilisateurDo == null) {
+            return null;
+        }
         final var utilisateurDto = new UtilisateurDto();
 
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
@@ -70,8 +73,7 @@ public class UtilisateurMapper {
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
-        // TODO : Remplacer quand upload img ok
-        utilisateurDo.setCheminAvatar("img/test.png");
+        // TODO : Quand upload img ok, gérer le chemin de l'avatar ici 
 
         return utilisateurDo;
     }

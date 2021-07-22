@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,9 @@ public class CommandeDo {
     @Column(name = "reference")
     private String                 reference;
 
+    @Column(name = "prix_total_ante_remise")
+    private BigDecimal             prixSansRemise;
+
     @Column(name = "prix_avec_remise")
     private BigDecimal             prixTotalApresRemise;
 
@@ -36,14 +40,17 @@ public class CommandeDo {
     @Column(name = "idUtilisateur")
     private Integer                idUtilisateur;
 
-    @OneToMany(mappedBy = "commandeDo")
+    @OneToMany(mappedBy = "commandeDo", cascade = CascadeType.PERSIST)
     private Set<CommandeProduitDo> commandeProduitDoSet;
 
     @Column(name = "quantiteTotale")
     private Integer                quantiteTotale;
 
-    @Column(name = "prix_total_ante_remise")
-    private BigDecimal             prixTotalAvantRemise;
+    @Column(name = "adresse_livraison")
+    private String                 adresseLivraison;
+
+    @Column(name = "adresse_facturation")
+    private String                 adresseFacturation;
 
     /**
      * Getter for id
@@ -79,6 +86,42 @@ public class CommandeDo {
      */
     public void setReference(final String reference) {
         this.reference = reference;
+    }
+
+    /**
+     * Getter for prixSansRemise
+     *
+     * @return the prixSansRemise
+     */
+    public BigDecimal getPrixSansRemise() {
+        return prixSansRemise;
+    }
+
+    /**
+     * Setter for prixSansRemise
+     *
+     * @param prixSansRemise the prixSansRemise to set
+     */
+    public void setPrixSansRemise(final BigDecimal prixSansRemise) {
+        this.prixSansRemise = prixSansRemise;
+    }
+
+    /**
+     * Getter for prixTotalApresRemise
+     *
+     * @return the prixTotalApresRemise
+     */
+    public BigDecimal getPrixTotalApresRemise() {
+        return prixTotalApresRemise;
+    }
+
+    /**
+     * Setter for prixTotalApresRemise
+     *
+     * @param prixTotalApresRemise the prixTotalApresRemise to set
+     */
+    public void setPrixTotalApresRemise(final BigDecimal prixTotalApresRemise) {
+        this.prixTotalApresRemise = prixTotalApresRemise;
     }
 
     /**
@@ -137,7 +180,7 @@ public class CommandeDo {
 
     /**
      * Getter for quantiteTotale
-     * 
+     *
      * @return the quantiteTotale
      */
     public Integer getQuantiteTotale() {
@@ -146,7 +189,7 @@ public class CommandeDo {
 
     /**
      * Setter for quantiteTotale
-     * 
+     *
      * @param quantiteTotale the quantiteTotale to set
      */
     public void setQuantiteTotale(final Integer quantiteTotale) {
@@ -154,39 +197,39 @@ public class CommandeDo {
     }
 
     /**
-     * Getter for prixTotalApresRemise
+     * Getter for adresseLivraison
      *
-     * @return the prixTotalApresRemise
+     * @return the adresseLivraison
      */
-    public BigDecimal getPrixTotalApresRemise() {
-        return prixTotalApresRemise;
+    public String getAdresseLivraison() {
+        return adresseLivraison;
     }
 
     /**
-     * Setter for prixTotalApresRemise
+     * Setter for adresseLivraison
      *
-     * @param prixTotalApresRemise the prixTotalApresRemise to set
+     * @param adresseLivraison the adresseLivraison to set
      */
-    public void setPrixTotalApresRemise(final BigDecimal prixTotalApresRemise) {
-        this.prixTotalApresRemise = prixTotalApresRemise;
+    public void setAdresseLivraison(final String adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
     }
 
     /**
-     * Getter for prixTotalAvantRemise
+     * Getter for adresseFacturation
      *
-     * @return the prixTotalAvantRemise
+     * @return the adresseFacturation
      */
-    public BigDecimal getPrixTotalAvantRemise() {
-        return prixTotalAvantRemise;
+    public String getAdresseFacturation() {
+        return adresseFacturation;
     }
 
     /**
-     * Setter for prixTotalAvantRemise
+     * Setter for adresseFacturation
      *
-     * @param prixTotalAvantRemise the prixTotalAvantRemise to set
+     * @param adresseFacturation the adresseFacturation to set
      */
-    public void setPrixTotalAvantRemise(final BigDecimal prixTotalAvantRemise) {
-        this.prixTotalAvantRemise = prixTotalAvantRemise;
+    public void setAdresseFacturation(final String adresseFacturation) {
+        this.adresseFacturation = adresseFacturation;
     }
 
 }
