@@ -29,8 +29,9 @@
                 <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
                 <select id="triSelect" name="tri">
                     <option value="0" disabled selected><spring:message code="pdt01.tri.default" /></option>
-                    <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                    <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+                    <option value="1"><spring:message code="pdt01.tri.tous"></spring:message></option>
+                    <option value="2"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                    <option value="3"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
                 </select>
                 <script>
                     document.getElementById("triSelect").options[${tri}].selected=true;             

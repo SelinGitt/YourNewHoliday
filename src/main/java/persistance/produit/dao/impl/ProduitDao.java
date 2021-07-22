@@ -127,4 +127,10 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         return query.getResultList();
     }
 
+    @Override
+    public List<ProduitDo> findAllProduitsNonEnVente() {
+        final TypedQuery<ProduitDo> query = entityManager
+                .createQuery("From ProduitDo WHERE mise_en_vente = 0", ProduitDo.class);
+        return query.getResultList();
+    }
 }

@@ -91,7 +91,6 @@ public class ProduitService implements IProduitService {
     private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
         logger.debug("Produit Service / méthode rechercherProduits, pSearchTerm : {}", pSearchTerm);
         return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
-
     }
 
     @Override
@@ -152,10 +151,24 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> filtrerEnVente(final String tri) {
-        if (tri.equals("1")) {
-            return listerProduitsEnVente();
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri) {
+        if (searchTerm == null || searchTerm.isBlank()) {
+            switch (tri) {
+                case "1":
+                    return listerAllProduit();
+                case "2":
+                    return listerProduitsEnVente();
+                case "3":
+                    return listerProduitsNonEnVente();
+                default:
+                    break;
+            }
         }
-        return listerAllProduit();
+        return rechercherProduits(searchTerm);
+    }
+
+    @Override
+    public List<ProduitDto> listerProduitsNonEnVente() {
+        return ProduitMapper.mapToListDto(produitDao.findAllProduitsNonEnVente());
     }
 }

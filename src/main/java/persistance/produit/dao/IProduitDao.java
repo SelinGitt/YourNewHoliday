@@ -71,4 +71,11 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste de tous les produits trouvés en vente ou non
      */
     List<ProduitDo> rechercherAllProduits(final String searchTerm);
+
+    /**
+     * Permet de lister les produits non vente
+     *
+     * @return liste de produits non en vente
+     */
+    List<ProduitDo> findAllProduitsNonEnVente();
 }
