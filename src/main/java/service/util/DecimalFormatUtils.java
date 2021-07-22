@@ -4,9 +4,13 @@
 package service.util;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
 import java.util.Locale;
+
+import org.slf4j.LoggerFactory;
 
 /**
  * Classe unitaire pour factoriser l'affichage des décimaux
@@ -107,6 +111,42 @@ public class DecimalFormatUtils {
      * @return              : le nombre transformé en Double
      */
     public static Double doubleFormatUtil(final String nombreString) {
-        return Double.valueOf(nombreString.replace(",", ".").replace("\u00A0", "").replace("\u202F", ""));
+        return Double.valueOf(stringFormatedToStringNumber(nombreString));
+    }
+
+    /**
+     * Permet de transformer un nombre contenu dans un string ayant été formaté <br />
+     * par la méthode formatUtil(Big)Decimal en BigDecimal exploitable
+     *
+     * @param  nombreString : le nombre à  transformer
+     * @return              : le nombre transformé en BigDecimal
+     */
+    public static BigDecimal bigDecimalFormatUtil(final String nombreString) {
+        //affichage de la langue
+        final var symbols = new DecimalFormatSymbols(Locale.ENGLISH);
+
+        //garder uniquement 2 chiffres apres la virgule
+        //decimalFormat ###,###.#
+        final var format = new DecimalFormat("###,###.#", symbols);
+        // defini le nb de chiffres apres la virgule
+        format.setMinimumFractionDigits(2);
+        format.setParseBigDecimal(true);
+        try {
+            return (BigDecimal) format.parse(stringFormatedToStringNumber(nombreString));
+        } catch (final ParseException exception) {
+            final var logger = LoggerFactory.getLogger(DecimalFormatUtils.class);
+            logger.error("Formatage de {} en erreur", nombreString, exception);
+            return BigDecimal.valueOf(0).setScale(2, RoundingMode.FLOOR);
+        }
+    }
+
+    /**
+     * Permet de passer un String de la forme "xxx xxx,xx" à "xxxxxx.xx"
+     *
+     * @param  nombreString la chaîne de charactère à convertir
+     * @return              String la chaîne convertie
+     */
+    private static String stringFormatedToStringNumber(final String nombreString) {
+        return nombreString.replace(",", ".").replace(" ", "").replace("\u00A0", "").replace("\u202F", "");
     }
 }

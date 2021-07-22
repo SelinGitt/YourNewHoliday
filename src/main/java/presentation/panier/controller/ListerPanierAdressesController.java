@@ -41,6 +41,10 @@ public class ListerPanierAdressesController {
         //on cherche l'utilisateur Connecter grace a l'id
         final var id = Integer.valueOf(utilisateurDto.getIdUtilisateur());
         final var utilisateur = utilisateurService.findUtilisateurById(id);
+        if (utilisateur == null) {
+            modelAndView.setViewName("redirect:deconnecter.do");
+            return modelAndView;
+        }
         final var defaultAdresse = new CommandeAdresseDto();
         final var livraisonAdresse = new CommandeAdresseDto();
         final var facturationAdresse = new CommandeAdresseDto();

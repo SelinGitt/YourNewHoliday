@@ -5,6 +5,7 @@ package service.commande;
 
 import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.ProduitAcheteDto;
+import presentation.produit.dto.ProduitDto;
 import service.util.DecimalFormatUtils;
 
 /**
@@ -38,6 +39,32 @@ public class ProduitAcheteMapper {
         produitAcheteDto.setCheminDeLImage(produitAcheteDo.getCheminImage());
         return produitAcheteDto;
 
+    }
+
+    /**
+     * Permet de mapper un ProduitDto provenant du panier en ProduitAcheteDo
+     *
+     * @param  produitPanier le produit provenant du panier
+     * @return               ProduitAcheteDo le produit à enregistrer dans la base de données
+     */
+    public static ProduitAcheteDo mapperToDo(final ProduitDto produitPanier) {
+        if (produitPanier == null) {
+            return null;
+        }
+        final var produitAcheteDo = new ProduitAcheteDo();
+        produitAcheteDo.setIdProduit(null);
+        produitAcheteDo.setIdDeLOriginal(Integer.parseInt(produitPanier.getIdProduitOriginal()));
+        produitAcheteDo.setVersion(Integer.parseInt(produitPanier.getVersion()));
+        produitAcheteDo.setReference(produitPanier.getReference());
+        produitAcheteDo.setNom(produitPanier.getNom());
+        produitAcheteDo.setDescription(produitPanier.getDescription());
+        produitAcheteDo.setDestination(produitPanier.getDestination());
+        produitAcheteDo.setPrixUnitaire(DecimalFormatUtils.bigDecimalFormatUtil(produitPanier.getPrixUnitaire()));
+        produitAcheteDo.setHebergement(produitPanier.getHebergement());
+        produitAcheteDo.setMiseEnVente(Boolean.valueOf(produitPanier.getMiseEnVente()));
+        produitAcheteDo.setCheminImage(produitPanier.getCheminImage());
+        produitAcheteDo.setServices(Integer.parseInt(produitPanier.getServices()));
+        return produitAcheteDo;
     }
 
 }
