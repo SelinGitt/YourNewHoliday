@@ -9,6 +9,7 @@ import presentation.panier.dto.PanierDto;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Interface Métier du produit
@@ -113,4 +114,13 @@ public interface IProduitService {
      *                      <code>false</code> dans le cas contraire
      */
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role
+     * 
+     * @param  role      role de l'utilisateur
+     * @param  idProduit id du produit à consulter
+     * @return           produit à consulter
+     */
+    ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit);
 }

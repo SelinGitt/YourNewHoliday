@@ -222,8 +222,7 @@ class ProduitDaoTest {
         assertEquals(1, listeProduitsRecherchee.size());
         //recherche référence existente et non en vente
         final String searchTermNonEnVente = "GRC";
-        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao
-                .rechercherAllProduits(searchTermNonEnVente);
+        final List<ProduitDo> listeProduitsRechercheeNonEnVente = iProduitDao.rechercherAllProduits(searchTermNonEnVente);
         assertEquals(1, listeProduitsRechercheeNonEnVente.size());
         //recherche référence non existente
         final String searchTermNull = "ZZZ";
@@ -241,5 +240,18 @@ class ProduitDaoTest {
         iProduitDao.delete(iProduitDao.findById(1).getIdProduitOriginal());
         assertEquals(5, iProduitDao.findAll().size());
         assertNull(iProduitDao.findById(1));
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVenteAvecVersion(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitEnVenteAvecVersion() {
+        // On récupère un produit en vente
+        final ProduitDo produitDoEnVente = iProduitDao.findProduitEnVenteAvecVersion(3, 1);
+        assertNotNull(produitDoEnVente);
+        // On essaie de récupérer un produit qui n'est pas en vente
+        final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVenteAvecVersion(1, 1);
+        assertNull(produitDoPasEnVente);
     }
 }
