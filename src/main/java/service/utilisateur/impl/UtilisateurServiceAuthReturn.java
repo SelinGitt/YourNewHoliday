@@ -38,7 +38,7 @@ public class UtilisateurServiceAuthReturn {
         /**
          * Pour renseigner l'utilisateurConnecteDto
          *
-         * @return             : le builder
+         * @return : le builder
          */
         UtilisateurServiceAuthReturnBuilder withUtilisateurConnecteDto(final UtilisateurConnecteDto utilisateurConnecteDto) {
             utilisateurServiceAuthReturn.utilisateurConnecteDto = utilisateurConnecteDto;
