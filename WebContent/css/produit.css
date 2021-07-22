@@ -191,11 +191,13 @@ th.pdt01 {
 .pdt03FormulaireProduit {
 	table-layout: auto;
 	text-align: left;
-	line-height: 3.75em;
+	line-height: 2.6em;
 }
 
 .pdt03FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
+	padding-left: 5em;
 }
 
 .pdt03FormPDT03Radio {
@@ -216,20 +218,18 @@ th.pdt01 {
 	min-height: 3.75em;
 }
 
-.pdt03ButtonsPdt03 {
-	width: 100%;
-	justify-content: space-around;
-	align-items: center;
-}
-
 .pdt03ListeService {
 	width: 100%;
-	line-height: 3em;
+	line-height: 4em;
 }
 
 .pdt03ImageCreationProduit {
 	width: 100%;
 }
+
+.pdt03formError {
+	line-height:1em;
+ }
 
 /* PDT04 */
 .pdt04Flex-container {

@@ -70,8 +70,7 @@ public class UtilisateurMapper {
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
-        // TODO : Remplacer quand upload img ok
-        utilisateurDo.setCheminAvatar("img/test.png");
+        // TODO : Quand upload img ok, gérer le chemin de l'avatar ici 
 
         return utilisateurDo;
     }
@@ -101,8 +100,6 @@ public class UtilisateurMapper {
         utilisateurConnecteDto.setIdUtilisateur(String.valueOf(utilisateurDo.getIdUtilisateur()));
         utilisateurConnecteDto.setNom(utilisateurDo.getNom());
         utilisateurConnecteDto.setPrenom(utilisateurDo.getPrenom());
-        //TODO gestion du panier à travailler avec l'équipe Panier
-        utilisateurConnecteDto.setNbProduitPanier("0");
 
         return utilisateurConnecteDto;
     }

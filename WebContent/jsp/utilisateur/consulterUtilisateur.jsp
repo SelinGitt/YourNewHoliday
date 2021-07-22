@@ -8,8 +8,7 @@
         <div class="align-item-center justify-content-center">
             <c:if test="${not empty error}">
                 <div class="background-error-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> 
-                    <span class="message"><spring:message code="${error}" /></span>
+                    <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
                 </div>
             </c:if>
             <div class="user00-title">
@@ -41,7 +40,7 @@
 
                 <div class="user00-infos">
                     <label for="adresse"> <spring:message code="usr00.consulter.adresse" /></label>
-                    <textarea class="user00-infos-input" disabled="disabled">${utilisateurDto.adresse}</textarea>
+                    <textarea class="user00-infos-input user00-textarea" disabled="disabled">${utilisateurDto.adresse}</textarea>
                 </div>
 
                 <div class="user00-infos">
@@ -79,11 +78,8 @@
 
             </div>
             <div>
-                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                <div>
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
-                </div>
+                <img src="displayImage.do?id=${utilisateurDto.id}&type=usr"
+                    alt="avatar utilisateur ${utilisateurDto.reference}" />
             </div>
         </div>
     </div>

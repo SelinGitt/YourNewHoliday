@@ -20,6 +20,7 @@ import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe représentant l'interface métier {@link IProduitService}
@@ -124,9 +125,15 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto creerProduit(final ProduitDto produitDto) {
-        final var produitDo = ProduitMapper.mapToDo(produitDto);
-        this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
-        return ProduitMapper.mapToDto(produitDao.create(produitDo));
+
+        final var produitDtoTrouve = this.trouverParReference(produitDto.getReference());
+        if (produitDtoTrouve == null) {
+            final var produitDo = ProduitMapper.mapToDo(produitDto);
+            this.logger.debug("La référence : {} a été utilisé dans la méthode creerProduit", produitDto.getReference());
+            return ProduitMapper.mapToDto(produitDao.create(produitDo));
+        }
+        this.logger.info(" La référence  {} existe déjà en BdD ", produitDto.getReference());
+        return null;
     }
 
     @Override
@@ -143,5 +150,13 @@ public class ProduitService implements IProduitService {
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit) {
+        if (UtilisateurRoleEnum.ADMINISTRATEUR == role) {
+            return ProduitMapper.mapToDto(produitDao.findById(idProduit));
+        }
+        return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
     }
 }
