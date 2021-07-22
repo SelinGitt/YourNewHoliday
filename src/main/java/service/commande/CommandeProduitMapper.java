@@ -44,8 +44,8 @@ public class CommandeProduitMapper {
         commandeProduitDto.setIdListeCommande(String.valueOf(commandeProduitDo.getIdCommandeProduit()));
         commandeProduitDto.setProduitAcheteDto(ProduitAcheteMapper.mapperToDto(commandeProduitDo.getProduitAcheteDo()));
         commandeProduitDto.setQuantite(String.valueOf(commandeProduitDo.getQuantite()));
-        commandeProduitDto
-                .setPrixTotal(calculerPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo.getQuantite()));
+        commandeProduitDto.setPrixTotal(calculerPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo
+                .getQuantite()));
         return commandeProduitDto;
 
     }

@@ -32,7 +32,7 @@ public class CommandeDo {
     private BigDecimal             prixSansRemise;
 
     @Column(name = "prix_avec_remise")
-    private BigDecimal             prixTotal;
+    private BigDecimal             prixTotalApresRemise;
 
     @Column(name = "date_commande")
     private Date                   date;
@@ -48,6 +48,7 @@ public class CommandeDo {
 
     @Column(name = "adresse_livraison")
     private String                 adresseLivraison;
+
     @Column(name = "adresse_facturation")
     private String                 adresseFacturation;
 
@@ -106,21 +107,21 @@ public class CommandeDo {
     }
 
     /**
-     * Getter for prixTotal
+     * Getter for prixTotalApresRemise
      *
-     * @return the prixTotal
+     * @return the prixTotalApresRemise
      */
-    public BigDecimal getPrixTotal() {
-        return prixTotal;
+    public BigDecimal getPrixTotalApresRemise() {
+        return prixTotalApresRemise;
     }
 
     /**
-     * Setter for prixTotal
+     * Setter for prixTotalApresRemise
      *
-     * @param prixTotal the prixTotal to set
+     * @param prixTotalApresRemise the prixTotalApresRemise to set
      */
-    public void setPrixTotal(final BigDecimal prixTotal) {
-        this.prixTotal = prixTotal;
+    public void setPrixTotalApresRemise(final BigDecimal prixTotalApresRemise) {
+        this.prixTotalApresRemise = prixTotalApresRemise;
     }
 
     /**
@@ -179,7 +180,7 @@ public class CommandeDo {
 
     /**
      * Getter for quantiteTotale
-     * 
+     *
      * @return the quantiteTotale
      */
     public Integer getQuantiteTotale() {
@@ -188,7 +189,7 @@ public class CommandeDo {
 
     /**
      * Setter for quantiteTotale
-     * 
+     *
      * @param quantiteTotale the quantiteTotale to set
      */
     public void setQuantiteTotale(final Integer quantiteTotale) {
@@ -205,21 +206,21 @@ public class CommandeDo {
     }
 
     /**
-     * Getter for adresseFacturation
-     *
-     * @return the adresseFacturation
-     */
-    public String getAdresseFacturation() {
-        return adresseFacturation;
-    }
-
-    /**
      * Setter for adresseLivraison
      *
      * @param adresseLivraison the adresseLivraison to set
      */
     public void setAdresseLivraison(final String adresseLivraison) {
         this.adresseLivraison = adresseLivraison;
+    }
+
+    /**
+     * Getter for adresseFacturation
+     *
+     * @return the adresseFacturation
+     */
+    public String getAdresseFacturation() {
+        return adresseFacturation;
     }
 
     /**
