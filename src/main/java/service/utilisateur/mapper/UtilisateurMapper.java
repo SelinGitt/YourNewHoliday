@@ -37,7 +37,6 @@ public class UtilisateurMapper {
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
         utilisateurDto.setReference(utilisateurDo.getReference());
         utilisateurDto.setEmail(utilisateurDo.getEmail());
-        utilisateurDto.setEmailBase(utilisateurDo.getEmail());
         utilisateurDto.setDateInscription(DateFormatUtil.formaterDateToString(utilisateurDo.getDateInscription()));
         utilisateurDto.setNom(utilisateurDo.getNom());
         utilisateurDto.setPrenom(utilisateurDo.getPrenom());
