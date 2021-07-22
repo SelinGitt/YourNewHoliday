@@ -62,19 +62,22 @@ class ProduitDaoTest {
      */
     @Test
     void testFindAllProduitsTriAlpha() {
-        // On récupère les données
+        //On récupère tous les produits triés
         final List<ProduitDo> listProduitTriee = this.iProduitDao.findAllProduitsTriAlpha();
+        //On récupère tous les produits non triés
         final List<ProduitDo> listProduit = this.iProduitDao.findAll();
-        // On teste la conformitée du nombre de données
-        assertEquals(6, listProduitTriee.size());
-        assertEquals(6, listProduit.size());
-        //On teste si les références des produits sont bien rangées par ordre alphabétique
-        //Dand une liste non-triée, le produit de référence SPA1278951 doit apparaitre en troisième position</br>
-        //du tableau regroupant la liste des produits. Si la liste est triée, il sera en cinquième position
-        final ProduitDo produitDoTri = listProduitTriee.get(4);
-        final ProduitDo produitDo = listProduit.get(4);
-        assertEquals("SPA1278951", produitDoTri.getReference());
-        assertNotEquals("SPA1278951", produitDo.getReference());
+        //On récupère tous les produits triés grâce à la méthode privée triReferenceCroissante()
+        final List<ProduitDo> liste = triReferenceCroissante();
+
+        assertEquals(listProduitTriee, liste);
+        assertNotEquals(listProduit, liste);
+    }
+
+    private List<ProduitDo> triReferenceCroissante() {
+        final List<ProduitDo> listeProduit = iProduitDao.findAll();
+        final Comparator<ProduitDo> produitDoReferenceComparator = Comparator.comparing(ProduitDo::getReference);
+        Collections.sort(listeProduit, produitDoReferenceComparator);
+        return listeProduit;
     }
 
     /**
