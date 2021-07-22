@@ -84,7 +84,6 @@ public class CommandeService implements ICommandeService {
         String reference = null;
         do {
             reference = this.referenceCommande.generateReference(utilisateur, panier.getNombreDeReferences(), new Date());
-            // reference = this.referenceCommande.generateReference();
 
             // Passer les adresses à la méthode
         } while (this.iCommandeDao.isCommandeExist(reference));
