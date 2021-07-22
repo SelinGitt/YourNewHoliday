@@ -58,7 +58,7 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
     }
 
     private boolean isStringConforme(final String string) {
-        return !(null == string || "".equals(string));
+        return null != string && !string.isEmpty();
     }
 
     private boolean isNombreConform(final Object nombreAttendu) {
