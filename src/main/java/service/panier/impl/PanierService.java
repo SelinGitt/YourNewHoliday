@@ -225,8 +225,8 @@ public class PanierService implements IPanierService {
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDoReference);
         }
-        logger.info("Fin de validation Commande avec {} produits non concordant.",
-                retourValiderPanier.getListIdProduitNonConcordant().size());
+        logger.info("Fin de validation Commande avec {} produits non concordant.", retourValiderPanier.getListIdProduitNonConcordant()
+                .size());
         return retourValiderPanier;
     }
 }

@@ -201,7 +201,7 @@ public class CommandeDto implements Serializable {
      *
      * @param remise the remise to set
      */
-    public void setRemise(String remise) {
+    public void setRemise(final String remise) {
         this.remise = remise;
     }
 
