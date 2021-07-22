@@ -3,7 +3,11 @@
  */
 package presentation.produit.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +29,18 @@ import service.utilisateur.util.UtilisateurRoleEnum;
 @Controller
 @RequestMapping(value = "/consulterProduit.do")
 public class ConsulterProduitController {
+    private static Map<Integer, String> mapServices = new TreeMap<>();
+    static {
+        mapServices.put(1, "fa fa-glass");
+        mapServices.put(2, "fa fa-bath");
+        mapServices.put(4, "fa fa-paw");
+        mapServices.put(8, "fa fa-gamepad");
+        mapServices.put(16, "fa fa-wifi");
+        mapServices.put(32, "fa fa-cutlery");
+        mapServices.put(64, "fa fa-wheelchair");
+        mapServices.put(128, "fa fa-snowflake-o");
+        mapServices.put(256, "fa fa-tv");
+    }
 
     @Autowired
     private IProduitService iProduitService;
@@ -55,7 +71,8 @@ public class ConsulterProduitController {
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-
+        final int services = Integer.parseInt(produitTrouve.getServices());
+        modelAndView.getModelMap().addAttribute("listeServices", genererListeServices(services));
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitTrouve);
         final var pageOrigine = PageRedirection.findValue(location);
         final var urlToBuild = new StringBuilder();
@@ -66,5 +83,21 @@ public class ConsulterProduitController {
         modelAndView.getModelMap().addAttribute("retour", urlToBuild);
         return modelAndView;
 
+    }
+
+    private List<String> genererListeServices(final Integer number) {
+        Integer numberToEdit = number;
+        //création d'une arrayList de Integer
+        final List<String> liste = new ArrayList<>();
+        //set de l'exposant à 1
+        int exposant = 1;
+        while (numberToEdit != 0) {
+            if ((numberToEdit & 1) != 0) {
+                liste.add(mapServices.get(exposant));
+            }
+            numberToEdit >>= 1;
+            exposant <<= 1;
+        }
+        return liste;
     }
 }
