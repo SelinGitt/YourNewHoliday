@@ -29,7 +29,14 @@
 }
 
 td.pdt00Description {
-	max-width: 75%
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	max-height: 3em;
+	line-height: 1em;
+	text-align: justify;
 }
 
 .pdt00Ajouter {
@@ -228,8 +235,8 @@ th.pdt01 {
 }
 
 .pdt03formError {
-	line-height:1em;
- }
+	line-height: 1em;
+}
 
 /* PDT04 */
 .pdt04Flex-container {
