@@ -151,7 +151,8 @@ public class UtilisateurService implements IUtilisateurService {
         // Verifie si l'email est deja pris
         if (!utilisateurDto.getEmail().equals(utilisateurDto.getEmailBase())
                 && (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null)) {
-            logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}", utilisateurDto.getEmail());
+            logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}. Ref utilisateur : {}", utilisateurDto.getEmail(),
+                    utilisateurDto.getReference());
             return null;
         }
 
