@@ -1,10 +1,14 @@
 package service.commande;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
+import presentation.panier.dto.PanierDto;
 import service.util.DateFormatUtil;
 import service.util.DecimalFormatUtils;
 
@@ -36,6 +40,13 @@ public class CommandeMapper {
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
 
+        final var livraisonAdresse = new CommandeAdresseDto();
+        livraisonAdresse.setAdresse(commandeDo.getAdresseLivraison());
+        commandeDto.setAdresseLivraison(livraisonAdresse);
+
+        final var facturationAdresse = new CommandeAdresseDto();
+        facturationAdresse.setAdresse(commandeDo.getAdresseFacturation());
+        commandeDto.setAdresseFacturation(facturationAdresse);
         return commandeDto;
     }
 
@@ -48,5 +59,30 @@ public class CommandeMapper {
     public static List<CommandeDto> mapperListDoToDto(final List<CommandeDo> listeCommandeDo) {
         return listeCommandeDo.stream().map(CommandeMapper::mapperToDto).collect(Collectors.toList());
 
+    }
+
+    /**
+     * Permet de mapper un Panier en CommandeDo
+     *
+     * @param  panier        le panier en session
+     * @param  adresses      les adresses entrées par l'utilisateur
+     * @param  reference     la reference de la commande qui a été généré en ammon
+     * @param  idUtilisateur l'id de l'utilisateur en session
+     * @return               CommandeDo la commande qui doit être enregistré en base de donnée
+     */
+    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final String reference,
+            final Integer idUtilisateur) {
+        final var commandeDo = new CommandeDo();
+        commandeDo.setId(null);
+        commandeDo.setReference(reference);
+        commandeDo.setDate(new Date());
+        commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
+        commandeDo.setPrixTotal(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
+        commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
+        commandeDo.setIdUtilisateur(idUtilisateur);
+        commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
+        commandeDo.setAdresseFacturation(adresses.getCommandeAdresseFacturation().getAdresse());
+        commandeDo.setAdresseLivraison(adresses.getCommandeAdresseLivraison().getAdresse());
+        return commandeDo;
     }
 }

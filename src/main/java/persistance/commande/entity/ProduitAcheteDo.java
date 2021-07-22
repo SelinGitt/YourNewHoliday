@@ -29,6 +29,8 @@ public class ProduitAcheteDo {
     @Column(name = "idDeLOriginal")
     private Integer    idDeLOriginal;
 
+    private Integer    version;
+
     @Column(name = "reference")
     private String     reference;
 
@@ -44,8 +46,15 @@ public class ProduitAcheteDo {
     @Column(name = "prix_unitaire")
     private BigDecimal prixUnitaire;
 
+    private String     hebergement;
+
+    @Column(name = "mise_en_vente", columnDefinition = "TINYINT", length = 1)
+    private Boolean    miseEnVente;
+
     @Column(name = "chemin_de_l_image")
     private String     cheminImage;
+
+    private Integer    services;
 
     /**
      * Constructor
@@ -88,6 +97,24 @@ public class ProduitAcheteDo {
      */
     public void setIdDeLOriginal(final Integer idDeLOriginal) {
         this.idDeLOriginal = idDeLOriginal;
+    }
+
+    /**
+     * Getter for version
+     *
+     * @return the version
+     */
+    public Integer getVersion() {
+        return version;
+    }
+
+    /**
+     * Setter for version
+     *
+     * @param version the version to set
+     */
+    public void setVersion(final Integer version) {
+        this.version = version;
     }
 
     /**
@@ -181,6 +208,42 @@ public class ProduitAcheteDo {
     }
 
     /**
+     * Getter for hebergement
+     *
+     * @return the hebergement
+     */
+    public String getHebergement() {
+        return hebergement;
+    }
+
+    /**
+     * Setter for hebergement
+     *
+     * @param hebergement the hebergement to set
+     */
+    public void setHebergement(final String hebergement) {
+        this.hebergement = hebergement;
+    }
+
+    /**
+     * Getter for miseEnVente
+     *
+     * @return the miseEnVente
+     */
+    public Boolean getMiseEnVente() {
+        return miseEnVente;
+    }
+
+    /**
+     * Setter for miseEnVente
+     *
+     * @param miseEnVente the miseEnVente to set
+     */
+    public void setMiseEnVente(final Boolean miseEnVente) {
+        this.miseEnVente = miseEnVente;
+    }
+
+    /**
      * Getter for cheminImage
      *
      * @return the cheminImage
@@ -196,6 +259,24 @@ public class ProduitAcheteDo {
      */
     public void setCheminImage(final String cheminImage) {
         this.cheminImage = cheminImage;
+    }
+
+    /**
+     * Getter for services
+     *
+     * @return the services
+     */
+    public Integer getServices() {
+        return services;
+    }
+
+    /**
+     * Setter for services
+     *
+     * @param services the services to set
+     */
+    public void setServices(final Integer services) {
+        this.services = services;
     }
 
 }
