@@ -60,8 +60,10 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="email"><spring:message code="usr05.creer.email" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="email" class="user05-inputs" readonly="true" 
-onfocus="this.removeAttribute('readonly')" />
+                        <%-- Le readonly pemet le blocage de l'autocompletion 
+                        par le navigateur si des identifiants sont enregister --%>
+                        <form:input path="email" class="user05-inputs" readonly="true"
+                            onfocus="this.removeAttribute('readonly')" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
