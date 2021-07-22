@@ -4,6 +4,7 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -66,15 +67,15 @@ class ProduitDaoTest {
         final List<ProduitDo> listProduitTriee = this.iProduitDao.findAllProduitsTriAlpha();
         final List<ProduitDo> listProduit = this.iProduitDao.findAll();
         // On teste la conformitée du nombre de données
-        Assertions.assertEquals(6, listProduitTriee.size());
-        Assertions.assertEquals(6, listProduit.size());
+        assertEquals(6, listProduitTriee.size());
+        assertEquals(6, listProduit.size());
         //On teste si les références des produits sont bien rangées par ordre alphabétique
         //Dand une liste non-triée, le produit de référence SPA1278951 doit apparaitre en troisième position</br>
         //du tableau regroupant la liste des produits. Si la liste est triée, il sera en cinquième position
         final ProduitDo produitDoTri = listProduitTriee.get(4);
         final ProduitDo produitDo = listProduit.get(4);
-        Assertions.assertEquals("SPA1278951", produitDoTri.getReference());
-        Assertions.assertNotEquals("SPA1278951", produitDo.getReference());
+        assertEquals("SPA1278951", produitDoTri.getReference());
+        assertNotEquals("SPA1278951", produitDo.getReference());
     }
 
     /**
