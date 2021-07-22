@@ -30,12 +30,11 @@
                                 <div class="panier-div-image">
                                     <div class="panier-image-produit-container">
                                         <%--  photo --%>
-                                        <a
-                                          href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
-                                            <img
-                                            class="panier-image-produit"
+                                        <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                            <img class="panier-image-produit"
                                             src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                            alt="${entry.key.destination}" /></a>
+                                            alt="${entry.key.destination}" />
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="panier-description-produit">
@@ -108,6 +107,10 @@
                                         alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
+                        <div>
+                            <c:if test="${listIdError}.contains(${entry.key.idProduitOriginal })"></c:if>
+                            produitKO
+                        </div>
                     </c:forEach>
                 </tbody>
             </table>
