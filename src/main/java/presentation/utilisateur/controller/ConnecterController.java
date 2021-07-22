@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
+import service.util.GetPropertyValues;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -32,11 +33,6 @@ import service.utilisateur.IUtilisateurService;
 @RequestMapping({"/connecter.do", "/deconnecter.do"})
 @SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
-
-    /**
-     * le temps maximimum en minutes d'inactivité d'un utilisateur avant expiration de la session
-     */
-    private int                 tempsAvantDeconnection = 20;
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
@@ -65,7 +61,7 @@ public class ConnecterController {
     /**
      * Permet de mettre logger un utilisateur en session
      * 
-     * @param  request        : la requete HTTP
+     * @param  session        : la session http
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
      * @param  result         : resultats du binding utilisé pour gérer les erreurs
      * @param  modelAndView   : ModelAndView du controller
@@ -73,9 +69,8 @@ public class ConnecterController {
      * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
-    public ModelAndView loggerUtilisateur(final HttpServletRequest request,
-            final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
-            final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
+    public ModelAndView loggerUtilisateur(final HttpSession session, final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto,
+            final BindingResult result, final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
         connecterValidator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
@@ -101,8 +96,7 @@ public class ConnecterController {
             modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
 
             //ajout d'un intervale maximum autorisé avant deconection automatique
-            final HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(tempsAvantDeconnection * 60);
+            session.setMaxInactiveInterval(Integer.valueOf(GetPropertyValues.getPropertiesMap().get("tempsAvantDeconnection")) * 60);
 
             modelAndView.getModelMap().addAttribute("anySuccess", anySuccess);
 
