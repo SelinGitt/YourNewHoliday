@@ -50,13 +50,21 @@ class GenerateReferenceCommandeUtilTest {
      * Test method for {@link service.util.impl.AbstractGenerateReferenceUtil#generateReference()}.
      */
     @Test
-    void testGenerateRef() {
+    void testGenerateRefOk() {
         final UtilisateurDto utilisateur = new UtilisateurDto();
         utilisateur.setNom("nomDuCLient");
         utilisateur.setPrenom("prenomDuClient");
         final Date date = new Date();
         final String reference = this.iGenerateReferenceUtil.generateReference(utilisateur, 5, date);
         assertTrue(reference.matches(REGEX));
+
+    }
+
+    void testGenerateRefKo() {
+        final UtilisateurDto utilisateur = new UtilisateurDto();
+        utilisateur.setNom("nomDuCLient");
+        utilisateur.setPrenom("prenomDuClient");
+        final Date date = new Date();
         // Vérification du controle des données
         String referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, -2, date);
         assertNull(referenceImpossibleACree);
@@ -71,7 +79,13 @@ class GenerateReferenceCommandeUtilTest {
         utilisateur.setPrenom(null);
         referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
         assertNull(referenceImpossibleACree);
-
+        utilisateur.setNom("");
+        referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
+        assertNull(referenceImpossibleACree);
+        utilisateur.setNom("nomDuCLient");
+        utilisateur.setPrenom("");
+        referenceImpossibleACree = this.iGenerateReferenceUtil.generateReference(utilisateur, 6, date);
+        assertNull(referenceImpossibleACree);
     }
 
 }
