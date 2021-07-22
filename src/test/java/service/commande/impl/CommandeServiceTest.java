@@ -73,7 +73,7 @@ class CommandeServiceTest {
         assertEquals("ABC1", commandeDto.getReference());
         assertEquals("09/02/2021", commandeDto.getDate());
         final String nombre = DecimalFormatUtils.decimalFormatUtil(1200.00);
-        assertEquals(nombre, commandeDto.getPrixTotal());
+        assertEquals(nombre, commandeDto.getPrixTotalApresRemise());
         final List<CommandeProduitDto> listCommandeProduitDto = commandeDto.getListCommandeProduitDto();
         assertNotNull(listCommandeProduitDto);
         assertEquals(2, listCommandeProduitDto.size());
