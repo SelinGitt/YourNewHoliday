@@ -42,7 +42,7 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String chargerFichierCGV(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CgvNameFile = trouverFichier(locale, CGV_RADICAL);
-        logger.info("methode chargerFichierCGV qui charge le fichier : {} encodé en {}", CgvNameFile);
+        logger.info("methode chargerFichierCGV qui charge le fichier : {} ", CgvNameFile);
         return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CgvNameFile);
     }
 
@@ -50,7 +50,7 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String chargerFichierCGU(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CguNameFile = trouverFichier(locale, CGU_RADICAL);
-        logger.info("methode chargerFichierCGU qui charge le fichier : {} encodé en {}", CguNameFile);
+        logger.info("methode chargerFichierCGU qui charge le fichier : {} ", CguNameFile);
         return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CguNameFile);
 
     }
