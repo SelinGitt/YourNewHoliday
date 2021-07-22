@@ -208,19 +208,19 @@ class CommandeMapperTest {
         adresseLivraison.setAdresse(defaultAdresse.getAdresse());
 
         final var adresseFacturation = new CommandeAdresseDto();
-        adresseFacturation.setNom(defaultAdresse.getNom());
-        adresseFacturation.setPrenom(defaultAdresse.getPrenom());
-        adresseFacturation.setAdresse(defaultAdresse.getAdresse());
+        adresseFacturation.setNom("Branson");
+        adresseFacturation.setPrenom("Richard");
+        adresseFacturation.setAdresse("127 nous irons au bois");
 
         final var adresses = new AdressesDto();
         adresses.setDefaultAdresse(defaultAdresse);
         adresses.setCommandeAdresseLivraison(adresseLivraison);
         adresses.setCommandeAdresseFacturation(adresseFacturation);
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CMD1234567", 1);
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CM0315042128803", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
-        assertEquals("CMD1234567", commandeDo.getReference());
+        assertEquals("CM0315042128803", commandeDo.getReference());
         assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
@@ -229,9 +229,9 @@ class CommandeMapperTest {
         assertEquals(1, commandeDo.getIdUtilisateur());
         assertEquals("Dupont", commandeDo.getNomLivraison());
         assertEquals("Marchant", commandeDo.getPrenomLivraison());
-        assertEquals("Dupont", commandeDo.getNomFacturation());
-        assertEquals("Marchant", commandeDo.getPrenomFacturation());
-        assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation());
+        assertEquals("Branson", commandeDo.getNomFacturation());
+        assertEquals("Richard", commandeDo.getPrenomFacturation());
+        assertEquals("127 nous irons au bois", commandeDo.getAdresseFacturation());
         assertEquals("123 nous irons au bois", commandeDo.getAdresseLivraison());
     }
 
