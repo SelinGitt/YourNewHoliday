@@ -22,6 +22,7 @@ import presentation.panier.dto.PanierDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
 import service.util.GetPropertyValues;
+import service.util.NumberUtils;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -33,6 +34,8 @@ import service.utilisateur.IUtilisateurService;
 @RequestMapping({"/connecter.do", "/deconnecter.do"})
 @SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
+
+    private int                 intervaleParDefault = 20;
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
@@ -105,8 +108,15 @@ public class ConnecterController {
             //Ajout d'un panier vide à la session
             modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
 
+            //intervales en minutes du temps d'inactivité avant deconnection
+            final String intervaleMinutes = GetPropertyValues.getPropertiesMap().get("tempsAvantDeconnection");
+
             //ajout d'un intervale maximum autorisé avant deconection automatique
-            session.setMaxInactiveInterval(Integer.valueOf(GetPropertyValues.getPropertiesMap().get("tempsAvantDeconnection")) * 60);
+            if (NumberUtils.validate(intervaleMinutes)) {
+                session.setMaxInactiveInterval(Integer.valueOf(intervaleMinutes) * 60);
+            } else {
+                session.setMaxInactiveInterval(intervaleParDefault * 60);
+            }
 
             modelAndView.getModelMap().addAttribute("anySuccess", anySuccess);
 
