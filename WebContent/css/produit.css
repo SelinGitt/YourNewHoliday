@@ -39,6 +39,20 @@ td.pdt00Description {
 	text-align: justify;
 }
 
+.pdt00QuantiteAjouter {
+	display: flex;
+	padding-top: 2em;
+	padding-bottom:3em;
+	margin-left: 7em;
+	margin-right: 7em;
+	justify-content: space-evenly;
+}
+
+.pdt00NomEtPrix {
+	font-weight: bold;
+	display: flex;
+}
+
 .pdt00Ajouter {
 	width: 100%;
 	flex: 2 1 auto;
