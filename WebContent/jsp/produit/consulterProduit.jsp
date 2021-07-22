@@ -75,18 +75,33 @@
                                 </spring:message></th>
                         </tr>
                         <tr class="pdt04IconeServices">
-                            <%--                             <c:forEach items="${listeServices}" var="service"> --%>
-                            <%--                                 <td><em class="${service} pdt04IconeSpace"></em></td> --%>
-                            <%--                             </c:forEach> --%>
-                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
+                            <c:if test='${consulterProduitDto.services[0]}'>
+                                <td><em class="" id="0"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[1]}'>
+                                <td><em class="" id="1"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[2]}'>
+                                <td><em class="" id="2"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[3]}'>
+                                <td><em class="" id="3"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[4]}'>
+                                <td><em class="" id="4"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[5]}'>
+                                <td><em class="" id="5"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[6]}'>
+                                <td><em class="" id="6"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[7]}'>
+                                <td><em class="" id="7"></em></td>
+                            </c:if>
+                            <c:if test='${consulterProduitDto.services[8]}'>
+                                <td><em class="" id="8"></em></td>
+                            </c:if>
 
                         </tr>
                     </table>
@@ -105,3 +120,17 @@
 
     </div>
 </div>
+<script>
+	var classes = [ "fa fa-glass pdt04IconeSpace",
+			"fa fa-bath pdt04IconeSpace", "fa fa-paw pdt04IconeSpace",
+			"fa fa-gamepad pdt04IconeSpace", "fa fa-wifi pdt04IconeSpace",
+			"fa fa-cutlery pdt04IconeSpace",
+			"fa fa-wheelchair pdt04IconeSpace",
+			"fa fa-snowflake-o pdt04IconeSpace", "fa fa-tv pdt04IconeSpace" ];
+
+	for (var i = 0; i < 9; i++) {
+		if (document.getElementById(i)) {
+			document.getElementById(i).className += classes[i];
+		}
+	}
+</script>

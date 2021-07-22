@@ -3,9 +3,7 @@
  */
 package service.produit;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -49,7 +47,7 @@ public class ProduitMapper {
         produitDo.setHebergement(produitDto.getHebergement());
         produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
         produitDo.setCheminImage(produitDto.getCheminImage());
-        produitDo.setServices(Integer.valueOf(produitDto.getServices()));
+        produitDo.setServices(conversionBoolToInt(produitDto.getServices()));
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
         return produitDo;
     }
@@ -75,7 +73,7 @@ public class ProduitMapper {
         produitDto.setHebergement(produitDo.getHebergement());
         produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
         produitDto.setCheminImage(produitDo.getCheminImage());
-        produitDto.setServices(String.valueOf(produitDo.getServices()));
+        produitDto.setServices(genererServices(produitDo.getServices()));
         produitDto.setVersion(String.valueOf(produitDo.getVersion()));
 
         return produitDto;
@@ -91,26 +89,28 @@ public class ProduitMapper {
         return listeProduit.stream().map(ProduitMapper::mapToDto).collect(Collectors.toList());
     }
 
-    /**
-     * Permet de renvoyer la liste de services en fonction du service
-     *
-     * @param  produitDto  le nombre "service" dans le dto
-     * @param  mapServices la map de services disponibles
-     * @return             la liste de services générés
-     */
-    public static List<String> genererListeServices(final ProduitDto produitDto, final Map<Integer, String> mapServices) {
-        var numberToEdit = Integer.parseInt(produitDto.getIdProduitOriginal());
-        //création d'une arrayList de Integer
-        final List<String> liste = new ArrayList<>();
-        //set de l'exposant à 1
-        var exposant = 1;
-        while (numberToEdit != 0) {
-            if ((numberToEdit & 1) != 0) {
-                liste.add(mapServices.get(exposant));
+    private static Boolean[] genererServices(final Integer value) {
+        final Boolean[] services = new Boolean[9];
+        var numberToEdit = value;
+        if (value != null) {
+            for (int i = 8; i >= 0; i--) {
+                if ((numberToEdit & 1) != 0) {
+                    services[i] = true;
+                } else {
+                    services[i] = false;
+
+                }
+                numberToEdit >>= 1;
             }
-            numberToEdit >>= 1;
-            exposant <<= 1;
+            return services;
         }
-        return liste;
+        return null;
+    }
+
+    private static Integer conversionBoolToInt(final Boolean[] booleanArray) {
+        Integer numberToConvert = 0;
+        for (final Boolean b : booleanArray)
+            numberToConvert = (numberToConvert << 1) | (b ? 1 : 0);
+        return numberToConvert;
     }
 }

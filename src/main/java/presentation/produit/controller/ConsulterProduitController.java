@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.produit.IProduitService;
-import service.produit.ProduitMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -70,7 +69,6 @@ public class ConsulterProduitController {
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-        modelAndView.getModelMap().addAttribute("listeServices", ProduitMapper.genererListeServices(produitTrouve, mapServices));
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitTrouve);
         final var pageOrigine = PageRedirection.findValue(location);
         final var urlToBuild = new StringBuilder();

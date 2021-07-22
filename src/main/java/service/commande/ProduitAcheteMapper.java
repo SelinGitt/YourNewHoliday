@@ -63,8 +63,14 @@ public class ProduitAcheteMapper {
         produitAcheteDo.setHebergement(produitPanier.getHebergement());
         produitAcheteDo.setMiseEnVente(Boolean.valueOf(produitPanier.getMiseEnVente()));
         produitAcheteDo.setCheminImage(produitPanier.getCheminImage());
-        produitAcheteDo.setServices(Integer.parseInt(produitPanier.getServices()));
+        produitAcheteDo.setServices(conversionBoolToInt(produitPanier.getServices()));
         return produitAcheteDo;
     }
 
+    private static Integer conversionBoolToInt(final Boolean[] booleanArray) {
+        Integer numberToConvert = 0;
+        for (final Boolean b : booleanArray)
+            numberToConvert = (numberToConvert << 1) | (b ? 1 : 0);
+        return numberToConvert;
+    }
 }

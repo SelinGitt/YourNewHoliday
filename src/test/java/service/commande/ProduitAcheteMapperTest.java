@@ -65,6 +65,8 @@ class ProduitAcheteMapperTest {
     @Test
     void testMapperToDo() {
         final var produitDto = new ProduitDto();
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, true, false, true};
+
         produitDto.setIdProduitOriginal("10");
         produitDto.setVersion("2");
         produitDto.setReference("GRE1234567");
@@ -75,7 +77,7 @@ class ProduitAcheteMapperTest {
         produitDto.setHebergement("Chambre d'hôtel");
         produitDto.setMiseEnVente("true");
         produitDto.setCheminImage("grece.jpg");
-        produitDto.setServices("5");
+        produitDto.setServices(boolArrayToTest);
 
         final var produitDo = ProduitAcheteMapper.mapperToDo(produitDto);
         assertNull(produitDo.getIdProduit());

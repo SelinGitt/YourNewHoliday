@@ -156,6 +156,8 @@ class CommandeServiceTest {
      */
     @Test
     void testValiderPanier() {
+        final Boolean[] boolArrayToTestService = {false, false, false, false, false, false, false, false, true};
+
         // PanierDto
         final var panierDto = new PanierDto();
         // ProduitDto1
@@ -169,7 +171,7 @@ class CommandeServiceTest {
         produitDto1.setCheminImage("maldives.jpg");
         produitDto1.setDestination("Maldives");
         produitDto1.setMiseEnVente("true");
-        produitDto1.setServices("1");
+        produitDto1.setServices(boolArrayToTestService);
         produitDto1.setHebergement("Maison dHotes");
 
         // ajout des lignes de commande

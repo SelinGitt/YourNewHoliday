@@ -38,7 +38,7 @@ public class ProduitDto implements Serializable {
 
     private String            cheminImage;
 
-    private String            services;
+    private Boolean[]         services;
 
     @Override
     public int hashCode() {
@@ -245,7 +245,7 @@ public class ProduitDto implements Serializable {
      *
      * @return the services
      */
-    public String getServices() {
+    public Boolean[] getServices() {
         return services;
     }
 
@@ -254,7 +254,7 @@ public class ProduitDto implements Serializable {
      *
      * @param services the services to set
      */
-    public void setServices(final String services) {
+    public void setServices(final Boolean[] services) {
         this.services = services;
     }
 }

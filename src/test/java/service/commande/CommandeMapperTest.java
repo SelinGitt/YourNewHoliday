@@ -115,6 +115,9 @@ class CommandeMapperTest {
      */
     @Test
     void testMapperPanierDtoToDo() {
+        final Boolean[] boolArrayToTestService1 = {false, false, false, false, false, false, true, false, true};
+        final Boolean[] boolArrayToTestService2 = {false, false, false, false, false, false, false, false, true};
+        final Boolean[] boolArrayToTestService3 = {false, false, false, false, false, false, true, true, false};
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
         produitDto1.setIdProduitOriginal("1");
@@ -124,7 +127,7 @@ class CommandeMapperTest {
         produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
         produitDto1.setReference("ROY1234567");
         produitDto1.setCheminImage("RoyaumeUni.jpg");
-        produitDto1.setServices("5");
+        produitDto1.setServices(boolArrayToTestService1);
         // ProduitDto2
         final var produitDto2 = new ProduitDto();
         produitDto2.setIdProduitOriginal("3");
@@ -135,7 +138,7 @@ class CommandeMapperTest {
         produitDto2.setNom("Voyage au Canada");
         produitDto2.setReference("CAN1256568");
         produitDto2.setCheminImage("Canada.jpg");
-        produitDto2.setServices("1");
+        produitDto2.setServices(boolArrayToTestService2);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
         produitDto3.setIdProduitOriginal("5");
@@ -146,7 +149,7 @@ class CommandeMapperTest {
         produitDto3.setNom("Voyage avec toi");
         produitDto3.setReference("VIR7777777");
         produitDto3.setCheminImage("virtual.jpg");
-        produitDto3.setServices("6");
+        produitDto3.setServices(boolArrayToTestService3);
 
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();

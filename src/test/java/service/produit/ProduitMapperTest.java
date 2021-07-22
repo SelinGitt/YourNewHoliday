@@ -3,6 +3,7 @@
  */
 package service.produit;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -26,7 +27,6 @@ class ProduitMapperTest {
      */
     @Test
     void testMapToDo() {
-
         final var produitDto = initProduitDto();
         final var produitDoCompare = ProduitMapper.mapToDo(produitDto);
         assertEquals("D:\test", produitDoCompare.getCheminImage());
@@ -71,6 +71,7 @@ class ProduitMapperTest {
     void testMapToDto() {
         final var produitDo = initProduitDo();
         final var produitDtoCompare = ProduitMapper.mapToDto(produitDo);
+        final Boolean[] boolArrayToTest = {false, false, false, true, false, true, false, false, false};
         assertEquals("D:\test", produitDtoCompare.getCheminImage());
         assertEquals("Description de test", produitDtoCompare.getDescription());
         assertEquals("Destination de test", produitDtoCompare.getDestination());
@@ -80,7 +81,7 @@ class ProduitMapperTest {
         assertEquals("true", produitDtoCompare.getMiseEnVente());
         assertEquals("144,44", produitDtoCompare.getPrixUnitaire());
         assertEquals("REFTEST", produitDtoCompare.getReference());
-        assertEquals("40", produitDtoCompare.getServices());
+        assertArrayEquals(boolArrayToTest, produitDtoCompare.getServices());
         assertEquals("4", produitDtoCompare.getVersion());
     }
 
@@ -104,6 +105,7 @@ class ProduitMapperTest {
 
     private ProduitDto initProduitDto() {
         final var produitDto = new ProduitDto();
+        final Boolean[] boolArrayToTest = {false, false, false, true, false, true, false, false, false};
         produitDto.setCheminImage("D:\test");
         produitDto.setDescription("Description de test");
         produitDto.setDestination("Destination de test");
@@ -113,13 +115,14 @@ class ProduitMapperTest {
         produitDto.setNom("nom de test");
         produitDto.setPrixUnitaire("144.44");
         produitDto.setReference("REFTEST");
-        produitDto.setServices("40");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setVersion("4");
         return produitDto;
     }
 
     private ProduitDto initProduitDtoSansId() {
         final var produitDto = new ProduitDto();
+        final Boolean[] boolArrayToTest = {false, false, false, true, false, true, false, false, false};
         produitDto.setCheminImage("D:\test");
         produitDto.setDescription("Description de test");
         produitDto.setDestination("Destination de test");
@@ -129,7 +132,7 @@ class ProduitMapperTest {
         produitDto.setNom("nom de test");
         produitDto.setPrixUnitaire("144.44");
         produitDto.setReference("REFTEST");
-        produitDto.setServices("40");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setVersion("4");
         return produitDto;
     }

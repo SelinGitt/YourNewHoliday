@@ -3,6 +3,7 @@
  */
 package service.produit.impl;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -81,12 +82,13 @@ class ProduitServiceTest {
      */
     @Test
     void testCreerProduitInexistantEnBase() {
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
@@ -97,7 +99,7 @@ class ProduitServiceTest {
         Mockito.when(this.iProduitDaoMock.findByReference(produitDto.getReference())).thenReturn(null);
         Mockito.when(this.iProduitDaoMock.create(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         final var produitDtoCree = produitServiceMock.creerProduit(produitDto);
-        assertEquals("1", produitDtoCree.getServices());
+        assertArrayEquals(boolArrayToTest, produitDtoCree.getServices());
         assertNotNull(produitDtoCree);
         assertEquals("TEST00000", produitDtoCree.getReference());
 
@@ -108,12 +110,13 @@ class ProduitServiceTest {
      */
     @Test
     void testCreerProduitDejaEnBase() {
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
@@ -233,11 +236,12 @@ class ProduitServiceTest {
     @Test
     void testEditerProduit() {
         final ProduitDto produitDto = new ProduitDto();
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
