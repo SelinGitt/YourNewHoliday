@@ -136,7 +136,7 @@ public class DecimalFormatUtils {
         } catch (final ParseException exception) {
             final var logger = LoggerFactory.getLogger(DecimalFormatUtils.class);
             logger.error("Formatage de {} en erreur", nombreString, exception);
-            return new BigDecimal(0.00).setScale(2, RoundingMode.FLOOR);
+            return BigDecimal.valueOf(0).setScale(2, RoundingMode.FLOOR);
         }
     }
 
