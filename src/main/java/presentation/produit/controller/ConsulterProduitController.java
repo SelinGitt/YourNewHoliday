@@ -71,7 +71,7 @@ public class ConsulterProduitController {
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-        final int services = Integer.parseInt(produitTrouve.getServices());
+        final var services = Integer.parseInt(produitTrouve.getServices());
         modelAndView.getModelMap().addAttribute("listeServices", genererListeServices(services));
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitTrouve);
         final var pageOrigine = PageRedirection.findValue(location);
@@ -86,7 +86,7 @@ public class ConsulterProduitController {
     }
 
     private List<String> genererListeServices(final Integer number) {
-        Integer numberToEdit = number;
+        var numberToEdit = number;
         //création d'une arrayList de Integer
         final List<String> liste = new ArrayList<>();
         //set de l'exposant à 1
