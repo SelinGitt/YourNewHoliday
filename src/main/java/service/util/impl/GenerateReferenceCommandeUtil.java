@@ -58,7 +58,7 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
     }
 
     private boolean isStringConforme(final String string) {
-        return !(null == string || string == "");
+        return !(null == string || "".equals(string));
     }
 
     private boolean isNombreConform(final Object nombreAttendu) {
@@ -85,9 +85,9 @@ public class GenerateReferenceCommandeUtil extends AbstractGenerateReferenceUtil
         calendar.setTime(date);
         // le hash est composé de :
         final var hash = new StringBuilder();
-        // la première lettre du nom
+        // la première lettre du nom en majuscule
         hash.append(utilisateur.getNom().toUpperCase().charAt(0));
-        // la première lettre du prénom
+        // la première lettre du prénom en majuscule
         hash.append(utilisateur.getPrenom().toUpperCase().charAt(0));
         // le nombre de produit dans le panier
         hash.append(String.format("%02d", nombreDeProduit));
