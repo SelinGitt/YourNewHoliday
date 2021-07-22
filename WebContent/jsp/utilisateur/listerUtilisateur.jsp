@@ -40,13 +40,13 @@
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
                     <%-- Client // value correspondant au rôle dans la BD --%>
-                    <option value="2"><spring:message code="usr01.filter.1" /></option>
+                    <option value="2"><spring:message code="usr01.filter.2" /></option>
                     <%-- Admin // value correspondant au rôle dans la BD --%>
-                    <option value="3"><spring:message code="usr01.filter.2" /></option>
+                    <option value="3"><spring:message code="usr01.filter.3" /></option>
                 </select>
 
                 <script>
-                	document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
+                     document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
