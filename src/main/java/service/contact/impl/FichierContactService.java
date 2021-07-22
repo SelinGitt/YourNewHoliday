@@ -36,7 +36,7 @@ public class FichierContactService implements IFichierContactService {
     @Override
     public String chargerFichierContact(final Locale locale) {
         final String nomFichier = trouverFichierContact(locale);
-        logger.info("methode chargerFichierContact qui charge le fichier : {}", nomFichier);
+        logger.info("methode chargerFichierContact qui charge le fichier : {} ", nomFichier);
         return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + nomFichier);
     }
 

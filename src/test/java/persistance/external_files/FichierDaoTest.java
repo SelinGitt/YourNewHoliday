@@ -47,8 +47,7 @@ class FichierDaoTest {
     }
 
     /**
-     * Test method for
-     * {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String, java.lang.String)}.
+     * Test method for {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String)}.
      */
     @Test
     void testChargerFichier() {
@@ -65,8 +64,7 @@ class FichierDaoTest {
     }
 
     /**
-     * Test method for
-     * {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String, java.lang.String)}.
+     * Test method for {@link persistance.external_files.impl.FichierDao#chargerFichier(java.lang.String)}.
      */
     @Test
     void testChargerFichierUtf8() {
