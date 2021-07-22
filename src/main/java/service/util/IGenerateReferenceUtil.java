@@ -12,10 +12,18 @@ public interface IGenerateReferenceUtil {
 
     /**
      * Permet de générer les références
-     *
-     * @return String la référence
+     * 
+     * <pre>
+     *  paramètres necessaires seulement pour la ref commande :
+     *  _  param[0] : utilisateurDto
+     *  _  param[1] : nombre de produits achetés (= nombre de produits dans le panier) 
+     *  _  param[2] : la date (jour et heure)
+     * </pre>
+     * 
+     * @param  param les paramètres permettant de générer la référence
+     * @return       String la référence
      */
-    String generateReference();
+    String generateReference(final Object... param);
 
     /**
      * Permet de construire un prefix pour la génération de références

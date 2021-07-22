@@ -213,14 +213,15 @@ public class PanierService implements IPanierService {
 
     @Override
     public RetourValiderPanierDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
-        if (this.iUtilisateurService.findUtilisateurById(idUtilisateur) == null) {
+        final var utilisateur = this.iUtilisateurService.findUtilisateurById(idUtilisateur);
+        if (null == utilisateur) {
             logger.warn("Utilisateur effacé {}", idUtilisateur);
             return null;
         }
         final var retourValiderPanier = new RetourValiderPanierDto();
         retourValiderPanier.setListIdProduitNonConcordant(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier()));
         if (retourValiderPanier.getListIdProduitNonConcordant().isEmpty()) {
-            final var commandeDoReference = this.iCommandeService.validerPanier(panier, adresses, idUtilisateur);
+            final var commandeDoReference = this.iCommandeService.validerPanier(panier, adresses, utilisateur);
             retourValiderPanier.setReference(commandeDoReference);
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDoReference);
