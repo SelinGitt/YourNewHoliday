@@ -73,6 +73,7 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (23, 'validerPanierProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (24, 'ajouterProduitPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (25, 'validerPanier.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (26, 'supprimerProduitAdmin.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -209,3 +210,4 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (47, 24, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (48, 24, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (49, 25, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (50, 25, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (51, 26, 3);

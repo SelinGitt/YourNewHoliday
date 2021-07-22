@@ -96,6 +96,6 @@ public abstract class AbstractGenericDao<T> implements IGenericDao<T> {
 
     @Override
     public void delete(final Integer id) {
-        this.entityManager.remove(id);
+        this.entityManager.remove(findById(id));
     }
 }
