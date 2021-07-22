@@ -7,7 +7,6 @@ const enButton = document.getElementById("EN-button");
 const lienFr = document.getElementById("lienLangueFr");
 const lienEn = document.getElementById("lienLangueEn");
 function selectLG() {
-
 	if (lang === "fr") {
 		frButton.className += " langue-button-clicked";
 		lienFr.className = "langue-pointer"
