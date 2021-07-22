@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +28,9 @@ public class CommandeDo {
     @Column(name = "reference")
     private String                 reference;
 
+    @Column(name = "prix_total_ante_remise")
+    private BigDecimal             prixSansRemise;
+
     @Column(name = "prix_avec_remise")
     private BigDecimal             prixTotal;
 
@@ -36,11 +40,16 @@ public class CommandeDo {
     @Column(name = "idUtilisateur")
     private Integer                idUtilisateur;
 
-    @OneToMany(mappedBy = "commandeDo")
+    @OneToMany(mappedBy = "commandeDo", cascade = CascadeType.PERSIST)
     private Set<CommandeProduitDo> commandeProduitDoSet;
 
     @Column(name = "quantiteTotale")
     private Integer                quantiteTotale;
+
+    @Column(name = "adresse_livraison")
+    private String                 adresseLivraison;
+    @Column(name = "adresse_facturation")
+    private String                 adresseFacturation;
 
     /**
      * Getter for id
@@ -76,6 +85,24 @@ public class CommandeDo {
      */
     public void setReference(final String reference) {
         this.reference = reference;
+    }
+
+    /**
+     * Getter for prixSansRemise
+     *
+     * @return the prixSansRemise
+     */
+    public BigDecimal getPrixSansRemise() {
+        return prixSansRemise;
+    }
+
+    /**
+     * Setter for prixSansRemise
+     *
+     * @param prixSansRemise the prixSansRemise to set
+     */
+    public void setPrixSansRemise(final BigDecimal prixSansRemise) {
+        this.prixSansRemise = prixSansRemise;
     }
 
     /**
@@ -166,6 +193,42 @@ public class CommandeDo {
      */
     public void setQuantiteTotale(final Integer quantiteTotale) {
         this.quantiteTotale = quantiteTotale;
+    }
+
+    /**
+     * Getter for adresseLivraison
+     *
+     * @return the adresseLivraison
+     */
+    public String getAdresseLivraison() {
+        return adresseLivraison;
+    }
+
+    /**
+     * Getter for adresseFacturation
+     *
+     * @return the adresseFacturation
+     */
+    public String getAdresseFacturation() {
+        return adresseFacturation;
+    }
+
+    /**
+     * Setter for adresseLivraison
+     *
+     * @param adresseLivraison the adresseLivraison to set
+     */
+    public void setAdresseLivraison(final String adresseLivraison) {
+        this.adresseLivraison = adresseLivraison;
+    }
+
+    /**
+     * Setter for adresseFacturation
+     *
+     * @param adresseFacturation the adresseFacturation to set
+     */
+    public void setAdresseFacturation(final String adresseFacturation) {
+        this.adresseFacturation = adresseFacturation;
     }
 
 }
