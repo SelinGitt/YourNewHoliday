@@ -39,13 +39,6 @@
                 <form:hidden path="id" value="${id}" />
                 <form:hidden path="cheminAvatar" value="${cheminAvatar}" />
 
-                <%-- Role hidden temporaire, a supprimer quand les roles seront geres --%>
-                <form:hidden path="role.idRole" />
-                <form:hidden path="role.libelle" />
-
-                <%-- Temporaire --%>
-                <form:hidden path="estDesactive" value="${estDesactive}" />
-
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="nom"><spring:message code="usr02.edit.nom" /></label>
                     <div class="user02-form-inputs">
@@ -122,7 +115,80 @@
 
 
             <div class="user02-rightSide">
-                <p>Section avatar And co</p>
+
+                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
+                <div class="user02-rightSide-avatar">
+                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
+                    <div style="width: 15em; height: 15em; background-color: red;"></div>
+                </div>
+
+                <c:choose>
+                    <c:when test="${utilisateur.role.id == '3'}">
+                        <div
+                            class="display-flex align-item-center
+                        flex-direction-column user02-admin-options">
+                            <%-- TODO : Liens vers commande a faire + lister commandes --%>
+                            <div>
+                                <a href="/">
+                                    <button type="button">
+                                        <spring:message code="usr02.bouton.commandes" />
+                                    </button>
+                                </a>
+                            </div>
+
+                            <div>
+                                <form:radiobutton path="role.idRole" value="2" />
+                                <label for="role.idRole1"><spring:message code="usr02.label.client" /></label>
+
+                                <form:radiobutton path="role.idRole" value="3" />
+                                <label for="role.idRole2"><spring:message code="usr02.label.admin" /></label>
+                            </div>
+
+                            <div>
+                                <c:choose>
+                                    <c:when test="${utilisateurDto.estDesactive}">
+                                        <label for="estDesactive1"><spring:message code="usr02.client.desactive" /></label>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <label for="estDesactive1"><spring:message code="usr02.client.active" /></label>
+                                    </c:otherwise>
+                                </c:choose>
+
+                                <form:checkbox path="estDesactive" onchange="changeStatusImg()" style="display:none;"/>
+                                <label for="estDesactive1">
+                                     <img alt="" class="checkboxVert user01-image" id="usr02.status.img">
+                                </label>
+                                
+                                <script>
+                                	changeStatusImg();
+                                
+                                	function changeStatusImg() {
+                                		const estDesactive = document.getElementById('estDesactive1');
+                                		if (estDesactive.value === 'true') {
+                                			estDesactive.value = 'false';
+                                			document.getElementById('usr02.status.img').src = "img/commun/checkboxVide.png";
+                                		} else {
+                                			estDesactive.value = 'true';
+                                			document.getElementById('usr02.status.img').src = "img/commun/checkboxVert.jpg";
+                                		}
+                                	}
+                                </script>
+                            </div>
+
+                            <div>
+                                <spring:message code="usr02.reference" />
+                                <c:out value="${utilisateurDto.reference}" />
+                            </div>
+                        </div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <form:hidden path="role.idRole" value="2" />
+                        <form:hidden path="estDesactive" value="${estDesactive}" />
+                    </c:otherwise>
+                </c:choose>
+
             </div>
         </form:form>
     </div>
