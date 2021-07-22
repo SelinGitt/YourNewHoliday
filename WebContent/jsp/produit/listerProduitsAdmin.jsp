@@ -58,8 +58,8 @@
         <tbody class="pdt01Body">
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
-                    <td class="pdt01Body">
-                    <a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                    <td class="pdt01Body"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
                             ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
@@ -79,7 +79,7 @@
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="pdt01Image">
                             </c:when>
                             <c:otherwise>
-                                <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
+                                <img class="pdt01ImageNonActive checkboxVide" alt="" src="img/commun/checkboxVide.png" />
                             </c:otherwise>
                         </c:choose></td>
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img

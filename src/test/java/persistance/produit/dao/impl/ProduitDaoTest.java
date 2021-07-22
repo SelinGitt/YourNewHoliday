@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +55,26 @@ class ProduitDaoTest {
         final List<ProduitDo> listProduit = this.iProduitDao.findAll();
         // On teste la conformitée du nombre de données
         assertEquals(6, listProduit.size());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.ProduitDao#findAllProduitsTriAlpha}.
+     */
+    @Test
+    void testFindAllProduitsTriAlpha() {
+        // On récupère les données
+        final List<ProduitDo> listProduitTriee = this.iProduitDao.findAllProduitsTriAlpha();
+        final List<ProduitDo> listProduit = this.iProduitDao.findAll();
+        // On teste la conformitée du nombre de données
+        Assertions.assertEquals(6, listProduitTriee.size());
+        Assertions.assertEquals(6, listProduit.size());
+        //On teste si les références des produits sont bien rangées par ordre alphabétique
+        //Dand une liste non-triée, le produit de référence SPA1278951 doit apparaitre en troisième position</br>
+        //du tableau regroupant la liste des produits. Si la liste est triée, il sera en cinquième position
+        final ProduitDo produitDoTri = listProduitTriee.get(4);
+        final ProduitDo produitDo = listProduit.get(4);
+        Assertions.assertEquals("SPA1278951", produitDoTri.getReference());
+        Assertions.assertNotEquals("SPA1278951", produitDo.getReference());
     }
 
     /**
