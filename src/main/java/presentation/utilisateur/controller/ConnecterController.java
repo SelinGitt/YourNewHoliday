@@ -88,14 +88,13 @@ public class ConnecterController {
 
         //Si l'utilisateur n'est pas trouvé en BD, ou si le compte est désactivé, il est null
         if (null == utilisateurConnecteDto) {
+            modelAndView.setViewName("connecter");
             if (isDesactive) {
                 //Si l'utilisateur est désactivé
                 modelAndView.getModelMap().addAttribute("error", "usr07.erreur.deactivated");
-                modelAndView.setViewName("connecter");
             } else {
                 //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
                 modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
-                modelAndView.setViewName("connecter");
             }
         } else {
             //On met l'utilisateur connecté en session

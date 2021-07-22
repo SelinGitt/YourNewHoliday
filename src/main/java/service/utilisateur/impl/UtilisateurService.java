@@ -79,22 +79,22 @@ public class UtilisateurService implements IUtilisateurService {
         if (utilisateurDo == null) {
             logger.debug("Utilisateur avec login : {} n'existe pas en BD.", email);
             builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
-        } else {
-            //On compare avec le mot de passe saisi qu'on hashe
-            if (checkPassword(password, utilisateurDo)) {
-                //Les mots de passe correspondent, on vérifie si l'utilisateur est désactivé ou non
-                if (Boolean.TRUE.equals(utilisateurDo.getEstDesactive())) {
-                    logger.debug("Utilisateur avec login : {} est désactivé.", email);
-                    builder.withUtilisateurConnecteDto(null).withIsDesactive(true);
-                } else {
-                    logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
-                    final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
-                    builder.withUtilisateurConnecteDto(utilisateurConnecteDto).withIsDesactive(false);
-                }
+            return builder.build();
+        }
+        //On compare avec le mot de passe saisi qu'on hashe
+        if (checkPassword(password, utilisateurDo)) {
+            //Les mots de passe correspondent, on vérifie si l'utilisateur est désactivé ou non
+            if (Boolean.TRUE.equals(utilisateurDo.getEstDesactive())) {
+                logger.debug("Utilisateur avec login : {} est désactivé.", email);
+                builder.withUtilisateurConnecteDto(null).withIsDesactive(true);
             } else {
-                logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
-                builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
+                logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
+                final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
+                builder.withUtilisateurConnecteDto(utilisateurConnecteDto).withIsDesactive(false);
             }
+        } else {
+            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
+            builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
         }
         return builder.build();
     }
