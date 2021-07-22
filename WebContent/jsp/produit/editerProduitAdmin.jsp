@@ -91,7 +91,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.description" /></td>
-                        <td class="pdt02TextAreaPDT03"><div>
+                        <td class="pdt02TextAreapdt02"><div>
                                 <form:textarea path="description" rows="4" cols="70" />
                             </div>
                             <div class="pdt02formError">
