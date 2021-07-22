@@ -53,7 +53,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> listerAllProduit() {
-        return ProduitMapper.mapToListDto(produitDao.findAll());
+        return ProduitMapper.mapToListDto(produitDao.findAllProduitsTriAlpha());
     }
 
     @Override
