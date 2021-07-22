@@ -30,7 +30,7 @@ public class FichierDao implements IFichierDao {
         final var strBuilder = new StringBuilder();
         //creation d'un FileReader avec le nom du fichier
         final var file = new File(nomFichier);
-        logger.info("Méthode chargerFichier de FichierDao qui charge le fichier : {}, encodé en {}", nomFichier, ENCODAGE);
+        logger.info("Méthode chargerFichier de FichierDao qui charge le fichier : {}", nomFichier);
         try (final var scanner = new Scanner(file, ENCODAGE)) {
             //passe le contenu du fichier html dans la string contenuHtml
             while (scanner.hasNext()) {
