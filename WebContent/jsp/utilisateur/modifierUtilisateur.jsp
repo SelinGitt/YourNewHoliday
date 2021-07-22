@@ -37,6 +37,7 @@
                 <form:hidden path="dateInscription" value="${dateInscription}" />
                 <form:hidden path="reference" value="${reference}" />
                 <form:hidden path="id" value="${id}" />
+                <form:hidden path="cheminAvatar" value="${cheminAvatar}" />
 
                 <%-- Role hidden temporaire, a supprimer quand les roles seront geres --%>
                 <form:hidden path="role.idRole" />

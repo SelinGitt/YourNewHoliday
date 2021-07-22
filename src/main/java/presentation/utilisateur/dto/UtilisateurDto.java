@@ -15,7 +15,7 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -2412085353414875962L;
+    private static final long serialVersionUID = -8141274952235537508L;
 
     private Integer           id;
     private String            email;
@@ -29,6 +29,7 @@ public class UtilisateurDto implements Serializable {
     private String            dateNaissance;
     private Boolean           estDesactive;
     private RoleDto           role;
+    private String            cheminAvatar;
 
     /**
      * Getter for email
@@ -244,6 +245,24 @@ public class UtilisateurDto implements Serializable {
      */
     public void setId(final Integer id) {
         this.id = id;
+    }
+
+    /**
+     * Getter for cheminAvatar
+     *
+     * @return the cheminAvatar
+     */
+    public String getCheminAvatar() {
+        return cheminAvatar;
+    }
+
+    /**
+     * Setter for cheminAvatar
+     *
+     * @param cheminAvatar the cheminAvatar to set
+     */
+    public void setCheminAvatar(final String cheminAvatar) {
+        this.cheminAvatar = cheminAvatar;
     }
 
 }
