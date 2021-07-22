@@ -92,6 +92,11 @@ th.pdt01 {
 	height: 2.5em;
 }
 
+.pdt01ImageNonActive {
+	width: 1.563em;
+	height: auto;
+}
+
 .pdt01Icone {
 	width: 5.625em;
 	height: 3.75em;

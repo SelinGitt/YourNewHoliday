@@ -47,10 +47,10 @@ public interface ICommandeService {
     /**
      * Permet de générer la commande à partir d'un panier
      *
-     * @param  panier        le panier en session
-     * @param  adresses      les adresses entrées par l'utilisateur
-     * @param  idUtilisateur l'utilisateur en session
-     * @return               String la référence de la commande
+     * @param  panier      le panier en session
+     * @param  adresses    les adresses entrées par l'utilisateur
+     * @param  utilisateur l'utilisateur en session
+     * @return             String la référence de la commande
      */
     String validerPanier(final PanierDto panier, final AdressesDto adresses, final UtilisateurDto utilisateur);
 }
