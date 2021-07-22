@@ -81,7 +81,8 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="email"><spring:message code="usr02.edit.email" /></label>
                     <div class="user02-form-inputs">
-                        <form:input path="email" class="user02-inputs" />
+                        <form:input path="email" class="user02-inputs" readonly="true" 
+onfocus="this.removeAttribute('readonly')" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
