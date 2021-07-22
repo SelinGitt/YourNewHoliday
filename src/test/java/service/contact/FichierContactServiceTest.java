@@ -57,7 +57,7 @@ class FichierContactServiceTest {
      */
     @Test
     void testChargerFichierContact() {
-        Mockito.when(fichierContactDao.chargerFichier(Mockito.anyString(), Mockito.anyString()))
+        Mockito.when(fichierContactDao.chargerFichier(Mockito.anyString()))
                 .thenReturn("<h1>téûàst@€£%&%</h1><h2>titre test</h2><p>vrais fichier html de test</p>");
         //si non null
         assertNotNull(fichierContactService);

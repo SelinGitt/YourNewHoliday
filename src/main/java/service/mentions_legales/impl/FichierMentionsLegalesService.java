@@ -31,8 +31,6 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
 
     private static final String HTML        = ".html";
 
-    private static final String ENCODAGE    = "mentionsLegalesEncodage";
-
     private static final String CGU_RADICAL = "CGU_";
 
     private static final String CGV_RADICAL = "CGV_";
@@ -44,18 +42,16 @@ public class FichierMentionsLegalesService implements IFichierMentionsLegalesSer
     public String chargerFichierCGV(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CgvNameFile = trouverFichier(locale, CGV_RADICAL);
-        final String encodage = "" + GetPropertyValues.getPropertiesMap().get(ENCODAGE);
-        logger.info("methode chargerFichierCGV qui charge le fichier : {} encodé en {}", CgvNameFile, encodage);
-        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CgvNameFile, encodage);
+        logger.info("methode chargerFichierCGV qui charge le fichier : {} encodé en {}", CgvNameFile);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CgvNameFile);
     }
 
     @Override
     public String chargerFichierCGU(final Locale locale) {
         //je retourne le nom du fichier + la local 
         final String CguNameFile = trouverFichier(locale, CGU_RADICAL);
-        final String encodage = "" + GetPropertyValues.getPropertiesMap().get(ENCODAGE);
-        logger.info("methode chargerFichierCGU qui charge le fichier : {} encodé en {}", CguNameFile, encodage);
-        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CguNameFile, encodage);
+        logger.info("methode chargerFichierCGU qui charge le fichier : {} encodé en {}", CguNameFile);
+        return fichierDao.chargerFichier(GetPropertyValues.getPropertiesMap().get(PATH) + CguNameFile);
 
     }
 

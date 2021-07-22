@@ -56,9 +56,7 @@ public class GetPropertyValues {
             // On lit le fichier YNH-application.properties
             prop.load(inputStream);
             // On place dans la map chaque couple clé/valeur du fichier properties
-            getPropertiesMap().put("contactEncodage", prop.getProperty("contactEncodage"));
             getPropertiesMap().put("contactRepo", prop.getProperty("contactRepo"));
-            getPropertiesMap().put("mentionsLegalesEncodage", prop.getProperty("mentionsLegalesEncodage"));
             getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
             getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
             getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
