@@ -13,12 +13,19 @@ import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
 
 import persistance.commande.entity.CommandeDo;
+import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
+import presentation.panier.dto.LigneCommandeProduitDto;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.dto.ProduitDto;
 import service.util.DateFormatUtil;
+import service.util.DecimalFormatUtils;
 
 /**
  * JUnit pour tester le Mapper de commande
@@ -38,22 +45,28 @@ class CommandeMapperTest {
         final CommandeDo commandeDo = new CommandeDo();
 
         commandeDo.setId(20);
-        commandeDo.setReference("ABC9");
+        commandeDo.setReference("CMD9874561");
         final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
-        commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixSansRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixTotalApresRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setAdresseLivraison("12 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo.setAdresseFacturation("4/103 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDto commandeDto = CommandeMapper.mapperToDto(commandeDo);
 
         assertNotNull(commandeDto);
         assertEquals("20", commandeDto.getId());
-        assertEquals("ABC9", commandeDto.getReference());
+        assertEquals("CMD9874561", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
-        assertEquals("200,40", commandeDto.getPrixTotal());
+        assertEquals("200,40", commandeDto.getPrixTotalApresRemise());
         assertEquals("5", commandeDto.getQuantiteTotale());
         assertEquals(Collections.emptyList(), commandeDto.getListCommandeProduitDto());
+
+        assertEquals("12 rue de la toison d'or, 59100 ROUBAIX", commandeDto.getAdresseLivraison().getAdresse());
+        assertEquals("4/103 rue du Barreau, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
     }
 
     /**
@@ -74,23 +87,128 @@ class CommandeMapperTest {
 
         final CommandeDo commandeDo = new CommandeDo();
         commandeDo.setId(20);
-        commandeDo.setReference("ABC9");
+        commandeDo.setReference("CMD9876541");
         final Date date = DateFormatUtil.formaterStringToDate("12/12/1990");
         commandeDo.setDate(date);
-        commandeDo.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setAdresseLivraison("18 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo.setAdresseFacturation("4/203 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDo commandeDo2 = new CommandeDo();
         commandeDo2.setId(23);
-        commandeDo2.setReference("EFG4");
+        commandeDo2.setReference("CMD4569873");
         final Date date2 = DateFormatUtil.formaterStringToDate("13/06/1990");
         commandeDo2.setDate(date2);
-        commandeDo2.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo2.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo2.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
         commandeDo2.setCommandeProduitDoSet(null);
+        commandeDo2.setAdresseLivraison("19 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo2.setAdresseFacturation("4/303 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         assertEquals(2, CommandeMapper.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
+    }
+
+    /**
+     * Test method for
+     * {@link service.commande.CommandeMapper#mapperPanierDtoToDo(presentation.panier.dto.PanierDto, java.lang.String, java.lang.Integer)}.
+     */
+    @Test
+    void testMapperPanierDtoToDo() {
+        // ProduitDto1
+        final var produitDto1 = new ProduitDto();
+        produitDto1.setIdProduitOriginal("1");
+        produitDto1.setVersion("1");
+        produitDto1.setDescription("Description très courte du voyage sur deux ou trois lignes maximum");
+        produitDto1.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(200.30, Locale.FRANCE));
+        produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
+        produitDto1.setReference("ROY1234567");
+        produitDto1.setCheminImage("RoyaumeUni.jpg");
+        produitDto1.setServices("5");
+        // ProduitDto2
+        final var produitDto2 = new ProduitDto();
+        produitDto2.setIdProduitOriginal("3");
+        produitDto2.setVersion("1");
+        produitDto2.setDescription(
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto2.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(700.00));
+        produitDto2.setNom("Voyage au Canada");
+        produitDto2.setReference("CAN1256568");
+        produitDto2.setCheminImage("Canada.jpg");
+        produitDto2.setServices("1");
+        // ProduitDto3
+        final var produitDto3 = new ProduitDto();
+        produitDto3.setIdProduitOriginal("5");
+        produitDto3.setVersion("1");
+        produitDto3.setDescription(
+                "Description courte du voyage sur deux ou trois lignes maximum, un peu de texte en plus pour tester l'affichage");
+        produitDto3.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(999.00));
+        produitDto3.setNom("Voyage avec toi");
+        produitDto3.setReference("VIR7777777");
+        produitDto3.setCheminImage("virtual.jpg");
+        produitDto3.setServices("6");
+
+        // ajout des lignes de commande
+        final var ligneCommandeProduit = new LigneCommandeProduitDto();
+        ligneCommandeProduit.setQuantite(6);
+        ligneCommandeProduit.setPrix(DecimalFormatUtils.decimalFormatUtil(6 * 200.30, Locale.FRANCE));
+        final var ligneCommandeProduit2 = new LigneCommandeProduitDto();
+        ligneCommandeProduit2.setQuantite(1);
+        ligneCommandeProduit2.setPrix(DecimalFormatUtils.decimalFormatUtil(1 * 500.00, Locale.FRANCE));
+        final var ligneCommandeProduit3 = new LigneCommandeProduitDto();
+        ligneCommandeProduit3.setQuantite(2);
+        ligneCommandeProduit3.setPrix(DecimalFormatUtils.decimalFormatUtil(2 * 999.00, Locale.FRANCE));
+
+        // PanierDto
+        final var panierDto = new PanierDto();
+        // add products to PanierDto
+        panierDto.getMapPanier().put(produitDto1, ligneCommandeProduit);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto2, ligneCommandeProduit2);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+        panierDto.getMapPanier().put(produitDto3, ligneCommandeProduit3);
+        panierDto.setNombreDeReferences(1 + panierDto.getNombreDeReferences());
+
+        // les prix dans le panier
+        panierDto.setPrixTotalAffichage(DecimalFormatUtils.decimalFormatUtil(3699.8, Locale.FRANCE));
+        panierDto.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(369.98, Locale.FRANCE));
+        panierDto.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(3329.82, Locale.FRANCE));
+
+        final var defaultAdresse = new CommandeAdresseDto();
+        defaultAdresse.setNom("Dupont");
+        defaultAdresse.setPrenom("Marchant");
+        defaultAdresse.setAdresse("123 nous irons au bois");
+
+        final var adresseLivraison = new CommandeAdresseDto();
+        adresseLivraison.setNom(defaultAdresse.getNom());
+        adresseLivraison.setPrenom(defaultAdresse.getPrenom());
+        adresseLivraison.setAdresse(defaultAdresse.getAdresse());
+
+        final var adresseFacturation = new CommandeAdresseDto();
+        adresseFacturation.setNom(defaultAdresse.getNom());
+        adresseFacturation.setPrenom(defaultAdresse.getPrenom());
+        adresseFacturation.setAdresse(defaultAdresse.getAdresse());
+
+        final var adresses = new AdressesDto();
+        adresses.setDefaultAdresse(defaultAdresse);
+        adresses.setCommandeAdresseLivraison(adresseLivraison);
+        adresses.setCommandeAdresseFacturation(adresseFacturation);
+
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CMD1234567", 1);
+        assertNotNull(commandeDo);
+        assertNull(commandeDo.getId());
+        assertEquals("CMD1234567", commandeDo.getReference());
+        assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
+        assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
+        assertEquals(3, commandeDo.getQuantiteTotale());
+        assertEquals(panierDto.getNombreDeReferences(), commandeDo.getCommandeProduitDoSet().size());
+        assertEquals(1, commandeDo.getIdUtilisateur());
+        assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation());
+        assertEquals("123 nous irons au bois", commandeDo.getAdresseLivraison());
     }
 
 }

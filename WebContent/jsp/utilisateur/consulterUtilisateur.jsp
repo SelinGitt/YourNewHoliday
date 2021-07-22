@@ -11,6 +11,12 @@
                     <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
                 </div>
             </c:if>
+
+            <c:if test="${not empty userSuccess}">
+                <div class="background-validation-block block-message-commun">
+                    <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+                </div>
+            </c:if>
             <div class="user00-title">
                 <h1>
                     <c:choose>

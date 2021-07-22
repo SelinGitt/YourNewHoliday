@@ -13,8 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.util.impl.GenerateReferenceUtilisateurUtil;
 import service.utilisateur.IUtilisateurService;
@@ -70,19 +70,45 @@ public class UtilisateurService implements IUtilisateurService {
     }
 
     @Override
-    public UtilisateurConnecteDto authentify(final String email, final String password) {
+    public UtilisateurServiceAuthReturn authentify(final String email, final String password) {
+        //Instanciation du builder, qui va être renseigné au fil de l'eau avant de construire l'objet retour en retour de méthode
+        final var builder = new UtilisateurServiceAuthReturn.UtilisateurServiceAuthReturnBuilder();
+
         final var utilisateurDo = iUtilisateurDao.findByEmail(email);
-        if (utilisateurDo != null) {
-            //On récupère le mot de passe hashé en BD
-            final String passwordCheck = utilisateurDo.getMdpHash();
-            //On compare avec le mot de passe saisi qu'on hashe
-            if (passwordCheck.equals(MDPCrypter.crypterMDPV1(password))) {
-                logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
-                return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
-            }
-            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
+
+        if (utilisateurDo == null) {
+            logger.debug("Utilisateur avec login : {} n'existe pas en BD.", email);
+            builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
+            return builder.build();
         }
-        return null;
+        //On compare avec le mot de passe saisi qu'on hashe
+        if (checkPassword(password, utilisateurDo)) {
+            //Les mots de passe correspondent, on vérifie si l'utilisateur est désactivé ou non
+            if (Boolean.TRUE.equals(utilisateurDo.getEstDesactive())) {
+                logger.debug("Utilisateur avec login : {} est désactivé.", email);
+                builder.withUtilisateurConnecteDto(null).withIsDesactive(true);
+            } else {
+                logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
+                final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
+                builder.withUtilisateurConnecteDto(utilisateurConnecteDto).withIsDesactive(false);
+            }
+        } else {
+            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
+            builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
+        }
+        return builder.build();
+    }
+
+    /**
+     * Permet de comparer un mot de passe saisi avec celui connu en BD
+     *
+     * @param  password      String mot de passe saisi
+     * @param  utilisateurDo l'utilisateur en BD dont on va récupérer le mot de passe hashé pour la comparaison
+     * @return               un boolean, true si identiques, false sinon
+     */
+    private boolean checkPassword(final String password, final UtilisateurDo utilisateurDo) {
+        final var passwordCheck = utilisateurDo.getMdpHash();
+        return passwordCheck.equals(MDPCrypter.crypterMDPV1(password));
     }
 
     @Override
@@ -148,6 +174,14 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        final var userFound = this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail());
+        // Verifie si l'email est deja pris par un autre utilisateur
+        if (userFound != null && (!userFound.getIdUtilisateur().equals(utilisateurDto.getId()))) {
+            logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}. Ref utilisateur : {}", utilisateurDto.getEmail(),
+                    utilisateurDto.getReference());
+            return null;
+        }
+
         logger.info("L'utilisateur ref : {} a été mis à jour", utilisateurDto.getReference());
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
     }
