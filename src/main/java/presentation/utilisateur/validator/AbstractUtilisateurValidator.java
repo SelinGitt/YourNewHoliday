@@ -18,16 +18,11 @@ import service.util.DateFormatUtil;
  * @author Valentin
  */
 @Component
-public class UtilisateurValidator implements Validator {
+public abstract class AbstractUtilisateurValidator implements Validator {
 
     @Override
     public boolean supports(final Class<?> clazz) {
         return UtilisateurDto.class.isAssignableFrom(clazz);
-    }
-
-    @Override
-    public void validate(final Object target, final Errors errors) {
-        // Empty
     }
 
     /**
@@ -37,7 +32,7 @@ public class UtilisateurValidator implements Validator {
      * @param errors Errors
      * @param page   Radical permetant la gestion des messages d'erreur
      */
-    public void validate(final Object target, final Errors errors, final String page) {
+    protected void validateUser(final Object target, final Errors errors, final String page) {
         final var defaultError = "Default Error";
 
         // Check si champs empty ou blank
