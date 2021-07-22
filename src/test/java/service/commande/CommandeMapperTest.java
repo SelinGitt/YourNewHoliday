@@ -217,10 +217,10 @@ class CommandeMapperTest {
         adresses.setCommandeAdresseLivraison(adresseLivraison);
         adresses.setCommandeAdresseFacturation(adresseFacturation);
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CM0315042128803", 1);
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CM0315042128807", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
-        assertEquals("CM0315042128803", commandeDo.getReference());
+        assertEquals("CM0315042128807", commandeDo.getReference());
         assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
