@@ -348,6 +348,7 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 .CMD_04-padding-prix {
 	padding-top: 0.5vh;
+	padding-right: 5%;
 }
 
 .CMD_04-elements-a-droite {
