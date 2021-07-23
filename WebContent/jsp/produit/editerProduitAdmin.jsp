@@ -26,7 +26,7 @@
                         <th></th>
                         <th></th>
                     </tr>
-                     <tr>
+                    <tr>
                         <td><spring:message code="form.pdt02.nom" /></td>
                         <td><div>
                                 <form:input path="nom" />
@@ -38,7 +38,7 @@
                     <tr>
                         <td><spring:message code="form.pdt02.reference" /></td>
                         <td><div>
-                                <form:input path="reference"/>
+                                <form:input path="reference" />
                             </div>
                             <div class="pdt02formError">
                                 <form:errors path="reference" cssClass="text-color-rouge" />
@@ -91,7 +91,7 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.description" /></td>
-                        <td class="pdt02TextAreapdt02"><div>
+                        <td class="pdt02TextAreapdt02 textarea"><div>
                                 <form:textarea path="description" rows="4" cols="70" />
                             </div>
                             <div class="pdt02formError">
