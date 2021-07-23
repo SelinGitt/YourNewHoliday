@@ -318,7 +318,15 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	color: #66C5EB;
 }
 
-/* rendre gras un mot */
-.CMD_04-bold-mot label{
-	font-weight: bold;
+/* la grille pour commande adresse */
+.CMD_04-adresse-grid {
+	display: grid;
+	/* pas d'espacement entre les grilles */
+	grid-gap: 0;
+	grid-template-columns: 1fr 2fr;
+}
+
+/* marge pour les champs des adresses */
+.CMD_04-adresse-margin {
+	margin: 2%;
 }

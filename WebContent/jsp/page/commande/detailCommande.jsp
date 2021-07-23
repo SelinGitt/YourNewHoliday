@@ -107,17 +107,19 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
-                <div class="CMD_04-bold-mot">
-                    <label> <spring:message code="detailCommande.nom"></spring:message>
-                    </label> ${utilisateur.nom}
-                    <p>
-                        <label> <spring:message code="detailCommande.prenom"></spring:message>
-                        </label> ${utilisateur.prenom}
-                    </p>
-                    <p>
-                        <label> <spring:message code="detailCommande.adresseLiv"></spring:message>
-                        </label> ${commande.adresseFacturation.adresse}
-                    </p>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.livraison"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.livraison"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseLiv"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.adresse}</div>
                 </div>
             </fieldset>
         </div>
@@ -126,15 +128,19 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
-                <div class="CMD_04-bold-mot">
-                    <label> <spring:message code="detailCommande.nom"></spring:message></label> ${utilisateur.nom}
-                    <p>
-                        <label> <spring:message code="detailCommande.prenom"></spring:message>
-                        </label> ${utilisateur.prenom}
-                    </p>
-                    <p>
-                        <label> <spring:message code="detailCommande.adresseFact"></spring:message>
-                        </label>${commande.adresseLivraison.adresse}</p>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.fct"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.fct"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseFact"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.adresse}</div>
                 </div>
             </fieldset>
         </div>

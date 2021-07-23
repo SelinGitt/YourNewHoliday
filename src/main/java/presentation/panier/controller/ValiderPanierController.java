@@ -41,13 +41,15 @@ public class ValiderPanierController {
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateur,
             final @ModelAttribute("adresses") AdressesDto adresses, final RedirectAttributes redirectAttributes) {
-        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, adresses,
-                Integer.parseInt(utilisateur.getIdUtilisateur()));
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panierDto, adresses, Integer.parseInt(utilisateur
+                .getIdUtilisateur()));
         if (referenceCommandeOuListProduitErreur == null) {
             // On détruit la session donc le panier sera vider automatiquement (ici l'utilisateur a été supprimé et est null)
             return "redirect:deconnecter.do";
         }
         if (referenceCommandeOuListProduitErreur.getReference() == null) {
+            // On passe la liste des Id problématiques en attribut pour les renvoyer au controller suivant
+            redirectAttributes.addFlashAttribute("listIdError", referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant());
             // en cas d'erreur renvoie au panier
             return "redirect:listerPanierProduits.do";
         }

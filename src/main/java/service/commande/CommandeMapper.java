@@ -47,10 +47,14 @@ public class CommandeMapper {
         commandeDto.setRemise(calculerRemise(commandeDto));
 
         final var livraisonAdresse = new CommandeAdresseDto();
+        livraisonAdresse.setNom(commandeDo.getNomLivraison());
+        livraisonAdresse.setPrenom(commandeDo.getPrenomLivraison());
         livraisonAdresse.setAdresse(commandeDo.getAdresseLivraison());
         commandeDto.setAdresseLivraison(livraisonAdresse);
 
         final var facturationAdresse = new CommandeAdresseDto();
+        facturationAdresse.setNom(commandeDo.getNomFacturation());
+        facturationAdresse.setPrenom(commandeDo.getPrenomFacturation());
         facturationAdresse.setAdresse(commandeDo.getAdresseFacturation());
         commandeDto.setAdresseFacturation(facturationAdresse);
         return commandeDto;
@@ -93,8 +97,14 @@ public class CommandeMapper {
         commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
-        commandeDo.setAdresseFacturation(adresses.getCommandeAdresseFacturation().getAdresse());
-        commandeDo.setAdresseLivraison(adresses.getCommandeAdresseLivraison().getAdresse());
+        final var facturationAdresse = adresses.getCommandeAdresseFacturation();
+        commandeDo.setNomFacturation(facturationAdresse.getNom());
+        commandeDo.setPrenomFacturation(facturationAdresse.getPrenom());
+        commandeDo.setAdresseFacturation(facturationAdresse.getAdresse());
+        final var livraisonAdresse = adresses.getCommandeAdresseLivraison();
+        commandeDo.setNomLivraison(livraisonAdresse.getNom());
+        commandeDo.setPrenomLivraison(livraisonAdresse.getPrenom());
+        commandeDo.setAdresseLivraison(livraisonAdresse.getAdresse());
         return commandeDo;
     }
 }
