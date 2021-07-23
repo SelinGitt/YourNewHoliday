@@ -6,7 +6,7 @@ package presentation.produit.validator;
 import org.springframework.validation.Errors;
 
 /**
- * Classe représentant le validator pour un produitDto
+ * Classe représentant le validator du produitDto pour l'écran PDT03 : Création produit
  *
  * @author Administrateur
  */
