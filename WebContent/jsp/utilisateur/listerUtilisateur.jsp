@@ -6,7 +6,8 @@
     <div>
         <c:if test="${not empty userSuccess}">
             <div class="background-validation-block block-message-commun">
-                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+                <span class="fa fa-check"></span> <span class="user01-message"><spring:message
+                        code="${userSuccess}" /></span>
             </div>
         </c:if>
 
@@ -21,7 +22,7 @@
         <spring:message code="usr01.titre" />
     </h1>
     <div class="user01-searchMenu display-flex">
-        <div class="usr01searchBar">
+        <div>
             <form:form action="listerUtilisateur.do" method="POST">
                 <input type="hidden" name="searchFilter" value="${searchFilter}" />
 
@@ -32,7 +33,7 @@
             </form:form>
         </div>
 
-        <div class="usr01filterBar">
+        <div class="user01-filter-bar">
             <form:form action="listerUtilisateur.do" method="POST">
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
 

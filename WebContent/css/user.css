@@ -59,9 +59,17 @@
 }
 
 /* USR01 */
+.user01-message {
+	margin-left: 0.5em;	
+}
+
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 100%;
+}
+
+.user01-filter-bar {
+	margin-left: 1em;
 }
 
 .user01-searchMenu .user01AddUser {

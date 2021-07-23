@@ -197,11 +197,13 @@ class CommandeMapperTest {
         adresses.setCommandeAdresseLivraison(adresseLivraison);
         adresses.setCommandeAdresseFacturation(adresseFacturation);
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CMD1234567", 1);
+        final var aujourdhui = new Date();
+
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, aujourdhui, "CMD1234567", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
         assertEquals("CMD1234567", commandeDo.getReference());
-        assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals(DateFormatUtil.formaterDateToString(aujourdhui), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
         assertEquals(3, commandeDo.getQuantiteTotale());

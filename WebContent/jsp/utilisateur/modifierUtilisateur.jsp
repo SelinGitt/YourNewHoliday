@@ -58,7 +58,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr02.edit.adresse" /></label>
                     <div class="user02-form-inputs">
-                        <form:textarea class="textarea" path="adresse" class="user02-inputs user02-textarea" />
+                        <form:textarea path="adresse" class="user02-inputs user02-textarea textarea" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
                 </div>
