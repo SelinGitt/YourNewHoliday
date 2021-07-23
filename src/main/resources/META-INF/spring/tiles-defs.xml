@@ -61,6 +61,11 @@
 		<put-attribute name="title" value="détail d'une commande" />
 		<put-attribute name="body" value="/jsp/page/commande/detailCommande.jsp" />
 	</definition>
+	
+	<definition name="consulterProduitAchete" extends="base.definition">
+		<put-attribute name="title" value="Consulter produit acheté" />
+		<put-attribute name="body" value="/jsp/produit/consulterProduitAchete.jsp" />
+	</definition>
 
 	<!-- écran utilisateur -->
 
