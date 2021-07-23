@@ -37,7 +37,8 @@
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <c:url value="consulterProduit.do" var="destination">
-                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
+                                        <c:param name="idProduit" 
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
                                         <c:param name="from" value="detail" />
                                         <c:param name="paramValue" value="${commande.reference}" />
                                     </c:url>
