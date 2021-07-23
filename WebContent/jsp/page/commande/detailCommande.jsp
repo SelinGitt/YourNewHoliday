@@ -107,9 +107,15 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
-                <div>
-                    <p><spring:message code="detailCommande.nom.livraison"></spring:message> ${commande.adresseLivraison.nom}</p>
-                    <p><spring:message code="detailCommande.prenom.livraison"></spring:message> ${commande.adresseLivraison.prenom}</p>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.livraison"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.livraison"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.prenom}</div>
                 </div>
             </fieldset>
         </div>
@@ -118,9 +124,15 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
-                <div>
-                    <p><spring:message code="detailCommande.nom.fct"></spring:message> ${commande.adresseFacturation.nom}</p>
-                    <p><spring:message code="detailCommande.prenom.fct"></spring:message> ${commande.adresseFacturation.prenom}</p>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.fct"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.fct"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.prenom}</div>
                 </div>
             </fieldset>
         </div>
