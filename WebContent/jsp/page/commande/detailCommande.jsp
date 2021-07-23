@@ -101,6 +101,10 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
+                <div>
+                    <p><spring:message code="detailCommande.nom.livraison"></spring:message> ${commande.adresseLivraison.nom}</p>
+                    <p><spring:message code="detailCommande.prenom.livraison"></spring:message> ${commande.adresseLivraison.prenom}</p>
+                </div>
             </fieldset>
         </div>
         <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">
@@ -108,6 +112,10 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
+                <div>
+                    <p><spring:message code="detailCommande.nom.fct"></spring:message> ${commande.adresseFacturation.nom}</p>
+                    <p><spring:message code="detailCommande.prenom.fct"></spring:message> ${commande.adresseFacturation.prenom}</p>
+                </div>
             </fieldset>
         </div>
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
