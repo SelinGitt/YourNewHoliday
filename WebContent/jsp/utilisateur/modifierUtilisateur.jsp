@@ -147,30 +147,42 @@
                             <div>
                                 <c:choose>
                                     <c:when test="${utilisateurDto.estDesactive}">
-                                        <label for="estDesactive1"><spring:message code="usr02.client.desactive" /></label>
+                                        <spring:message code="usr02.client.desactive" />
                                     </c:when>
 
                                     <c:otherwise>
-                                        <label for="estDesactive1"><spring:message code="usr02.client.active" /></label>
+                                        <spring:message code="usr02.client.active" />
                                     </c:otherwise>
                                 </c:choose>
 
-                                <form:checkbox path="estDesactive" onchange="changeStatusImg()" style="display:none;"/>
-                                <label for="estDesactive1">
-                                     <img alt="" class="checkboxVert user01-image" id="usr02.status.img">
+                                <form:checkbox path="estDesactive" onchange="changeStatusImg()" style="display:none;" />
+                                <label for="estDesactive1"> <img alt="imgStatus" id="usr02.status.img">
                                 </label>
-                                
+
                                 <script>
-                                	changeStatusImg();
+                                	const imgStatus = document.getElementById('usr02.status.img');
+                                	const estDesactive = document.getElementById('estDesactive1');
+                                	                             
+                                	<%-- Obliger car sinon le js peut inverser les valeurs et tout mettre KO --%>
+                                	if (${utilisateurDto.estDesactive}) {
+                                		imgStatus.src = "img/commun/checkboxVide.png";
+                                		imgStatus.className = "user01-imageNonActive checkboxVide";
+                                	} else {
+                                		imgStatus.src = "img/commun/checkboxVert.jpg";
+                                		imgStatus.className = "checkboxVert user01-image";
+                                	}
+                                	
+                                	estDesactive.value = ${utilisateurDto.estDesactive};
                                 
                                 	function changeStatusImg() {
-                                		const estDesactive = document.getElementById('estDesactive1');
-                                		if (estDesactive.value === 'true') {
-                                			estDesactive.value = 'false';
-                                			document.getElementById('usr02.status.img').src = "img/commun/checkboxVide.png";
-                                		} else {
+                                		if (estDesactive.value === 'false') {
                                 			estDesactive.value = 'true';
-                                			document.getElementById('usr02.status.img').src = "img/commun/checkboxVert.jpg";
+                                			imgStatus.src = "img/commun/checkboxVide.png";
+                                			imgStatus.className = "user01-imageNonActive checkboxVide";
+                                		} else {
+                                			estDesactive.value = 'false';
+                                			imgStatus.src = "img/commun/checkboxVert.jpg";
+                                			imgStatus.className = "checkboxVert user01-image";
                                 		}
                                 	}
                                 </script>
