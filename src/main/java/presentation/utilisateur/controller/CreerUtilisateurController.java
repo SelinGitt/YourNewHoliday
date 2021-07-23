@@ -50,6 +50,9 @@ public class CreerUtilisateurController {
         // On creer l'utilisateur ici et lui affecte un role pour avoir une valeur par defaut dans le formulaire
         final var utilisateurDto = new UtilisateurDto();
 
+        // Permet de garder la date de naissance renseignée 
+        utilisateurDto.setDateNaissance("01/01/1970");
+
         final var roleDto = new RoleDto();
         roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
 

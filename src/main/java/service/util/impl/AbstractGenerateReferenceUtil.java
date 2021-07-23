@@ -19,22 +19,22 @@ import service.util.IGenerateReferenceUtil;
  */
 public abstract class AbstractGenerateReferenceUtil implements IGenerateReferenceUtil {
 
-    private static final Logger logger             = LoggerFactory.getLogger(AbstractGenerateReferenceUtil.class);
+    protected static final Logger logger             = LoggerFactory.getLogger(AbstractGenerateReferenceUtil.class);
 
-    protected static final int  DEBUT_PREFIX       = 0;
+    protected static final int    DEBUT_PREFIX       = 0;
 
-    protected static final int  LONGUEUR_PREFIX    = 3;
+    protected static final int    LONGUEUR_PREFIX    = 3;
 
-    protected static final int  FIN_PREFIX         = DEBUT_PREFIX + LONGUEUR_PREFIX;
+    protected static final int    FIN_PREFIX         = DEBUT_PREFIX + LONGUEUR_PREFIX;
 
-    protected static final int  LONGUEUR_REFERENCE = 10;
+    protected static final int    LONGUEUR_REFERENCE = 10;
 
-    protected static final int  LONGUEUR_SUFFIX    = LONGUEUR_REFERENCE - LONGUEUR_PREFIX;
+    protected static final int    LONGUEUR_SUFFIX    = LONGUEUR_REFERENCE - LONGUEUR_PREFIX;
 
-    protected String            prefix;
+    protected String              prefix;
 
     @Override
-    public String generateReference() {
+    public String generateReference(final Object... param) {
         final String reference = this.prefix + this.generateSuffix();
         logger.info("Référence {} générée par {}", reference, this.getClass().getSimpleName());
         return reference;

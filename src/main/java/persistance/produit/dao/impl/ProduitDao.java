@@ -145,4 +145,10 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
             return null;
         }
     }
+
+    @Override
+    public List<ProduitDo> findAllProduitsTriAlpha() {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo ORDER BY reference ASC", ProduitDo.class);
+        return query.getResultList();
+    }
 }
