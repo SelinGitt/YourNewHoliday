@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.produit.controller.PageRedirection;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.produit.IProduitService;
 
@@ -53,6 +54,13 @@ public class ConsulterProduitAcheteController {
             return new ModelAndView("redirect:404.do");
         }
         modelAndView.getModelMap().addAttribute("consulterProduitAcheteDto", produitTrouve);
+        final var pageOrigine = PageRedirection.findValue(location);
+        final var urlToBuild = new StringBuilder();
+        urlToBuild.append(pageOrigine.getPageConcrete());
+        if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
+            urlToBuild.append("?ref=" + param);
+        }
+        modelAndView.getModelMap().addAttribute("retour", urlToBuild);
         return modelAndView;
     }
 
