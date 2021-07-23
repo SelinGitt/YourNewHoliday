@@ -3,8 +3,6 @@
  */
 package presentation.commande.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.commande.dto.CommandeDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.commande.ICommandeService;
 
@@ -45,18 +42,18 @@ public class ListeCommandeController {
     public ModelAndView listerCommande(final @RequestParam(name = "id", required = false, defaultValue = "") String idUtilisateur,
             final HttpSession session) {
         final var modelAndView = new ModelAndView("listerCommande");
-        List<CommandeDto> listCommande;
+        int idUser;
 
         if (idUtilisateur.isEmpty()) {
             final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
-            this.logger.debug("lister Commande utilisateur : {} ", utilisateurConnecte.getIdUtilisateur());
-            listCommande = this.iCommandeService.listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
+            idUser = Integer.parseInt(utilisateurConnecte.getIdUtilisateur());
         } else {
-            this.logger.debug("lister Commande utilisateur : {} ", idUtilisateur);
-            listCommande = this.iCommandeService.listerCommandesUtilisateur(Integer.valueOf(idUtilisateur));
+            idUser = Integer.parseInt(idUtilisateur);
         }
 
-        modelAndView.getModelMap().addAttribute("listCommande", listCommande);
+        this.logger.debug("lister Commande utilisateur : {} ", idUser);
+
+        modelAndView.getModelMap().addAttribute("listCommande", this.iCommandeService.listerCommandesUtilisateur(idUser));
         return modelAndView;
     }
 
