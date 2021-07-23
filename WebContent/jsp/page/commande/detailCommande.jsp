@@ -107,6 +107,18 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
+                <div class="CMD_04-bold-mot">
+                    <label> <spring:message code="detailCommande.nom"></spring:message>
+                    </label> ${utilisateur.nom}
+                    <p>
+                        <label> <spring:message code="detailCommande.prenom"></spring:message>
+                        </label> ${utilisateur.prenom}
+                    </p>
+                    <p>
+                        <label> <spring:message code="detailCommande.adresseLiv"></spring:message>
+                        </label> ${commande.adresseFacturation.adresse}
+                    </p>
+                </div>
             </fieldset>
         </div>
         <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">
@@ -114,6 +126,16 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
+                <div class="CMD_04-bold-mot">
+                    <label> <spring:message code="detailCommande.nom"></spring:message></label> ${utilisateur.nom}
+                    <p>
+                        <label> <spring:message code="detailCommande.prenom"></spring:message>
+                        </label> ${utilisateur.prenom}
+                    </p>
+                    <p>
+                        <label> <spring:message code="detailCommande.adresseFact"></spring:message>
+                        </label>${commande.adresseLivraison.adresse}</p>
+                </div>
             </fieldset>
         </div>
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
