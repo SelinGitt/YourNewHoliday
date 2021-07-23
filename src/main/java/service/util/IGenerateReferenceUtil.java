@@ -13,15 +13,14 @@ public interface IGenerateReferenceUtil {
     /**
      * Permet de générer les références
      * 
-     * @param
-     * 
-     *         <pre>
+     * <pre>
      *  paramètres necessaires seulement pour la ref commande :
      *  _  param[0] : utilisateurDto
      *  _  param[1] : nombre de produits achetés (= nombre de produits dans le panier) 
      *  _  param[2] : la date (jour et heure)
-     *         </pre>
+     * </pre>
      * 
+     * @param  param les paramètres permettant de générer la référence
      * @return       String la référence
      */
     String generateReference(final Object... param);

@@ -33,9 +33,11 @@ public class ValiderPanierController {
      *
      * @param  panierDto          le panier de l'utilisateur
      * @param  utilisateur        l'utilisateur connecté
-     * @param  adresses           liste des adresses récupérer du formulaire
+     * @param  adresses           liste des adresses récupérer du formulaire <<<<<<< HEAD
      * @param  redirectAttributes permet de rediriger les attributs nécessaires au controller suivant
-     * @return                    le nom de l'écran vers lequel se diriger
+     * @return                    le nom de l'écran vers lequel se diriger =======
+     * @param  redirectAttributes signalement de redirection au controlleur ciblé
+     * @return                    String l'url vers lequel on doit se rendre >>>>>>> develop
      */
     @PostMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,
@@ -48,10 +50,13 @@ public class ValiderPanierController {
             return "redirect:deconnecter.do";
         }
         if (referenceCommandeOuListProduitErreur.getReference() == null) {
+            // On passe la liste des Id problématiques en attribut pour les renvoyer au controller suivant
             redirectAttributes.addFlashAttribute("listIdError", referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant());
             // en cas d'erreur renvoie au panier
             return "redirect:listerPanierProduits.do";
         }
+        // On précise au controlleur de détail commande le controlleur origine de la redirection
+        redirectAttributes.addFlashAttribute("flag", "validerPanierCommande");
         // redirige vers la page de détail des commandes
         return "redirect:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
     }

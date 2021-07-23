@@ -111,6 +111,19 @@
 .panier-description-produit {
 	width: 57vh;
 }
+.panier-description-produit-paragraphe {
+    font-size: 1em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    max-height: 3em;
+    max-width: 50vh;
+    line-height: 1em; 
+    padding-right: 1em;
+    padding: 1em;
+}
 
 .panier-image-produit {
 	top: 0em;

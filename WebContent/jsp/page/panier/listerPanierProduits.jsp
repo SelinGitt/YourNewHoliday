@@ -52,7 +52,7 @@
                                         <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                     </div>
                                     <%--  description --%>
-                                    <div>${entry.key.description}</div>
+                                    <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
                                 </div>
                             </th>
 

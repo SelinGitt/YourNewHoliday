@@ -1,5 +1,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${not empty confirmationMesssage}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
+    </div>
+</c:if>
 <h1>
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
@@ -30,9 +35,10 @@
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <c:url value="consulterProduit.do" var="destination">
-                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
-                                        <c:param name="from" value="detail"/>
-                                        <c:param name="paramValue" value="${commande.reference}"/>
+                                        <c:param name="idProduit" 
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
+                                        <c:param name="from" value="detail" />
+                                        <c:param name="paramValue" value="${commande.reference}" />
                                     </c:url>
                                     <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
@@ -101,6 +107,18 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
+                <div class="CMD_04-bold-mot">
+                    <label> <spring:message code="detailCommande.nom"></spring:message>
+                    </label> ${utilisateur.nom}
+                    <p>
+                        <label> <spring:message code="detailCommande.prenom"></spring:message>
+                        </label> ${utilisateur.prenom}
+                    </p>
+                    <p>
+                        <label> <spring:message code="detailCommande.adresseLiv"></spring:message>
+                        </label> ${commande.adresseFacturation.adresse}
+                    </p>
+                </div>
             </fieldset>
         </div>
         <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">
@@ -108,6 +126,16 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
+                <div class="CMD_04-bold-mot">
+                    <label> <spring:message code="detailCommande.nom"></spring:message></label> ${utilisateur.nom}
+                    <p>
+                        <label> <spring:message code="detailCommande.prenom"></spring:message>
+                        </label> ${utilisateur.prenom}
+                    </p>
+                    <p>
+                        <label> <spring:message code="detailCommande.adresseFact"></spring:message>
+                        </label>${commande.adresseLivraison.adresse}</p>
+                </div>
             </fieldset>
         </div>
         <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
