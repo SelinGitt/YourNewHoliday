@@ -2,12 +2,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
         <div class="background-validation-block block-message-commun">
            <span class="fa fa-check"></span>  
-<%--            <span><spring:message code="${PAN_08.message.Confirmation}" /> </span>--%>
-           
-        </div>
+           <span><spring:message code="${confirmationMesssage}" /> </span>            
+        </div>    
+
     
 <h1>
-    <spring:message code="detailCommande.titre.text" />${commande.reference}
+    <spring:message code="detailCommande.titre.text" />${commande.reference}    
 </h1>
 <div>
     <a href="listerCommande.do">

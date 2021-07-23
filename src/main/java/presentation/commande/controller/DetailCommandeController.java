@@ -48,6 +48,7 @@ public class DetailCommandeController {
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
         modelAndView.getModelMap().addAttribute("remise", commandeDto.getRemise());
+        modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
         return modelAndView;
     }
 
