@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<c:if test="${fn:length(listIdError) gt 0 }">
+    <div class="background-error-block block-message-commun">
+        <span class="fa fa-exclamation"></span> <span class="message"><spring:message
+                code="pan00.message.erreur.verifier_produit" /></span>
+    </div>
+</c:if>
 
 <div class="panier-title">
     <h1>
@@ -23,6 +31,7 @@
             <table class="panier-bordure-1px" aria-label="tableau panier">
                 <tbody>
                     <c:forEach items="${panierDto.mapPanier}" var="entry">
+
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
@@ -107,16 +116,14 @@
                                         alt="icone poubelle pour suppression" /></a>
                                 </div></td>
                         </tr>
-
-
                         <tr>
-                            <c:forEach items="${listIdError}" var="idTest">
-                                <c:if test="${entry.key.idProduitOriginal == entry.key.idProduitOriginal }">
-                            ahahah
-                            <spring:message code="pan00.erreur.produit_modifie" />
-                                </c:if>
-                            </c:forEach>
+                            <c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                <td><div class="text-color-rouge">
+                                        <spring:message code="pan00.erreur.produit_indisponible" />
+                                    </div></td>
+                            </c:if>
                         </tr>
+
                     </c:forEach>
                 </tbody>
             </table>
