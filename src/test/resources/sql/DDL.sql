@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `prix_total_ante_remise` decimal(15,2) NOT NULL,
   `prix_avec_remise` decimal(15,2) NOT NULL,
   `quantiteTotale` int(11) NOT NULL,
-  `idUtilisateur` int(11) DEFAULT NULL,
+  `idUtilisateur` int(11),
   PRIMARY KEY (`idCommande`),
   UNIQUE KEY `reference` (`reference`),
   KEY `fkIdCommande2` (`idUtilisateur`)
