@@ -29,7 +29,7 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-                                    <c:url value="consulterProduit.do" var="destination">
+                                    <c:url value="consulterProduitAchete.do" var="destination">
                                         <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.id}"/>
                                         <c:param name="from" value="detail"/>
                                         <c:param name="paramValue" value="${commande.reference}"/>
