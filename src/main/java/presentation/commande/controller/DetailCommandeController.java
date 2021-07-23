@@ -53,7 +53,7 @@ public class DetailCommandeController {
         // S'il s'agit d'une redirection depuis validerPanierCommande 
         // on affiche le message de confirmation de la validation de la commande
         // rq : les échecs de validation sont tarité par PAN_00        
-        if (from.equals("validerPanierCommande")) {
+        if ("validerPanierCommande".equals(from)) {
             modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
         }
         return modelAndView;
