@@ -116,6 +116,10 @@
                         <spring:message code="detailCommande.prenom.livraison"></spring:message>
                     </div>
                     <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseLiv"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.adresse}</div>
                 </div>
             </fieldset>
         </div>
@@ -133,6 +137,10 @@
                         <spring:message code="detailCommande.prenom.fct"></spring:message>
                     </div>
                     <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseFact"></spring:message>
+                    </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.adresse}</div>
                 </div>
             </fieldset>
         </div>

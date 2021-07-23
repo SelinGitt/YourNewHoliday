@@ -38,12 +38,12 @@ public class ImageService implements IImageService {
     @Override
     public File getImage(final String id, final String type) {
         String path;
-        if (TypeImage.PRODUIT.type.equals(type)) {
+        if (TypeImage.PRODUIT.getType().equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
             path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
-        if (TypeImage.UTILISATEUR.type.equals(type)) {
+        if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
             path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
             return imageDao.getImage(path);
