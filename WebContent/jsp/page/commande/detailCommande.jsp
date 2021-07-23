@@ -1,15 +1,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<<<<<<< HEAD
-<h1 class="CMD_00-commande">
-=======
 <c:if test="${not empty confirmationMesssage}">
     <div class="background-validation-block block-message-commun">
         <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
     </div>
 </c:if>
 <h1>
->>>>>>> develop
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
 <div class="CMD_04-bouton-retour-margin">
