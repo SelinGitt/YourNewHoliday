@@ -36,7 +36,7 @@ public class ValiderPanierProduitsController {
     public String passerPanier00APanier08(final @SessionAttribute("panierDto") PanierDto panierDto,
             final RedirectAttributes redirectAttributes) {
         final var listIdError = this.commandeService.verifierProduitsAvecVersion(panierDto.getMapPanier());
-        if (listIdError.size() > 0) {
+        if (listIdError.isEmpty()) {
             redirectAttributes.addFlashAttribute("listIdError", listIdError);
             // en cas d'erreur renvoie au panier
             return "redirect:listerPanierProduits.do";
