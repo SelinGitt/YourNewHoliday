@@ -258,6 +258,10 @@ th.pdt01 {
 	width: 100%;
 }
 
+.pdt03Form-imageProduit img{
+	width: 50%;
+}
+
 .pdt03formError {
 	line-height: 1em;
 }
