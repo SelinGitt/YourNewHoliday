@@ -199,10 +199,10 @@ class CommandeMapperTest {
 
         final var aujourdhui = new Date();
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, aujourdhui, "MP5009052150444", 1);
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, aujourdhui, "CMD1234567", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
-        assertEquals("MP5009052150444", commandeDo.getReference());
+        assertEquals("CMD1234567", commandeDo.getReference());
         assertEquals(DateFormatUtil.formaterDateToString(aujourdhui), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
