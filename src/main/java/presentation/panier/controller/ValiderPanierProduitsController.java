@@ -37,11 +37,11 @@ public class ValiderPanierProduitsController {
             final RedirectAttributes redirectAttributes) {
         final var listIdError = this.commandeService.verifierProduitsAvecVersion(panierDto.getMapPanier());
         if (listIdError.isEmpty()) {
-            redirectAttributes.addFlashAttribute("listIdError", listIdError);
-            // en cas d'erreur renvoie au panier
-            return "redirect:listerPanierProduits.do";
+            // redirige vers la page de détail des commandes
+            return "redirect:listerPanierAdresses.do";
         }
-        // redirige vers la page de détail des commandes
-        return "redirect:listerPanierAdresses.do";
+        redirectAttributes.addFlashAttribute("listIdError", listIdError);
+        // en cas d'erreur renvoie au panier
+        return "redirect:listerPanierProduits.do";
     }
 }
