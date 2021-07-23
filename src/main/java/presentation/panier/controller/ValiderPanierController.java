@@ -33,11 +33,9 @@ public class ValiderPanierController {
      *
      * @param  panierDto          le panier de l'utilisateur
      * @param  utilisateur        l'utilisateur connecté
-     * @param  adresses           liste des adresses récupérer du formulaire <<<<<<< HEAD
-     * @param  redirectAttributes permet de rediriger les attributs nécessaires au controller suivant
-     * @return                    le nom de l'écran vers lequel se diriger =======
+     * @param  adresses           liste des adresses récupérer du formulaire
      * @param  redirectAttributes signalement de redirection au controlleur ciblé
-     * @return                    String l'url vers lequel on doit se rendre >>>>>>> develop
+     * @return                    String l'url vers lequel on doit se rendre
      */
     @PostMapping
     public String passerPanierACommande(final @SessionAttribute("panierDto") PanierDto panierDto,

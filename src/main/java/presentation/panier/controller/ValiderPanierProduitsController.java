@@ -29,8 +29,6 @@ public class ValiderPanierProduitsController {
      * Permet de passer du premier au second écran de validation du panier si toutes les conditions sont remplies
      *
      * @param  panierDto          le panier de l'utilisateur
-     * @param  utilisateur        l'utilisateur connecté
-     * @param  adresses           liste des adresses récupérer du formulaire
      * @param  redirectAttributes permet de rediriger les attributs nécessaires au controller suivant
      * @return                    le nom de l'écran vers lequel se diriger
      */

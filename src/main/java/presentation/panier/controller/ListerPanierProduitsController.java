@@ -3,8 +3,6 @@
  */
 package presentation.panier.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +29,12 @@ public class ListerPanierProduitsController {
     /**
      * Permet d'afficher la page PanierProduits
      * 
-     * @param  panierDto : panierDto vide
-     * @return           le nom de la définition pour PanierProduits
+     * @param  panierDto   : panierDto vide
+     * @param  listIdError : la liste des Id problématiques
+     * @return             le nom de la définition pour PanierProduits
      */
     @GetMapping
-    public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto, final HttpSession session,
+    public ModelAndView displayPanierProduits(final @SessionAttribute("panierDto") PanierDto panierDto,
             final @ModelAttribute("listIdError") String listIdError) {
         final var modelAndView = new ModelAndView();
         // on met à jour le prix total, la remise et le prix après remise du panier
@@ -45,6 +44,7 @@ public class ListerPanierProduitsController {
             modelAndView.setViewName("pan_00_vide");
             modelAndView.getModelMap().addAttribute("errorPanVide", "pan00.erreur.vide");
         } else {
+            // On passe la liste des Id problématiques en attribut pour les renvoyer au controller suivant
             modelAndView.getModelMap().addAttribute("listIdError", listIdError);
             modelAndView.setViewName("pan_00");
         }
