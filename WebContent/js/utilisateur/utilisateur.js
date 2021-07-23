@@ -12,10 +12,8 @@ function changeStatusImg(img, estDesactive) {
 // Permet de changer l'image affichee
 function setImg(status, img) {
 	if (status === 'active') {
-		img.src = "img/commun/checkboxVert.jpg";
-		img.className = "checkboxVert user01-image";
+		img.className = "fa fa-check-square-o user02-admin-active";
 	} else {
-		img.src = "img/commun/checkboxVide.png";
-		img.className = "user01-imageNonActive checkboxVide";
+		img.className = "fa fa-square-o user02-admin-desactive";
 	}
 }

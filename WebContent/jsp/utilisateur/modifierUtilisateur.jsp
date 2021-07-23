@@ -127,23 +127,27 @@
                         <div
                             class="display-flex align-item-center
                         flex-direction-column user02-admin-options">
-                            <div>
+                            <div class="user02-admin-button">
                                 <a href="listerCommande.do?id=${utilisateurDto.id}">
-                                    <button type="button">
+                                    <button type="button" class="user02-admin-button-commande">
                                         <spring:message code="usr02.bouton.commandes" />
                                     </button>
                                 </a>
                             </div>
 
-                            <div>
-                                <form:radiobutton path="role.idRole" value="2" />
-                                <label for="role.idRole1"><spring:message code="usr02.label.client" /></label>
+                            <div class="display-flex justify-content-space-between user02-admin-roles">
+                                <div>
+                                    <form:radiobutton path="role.idRole" value="2" />
+                                    <label for="role.idRole1"><spring:message code="usr02.label.client" /></label>
+                                </div>
 
-                                <form:radiobutton path="role.idRole" value="3" />
-                                <label for="role.idRole2"><spring:message code="usr02.label.admin" /></label>
+                                <div>
+                                    <form:radiobutton path="role.idRole" value="3" />
+                                    <label for="role.idRole2"><spring:message code="usr02.label.admin" /></label>
+                                </div>
                             </div>
 
-                            <div>
+                            <div class="display-flex align-item-center">
                                 <c:choose>
                                     <c:when test="${utilisateurDto.estDesactive}">
                                         <spring:message code="usr02.client.desactive" />
@@ -153,11 +157,12 @@
                                         <spring:message code="usr02.client.active" />
                                     </c:otherwise>
                                 </c:choose>
-
-                                <form:checkbox path="estDesactive" 
+                                
+                                <form:checkbox path="estDesactive"
                                     onchange="changeStatusImg(document.getElementById('usr02.status.img'), this)"
                                     cssClass="user02-status-checkbox" />
-                                <label for="estDesactive1"> <img alt="imgStatus" id="usr02.status.img">
+                                <label for="estDesactive1"> 
+                                    <span class="fa fa-square-o" id="usr02.status.img"></span>
                                 </label>
 
                                 <script>
@@ -174,7 +179,7 @@
                                 </script>
                             </div>
 
-                            <div>
+                            <div class="user02-admin-ref">
                                 <spring:message code="usr02.reference" />
                                 <c:out value="${utilisateurDto.reference}" />
                             </div>
