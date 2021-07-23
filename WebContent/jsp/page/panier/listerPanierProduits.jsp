@@ -84,9 +84,15 @@
                                 <div class="panier-td-component justify-content-center display-flex">
 
                                     <%--  bouton - --%>
-                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
-                                        <button type="button">-</button>
-                                    </a>
+                                    <c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                        <button class="panier-boutons-plus-moins" type="button">-</button>
+                                    </c:if>
+                                    <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
+                                        <a
+                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
+                                            <button type="button">-</button>
+                                        </a>
+                                    </c:if>
 
                                     <%--  saisie valeur produit  --%>
                                     <input class="panier-quantite text-align-center" type="text" readonly="readonly"
@@ -94,9 +100,15 @@
                                         size="1">
 
                                     <%--  bouton + --%>
-                                    <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
-                                        <button type="button">+</button>
-                                    </a>
+                                    <c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                        <button class="panier-boutons-plus-moins" type="button">+</button>
+                                    </c:if>
+                                    <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
+                                        <a
+                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
+                                            <button type="button">+</button>
+                                        </a>
+                                    </c:if>
                                 </div></td>
 
                             <%--  encart supprimer : label et image --%>
