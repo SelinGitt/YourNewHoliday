@@ -44,8 +44,8 @@
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="livraisonAdresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseLivraison.adresse"
-                                rows="12" id="livraisonAdresse" />
+                            <form:textarea class="panier-formulaire-textarea textarea"
+                                path="commandeAdresseLivraison.adresse" rows="12" id="livraisonAdresse" />
                         </div>
                     </div>
                 </fieldset>
@@ -75,8 +75,8 @@
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="facturationAdresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseFacturation.adresse"
-                                rows="12" id="facturationAdresse" />
+                            <form:textarea class="panier-formulaire-textarea textarea"
+                                path="commandeAdresseFacturation.adresse" rows="12" id="facturationAdresse" />
                         </div>
                     </div>
                 </fieldset>
@@ -99,25 +99,28 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <input type="text" id="total_avant_remise" name="total_avant_remise" maxlength="13">
+                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%-- remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
-                <input type="text" id="remise" name="remise" maxlength="13">
+                <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%--  total après remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <input type="text" id="total_après_remise" name="total_après_remise" maxlength="13">
+                <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
+                    <spring:message code="glb.devise" />
+                </div>
             </div>
-
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
                 <button type="submit">

@@ -4,14 +4,14 @@
 package persistance.commande.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
-
-import javax.persistence.NoResultException;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -71,16 +71,23 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRef() {
-        final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
+        final var commandeDo = this.iCommandeDao.findByRef("ABC5");
         assertNotNull(commandeDo);
-        assertEquals(1, commandeDo.getId());
-        assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixTotal()));
-        assertEquals(2, commandeDo.getIdUtilisateur());
-        assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals(5, commandeDo.getId());
+        assertEquals("ABC5", commandeDo.getReference());
+        assertEquals("Maimai", commandeDo.getNomFacturation());
+        assertEquals("Maiko", commandeDo.getPrenomFacturation());
+        assertEquals("124, rue du petit chemin, 59000, Lille", commandeDo.getAdresseFacturation());
+        assertEquals("LeForestier", commandeDo.getNomLivraison());
+        assertEquals("Maxime", commandeDo.getPrenomLivraison());
+        assertEquals("221, rue de léglise 59790, Ronchin", commandeDo.getAdresseLivraison());
+        assertEquals(0, BigDecimal.valueOf(900.00).compareTo(commandeDo.getPrixSansRemise()));
+        assertEquals(0, BigDecimal.valueOf(900.00).compareTo(commandeDo.getPrixTotalApresRemise()));
+        assertEquals(5, commandeDo.getIdUtilisateur());
+        assertEquals("17/03/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
         assertNotNull(commandeProduitSet);
-        assertEquals(2, commandeProduitSet.size());
+        assertEquals(1, commandeProduitSet.size());
     }
 
     /**
@@ -88,9 +95,23 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRefWhithWrongRef() {
-        assertThrows(NoResultException.class, () -> {
-            this.iCommandeDao.findByRef("ZZZ1");
-        });
+        assertNull(this.iCommandeDao.findByRef("ZZZ1"));
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExist() {
+        assertTrue(this.iCommandeDao.isCommandeExist("ABC1"));
+    }
+
+    /**
+     * Test method for {@link persistance.commande.dao.impl.CommandeDao#isCommandeExist(java.lang.String)}.
+     */
+    @Test
+    void testIsCommandeExistWhithWrongRef() {
+        assertFalse(this.iCommandeDao.isCommandeExist("ZZZ1"));
     }
 
     /*

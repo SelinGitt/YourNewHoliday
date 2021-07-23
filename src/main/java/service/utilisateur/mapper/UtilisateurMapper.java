@@ -32,6 +32,9 @@ public class UtilisateurMapper {
      * @return               Mapped UtilisateurDto
      */
     public static UtilisateurDto mapperToDto(final UtilisateurDo utilisateurDo) {
+        if (utilisateurDo == null) {
+            return null;
+        }
         final var utilisateurDto = new UtilisateurDto();
 
         utilisateurDto.setId(utilisateurDo.getIdUtilisateur());
@@ -45,6 +48,7 @@ public class UtilisateurMapper {
         utilisateurDto.setDateNaissance(DateFormatUtil.formaterDateToString(utilisateurDo.getDateNaissance()));
         utilisateurDto.setAdresse(utilisateurDo.getAdresse());
         utilisateurDto.setPassword(utilisateurDo.getMdpHash());
+        utilisateurDto.setCheminAvatar(utilisateurDo.getCheminAvatar());
 
         return utilisateurDto;
     }
@@ -68,10 +72,10 @@ public class UtilisateurMapper {
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
         utilisateurDo.setDateNaissance(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
+        utilisateurDo.setCheminAvatar(utilisateurDto.getCheminAvatar());
 
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
-        // TODO : Remplacer quand upload img ok
-        utilisateurDo.setCheminAvatar("img/test.png");
+        // TODO : Quand upload img ok, gérer le chemin de l'avatar ici 
 
         return utilisateurDo;
     }

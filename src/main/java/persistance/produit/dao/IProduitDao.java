@@ -32,6 +32,15 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     ProduitDo findProduitEnVente(final Integer idProduit);
 
     /**
+     * Permet de récupérer un produit en vente avec la version à jour
+     *
+     * @param  idProduit : l'id du produit à récupérer
+     * @param  version   : le numéro de version du produit
+     * @return           : le produit récupéré, s'il n'est pas en base ou en vente ou à jour, retourne null
+     */
+    ProduitDo findProduitEnVenteAvecVersion(final Integer idProduit, final Integer version);
+
+    /**
      * Permet de trier la liste en fonction de son type de recherche
      *
      * @param  typeTri le type de tri
@@ -71,4 +80,11 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste de tous les produits trouvés en vente ou non
      */
     List<ProduitDo> rechercherAllProduits(final String searchTerm);
+
+    /**
+     * Permet de trier la liste des produits par reference dans l'ordre alphabétique.
+     *
+     * @return la liste triée
+     */
+    public List<ProduitDo> findAllProduitsTriAlpha();
 }

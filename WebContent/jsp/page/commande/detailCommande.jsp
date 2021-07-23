@@ -1,6 +1,15 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<<<<<<< HEAD
 <h1 class="CMD_00-commande">
+=======
+<c:if test="${not empty confirmationMesssage}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
+    </div>
+</c:if>
+<h1>
+>>>>>>> develop
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
 <div class="CMD_04-bouton-retour-margin">
@@ -30,7 +39,8 @@
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <c:url value="consulterProduit.do" var="destination">
-                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
+                                        <c:param name="idProduit" 
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
                                         <c:param name="from" value="detail" />
                                         <c:param name="paramValue" value="${commande.reference}" />
                                     </c:url>
@@ -101,20 +111,19 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.livraison"></spring:message>
                 </legend>
-                <div class="CMD_04-livraison-infos">
-                    <div class="CMD_04-livraison-info-element  display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Nom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Meunier</div>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.livraison"></spring:message>
                     </div>
-                    <div class="CMD_04-livraison-info-element  display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Prénom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Pierre</div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.livraison"></spring:message>
                     </div>
-                    <div class="CMD_04-livraison-info-element  display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Adresse</div>
-                        <div class="CMD_04-livraison-info-element-contenue">457 rue du faubourg de Douai 33000
-                            Bordeaux</div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseLiv"></spring:message>
                     </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseLivraison.adresse}</div>
                 </div>
             </fieldset>
         </div>
@@ -123,52 +132,51 @@
                 <legend class="CMD_04-fieldset-legend">
                     <spring:message code="detailCommande.adr.fct"></spring:message>
                 </legend>
-                <div class="CMD_04-livraison-infos">
-                    <div class="CMD_04-livraison-info-element display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Nom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Meunier</div>
+                <div class="CMD_04-adresse-grid CMD_04-box-sizing">
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.nom.fct"></spring:message>
                     </div>
-                    <div class="CMD_04-livraison-info-element  display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Prénom</div>
-                        <div class="CMD_04-livraison-info-element-contenue">Pierre</div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.nom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.prenom.fct"></spring:message>
                     </div>
-                    <div class="CMD_04-livraison-info-element  display-flex">
-                        <div class="CMD_04-livraison-info-element-titre">Adresse</div>
-                        <div class="CMD_04-livraison-info-element-contenue">457 rue du faubourg de Douai 33000
-                            Bordeaux</div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.prenom}</div>
+                    <div class="CMD_04-col-1 CMD_04-bold CMD_04-adresse-margin">
+                        <spring:message code="detailCommande.adresseFact"></spring:message>
                     </div>
+                    <div class="CMD_04-col-2 CMD_04-adresse-margin">${commande.adresseFacturation.adresse}</div>
                 </div>
             </fieldset>
         </div>
 
         <%--  totaux : total avant remise, remise, total après remise --%>
-        <div class="CMD_04-elements-a-droite">
+        <div class="CMD_04-divise-3-hauteur CMD_04-elements-a-droite">
 
             <%--  total avant remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>Total avant remise</h3>
+                <h3><spring:message code="pan00.titre.fieldset.total.avant.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">1 000,00</div>
+                    <div class="text-align-center CMD_04-padding-prix">${commande.prixTotalAvantRemise}</div>
                 </div>
             </div>
 
             <%-- remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>Remise</h3>
+                <h3><spring:message code="pan00.titre.fieldset.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">480,00</div>
+                    <div class="text-align-center CMD_04-padding-prix">${remise}</div>
                 </div>
             </div>
 
             <%--  total après remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>Total après remise</h3>
+                <h3><spring:message code="pan00.titre.fieldset.total.apres.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">520,00</div>
-                </div>
+                    <div class="text-align-center CMD_04-padding-prix">
+                        ${commande.prixTotalApresRemise}
+                        <spring:message code="glb.devise" /></div>
+                    </div>
             </div>
-
         </div>
-        <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing"></div>
     </div>
 </div>

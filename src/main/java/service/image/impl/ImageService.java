@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.image.IImageDao;
 import persistance.produit.dao.IProduitDao;
+import persistance.utilisateur.dao.IUtilisateurDao;
 import service.image.IImageService;
 import service.image.TypeImage;
 import service.util.GetPropertyValues;
@@ -26,20 +27,28 @@ import service.util.GetPropertyValues;
 public class ImageService implements IImageService {
 
     @Autowired
-    private IImageDao   imageDao;
+    private IImageDao       imageDao;
 
     @Autowired
-    private IProduitDao produitDao;
+    private IProduitDao     produitDao;
+
+    @Autowired
+    private IUtilisateurDao utilisateurDao;
 
     @Override
     public File getImage(final String id, final String type) {
         String path;
-        if (TypeImage.PRODUIT.type.equals(type)) {
+        if (TypeImage.PRODUIT.getType().equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
             path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
-        //ajouter l'utilisateurDao et le produitAcheteDao, indisponible à l'heure actuelle
+        if (TypeImage.UTILISATEUR.getType().equals(type)) {
+            final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
+            path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
+            return imageDao.getImage(path);
+        }
+        //ajouter le produitAcheteDao, indisponible à l'heure actuelle
         return null;
     }
 

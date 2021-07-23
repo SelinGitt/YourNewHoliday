@@ -21,11 +21,16 @@ import org.springframework.stereotype.Service;
 public class GetPropertyValues {
 
     /**
+     * Le nom du fichier contenant les chemins d'accès aux répertoires contenant les fichiers de l'application
+     */
+    private static final String              YNH_APPLICATION_PROPERTIES = "YNH-application.properties";
+
+    /**
      * Map contennant les chemins d'accès aux répertoires
      */
-    private static final Map<String, String> PROPERTIESMAP = new HashMap<>();
+    private static final Map<String, String> PROPERTIES_MAP             = new HashMap<>();
 
-    private static final Logger             logger        = LoggerFactory.getLogger(GetPropertyValues.class);
+    private static final Logger              LOGGER                     = LoggerFactory.getLogger(GetPropertyValues.class);
 
     /**
      * Constructor
@@ -41,7 +46,7 @@ public class GetPropertyValues {
         // On instancie une Properties
         final var prop = new Properties();
         // On précise le nom du fichier Properties
-        final var propFileName = "YNH-application.properties";
+        final var propFileName = YNH_APPLICATION_PROPERTIES;
         // On crée un stream sur le fichier Properties
         try (final var inputStream = getClass().getClassLoader().getResourceAsStream(propFileName)) {
             // Si le stream est null, on lance un FileNotFoundException
@@ -55,9 +60,13 @@ public class GetPropertyValues {
             getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
             getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
             getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
+            getPropertiesMap().put("tempsAvantDeconnection", prop.getProperty("tempsAvantDeconnection"));
+
+            LOGGER.debug("GetPropertyValues : getPropValue()");
+
             // On catch les éventuelles exceptions générées par le stream
         } catch (final Exception e) {
-            logger.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);
+            LOGGER.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);
         }
     }
 
@@ -67,6 +76,6 @@ public class GetPropertyValues {
      * @return the propertiesmap
      */
     public static Map<String, String> getPropertiesMap() {
-        return PROPERTIESMAP;
+        return PROPERTIES_MAP;
     }
 }

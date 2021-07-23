@@ -68,6 +68,7 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (21, 'viderPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (23, 'validerPanierProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (24, 'ajouterProduitPanier.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (25, 'validerPanier.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -95,12 +96,12 @@ INSERT INTO `utilisateur` (`idUtilisateur`, `reference`, `date_d_inscription`, `
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (1, 'ABC1', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-02-09 13:49:11', '1200.00', '1200.00', 3, 2);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (2, 'ABC2', '12, rue des oiseaux bleu, 75005, Paris', '12, rue des oiseaux bleu, 75005, Paris', '2021-04-01 13:49:11', '4000.00', '3600.00', 5, 2);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (3, 'ABC3', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2020-11-13 13:50:33', '600.00', '600.00', 1, 3);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (4, 'ABC4', '3, rue du Paradis, 62400, Béthune', '3, rue du Paradis, 62400, Béthune', '2021-02-09 13:50:33', '1200.00', '1200.00', 2, 3);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (5, 'ABC5', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-03-17 13:52:28', '900.00', '900.00', 1, 5);
-INSERT INTO `commande` (`idCommande`, `reference`, `adresse_facturation`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES (6, 'ABC6', '124, rue du petit chemin, 59000, Lille', '221, rue de l\église 59790, Ronchin', '2021-04-12 14:02:45', '1000.00', '1000.00', 1, 6);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(1, 'ABC1', 'Dupont', 'Rolan', '12, rue des oiseaux bleu, 75005, Paris', 'Dupont', 'Rolan', '12, rue des oiseaux bleu, 75005, Paris', '2021-02-09 13:49:11', '1200.00', '1200.00', 3, 2);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(2, 'ABC2', 'Barathéon', 'Robert', '12, rue des oiseaux bleu, 75005, Paris', 'Dupont', 'Rolan', '12, rue des oiseaux bleu, 75005, Paris', '2021-04-01 13:49:11', '4000.00', '3600.00', 5, 2);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(3, 'ABC3', 'Robert', 'Marcel', '3, rue du Paradis, 62400, Béthune', 'Lanister', 'Cersey', '3, rue du Paradis, 62400, Béthune', '2020-11-13 13:50:33', '600.00', '600.00', 1, 3);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(4, 'ABC4', 'Lanister', 'Cersey', '3, rue du Paradis, 62400, Béthune', 'Lanister', 'Cersey', '3, rue du Paradis, 62400, Béthune', '2021-02-09 13:50:33', '1200.00', '1200.00', 2, 3);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(5, 'ABC5', 'Maimai', 'Maiko', '124, rue du petit chemin, 59000, Lille', 'LeForestier', 'Maxime', '221, rue de léglise 59790, Ronchin', '2021-03-17 13:52:28', '900.00', '900.00', 1, 5);
+INSERT INTO `commande` (`idCommande`, `reference`, `nom_facturation`, `prenom_facturation`, `adresse_facturation`, `nom_livraison`, `prenom_livraison`, `adresse_livraison`, `date_commande`, `prix_total_ante_remise`, `prix_avec_remise`, `quantiteTotale`, `idUtilisateur`) VALUES(6, 'ABC6', 'Marsial', 'Tony', '124, rue du petit chemin, 59000, Lille', 'Marsial', 'Tony', '221, rue de léglise 59790, Ronchin', '2021-04-12 14:02:45', '1000.00', '1000.00', 1, 6);
 
 --
 -- Déchargement des données de la table `produit_achete`
@@ -176,4 +177,6 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (45, 23, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (46, 23, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (47, 24, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (48, 24, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (49, 25, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (50, 25, 3);
 

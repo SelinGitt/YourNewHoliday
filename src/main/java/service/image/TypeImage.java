@@ -12,15 +12,29 @@ public enum TypeImage {
     /**
      * Type Produit
      */
-    PRODUIT("pdt");
+    PRODUIT("pdt"),
+
+    /**
+     * Type Utilisateur
+     */
+    UTILISATEUR("usr");
 
     /**
      * type stocké
      */
-    public final String type;
+    private final String type;
 
     TypeImage(final String type) {
         this.type = type;
+    }
+
+    /**
+     * Getter for type
+     *
+     * @return the type
+     */
+    public String getType() {
+        return type;
     }
 
 }

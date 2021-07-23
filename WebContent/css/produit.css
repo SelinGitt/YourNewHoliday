@@ -29,7 +29,28 @@
 }
 
 td.pdt00Description {
-	max-width: 75%
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	max-height: 3em;
+	line-height: 1em;
+	text-align: justify;
+}
+
+.pdt00QuantiteAjouter {
+	display: flex;
+	padding-top: 2em;
+	padding-bottom: 3em;
+	margin-left: 7em;
+	margin-right: 7em;
+	justify-content: space-evenly;
+}
+
+.pdt00NomEtPrix {
+	font-weight: bold;
+	display: flex;
 }
 
 .pdt00Ajouter {
@@ -69,6 +90,11 @@ th.pdt01 {
 .pdt01Image {
 	width: 2.5em;
 	height: 2.5em;
+}
+
+.pdt01ImageNonActive {
+	width: 1.563em;
+	height: auto;
 }
 
 .pdt01Icone {
@@ -124,11 +150,12 @@ th.pdt01 {
 .pdt02FormulaireProduit {
 	table-layout: auto;
 	text-align: left;
-	line-height: 3.75em;
+	line-height: 2.6em;
 }
 
 .pdt02FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
 	padding-left: 5em;
 }
 
@@ -154,6 +181,10 @@ th.pdt01 {
 .pdt02ImageCreationProduit {
 	width: 100%;
 }
+
+.pdt02formError {
+	line-height:1em;
+ }
 
 /* PDT03 */
 .pdt03Grid-container {
@@ -191,11 +222,13 @@ th.pdt01 {
 .pdt03FormulaireProduit {
 	table-layout: auto;
 	text-align: left;
-	line-height: 3.75em;
+	line-height: 2.6em;
 }
 
 .pdt03FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
+	padding-left: 5em;
 }
 
 .pdt03FormPDT03Radio {
@@ -216,19 +249,21 @@ th.pdt01 {
 	min-height: 3.75em;
 }
 
-.pdt03ButtonsPdt03 {
-	width: 100%;
-	justify-content: space-around;
-	align-items: center;
-}
-
 .pdt03ListeService {
 	width: 100%;
-	line-height: 3em;
+	line-height: 4em;
 }
 
 .pdt03ImageCreationProduit {
 	width: 100%;
+}
+
+.pdt03Form-imageProduit img{
+	width: 50%;
+}
+
+.pdt03formError {
+	line-height: 1em;
 }
 
 /* PDT04 */

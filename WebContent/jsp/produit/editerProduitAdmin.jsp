@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
+
+    <c:if test="${not empty error}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+        </div>
+    </c:if>
 
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt02.titre" />
@@ -21,23 +28,53 @@
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.nom" /></td>
-                        <td><form:input path="nom" /></td>
+                        <td><div>
+                                <form:input path="nom" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="nom" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.reference" /></td>
-                        <td><form:input path="reference" /></td>
+                        <td><div>
+                                <form:input path="reference" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="reference" cssClass="text-color-rouge" />
+                            </div></td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.hebergement" /></td>
-                        <td><form:input path="hebergement" /></td>
+                        <td>
+                            <div>
+                                <form:input path="hebergement" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="hebergement" cssClass="text-color-rouge" />
+                            </div>
+                        </td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.destination" /></td>
-                        <td><form:input path="destination" /></td>
+                        <td><div>
+                                <form:input path="destination" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="destination" cssClass="text-color-rouge" />
+                            </div></td>
+
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.prix" /></td>
-                        <td><form:input path="prixUnitaire" /></td>
+                        <td><div>
+                                <form:input path="prixUnitaire" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="prixUnitaire" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.miseEnVente" /></td>
@@ -50,12 +87,16 @@
                                 <form:radiobutton path="miseEnVente" value="false" />
                                 <spring:message code="form.pdt02.non" />
                             </div>
-
                         </td>
                     </tr>
                     <tr>
                         <td><spring:message code="form.pdt02.description" /></td>
-                        <td class=pdt02TextAreapdt02><form:textarea path="description" rows="4" cols="70" /></td>
+                        <td class="pdt02TextAreapdt02"><div>
+                                <form:textarea class="textarea" path="description" rows="4" cols="70" />
+                            </div>
+                            <div class="pdt02formError">
+                                <form:errors path="description" cssClass="text-color-rouge" />
+                            </div></td>
                     </tr>
                     <tr>
                         <td></td>

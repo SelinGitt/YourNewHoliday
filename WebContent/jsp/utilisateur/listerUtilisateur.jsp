@@ -6,7 +6,8 @@
     <div>
         <c:if test="${not empty userSuccess}">
             <div class="background-validation-block block-message-commun">
-                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+                <span class="fa fa-check"></span> <span class="user01-message"><spring:message
+                        code="${userSuccess}" /></span>
             </div>
         </c:if>
 
@@ -21,7 +22,7 @@
         <spring:message code="usr01.titre" />
     </h1>
     <div class="user01-searchMenu display-flex">
-        <div class="usr01searchBar">
+        <div>
             <form:form action="listerUtilisateur.do" method="POST">
                 <input type="hidden" name="searchFilter" value="${searchFilter}" />
 
@@ -32,23 +33,21 @@
             </form:form>
         </div>
 
-        <div class="usr01filterBar">
+        <div class="user01-filter-bar">
             <form:form action="listerUtilisateur.do" method="POST">
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
 
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Visiteur --%>
-                    <option value="1"><spring:message code="usr01.filter.1" /></option>
-                    <%-- Client --%>
+                    <%-- Client // value correspondant au rôle dans la BD --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
-                    <%-- Admin --%>
+                    <%-- Admin // value correspondant au rôle dans la BD --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
                 </select>
 
                 <script>
-                	document.getElementById("filterBar").options[${searchFilter}].selected = true;
+                     document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />

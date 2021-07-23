@@ -4,6 +4,7 @@
 package persistance.produit.dao.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -54,6 +55,29 @@ class ProduitDaoTest {
         final List<ProduitDo> listProduit = this.iProduitDao.findAll();
         // On teste la conformitée du nombre de données
         assertEquals(6, listProduit.size());
+    }
+
+    /**
+     * Test method for {@link persistance.utilisateur.dao.impl.ProduitDao#findAllProduitsTriAlpha}.
+     */
+    @Test
+    void testFindAllProduitsTriAlpha() {
+        //On récupère tous les produits triés
+        final List<ProduitDo> listProduitTriee = this.iProduitDao.findAllProduitsTriAlpha();
+        //On récupère tous les produits non triés
+        final List<ProduitDo> listProduit = this.iProduitDao.findAll();
+        //On récupère tous les produits triés grâce à la méthode privée triReferenceCroissante()
+        final List<ProduitDo> liste = triReferenceCroissante();
+
+        assertEquals(listProduitTriee, liste);
+        assertNotEquals(listProduit, liste);
+    }
+
+    private List<ProduitDo> triReferenceCroissante() {
+        final List<ProduitDo> listeProduit = iProduitDao.findAll();
+        final Comparator<ProduitDo> produitDoReferenceComparator = Comparator.comparing(ProduitDo::getReference);
+        Collections.sort(listeProduit, produitDoReferenceComparator);
+        return listeProduit;
     }
 
     /**
@@ -228,5 +252,18 @@ class ProduitDaoTest {
         final String searchTermNull = "ZZZ";
         final List<ProduitDo> listeProduitsRechercheeNull = iProduitDao.rechercherAllProduits(searchTermNull);
         assertEquals(0, listeProduitsRechercheeNull.size());
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVenteAvecVersion(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitEnVenteAvecVersion() {
+        // On récupère un produit en vente
+        final ProduitDo produitDoEnVente = iProduitDao.findProduitEnVenteAvecVersion(3, 1);
+        assertNotNull(produitDoEnVente);
+        // On essaie de récupérer un produit qui n'est pas en vente
+        final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVenteAvecVersion(1, 1);
+        assertNull(produitDoPasEnVente);
     }
 }

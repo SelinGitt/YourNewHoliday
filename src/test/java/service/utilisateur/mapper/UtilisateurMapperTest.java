@@ -29,6 +29,7 @@ class UtilisateurMapperTest {
      */
     @Test
     void testMapToDo() {
+        //TODO : Quand upload img ok, tester également le chemin de l'avatar dans ce test
         final var utilisateurDto = new UtilisateurDto();
 
         utilisateurDto.setId(2);
@@ -41,6 +42,7 @@ class UtilisateurMapperTest {
         utilisateurDto.setDateNaissance("15/06/1994");
         utilisateurDto.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDto.setPassword("test");
+        utilisateurDto.setCheminAvatar("avatar");
 
         final var roleDto = new RoleDto();
 
@@ -64,11 +66,9 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDto.getRole().getLibelle(), utilisateurDoMapper.getRole().getLibelle());
         Assertions.assertEquals("Wed Jun 15 00:00:00 CEST 1994", utilisateurDoMapper.getDateNaissance().toString());
         Assertions.assertEquals(utilisateurDto.getAdresse(), utilisateurDoMapper.getAdresse());
+        Assertions.assertEquals(utilisateurDto.getCheminAvatar(), utilisateurDoMapper.getCheminAvatar());
 
         Assertions.assertEquals(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()), utilisateurDoMapper.getMdpHash());
-
-        // TODO : Changer quand upload img ok
-        Assertions.assertEquals("img/test.png", utilisateurDoMapper.getCheminAvatar());
     }
 
     /**
@@ -88,6 +88,7 @@ class UtilisateurMapperTest {
         utilisateurDo.setDateNaissance(new GregorianCalendar(2021, Calendar.APRIL, 12, 11, 30, 51).getTime());
         utilisateurDo.setAdresse("19 rue Test, 59000, Lille");
         utilisateurDo.setMdpHash("test");
+        utilisateurDo.setCheminAvatar("avatar");
 
         final var roleDo = new RoleDo();
 
@@ -111,6 +112,7 @@ class UtilisateurMapperTest {
         Assertions.assertEquals(utilisateurDo.getRole().getLibelle(), utilisateurDtoMapper.getRole().getLibelle());
         Assertions.assertEquals("12/04/2021", utilisateurDtoMapper.getDateNaissance());
         Assertions.assertEquals(utilisateurDo.getAdresse(), utilisateurDtoMapper.getAdresse());
+        Assertions.assertEquals(utilisateurDo.getCheminAvatar(), utilisateurDtoMapper.getCheminAvatar());
 
         Assertions.assertEquals(utilisateurDo.getMdpHash(), utilisateurDtoMapper.getPassword());
     }
