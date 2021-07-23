@@ -102,7 +102,14 @@ public class ProduitService implements IProduitService {
         // On update si le produit existe
         if (produitFound != null) {
             final var produitDo = ProduitMapper.mapToDo(produitDto);
-            return ProduitMapper.mapToDto(produitDao.update(produitDo));
+            // On met à jour le produit
+            final var produitDtoUpdated = ProduitMapper.mapToDto(produitDao.update(produitDo));
+            // on incrémente la version du produit si le produitDo a été modifié sinon on retourne la version actuelle
+            if (!produitFound.toString().equals(produitDtoUpdated.toString())) {
+                produitDo.setVersion(produitDo.getVersion() + 1);
+                return ProduitMapper.mapToDto(produitDao.update(produitDo));
+            }
+            return produitDtoUpdated;
         }
         return null;
     }
