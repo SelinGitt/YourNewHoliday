@@ -48,7 +48,8 @@ class CommandeMapperTest {
         commandeDo.setReference("CMD9874561");
         final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
-        commandeDo.setPrixTotal(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixSansRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixTotalApresRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
         commandeDo.setCommandeProduitDoSet(null);
         commandeDo.setAdresseLivraison("12 rue de la toison d'or, 59100 ROUBAIX");
@@ -60,7 +61,7 @@ class CommandeMapperTest {
         assertEquals("20", commandeDto.getId());
         assertEquals("CMD9874561", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
-        assertEquals("200,40", commandeDto.getPrixTotal());
+        assertEquals("200,40", commandeDto.getPrixTotalApresRemise());
         assertEquals("5", commandeDto.getQuantiteTotale());
         assertEquals(Collections.emptyList(), commandeDto.getListCommandeProduitDto());
 
@@ -89,7 +90,8 @@ class CommandeMapperTest {
         commandeDo.setReference("CMD9876541");
         final Date date = DateFormatUtil.formaterStringToDate("12/12/1990");
         commandeDo.setDate(date);
-        commandeDo.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setCommandeProduitDoSet(null);
         commandeDo.setAdresseLivraison("18 rue de la toison d'or, 59100 ROUBAIX");
@@ -100,7 +102,8 @@ class CommandeMapperTest {
         commandeDo2.setReference("CMD4569873");
         final Date date2 = DateFormatUtil.formaterStringToDate("13/06/1990");
         commandeDo2.setDate(date2);
-        commandeDo2.setPrixTotal(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo2.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
+        commandeDo2.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
         commandeDo2.setCommandeProduitDoSet(null);
         commandeDo2.setAdresseLivraison("19 rue de la toison d'or, 59100 ROUBAIX");
@@ -203,7 +206,7 @@ class CommandeMapperTest {
         assertEquals("CMD1234567", commandeDo.getReference());
         assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
-        assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotal());
+        assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
         assertEquals(3, commandeDo.getQuantiteTotale());
         assertEquals(panierDto.getNombreDeReferences(), commandeDo.getCommandeProduitDoSet().size());
         assertEquals(1, commandeDo.getIdUtilisateur());

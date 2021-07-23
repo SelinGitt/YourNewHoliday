@@ -59,7 +59,7 @@ class ProduitServiceTest {
         final var produitDo2 = new ProduitDo();
         produitDo2.setPrixUnitaire(125d);
         // List.of permet de retourner une liste
-        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo, produitDo2));
+        Mockito.when(this.iProduitDaoMock.findAllProduitsTriAlpha()).thenReturn(List.of(produitDo, produitDo2));
         assertEquals(2, this.produitServiceMock.listerAllProduit().size());
     }
 

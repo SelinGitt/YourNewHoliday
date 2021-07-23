@@ -39,16 +39,14 @@
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Visiteur --%>
-                    <option value="1"><spring:message code="usr01.filter.1" /></option>
-                    <%-- Client --%>
+                    <%-- Client // value correspondant au rôle dans la BD --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
-                    <%-- Admin --%>
+                    <%-- Admin // value correspondant au rôle dans la BD --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
                 </select>
 
                 <script>
-                	document.getElementById("filterBar").options[${searchFilter}].selected = true;
+                     document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />

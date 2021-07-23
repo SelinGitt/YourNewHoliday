@@ -25,6 +25,7 @@ import presentation.commande.dto.CommandeProduitDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import presentation.utilisateur.dto.UtilisateurDto;
 import service.commande.ICommandeService;
 import service.util.DecimalFormatUtils;
 
@@ -73,7 +74,7 @@ class CommandeServiceTest {
         assertEquals("ABC1", commandeDto.getReference());
         assertEquals("09/02/2021", commandeDto.getDate());
         final String nombre = DecimalFormatUtils.decimalFormatUtil(1200.00);
-        assertEquals(nombre, commandeDto.getPrixTotal());
+        assertEquals(nombre, commandeDto.getPrixTotalApresRemise());
         final List<CommandeProduitDto> listCommandeProduitDto = commandeDto.getListCommandeProduitDto();
         assertNotNull(listCommandeProduitDto);
         assertEquals(2, listCommandeProduitDto.size());
@@ -207,9 +208,14 @@ class CommandeServiceTest {
         adresses.setCommandeAdresseLivraison(livraison);
         adresses.setCommandeAdresseFacturation(facturation);
 
-        final var commandeDtoReference = this.commandeService.validerPanier(panierDto, adresses, 1);
+        final UtilisateurDto utilisateur = new UtilisateurDto();
+        utilisateur.setNom("Dupont");
+        utilisateur.setPrenom("Jean");
+        utilisateur.setId(1);
+
+        final var commandeDtoReference = this.commandeService.validerPanier(panierDto, adresses, utilisateur);
         assertNotNull(commandeDtoReference);
-        assertTrue(commandeDtoReference.matches("CMD[A-Z0-9]{7}"));
+        assertTrue(commandeDtoReference.matches("[A-Z0-9]{15}"));
     }
 
 }

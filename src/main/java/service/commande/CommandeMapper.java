@@ -18,8 +18,12 @@ import service.util.DecimalFormatUtils;
  * @author Hanan Anghari
  */
 public class CommandeMapper {
+
+    /**
+     * Constructor
+     */
     private CommandeMapper() {
-        // emprty
+        // void
     }
 
     /**
@@ -35,10 +39,12 @@ public class CommandeMapper {
         final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
+        commandeDto.setPrixTotalAvantRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixSansRemise()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
+        commandeDto.setPrixTotalApresRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotalApresRemise()));
+        commandeDto.setRemise(calculerRemise(commandeDto));
 
         final var livraisonAdresse = new CommandeAdresseDto();
         livraisonAdresse.setAdresse(commandeDo.getAdresseLivraison());
@@ -61,6 +67,11 @@ public class CommandeMapper {
 
     }
 
+    private static String calculerRemise(final CommandeDto commande) {
+        return DecimalFormatUtils.decimalFormatUtil(DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalAvantRemise())
+                - DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalApresRemise()));
+    }
+
     /**
      * Permet de mapper un Panier en CommandeDo
      *
@@ -77,7 +88,7 @@ public class CommandeMapper {
         commandeDo.setReference(reference);
         commandeDo.setDate(new Date());
         commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
-        commandeDo.setPrixTotal(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
+        commandeDo.setPrixTotalApresRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
         commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
