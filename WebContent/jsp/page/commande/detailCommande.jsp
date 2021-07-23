@@ -51,7 +51,8 @@
                                 <div class="CMD_04-col-2 CMD_04-height">
                                     <div
                                         class="CMD_04-bold CMD_04-text-align-left
-                                               CMD_04-box-title CMD_04-title-text-color">
+                                               CMD_04-box-title CMD_04-title-text-color
+                                               CMD_04-text-overflow">
                                         ${cmdProduit.produitAcheteDto.nom}
                                         <spring:message code="detailCommande.tiret"></spring:message>
                                         ${cmdProduit.produitAcheteDto.reference}
@@ -64,7 +65,8 @@
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-2 CMD_04-border-right
                                        CMD_04-height CMD_04-box-sizing">
-                                <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
+                                <div class="CMD_04-bold CMD_04-text-align-center
+                                            CMD_04-box-title CMD_04-text-overflow">
                                     <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                                 </div>
                                 <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">

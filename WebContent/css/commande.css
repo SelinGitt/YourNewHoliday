@@ -322,24 +322,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	margin-bottom: 1.563em;
 }
 
-.CMD_04-livraison-info-element {
-	margin-bottom: 0.75em;
-}
-
-.CMD_04-livraison-info-element-contenue {
-	width: 65%;
-}
-
-.CMD_04-livraison-info-element-titre {
-	width: 35%;
-	font-weight: bold;
-}
-
-.CMD_04-livraison-infos {
-	width: 90%;
-	margin: auto;
-}
-
 .CMD_04-border-prix-avant-remise {
 	border: 0.19em solid #000000;
 	width: 50%;
@@ -366,6 +348,17 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	max-height: 3em;
 	line-height: 1em;
 	padding-right: 2em;
+}
+
+/* si le text dépasse de la boite, il sera tronqué automatiquement */
+.CMD_04-text-overflow {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	max-height: 1em;
+	line-height: 1em;
 }
 
 /* la grille pour commande adresse */
