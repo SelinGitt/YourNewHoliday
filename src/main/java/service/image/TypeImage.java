@@ -24,6 +24,10 @@ public enum TypeImage {
      */
     private final String type;
 
+    TypeImage(final String type) {
+        this.type = type;
+    }
+
     /**
      * Getter for type
      *
@@ -31,10 +35,6 @@ public enum TypeImage {
      */
     public String getType() {
         return type;
-    }
-
-    TypeImage(final String type) {
-        this.type = type;
     }
 
 }
