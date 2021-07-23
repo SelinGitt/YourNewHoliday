@@ -354,3 +354,15 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	width: 90%;
 	padding-left: 5%;
 }
+
+/* si le text dépasse de la boite, il sera tronqué automatiquement */
+.CMD_04-description {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	max-height: 3em;
+	line-height: 1em;
+	padding-right: 2em;
+}
