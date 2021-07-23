@@ -33,7 +33,11 @@ DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
   `idCommande` int(11) NOT NULL AUTO_INCREMENT,
   `reference` varchar(15) NOT NULL,
+  `nom_facturation` varchar(50) NOT NULL,
+  `prenom_facturation` varchar(50) NOT NULL,
   `adresse_facturation` varchar(255) NOT NULL,
+  `nom_livraison` varchar(50) NOT NULL,
+  `prenom_livraison` varchar(50) NOT NULL,
   `adresse_livraison` varchar(255) NOT NULL,
   `date_commande` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `prix_total_ante_remise` decimal(15,2) NOT NULL,

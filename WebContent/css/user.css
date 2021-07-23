@@ -59,9 +59,17 @@
 }
 
 /* USR01 */
+.user01-message {
+	margin-left: 0.5em;	
+}
+
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 100%;
+}
+
+.user01-filter-bar {
+	margin-left: 1em;
 }
 
 .user01-searchMenu .user01AddUser {
@@ -153,6 +161,47 @@
 
 .user02-reset {
 	color: #FFFFFF;
+}
+
+.user02-rightSide-avatar {
+	margin-bottom: 1em;
+}
+
+.user02-admin-options {
+	border: 0.09375em solid black;
+}
+
+.user02-admin-button {
+	margin: 0.5em 0;
+}
+
+.user02-admin-button-commande {
+	padding: 0.25em 0.75em;
+}
+
+.user02-admin-roles {
+	width: 95%;
+	margin: 0.5em 0;
+}
+
+.user02-status-checkbox {
+	display: none;
+}
+
+.user02-admin-desactive {
+	color: grey;
+	font-size: 2em !important;
+	margin-left: 0.6em;
+}
+
+.user02-admin-active {
+	color: green;
+	font-size: 2em !important;
+	margin-left: 0.5em;
+}
+
+.user02-admin-ref {
+	margin: 0.5em 0;
 }
 
 /* USR03 */
