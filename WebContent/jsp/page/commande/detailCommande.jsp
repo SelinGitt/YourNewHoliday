@@ -1,5 +1,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${not empty confirmationMesssage}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
+    </div>
+</c:if>
 <h1>
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
@@ -30,9 +35,10 @@
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <c:url value="consulterProduit.do" var="destination">
-                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
-                                        <c:param name="from" value="detail"/>
-                                        <c:param name="paramValue" value="${commande.reference}"/>
+                                        <c:param name="idProduit" 
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
+                                        <c:param name="from" value="detail" />
+                                        <c:param name="paramValue" value="${commande.reference}" />
                                     </c:url>
                                     <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
