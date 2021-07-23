@@ -6,7 +6,8 @@
     <div>
         <c:if test="${not empty userSuccess}">
             <div class="background-validation-block block-message-commun">
-                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+                <span class="fa fa-check"></span> <span class="user01-message"><spring:message
+                        code="${userSuccess}" /></span>
             </div>
         </c:if>
 
