@@ -152,7 +152,7 @@
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3><spring:message code="pan00.titre.fieldset.total.avant.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">${commande.prixTotalAvantRemise}</div>
+                    <div class="CMD_04-text-align-right CMD_04-padding-prix">${commande.prixTotalAvantRemise}</div>
                 </div>
             </div>
 
@@ -160,7 +160,7 @@
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3><spring:message code="pan00.titre.fieldset.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">${remise}</div>
+                    <div class="CMD_04-text-align-right CMD_04-padding-prix">${remise}</div>
                 </div>
             </div>
 
@@ -168,7 +168,7 @@
             <div class="justify-content-space-between display-flex align-item-center">
                 <h3><spring:message code="pan00.titre.fieldset.total.apres.remise" /></h3>
                 <div class="CMD_04-border-prix-avant-remise">
-                    <div class="text-align-center CMD_04-padding-prix">
+                    <div class="CMD_04-text-align-right CMD_04-padding-prix">
                         ${commande.prixTotalApresRemise}
                         <spring:message code="glb.devise" /></div>
                     </div>
