@@ -2,68 +2,65 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="conteneur-ascenseur">
-    <div>
-        <c:if test="${not empty userSuccess}">
-            <div class="background-validation-block block-message-commun">
-                <span class="fa fa-check"></span> <span class="user01-message"><spring:message
-                        code="${userSuccess}" /></span>
-            </div>
-        </c:if>
+<c:if test="${not empty userSuccess}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span class="user01-message"><spring:message code="${userSuccess}" /></span>
+    </div>
+</c:if>
 
-        <c:if test="${not empty error}">
-            <div class="background-error-block block-message-commun">
-                <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
-            </div>
-        </c:if>
+<c:if test="${not empty error}">
+    <div class="background-error-block block-message-commun">
+        <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+    </div>
+</c:if>
+
+<h1 id="titreGestion" class="text-align-center">
+    <spring:message code="usr01.titre" />
+</h1>
+<div class="user01-searchMenu display-flex">
+    <div>
+        <form:form action="listerUtilisateur.do" method="POST">
+            <input type="hidden" name="searchFilter" value="${searchFilter}" />
+
+            <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
+                placeholder="<spring:message code='usr01.searchbar'/>">
+
+            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+        </form:form>
     </div>
 
-    <h1 id="titreGestion" class="text-align-center">
-        <spring:message code="usr01.titre" />
-    </h1>
-    <div class="user01-searchMenu display-flex">
-        <div>
-            <form:form action="listerUtilisateur.do" method="POST">
-                <input type="hidden" name="searchFilter" value="${searchFilter}" />
+    <div class="user01-filter-bar">
+        <form:form action="listerUtilisateur.do" method="POST">
+            <input type="hidden" name="searchInput" value="${searchTerm}" />
 
-                <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
-                    placeholder="<spring:message code='usr01.searchbar'/>">
+            <select name="searchFilter" id="filterBar">
+                <%-- Tous --%>
+                <option value="0"><spring:message code="usr01.filter." /></option>
+                <%-- Client // value correspondant au rôle dans la BD --%>
+                <option value="2"><spring:message code="usr01.filter.2" /></option>
+                <%-- Admin // value correspondant au rôle dans la BD --%>
+                <option value="3"><spring:message code="usr01.filter.3" /></option>
+            </select>
 
-                <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
-            </form:form>
-        </div>
-
-        <div class="user01-filter-bar">
-            <form:form action="listerUtilisateur.do" method="POST">
-                <input type="hidden" name="searchInput" value="${searchTerm}" />
-
-                <select name="searchFilter" id="filterBar">
-                    <%-- Tous --%>
-                    <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Client // value correspondant au rôle dans la BD --%>
-                    <option value="2"><spring:message code="usr01.filter.2" /></option>
-                    <%-- Admin // value correspondant au rôle dans la BD --%>
-                    <option value="3"><spring:message code="usr01.filter.3" /></option>
-                </select>
-
-                <script>
+            <script>
                      document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
-                <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
-            </form:form>
-        </div>
-
-        <div class="user01AddUser">
-            <a href="creerUtilisateur.do">
-                <button type="button" class="user01-newUserBouton">
-                    <span class="fa fa-plus-square-o" aria-hidden="true"></span>
-                    <spring:message code="usr01.creer.nouveau" />
-                </button>
-            </a>
-        </div>
+            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+        </form:form>
     </div>
 
+    <div class="user01AddUser">
+        <a href="creerUtilisateur.do">
+            <button type="button" class="user01-newUserBouton">
+                <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                <spring:message code="usr01.creer.nouveau" />
+            </button>
+        </a>
+    </div>
+</div>
+
+<div class="user01-table">
     <table class="user01-lister" aria-describedby="titreGestion">
         <thead>
             <tr>
