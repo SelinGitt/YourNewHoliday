@@ -44,22 +44,18 @@ public class ListeCommandeController {
     @GetMapping
     public ModelAndView listerCommande(final @RequestParam(name = "id", required = false, defaultValue = "") String idUtilisateur,
             final HttpSession session) {
+        final var modelAndView = new ModelAndView("listerCommande");
+        List<CommandeDto> listCommande;
+
         if (idUtilisateur.isEmpty()) {
-            final var modelAndView = new ModelAndView();
             final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
             this.logger.debug("lister Commande utilisateur : {} ", utilisateurConnecte.getIdUtilisateur());
-            final List<CommandeDto> listCommande = this.iCommandeService
-                    .listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
-            modelAndView.setViewName("listerCommande");
-            modelAndView.getModelMap().addAttribute("listCommande", listCommande);
-            return modelAndView;
+            listCommande = this.iCommandeService.listerCommandesUtilisateur(Integer.valueOf(utilisateurConnecte.getIdUtilisateur()));
+        } else {
+            this.logger.debug("lister Commande utilisateur : {} ", idUtilisateur);
+            listCommande = this.iCommandeService.listerCommandesUtilisateur(Integer.valueOf(idUtilisateur));
         }
 
-        this.logger.debug("lister Commande utilisateur : {} ", idUtilisateur);
-        final List<CommandeDto> listCommande = this.iCommandeService.listerCommandesUtilisateur(Integer.valueOf(idUtilisateur));
-
-        final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("listerCommande");
         modelAndView.getModelMap().addAttribute("listCommande", listCommande);
         return modelAndView;
     }
