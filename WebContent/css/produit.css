@@ -150,11 +150,12 @@ th.pdt01 {
 .pdt02FormulaireProduit {
 	table-layout: auto;
 	text-align: left;
-	line-height: 3.75em;
+	line-height: 2.6em;
 }
 
 .pdt02FormulaireProduit td {
 	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
 	padding-left: 5em;
 }
 
@@ -180,6 +181,10 @@ th.pdt01 {
 .pdt02ImageCreationProduit {
 	width: 100%;
 }
+
+.pdt02formError {
+	line-height:1em;
+ }
 
 /* PDT03 */
 .pdt03Grid-container {
