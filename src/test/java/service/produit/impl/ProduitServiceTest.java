@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -19,8 +21,13 @@ import org.mockito.MockitoAnnotations;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.ProduitMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe test de {@link ProduitService}
@@ -33,6 +40,8 @@ class ProduitServiceTest {
     private ProduitService produitServiceMock;
     @Mock
     private IProduitDao    iProduitDaoMock;
+    @Mock
+    private IPanierService iPanierService;
 
     @BeforeEach
     void initMock() {
@@ -49,7 +58,7 @@ class ProduitServiceTest {
         final var produitDo2 = new ProduitDo();
         produitDo2.setPrixUnitaire(125d);
         // List.of permet de retourner une liste
-        Mockito.when(this.iProduitDaoMock.findAll()).thenReturn(List.of(produitDo, produitDo2));
+        Mockito.when(this.iProduitDaoMock.findAllProduitsTriAlpha()).thenReturn(List.of(produitDo, produitDo2));
         assertEquals(2, this.produitServiceMock.listerAllProduit().size());
     }
 
@@ -71,30 +80,51 @@ class ProduitServiceTest {
      * Test method for {@link service.produit.impl.ProduitService#creerProduit(presentation.produit.dto.ProduitDto)}.
      */
     @Test
-    void testCreerProduit() {
-        final var produitDo = new ProduitDo();
-        produitDo.setNom("Voyage en Tanzanie");
-        produitDo.setReference("0125556789");
-        produitDo.setHebergement("BouiBoui and Co.");
-        produitDo.setDestination("Zanzibar");
-        produitDo.setPrixUnitaire(125d);
-        produitDo.setMiseEnVente(true);
-        produitDo.setDescription("Super voyage à la découverte de zanzibar");
+    void testCreerProduitInexistantEnBase() {
+        final var produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setNom("Test Edition");
+        produitDto.setReference("TEST00000");
+        produitDto.setPrixUnitaire("10.00");
+        produitDto.setServices("1");
+        produitDto.setMiseEnVente("true");
+        produitDto.setHebergement("Hotel Test");
+        produitDto.setDestination("Testmanie");
+        produitDto.setDescription("Test moi");
+        produitDto.setCheminImage("C:/temp/img/test.png");
+        produitDto.setVersion("1");
 
-        final var produitDoCree = new ProduitDo();
-        produitDo.setIdProduitOriginal(5);
-        produitDo.setNom("Voyage en Tanzanie");
-        produitDo.setReference("0125556789");
-        produitDo.setHebergement("BouiBoui and Co.");
-        produitDo.setDestination("Zanzibar");
-        produitDo.setPrixUnitaire(125d);
-        produitDo.setMiseEnVente(true);
-        produitDo.setDescription("Super voyage à la découverte de zanzibar");
+        Mockito.when(this.iProduitDaoMock.findByReference(produitDto.getReference())).thenReturn(null);
+        Mockito.when(this.iProduitDaoMock.create(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
+        final var produitDtoCree = produitServiceMock.creerProduit(produitDto);
+        assertEquals("1", produitDtoCree.getServices());
+        assertNotNull(produitDtoCree);
+        assertEquals("TEST00000", produitDtoCree.getReference());
 
-        Mockito.when(this.iProduitDaoMock.create(produitDo)).thenReturn(produitDoCree);
-        final ProduitDo nouveauProduit = iProduitDaoMock.create(produitDo);
-        assertNotNull(nouveauProduit);
-        assertEquals(produitDoCree, nouveauProduit);
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#creerProduit(presentation.produit.dto.ProduitDto)}.
+     */
+    @Test
+    void testCreerProduitDejaEnBase() {
+        final var produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setNom("Test Edition");
+        produitDto.setReference("TEST00000");
+        produitDto.setPrixUnitaire("10.00");
+        produitDto.setServices("1");
+        produitDto.setMiseEnVente("true");
+        produitDto.setHebergement("Hotel Test");
+        produitDto.setDestination("Testmanie");
+        produitDto.setDescription("Test moi");
+        produitDto.setCheminImage("C:/temp/img/test.png");
+        produitDto.setVersion("1");
+
+        Mockito.when(this.iProduitDaoMock.findByReference(produitDto.getReference())).thenReturn(Mockito.notNull());
+        final var produitDtoCree = produitServiceMock.creerProduit(produitDto);
+        assertNull(produitDtoCree);
+
     }
 
     /**
@@ -139,8 +169,51 @@ class ProduitServiceTest {
     }
 
     /**
-     * Test method for {@link service.produit.impl.ProduitService#trouverParReference(String)}.
+     * Test method for {@link service.produit.impl.ProduitService#findFilter(String,String)}.
      */
+    @Test
+    void testFindFilterWithRecherche() {
+        Mockito.when(this.iProduitDaoMock.rechercherAllProduits("23")).thenReturn(Collections.emptyList());
+        final List<ProduitDto> liste = produitServiceMock.findFilter("23", TypeTriAlphanumerique.findValue("not existing"));
+        assertNotNull(liste);
+        assertEquals(0, liste.size());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#findFilter(String,String)}.
+     */
+    @Test
+    void testFindFilterWithTri() {
+        //création des produits
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(1274d);
+        produitDo.setIdProduitOriginal(10);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(126d);
+        produitDo2.setIdProduitOriginal(11);
+        final var produitDto = new ProduitDto();
+        produitDto.setPrixUnitaire("1274,00");
+        produitDto.setIdProduitOriginal("10");
+        final var produitDto2 = new ProduitDto();
+        produitDto2.setPrixUnitaire("126,00");
+        produitDto2.setIdProduitOriginal("11");
+        //création de la liste à retourner
+        final List<ProduitDo> listeTriee = List.of(produitDo2, produitDo);
+        Mockito.when(this.iProduitDaoMock.trierListe(TypeTriAlphanumerique.DESC)).thenReturn(listeTriee);
+        //attribution des listes de produitDto, une triée, et une non triée qui sera triée par une méthode java
+        final List<ProduitDto> liste = produitServiceMock.findFilter("", TypeTriAlphanumerique.findValue("2"));
+        final List<ProduitDto> listeNonTriee = new ArrayList<>();
+        listeNonTriee.addAll(List.of(produitDto, produitDto2));
+        //création d'un comparator pour préparer le tri via java
+        final Comparator<ProduitDto> produitDoPrixComparator = Comparator.comparing(ProduitDto::getPrixUnitaire);
+        Collections.sort(listeNonTriee, produitDoPrixComparator);
+        assertEquals(liste, listeNonTriee);
+    }
+
+    /**
+     * Test method for {@link final service.produit.impl.ProduitService#trouverParReference(String)}.
+     */
+
     @Test
     void testTrouverParReference() {
         final var produitDo = new ProduitDo();
@@ -191,5 +264,74 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitById(50));
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierInvalideNegatif() {
+        final PanierDto panier = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("-100");
+        assertNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierInvalideTropGrand() {
+        final PanierDto panier = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("200");
+        assertNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#updatePanier(PanierDto, BeanQuantite)}.
+     */
+    @Test
+    void testUpdatePanierValide() {
+        final PanierDto panier = new PanierDto();
+        final PanierDto panierUpdated = new PanierDto();
+        final BeanQuantite beanQuantite = new BeanQuantite();
+        beanQuantite.setId("1");
+        beanQuantite.setQuantite("94");
+        panierUpdated.setPrixApresRemiseAffichage("1000");
+        panierUpdated.setPrixTotalAffichage("1000");
+        panierUpdated.setRemiseAffichage("0");
+        Mockito.when(this.iPanierService.updatePanier(panier, 1, 94)).thenReturn(panierUpdated);
+        assertNotNull(produitServiceMock.updatePanier(panier, beanQuantite));
+    }
+
+    /**
+     * Test method for
+     * {@link service.produit.impl.ProduitService#choixConsulterProduit(service.utilisateur.util.UtilisateurRoleEnum, Integer)}.
+     */
+    @Test
+    void testChoixConsulterProduit() {
+
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        produitDo.setNom("Test en Tanzanie");
+        produitDo.setReference("TEST556789");
+        produitDo.setHebergement("Test BouiBoui and Co.");
+        produitDo.setDestination("Test Zanzibar");
+        produitDo.setPrixUnitaire(125d);
+        produitDo.setMiseEnVente(true);
+        produitDo.setDescription("Test super voyage à la découverte de zanzibar");
+        produitDo.setCheminImage("C:/YNH/img");
+        produitDo.setVersion(1);
+        produitDo.setServices(1);
+
+        Mockito.when(iProduitDaoMock.findById(1)).thenReturn(produitDo);
+        Mockito.when(iProduitDaoMock.findProduitEnVente(1)).thenReturn(null);
+
+        assertNotNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.ADMINISTRATEUR, 1));
+        assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.VISITEUR, 1));
+        assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.CLIENT, 1));
     }
 }

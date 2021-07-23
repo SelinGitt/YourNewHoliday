@@ -6,9 +6,14 @@
 	background-color: #008000;
 }
 
-/* Le rouge*/
+/* Le background rouge */
 .background-color-rouge {
 	background-color: #F00000;
+}
+
+/* Le texte rouge */
+.text-color-rouge {
+	color: #F00000;
 }
 
 /* orange */
@@ -102,4 +107,9 @@ section {
 
 .display-none {
 	display: none;
+}
+
+/* alignement du texte au centre */
+.text-center {
+	text-align: center;
 }

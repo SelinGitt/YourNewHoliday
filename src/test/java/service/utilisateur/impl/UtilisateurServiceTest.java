@@ -22,7 +22,7 @@ import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.utilisateur.util.UtilisateurMapper;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -51,7 +51,7 @@ class UtilisateurServiceTest {
      */
     @Test
     void testFindAll() {
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.emptyList());
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.emptyList());
         Assertions.assertEquals(0, this.utilisateurService.findAllUtilisateurs().size());
     }
 
@@ -72,7 +72,7 @@ class UtilisateurServiceTest {
 
         userDo.setRole(role);
 
-        Mockito.when(this.dao.findAll()).thenReturn(Collections.singletonList(userDo));
+        Mockito.when(this.dao.findAllTriAlpha()).thenReturn(Collections.singletonList(userDo));
         Assertions.assertEquals(1, this.utilisateurService.findAllUtilisateurs().size());
     }
 
@@ -103,18 +103,23 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurCreated = this.utilisateurService.createUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurCreated);
+
+        Mockito.when(this.dao.findByEmail(utilisateurDto.getEmail())).thenReturn(new UtilisateurDo());
+
+        Assertions.assertNull(this.utilisateurService.createUtilisateur(utilisateurDto));
     }
 
     /**
      * Test pour {@link service.utilisateur.impl.UtilisateurService#authentify()}
      */
     @ParameterizedTest
-    @CsvSource({"email, password, true", "email, wrong password, false"})
-    void testAuthentifyEmailOK(final String email, final String password, final String check) {
+    @CsvSource({"email, password, true, false", "email, wrong password, false, false", "email, password, false, true"})
+    void testAuthentifyEmailOK(final String email, final String password, final String check, final boolean isDesactive) {
 
         //On crée l'utilisateurDo qu'on récupère en BD
         final UtilisateurDo utilisateurDo = new UtilisateurDo();
         utilisateurDo.setEmail("email");
+        utilisateurDo.setEstDesactive(isDesactive);
         //Correspond au hash de "password"
         utilisateurDo.setMdpHash("B0FBB24B2497D66890D0BBF15034768B8BD7557E094D512A52AD0F0C58FA0AB8");
         utilisateurDo.setNom("nom");
@@ -128,14 +133,23 @@ class UtilisateurServiceTest {
         Mockito.when(this.dao.findByEmail(email)).thenReturn(utilisateurDo);
 
         //On tente une authentification 
-        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
+        final UtilisateurServiceAuthReturn utilisateurServiceAuthReturn = this.utilisateurService.authentify(email, password);
+        final var utilisateurConnecteDto = utilisateurServiceAuthReturn.getUtilisateurConnecteDto();
+        final var isDesactiveConnecteDto = utilisateurServiceAuthReturn.isDesactive();
 
         //L'argument "true" sert à indiquer qu'on attend une authentification réussie
         if (check.equals("true")) {
             Assertions.assertNotNull(utilisateurConnecteDto);
             Assertions.assertEquals("nom", utilisateurConnecteDto.getNom());
+            Assertions.assertFalse(isDesactiveConnecteDto);
         } else {
-            Assertions.assertNull(utilisateurConnecteDto);
+            if (isDesactive) {
+                Assertions.assertNull(utilisateurConnecteDto);
+                Assertions.assertTrue(isDesactiveConnecteDto);
+            } else {
+                Assertions.assertNull(utilisateurConnecteDto);
+                Assertions.assertFalse(isDesactiveConnecteDto);
+            }
         }
     }
 
@@ -149,8 +163,12 @@ class UtilisateurServiceTest {
         //On teste avec un email non valide, findByEmail renvoie ddonc toujours null
         Mockito.when(this.dao.findByEmail(email)).thenReturn(null);
 
-        final UtilisateurConnecteDto utilisateurConnecteDto = this.utilisateurService.authentify(email, password);
+        final UtilisateurServiceAuthReturn utilisateurServiceAuthReturn = this.utilisateurService.authentify(email, password);
+        final UtilisateurConnecteDto utilisateurConnecteDto = utilisateurServiceAuthReturn.getUtilisateurConnecteDto();
+        final boolean isDesactive = utilisateurServiceAuthReturn.isDesactive();
+
         Assertions.assertNull(utilisateurConnecteDto);
+        Assertions.assertFalse(isDesactive);
     }
 
     /**
@@ -219,6 +237,26 @@ class UtilisateurServiceTest {
         final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
 
         Assertions.assertNotNull(utilisateurDtoUpdated);
+    }
+
+    /**
+     * Test pour {@link service.utilisateur.impl.UtilisateurService#updateUtilisateur(UtilisateurDto)}
+     */
+    @Test
+    void testUpdateKO() {
+        final UtilisateurDto utilisateurDto = new UtilisateurDto();
+        utilisateurDto.setId(1);
+        utilisateurDto.setEmail("test@test.fr");
+
+        final UtilisateurDo utilisateurDoReturn = new UtilisateurDo();
+        utilisateurDoReturn.setIdUtilisateur(2);
+        utilisateurDoReturn.setEmail("test@test.fr");
+
+        Mockito.when(this.dao.findByEmail("test@test.fr")).thenReturn(utilisateurDoReturn);
+
+        final UtilisateurDto utilisateurDtoUpdated = this.utilisateurService.updateUtilisateur(utilisateurDto);
+
+        Assertions.assertNull(utilisateurDtoUpdated);
     }
 
     /**

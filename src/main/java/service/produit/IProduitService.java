@@ -5,7 +5,11 @@ package service.produit;
 
 import java.util.List;
 
+import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Interface Métier du produit
@@ -45,6 +49,15 @@ public interface IProduitService {
     List<ProduitDto> listerAllProduit();
 
     /**
+     * Permet de faire une recherche en fonction de leur paramètres
+     *
+     * @param  searchTerm la recherche a effectuer
+     * @param  tri        le type de tri à effectuer
+     * @return            la liste de produitDto fitrée
+     */
+    List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri);
+
+    /**
      * Permet de maj un produit
      * 
      * @param  produitDto le produit à éditer
@@ -72,7 +85,7 @@ public interface IProduitService {
      * Permet de créer un produit
      * 
      * @param  produitDto le produit à créer
-     * @return            le produit créé
+     * @return            le produit créé, null sinon
      */
     ProduitDto creerProduit(final ProduitDto produitDto);
 
@@ -83,4 +96,23 @@ public interface IProduitService {
      * @return           le produit trouvé, null sinon
      */
     ProduitDto trouverProduitById(final Integer idProduit);
+
+    /**
+     * Permet d'ajouter un produit au panier, en testant les règles de gestions
+     *
+     * @param  panierDto    le panier où il faut ajouter les produits
+     * @param  beanQuantite le bean contenant la quantité et l'id du produit à ajouter
+     * @return              <code>true</code> si le bean est correct, de par sa quantité ou son ID<br>
+     *                      <code>false</code> dans le cas contraire
+     */
+    PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role
+     * 
+     * @param  role      role de l'utilisateur
+     * @param  idProduit id du produit à consulter
+     * @return           produit à consulter
+     */
+    ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit);
 }

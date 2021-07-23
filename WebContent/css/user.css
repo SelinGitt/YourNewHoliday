@@ -12,6 +12,51 @@
 }
 
 /* USR00 */
+.user00-title {
+	text-align: center;
+}
+
+.user00-body-general {
+	width: 100%;
+}
+
+.user00-leftSide {
+	width: 65%;
+}
+
+.user00-infos {
+	margin-left: 3em;
+	margin-bottom: 2em;
+	justify-content: space-between;
+	display: flex;
+}
+
+.user00-infos-input {
+	width: 55%;
+}
+
+.user00-textarea {
+	resize: none;
+}
+
+.user00-buttons {
+	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 55%;
+}
+
+.user00-modifier {
+	background-color: #6AA84F;
+	color: #FFFFFF;
+	margin: auto;
+}
+
+.user00-supprimer {
+	background-color: #E06666;
+	color: #FFFFFF;
+	margin: auto;
+}
 
 /* USR01 */
 .user01-searchMenu {
@@ -23,10 +68,13 @@
 	margin-left: auto;
 }
 
+.searchBarInside {
+	border-radius: 6.25em;
+}
+
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
-	overflow-y: scroll;
 	width: 100%;
 }
 
@@ -64,53 +112,47 @@
 	color: #000000;
 }
 
-.user02-editValider {
-	background-color: #6AA84F;
-	color: #FFFFFF;
-	margin: auto;
-}
-
-.user02-editReset {
-	background-color: #E06666;
-	color: #FFFFFF;
-	margin: auto;
-}
-
 .user02-body-general {
 	width: 100%;
 }
 
 .user02-title {
-	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.user02-form {
-	align-items: center;
-	justify-content: space-evenly;
-	margin: 2em;
+.user02-leftSide {
+	width: 65%;
 }
 
-.user02-lib-champ-taille {
-	width: 10em;
+.user02-form-field {
+	margin-bottom: 1em;
 }
 
-.user02-lib-champ {
-	justify-content: space-between;
-	margin: 3em;
-	width: 25em;
-	align-items: center;
+.user02-form-inputs {
+	width: 70%;
+}
+
+.user02-inputs {
+	width: 100%;
+}
+
+.user02-textarea {
+	resize: none;
+	height: 5em;
 }
 
 .user02-buttons {
-	align-items: center;
-	margin: 1em;
-	width: 80%;
+	width: 70%;
+	float: right;
 }
 
-.user02-rightSide {
-	width: 2%;
-	margin-bottom: 12.5em;
-	margin-left: 12.5em;
+.user02-valider {
+	color: #FFFFFF;
+}
+
+.user02-reset {
+	color: #FFFFFF;
 }
 
 /* USR03 */
@@ -129,9 +171,16 @@
 	width: 65%;
 }
 
+.user05-form-field {
+	margin-bottom: 1em;
+}
+
+.user05-form-inputs {
+	width: 70%;
+}
+
 .user05-inputs {
-	width: 55%;
-	margin-bottom: 2em;
+	width: 100%;
 }
 
 .user05-textarea {
@@ -140,7 +189,7 @@
 }
 
 .user05-buttons {
-	width: 56%;
+	width: 70%;
 	float: right;
 }
 
@@ -183,10 +232,6 @@
 .user07-lib-champ-password {
 	margin-left: 3.125em;
 	width: 18.75em;
-}
-
-.user07-error {
-	Color: #FF0000;
 }
 
 .user07-lib-champ {

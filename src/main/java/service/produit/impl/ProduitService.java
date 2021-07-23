@@ -13,9 +13,14 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
+import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeTriAlphanumerique;
+import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
  * Classe représentant l'interface métier {@link IProduitService}
@@ -27,10 +32,13 @@ import service.produit.ProduitMapper;
 public class ProduitService implements IProduitService {
 
     // insertion du logger pour ajouter le logg des requêtes sql dans le fichier
-    private final Logger logger = LoggerFactory.getLogger(ProduitService.class);
+    private final Logger   logger = LoggerFactory.getLogger(ProduitService.class);
 
     @Autowired
-    private IProduitDao  produitDao;
+    private IProduitDao    produitDao;
+
+    @Autowired
+    private IPanierService panierService;
 
     @Override
     public List<ProduitDto> listerProduitsEnVente() {
@@ -39,17 +47,52 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto trouverProduitEnVente(final Integer idProduit) {
+        logger.debug("Produit Service / méthode trouverProduitEnVente, idProduit : {}", idProduit);
         return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
     }
 
     @Override
+    public List<ProduitDto> listerAllProduit() {
+        return ProduitMapper.mapToListDto(produitDao.findAllProduitsTriAlpha());
+    }
+
+    @Override
     public List<ProduitDto> rechercherProduitsEnVente(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherProduitsEnVente, pSearchTerm : {}", pSearchTerm);
         return ProduitMapper.mapToListDto(produitDao.rechercherProduitsEnVente(pSearchTerm));
     }
 
     @Override
-    public List<ProduitDto> listerAllProduit() {
-        return ProduitMapper.mapToListDto(produitDao.findAll());
+    public List<ProduitDto> findFilter(final String searchTerm, final TypeTriAlphanumerique tri) {
+        final var triString = String.valueOf(tri);
+        logger.debug("Produit Service findFilter, searchTerm : {} ; tri : {}", searchTerm, triString);
+        if (searchTerm.isBlank()) {
+            if (tri == null) {
+                return listerProduitsEnVente();
+            }
+            return trierListe(tri);
+        }
+
+        if (tri == null) {
+            return rechercherProduits(searchTerm);
+        }
+        return listerFiltreTri(tri, searchTerm);
+    }
+
+    private List<ProduitDto> listerFiltreTri(final TypeTriAlphanumerique typeFiltre, final String searchTerm) {
+        logger.debug("Produit Service / méthode listerFiltreTri, typeFiltre : {} ; searchTerm : {}", typeFiltre, searchTerm);
+        return ProduitMapper.mapToListDto(produitDao.trierFiltreListe(typeFiltre, searchTerm));
+    }
+
+    private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
+        logger.debug("Produit Service / méthode trierListe, typeFiltre : {}", typeFiltre);
+        return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
+    }
+
+    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherProduits, pSearchTerm : {}", pSearchTerm);
+        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
+
     }
 
     @Override
@@ -73,6 +116,7 @@ public class ProduitService implements IProduitService {
 
     @Override
     public List<ProduitDto> rechercherAllProduits(final String pSearchTerm) {
+        logger.debug("Produit Service / méthode rechercherAllProduits, pSearchTerm : {}", pSearchTerm);
         if (pSearchTerm.isEmpty()) {
             return ProduitMapper.mapToListDto(produitDao.findAll());
         }
@@ -81,9 +125,15 @@ public class ProduitService implements IProduitService {
 
     @Override
     public ProduitDto creerProduit(final ProduitDto produitDto) {
-        final var produitDo = ProduitMapper.mapToDo(produitDto);
-        this.logger.debug("Produit Service {} creerProduit", produitDto.getClass().getSimpleName());
-        return ProduitMapper.mapToDto(produitDao.create(produitDo));
+
+        final var produitDtoTrouve = this.trouverParReference(produitDto.getReference());
+        if (produitDtoTrouve == null) {
+            final var produitDo = ProduitMapper.mapToDo(produitDto);
+            this.logger.debug("La référence : {} a été utilisé dans la méthode creerProduit", produitDto.getReference());
+            return ProduitMapper.mapToDto(produitDao.create(produitDo));
+        }
+        this.logger.info(" La référence  {} existe déjà en BdD ", produitDto.getReference());
+        return null;
     }
 
     @Override
@@ -91,5 +141,22 @@ public class ProduitService implements IProduitService {
         final var produitDo = produitDao.findById(idProduit);
         this.logger.debug("Produit Service id: {}, methode trouverById", idProduit);
         return produitDo == null ? null : ProduitMapper.mapToDto(produitDo);
+    }
+
+    @Override
+    public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
+        final var quantite = Integer.valueOf(beanQuantite.getQuantite());
+        final var id = Integer.parseInt(beanQuantite.getId());
+        return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public ProduitDto consulterProduitWithRole(final UtilisateurRoleEnum role, final Integer idProduit) {
+        if (UtilisateurRoleEnum.ADMINISTRATEUR == role) {
+            return ProduitMapper.mapToDto(produitDao.findById(idProduit));
+        }
+        return ProduitMapper.mapToDto(produitDao.findProduitEnVente(idProduit));
     }
 }

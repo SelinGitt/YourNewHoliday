@@ -44,16 +44,21 @@ public class ImageService implements IImageService {
         String path;
         if (TypeImage.PRODUIT.type.equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
-            path = GetPropertyValues.PROPERTIESMAP.get("imagesProduitsRepo") + produitDo.getCheminImage();
+            path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
+            return imageDao.getImage(path);
+        }
+        if (TypeImage.UTILISATEUR.type.equals(type)) {
+            final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
+            path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
             return imageDao.getImage(path);
         }
 
         if (TypeImage.UTILISATEUR.type.equals(type)) {
             final var userDo = utilisateurDao.findById(Integer.valueOf(id));
-            path = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + userDo.getCheminAvatar();
+            path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + userDo.getCheminAvatar();
             return imageDao.getImage(path);
         }
-        // il faut ajouter le produitAcheteDao, indisponible à l'heure actuelle
+        //ajouter le produitAcheteDao, indisponible à l'heure actuelle
         return null;
     }
 
@@ -62,7 +67,7 @@ public class ImageService implements IImageService {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.type.equals(type)) {
             final var fileName = image.getAbsolutePath();
-            final var cheminComplet = GetPropertyValues.PROPERTIESMAP.get("imagesUtilisateursRepo") + File.separator + fileName;
+            final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
             imageDao.saveImage(cheminComplet, image);
             return true;
         }

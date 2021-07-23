@@ -3,6 +3,8 @@
  */
 package service.contact;
 
+import java.util.Locale;
+
 /**
  * Classe représentant l'interface fichierContactService
  *
@@ -11,9 +13,18 @@ package service.contact;
 public interface IFichierContactService {
 
     /**
-     * Permet de trouver un fichier html
+     * Permet de charger le fichier Contact
      *
-     * @return : le contenu du fichier html
+     * @param  locale :la local determinant le nom du fichier html a charger
+     * @return        le contenu du fichier html
      */
-    String trouverFichierContact();
+    String chargerFichierContact(final Locale locale);
+
+    /**
+     * Permet de trouver un fichier html
+     * 
+     * @param  locale : la local determinant le nom du fichier html a trouver
+     * @return        : le nom du fichier si existant et sinon le nom fr du fichier
+     */
+    String trouverFichierContact(final Locale locale);
 }

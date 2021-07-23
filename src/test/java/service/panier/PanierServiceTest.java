@@ -3,9 +3,15 @@
  */
 package service.panier;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +20,16 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import presentation.commande.dto.AdressesDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import presentation.utilisateur.dto.UtilisateurDto;
+import service.commande.ICommandeService;
 import service.panier.impl.PanierService;
 import service.produit.IProduitService;
 import service.util.DecimalFormatUtils;
+import service.utilisateur.IUtilisateurService;
 
 /**
  * Classe test de {@link PanierService}
@@ -29,11 +39,17 @@ import service.util.DecimalFormatUtils;
 class PanierServiceTest {
 
     @InjectMocks
-    private PanierService   panierService;
+    private PanierService       panierService;
 
     // Mock à injecter
     @Mock
-    private IProduitService iProduitService;
+    private IProduitService     iProduitService;
+
+    @Mock
+    private ICommandeService    iCommandeService;
+
+    @Mock
+    private IUtilisateurService iUtilisateurService;
 
     @BeforeEach
     private void setup() {
@@ -67,9 +83,15 @@ class PanierServiceTest {
         panierService.updatePanier(panierTest, 1, 5);
         panierService.updatePanier(panierTest, 2, 7);
         assertEquals(2, panierTest.getNombreDeReferences());
+        // On teste que l'ajout d'un nouveau produit au panier n'incrémente pas le nombre de référence
+        // si la quantité est inférieure à 1.
+        panierService.updatePanier(panierTest, 3, 0);
+        assertEquals(2, panierTest.getNombreDeReferences());
         // On teste que l'ajout d'un nouveau produit au panier incrémente bien le nombre de référence.
         panierService.updatePanier(panierTest, 3, 7);
         assertEquals(3, panierTest.getNombreDeReferences());
+        // On verifie que le prix de la ligne a bien été calculé.
+        assertEquals("703,50", panierTest.getMapPanier().get(produitTest3).getPrix());
         // On teste que l'ajout d'un produit déjà présent au panier n'incrémente pas le nombre de référence.
         panierService.updatePanier(panierTest, 2, 2);
         assertEquals(3, panierTest.getNombreDeReferences());
@@ -173,6 +195,180 @@ class PanierServiceTest {
         assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
         assertEquals("0,00", panierTest.getRemiseAffichage());
         assertEquals(12340, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixApresRemiseAffichage()));
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#validerPanier(presentation.panier.dto.PanierDto, presentation.commande.dto.AdressesDto, java.lang.Integer)}.
+     */
+    @Test
+    void testValiderPanier() {
+        final var utilisateur = new UtilisateurDto();
+        utilisateur.setNom("dupont");
+        utilisateur.setPrenom("Jacques");
+        utilisateur.setId(1);
+        final var panier = new PanierDto();
+        final var produitTest = new ProduitDto();
+        produitTest.setIdProduitOriginal("1");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("10000");
+        panier.getMapPanier().put(produitTest, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        final var adresses = new AdressesDto();
+        final var commandeDtoReference = "CMD1234567";
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, utilisateur)).thenReturn(commandeDtoReference);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertEquals("CMD1234567", referenceCommandeOuListProduitErreur.getReference());
+        assertEquals(0, referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant().size());
+    }
+
+    /**
+     * {@link service.panier.impl.PanierService#findProduitMap(presentation.panier.dto.PanierDto, java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitMap() {
+        final var panierTest = new PanierDto();
+        final var produitTest4 = new ProduitDto();
+        produitTest4.setIdProduitOriginal("4");
+        final var ligne4 = new LigneCommandeProduitDto();
+        panierTest.getMapPanier().put(produitTest4, ligne4);
+        // On teste que la méthode trouve bien un produit lorsqu'il est dans la map.
+        assertEquals(produitTest4, panierService.findProduitMap(panierTest, 4));
+        // Et qu'elle retourne null lorsque le produit n'est pas dans la map.
+        assertNull(panierService.findProduitMap(panierTest, 2));
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#validerPanier(presentation.panier.dto.PanierDto, presentation.commande.dto.AdressesDto, java.lang.Integer)}.
+     */
+    @Test
+    void testValiderPanierUserNull() {
+        final var utilisateur = new UtilisateurDto();
+        utilisateur.setNom("dupont");
+        utilisateur.setPrenom("Jacques");
+        utilisateur.setId(1);
+        final var panier = new PanierDto();
+        final var produit = new ProduitDto();
+        produit.setIdProduitOriginal("2");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("1000");
+        panier.getMapPanier().put(produit, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        final var adresses = new AdressesDto();
+        final var commandeReference = "CMD1234567";
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(null);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, utilisateur)).thenReturn(commandeReference);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertNull(referenceCommandeOuListProduitErreur);
+    }
+
+    @Test
+    void testValiderPanierWithOneError() {
+        final var utilisateur = new UtilisateurDto();
+        utilisateur.setNom("dupont");
+        utilisateur.setPrenom("Jacques");
+        utilisateur.setId(1);
+        final var panier = new PanierDto();
+        final var produitTest = new ProduitDto();
+        produitTest.setIdProduitOriginal("3");
+        final var ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("100000");
+        panier.getMapPanier().put(produitTest, ligne);
+        panier.setNombreDeReferences(1);
+        final List<Integer> listInteger = new ArrayList<>();
+        listInteger.add(3);
+        final var adresses = new AdressesDto();
+        final var commandeReference = "CMD1234567";
+        Mockito.when(this.iUtilisateurService.findUtilisateurById(1)).thenReturn(utilisateur);
+        Mockito.when(this.iCommandeService.verifierProduitsAvecVersion(panier.getMapPanier())).thenReturn(listInteger);
+        Mockito.when(this.iCommandeService.validerPanier(panier, adresses, utilisateur)).thenReturn(commandeReference);
+
+        final var referenceCommandeOuListProduitErreur = this.panierService.validerPanier(panier, adresses, 1);
+        assertNull(referenceCommandeOuListProduitErreur.getReference());
+        assertEquals(1, referenceCommandeOuListProduitErreur.getListIdProduitNonConcordant().size());
+    }
+
+    /**
+     * {@link service.panier.impl.PanierService#deleteProduitPanier(presentation.panier.dto.PanierDto, java.lang.Integer)}.
+     */
+    @Test
+    void testDeleteProduitPanier() {
+        final var panierTest = new PanierDto();
+        final var produitTest4 = new ProduitDto();
+        produitTest4.setIdProduitOriginal("4");
+        final var ligne4 = new LigneCommandeProduitDto();
+        panierTest.getMapPanier().put(produitTest4, ligne4);
+        panierTest.setNombreDeReferences(1);
+        // On teste que le nombre de référence du panier ne change pas lorsqu'on
+        // essaie de supprimer un produit qui n'est pas dans la map.
+        panierService.deleteProduitPanier(panierTest, 1);
+        assertEquals(1, panierTest.getNombreDeReferences());
+        // Et qu'il est bien décrémenté le cas échéant.
+        panierService.deleteProduitPanier(panierTest, 4);
+        assertEquals(0, panierTest.getNombreDeReferences());
+
+    }
+
+    /**
+     * Test method for {@link service.panier.impl.PanierService#viderPanier(presentation.panier.dto.PanierDto)}.
+     */
+    @Test
+    void testViderPanier() {
+        final var panierTest = new PanierDto();
+        final var produitTest4 = new ProduitDto();
+        produitTest4.setIdProduitOriginal("4");
+        final var ligne4 = new LigneCommandeProduitDto();
+        panierTest.getMapPanier().put(produitTest4, ligne4);
+        panierTest.setNombreDeReferences(1);
+        // On teste la valeur des attribut nombreDeReferences et mapPanier avant l'appel de la méthode.
+        assertNotNull(panierTest.getMapPanier());
+        assertEquals(1, panierTest.getNombreDeReferences());
+        panierService.viderPanier(panierTest);
+        // On teste que la mapPanier est désormais vide et le nombreDeReference nul.
+        assertEquals(new HashMap<ProduitDto, LigneCommandeProduitDto>(), panierTest.getMapPanier());
+        assertEquals(0, panierTest.getNombreDeReferences());
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
+     */
+    @Test
+    void testModifierQuantite() {
+        final var panierTest = new PanierDto();
+        final var produitTest4 = new ProduitDto();
+        produitTest4.setIdProduitOriginal("4");
+        produitTest4.setPrixUnitaire("105");
+        final var ligne4 = new LigneCommandeProduitDto();
+        panierTest.getMapPanier().put(produitTest4, ligne4);
+        panierTest.setNombreDeReferences(1);
+        ligne4.setQuantite(44);
+        Mockito.when(this.iProduitService.trouverProduitEnVente(4)).thenReturn(produitTest4);
+        // On teste l'incrémentation entre 1 et 100,
+        panierService.modifierQuantite(panierTest, 4, 1);
+        assertEquals(45, ligne4.getQuantite());
+        // Puis la décrémentation entre 1 et 100.
+        panierService.modifierQuantite(panierTest, 4, -1);
+        assertEquals(44, ligne4.getQuantite());
+        // On teste qu'on ne peut pas incrémenter lorsque la quantité est égale à 100.
+        ligne4.setQuantite(100);
+        panierService.modifierQuantite(panierTest, 4, 1);
+        assertEquals(100, ligne4.getQuantite());
+        // On teste qu'on ne peut pas décrémenter lorsque la quantité est égale à 1.
+        ligne4.setQuantite(1);
+        panierService.modifierQuantite(panierTest, 4, -1);
+        assertEquals(1, ligne4.getQuantite());
+        // On teste qu'on ne peut pas incrémenter ou décrémenter un nombre autre que 1.
+        panierService.modifierQuantite(panierTest, 4, 50);
+        assertEquals(1, ligne4.getQuantite());
     }
 
 }

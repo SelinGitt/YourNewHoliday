@@ -15,9 +15,11 @@ public class CommandeDto implements Serializable {
 
     private String                   id;
     private String                   reference;
-    private String                   prixTotal;
+    private String                   prixTotalApresRemise;
+    private String                   prixTotalAvantRemise;
     private String                   date;
     private String                   quantiteTotale;
+    private String                   remise;
     private List<CommandeProduitDto> listCommandeProduitDto;
     private CommandeAdresseDto       adresseLivraison;
     private CommandeAdresseDto       adresseFacturation;
@@ -96,24 +98,6 @@ public class CommandeDto implements Serializable {
     }
 
     /**
-     * Getter for prixTotal
-     *
-     * @return the prixTotal
-     */
-    public String getPrixTotal() {
-        return prixTotal;
-    }
-
-    /**
-     * Setter for prixTotal
-     *
-     * @param prixTotal the prixTotal to set
-     */
-    public void setPrixTotal(final String prixTotal) {
-        this.prixTotal = prixTotal;
-    }
-
-    /**
      * Getter for date
      *
      * @return the date
@@ -165,6 +149,60 @@ public class CommandeDto implements Serializable {
      */
     public void setListCommandeProduitDto(final List<CommandeProduitDto> listCommandeProduitDto) {
         this.listCommandeProduitDto = listCommandeProduitDto;
+    }
+
+    /**
+     * Getter for prixTotalApresRemise
+     *
+     * @return the prixTotalApresRemise
+     */
+    public String getPrixTotalApresRemise() {
+        return prixTotalApresRemise;
+    }
+
+    /**
+     * Setter for prixTotalApresRemise
+     *
+     * @param prixTotalApresRemise the prixTotalApresRemise to set
+     */
+    public void setPrixTotalApresRemise(final String prixTotalApresRemise) {
+        this.prixTotalApresRemise = prixTotalApresRemise;
+    }
+
+    /**
+     * Getter for prixTotalAvantRemise
+     *
+     * @return the prixTotalAvantRemise
+     */
+    public String getPrixTotalAvantRemise() {
+        return prixTotalAvantRemise;
+    }
+
+    /**
+     * Setter for prixTotalAvantRemise
+     *
+     * @param prixTotalAvantRemise the prixTotalAvantRemise to set
+     */
+    public void setPrixTotalAvantRemise(final String prixTotalAvantRemise) {
+        this.prixTotalAvantRemise = prixTotalAvantRemise;
+    }
+
+    /**
+     * Getter for remise
+     *
+     * @return the remise
+     */
+    public String getRemise() {
+        return remise;
+    }
+
+    /**
+     * Setter for remise
+     *
+     * @param remise the remise to set
+     */
+    public void setRemise(final String remise) {
+        this.remise = remise;
     }
 
 }

@@ -60,22 +60,26 @@
     <c:if test="${!empty sessionScope.utilisateur}">
 
         <div class="headerCell headerPanier">
-            <div class="headerSousCell">
+            <div class="headerSousCell" onclick="chargerlien()">
                 <c:if test="${sessionScope.panierDto.nombreDeReferences < 1}">
-                    <a href="listerPanierProduits.do"> <img src="img/template/header/panierVide.png"
-                        class="logoHeader" alt="icône panier vide">
-                    </a>
+                    <img onclick="chargerlien()" src="img/template/header/panierVide.png" class="logoHeader"
+                        alt="icône panier vide">
+
                 </c:if>
                 <c:if test="${sessionScope.panierDto.nombreDeReferences > 0 }">
-                    <a href="listerPanierProduits.do"> <img src="img/template/header/panierRempli.png"
-                        class="logoHeader" alt="icône panier rempli">
-                    </a>
-                    <div class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</div>
+                    <div onclick="chargerlien()">
+                        <img onclick="chargerlien()" src="img/template/header/panierRempli.png" class="logoHeader"
+                            alt="icône panier rempli">
+
+                        <div class="headerSousCellNbrPdtContainer">
+                            <a class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</a>
+                        </div>
+                    </div>
                 </c:if>
             </div>
             <%--"Panier" --%>
             <div class="headerSousCell">
-                <h3>
+                <h3 onclick="chargerlien()">
                     <spring:message code="header.panier" />
                 </h3>
             </div>
@@ -85,7 +89,7 @@
     <c:if test="${empty sessionScope.utilisateur}">
         <div class="headerCell headerPanier">
             <div class="headerSousCell">
-                <a href=""> <img src="img/template/header/creerCompte.png" class="logoHeader"
+                <a href="creerUtilisateur.do"> <img src="img/template/header/creerCompte.png" class="logoHeader"
                     alt="icône créer compte">
                 </a>
             </div>

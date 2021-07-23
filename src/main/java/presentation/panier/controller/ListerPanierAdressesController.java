@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeAdresseDto;
 import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.utilisateur.IUtilisateurService;
@@ -40,16 +41,34 @@ public class ListerPanierAdressesController {
         //on cherche l'utilisateur Connecter grace a l'id
         final var id = Integer.valueOf(utilisateurDto.getIdUtilisateur());
         final var utilisateur = utilisateurService.findUtilisateurById(id);
-        final var adresse = new CommandeAdresseDto();
+        if (utilisateur == null) {
+            modelAndView.setViewName("redirect:deconnecter.do");
+            return modelAndView;
+        }
+        final var defaultAdresse = new CommandeAdresseDto();
+        final var livraisonAdresse = new CommandeAdresseDto();
+        final var facturationAdresse = new CommandeAdresseDto();
 
         //on recupere les informations de l'utilisateur utile pour commande
-        adresse.setAdresse(utilisateur.getAdresse());
-        adresse.setNom(utilisateur.getNom());
-        adresse.setPrenom(utilisateur.getPrenom());
+        defaultAdresse.setAdresse(utilisateur.getAdresse());
+        defaultAdresse.setNom(utilisateur.getNom());
+        defaultAdresse.setPrenom(utilisateur.getPrenom());
+
+        livraisonAdresse.setAdresse(defaultAdresse.getAdresse());
+        livraisonAdresse.setNom(defaultAdresse.getNom());
+        livraisonAdresse.setPrenom(defaultAdresse.getPrenom());
+
+        facturationAdresse.setAdresse(defaultAdresse.getAdresse());
+        facturationAdresse.setNom(defaultAdresse.getNom());
+        facturationAdresse.setPrenom(defaultAdresse.getPrenom());
+
+        final var adresses = new AdressesDto();
+        adresses.setDefaultAdresse(defaultAdresse);
+        adresses.setCommandeAdresseLivraison(livraisonAdresse);
+        adresses.setCommandeAdresseFacturation(facturationAdresse);
 
         //la livraison et la facturation
-        modelAndView.getModelMap().addAttribute("CommandeAdresseLivraison", adresse);
-        modelAndView.getModelMap().addAttribute("CommandeAdresseFacturation", adresse);
+        modelAndView.getModelMap().addAttribute("adresses", adresses);
         return modelAndView;
     }
 

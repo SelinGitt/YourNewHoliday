@@ -3,7 +3,6 @@
  */
 package service.produit;
 
-import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,23 +38,17 @@ public class ProduitMapper {
 
         // En Java 8 : permet de gérer l'id null lors de la création d'un produit et l'id existant pour l'édition
         produitDo.setIdProduitOriginal(Optional.ofNullable(idOriginal).map(Integer::parseInt).orElse(null));
-
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
         produitDo.setReference(produitDto.getReference());
         produitDo.setNom(produitDto.getNom());
         produitDo.setDescription(produitDto.getDescription());
         produitDo.setDestination(produitDto.getDestination());
-        if (DecimalFormatUtils.isPrixAVirgule(produitDto.getPrixUnitaire())) {
-            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire().replace(",", ".")));
-        } else {
-            produitDo.setPrixUnitaire(Double.valueOf(produitDto.getPrixUnitaire()));
-        }
+        produitDo.setPrixUnitaire(DecimalFormatUtils.doubleFormatUtil(produitDto.getPrixUnitaire()));
         produitDo.setHebergement(produitDto.getHebergement());
         produitDo.setMiseEnVente(Boolean.valueOf(produitDto.getMiseEnVente()));
         produitDo.setCheminImage(produitDto.getCheminImage());
         produitDo.setServices(Integer.valueOf(produitDto.getServices()));
         produitDo.setVersion(Integer.valueOf(produitDto.getVersion()));
-
         return produitDo;
     }
 
@@ -69,7 +62,6 @@ public class ProduitMapper {
         if (produitDo == null) {
             return null;
         }
-        final var decimalFormat = new DecimalFormat("#.00");
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal(String.valueOf(produitDo.getIdProduitOriginal()));
         produitDto.setVersion(String.valueOf(produitDo.getVersion()));
@@ -77,7 +69,7 @@ public class ProduitMapper {
         produitDto.setNom(produitDo.getNom());
         produitDto.setDescription(produitDo.getDescription());
         produitDto.setDestination(produitDo.getDestination());
-        produitDto.setPrixUnitaire(decimalFormat.format(produitDo.getPrixUnitaire()));
+        produitDto.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(produitDo.getPrixUnitaire()));
         produitDto.setHebergement(produitDo.getHebergement());
         produitDto.setMiseEnVente(String.valueOf(produitDo.getMiseEnVente()));
         produitDto.setCheminImage(produitDo.getCheminImage());

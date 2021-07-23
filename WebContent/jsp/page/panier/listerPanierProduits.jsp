@@ -2,10 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1>
-    <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
-    <spring:message code="pan00.titre" />
-</h1>
+<div class="panier-title">
+    <h1>
+        <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
+        <spring:message code="pan00.titre" />
+    </h1>
+</div>
 
 <div class="display-flex">
     <div>
@@ -24,51 +26,54 @@
                         <tr>
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-tab-ligne panier-bordure-1px display-flex">
-                                <div>
-                                    <%--  photo --%>
-                                    <img class="panier-responsive panier-image-produit"
-                                        src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                        alt="image produit ${entry.key.nom}" />
+                            <th class="panier-bordure-1px display-flex panier-th">
+                                <div class="panier-div-image">
+                                    <div class="panier-image-produit-container">
+                                        <%--  photo --%>
+                                        <a
+                                          href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                            <img
+                                            class="panier-image-produit"
+                                            src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
+                                            alt="${entry.key.destination}" /></a>
+                                    </div>
                                 </div>
-                                <div>
+                                <div class="panier-description-produit">
                                     <div>
                                         <%--  nom et référence --%>
-                                        <h2>${entry.key.nom}-${entry.key.reference}</h2>
+                                        <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                     </div>
                                     <%--  description --%>
-                                    <div>${entry.key.description}</div>
+                                    <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
                                 </div>
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-prix-unitaire"><div>
-
-                                    <%--  label --%>
-                                    <div class="display-flex justify-content-center">
-                                        <h3>
-                                            <spring:message code="pan00.prix.unitaire" />
-                                        </h3>
-                                    </div>
-
+                            <td class="panier-bordure-1px panier-td text-align-center">
+                                <%--  label --%>
+                                <div class="panier-label display-flex justify-content-center">
+                                    <h3 class="panier-antimarge-prix-unitaire">
+                                        <spring:message code="pan00.prix.unitaire" />
+                                    </h3>
                                 </div> <%--  valeur --%>
-                                <div class="justify-content-center display-flex">
+                                <div class="panier-td-component justify-content-center display-flex">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
-                                </div></td>
+                                </div>
+                            </td>
 
                             <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-quantite text-align-center"><div>
+                            <td class="panier-bordure-1px panier-td text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="display-flex justify-content-center">
-                                        <h3 class="panier-quantite-label">
+                                    <div class="panier-label display-flex justify-content-center">
+                                        <h3>
                                             <spring:message code="pan00.quantite" />
                                         </h3>
                                     </div>
 
                                 </div>
-                                <div class="display-flex">
+                                <div class="panier-td-component justify-content-center display-flex">
 
                                     <%--  bouton - --%>
                                     <a href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
@@ -87,17 +92,17 @@
                                 </div></td>
 
                             <%--  encart supprimer : label et image --%>
-                            <td class="panier-tab-ligne panier-bordure-1px panier-td-delete"><div>
+                            <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-supprimer display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center">
                                         <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
                                     </div>
 
                                 </div> <%--  image --%>
-                                <div class="justify-content-center display-flex">
+                                <div class="panier-td-component justify-content-center display-flex">
                                     <a href="supprimerProduitPanier.do?id=${entry.key.idProduitOriginal }"><img
                                         class="panier-responsive" src="img/commun/poubelle.jpg"
                                         alt="icone poubelle pour suppression" /></a>
@@ -108,8 +113,8 @@
             </table>
 
             <%--  bouton vider le panier  --%>
-            <div class="panier-vider flex-direction-row-reverse display-flex align-item-center">
-                <a href="viderPanier.do"><button type="button">
+            <div class="panier-buttons">
+                <a href="viderPanier.do"><button type="button" class="panier-vider">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
             </div>
@@ -156,9 +161,11 @@
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
-                <button type="button">
-                    <spring:message code="pan00.valider.panier" />
-                </button>
+                <a href="validerPanierProduits.do">
+                    <button type="button" class="panier-valider">
+                        <spring:message code="pan00.valider.panier" />
+                    </button>
+                </a>
             </div>
         </div>
     </div>

@@ -6,10 +6,6 @@
 	version="2.2">
 
 	<persistence-unit name="puYnh">
-		<!-- classes de mapping à insérer -->
-		<properties>
-			<property name="hibernate.show_sql" value="true" />
-		</properties>
 	</persistence-unit>
 
 </persistence>

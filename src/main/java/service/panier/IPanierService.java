@@ -3,6 +3,8 @@
  */
 package service.panier;
 
+import presentation.commande.dto.AdressesDto;
+import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 
@@ -78,5 +80,16 @@ public interface IPanierService {
      * @param quantite  +1/-1 pour incrémenter/décrémenter la quantité
      */
     void modifierQuantite(final PanierDto panier, final Integer idProduit, final int quantite);
+
+    /**
+     * Permet d'enregistrer le panier en une commande
+     *
+     * @param  panier        : le panier en sesion
+     * @param  adresses      : objet contenant les adresses entrées par l'utilisateur
+     * @param  idUtilisateur : l'identifiant de l'utilisateur en session
+     * @return               CommandePanierListProduitErreur : null si utilisateur KO, avec reference si panier OK, sinon
+     *                       liste des identifiants de produits non valide non vide
+     */
+    RetourValiderPanierDto validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur);
 
 }

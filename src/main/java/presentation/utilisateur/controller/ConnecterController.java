@@ -19,9 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
-import presentation.temp.RemplirPanier;
 import presentation.utilisateur.dto.UtilisateurDto;
 import presentation.utilisateur.validator.ConnecterValidator;
+import service.util.GetPropertyValues;
+import service.util.NumberUtils;
 import service.utilisateur.IUtilisateurService;
 
 /**
@@ -33,6 +34,8 @@ import service.utilisateur.IUtilisateurService;
 @RequestMapping({"/connecter.do", "/deconnecter.do"})
 @SessionAttributes({"utilisateur", "panierDto"})
 public class ConnecterController {
+
+    private int                 intervaleParDefault = 20;
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
@@ -58,50 +61,67 @@ public class ConnecterController {
         return voirConnecter();
     }
 
-    //TODO methode temporaire pour creer un panier remplis
-    private PanierDto creerPanier() {
-        //ajout d'un panier vide en session        
-        return RemplirPanier.echantillon();
-    }
-
     /**
      * Permet de mettre logger un utilisateur en session
-     *
+     * 
+     * @param  session        : la session http
      * @param  utilisateurDto : le {@link UtilisateurDto} à logger
      * @param  result         : resultats du binding utilisé pour gérer les erreurs
      * @param  modelAndView   : ModelAndView du controller
+     * @param  anySuccess     : Message de success
      * @return                : ModelAndView and l'utilisateur en session et le nom de la jsp
      */
     @PostMapping
-    public ModelAndView loggerUtilisateur(final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto, final BindingResult result,
-            final ModelAndView modelAndView) {
-
+    public ModelAndView loggerUtilisateur(final HttpSession session, final @ModelAttribute("utilisateurDto") UtilisateurDto utilisateurDto,
+            final BindingResult result, final ModelAndView modelAndView, final @ModelAttribute("anySuccess") String anySuccess) {
         connecterValidator.validate(utilisateurDto, result);
 
         //Si le formulaire a des erreurs
         if (result.hasErrors()) {
             modelAndView.setViewName("connecter");
+            //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
+            modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             return modelAndView;
         }
 
-        final var utilisateurConnecteDto = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        //Récupération de l'objet retour de la méthode authentify (UtilisateurConnecteDto et boolean)
+        final var utilisateurServiceAuthReturn = iUtilisateurService.authentify(utilisateurDto.getEmail(), utilisateurDto.getPassword());
+        //Le UtilisateurConnecteDto
+        final var utilisateurConnecteDto = utilisateurServiceAuthReturn.getUtilisateurConnecteDto();
+        //Le boolean
+        final var isDesactive = utilisateurServiceAuthReturn.isDesactive();
 
-        //Si l'utilisateur n'est pas trouvé en BD, et donc null
+        //Si l'utilisateur n'est pas trouvé en BD, ou si le compte est désactivé, il est null
         if (null == utilisateurConnecteDto) {
-            //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
-            modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
             modelAndView.setViewName("connecter");
+            if (isDesactive) {
+                //Si l'utilisateur est désactivé
+                modelAndView.getModelMap().addAttribute("error", "usr07.erreur.deactivated");
+            } else {
+                //Ajout d'un attribut utilisé en jsp pour appeler le message passé en paramètre
+                modelAndView.getModelMap().addAttribute("error", "usr07.erreur.login_failed");
+            }
         } else {
             //On met l'utilisateur connecté en session
             modelAndView.getModelMap().addAttribute("utilisateur", utilisateurConnecteDto);
 
-            //TODO ajout d'un panier Remplis en session pour les TESTS
-            //remplacer par un panier vide par la suite
-            //pour tester le panier vide remplacer creerPanier() par new PanierDto()
-            modelAndView.getModelMap().addAttribute("panierDto", creerPanier());
+            //Ajout d'un panier vide à la session
+            modelAndView.getModelMap().addAttribute("panierDto", new PanierDto());
+
+            //intervales en minutes du temps d'inactivité avant deconnection
+            final String intervaleMinutes = GetPropertyValues.getPropertiesMap().get("tempsAvantDeconnection");
+
+            //ajout d'un intervale maximum autorisé avant deconection automatique
+            if (NumberUtils.validate(intervaleMinutes)) {
+                session.setMaxInactiveInterval(Integer.valueOf(intervaleMinutes) * 60);
+            } else {
+                session.setMaxInactiveInterval(intervaleParDefault * 60);
+            }
+
+            modelAndView.getModelMap().addAttribute("anySuccess", anySuccess);
 
             //Redirection vers page d'accueil
-            modelAndView.setViewName("redirect:listerProduits.do");
+            modelAndView.setViewName("redirect:/listerProduits.do");
         }
         return modelAndView;
     }
@@ -135,7 +155,7 @@ public class ConnecterController {
         }
         //Si message présent, on le stocke en FlashAttribute de RedirectAttributes 
         if (!code.isBlank()) {
-            redirectAttributes.addFlashAttribute("deletionSuccess", code);
+            redirectAttributes.addFlashAttribute("anySuccess", code);
         }
         return new ModelAndView("redirect:/listerProduits.do");
     }

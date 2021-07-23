@@ -4,6 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
+
+        <c:if test="${not empty error}">
+            <div class="background-error-block block-message-commun">
+                <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+            </div>
+        </c:if>
         <div class="display-flex align-item-center">
             <c:if test="${utilisateur.role.id == '3'}">
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
@@ -18,39 +24,64 @@
             enctype="multipart/form-data" class="display-flex justify-content-space-around">
 
             <div class="user05-leftSide">
-                <div class="display-flex justify-content-space-between">
+
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="nom"><spring:message code="usr05.creer.nom" /></label>
-                    <form:input path="nom" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <form:input path="nom" class="user05-inputs" />
+                        <form:errors path="nom" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="prenom"><spring:message code="usr05.creer.prenom" /></label>
-                    <form:input path="prenom" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <form:input path="prenom" class="user05-inputs" />
+                        <form:errors path="prenom" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
-                    <form:textarea path="adresse" class="user05-inputs user05-textarea" />
+                    <div class="user05-form-inputs">
+                        <form:textarea path="adresse" class="user05-inputs user05-textarea" />
+                        <form:errors path="adresse" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
-                    <form:input path="dateNaissance" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" />
+                        <form:errors path="dateNaissance" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="email"><spring:message code="usr05.creer.email" /></label>
-                    <form:input path="email" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <%-- Le readonly pemet le blocage de l'autocompletion 
+                        par le navigateur si des identifiants sont enregister --%>
+                        <form:input path="email" class="user05-inputs" readonly="true"
+                            onfocus="this.removeAttribute('readonly')" />
+                        <form:errors path="email" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="password"><spring:message code="usr05.creer.password" /></label>
-                    <form:password path="password" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <form:password path="password" class="user05-inputs" />
+                        <form:errors path="password" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
-                <div class="display-flex justify-content-space-between">
+                <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="confirmPassword"><spring:message code="usr05.creer.confirmPassword" /></label>
-                    <form:password path="confirmPassword" class="user05-inputs" />
+                    <div class="user05-form-inputs">
+                        <form:password path="confirmPassword" class="user05-inputs" />
+                        <form:errors path="confirmPassword" cssClass="text-color-rouge" />
+                    </div>
                 </div>
 
                 <div class="display-flex justify-content-space-around user05-buttons">

@@ -13,13 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.commande.dao.ICommandeDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
+import persistance.utilisateur.entity.UtilisateurDo;
 import presentation.utilisateur.dto.RoleDto;
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import presentation.utilisateur.dto.UtilisateurDto;
-import service.util.GenerateReferenceUtil;
+import service.util.impl.GenerateReferenceUtilisateurUtil;
 import service.utilisateur.IUtilisateurService;
+import service.utilisateur.mapper.UtilisateurMapper;
 import service.utilisateur.util.MDPCrypter;
-import service.utilisateur.util.UtilisateurMapper;
 
 /**
  * Classe UtilisateurService <br>
@@ -41,11 +41,17 @@ public class UtilisateurService implements IUtilisateurService {
 
     @Override
     public List<UtilisateurDto> findAllUtilisateurs() {
-        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAll());
+        return UtilisateurMapper.mapperToListDto(this.iUtilisateurDao.findAllTriAlpha());
     }
 
     @Override
     public UtilisateurDto createUtilisateur(final UtilisateurDto utilisateurDto) {
+        // Verifie si l'email est deja pris
+        if (this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail()) != null) {
+            logger.info("Erreur création d'utilisateur. Email déjà pris {}", utilisateurDto.getEmail());
+            return null;
+        }
+
         final var roleDto = new RoleDto();
         roleDto.setIdRole(utilisateurDto.getRole().getIdRole());
 
@@ -55,30 +61,59 @@ public class UtilisateurService implements IUtilisateurService {
 
         utilisateurDto.setEstDesactive(false);
 
-        // TODO : Temporaire avec le generateReference
-        utilisateurDto.setReference(GenerateReferenceUtil.generateReference());
+        final String reference = new GenerateReferenceUtilisateurUtil().generateReference();
+        utilisateurDto.setReference(reference);
 
         final var utilisateurDo = UtilisateurMapper.mapperToDo(utilisateurDto);
+        logger.debug("Utilisateur ref : {} créé.", reference);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.create(utilisateurDo));
     }
 
     @Override
-    public UtilisateurConnecteDto authentify(final String email, final String password) {
+    public UtilisateurServiceAuthReturn authentify(final String email, final String password) {
+        //Instanciation du builder, qui va être renseigné au fil de l'eau avant de construire l'objet retour en retour de méthode
+        final var builder = new UtilisateurServiceAuthReturn.UtilisateurServiceAuthReturnBuilder();
+
         final var utilisateurDo = iUtilisateurDao.findByEmail(email);
-        if (utilisateurDo != null) {
-            //On récupère le mot de passe hashé en BD
-            final String passwordCheck = utilisateurDo.getMdpHash();
-            //On compare avec le mot de passe saisi qu'on hashe
-            if (passwordCheck.equals(MDPCrypter.crypterMDPV1(password))) {
-                return UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
-            }
-            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
+
+        if (utilisateurDo == null) {
+            logger.debug("Utilisateur avec login : {} n'existe pas en BD.", email);
+            builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
+            return builder.build();
         }
-        return null;
+        //On compare avec le mot de passe saisi qu'on hashe
+        if (checkPassword(password, utilisateurDo)) {
+            //Les mots de passe correspondent, on vérifie si l'utilisateur est désactivé ou non
+            if (Boolean.TRUE.equals(utilisateurDo.getEstDesactive())) {
+                logger.debug("Utilisateur avec login : {} est désactivé.", email);
+                builder.withUtilisateurConnecteDto(null).withIsDesactive(true);
+            } else {
+                logger.debug("Utilisateur avec login : {} connecté avec succès.", email);
+                final var utilisateurConnecteDto = UtilisateurMapper.mapperToConnecteDto(utilisateurDo);
+                builder.withUtilisateurConnecteDto(utilisateurConnecteDto).withIsDesactive(false);
+            }
+        } else {
+            logger.info("Erreur d'authentification, les mots de passe ne correspondent pas.");
+            builder.withUtilisateurConnecteDto(null).withIsDesactive(false);
+        }
+        return builder.build();
+    }
+
+    /**
+     * Permet de comparer un mot de passe saisi avec celui connu en BD
+     *
+     * @param  password      String mot de passe saisi
+     * @param  utilisateurDo l'utilisateur en BD dont on va récupérer le mot de passe hashé pour la comparaison
+     * @return               un boolean, true si identiques, false sinon
+     */
+    private boolean checkPassword(final String password, final UtilisateurDo utilisateurDo) {
+        final var passwordCheck = utilisateurDo.getMdpHash();
+        return passwordCheck.equals(MDPCrypter.crypterMDPV1(password));
     }
 
     @Override
     public UtilisateurDto findUtilisateurById(final Integer id) {
+        logger.debug("Recherche de l'utilisateur d'id : {}.", id);
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.findById(id));
     }
 
@@ -98,6 +133,7 @@ public class UtilisateurService implements IUtilisateurService {
 
         //On teste si l'utilisateur est le dernier admin
         if (iUtilisateurDao.isLastAdmin(idUtilisateurASupprimer)) {
+            logger.info("L'utilisateur ref : {} est le dernier administrateur, suppression impossible", referenceUtilisateur);
             builder.withIsSucceeded(false);
         } else {
             //Suppression autorisée
@@ -105,6 +141,7 @@ public class UtilisateurService implements IUtilisateurService {
             iCommandeDao.updateCommandeDoUserDeletion(idUtilisateurASupprimer);
             //On le supprime
             iUtilisateurDao.deleteUtilisateurById(idUtilisateurASupprimer);
+            logger.debug("L'utilisateur ref : {} a été supprimé.", referenceUtilisateur);
             builder.withIsSucceeded(true);
         }
         return builder.build();
@@ -119,28 +156,45 @@ public class UtilisateurService implements IUtilisateurService {
         // Si nom empty on fait une recherche par filtre
         if (nom.isEmpty()) {
             if (idRole == 0) {
+                logger.debug("Recherche de tous les utilisateurs.");
                 return this.findAllUtilisateurs();
             }
+            logger.debug("Recherche de tous les utilisateurs de rôle d'id {}.", idRole);
             return this.rechercherUtilisateurRole(idRole);
         }
 
         // Nom pas empty, donc recherche par nom ou nom + role
         if (idRole == 0) {
+            logger.debug("Recherche de tous les utilisateurs de nom {}.", nom);
             return this.rechercherUtilisateurNom(nom);
         }
+        logger.debug("Recherche de tous les utilisateurs de nom {} et de rôle d'id {}.", nom, idRole);
         return this.rechercherUtilisateurNomRole(nom, idRole);
     }
 
     @Override
     public UtilisateurDto updateUtilisateur(final UtilisateurDto utilisateurDto) {
+        final var userFound = this.iUtilisateurDao.findByEmail(utilisateurDto.getEmail());
+        // Verifie si l'email est deja pris par un autre utilisateur
+        if (userFound != null && (!userFound.getIdUtilisateur().equals(utilisateurDto.getId()))) {
+            logger.info("Erreur mise à jour d'utilisateur. Email déjà pris {}. Ref utilisateur : {}", utilisateurDto.getEmail(),
+                    utilisateurDto.getReference());
+            return null;
+        }
+
+        logger.info("L'utilisateur ref : {} a été mis à jour", utilisateurDto.getReference());
         return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
     }
 
     @Override
     public UtilisateurDto rechercherReference(final String reference) {
         final var utilisateurDo = iUtilisateurDao.findByReference(reference);
-
-        return (utilisateurDo == null ? null : UtilisateurMapper.mapperToDto(utilisateurDo));
+        if (utilisateurDo == null) {
+            logger.debug("Utilisateur {} non trouvé.", reference);
+            return null;
+        }
+        logger.debug("Utilisateur {} trouvé.", reference);
+        return UtilisateurMapper.mapperToDto(utilisateurDo);
     }
 
     /**

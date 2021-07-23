@@ -15,7 +15,7 @@ public class UtilisateurDto implements Serializable {
     /**
      * Generated Serial UID
      */
-    private static final long serialVersionUID = -2412085353414875962L;
+    private static final long serialVersionUID = -8141274952235537508L;
 
     private Integer           id;
     private String            email;

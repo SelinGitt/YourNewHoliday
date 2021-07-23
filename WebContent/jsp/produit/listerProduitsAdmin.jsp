@@ -2,17 +2,37 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
 <div class="conteneur-ascenseur">
+    <c:if test="${not empty anyError}">
+        <div class="background-error-block block-message-commun">
+            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
+        </div>
+    </c:if>
+    <c:if test="${not empty anySuccess}">
+        <div class="background-validation-block block-message-commun">
+            <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
+        </div>
+    </c:if>
     <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
-    <div class="searchBar display-flex pdt01Search align-content-flex-end ">
-        <form:form action="listerProduitsAdmin.do" method="POST">
-            <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
-                placeholder="<spring:message code='pdt01.searchbar'/>">
-            <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
-        </form:form>
+    <div class="display-flex">
+        <div class="searchBar display-flex pdt01Search align-content-flex-end ">
+            <form:form action="listerProduitsAdmin.do" method="POST">
+                <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
+                    placeholder="<spring:message code='pdt01.searchbar'/>">
+                <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
+            </form:form>
+        </div>
+
+        <div class="pdt01AddProduit">
+            <a href="creerProduitAdmin.do">
+                <button type="button" class="pdt01-newProduitButton">
+                    <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                    <spring:message code="pdt01.creer.nouveau" />
+                </button>
+            </a>
+        </div>
     </div>
     <br>
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
@@ -38,23 +58,28 @@
         <tbody class="pdt01Body">
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
-                    <td class="pdt01Body">${produitDto.reference}</td>
+                    <td class="pdt01Body">
+                    <a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                            ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
 
-                    <td class="pdt01Body"><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
-                        alt="${produitDto.nom}" class="pdt01Icone" /></td>
+                    <td class="pdt01Body"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin"> <img
+                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt" alt="${produitDto.nom}"
+                            class="pdt01Icone" />
+                    </a></td>
 
                     <td class="pdt01Body">${produitDto.destination}</td>
 
-                    <td class="pdt01Body">${produitDto.prixUnitaire}€</td>
+                    <td class="pdt01Body">${produitDto.prixUnitaire}&nbsp€</td>
 
                     <td class="pdt01Body"><c:choose>
                             <c:when test="${produitDto.miseEnVente}">
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="pdt01Image">
                             </c:when>
                             <c:otherwise>
-                                <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
+                                <img alt="" src="img/commun/checkboxVide.png" class="pdt01ImageNonActive" />
                             </c:otherwise>
                         </c:choose></td>
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img

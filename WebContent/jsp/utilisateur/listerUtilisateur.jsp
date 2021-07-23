@@ -2,21 +2,24 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div>
-    <c:if test="${not empty deletionSuccess}">
-        <span><spring:message code="${deletionSuccess}" /></span>
-    </c:if>
-</div>
-<div>
-    <c:if test="${not empty error}">
-        <span><spring:message code="${error}" /></span>
-    </c:if>
-</div>
-<h1 id="titreGestion" class="text-align-center">
-    <spring:message code="usr01.titre" />
-</h1>
-
 <div class="conteneur-ascenseur">
+    <div>
+        <c:if test="${not empty userSuccess}">
+            <div class="background-validation-block block-message-commun">
+                <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+            </div>
+        </c:if>
+
+        <c:if test="${not empty error}">
+            <div class="background-error-block block-message-commun">
+                <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+            </div>
+        </c:if>
+    </div>
+
+    <h1 id="titreGestion" class="text-align-center">
+        <spring:message code="usr01.titre" />
+    </h1>
     <div class="user01-searchMenu display-flex">
         <div class="usr01searchBar">
             <form:form action="listerUtilisateur.do" method="POST">
@@ -36,16 +39,14 @@
                 <select name="searchFilter" id="filterBar">
                     <%-- Tous --%>
                     <option value="0"><spring:message code="usr01.filter." /></option>
-                    <%-- Visiteur --%>
-                    <option value="1"><spring:message code="usr01.filter.1" /></option>
-                    <%-- Client --%>
+                    <%-- Client // value correspondant au rôle dans la BD --%>
                     <option value="2"><spring:message code="usr01.filter.2" /></option>
-                    <%-- Admin --%>
+                    <%-- Admin // value correspondant au rôle dans la BD --%>
                     <option value="3"><spring:message code="usr01.filter.3" /></option>
                 </select>
 
                 <script>
-                	document.getElementById("filterBar").options[${searchFilter}].selected = true;
+                     document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
                 <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
@@ -103,8 +104,9 @@
                             </c:otherwise>
                         </c:choose></td>
 
-                    <td class="bodyUSR01"><a href="modifierUtilisateur.do?ref=${utilisateurDto.reference}"> <img
-                            alt="" src="img/commun/editer.png" class="poubelle user01-image">
+                    <td class="user01-body"><a
+                        href="modifierUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"> <img alt=""
+                            src="img/commun/editer.png" class="poubelle user01-image">
                     </a></td>
 
                     <td class="user01-body"><a
