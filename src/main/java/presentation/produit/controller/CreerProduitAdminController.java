@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.produit.dto.ProduitDto;
-import presentation.produit.validator.ProduitValidator;
+import presentation.produit.validator.ProduitValidatorPDT03;
 import service.produit.IProduitService;
 
 /**
@@ -39,7 +39,7 @@ public class CreerProduitAdminController {
      */
     @InitBinder
     public void initBinder(final WebDataBinder binder) {
-        binder.setValidator(new ProduitValidator());
+        binder.setValidator(new ProduitValidatorPDT03());
     }
 
     /**

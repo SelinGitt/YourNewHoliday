@@ -58,7 +58,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr02.edit.adresse" /></label>
                     <div class="user02-form-inputs">
-                        <form:textarea path="adresse" class="user02-inputs user02-textarea" />
+                        <form:textarea class="textarea" path="adresse" class="user02-inputs user02-textarea" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -74,7 +74,10 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="email"><spring:message code="usr02.edit.email" /></label>
                     <div class="user02-form-inputs">
-                        <form:input path="email" class="user02-inputs" />
+                        <%-- Le readonly pemet le blocage de l'autocompletion 
+                        par le navigateur si des identifiants sont enregister --%>
+                        <form:input path="email" class="user02-inputs" readonly="true"
+                            onfocus="this.removeAttribute('readonly')" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -88,7 +91,8 @@
                         <div class="user02-form-field display-flex justify-content-space-between">
                             <label for="password"><spring:message code="usr02.edit.password" /></label>
                             <div class="user02-form-inputs">
-                                <form:password path="password" class="user02-inputs" />
+                                <form:password path="password" class="user02-inputs" readonly="true"
+                                    onfocus="this.removeAttribute('readonly')" />
                                 <form:errors path="password" cssClass="text-color-rouge" />
                             </div>
                         </div>
