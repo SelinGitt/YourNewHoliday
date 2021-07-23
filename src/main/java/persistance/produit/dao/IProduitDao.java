@@ -92,9 +92,9 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     /**
      * Permet de trouver les produits en fonction de la recherche et du filtre
      *
-     * @param  searchTerm recherche
-     * @param  filtre     filtre
-     * @return            liste de produits
+     * @param  searchTerm référence recherchée
+     * @param  filtre     filtre effectué
+     * @return            liste de produits recherchée et triée selon le filtre
      */
     List<ProduitDo> trouverProduitsRechercheFiltre(final String searchTerm, final String filtre);
 
@@ -102,7 +102,6 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * Permet de trier la liste des produits par reference dans l'ordre alphabétique.
      *
      * @return la liste triée
-     * 
      */
     public List<ProduitDo> findAllProduitsTriAlpha();
 }
