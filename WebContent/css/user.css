@@ -80,6 +80,11 @@
 	border-radius: 6.25em;
 }
 
+.user01-table {
+	height: 64vh;
+	overflow-y: scroll; 	
+}
+
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
