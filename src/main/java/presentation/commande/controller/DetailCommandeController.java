@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -40,7 +41,7 @@ public class DetailCommandeController {
      */
     @GetMapping
     public ModelAndView detaillerCommande(final @RequestParam(name = "ref", required = true, defaultValue = "") String reference,
-            final HttpSession session) {
+            final HttpSession session, final @ModelAttribute("flag") String from) {
         final var modelAndView = new ModelAndView();
         final UtilisateurConnecteDto utilisateurConnecte = (UtilisateurConnecteDto) session.getAttribute("utilisateur");
         this.logger.debug("detailler la commande {} de l'utilisateur : {} ", reference, utilisateurConnecte.getIdUtilisateur());
@@ -48,7 +49,9 @@ public class DetailCommandeController {
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
         modelAndView.getModelMap().addAttribute("remise", commandeDto.getRemise());
-        modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
+        if (from.equals("validerPanierCommande")) {
+            modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
+        }
         return modelAndView;
     }
 
