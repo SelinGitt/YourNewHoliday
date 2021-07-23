@@ -44,7 +44,7 @@
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="livraisonAdresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseLivraison.adresse"
+                            <form:textarea class="panier-formulaire-textarea textarea" path="commandeAdresseLivraison.adresse"
                                 rows="12" id="livraisonAdresse" />
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="facturationAdresse"><spring:message code="pan08.label.adresse" /></label>
-                            <form:textarea class="panier-formulaire-textarea" path="commandeAdresseFacturation.adresse"
+                            <form:textarea class="panier-formulaire-textarea textarea" path="commandeAdresseFacturation.adresse"
                                 rows="12" id="facturationAdresse" />
                         </div>
                     </div>

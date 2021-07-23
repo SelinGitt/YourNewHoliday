@@ -95,7 +95,7 @@
             </tr>
             <tr>
                 <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" 
-                class="pdt04TextArea">${consulterProduitDto.description}</textarea></td>
+                class="pdt04TextArea textarea">${consulterProduitDto.description}</textarea></td>
             </tr>
         </table>
 

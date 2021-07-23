@@ -87,16 +87,16 @@ section {
 }
 
 /* pour la police et les dimensions des caractères des textareas */
-textarea {
+.textarea {
 	font-family: FontAwesome;
 	font-size: 1em;
 }
 
 /* pour la police et les dimensions des caractères des inputs */
-input {
-	font-family: FontAwesome;
-	font-size: 1em;
-}
+/* input { */
+/* 	font-family: FontAwesome; */
+/* 	font-size: 1em; */
+/* } */
 
 /* titre responsive */
 .title-responsive {

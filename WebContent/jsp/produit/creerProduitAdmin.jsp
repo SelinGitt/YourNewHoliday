@@ -90,7 +90,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
                         <td class="pdt03TextAreaPDT03"><div>
-                                <form:textarea path="description" rows="4" cols="70" />
+                                <form:textarea class="textarea" path="description" rows="4" cols="70" />
                             </div>
                             <div class="pdt03formError">
                                 <form:errors path="description" cssClass="text-color-rouge" />

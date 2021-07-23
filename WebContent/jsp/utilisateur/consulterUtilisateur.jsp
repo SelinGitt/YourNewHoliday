@@ -46,7 +46,7 @@
 
                 <div class="user00-infos">
                     <label for="adresse"> <spring:message code="usr00.consulter.adresse" /></label>
-                    <textarea class="user00-infos-input user00-textarea" disabled="disabled">${utilisateurDto.adresse}</textarea>
+                    <textarea class="user00-infos-input user00-textarea textarea" disabled="disabled">${utilisateurDto.adresse}</textarea>
                 </div>
 
                 <div class="user00-infos">
