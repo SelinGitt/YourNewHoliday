@@ -121,7 +121,8 @@
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="Image du produit à ajouter" class="pdt03Form-imageProduit" /></td>
+                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png" 
+                        alt="Image du produit à ajouter"  /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
