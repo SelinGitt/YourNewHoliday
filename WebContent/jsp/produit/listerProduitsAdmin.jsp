@@ -79,7 +79,7 @@
                                 <img alt="" src="img/commun/checkboxVert.jpg" class="pdt01Image">
                             </c:when>
                             <c:otherwise>
-                                <img class="pdt01Image" alt="" src="img/commun/checkboxVide.png" />
+                                <img alt="" src="img/commun/checkboxVide.png" class="pdt01ImageNonActive" />
                             </c:otherwise>
                         </c:choose></td>
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img

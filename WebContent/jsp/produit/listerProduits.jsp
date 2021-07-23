@@ -52,19 +52,19 @@
                             alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
                     </a></th>
                 </tr>
-                <tr class="display-flex">
+                <tr class="pdt00NomEtPrix">
                     <td class="display-flex text-responsive">${produitDto.nom}</td>
                     <td class="pdt00Price text-responsive display-flex justify-content-flex-end">
                         ${produitDto.prixUnitaire} €</td>
                 </tr>
                 <tr>
-                    <td class="text-responsive">${produitDto.reference}</td>
+                    <td class="text-responsive"><spring:message code="pdt00.reference"/>${produitDto.reference}</td>
                 </tr>
                 <tr>
                     <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>
                 </tr>
                 <c:if test="${not empty utilisateur}">
-                    <tr class="display-flex">
+                    <tr class="pdt00QuantiteAjouter">
                         <form:form action="ajouterProduitPanier.do" requestParam="beanQuantite" method="POST">
                             <input type="hidden" name="location" value="lister" />
                             <input type="hidden" name="id" value="${produitDto.idProduitOriginal}" />
