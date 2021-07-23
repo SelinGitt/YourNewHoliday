@@ -266,4 +266,13 @@ class ProduitDaoTest {
         final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVenteAvecVersion(1, 1);
         assertNull(produitDoPasEnVente);
     }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#trouverProduitsRechercheFiltre(String, String)}.
+     */
+    @Test
+    void testTrouverProduitsRechercheFiltre() {
+        //test produits en vente avec la recherche de référence 9
+        assertEquals(3, iProduitDao.trouverProduitsRechercheFiltre("9", "1").size());
+    }
 }

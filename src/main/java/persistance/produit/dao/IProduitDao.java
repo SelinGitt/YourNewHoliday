@@ -102,6 +102,7 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * Permet de trier la liste des produits par reference dans l'ordre alphabétique.
      *
      * @return la liste triée
+     * 
      */
     public List<ProduitDo> findAllProduitsTriAlpha();
 }

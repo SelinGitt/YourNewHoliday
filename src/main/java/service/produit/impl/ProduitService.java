@@ -157,15 +157,25 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri) {
         if (searchTerm.isBlank()) {
-            if ("".equals(tri)) {
+            if ("".equals(tri) || "0".equals(tri)) {
                 return listerAllProduit();
             }
-            return trouverProduitsFiltre(tri);
+            return trouverProduitsFiltre(setTypeFiltre(tri));
         }
-        if ("".equals(tri)) {
+        if ("".equals(tri) || "0".equals(tri)) {
             return rechercherProduits(searchTerm);
         }
-        return trouverProduitsFiltreRecherche(tri, searchTerm);
+        return trouverProduitsFiltreRecherche(searchTerm, setTypeFiltre(tri));
+    }
+
+    private String setTypeFiltre(final String filtre) {
+        if ("1".equals(filtre)) {
+            return filtre;
+        } else
+            if ("2".equals(filtre)) {
+                return "0";
+            }
+        return "";
     }
 
     private List<ProduitDto> trouverProduitsFiltre(final String filtre) {
