@@ -51,8 +51,9 @@ public class ValiderPanierController {
             // en cas d'erreur renvoie au panier
             return "redirect:listerPanierProduits.do";
         }
+        // On précise au controlleur de détail commande le controlleur origine de la redirection
         redirectAttributes.addFlashAttribute("flag", "validerPanierCommande");
-        // renvoie à la page de détail des commandes
+        // redirige vers la page de détail des commandes
         return "redirect:detailCommande.do?ref=" + referenceCommandeOuListProduitErreur.getReference();
     }
 }

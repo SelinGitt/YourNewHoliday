@@ -37,6 +37,7 @@ public class DetailCommandeController {
      *
      * @param  reference la référence de la commande à chercher
      * @param  session   contient la session de l'utilisateur
+     * @param  from      signale si ce controlleur a été appelé par un autre
      * @return           ModelAndView le modèle qui sera utiliser par la vue
      */
     @GetMapping
@@ -49,6 +50,9 @@ public class DetailCommandeController {
         modelAndView.setViewName("detailCommande");
         modelAndView.getModelMap().addAttribute("commande", commandeDto);
         modelAndView.getModelMap().addAttribute("remise", commandeDto.getRemise());
+        // S'il s'agit d'une redirection depuis validerPanierCommande 
+        // on affiche le message de confirmation de la validation de la commande
+        // rq : les échecs de validation sont tarité par PAN_00        
         if (from.equals("validerPanierCommande")) {
             modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
         }
