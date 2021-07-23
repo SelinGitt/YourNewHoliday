@@ -127,9 +127,8 @@
                         <div
                             class="display-flex align-item-center
                         flex-direction-column user02-admin-options">
-                            <%-- TODO : Liens vers commande a faire + lister commandes --%>
                             <div>
-                                <a href="/">
+                                <a href="listerCommande.do?id=${utilisateurDto.id}">
                                     <button type="button">
                                         <spring:message code="usr02.bouton.commandes" />
                                     </button>
@@ -155,36 +154,23 @@
                                     </c:otherwise>
                                 </c:choose>
 
-                                <form:checkbox path="estDesactive" onchange="changeStatusImg()" style="display:none;" />
+                                <form:checkbox path="estDesactive" 
+                                    onchange="changeStatusImg(document.getElementById('usr02.status.img'), this)"
+                                    cssClass="user02-status-checkbox" />
                                 <label for="estDesactive1"> <img alt="imgStatus" id="usr02.status.img">
                                 </label>
 
                                 <script>
-                                	const imgStatus = document.getElementById('usr02.status.img');
-                                	const estDesactive = document.getElementById('estDesactive1');
+                                	const img = document.getElementById('usr02.status.img');
                                 	                             
                                 	<%-- Obliger car sinon le js peut inverser les valeurs et tout mettre KO --%>
                                 	if (${utilisateurDto.estDesactive}) {
-                                		imgStatus.src = "img/commun/checkboxVide.png";
-                                		imgStatus.className = "user01-imageNonActive checkboxVide";
+                                		setImg('desactive', img);
                                 	} else {
-                                		imgStatus.src = "img/commun/checkboxVert.jpg";
-                                		imgStatus.className = "checkboxVert user01-image";
+                                		setImg('active', img);
                                 	}
                                 	
-                                	estDesactive.value = ${utilisateurDto.estDesactive};
-                                
-                                	function changeStatusImg() {
-                                		if (estDesactive.value === 'false') {
-                                			estDesactive.value = 'true';
-                                			imgStatus.src = "img/commun/checkboxVide.png";
-                                			imgStatus.className = "user01-imageNonActive checkboxVide";
-                                		} else {
-                                			estDesactive.value = 'false';
-                                			imgStatus.src = "img/commun/checkboxVert.jpg";
-                                			imgStatus.className = "checkboxVert user01-image";
-                                		}
-                                	}
+                                	document.getElementById('estDesactive1').value = ${utilisateurDto.estDesactive};
                                 </script>
                             </div>
 
