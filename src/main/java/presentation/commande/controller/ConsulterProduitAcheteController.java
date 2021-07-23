@@ -35,15 +35,21 @@ public class ConsulterProduitAcheteController {
      * @return           le produit à consulter dans le model et la vue associée
      */
     @GetMapping
-    public ModelAndView consulterProduit(final @RequestParam(value = "idProduit") Integer idProduit,
+    public ModelAndView consulterProduitAchete(final @RequestParam(value = "idProduit") Integer idProduit,
             final @RequestParam(value = "from", required = false) String location,
             final @RequestParam(value = "paramValue", required = false) String param,
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
+        // FIXME : debug
+        System.out.println("Controleur");
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduitAchete");
         // on récupère le produit acheté.
         final var produitTrouve = iCommandeService.trouverProduitEnVente(idProduit);
+        // FIXME : debug
+        System.out.println(produitTrouve);
         if (produitTrouve == null) {
+            // FIXME : debug
+            System.err.println("produit pas trouvé !!");
             return new ModelAndView("redirect:404.do");
         }
         modelAndView.getModelMap().addAttribute("consulterProduitAcheteDto", produitTrouve);

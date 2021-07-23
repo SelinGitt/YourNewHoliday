@@ -39,6 +39,11 @@
 		<put-attribute name="title" value="Consulter produit" />
 		<put-attribute name="body" value="/jsp/produit/consulterProduit.jsp" />
 	</definition>
+	
+	<definition name="consulterProduitAchete" extends="base.definition">
+		<put-attribute name="title" value="Consulter produit achete" />
+		<put-attribute name="body" value="/jsp/produit/consulterProduitAchete.jsp" />
+	</definition>
 
 	<!-- écran panier -->
 	<definition name="pan_00" extends="base.definition">
@@ -60,12 +65,7 @@
 	<definition name="detailCommande" extends="base.definition">
 		<put-attribute name="title" value="détail d'une commande" />
 		<put-attribute name="body" value="/jsp/page/commande/detailCommande.jsp" />
-	</definition>
-	
-	<definition name="consulterProduitAchete" extends="base.definition">
-		<put-attribute name="title" value="Consulter produit acheté" />
-		<put-attribute name="body" value="/jsp/produit/consulterProduitAchete.jsp" />
-	</definition>
+	</definition>	
 
 	<!-- écran utilisateur -->
 
