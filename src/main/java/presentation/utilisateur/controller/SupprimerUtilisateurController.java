@@ -55,7 +55,8 @@ public class SupprimerUtilisateurController {
         if (result.isSucceeded()) {
             //Si depuis la vue Consulter son profil, ou si l'admin se supprime lui-même depuis la liste des utilisateurs
             if ("1".equals(origin) || result.isSameUserFromList()) {
-                modelAndView.setViewName("redirect:/deconnecter.do?deletionSuccess=usr00.success.deleted");
+                modelAndView.getModelMap().addAttribute("deletionSuccess", "usr00.success.deleted");
+                modelAndView.setViewName("redirect:/deconnecter.do");
                 return modelAndView;
             }
             //Si depuis la vue liste des utilisateurs
