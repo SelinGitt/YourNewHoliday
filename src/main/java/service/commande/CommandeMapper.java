@@ -77,16 +77,17 @@ public class CommandeMapper {
      *
      * @param  panier        le panier en session
      * @param  adresses      les adresses entrées par l'utilisateur
+     * @param  dateCommande  la date à la quelle la commande sera enregistré
      * @param  reference     la reference de la commande qui a été généré en ammon
      * @param  idUtilisateur l'id de l'utilisateur en session
      * @return               CommandeDo la commande qui doit être enregistré en base de donnée
      */
-    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final String reference,
-            final Integer idUtilisateur) {
+    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final Date dateCommande,
+            final String reference, final Integer idUtilisateur) {
         final var commandeDo = new CommandeDo();
         commandeDo.setId(null);
         commandeDo.setReference(reference);
-        commandeDo.setDate(new Date());
+        commandeDo.setDate(dateCommande);
         commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
         commandeDo.setPrixTotalApresRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
         commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
