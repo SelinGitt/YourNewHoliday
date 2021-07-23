@@ -68,6 +68,10 @@
 	width: 100%;
 }
 
+.user01-filter-bar {
+	margin-left: 1em;
+}
+
 .user01-searchMenu .user01AddUser {
 	margin-left: auto;
 }
