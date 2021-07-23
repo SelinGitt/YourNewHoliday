@@ -80,7 +80,6 @@
                                         <em class="" id="${loop.index}"></em>
                                     </c:if></td>
                             </c:forEach>
-
                         </tr>
                     </table>
                 </div>
