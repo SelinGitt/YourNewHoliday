@@ -59,61 +59,62 @@
         </a>
     </div>
 </div>
-
-<div class="user01-table">
-    <table class="user01-lister" aria-describedby="titreGestion">
-        <thead>
-            <tr>
-                <th class="user01-colonne"><spring:message code="usr01.th.ref" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.nom" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.date" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.profil" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.actif" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.editer" /></th>
-
-                <th class="user01-colonne"><spring:message code="usr01.th.supprimer" /></th>
-            </tr>
-        </thead>
-
-        <tbody class="user01-body">
-            <c:forEach items="${listeUtilisateur}" var="utilisateurDto">
+<div class="conteneur-ascenseur">
+    <div class="user01-table">
+        <table class="user01-lister" aria-describedby="titreGestion">
+            <thead>
                 <tr>
-                    <td class="user01-body">${utilisateurDto.reference}</td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.ref" /></th>
 
-                    <td class="user01-body">${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.nom" /></th>
 
-                    <td class="user01-body">${utilisateurDto.dateInscription}</td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.date" /></th>
 
-                    <td class="user01-body">${utilisateurDto.role.libelle}</td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.profil" /></th>
 
-                    <td class="user01-body"><c:choose>
-                            <c:when test="${utilisateurDto.estDesactive}">
-                                <img class="user01-imageNonActive 
-                                checkboxVide" alt=""
-                                    src="img/commun/checkboxVide.png">
-                            </c:when>
-                            <c:otherwise>
-                                <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
-                            </c:otherwise>
-                        </c:choose></td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.actif" /></th>
 
-                    <td class="user01-body"><a
-                        href="modifierUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"> <img alt=""
-                            src="img/commun/editer.png" class="poubelle user01-image">
-                    </a></td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.editer" /></th>
 
-                    <td class="user01-body"><a
-                        href="supprimerUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"
-                        onclick="return confirm('<spring:message code="usr01.consulter.confirmer_suppression" />')">
-                            <img alt="" src="img/commun/poubelle.jpg" class="editer user01-image">
-                    </a></td>
+                    <th class="user01-colonne"><spring:message code="usr01.th.supprimer" /></th>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+
+            <tbody class="user01-body">
+                <c:forEach items="${listeUtilisateur}" var="utilisateurDto">
+                    <tr>
+                        <td class="user01-body">${utilisateurDto.reference}</td>
+
+                        <td class="user01-body">${utilisateurDto.nom}/${utilisateurDto.prenom}</td>
+
+                        <td class="user01-body">${utilisateurDto.dateInscription}</td>
+
+                        <td class="user01-body">${utilisateurDto.role.libelle}</td>
+
+                        <td class="user01-body"><c:choose>
+                                <c:when test="${utilisateurDto.estDesactive}">
+                                    <img class="user01-imageNonActive 
+                                checkboxVide"
+                                        alt="" src="img/commun/checkboxVide.png">
+                                </c:when>
+                                <c:otherwise>
+                                    <img alt="" src="img/commun/checkboxVert.jpg" class="checkboxVert user01-image">
+                                </c:otherwise>
+                            </c:choose></td>
+
+                        <td class="user01-body"><a
+                            href="modifierUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"> <img alt=""
+                                src="img/commun/editer.png" class="poubelle user01-image">
+                        </a></td>
+
+                        <td class="user01-body"><a
+                            href="supprimerUtilisateur.do?origin=2&ref=${utilisateurDto.reference}"
+                            onclick="return confirm('<spring:message code="usr01.consulter.confirmer_suppression" />')">
+                                <img alt="" src="img/commun/poubelle.jpg" class="editer user01-image">
+                        </a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
 </div>
