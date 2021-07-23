@@ -59,6 +59,10 @@
 }
 
 /* USR01 */
+.user01-message {
+	margin-left: 0.5em;	
+}
+
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 100%;
