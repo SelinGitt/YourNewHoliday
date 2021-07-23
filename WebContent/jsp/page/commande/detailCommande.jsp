@@ -5,8 +5,6 @@
         <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
     </div>
 </c:if>
-
-
 <h1>
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
