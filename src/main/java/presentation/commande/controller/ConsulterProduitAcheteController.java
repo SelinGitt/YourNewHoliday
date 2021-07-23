@@ -41,17 +41,13 @@ public class ConsulterProduitAcheteController {
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduitAchete");
-
+        // on récupère le produit acheté.
         final var produitTrouve = iCommandeService.trouverProduitEnVente(idProduit);
-
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-
         modelAndView.getModelMap().addAttribute("consulterProduitAcheteDto", produitTrouve);
-
         return modelAndView;
-
     }
 
 }
