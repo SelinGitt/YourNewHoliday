@@ -21,4 +21,5 @@ public interface IProduitAcheteDao extends IGenericDao<ProduitAcheteDo> {
      * @return            ProduitAcheteDo le produit trouvé, null sinon
      */
     ProduitAcheteDo recupererProduitAcheteDo(final Integer idOriginal, final Integer version);
+
 }
