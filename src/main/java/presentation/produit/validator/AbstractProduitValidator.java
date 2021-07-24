@@ -51,7 +51,9 @@ public abstract class AbstractProduitValidator implements Validator {
 
         try {
             // Conversion du prix au bon format
-            DecimalFormatUtils.doubleFormatUtil(produitDto.getPrixUnitaire());
+            if (DecimalFormatUtils.doubleFormatUtil(produitDto.getPrixUnitaire()) < 0) {
+                errors.rejectValue("prixUnitaire", page + ".prix.negatif");
+            }
         } catch (final NumberFormatException exception) {
             errors.rejectValue("prixUnitaire", page + ".prix.format");
         }
