@@ -25,9 +25,10 @@ public interface IImageService {
     /**
      * Permet de sauvegarder le chemin complet de l'image
      *
-     * @param  image le fichier
-     * @param  type  le type de fichier
-     * @return       vrai si sauvegardé
+     * @param  byteArray le fichier
+     * @param  type      le type de fichier
+     * @param  fileName  le nom du fichier à importer
+     * @return           vrai si sauvegardé
      */
-    boolean saveImage(final File image, final String type);
+    boolean saveImage(final byte[] byteArray, final String type, final String fileName);
 }

@@ -52,24 +52,16 @@ public class ImageService implements IImageService {
             path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
             return imageDao.getImage(path);
         }
-
-        if (TypeImage.UTILISATEUR.type.equals(type)) {
-            final var userDo = utilisateurDao.findById(Integer.valueOf(id));
-            path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + userDo.getCheminAvatar();
-            return imageDao.getImage(path);
-        }
         //ajouter le produitAcheteDao, indisponible à l'heure actuelle
         return null;
     }
 
     @Override
-    public boolean saveImage(final File image, final String type) {
+    public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.type.equals(type)) {
-            final var fileName = image.getAbsolutePath();
             final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
-            imageDao.saveImage(cheminComplet, image);
-            return true;
+            return imageDao.saveImage(cheminComplet, byteArray);
         }
         logger.debug("Le type {} du fichier ne correspond pas à utilisateur", type);
         return false;

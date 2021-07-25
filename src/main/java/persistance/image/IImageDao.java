@@ -26,8 +26,8 @@ public interface IImageDao {
      * Permet de sauvegarder une image dans le disque dur du PC.
      *
      * @param  cheminTotal chemin complet de l'avatar
-     * @param  image       le fichier à sauvegarder
+     * @param  byteArray   le fichier à sauvegarder
      * @return             vrai si fichier sauvegardé
      */
-    boolean saveImage(final String cheminTotal, final File image);
+    boolean saveImage(final String cheminTotal, final byte[] byteArray);
 }

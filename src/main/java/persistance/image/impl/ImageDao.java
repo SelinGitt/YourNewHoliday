@@ -5,7 +5,6 @@ package persistance.image.impl;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,14 +28,12 @@ public class ImageDao implements IImageDao {
     }
 
     @Override
-    public boolean saveImage(final String cheminTotal, final File image) {
-
+    public boolean saveImage(final String cheminTotal, final byte[] byteArray) {
         try (final FileOutputStream fos = new FileOutputStream(cheminTotal)) {
-            final ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(image);
+            fos.write(byteArray);
         } catch (final Exception e) {
             e.printStackTrace();
-            logger.warn("Le fichier {} n'a pas pu être sauvegardé.", image);
+            logger.warn("Le fichier {} n'a pas pu être sauvegardé.", byteArray);
             return false;
         }
         return true;
