@@ -99,17 +99,15 @@ public class ProduitService implements IProduitService {
     public ProduitDto editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
         this.logger.debug("Produit Service {} editerProduit, id : {}", produitFound, produitDto.getIdProduitOriginal());
-        // On update si le produit existe
+        // L'update est possible si le produit existe en BD
         if (produitFound != null) {
-            final var produitDo = ProduitMapper.mapToDo(produitDto);
-            // On met à jour le produit
-            final var produitDtoUpdated = ProduitMapper.mapToDto(produitDao.update(produitDo));
-            // on incrémente la version du produit si le produitDo a été modifié sinon on retourne la version actuelle
-            if (!produitFound.toString().equals(produitDtoUpdated.toString())) {
-                produitDo.setVersion(produitDo.getVersion() + 1);
-                return ProduitMapper.mapToDto(produitDao.update(produitDo));
+            // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
+            if (produitFound.toString().hashCode() != (produitDto.toString().hashCode())) {
+                final var produitDoWithChanges = ProduitMapper.mapToDo(produitDto);
+                produitDoWithChanges.setVersion(produitDoWithChanges.getVersion() + 1);
+                return ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges));
             }
-            return produitDtoUpdated;
+            return produitFound;
         }
         return null;
     }

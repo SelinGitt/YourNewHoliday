@@ -62,9 +62,8 @@ public class ProduitDto implements Serializable {
 
     @Override
     public String toString() {
-        return "idProduitOriginal=" + idProduitOriginal + ", version=" + version + ", reference=" + reference + ", nom=" + nom
-                + ", description=" + description + ", destination=" + destination + ", prixUnitaire=" + prixUnitaire + ", hebergement="
-                + hebergement + ", miseEnVente=" + miseEnVente + ", cheminImage=" + cheminImage + ", services=" + services;
+        return idProduitOriginal + version + reference + nom + description + destination + prixUnitaire + hebergement + miseEnVente
+                + cheminImage + services;
     }
 
     /**
