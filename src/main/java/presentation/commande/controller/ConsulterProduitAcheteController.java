@@ -41,16 +41,12 @@ public class ConsulterProduitAcheteController {
             final @RequestParam(value = "version") String version, final @RequestParam(value = "from", required = false) String location,
             final @RequestParam(value = "paramValue", required = false) String param,
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
-        // FIXME : debug
-        System.out.println("Controleur");
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduitAchete");
         // FIXME : debug
         final ProduitAcheteDto produitAchete = iCommandeService.findProduitAchete(idProduitAchete, version);
         System.out.println(produitAchete.getDescription());
         if (produitAchete == null) {
-            // FIXME : debug
-            System.err.println("produit pas trouvé !!");
             return new ModelAndView("redirect:404.do");
         }
         modelAndView.getModelMap().addAttribute("consulterProduitAcheteDto", produitAchete);
