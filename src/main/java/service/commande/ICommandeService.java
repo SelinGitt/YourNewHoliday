@@ -8,6 +8,7 @@ import java.util.Map;
 
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
+import presentation.commande.dto.ProduitAcheteDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -53,4 +54,13 @@ public interface ICommandeService {
      * @return             String la référence de la commande
      */
     String validerPanier(final PanierDto panier, final AdressesDto adresses, final UtilisateurDto utilisateur);
+
+    /**
+     * Permets de récupérer une produitAchete via son id
+     *
+     * @param  id      du produitAchete
+     * @param  version du prooduit
+     * @return         le produitAchete
+     */
+    ProduitAcheteDto findProduitAchete(final String id, final String version);
 }

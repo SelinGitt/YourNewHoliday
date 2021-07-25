@@ -15,11 +15,15 @@ public class ProduitAcheteDto implements Serializable {
     /**
      * Générer Automatiquement pour la sérialisation
      */
-    private static final long serialVersionUID = 1433423045581190446L;
+    private static final long serialVersionUID = 4734697887239927315L;
 
     private String            id;
 
     private String            idDeLOriginal;
+
+    private String            version;
+
+    private String            hebergement;
 
     private String            reference;
 
@@ -175,6 +179,42 @@ public class ProduitAcheteDto implements Serializable {
      */
     public void setId(final String id) {
         this.id = id;
+    }
+
+    /**
+     * Getter for version
+     *
+     * @return the version
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * Setter for version
+     *
+     * @param version the version to set
+     */
+    public void setVersion(final String version) {
+        this.version = version;
+    }
+
+    /**
+     * Getter for hebergement
+     *
+     * @return the hebergement
+     */
+    public String getHebergement() {
+        return hebergement;
+    }
+
+    /**
+     * Setter for hebergement
+     *
+     * @param hebergement the hebergement to set
+     */
+    public void setHebergement(final String hebergement) {
+        this.hebergement = hebergement;
     }
 
 }

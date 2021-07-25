@@ -23,12 +23,14 @@ import persistance.commande.entity.CommandeProduitDo;
 import persistance.produit.dao.IProduitDao;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
+import presentation.commande.dto.ProduitAcheteDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.commande.CommandeMapper;
 import service.commande.ICommandeService;
+import service.commande.ProduitAcheteMapper;
 import service.util.IGenerateReferenceUtil;
 
 /**
@@ -112,4 +114,10 @@ public class CommandeService implements ICommandeService {
         }
         return commande;
     }
+
+    @Override
+    public ProduitAcheteDto findProduitAchete(final String id, final String version) {
+        return ProduitAcheteMapper.mapperToDto(iProduitAchete.recupererProduitAcheteDo(Integer.valueOf(id), Integer.valueOf(version)));
+    }
+
 }

@@ -7,97 +7,64 @@
         <h1 class="title title-responsive text-align-center">${consulterProduitAcheteDto.nom}</h1>
     </div>
     <a href="${retour}"><spring:message code="pdt04.retour"></spring:message></a>
-<!--     <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around"> -->
-<!--         <div> -->
-<%--              formulaire pour ajouter un produit au panier --%>
-<%--             <form:form action="ajouterProduitPanier.do" modelAttribute="beanQuantite" method="POST"> --%>
-<%--                  location prend la valeur consulter pour AjouterProduitPanier --%>
-<!--                 <input type="hidden" name="location" value="consulter" /> -->
-<%--                 <input type="hidden" name="id" value="${consulterProduitDto.idProduitOriginal}" /> --%>
-<!--                 <table aria-label="consulterProduit"> -->
-<!--                     <tr> -->
-<%--                         <th colspan="2" class="pdt04Hebergement">${consulterProduitDto.hebergement}</th> --%>
-<!--                     </tr> -->
-<!--                     <tr> -->
-<!--                         <td rowspan="5"><img -->
-<%--                             src="displayImage.do?id=${consulterProduitDto.idProduitOriginal}&type=pdt" --%>
-<%--                             alt="${consulterProduitDto.destination}" class="pdt04Image" /></td> --%>
-<!--                     </tr> -->
-<!--                     <tr> -->
-<%--                         <td><spring:message code="pdt04.reference"></spring:message> --%>
-<%--                             ${consulterProduitDto.reference}</td> --%>
-<!--                     </tr> -->
-<!--                     <tr> -->
-<%--                         <td><spring:message code="pdt04.prix"> --%>
-<%--                             </spring:message>${consulterProduitDto.prixUnitaire}&nbsp€</td> --%>
-<!--                     </tr> -->
-<%--                     conformement au sfd afficher les elements suivant seulement si un utilisateur est creer  --%>
-<%--                     <c:if test="${not empty utilisateur}"> --%>
-<!--                         <tr> -->
-<!--                             <td> -->
-<!--                                 <div class="display-flex"> -->
-<%--                                      bouton - > 0 --%>
-<%--                                     <a onclick="decrement('${consulterProduitDto.idProduitOriginal}')"> --%>
-<!--                                         <button type="button">-</button> -->
-<!--                                     </a> -->
+ <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
+        <div>
+            <%--  formulaire pour ajouter un produit au panier --%>
+            <form:form action="ajouterProduitPanier.do" modelAttribute="beanQuantite" method="POST">
+                <%--  location prend la valeur consulter pour AjouterProduitPanier--%>
+                <input type="hidden" name="location" value="consulter" />
+                <input type="hidden" name="id" value="${consulterProduitAcheteDto.idDeLOriginal}" />
+                <table aria-label="consulterProduit">
+                    <tr>
+                        <th colspan="2" class="pdt04Hebergement">${consulterProduitAcheteDto.hebergement}</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="5"><img
+                            src="displayImage.do?id=${consulterProduitAcheteDto.idDeLOriginal}&type=pdt"
+                            alt="${consulterProduitAcheteDto.destination}" class="pdt04Image" /></td>
+                    </tr>
+                    <tr>
+                        <td><spring:message code="pdt04.reference"></spring:message>
+                            ${consulterProduitAcheteDto.reference}</td>
+                    </tr>
+                    <tr>
+                        <td><spring:message code="pdt04.prix">
+                            </spring:message>${consulterProduitAcheteDto.prixUnitaire}&nbsp€</td>
+                    </tr>                    
+                </table>
 
-<%--                                      saisie valeur produit  --%>
-<!--                                     <input class="pdt00-pan-quantite text-align-center" type="text" readonly="readonly" -->
-<%--                                         id="quantite${consulterProduitDto.idProduitOriginal}" name="quantite" value="1" --%>
-<!--                                         size="1"> -->
-
-<%--                                      bouton + < 100 --%>
-<%--                                     <a onclick="increment('${consulterProduitDto.idProduitOriginal}')"> --%>
-<!--                                         <button type="button">+</button> -->
-<!--                                     </a> -->
-<!--                                 </div> -->
-<!--                             </td> -->
-<!--                         </tr> -->
-<!--                         <tr> -->
-<!--                             <td> -->
-<%--                                  Bouton ajouter au panier --%>
-<!--                                 <button value="submit" -->
-<!--                                     class="background-color-green display-flex  -->
-<!--                                                justify-content-flex-end pdt00Bouton"> -->
-<%--                                     <spring:message code="pdt.addCart" /> --%>
-<!--                                 </button> -->
-<!--                             </td> -->
-<!--                         </tr> -->
-<%--                     </c:if> --%>
-<!--                 </table> -->
-
-<%--             </form:form> --%>
-<!--             <div class="display-flex"> -->
-<!--                 <div> -->
-<!--                     <table aria-label="descriptionServices"> -->
-<!--                         <tr> -->
-<%--                             <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services"> --%>
-<%--                                 </spring:message></th> --%>
-<!--                         </tr> -->
-<!--                         <tr class="pdt04IconeServices"> -->
-<!--                             <td><em class="fa fa-glass pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-bath pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-paw pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-wifi pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td> -->
-<!--                             <td><em class="fa fa-tv pdt04IconeSpace"></em></td> -->
-<!--                         </tr> -->
-<!--                     </table> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--         <table aria-label="descriptionProduit"> -->
-<!--             <tr> -->
-<%--                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th> --%>
-<!--             </tr> -->
-<!--             <tr> -->
-<!--                 <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea"> -->
-<%--                 ${consulterProduitDto.description}</textarea></td> --%>
-<!--             </tr> -->
-<!--         </table> -->
+            </form:form>
+            <div class="display-flex">
+                <div>
+                    <table aria-label="descriptionServices">
+                        <tr>
+                            <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services">
+                                </spring:message></th>
+                        </tr>
+                        <tr class="pdt04IconeServices">
+                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
+                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <table aria-label="descriptionProduit">
+            <tr>
+                <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
+            </tr>
+            <tr>
+                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea">
+                ${consulterProduitAcheterDto.description}</textarea></td>
+            </tr>
+        </table>
 
     </div>
 </div>
