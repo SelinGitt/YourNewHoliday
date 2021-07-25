@@ -10,7 +10,7 @@
 
 <c:if test="${not empty error}">
     <div class="background-error-block block-message-commun">
-        <span class="fa fa-exclamation"></span><span><spring:message code="${error}" /></span>
+        <span class="fa fa-exclamation"></span> <span class="user01-message"><spring:message code="${error}" /></span>
     </div>
 </c:if>
 
