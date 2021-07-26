@@ -7,13 +7,8 @@
         <h1 class="title title-responsive text-align-center">${consulterProduitAcheteDto.nom}</h1>
     </div>
     <a href="${retour}"><spring:message code="pdt04.retour"></spring:message></a>
- <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
+    <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
         <div>
-            <%--  formulaire pour ajouter un produit au panier --%>
-            <form:form action="ajouterProduitPanier.do" modelAttribute="beanQuantite" method="POST">
-                <%--  location prend la valeur consulter pour AjouterProduitPanier--%>
-                <input type="hidden" name="location" value="consulter" />
-                <input type="hidden" name="id" value="${consulterProduitAcheteDto.idDeLOriginal}" />
                 <table aria-label="consulterProduit">
                     <tr>
                         <th colspan="2" class="pdt04Hebergement">${consulterProduitAcheteDto.hebergement}</th>
@@ -30,39 +25,19 @@
                     <tr>
                         <td><spring:message code="pdt04.prix">
                             </spring:message>${consulterProduitAcheteDto.prixUnitaire}&nbsp€</td>
-                    </tr>                    
+                    </tr>
                 </table>
-
-            </form:form>
-            <div class="display-flex">
-                <div>
-                    <table aria-label="descriptionServices">
-                        <tr>
-                            <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.services">
-                                </spring:message></th>
-                        </tr>
-                        <tr class="pdt04IconeServices">
-                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+            <%-- Contenu commun avec consulterProduit --%>
+            <jsp:include page="iconDescriptionService.jsp">
+                <jsp:param name="icon" value="consulterProduitAcheté" />
+            </jsp:include>
         </div>
         <table aria-label="descriptionProduit">
             <tr>
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="20" cols="60" 
-                readonly="readonly" class="pdt04TextArea">                
+                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea">                
                 ${consulterProduitAcheteDto.description}</textarea></td>
             </tr>
         </table>
