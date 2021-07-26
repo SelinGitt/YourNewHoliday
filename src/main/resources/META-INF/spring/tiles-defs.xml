@@ -66,7 +66,7 @@
 		<put-attribute name="title" value="détail d'une commande" />
 		<put-attribute name="body" value="/jsp/page/commande/detailCommande.jsp" />
 	</definition>
-		
+	
 	<!-- écran utilisateur -->
 
 	<!-- page jsp Écran de consultation de profil USR_00 -->
