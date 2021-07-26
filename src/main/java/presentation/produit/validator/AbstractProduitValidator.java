@@ -51,7 +51,9 @@ public abstract class AbstractProduitValidator implements Validator {
 
         try {
             // Conversion du prix au bon format
-            DecimalFormatUtils.doubleFormatUtil(produitDto.getPrixUnitaire());
+            if (DecimalFormatUtils.doubleFormatUtil(produitDto.getPrixUnitaire()) < 0) {
+                errors.rejectValue("prixUnitaire", page + ".prix.negatif");
+            }
         } catch (final NumberFormatException exception) {
             errors.rejectValue("prixUnitaire", page + ".prix.format");
         }
@@ -59,7 +61,7 @@ public abstract class AbstractProduitValidator implements Validator {
         final var ref = produitDto.getReference();
         // Les règles de valdation sont appliqués si le champs référence n'est pas vide
         if (!ref.isBlank()) {
-            if (!ref.matches("([A-Z]){3}([1-9A-Z]){7}")) {
+            if (!ref.matches("([1-9A-Z]){10}")) {
                 errors.rejectValue("reference", page + ".reference.format");
             }
 

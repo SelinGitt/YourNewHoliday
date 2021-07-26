@@ -42,7 +42,7 @@ td.pdt00Description {
 .pdt00QuantiteAjouter {
 	display: flex;
 	padding-top: 2em;
-	padding-bottom:3em;
+	padding-bottom: 3em;
 	margin-left: 7em;
 	margin-right: 7em;
 	justify-content: space-evenly;
@@ -256,6 +256,10 @@ th.pdt01 {
 
 .pdt03ImageCreationProduit {
 	width: 100%;
+}
+
+.pdt03Form-imageProduit img{
+	width: 50%;
 }
 
 .pdt03formError {

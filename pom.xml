@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Projet_YNH</groupId>
 	<artifactId>Projet_YNH</artifactId>
-	<version>0.1.22-SNAPSHOT</version>
+	<version>0.1.23-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>

@@ -82,14 +82,16 @@ public class CommandeService implements ICommandeService {
     @Override
     public String validerPanier(final PanierDto panier, final AdressesDto adresses, final UtilisateurDto utilisateur) {
         String reference = null;
+        Date dateCommande = null;
         do {
-            reference = this.referenceCommande.generateReference(utilisateur, panier.getNombreDeReferences(), new Date());
+            dateCommande = new Date();
+            reference = this.referenceCommande.generateReference(utilisateur, panier.getNombreDeReferences(), dateCommande);
 
             // Passer les adresses à la méthode
         } while (this.iCommandeDao.isCommandeExist(reference));
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, utilisateur.getId());
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panier, adresses, dateCommande, reference, utilisateur.getId());
         return this.iCommandeDao.create(this.recupereProduitAchetePourCommande(commandeDo)).getReference();
     }
 
