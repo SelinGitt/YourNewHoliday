@@ -40,7 +40,7 @@ public class UploadImageUserController {
 
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        final var result = imageService.saveImage(byteArray, "usr", fileName);
+        imageService.saveImage(byteArray, "usr", fileName);
         return modelAndView;
 
     }
