@@ -61,7 +61,8 @@
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea">                
+                <td><textarea maxlength="250" rows="20" cols="60" 
+                readonly="readonly" class="pdt04TextArea">                
                 ${consulterProduitAcheteDto.description}</textarea></td>
             </tr>
         </table>
