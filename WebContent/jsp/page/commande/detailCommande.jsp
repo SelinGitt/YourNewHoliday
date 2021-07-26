@@ -34,7 +34,6 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-
                                     <c:url value="consulterProduitAchete.do" var="destination">
                                         <c:param name="idProduit" 
                                         value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
@@ -42,7 +41,6 @@
                                         value="${cmdProduit.produitAcheteDto.version}"/>                             
                                         <c:param name="from" value="detail"/>
                                         <c:param name="paramValue" value="${commande.reference}"/>
-
                                     </c:url>
                                     <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
