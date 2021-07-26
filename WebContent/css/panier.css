@@ -161,6 +161,10 @@
 	height: 1.125em;
 }
 
+.panier-boutons-plus-moins {
+	height: 1.575em;
+}
+
 .panier-antimarge-prix-unitaire {
 	margin-top: 0.5em;
 	margin-bottom: 0em;

@@ -14,4 +14,9 @@ function selectLG() {
 		enButton.className += " langue-button-clicked";
 		lienEn.className = "langue-pointer"
 	}
+	//par default la langue est FR le curseur sera donc positioner sur fr a la connexion ou a la deconnexion
+	else {
+		frButton.className += " langue-button-clicked";
+		lienFr.className = "langue-pointer"
+	}
 }
