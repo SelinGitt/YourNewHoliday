@@ -98,18 +98,17 @@ public class ProduitService implements IProduitService {
     @Override
     public ProduitDto editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
-        this.logger.debug("Produit Service {} editerProduit, id : {}", produitFound, produitDto.getIdProduitOriginal());
-        // L'update est possible si le produit existe en BD
-        if (produitFound != null) {
-            // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
-            if (produitFound.toString().hashCode() != (produitDto.toString().hashCode())) {
-                final var produitDoWithChanges = ProduitMapper.mapToDo(produitDto);
-                produitDoWithChanges.setVersion(produitDoWithChanges.getVersion() + 1);
-                return ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges));
-            }
-            return produitFound;
+        this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
+                produitDto.getIdProduitOriginal(), produitFound.getReference());
+        // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
+        if (produitFound.toString().hashCode() != (produitDto.toString().hashCode())) {
+            final var produitDoWithChanges = ProduitMapper.mapToDo(produitDto);
+            this.logger.debug("Produit Service / editerProduit - Les produits sont différents");
+            produitDoWithChanges.setVersion(produitDoWithChanges.getVersion() + 1);
+            return ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges));
         }
-        return null;
+        this.logger.debug("Produit Service / editerProduit - Les produits sont identiques");
+        return produitFound;
     }
 
     @Override
