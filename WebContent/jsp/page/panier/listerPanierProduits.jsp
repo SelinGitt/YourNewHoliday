@@ -89,7 +89,10 @@
                                     </c:if>
                                     <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
                                         <a
-                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
+                                            href=
+                                                "modifierQuantite.do
+                                                    ?idProduit=${entry.key.idProduitOriginal}
+                                                        &quantite=-1">
                                             <button type="button">-</button>
                                         </a>
                                     </c:if>
@@ -105,7 +108,10 @@
                                     </c:if>
                                     <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
                                         <a
-                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
+                                            href="
+                                                modifierQuantite.do
+                                                    ?idProduit=${entry.key.idProduitOriginal}
+                                                        &quantite=1">
                                             <button type="button">+</button>
                                         </a>
                                     </c:if>
