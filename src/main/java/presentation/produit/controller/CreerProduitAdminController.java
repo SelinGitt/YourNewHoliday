@@ -86,12 +86,6 @@ public class CreerProduitAdminController {
 
         produitDto.setServices(newServices);
 
-        if (iProduitService.creerProduit(produitDto) != null) {
-            //Ajout d'un FlashAttribute pour le bandeau de validation sur PDT_01
-            redirectAttributes.addFlashAttribute("anySuccess", "pdt03.creationOK");
-            return new ModelAndView("redirect:/listerProduitsAdmin.do");
-        }
-
         final var modelAndView = new ModelAndView();
 
         // Si le formulaire possède des erreurs : Ajout de l'attribut "errorCreationProduit" utilisé dans la jsp en cas d'erreur de création
@@ -100,6 +94,12 @@ public class CreerProduitAdminController {
             modelAndView.getModelMap().addAttribute("error", "pdt03.erreurCreation");
 
             return modelAndView;
+        }
+
+        if (iProduitService.creerProduit(produitDto) != null) {
+            //Ajout d'un FlashAttribute pour le bandeau de validation sur PDT_01
+            redirectAttributes.addFlashAttribute("anySuccess", "pdt03.creationOK");
+            return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
 
         result.rejectValue("reference", "pdt03.reference.dejaExistant");

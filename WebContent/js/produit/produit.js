@@ -33,8 +33,6 @@ function changeServiceStatus(el, status, page) {
 		label.classList.remove("firstTime");
 	}
 
-	console.log(page);
-
 	// Change le service en actif ou inactif et la valeur de l'input
 	if (label.classList.contains("pdt0" + page + "ServiceActif")) {
 		label.classList.replace("pdt0" + page + "ServiceActif", "pdt0" + page + "ServiceInactif");

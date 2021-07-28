@@ -148,7 +148,6 @@
                             <tr>
                         </c:if>
 
-
                         <c:choose>
                             <%-- Si le produit est actif --%>
                             <c:when test="${produitDto.services[loop.index]}">
