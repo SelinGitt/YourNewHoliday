@@ -4,12 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
+
         <c:if test="${not empty error}">
             <div class="background-error-block block-message-commun">
                 <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
             </div>
         </c:if>
-
         <div class="display-flex align-item-center">
             <c:if test="${utilisateur.role.id == '3'}">
                 <a href="listerUtilisateur.do" class="user02-retour bouton-retour">
@@ -93,14 +93,6 @@
                         <spring:message code="usr05.creer.reset" />
                     </button>
                 </div>
-            </div>
-
-            <div class="user05-rightSide">
-                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                <div>
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
-                </div>
 
                 <div class="display-flex justify-content-space-around">
                     <c:choose>
@@ -123,7 +115,37 @@
                 </div>
 
             </div>
+            <c:if test="${not empty avatar}">
+                <div class="display-flex justify-content-space-between">
+                    <div>
+                        <spring:message code="usr05.label.avatarChosen" />
+                        : ${avatar}
+                    </div>
+                </div>
+                <form:hidden path="cheminAvatar" value="${avatar}" />
+            </c:if>
+            <%-- On ne peut pas placer ce formulaire dans le form d'inscription, c'est invalide.--%>
+            <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
+            <%-- cf : https://imgur.com/a/KoUx67i --%>
+            <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
         </form:form>
-
+        <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post"
+            class="display-flex justify-content-space-around">
+            <div class="user05-leftSide">
+                <div class="display-flex justify-content-space-around">
+                    <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
+                    <div class="user05-form-inputs">
+                        <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit"
+                            value="submit" />
+                        <c:if test="${not empty imgError}">
+                            <div class="text-color-rouge">
+                                <spring:message code="${imgError}" />
+                            </div>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
+        </form:form>
     </div>
 </div>
+
