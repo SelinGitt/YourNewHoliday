@@ -64,7 +64,7 @@ public class ConsulterProduitController {
             urlToBuild.append("?ref=" + param);
         }
         modelAndView.getModelMap().addAttribute("retour", urlToBuild);
-        modelAndView.getModelMap().addAttribute("achetable", role != UtilisateurRoleEnum.VISITEUR);
+        modelAndView.getModelMap().addAttribute("isAchetable", role != UtilisateurRoleEnum.VISITEUR);
         return modelAndView;
 
     }

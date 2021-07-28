@@ -51,7 +51,7 @@ public class ConsulterProduitAcheteController {
             urlToBuild.append("?ref=" + param);
         }
         modelAndView.getModelMap().addAttribute("retour", urlToBuild);
-        modelAndView.getModelMap().addAttribute("achetable", false);
+        modelAndView.getModelMap().addAttribute("isAchetable", false);
         return modelAndView;
     }
 
