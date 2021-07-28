@@ -5,8 +5,10 @@ package service.produit.impl;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -268,6 +270,30 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitById(50));
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#deleteProduit(ProduitDto)}.
+     */
+    @Test
+    void testDeleteProduitOK() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        //On trouve le produit d'id 99
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(produitDo);
+        assertTrue(produitServiceMock.deleteProduit(produitDo.getIdProduitOriginal()));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#deleteProduit(ProduitDto)}.
+     */
+    @Test
+    void testDeleteProduitKO() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        //On ne trouve pas le produit d'id 99
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(null);
+        assertFalse(produitServiceMock.deleteProduit(produitDo.getIdProduitOriginal()));
     }
 
     /**
