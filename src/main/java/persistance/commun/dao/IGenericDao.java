@@ -44,4 +44,11 @@ public interface IGenericDao<T> {
      * @return      T mis a jour
      */
     T update(final T bean);
+
+    /**
+     * Permet de supprimer une entité T en base de donnees
+     * 
+     * @param bean Bean T à supprimer
+     */
+    void delete(final T bean);
 }
