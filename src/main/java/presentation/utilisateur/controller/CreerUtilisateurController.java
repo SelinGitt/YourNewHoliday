@@ -43,10 +43,12 @@ public class CreerUtilisateurController {
      * et de mettre un UtilisateurDto vide dans le modèle
      * 
      * @param  cheminAvatar le chemin de l'avatar à appliquer
+     * @param  codeError    le code d'erreur appliqué
      * @return              le Model and View
      */
     @GetMapping
-    public ModelAndView afficher(final @ModelAttribute(value = "avatar") String cheminAvatar) {
+    public ModelAndView afficher(final @ModelAttribute(value = "avatar") String cheminAvatar,
+            final @ModelAttribute("imgError") String codeError) {
         final var modelAndView = new ModelAndView("creerUtilisateur");
 
         // On creer l'utilisateur ici et lui affecte un role pour avoir une valeur par defaut dans le formulaire

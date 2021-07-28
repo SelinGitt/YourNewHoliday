@@ -116,7 +116,10 @@
             </div>
             <c:if test="${not empty avatar}">
                 <div class="display-flex justify-content-space-between">
-                    <div><spring:message code="usr05.label.avatarChosen"/>: ${avatar}</div>
+                    <div>
+                        <spring:message code="usr05.label.avatarChosen" />
+                        : ${avatar}
+                    </div>
                 </div>
                 <form:hidden path="cheminAvatar" value="${avatar}" />
             </c:if>
@@ -125,7 +128,7 @@
             <%-- cf : https://imgur.com/a/KoUx67i --%>
             <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
         </form:form>
-        <form action="uploadImageUser.do" enctype="multipart/form-data" method="post"
+        <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post"
             class="display-flex justify-content-space-around">
             <div class="user05-leftSide">
                 <div class="display-flex">
@@ -137,10 +140,15 @@
                     <div class="user05-form-inputs">
                         <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit"
                             value="submit" />
+                        <c:if test="${not empty imgError}">
+                            <div class="text-color-rouge">
+                                <spring:message code="${imgError}"/>
+                            </div>
+                        </c:if>
                     </div>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </div>
 

@@ -36,11 +36,14 @@ public class UploadImageUserController {
     @PostMapping
     public ModelAndView saveImage(@RequestParam("file") final MultipartFile part) throws IOException {
         final var modelAndView = new ModelAndView("redirect:creerUtilisateur.do");
-        modelAndView.getModelMap().addAttribute("avatar", part.getOriginalFilename());
-
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        imageService.saveImage(byteArray, "usr", fileName);
+        if (imageService.saveImage(byteArray, "usr", fileName)) {
+            modelAndView.getModelMap().addAttribute("avatar", fileName);
+        } else {
+            modelAndView.getModelMap().addAttribute("imgError", "usr05.erreur.image");
+
+        }
         return modelAndView;
 
     }
