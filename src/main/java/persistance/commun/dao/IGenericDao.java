@@ -46,9 +46,9 @@ public interface IGenericDao<T> {
     T update(final T bean);
 
     /**
-     * Permet de supprimer T en base de donnees
+     * Permet de supprimer une entité T en base de donnees grâce à son id
      * 
-     * @param id id produit à supprimer
+     * @param id id de l'entité T à supprimer
      */
     void delete(final Integer id);
 }

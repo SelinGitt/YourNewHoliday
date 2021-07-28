@@ -86,7 +86,7 @@
                             alt="" src="img/commun/editer.png" class="pdt01Image">
                     </a></td>
                     <td class="pdt01Body"><a href="supprimerProduitAdmin.do?idProduit=${produitDto.idProduitOriginal}"
-                    onclick="return confirm('<spring:message code="pdt01.confirmer.suppression" />')"> 
+                    onclick="return confirm('<spring:message code="pdt01.confirmDelete" />')"> 
                     <img alt="" src="img/commun/poubelle.jpg" class="pdt01Image">
                     </a></td>
                 </tr>
