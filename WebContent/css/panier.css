@@ -111,18 +111,24 @@
 .panier-description-produit {
 	width: 57vh;
 }
+
 .panier-description-produit-paragraphe {
-    font-size: 1em;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
-    max-height: 3em;
-    max-width: 50vh;
-    line-height: 1em; 
-    padding-right: 1em;
-    padding: 1em;
+	font-size: 1em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 4;
+	max-height: 3em;
+	max-width: 50vh;
+	line-height: 1em;
+	padding-right: 1em;
+	padding: 1em;
+}
+
+.panier-div-prix {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
 }
 
 .panier-image-produit {
@@ -227,6 +233,7 @@
 
 .panier-formulaire-textarea {
 	width: 100%;
+	height: 6em;
 }
 
 .panier-100 {
