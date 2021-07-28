@@ -133,7 +133,7 @@
             <div class="user05-leftSide">
                 <div class="display-flex">
                     <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
+                    <div class="user05-placeholder"></div>
                 </div>
                 <div class="display-flex justify-content-space-around">
                     <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
