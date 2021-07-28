@@ -36,6 +36,9 @@ public class ImageService implements IImageService {
     private static final int    LIMIT_WIDTH_USER  = 200;
     private static final int    LIMIT_HEIGHT_USER = 200;
     private static final int    LIMIT_SIZE_USER   = 500_000;
+    private static final int    LIMIT_WIDTH_PDT   = 1920;
+    private static final int    LIMIT_HEIGHT_PDT  = 1080;
+    private static final int    LIMIT_SIZE_PDT    = 5_000_000;
 
     @Autowired
     private IImageDao           imageDao;
@@ -68,9 +71,16 @@ public class ImageService implements IImageService {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
-            //utilisatiion de l'écriture java 7 pour indiquer que le fichier ne doit pas dépasser 500ko
+            //utilisation de l'écriture java 7 pour indiquer que le fichier ne doit pas dépasser 500ko
             final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
             final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER);
+            return imageEnregistree && imageValid;
+        }
+        if (TypeImage.PRODUIT.getType().equals(type)) {
+            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
+            //utilisatiion de l'criture java 7 pour indiquer que le fichier ne doit pas dpasser 5mo
+            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
+            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT);
             return imageEnregistree && imageValid;
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
