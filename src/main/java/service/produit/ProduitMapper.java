@@ -120,6 +120,9 @@ public class ProduitMapper {
      * @return              l'entier correspondant
      */
     public static Integer conversionBoolToInt(final Boolean[] booleanArray) {
+        if (booleanArray == null) {
+            return 0;
+        }
         var numberToConvert = 0;
         for (final Boolean bitToConvert : booleanArray) {
             final var nbr = numberToConvert << 1;
