@@ -41,7 +41,6 @@ public class ConsulterProduitAcheteController {
             final @RequestParam(value = "version") String version, final @RequestParam(value = "from", required = false) String location,
             final @RequestParam(value = "paramValue", required = false) String param,
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
-        System.out.println("controller");
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         final var produitAchete = iCommandeService.findProduitAchete(idProduit, version);

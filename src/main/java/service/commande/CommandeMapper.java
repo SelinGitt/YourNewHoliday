@@ -134,7 +134,6 @@ public class CommandeMapper {
         produitDto.setCheminImage(produitAchete.getCheminImage());
         produitDto.setServices(ProduitMapper.genererServices((produitAchete.getServices())));
         produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
-        System.out.println(produitDto);
         return produitDto;
     }
 }
