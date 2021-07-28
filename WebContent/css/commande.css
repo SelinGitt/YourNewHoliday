@@ -324,18 +324,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 .CMD_04-border-prix-avant-remise {
 	border: 0.19em solid #000000;
-	width: 50%;
-	height: 3vh;
-}
-
-.CMD_04-padding-prix {
-	padding-top: 0.5vh;
-	padding-right: 5%;
-}
-
-.CMD_04-elements-a-droite {
-	width: 90%;
-	padding-left: 5%;
 }
 
 /* si le text dépasse de la boite, il sera tronqué automatiquement */
@@ -372,4 +360,28 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 /* marge pour les champs des adresses */
 .CMD_04-adresse-margin {
 	margin: 2%;
+}
+
+/* la grille pour commande prix */
+.CMD_04-price-grid {
+	display: grid;
+	/* pas d'espacement entre les grilles */
+	grid-gap: 5%;
+	grid-template-columns: repeat(2, 2fr);
+}
+
+/* marge pour les champs texts des prix */
+.CMD_04-price-text-padding {
+	padding: 5%;
+}
+
+/* padding pour les champs des prix */
+.CMD_04-price-padding {
+	/* padding à droite comme pour celui de fieldset */
+	padding: 5% 0.625em 5% 5%;
+}
+
+/* taille de la boxe */
+.CMD_04-price-width {
+	width: 100%;
 }
