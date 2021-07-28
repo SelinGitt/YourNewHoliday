@@ -305,3 +305,16 @@ th.pdt01 {
 .pdt04IconeSpace {
 	padding: 0.3em;
 }
+
+.pdt04ServiceActif {
+	color: green;
+	font-size: xx-large !important;
+	cursor: pointer;
+	border: 0.02em solid green;
+}
+
+.pdt04ServiceInactif {
+	color: black;
+	font-size: xx-large !important;
+	cursor: pointer;
+}
