@@ -36,37 +36,49 @@ class CommandeMapperTest {
 
     /**
      * Test method for {@link service.commande.CommandeMapper#mapperToDto(persistance.commande.entity.CommandeDo)}.
-     * 
-     * @throws ParseException
      */
     @Test
-    void testMapperToDto() throws ParseException {
+    void testMapperToDto() {
 
         final CommandeDo commandeDo = new CommandeDo();
 
         commandeDo.setId(20);
-        commandeDo.setReference("CMD9874561");
+        commandeDo.setReference("MP5001017050420");
         final Date date = DateFormatUtil.formaterStringToDate("01/01/1970");
         commandeDo.setDate(date);
         commandeDo.setPrixSansRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setPrixTotalApresRemise(new BigDecimal(200.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(5);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setNomLivraison("Thiéri");
+        commandeDo.setPrenomLivraison("Henry");
         commandeDo.setAdresseLivraison("12 rue de la toison d'or, 59100 ROUBAIX");
+
+        commandeDo.setNomFacturation("Boursier");
+        commandeDo.setPrenomFacturation("Filibert");
         commandeDo.setAdresseFacturation("4/103 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDto commandeDto = CommandeMapper.mapperToDto(commandeDo);
 
         assertNotNull(commandeDto);
         assertEquals("20", commandeDto.getId());
-        assertEquals("CMD9874561", commandeDto.getReference());
+        assertEquals("MP5001017050420", commandeDto.getReference());
         assertEquals("01/01/1970", commandeDto.getDate());
         assertEquals("200,40", commandeDto.getPrixTotalApresRemise());
         assertEquals("5", commandeDto.getQuantiteTotale());
         assertEquals(Collections.emptyList(), commandeDto.getListCommandeProduitDto());
 
-        assertEquals("12 rue de la toison d'or, 59100 ROUBAIX", commandeDto.getAdresseLivraison().getAdresse());
-        assertEquals("4/103 rue du Barreau, 59650 Villeneuve d'Ascq", commandeDto.getAdresseFacturation().getAdresse());
+        final var adresseLivraison = commandeDto.getAdresseLivraison();
+        assertEquals("Thiéri", adresseLivraison.getNom());
+        assertEquals("Henry", adresseLivraison.getPrenom());
+        assertEquals("12 rue de la toison d'or, 59100 ROUBAIX", adresseLivraison.getAdresse());
+
+        final var adresseFacturation = commandeDto.getAdresseFacturation();
+        assertEquals("Boursier", adresseFacturation.getNom());
+        assertEquals("Filibert", adresseFacturation.getPrenom());
+        assertEquals("4/103 rue du Barreau, 59650 Villeneuve d'Ascq", adresseFacturation.getAdresse());
+
+        assertEquals(0, commandeDto.getListCommandeProduitDto().size());
     }
 
     /**
@@ -87,26 +99,34 @@ class CommandeMapperTest {
 
         final CommandeDo commandeDo = new CommandeDo();
         commandeDo.setId(20);
-        commandeDo.setReference("CMD9876541");
+        commandeDo.setReference("RP1012129039643");
         final Date date = DateFormatUtil.formaterStringToDate("12/12/1990");
         commandeDo.setDate(date);
         commandeDo.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo.setQuantiteTotale(2);
         commandeDo.setCommandeProduitDoSet(null);
+        commandeDo.setNomLivraison("Vals");
+        commandeDo.setPrenomLivraison("Manuel");
         commandeDo.setAdresseLivraison("18 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo.setNomFacturation("Holande");
+        commandeDo.setPrenomFacturation("François");
         commandeDo.setAdresseFacturation("4/203 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         final CommandeDo commandeDo2 = new CommandeDo();
         commandeDo2.setId(23);
-        commandeDo2.setReference("CMD4569873");
+        commandeDo2.setReference("RP1013069039643");
         final Date date2 = DateFormatUtil.formaterStringToDate("13/06/1990");
         commandeDo2.setDate(date2);
         commandeDo2.setPrixSansRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setPrixTotalApresRemise(new BigDecimal(2785.40).setScale(2, RoundingMode.FLOOR));
         commandeDo2.setQuantiteTotale(3);
         commandeDo2.setCommandeProduitDoSet(null);
+        commandeDo2.setNomLivraison("Séraphin");
+        commandeDo2.setPrenomLivraison("Mathias");
         commandeDo2.setAdresseLivraison("19 rue de la toison d'or, 59100 ROUBAIX");
+        commandeDo2.setNomFacturation("Felicia");
+        commandeDo2.setPrenomFacturation("Matilde");
         commandeDo2.setAdresseFacturation("4/303 rue du Barreau, 59650 Villeneuve d'Ascq");
 
         assertEquals(2, CommandeMapper.mapperListDoToDto(Arrays.asList(commandeDo, commandeDo2)).size());
@@ -118,6 +138,9 @@ class CommandeMapperTest {
      */
     @Test
     void testMapperPanierDtoToDo() {
+        final Boolean[] boolArrayToTestService1 = {false, false, false, false, false, false, true, false, true};
+        final Boolean[] boolArrayToTestService2 = {false, false, false, false, false, false, false, false, true};
+        final Boolean[] boolArrayToTestService3 = {false, false, false, false, false, false, true, true, false};
         // ProduitDto1
         final var produitDto1 = new ProduitDto();
         produitDto1.setIdProduitOriginal("1");
@@ -127,7 +150,7 @@ class CommandeMapperTest {
         produitDto1.setNom("Voyage au Royaume Uni de Grande Bretagne et d'Irlande du nord");
         produitDto1.setReference("ROY1234567");
         produitDto1.setCheminImage("RoyaumeUni.jpg");
-        produitDto1.setServices("5");
+        produitDto1.setServices(boolArrayToTestService1);
         // ProduitDto2
         final var produitDto2 = new ProduitDto();
         produitDto2.setIdProduitOriginal("3");
@@ -138,7 +161,7 @@ class CommandeMapperTest {
         produitDto2.setNom("Voyage au Canada");
         produitDto2.setReference("CAN1256568");
         produitDto2.setCheminImage("Canada.jpg");
-        produitDto2.setServices("1");
+        produitDto2.setServices(boolArrayToTestService2);
         // ProduitDto3
         final var produitDto3 = new ProduitDto();
         produitDto3.setIdProduitOriginal("5");
@@ -149,7 +172,7 @@ class CommandeMapperTest {
         produitDto3.setNom("Voyage avec toi");
         produitDto3.setReference("VIR7777777");
         produitDto3.setCheminImage("virtual.jpg");
-        produitDto3.setServices("6");
+        produitDto3.setServices(boolArrayToTestService3);
 
         // ajout des lignes de commande
         final var ligneCommandeProduit = new LigneCommandeProduitDto();
@@ -188,26 +211,32 @@ class CommandeMapperTest {
         adresseLivraison.setAdresse(defaultAdresse.getAdresse());
 
         final var adresseFacturation = new CommandeAdresseDto();
-        adresseFacturation.setNom(defaultAdresse.getNom());
-        adresseFacturation.setPrenom(defaultAdresse.getPrenom());
-        adresseFacturation.setAdresse(defaultAdresse.getAdresse());
+        adresseFacturation.setNom("Branson");
+        adresseFacturation.setPrenom("Richard");
+        adresseFacturation.setAdresse("127 nous irons au bois");
 
         final var adresses = new AdressesDto();
         adresses.setDefaultAdresse(defaultAdresse);
         adresses.setCommandeAdresseLivraison(adresseLivraison);
         adresses.setCommandeAdresseFacturation(adresseFacturation);
 
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, "CMD1234567", 1);
+        final var aujourdhui = new Date();
+
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panierDto, adresses, aujourdhui, "CMD1234567", 1);
         assertNotNull(commandeDo);
         assertNull(commandeDo.getId());
         assertEquals("CMD1234567", commandeDo.getReference());
-        assertEquals(DateFormatUtil.formaterDateToString(new Date()), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals(DateFormatUtil.formaterDateToString(aujourdhui), DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         assertEquals(new BigDecimal(3699.8).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixSansRemise());
         assertEquals(new BigDecimal(3329.82).setScale(2, RoundingMode.FLOOR), commandeDo.getPrixTotalApresRemise());
         assertEquals(3, commandeDo.getQuantiteTotale());
         assertEquals(panierDto.getNombreDeReferences(), commandeDo.getCommandeProduitDoSet().size());
         assertEquals(1, commandeDo.getIdUtilisateur());
-        assertEquals("123 nous irons au bois", commandeDo.getAdresseFacturation());
+        assertEquals("Dupont", commandeDo.getNomLivraison());
+        assertEquals("Marchant", commandeDo.getPrenomLivraison());
+        assertEquals("Branson", commandeDo.getNomFacturation());
+        assertEquals("Richard", commandeDo.getPrenomFacturation());
+        assertEquals("127 nous irons au bois", commandeDo.getAdresseFacturation());
         assertEquals("123 nous irons au bois", commandeDo.getAdresseLivraison());
     }
 

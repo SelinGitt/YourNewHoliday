@@ -52,6 +52,18 @@ public class CommandeDo {
     @Column(name = "adresse_facturation")
     private String                 adresseFacturation;
 
+    @Column(name = "nom_livraison")
+    private String                 nomLivraison;
+
+    @Column(name = "prenom_livraison")
+    private String                 prenomLivraison;
+
+    @Column(name = "nom_facturation")
+    private String                 nomFacturation;
+
+    @Column(name = "prenom_facturation")
+    private String                 prenomFacturation;
+
     /**
      * Getter for id
      *
@@ -230,6 +242,78 @@ public class CommandeDo {
      */
     public void setAdresseFacturation(final String adresseFacturation) {
         this.adresseFacturation = adresseFacturation;
+    }
+
+    /**
+     * Getter for nomLivraison
+     *
+     * @return the nomLivraison
+     */
+    public String getNomLivraison() {
+        return nomLivraison;
+    }
+
+    /**
+     * Setter for nomLivraison
+     *
+     * @param nomLivraison the nomLivraison to set
+     */
+    public void setNomLivraison(final String nomLivraison) {
+        this.nomLivraison = nomLivraison;
+    }
+
+    /**
+     * Getter for prenomLivraison
+     *
+     * @return the prenomLivraison
+     */
+    public String getPrenomLivraison() {
+        return prenomLivraison;
+    }
+
+    /**
+     * Setter for prenomLivraison
+     *
+     * @param prenomLivraison the prenomLivraison to set
+     */
+    public void setPrenomLivraison(final String prenomLivraison) {
+        this.prenomLivraison = prenomLivraison;
+    }
+
+    /**
+     * Getter for nomFacturation
+     *
+     * @return the nomFacturation
+     */
+    public String getNomFacturation() {
+        return nomFacturation;
+    }
+
+    /**
+     * Setter for nomFacturation
+     *
+     * @param nomFacturation the nomFacturation to set
+     */
+    public void setNomFacturation(final String nomFacturation) {
+        this.nomFacturation = nomFacturation;
+    }
+
+    /**
+     * Getter for prenomFacturation
+     *
+     * @return the prenomFacturation
+     */
+    public String getPrenomFacturation() {
+        return prenomFacturation;
+    }
+
+    /**
+     * Setter for prenomFacturation
+     *
+     * @param prenomFacturation the prenomFacturation to set
+     */
+    public void setPrenomFacturation(final String prenomFacturation) {
+        this.prenomFacturation = prenomFacturation;
     }
 
 }

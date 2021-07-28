@@ -81,15 +81,11 @@
                                 </spring:message></th>
                         </tr>
                         <tr class="pdt04IconeServices">
-                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
+                            <c:forEach items="${consulterProduitDto.services}" var="service" varStatus="loop">
+                                <td><c:if test="${consulterProduitDto.services[loop.index]}">
+                                        <em class="" id="${loop.index}"></em>
+                                    </c:if></td>
+                            </c:forEach>
                         </tr>
                     </table>
                 </div>
@@ -100,14 +96,15 @@
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" class="pdt04TextArea">
-                ${consulterProduitDto.description}</textarea></td>
+                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly"
+                        class="pdt04TextArea textarea">${consulterProduitDto.description}</textarea></td>
             </tr>
         </table>
 
     </div>
 </div>
 <script>
-    document.title = document.getElementById('titrePage').textContent;
-    document.getElementById('titrePage').remove();
+	loadServices()
+	document.title = document.getElementById('titrePage').textContent;
+	document.getElementById('titrePage').remove();
 </script>

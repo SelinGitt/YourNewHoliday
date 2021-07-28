@@ -16,7 +16,7 @@
     </c:if>
     <c:if test="${not empty anySuccess}">
         <div class="background-validation-block block-message-commun">
-           <span class="fa fa-check"></span>  <span><spring:message code="${anySuccess}" /></span>
+            <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
         </div>
     </c:if>
 
@@ -53,8 +53,8 @@
                 aria-label="Produit">
                 <tr>
                     <th colspan="2"><a
-                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=liste"> 
-                        <img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=liste"> <img
+                            src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
                             alt="${produitDto.destination}" class="pdt00Img display-flex justify-content-center" />
                     </a></th>
                 </tr>

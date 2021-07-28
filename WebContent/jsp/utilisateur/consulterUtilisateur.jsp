@@ -14,13 +14,15 @@
         <div class="align-item-center justify-content-center">
             <c:if test="${not empty error}">
                 <div class="background-error-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
+                    <span class="fa fa-exclamation"></span> 
+                    <span class="message"><spring:message code="${error}" /></span>
                 </div>
             </c:if>
 
             <c:if test="${not empty userSuccess}">
                 <div class="background-validation-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> <span><spring:message code="${userSuccess}" /></span>
+                    <span class="fa fa-exclamation"></span> 
+                    <span><spring:message code="${userSuccess}" /></span>
                 </div>
             </c:if>
             <div class="user00-title">
@@ -52,7 +54,8 @@
 
                 <div class="user00-infos">
                     <label for="adresse"> <spring:message code="usr00.consulter.adresse" /></label>
-                    <textarea class="user00-infos-input user00-textarea" disabled="disabled">${utilisateurDto.adresse}</textarea>
+                    <textarea class="user00-infos-input user00-textarea textarea" 
+                    disabled="disabled">${utilisateurDto.adresse}</textarea>
                 </div>
 
                 <div class="user00-infos">

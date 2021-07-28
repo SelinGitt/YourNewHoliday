@@ -95,7 +95,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.description" /></td>
                         <td class="pdt03TextAreaPDT03"><div>
-                                <form:textarea path="description" rows="4" cols="70" />
+                                <form:textarea class="textarea" path="description" rows="4" cols="70" />
                             </div>
                             <div class="pdt03formError">
                                 <form:errors path="description" cssClass="text-color-rouge" />
@@ -126,7 +126,8 @@
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="Image du produit à ajouter" class="pdt03Form-imageProduit" /></td>
+                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png" 
+                        alt="Image du produit à ajouter"  /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"

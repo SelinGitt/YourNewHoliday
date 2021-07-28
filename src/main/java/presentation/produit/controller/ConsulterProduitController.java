@@ -56,7 +56,6 @@ public class ConsulterProduitController {
         if (produitTrouve == null) {
             return new ModelAndView("redirect:404.do");
         }
-
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitTrouve);
         final var pageOrigine = PageRedirection.findValue(location);
         final var urlToBuild = new StringBuilder();
@@ -68,4 +67,5 @@ public class ConsulterProduitController {
         return modelAndView;
 
     }
+
 }
