@@ -44,11 +44,13 @@
         <div class="headerSousCell">
             <h3>
                 <c:if test="${!empty sessionScope.utilisateur}">
-                    <spring:message code="header.deconnexion" />
+                    <a href="deconnecter.do" class ="text-decoration-none"> <spring:message code="header.deconnexion" />
+                    </a>
 
                 </c:if>
                 <c:if test="${empty sessionScope.utilisateur}">
-                    <spring:message code="header.connexion" />
+                    <a href="connecter.do" class ="text-decoration-none"> <spring:message code="header.connexion" />
+                    </a>
                 </c:if>
 
             </h3>
@@ -79,8 +81,10 @@
             </div>
             <%--"Panier" --%>
             <div class="headerSousCell">
-                <h3 onclick="chargerlien()">
+                <h3>
+                    <a href="listerPanierProduits.do" class ="text-decoration-none"> 
                     <spring:message code="header.panier" />
+                    </a>
                 </h3>
             </div>
         </div>
@@ -89,14 +93,17 @@
     <c:if test="${empty sessionScope.utilisateur}">
         <div class="headerCell headerPanier">
             <div class="headerSousCell">
-                <a href="creerUtilisateur.do"> <img src="img/template/header/creerCompte.png" class="logoHeader"
+                <a href="creerUtilisateur.do" class ="text-decoration-none"> 
+                <img src="img/template/header/creerCompte.png" class="logoHeader"
                     alt="icône créer compte">
                 </a>
             </div>
             <%--"Créer un compte"--%>
             <div class="headerSousCell">
                 <h3>
+                    <a href="creerUtilisateur.do" class ="text-decoration-none"> 
                     <spring:message code="header.creer.compte" />
+                    </a>
                 </h3>
             </div>
         </div>
