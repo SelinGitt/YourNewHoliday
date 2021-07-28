@@ -25,7 +25,7 @@
                 <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
             </form:form>
         </div>
-        <div>
+        <div class="pdt01-searchBarSpace">
             <form:form action="listerProduitsAdmin.do" method="POST">
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
                 <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />

@@ -115,6 +115,10 @@ th.pdt01 {
 	color: #FFFFFF;
 }
 
+.pdt01-searchBarSpace {
+	margin-left: 1em;
+}
+
 /* PDT02 */
 .pdt02Grid-container {
 	display: grid;
@@ -183,8 +187,8 @@ th.pdt01 {
 }
 
 .pdt02formError {
-	line-height:1em;
- }
+	line-height: 1em;
+}
 
 /* PDT03 */
 .pdt03Grid-container {
@@ -258,7 +262,7 @@ th.pdt01 {
 	width: 100%;
 }
 
-.pdt03Form-imageProduit img{
+.pdt03Form-imageProduit img {
 	width: 50%;
 }
 

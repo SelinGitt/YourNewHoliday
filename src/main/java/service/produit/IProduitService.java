@@ -112,7 +112,7 @@ public interface IProduitService {
      * 
      * @param  searchTerm terme recherché
      * @param  tri        tri effectué
-     * @return            liste filtrée
+     * @return            liste triée
      */
     List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri);
 

@@ -169,7 +169,7 @@ public class ProduitService implements IProduitService {
         if ("".equals(setTypeFiltre(tri)) || "0".equals(setTypeFiltre(tri))) {
             return rechercherProduits(searchTerm);
         }
-        return trouverProduitsFiltreRecherche(searchTerm, setTypeFiltre(tri));
+        return trouverProduitsFiltreRecherche(searchTerm, tri);
     }
 
     private String setTypeFiltre(final Boolean filtre) {
@@ -189,7 +189,7 @@ public class ProduitService implements IProduitService {
         return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
     }
 
-    private List<ProduitDto> trouverProduitsFiltreRecherche(final String filtre, final String tri) {
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String filtre, final Boolean tri) {
         return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(filtre, tri));
     }
 
