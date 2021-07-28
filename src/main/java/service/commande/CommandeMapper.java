@@ -11,6 +11,7 @@ import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 import service.util.DateFormatUtil;
 import service.util.DecimalFormatUtils;
 
@@ -131,8 +132,9 @@ public class CommandeMapper {
         produitDto.setHebergement(produitAchete.getHebergement());
         produitDto.setMiseEnVente(String.valueOf(produitAchete.getMiseEnVente()));
         produitDto.setCheminImage(produitAchete.getCheminImage());
-        produitDto.setServices(String.valueOf(produitAchete.getServices()));
+        produitDto.setServices(ProduitMapper.genererServices((produitAchete.getServices())));
         produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
+        System.out.println(produitDto);
         return produitDto;
     }
 }

@@ -98,6 +98,14 @@ public interface IProduitService {
     ProduitDto trouverProduitById(final Integer idProduit);
 
     /**
+     * Permet de supprimer un produit
+     * 
+     * @param  id produit à supprimer
+     * @return    true si supprimé sinon false
+     */
+    boolean deleteProduit(final Integer id);
+
+    /**
      * Permet d'ajouter un produit au panier, en testant les règles de gestions
      *
      * @param  panierDto    le panier où il faut ajouter les produits

@@ -3,9 +3,12 @@
  */
 package service.produit.impl;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -81,12 +84,13 @@ class ProduitServiceTest {
      */
     @Test
     void testCreerProduitInexistantEnBase() {
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
@@ -97,7 +101,7 @@ class ProduitServiceTest {
         Mockito.when(this.iProduitDaoMock.findByReference(produitDto.getReference())).thenReturn(null);
         Mockito.when(this.iProduitDaoMock.create(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         final var produitDtoCree = produitServiceMock.creerProduit(produitDto);
-        assertEquals("1", produitDtoCree.getServices());
+        assertArrayEquals(boolArrayToTest, produitDtoCree.getServices());
         assertNotNull(produitDtoCree);
         assertEquals("TEST00000", produitDtoCree.getReference());
 
@@ -108,12 +112,13 @@ class ProduitServiceTest {
      */
     @Test
     void testCreerProduitDejaEnBase() {
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         final var produitDto = new ProduitDto();
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
@@ -233,11 +238,12 @@ class ProduitServiceTest {
     @Test
     void testEditerProduit() {
         final ProduitDto produitDto = new ProduitDto();
+        final Boolean[] boolArrayToTest = {false, false, false, false, false, false, false, false, true};
         produitDto.setIdProduitOriginal("99");
         produitDto.setNom("Test Edition");
         produitDto.setReference("TEST00000");
         produitDto.setPrixUnitaire("10.00");
-        produitDto.setServices("1");
+        produitDto.setServices(boolArrayToTest);
         produitDto.setMiseEnVente("true");
         produitDto.setHebergement("Hotel Test");
         produitDto.setDestination("Testmanie");
@@ -264,6 +270,30 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.trouverProduitById(50));
         // On récupére un produit avec un ID inexistant
         assertNull(produitServiceMock.trouverProduitById(404));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#deleteProduit(ProduitDto)}.
+     */
+    @Test
+    void testDeleteProduitOK() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        //On trouve le produit d'id 99
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(produitDo);
+        assertTrue(produitServiceMock.deleteProduit(produitDo.getIdProduitOriginal()));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#deleteProduit(ProduitDto)}.
+     */
+    @Test
+    void testDeleteProduitKO() {
+        final var produitDo = new ProduitDo();
+        produitDo.setIdProduitOriginal(99);
+        //On ne trouve pas le produit d'id 99
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(null);
+        assertFalse(produitServiceMock.deleteProduit(produitDo.getIdProduitOriginal()));
     }
 
     /**
