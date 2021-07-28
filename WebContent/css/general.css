@@ -119,3 +119,20 @@ section {
 .text-center {
 	text-align: center;
 }
+
+/* css pour le bouton retour */
+.bouton-retour {
+	color: #000000;
+	font-size: 1.em;
+	/* enlève la bordure du bouton */
+	border: 0;
+	border-radius: 0.313em;
+	text-align: center;
+	padding: 0.15em;
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.bouton-retour:hover {
+	opacity: 1;
+}

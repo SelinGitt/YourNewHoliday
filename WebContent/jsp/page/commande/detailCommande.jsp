@@ -10,7 +10,7 @@
 </h1>
 <div class="CMD_04-bouton-retour-margin">
     <a href="listerCommande.do">
-        <button class="CMD_04-bouton-retour">
+        <button class="bouton-retour">
             <spring:message code="detailCommande.btn.retour" />
         </button>
     </a>
