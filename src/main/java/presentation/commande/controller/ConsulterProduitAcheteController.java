@@ -42,12 +42,12 @@ public class ConsulterProduitAcheteController {
             final @RequestParam(value = "paramValue", required = false) String param,
             final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
         final var modelAndView = new ModelAndView();
-        modelAndView.setViewName("consulterProduitAchete");
+        modelAndView.setViewName("consulterProduit");
         final var produitAchete = iCommandeService.findProduitAchete(idProduit, version);
         if (produitAchete == null) {
             return new ModelAndView("redirect:404.do");
         }
-        modelAndView.getModelMap().addAttribute("consulterProduitAcheteDto", produitAchete);
+        modelAndView.getModelMap().addAttribute("consulterProduitDto", produitAchete);
         final var pageOrigine = PageRedirection.findValue(location);
         final var urlToBuild = new StringBuilder();
         urlToBuild.append(pageOrigine.getPageConcrete());
