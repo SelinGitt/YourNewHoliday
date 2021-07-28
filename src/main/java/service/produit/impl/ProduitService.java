@@ -176,13 +176,10 @@ public class ProduitService implements IProduitService {
         if (filtre == null) {
             return "";
         }
-        if (filtre == true) {
+        if (filtre) {
             return "1";
-        } else
-            if (filtre == false) {
-                return "2";
-            }
-        return null;
+        }
+        return "2";
     }
 
     private List<ProduitDto> trouverProduitsFiltre(final Boolean filtre) {

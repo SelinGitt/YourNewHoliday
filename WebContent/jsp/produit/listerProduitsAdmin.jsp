@@ -35,7 +35,7 @@
                     <option value="false"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
                 </select>
                 <script>
-                     document.getElementById("triSelect").options[${tri}].selected=true;             
+                     document.getElementById("triSelect").options[${tri}].selected=true;
 				</script>
                 <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
             </form:form>
