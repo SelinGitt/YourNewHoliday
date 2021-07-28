@@ -11,10 +11,6 @@
 <div class="background-error-block block-message-commun">
     <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${errorPanVide}" /></span>
 </div>
-<%-- Permet de Gerer l'internationalisation du titre de la page --%>
-<p id="titrePage">
-    <spring:message code="header.connexion" />
-</p>
 <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
 <h1 class="panier-title">
     <spring:message code="pan00.titre" />
