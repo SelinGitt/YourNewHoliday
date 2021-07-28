@@ -63,9 +63,15 @@
 	margin-left: 0.5em;
 }
 
+.user01-conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+	height: 100%;
+	width: 98%;
+}
 .user01-searchMenu {
 	margin-bottom: 0.938em;
-	width: 100%;
+	width: 98%;
 }
 
 .user01-filter-bar {
@@ -255,11 +261,6 @@
 	color: #FFFFFF;
 }
 
-.user05-placeholder {
-	width: 15em;
-	height: 15em;
-	background-color: red;
-}
 /* USR07 */
 .user07-body-general {
 	width: 100%;
