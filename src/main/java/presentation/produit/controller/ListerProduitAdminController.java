@@ -64,7 +64,7 @@ public class ListerProduitAdminController {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         Boolean boolTri = null;
-        if (tri != "") {
+        if (!tri.equals("")) {
             if (tri.equals("0")) {
                 boolTri = true;
             }
