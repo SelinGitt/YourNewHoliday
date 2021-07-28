@@ -5,14 +5,17 @@
         <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
     </div>
 </c:if>
+
 <%-- Permet de Gerer l'internationalisation du titre de la page --%>
 <p id="titrePage">
     <spring:message code="glb.titre.page.detailCommande" />
 </p>
-<h1>
+
+<h1 class="title title-responsive text-align-center">
+
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
-<div>
+<div class="CMD_04-bouton-retour-margin">
     <a href="listerCommande.do">
         <button class="CMD_04-bouton-retour">
             <spring:message code="detailCommande.btn.retour" />
@@ -39,8 +42,7 @@
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
                                     <c:url value="consulterProduit.do" var="destination">
-                                        <c:param name="idProduit" 
-                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
+                                        <c:param name="idProduit" value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
                                         <c:param name="from" value="detail" />
                                         <c:param name="paramValue" value="${commande.reference}" />
                                     </c:url>
@@ -55,12 +57,15 @@
                                 <div class="CMD_04-col-2 CMD_04-height">
                                     <div
                                         class="CMD_04-bold CMD_04-text-align-left
-                                               CMD_04-box-title CMD_04-title-text-color">
+                                               CMD_04-box-title CMD_04-title-text-color
+                                               CMD_04-text-overflow">
                                         ${cmdProduit.produitAcheteDto.nom}
                                         <spring:message code="detailCommande.tiret"></spring:message>
                                         ${cmdProduit.produitAcheteDto.reference}
                                     </div>
-                                    <div class="CMD_04-text-align-justify CMD_04-box-text">
+                                    <div
+                                        class="CMD_04-text-align-justify CMD_04-description
+                                                CMD_04-padding-top CMD_04-box-text">
                                         ${cmdProduit.produitAcheteDto.description}</div>
                                 </div>
                             </div>
@@ -68,7 +73,9 @@
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-2 CMD_04-border-right
                                        CMD_04-height CMD_04-box-sizing">
-                                <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
+                                <div
+                                    class="CMD_04-bold CMD_04-text-align-center
+                                            CMD_04-box-title CMD_04-text-overflow">
                                     <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                                 </div>
                                 <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">
@@ -148,40 +155,56 @@
                 </div>
             </fieldset>
         </div>
-        <%--  totaux : total avant remise, remise, total après remise, bouton valider le panier --%>
-        <div class="CMD_04-divise-3-hauteur CMD_04-box-sizing">
+
+        <%--  totaux : total avant remise, remise, total après remise --%>
+        <div class="CMD_04-divise-3-hauteur">
 
             <%--  total avant remise --%>
-            <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+            <div class="CMD_04-price-grid CMD_04-height CMD_04-price-padding CMD_04-box-sizing">
+                <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
-                </h3>
-                <div id="total_avant_remise" class="prix panier-bordure-1px">${commande.prixTotalAvantRemise}
-                    <spring:message code="glb.devise" />
                 </div>
-            </div>
-            <%-- remise --%>
-            <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <div
+                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                            CMD_04-price-text-padding CMD_04-box-sizing">
+                    <div class="CMD_04-text-align-right">
+                        ${commande.prixTotalAvantRemise}
+                        <spring:message code="glb.devise" />
+                    </div>
+                </div>
+
+
+                <%-- remise --%>
+                <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.remise" />
-                </h3>
-                <div id="remise" class="prix panier-bordure-1px">${remise }
-                    <spring:message code="glb.devise" />
                 </div>
-            </div>
-            <%--  total après remise --%>
-            <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <div
+                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                            CMD_04-price-text-padding CMD_04-box-sizing">
+                    <div class="CMD_04-text-align-right">
+                        ${remise}
+                        <spring:message code="glb.devise" />
+                    </div>
+                </div>
+
+
+                <%--  total après remise --%>
+                <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
-                </h3>
-                <div id="total_apres_remise" class="prix panier-bordure-1px">${commande.prixTotalApresRemise }
-                    <spring:message code="glb.devise" />
+                </div>
+                <div
+                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                            CMD_04-price-text-padding CMD_04-box-sizing">
+                    <div class="CMD_04-text-align-right">
+                        ${commande.prixTotalApresRemise}
+                        <spring:message code="glb.devise" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-    document.title = document.getElementById('titrePage').textContent;
-    document.getElementById('titrePage').remove();
+	document.title = document.getElementById('titrePage').textContent;
+	document.getElementById('titrePage').remove();
 </script>
