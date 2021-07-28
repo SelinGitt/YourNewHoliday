@@ -60,9 +60,15 @@
 
 /* USR01 */
 .user01-message {
-	margin-left: 0.5em;	
+	margin-left: 0.5em;
 }
 
+.user01-conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+	height: 100%;
+	width: 98%;
+}
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 100%;
@@ -82,13 +88,12 @@
 
 .user01-table {
 	height: 64vh;
-	overflow-y: scroll; 	
+	overflow-y: scroll;
 }
 
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
-	width: 100%;
 }
 
 .user01-colonne {
@@ -115,6 +120,7 @@
 }
 
 .user01-newUserBouton {
+	margin-right:1.563em;
 	background-color: #22B14C;
 	color: #FFFFFF;
 }

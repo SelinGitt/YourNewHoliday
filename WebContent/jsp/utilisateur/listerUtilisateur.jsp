@@ -59,7 +59,7 @@
         </a>
     </div>
 </div>
-<div class="conteneur-ascenseur">
+<div class="user01-conteneur-ascenseur">
     <div class="user01-table">
         <table class="user01-lister" aria-describedby="titreGestion">
             <thead>
