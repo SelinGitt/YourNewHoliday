@@ -72,25 +72,19 @@ public class ImageService implements IImageService {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
-<<<<<<< HEAD
-            //utilisation de l'écriture java 7 pour indiquer que le fichier ne doit pas dépasser 500ko
-            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
-            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER);
-            return imageEnregistree && imageValid;
-=======
             //on vérifie que l'image correspond bien, puis on l'enregistre
             final var imageValid = verifyFile(LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER, byteArray);
             if (imageValid) {
                 return imageDao.saveImage(cheminComplet, byteArray);
             }
->>>>>>> 9ab403b58028f45a10bd09db7b7aa306f7f4d197
         }
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
-            //utilisatiion de l'criture java 7 pour indiquer que le fichier ne doit pas dpasser 5mo
-            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
-            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT);
-            return imageEnregistree && imageValid;
+            //on vérifie que l'image correspond bien, puis on l'enregistre
+            final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
+            if (imageValid) {
+                return imageDao.saveImage(cheminComplet, byteArray);
+            }
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
         return false;
