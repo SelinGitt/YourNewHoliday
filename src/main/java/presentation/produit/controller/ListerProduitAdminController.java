@@ -63,7 +63,17 @@ public class ListerProduitAdminController {
             final @RequestParam(value = "tri", required = false, defaultValue = "") Boolean tri) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        modelAndView.getModelMap().addAttribute("tri", tri);
+        int filtre = 0;
+        if (tri != null) {
+            if (tri == true) {
+                filtre = 1;
+                modelAndView.getModelMap().addAttribute("tri", filtre);
+            } else {
+                filtre = 2;
+                modelAndView.getModelMap().addAttribute("tri", filtre);
+            }
+        }
+        modelAndView.getModelMap().addAttribute("tri", filtre);
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, tri));
         return modelAndView;
     }
