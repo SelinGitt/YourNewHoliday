@@ -63,9 +63,9 @@ public class ListerProduitAdminController {
             final @RequestParam(value = "tri", required = false, defaultValue = "") Boolean tri) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        int filtre = 0;
+        var filtre = 0;
         if (tri != null) {
-            if (tri == true) {
+            if (tri) {
                 filtre = 1;
                 modelAndView.getModelMap().addAttribute("tri", filtre);
             } else {
