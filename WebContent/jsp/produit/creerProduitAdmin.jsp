@@ -14,6 +14,7 @@
         <spring:message code="pdt03.titre" />
     </h1>
     <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
+    <div class="pdt03.left-side">
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="pdt03Grid-container">
             <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
@@ -155,6 +156,8 @@
             </div>
         </div>
     </form:form>
+    </div>
+    <div class="pdt03.right-side">
     <form:form action="uploadImageProduit.do" enctype="multipart/form-data" method="post"
         class="display-flex justify-content-space-around">
 
@@ -172,4 +175,5 @@
         </c:if>
 
     </form:form>
+    </div>
 </div>
