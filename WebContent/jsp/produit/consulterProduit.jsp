@@ -32,7 +32,7 @@
                             </spring:message>${consulterProduitDto.prixUnitaire}&nbsp€</td>
                     </tr>
                     <%-- conformement au sfd afficher les elements suivant seulement si un utilisateur est creer  --%>
-                    <c:if test="${not empty utilisateur}">
+                    <c:if test="${achetable}">
                         <tr>
                             <td>
                                 <div class="display-flex">
