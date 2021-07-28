@@ -52,7 +52,12 @@ public class CreerProduitAdminController {
     public ModelAndView voirFormulaireCreerProduit() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("creerProduitAdmin");
-        modelAndView.getModelMap().addAttribute("produitDto", new ProduitDto());
+
+        final var produit = new ProduitDto();
+
+        produit.setServices(new Boolean[] {false, false, false, false, false, false, false, false, false});
+
+        modelAndView.getModelMap().addAttribute("produitDto", produit);
         return modelAndView;
     }
 
