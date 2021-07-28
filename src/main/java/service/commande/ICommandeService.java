@@ -59,7 +59,7 @@ public interface ICommandeService {
      *
      * @param  id      du produitAchete
      * @param  version du prooduit
-     * @return         le produitAchete
+     * @return         le produit acheté sous forme de Dto
      */
     ProduitDto findProduitAchete(final String id, final String version);
 }

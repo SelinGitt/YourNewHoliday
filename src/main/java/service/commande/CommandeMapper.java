@@ -110,12 +110,18 @@ public class CommandeMapper {
         return commandeDo;
     }
 
+    /**
+     * Allows to map to ProduitDto a produitAcheteDO
+     *
+     * @param  produitAchete to map
+     * @return               mapped ProduitDto
+     */
     public static ProduitDto mapToDto(final ProduitAcheteDo produitAchete) {
         if (produitAchete == null) {
             return null;
         }
         final var produitDto = new ProduitDto();
-        produitDto.setIdProduitOriginal(String.valueOf(produitAchete.getIdProduit()));
+        produitDto.setIdProduitOriginal(String.valueOf(produitAchete.getIdDeLOriginal()));
         produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
         produitDto.setReference(produitAchete.getReference());
         produitDto.setNom(produitAchete.getNom());
@@ -127,7 +133,6 @@ public class CommandeMapper {
         produitDto.setCheminImage(produitAchete.getCheminImage());
         produitDto.setServices(String.valueOf(produitAchete.getServices()));
         produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
-
         return produitDto;
     }
 }

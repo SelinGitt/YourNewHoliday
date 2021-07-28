@@ -15,7 +15,7 @@
                 </tr>
                 <tr>
                     <td rowspan="5"><img
-                        src="displayImage.do?id=${consulterProduitAcheteDto.idDeLOriginal}&type=pdt"
+                        src="displayImage.do?id=${consulterProduitAcheteDto.idProduitOriginal}&type=pdt"
                         alt="${consulterProduitAcheteDto.destination}" class="pdt04Image" /></td>
                 </tr>
                 <tr>
