@@ -15,13 +15,13 @@
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
                 </a>
             </c:if>
-            <h1 class="user05-titre">
+            <h1>
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
 
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
-            class="display-flex justify-content-space-around">
+            enctype="multipart/form-data" class="display-flex justify-content-space-around">
 
             <div class="user05-leftSide">
 
@@ -92,20 +92,21 @@
                         <spring:message code="usr05.creer.reset" />
                     </button>
                 </div>
-            </div>
 
-            <div class="user05-rightSide">
-                <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-                <div>
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
+                <div class="user05-rightSide">
+                    <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
+                    <div>
+                        <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
+                        <div style="width: 15em; height: 15em; background-color: red;"></div>
+                    </div>
+
                 </div>
 
                 <div class="display-flex justify-content-space-around">
                     <c:choose>
                         <c:when test="${utilisateur.role.id == '3'}">
                             <div>
-                                <form:radiobutton path="role.idRole" value="2" />
+                                <form:radiobutton path="role.idRole" value="1" />
                                 <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
                             </div>
 
@@ -116,13 +117,16 @@
                         </c:when>
 
                         <c:otherwise>
-                            <form:hidden path="role.idRole" value="2" />
+                            <form:hidden path="role.idRole" value="1" />
                         </c:otherwise>
                     </c:choose>
                 </div>
-
             </div>
         </form:form>
-
+        <form action="uploadImageUtilisateur.do" enctype="multipart/form-data" method="post">
+            <input type="file" accept=".jpeg, .jpg, .png, .bmp" value="<spring:message code="usr05.parcourir" />" /> <input
+                type="submit" value="submit" />
+        </form>
     </div>
 </div>
+

@@ -3,8 +3,14 @@
  */
 package service.image.impl;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -26,14 +32,22 @@ import service.util.GetPropertyValues;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ImageService implements IImageService {
 
-    @Autowired
-    private IImageDao       imageDao;
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
+    private static final int    LIMIT_WIDTH_USER  = 200;
+    private static final int    LIMIT_HEIGHT_USER = 200;
+    private static final int    LIMIT_SIZE_USER   = 500_000;
+    private static final int    LIMIT_WIDTH_PDT  = 1920;
+    private static final int    LIMIT_HEIGHT_PDT = 1080;
+    private static final int    LIMIT_SIZE_PDT   = 5_000_000;
 
     @Autowired
-    private IProduitDao     produitDao;
+    private IImageDao           imageDao;
 
     @Autowired
-    private IUtilisateurDao utilisateurDao;
+    private IProduitDao         produitDao;
+
+    @Autowired
+    private IUtilisateurDao     utilisateurDao;
 
     @Override
     public File getImage(final String id, final String type) {
@@ -52,4 +66,54 @@ public class ImageService implements IImageService {
         return null;
     }
 
+    @Override
+    public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
+        //on test dans la couche prsentation si image est null
+        if (TypeImage.UTILISATEUR.getType().equals(type)) {
+            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
+            //utilisatiion de l'criture java 7 pour indiquer que le fichier ne doit pas dpasser 500ko
+            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
+            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER);
+            return imageEnregistree && imageValid;
+        }
+        if (TypeImage.PRODUIT.getType().equals(type)) {
+            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
+            //utilisatiion de l'criture java 7 pour indiquer que le fichier ne doit pas dpasser 5mo
+            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
+            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT);
+            return imageEnregistree && imageValid;
+        }
+        logger.debug("Le type {} du fichier ne correspond pas  un type existant", type);
+        return false;
+    }
+
+    /**
+     * Permet de tester les paramtres d'un fichier
+     * 
+     * @param  f      le fichier a tester
+     * @param  size   le poids du fichier a ne pas dpasser
+     * @param  width  la largeur du fichier (doit tre infrieur)
+     * @param  height la hauteur du fichier (doit tre infrieur)
+     * @return        <code>true</code> si le fichier envoye correspond a une image<br>
+     *                <code>false</code> dans le cas contraire
+     */
+    private boolean verifyFile(final String chemin, final int width, final int height, final int size) {
+        final var file = new File(chemin);
+        try {
+            final var bufferImage = ImageIO.read(file);
+            return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(file, size));
+
+        } catch (final IOException ioe) {
+            logger.error("une exception {} a t leve pour le fichier {}", ioe, file);
+            return false;
+        }
+    }
+
+    private boolean isImageValid(final BufferedImage bufferImage, final int height, final int width) {
+        return bufferImage.getWidth() > width || bufferImage.getHeight() > height;
+    }
+
+    private boolean isFileValid(final File file, final int size) {
+        return file.length() > size;
+    }
 }
