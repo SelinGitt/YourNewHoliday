@@ -4,6 +4,7 @@
 package service.image.impl;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 
@@ -71,17 +72,19 @@ public class ImageService implements IImageService {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
-            //utilisation de l'écriture java 7 pour indiquer que le fichier ne doit pas dépasser 500ko
-            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
-            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER);
-            return imageEnregistree && imageValid;
+            //on vérifie que l'image correspond bien, puis on l'enregistre
+            final var imageValid = verifyFile(LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER, byteArray);
+            if (imageValid) {
+                return imageDao.saveImage(cheminComplet, byteArray);
+            }
         }
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
-            //utilisatiion de l'criture java 7 pour indiquer que le fichier ne doit pas dpasser 5mo
-            final var imageEnregistree = imageDao.saveImage(cheminComplet, byteArray);
-            final var imageValid = verifyFile(cheminComplet, LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT);
-            return imageEnregistree && imageValid;
+            //on vérifie que l'image correspond bien, puis on l'enregistre
+            final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
+            if (imageValid) {
+                return imageDao.saveImage(cheminComplet, byteArray);
+            }
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
         return false;
@@ -97,14 +100,12 @@ public class ImageService implements IImageService {
      * @return        <code>true</code> si le fichier envoye correspond a une image<br>
      *                <code>false</code> dans le cas contraire
      */
-    private boolean verifyFile(final String chemin, final int width, final int height, final int size) {
-        final var file = new File(chemin);
+    private boolean verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
-            final var bufferImage = ImageIO.read(file);
-            return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(file, size));
-
+            final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
+            return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(byteArray, size));
         } catch (final IOException ioe) {
-            logger.error("une exception {} a été levée pour le fichier {}", ioe, file);
+            logger.error("une exception {} a été levée pour le fichier", ioe);
             return false;
         }
     }
@@ -113,8 +114,8 @@ public class ImageService implements IImageService {
         return bufferImage.getWidth() > width || bufferImage.getHeight() > height;
     }
 
-    private boolean isFileValid(final File file, final int size) {
-        return file.length() > size;
+    private boolean isFileValid(final byte[] byteArray, final int size) {
+        return byteArray.length > size;
     }
 
 }
