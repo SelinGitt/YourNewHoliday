@@ -2,6 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.consulterProduit" />
+</p>
+
 <div class="conteneur-ascenseur">
     <div>
         <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
@@ -101,3 +107,7 @@
 
     </div>
 </div>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

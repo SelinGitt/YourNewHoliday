@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%-- div container --%>
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.mentionsLegales" />
+</p>
 <div class="body scroll">
     <%-- titre --%>
     <h1 class="text-align-center">
         <spring:message code="mlg.titre" />
     </h1>
-
     <div class="mlg-boutons">
         <div id="CGV-button" class="mlg-bouton CG-button-clicked-background" onclick="selectMLG(1)">
             <p>
@@ -28,4 +31,10 @@
 
 
 </div>
-<script type="text/javascript" src="js/mentionLegales/mentionLegales.js"></script>
+<script>
+	document.title = document.getElementById('titrePage').textContent;
+	document.getElementById('titrePage').remove();
+</script>
+<script type="text/javascript" src="js/mentionLegales/mentionLegales.js">
+	
+</script>

@@ -2,6 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.listerProduits" />
+</p>
+
 <div class="conteneur-ascenseur">
     <c:if test="${not empty anyError}">
         <div class="background-error-block block-message-commun">
@@ -101,3 +107,7 @@
         </c:forEach>
     </div>
 </div>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

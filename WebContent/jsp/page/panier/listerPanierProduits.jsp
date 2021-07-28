@@ -2,13 +2,17 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.pan_00" />
+</p>
+
 <div class="panier-title">
     <h1>
         <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
         <spring:message code="pan00.titre" />
     </h1>
 </div>
-
 <div class="display-flex">
     <div>
 
@@ -30,12 +34,11 @@
                                 <div class="panier-div-image">
                                     <div class="panier-image-produit-container">
                                         <%--  photo --%>
-                                        <a
-                                          href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
-                                            <img
-                                            class="panier-image-produit"
+                                        <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                            <img class="panier-image-produit"
                                             src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                            alt="${entry.key.destination}" /></a>
+                                            alt="${entry.key.destination}" />
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="panier-description-produit">
@@ -170,3 +173,7 @@
         </div>
     </div>
 </div>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

@@ -2,6 +2,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="header.connexion" />
+</p>
+
 <%--  fieldset ma commande : nom, référence, prix unitaire, quantité et prix  --%>
 <fieldset class="overflow-auto panier-macommande">
     <legend class="panier-legend">
@@ -48,3 +53,7 @@
         </div>
     </c:forEach>
 </fieldset>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

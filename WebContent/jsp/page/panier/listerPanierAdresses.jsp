@@ -3,11 +3,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.listerPanierAdresses" />
+</p>
+
 <%-- Titre de la Page --%>
 <h1>
     <spring:message code="pan08.titre" />
 </h1>
-
 <%-- lien Retour --%>
 <a class="panier-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
 
@@ -140,3 +144,7 @@
     <spring:message code="pan08.boutton.information" />
 </button>
 
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

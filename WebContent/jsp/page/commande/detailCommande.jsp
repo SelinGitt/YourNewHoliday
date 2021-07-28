@@ -5,6 +5,10 @@
         <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
     </div>
 </c:if>
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.detailCommande" />
+</p>
 <h1>
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
@@ -149,3 +153,7 @@
         </div>
     </div>
 </div>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>

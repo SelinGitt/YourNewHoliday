@@ -3,6 +3,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="conteneur-ascenseur">
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.editerProduitAdmin" />
+</p>
+
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt02.titre" />
     </h1>
@@ -117,3 +122,7 @@
         </div>
     </form:form>
 </div>
+<script>
+    document.title = document.getElementById('titrePage').textContent;
+    document.getElementById('titrePage').remove();
+</script>
