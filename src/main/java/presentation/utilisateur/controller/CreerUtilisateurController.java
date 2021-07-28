@@ -90,7 +90,6 @@ public class CreerUtilisateurController {
             modelAndView.getModelMap().addAttribute("error", "usr05.erreur.creation");
             return modelAndView;
         }
-
         // Si utilisateur == null, l'email est deja pris
         if (this.service.createUtilisateur(utilisateurDto) == null) {
             result.rejectValue("email", "usr05.erreur.email_taken", "Default Errror");
