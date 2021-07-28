@@ -60,7 +60,7 @@ public class ListerProduitAdminController {
     @PostMapping
     public ModelAndView rechercherProduits(
             final @RequestParam(value = "searchInput", required = false, defaultValue = "") String searchInput,
-            final @RequestParam(value = "tri", required = false, defaultValue = "") String tri) {
+            final @RequestParam(value = "tri", required = false, defaultValue = "") Boolean tri) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         modelAndView.getModelMap().addAttribute("tri", tri);

@@ -114,7 +114,7 @@ public interface IProduitService {
      * @param  tri        tri effectué
      * @return            liste filtrée
      */
-    List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri);
+    List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri);
 
     /**
      * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role

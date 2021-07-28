@@ -155,30 +155,33 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> filtrerEnVente(final String searchTerm, final String tri) {
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri) {
         if (searchTerm.isBlank()) {
-            if ("".equals(tri) || "0".equals(tri)) {
+            if ("".equals(setTypeFiltre(tri)) || "0".equals(setTypeFiltre(tri))) {
                 return listerAllProduit();
             }
-            return trouverProduitsFiltre(setTypeFiltre(tri));
+            return trouverProduitsFiltre(tri);
         }
-        if ("".equals(tri) || "0".equals(tri)) {
+        if ("".equals(setTypeFiltre(tri)) || "0".equals(setTypeFiltre(tri))) {
             return rechercherProduits(searchTerm);
         }
         return trouverProduitsFiltreRecherche(searchTerm, setTypeFiltre(tri));
     }
 
-    private String setTypeFiltre(final String filtre) {
-        if ("1".equals(filtre)) {
-            return filtre;
+    private String setTypeFiltre(final Boolean filtre) {
+        if (filtre == null) {
+            return "";
+        }
+        if (filtre == true) {
+            return "1";
         } else
-            if ("2".equals(filtre)) {
-                return "0";
+            if (filtre == false) {
+                return "2";
             }
-        return "";
+        return null;
     }
 
-    private List<ProduitDto> trouverProduitsFiltre(final String filtre) {
+    private List<ProduitDto> trouverProduitsFiltre(final Boolean filtre) {
         return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
     }
 

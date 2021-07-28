@@ -82,12 +82,12 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
     List<ProduitDo> rechercherAllProduits(final String searchTerm);
 
     /**
-     * Permet de trouver les produits selon le filtre
-     *
-     * @param  filtre effectué
+     * Permet de trouver les produits selon le filtre en vente ou non en vente
+     * 
+     * @param  filtre true si en vente sinon false
      * @return        liste de produits filtrée
      */
-    List<ProduitDo> trouverProduitsFiltre(final String filtre);
+    List<ProduitDo> trouverProduitsFiltre(final boolean filtre);
 
     /**
      * Permet de trouver les produits en fonction de la recherche et du filtre

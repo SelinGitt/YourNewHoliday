@@ -147,7 +147,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
     }
 
     @Override
-    public List<ProduitDo> trouverProduitsFiltre(final String filtre) {
+    public List<ProduitDo> trouverProduitsFiltre(final boolean filtre) {
         final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo WHERE mise_en_vente = :filtre", ProduitDo.class);
         query.setParameter("filtre", filtre);
         logger.debug("ProduitDao trouverProduitFiltre; filtre ; {}", filtre);
@@ -159,7 +159,9 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
         final TypedQuery<ProduitDo> query = entityManager
                 .createQuery("FROM ProduitDo WHERE reference like :searchTerm AND mise_en_vente = :filtre", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
+        logger.debug("ProduitDao / méthode : trouverProduitsRechercheFiltre; searchTerm : {}", searchTerm);
         query.setParameter("filtre", filtre);
+        logger.debug("ProduitDao / méthode : trouverProduitsRechercheFiltre; filtre : {}", filtre);
         return query.getResultList();
     }
 
