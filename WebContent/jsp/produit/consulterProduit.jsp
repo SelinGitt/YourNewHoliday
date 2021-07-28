@@ -105,6 +105,4 @@
 </div>
 <script>
 	loadServices()
-	document.title = document.getElementById('titrePage').textContent;
-	document.getElementById('titrePage').remove();
 </script>

@@ -31,10 +31,5 @@
 
 
 </div>
-<script>
-	document.title = document.getElementById('titrePage').textContent;
-	document.getElementById('titrePage').remove();
-</script>
-<script type="text/javascript" src="js/mentionLegales/mentionLegales.js">
-	
-</script>
+
+<script type="text/javascript" src="js/mentionLegales/mentionLegales.js"></script>

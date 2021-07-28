@@ -31,5 +31,6 @@
 </div>
 <script type="text/javascript" src="js/footer/langues.js"></script>
 <script>
+	modifierTitre(document);
 	selectLG();
 </script>

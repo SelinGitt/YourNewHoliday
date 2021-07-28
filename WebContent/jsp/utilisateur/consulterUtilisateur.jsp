@@ -99,7 +99,3 @@
         </div>
     </div>
 </div>
-<script>
-    document.title = document.getElementById('titrePage').textContent;
-    document.getElementById('titrePage').remove();
-</script>

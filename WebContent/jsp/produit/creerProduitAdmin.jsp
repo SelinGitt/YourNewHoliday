@@ -4,10 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
 
-<%-- Permet de Gerer l'internationalisation du titre de la page --%>
-<p id="titrePage">
-    <spring:message code="glb.titre.page.creerProduitAdmin" />
-</p>
+    <%-- Permet de Gerer l'internationalisation du titre de la page --%>
+    <p id="titrePage">
+        <spring:message code="glb.titre.page.creerProduitAdmin" />
+    </p>
 
     <c:if test="${not empty error}">
         <div class="background-error-block block-message-commun">
@@ -41,7 +41,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.reference" /></td>
                         <td><div>
-                                <form:input path="reference"/>
+                                <form:input path="reference" />
                             </div>
                             <div class="pdt03formError">
                                 <form:errors path="reference" cssClass="text-color-rouge" />
@@ -126,8 +126,8 @@
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png" 
-                        alt="Image du produit à ajouter"  /></td>
+                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png"
+                            alt="Image du produit à ajouter" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
@@ -161,7 +161,3 @@
         </div>
     </form:form>
 </div>
-<script>
-    document.title = document.getElementById('titrePage').textContent;
-    document.getElementById('titrePage').remove();
-</script>

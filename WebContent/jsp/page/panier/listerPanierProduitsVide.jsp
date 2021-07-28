@@ -22,7 +22,3 @@
     <a href="listerProduits.do"> <img class="panier-vide-img" src="img/panier/oups.png" alt="image panier vide">
     </a>
 </div>
-<script>
-	document.title = document.getElementById('titrePage').textContent;
-	document.getElementById('titrePage').remove();
-</script>
