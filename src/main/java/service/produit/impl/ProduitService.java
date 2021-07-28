@@ -173,12 +173,12 @@ public class ProduitService implements IProduitService {
     @Override
     public List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri) {
         if (searchTerm.isBlank()) {
-            if ("".equals(setTypeFiltre(tri)) || "0".equals(setTypeFiltre(tri))) {
+            if ("".equals(setTypeFiltre(tri))) {
                 return listerAllProduit();
             }
             return trouverProduitsFiltre(tri);
         }
-        if ("".equals(setTypeFiltre(tri)) || "0".equals(setTypeFiltre(tri))) {
+        if ("".equals(setTypeFiltre(tri))) {
             return rechercherProduits(searchTerm);
         }
         return trouverProduitsFiltreRecherche(searchTerm, tri);
@@ -189,9 +189,9 @@ public class ProduitService implements IProduitService {
             return "";
         }
         if (filtre) {
-            return "1";
+            return "0";
         }
-        return "2";
+        return "1";
     }
 
     private List<ProduitDto> trouverProduitsFiltre(final Boolean filtre) {

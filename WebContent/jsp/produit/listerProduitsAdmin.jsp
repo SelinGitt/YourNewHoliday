@@ -31,8 +31,8 @@
                 <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
                 <select id="triSelect" name="tri">
                     <option value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
-                    <option value="true"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                    <option value="false"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+                    <option value="0"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                    <option value="1"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
                 </select>
                 <script>
                      document.getElementById("triSelect").options[${tri}].selected=true;
@@ -100,9 +100,10 @@
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="pdt01Image">
                     </a></td>
-                    <td class="pdt01Body"><a href="supprimerProduitAdmin.do?idProduit=${produitDto.idProduitOriginal}"
-                    onclick="return confirm('<spring:message code="pdt01.confirmDelete" />')"> 
-                    <img alt="" src="img/commun/poubelle.jpg" class="pdt01Image">
+                    <td class="pdt01Body"><a
+                        href="supprimerProduitAdmin.do?idProduit=${produitDto.idProduitOriginal}"
+                        onclick="return confirm('<spring:message code="pdt01.confirmDelete" />')"> <img alt=""
+                            src="img/commun/poubelle.jpg" class="pdt01Image">
                     </a></td>
                 </tr>
             </c:forEach>

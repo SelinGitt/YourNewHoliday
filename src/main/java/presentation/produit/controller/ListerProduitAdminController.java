@@ -60,21 +60,38 @@ public class ListerProduitAdminController {
     @PostMapping
     public ModelAndView rechercherProduits(
             final @RequestParam(value = "searchInput", required = false, defaultValue = "") String searchInput,
-            final @RequestParam(value = "tri", required = false, defaultValue = "") Boolean tri) {
+            final @RequestParam(value = "tri", required = false, defaultValue = "") String tri) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        var filtre = "0";
-        if (tri != null) {
-            if (tri) {
-                filtre = "1";
-                modelAndView.getModelMap().addAttribute("tri", filtre);
-            } else {
-                filtre = "2";
-                modelAndView.getModelMap().addAttribute("tri", filtre);
+        Boolean boolTri = null;
+        System.out.println("tri >" + tri + "<");
+        if (tri != "") {
+            if (tri.equals("0")) {
+                boolTri = true;
             }
-            modelAndView.getModelMap().addAttribute("tri", filtre);
+            if (tri.equals("1")) {
+                boolTri = false;
+            }
+            if (tri.equals("")) {
+                boolTri = null;
+            }
         }
-        modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, tri));
+        
+        if (boolTri != null) {
+            if (boolTri) {
+                modelAndView.getModelMap().addAttribute("tri", boolTri);
+                modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
+                System.out.println("booltri" + boolTri);
+                return modelAndView;
+            }
+            modelAndView.getModelMap().addAttribute("tri", boolTri);
+            modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
+            System.out.println("booltri" + boolTri);
+            return modelAndView;
+        }
+        modelAndView.getModelMap().addAttribute("tri", boolTri);
+        modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
+        System.out.println("booltri" + boolTri);
         return modelAndView;
     }
 }
