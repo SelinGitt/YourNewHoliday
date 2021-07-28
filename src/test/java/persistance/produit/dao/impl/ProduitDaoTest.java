@@ -255,6 +255,20 @@ class ProduitDaoTest {
     }
 
     /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#delete(ProduitDo)}.
+     */
+    @Test
+    void testDelete() {
+
+        assertEquals(6, iProduitDao.findAll().size());
+        final var produit = iProduitDao.findById(1);
+        assertNotNull(produit);
+        iProduitDao.delete(produit);
+        assertEquals(5, iProduitDao.findAll().size());
+        assertNull(iProduitDao.findById(1));
+    }
+
+    /**
      * Test method for {@link persistance.produit.dao.impl.ProduitDao#findProduitEnVenteAvecVersion(java.lang.Integer)}.
      */
     @Test

@@ -4,9 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%-- Titre de la Page --%>
-<h1>
-    <spring:message code="pan08.titre" />
-</h1>
+<div class="panier-title">
+    <h1>
+        <spring:message code="pan08.titre" />
+    </h1>
+</div>
 
 <%-- lien Retour --%>
 <a class="panier-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
@@ -48,6 +50,10 @@
                                 path="commandeAdresseLivraison.adresse" rows="12" id="livraisonAdresse" />
                         </div>
                     </div>
+                    <%-- boutton reset formulaire --%>
+                    <button class="panier-margin-left-10" onclick="informationsLivraison()">
+                        <spring:message code="pan08.boutton.information" />
+                    </button>
                 </fieldset>
             </div>
         </div>
@@ -79,6 +85,9 @@
                                 path="commandeAdresseFacturation.adresse" rows="12" id="facturationAdresse" />
                         </div>
                     </div>
+                    <button class="panier-margin-left-15" onclick="informationsFacturation()">
+                        <spring:message code="pan08.boutton.information" />
+                    </button>
                 </fieldset>
             </div>
         </div>
@@ -96,7 +105,7 @@
 
             <%--  total avant remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
                 <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
@@ -105,7 +114,7 @@
             </div>
             <%-- remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
                 <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
@@ -114,7 +123,7 @@
             </div>
             <%--  total après remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
                 <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
@@ -123,20 +132,11 @@
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
-                <button type="submit">
+                <button type="submit" class="panier-valider">
                     <spring:message code="pan00.valider.panier" />
                 </button>
             </div>
         </div>
     </div>
 </form:form>
-
-<%-- boutton reset formulaire --%>
-<button class="panier-margin-left-10" onclick="informationsLivraison()">
-    <spring:message code="pan08.boutton.information" />
-</button>
-
-<button class="panier-margin-left-15" onclick="informationsFacturation()">
-    <spring:message code="pan08.boutton.information" />
-</button>
 

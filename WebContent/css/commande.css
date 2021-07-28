@@ -148,7 +148,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 /* container de la page CMD04*/
 .CMD_04-container {
-	width: 95%;
 	height: 75%;
 	max-height: 75%;
 	grid-template-columns: 3fr 1fr;
@@ -318,6 +317,38 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	color: #66C5EB;
 }
 
+/* margin pour le bouton de retour */
+.CMD_04-bouton-retour-margin {
+	margin-bottom: 1.563em;
+}
+
+.CMD_04-border-prix-avant-remise {
+	border: 0.19em solid #000000;
+}
+
+/* si le text dépasse de la boite, il sera tronqué automatiquement */
+.CMD_04-description {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	max-height: 3em;
+	line-height: 1em;
+	padding-right: 2em;
+}
+
+/* si le text dépasse de la boite, il sera tronqué automatiquement */
+.CMD_04-text-overflow {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	max-height: 1em;
+	line-height: 1em;
+}
+
 /* la grille pour commande adresse */
 .CMD_04-adresse-grid {
 	display: grid;
@@ -329,4 +360,33 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 /* marge pour les champs des adresses */
 .CMD_04-adresse-margin {
 	margin: 2%;
+}
+
+/* la grille pour commande prix */
+.CMD_04-price-grid {
+	display: grid;
+	/* pas d'espacement entre les grilles */
+	grid-gap: 5%;
+	grid-template-columns: repeat(2, 2fr);
+}
+
+/* marge pour les champs texts des prix */
+.CMD_04-price-text-padding {
+	padding: 5%;
+}
+
+/* padding pour les champs des prix */
+.CMD_04-price-padding {
+	/* padding à droite comme pour celui de fieldset */
+	padding: 5% 0.625em 5% 5%;
+}
+
+/* taille de la boxe */
+.CMD_04-price-width {
+	width: 100%;
+}
+
+/* padding pour le titre */
+.CMD_04-padding-top {
+	padding-top: 1em;
 }

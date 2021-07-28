@@ -150,6 +150,18 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
+    public boolean deleteProduit(final Integer id) {
+        final var produitDo = produitDao.findById(id);
+        if (produitDo == null) {
+            this.logger.warn("Le produit d'id  {} n'existe pas en BdD.", id);
+            return false;
+        }      
+        produitDao.delete(produitDo);
+        this.logger.debug("Le produit d'id  {} a été supprimé.", id);
+        return true;
+    }
+
+    @Override
     public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
         logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
                 beanQuantite.getId());
