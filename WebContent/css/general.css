@@ -121,7 +121,7 @@ section {
 }
 
 /* css pour le bouton retour */
-.bouton-retour {
+.lien-retour {
 	color: #000000;
 	font-size: 1.15em;
 	/* enlève la bordure du bouton */
@@ -134,6 +134,6 @@ section {
 	text-decoration: none;
 }
 
-.bouton-retour:hover {
+.lien-retour:hover {
 	opacity: 1;
 }

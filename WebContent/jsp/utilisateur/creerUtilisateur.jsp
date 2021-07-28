@@ -12,7 +12,7 @@
         </c:if>
         <div class="display-flex align-item-center">
             <c:if test="${utilisateur.role.id == '3'}">
-                <a href="listerUtilisateur.do" class="user02-retour bouton-retour">
+                <a href="listerUtilisateur.do" class="user02-retour lien-retour">
                     <spring:message code="usr02.retour" />
                 </a>
             </c:if>

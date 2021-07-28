@@ -11,7 +11,7 @@
 </div>
 
 <%-- lien Retour --%>
-<a class="panier-retour bouton-retour" href="listerPanierProduits.do">
+<a class="panier-retour lien-retour" href="listerPanierProduits.do">
     <spring:message code="pan08.lien.retour" />
 </a>
 
