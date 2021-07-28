@@ -11,10 +11,8 @@
 </div>
 
 <%-- lien Retour --%>
-<a class="panier-retour" href="listerPanierProduits.do">
-    <button class="bouton-retour">
-        <spring:message code="pan08.lien.retour" />
-    </button>
+<a class="panier-retour bouton-retour" href="listerPanierProduits.do">
+    <spring:message code="pan08.lien.retour" />
 </a>
 
 <form:form method="POST" action="validerPanier.do" modelAttribute="adresses"

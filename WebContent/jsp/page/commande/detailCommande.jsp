@@ -9,10 +9,8 @@
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
 <div class="CMD_04-bouton-retour-margin">
-    <a href="listerCommande.do">
-        <button class="bouton-retour">
-            <spring:message code="detailCommande.btn.retour" />
-        </button>
+    <a href="listerCommande.do" class="bouton-retour">
+        <spring:message code="detailCommande.btn.retour" />
     </a>
 </div>
 <div class="CMD_04-grid CMD_04-container CMD_04-box-sizing CMD_04-overflow">

@@ -15,10 +15,8 @@
         <c:choose>
             <c:when test="${origin=='2'}">
                 <div class="display-flex align-item-center">
-                    <a href="listerUtilisateur.do" class="user02-retour">
-                        <button class="bouton-retour">
-                            <spring:message code="usr02.retour" />
-                        </button>
+                    <a href="listerUtilisateur.do" class="user02-retour bouton-retour">
+                        <spring:message code="usr02.retour" />
                     </a>
                     <h1 class="user02-title">
                         <spring:message code="usr02.titre.admin" />

@@ -123,7 +123,7 @@ section {
 /* css pour le bouton retour */
 .bouton-retour {
 	color: #000000;
-	font-size: 1.em;
+	font-size: 1.15em;
 	/* enlève la bordure du bouton */
 	border: 0;
 	border-radius: 0.313em;
@@ -131,6 +131,7 @@ section {
 	padding: 0.15em;
 	cursor: pointer;
 	opacity: 0.7;
+	text-decoration: none;
 }
 
 .bouton-retour:hover {
