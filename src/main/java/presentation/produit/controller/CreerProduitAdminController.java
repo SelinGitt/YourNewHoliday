@@ -49,12 +49,9 @@ public class CreerProduitAdminController {
      * @return le model et la vue associée
      */
     @GetMapping
-    public ModelAndView voirFormulaireCreerProduit(final @ModelAttribute(value = "image") String cheminImage) {
+    public ModelAndView voirFormulaireCreerProduit() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("creerProduitAdmin");
-        if (cheminImage != null) {
-            modelAndView.getModelMap().addAttribute("image", cheminImage);
-        }
         modelAndView.getModelMap().addAttribute("produitDto", new ProduitDto());
         return modelAndView;
     }
