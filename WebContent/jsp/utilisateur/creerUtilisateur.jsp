@@ -15,13 +15,13 @@
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
                 </a>
             </c:if>
-            <h1>
+            <h1 class="user05-titre">
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
 
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
-            enctype="multipart/form-data" class="display-flex justify-content-space-around">
+            class="display-flex justify-content-space-around">
 
             <div class="user05-leftSide">
 
@@ -142,7 +142,7 @@
                             value="submit" />
                         <c:if test="${not empty imgError}">
                             <div class="text-color-rouge">
-                                <spring:message code="${imgError}"/>
+                                <spring:message code="${imgError}" />
                             </div>
                         </c:if>
                     </div>
