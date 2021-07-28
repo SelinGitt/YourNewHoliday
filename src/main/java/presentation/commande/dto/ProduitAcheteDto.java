@@ -17,13 +17,7 @@ public class ProduitAcheteDto implements Serializable {
      */
     private static final long serialVersionUID = -8379767613213161374L;
 
-    private String            id;
-
     private String            idDeLOriginal;
-
-    private String            version;
-
-    private String            hebergement;
 
     private String            reference;
 
@@ -181,60 +175,6 @@ public class ProduitAcheteDto implements Serializable {
      */
     public void setCheminDeLImage(final String cheminDeLImage) {
         this.cheminDeLImage = cheminDeLImage;
-    }
-
-    /**
-     * Getter for id
-     *
-     * @return the id
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * Setter for id
-     *
-     * @param id the id to set
-     */
-    public void setId(final String id) {
-        this.id = id;
-    }
-
-    /**
-     * Getter for version
-     *
-     * @return the version
-     */
-    public String getVersion() {
-        return version;
-    }
-
-    /**
-     * Setter for version
-     *
-     * @param version the version to set
-     */
-    public void setVersion(final String version) {
-        this.version = version;
-    }
-
-    /**
-     * Getter for hebergement
-     *
-     * @return the hebergement
-     */
-    public String getHebergement() {
-        return hebergement;
-    }
-
-    /**
-     * Setter for hebergement
-     *
-     * @param hebergement the hebergement to set
-     */
-    public void setHebergement(final String hebergement) {
-        this.hebergement = hebergement;
     }
 
 }

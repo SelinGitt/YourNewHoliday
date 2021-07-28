@@ -39,5 +39,4 @@ function changeServiceStatus(el, status) {
 		label.classList.replace("pdt02ServiceInactif", "pdt02ServiceActif");
 		el.value = 'true';
 	}
-
 }

@@ -31,10 +31,7 @@ public class ProduitAcheteMapper {
             return null;
         }
         final var produitAcheteDto = new ProduitAcheteDto();
-        produitAcheteDto.setId(String.valueOf(produitAcheteDo.getIdProduit()));
-        produitAcheteDto.setVersion(String.valueOf(produitAcheteDo.getVersion()));
         produitAcheteDto.setIdDeLOriginal(String.valueOf(produitAcheteDo.getIdDeLOriginal()));
-        produitAcheteDto.setHebergement(produitAcheteDo.getHebergement());
         produitAcheteDto.setReference(produitAcheteDo.getReference());
         produitAcheteDto.setNom(produitAcheteDo.getNom());
         produitAcheteDto.setDescription(produitAcheteDo.getDescription());

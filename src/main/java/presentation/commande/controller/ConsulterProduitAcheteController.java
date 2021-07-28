@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
 import presentation.produit.controller.PageRedirection;
-import presentation.utilisateur.dto.UtilisateurConnecteDto;
 import service.commande.ICommandeService;
 
 /**
@@ -31,7 +29,6 @@ public class ConsulterProduitAcheteController {
      * 
      * @param  idProduit id produit
      * @param  version   du produit
-     * @param  user      pour recuperer le role de l'utilisateur en session
      * @param  location  page d'origine
      * @param  param     le potentiel paramètre à récupérer
      * @return           le produit à consulter dans le model et la vue associée
@@ -39,8 +36,7 @@ public class ConsulterProduitAcheteController {
     @GetMapping
     public ModelAndView consulterProduitAchete(final @RequestParam(value = "idProduit") String idProduit,
             final @RequestParam(value = "version") String version, final @RequestParam(value = "from", required = false) String location,
-            final @RequestParam(value = "paramValue", required = false) String param,
-            final @SessionAttribute(value = "utilisateur", required = false) UtilisateurConnecteDto user) {
+            final @RequestParam(value = "paramValue", required = false) String param) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         final var produitAchete = iCommandeService.findProduitAchete(idProduit, version);

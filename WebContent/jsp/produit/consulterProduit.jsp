@@ -97,4 +97,6 @@
 
     </div>
 </div>
-<script> loadServices()</script>
+<script>
+	loadServices()
+</script>
