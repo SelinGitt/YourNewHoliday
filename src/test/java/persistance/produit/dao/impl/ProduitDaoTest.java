@@ -259,9 +259,10 @@ class ProduitDaoTest {
      */
     @Test
     void testDelete() {
+
         assertEquals(6, iProduitDao.findAll().size());
         assertNotNull(iProduitDao.findById(1));
-        iProduitDao.delete(iProduitDao.findById(1).getIdProduitOriginal());
+        iProduitDao.delete(iProduitDao.findById(1));
         assertEquals(5, iProduitDao.findAll().size());
         assertNull(iProduitDao.findById(1));
     }

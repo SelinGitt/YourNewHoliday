@@ -149,10 +149,13 @@ public class ProduitService implements IProduitService {
 
     @Override
     public boolean deleteProduit(final Integer id) {
-        if (produitDao.findById(id) == null) {
+        final var produitDo = produitDao.findById(id);
+        if (produitDo == null) {
+            this.logger.info("Le produit d'id  {} n'existe pas en BdD.", id);
             return false;
         }
-        produitDao.delete(id);
+        this.logger.debug("Le produit d'id  {} a été supprimé.", id);
+        produitDao.delete(produitDo);
         return true;
     }
 
