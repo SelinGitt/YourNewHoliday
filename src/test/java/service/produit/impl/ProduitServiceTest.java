@@ -175,8 +175,7 @@ class ProduitServiceTest {
     @Test
     void testFindFilterWithRecherche() {
         Mockito.when(this.iProduitDaoMock.rechercherAllProduits("23")).thenReturn(Collections.emptyList());
-        final List<ProduitDto> liste = produitServiceMock.findFilter("23",
-                TypeTriAlphanumerique.findValue("not existing"));
+        final List<ProduitDto> liste = produitServiceMock.findFilter("23", TypeTriAlphanumerique.findValue("not existing"));
         assertNotNull(liste);
         assertEquals(0, liste.size());
     }
@@ -247,8 +246,7 @@ class ProduitServiceTest {
         produitDto.setCheminImage("C:/temp/img/test.png");
         produitDto.setVersion("1");
         Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(ProduitMapper.mapToDo(produitDto));
-        Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class)))
-                .thenReturn(ProduitMapper.mapToDo(produitDto));
+        Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         assertNotNull(this.produitServiceMock.editerProduit(produitDto));
     }
 
