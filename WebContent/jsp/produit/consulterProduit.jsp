@@ -75,15 +75,11 @@
                                 </spring:message></th>
                         </tr>
                         <tr class="pdt04IconeServices">
-                            <td><em class="fa fa-glass pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-bath pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-paw pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-gamepad pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wifi pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-cutlery pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-wheelchair pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-snowflake-o pdt04IconeSpace"></em></td>
-                            <td><em class="fa fa-tv pdt04IconeSpace"></em></td>
+                            <c:forEach items="${consulterProduitDto.services}" var="service" varStatus="loop">
+                                <td><c:if test="${consulterProduitDto.services[loop.index]}">
+                                        <em class="" id="${loop.index}"></em>
+                                    </c:if></td>
+                            </c:forEach>
                         </tr>
                     </table>
                 </div>
@@ -101,3 +97,4 @@
 
     </div>
 </div>
+<script> loadServices()</script>
