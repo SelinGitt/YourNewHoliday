@@ -114,21 +114,7 @@
                     </tr>
                 </table>
             </div>
-            <!--             <div class="pdt03Grid-item pdt03ImageProduit"> -->
-            <!--                 <table class="pdt03ImageCreationProduit" aria-label="ajout image produit"> -->
-            <!--                     <tr> -->
-            <%--                         <th><spring:message code="form.pdt03.image" /></th> --%>
-            <!--                     </tr> -->
-            <!--                     <tr> -->
-            <!--                         <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png" -->
-            <!--                             alt="Image du produit à ajouter" /></td> -->
-            <!--                     </tr> -->
-            <!--                     <tr> -->
-            <!--                         <td><input type="file" name="imageUpload" -->
-            <%--                             value="<spring:message code="form.pdt03.parcourir" />"></td> --%>
-            <!--                     </tr> -->
-            <!--                 </table> -->
-            <!--             </div> -->
+
             <div class="pdt03Grid-item pdt03LogoService">
                 <%--                 <form:hidden path="services" value="4" /> --%>
                 <table class="pdt03ListeService" aria-label="liste des services disponibles">
@@ -152,26 +138,25 @@
                     </tr>
                 </table>
             </div>
+
+            <c:if test="${not empty image}">
+                <div>-> ${image}</div>
+                <form:hidden path="cheminImage" value="${image}" />
+            </c:if>
         </div>
-
-        <c:if test="${not empty image}">
-            <div>-> ${image}</div>
-            <form:hidden path="cheminImage" value="${image}" />
-        </c:if>
-
     </form:form>
 
     <form:form action="uploadImageProduit.do" enctype="multipart/form-data" method="post"
         class="display-flex justify-content-space-around">
-
-        <label for="file"><spring:message code="form.pdt03.image" /></label>
-        <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
-        <input type="submit" value="submit" />
-        <c:if test="${not empty imgError}">
-            <div class="text-color-rouge">
-                <spring:message code="${imgError}" />
-            </div>
-        </c:if>
+        <div class="display-flex justify-content-space-around">
+            <label for="file"><spring:message code="form.pdt03.image" /></label> <input type="file" name="file"
+                accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
+            <c:if test="${not empty imgError}">
+                <div class="text-color-rouge">
+                    <spring:message code="${imgError}" />
+                </div>
+            </c:if>
+        </div>
     </form:form>
 
 </div>
