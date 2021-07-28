@@ -133,28 +133,49 @@
                 </table>
             </div>
             <div class="pdt02Grid-item text-align-center pdt02LogoService">
-<%--                 <form:hidden path="services" value="4" /> --%>
                 <table class="pdt02ListeService" aria-label="liste des services disponibles">
                     <tr>
                         <th colspan="3"><spring:message code="form.pdt02.service" /></th>
                     </tr>
-                    <tr>
-                        <td><em class="fa fa-glass fa-2x"></em></td>
-                        <td><em class="fa fa-bath fa-2x"></em></td>
-                        <td><em class="fa fa-paw fa-2x"></em></td>
-                    </tr>
-                    <tr>
-                        <td><em class="fa fa-gamepad fa-2x"></em></td>
-                        <td><em class="fa fa-wifi fa-2x"></em></td>
-                        <td><em class="fa fa-cutlery fa-2x"></em></td>
-                    </tr>
-                    <tr>
-                        <td><em class="fa fa-wheelchair fa-2x"></em></td>
-                        <td><em class="fa fa-snowflake-o fa-2x"></em></td>
-                        <td><em class="fa fa-tv fa-2x"></em></td>
-                    </tr>
+
+                    <c:forEach items="${produitDto.services}" var="service" varStatus="loop">
+                        <%-- Permet d'afficher 3 elements par lignes --%>
+                        <c:if test="${loop.index == 0}">
+                            <tr>
+                        </c:if>
+
+                        <%-- Permet de fermer la balise tr et en ouvrir une autre après 3 elements --%>
+                        <c:if test="${loop.index != 0 && loop.index % 3 == 0}">
+                            </tr>
+                            <tr>
+                        </c:if>
+
+                        <c:choose>
+                            <%-- Si le produit est actif --%>
+                            <c:when test="${produitDto.services[loop.index]}">
+                                <form:checkbox path="services[${loop.index}]"
+                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]})"
+                                    class="pdt02Checkbox" />
+                                <td><label for="services${loop.index}1" class="firstTime pdt02ServiceActif "
+                                    id="${loop.index}"></label></td>
+                            </c:when>
+
+                            <%-- Sinon --%>
+                            <c:otherwise>
+                                <form:checkbox path="services[${loop.index}]"
+                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]})"
+                                    class="pdt02Checkbox" />
+                                <td><label for="services${loop.index}1" class="firstTime pdt02ServiceInactif "
+                                    id="${loop.index}"></label></td>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </table>
             </div>
         </div>
     </form:form>
 </div>
+
+<script>
+	loadServices()
+</script>
