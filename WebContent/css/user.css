@@ -60,12 +60,18 @@
 
 /* USR01 */
 .user01-message {
-	margin-left: 0.5em;	
+	margin-left: 0.5em;
 }
 
+.user01-conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+	height: 100%;
+	width: 98%;
+}
 .user01-searchMenu {
 	margin-bottom: 0.938em;
-	width: 100%;
+	width: 98%;
 }
 
 .user01-filter-bar {
@@ -82,7 +88,7 @@
 
 .user01-table {
 	height: 64vh;
-	overflow-y: scroll; 	
+	overflow-y: scroll;
 }
 
 .user01-lister {
