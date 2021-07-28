@@ -43,7 +43,7 @@
 	float: right;
 	display: flex;
 	justify-content: space-between;
-	width: 55%;
+	width: 53%;
 }
 
 .user00-modifier {
@@ -78,6 +78,11 @@
 
 .searchBarInside {
 	border-radius: 6.25em;
+}
+
+.user01-table {
+	height: 64vh;
+	overflow-y: scroll; 	
 }
 
 .user01-lister {
