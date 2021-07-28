@@ -33,7 +33,7 @@ public class ImageDao implements IImageDao {
         try (final var fos = new FileOutputStream(cheminTotal)) {
             fos.write(byteArray);
         } catch (final IOException ioe) {
-            logger.warn("Le fichier {} n'a pas pu être sauvegardé. Cause : {}", byteArray, ioe);
+            logger.error("Le fichier {} n'a pas pu être sauvegardé. Cause : {}", byteArray, ioe);
             return false;
         }
         return true;

@@ -116,7 +116,7 @@
             </div>
             <c:if test="${not empty avatar}">
                 <div class="display-flex justify-content-space-between">
-                    <div>Image choisie pour l'avatar: ${avatar}</div>
+                    <div><spring:message code="usr05.label.avatarChosen"/>: ${avatar}</div>
                 </div>
                 <form:hidden path="cheminAvatar" value="${avatar}" />
             </c:if>

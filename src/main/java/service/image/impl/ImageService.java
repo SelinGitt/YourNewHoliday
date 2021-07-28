@@ -60,7 +60,7 @@ public class ImageService implements IImageService {
     public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
-            final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
+            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
             return imageDao.saveImage(cheminComplet, byteArray);
         }
         logger.debug("Le type {} du fichier ne correspond pas à utilisateur", type);

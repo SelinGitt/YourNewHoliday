@@ -16,8 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import service.image.IImageService;
 
 /**
- * Classe représentant XX
- *
+ * Classe représentant le controlleur d'upload d'image
+ * 
  * @author Lucas
  */
 @Controller
