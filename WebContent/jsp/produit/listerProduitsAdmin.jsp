@@ -30,12 +30,12 @@
                 <input type="hidden" name="searchInput" value="${searchTerm}" />
                 <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
                 <select id="triSelect" name="tri">
-                    <option value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
+                    <option selected value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
                     <option value="0"><spring:message code="pdt01.tri.enVente"></spring:message></option>
                     <option value="1"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
                 </select>
                 <script>
-                     document.getElementById("triSelect").options[${tri}].selected=true;
+                     document.getElementById("triSelect").options[${tri} +1].selected=true;
 				</script>
                 <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
             </form:form>

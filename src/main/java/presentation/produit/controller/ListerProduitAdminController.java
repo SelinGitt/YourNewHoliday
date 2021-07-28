@@ -64,7 +64,6 @@ public class ListerProduitAdminController {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
         Boolean boolTri = null;
-        System.out.println("tri >" + tri + "<");
         if (tri != "") {
             if (tri.equals("0")) {
                 boolTri = true;
@@ -76,22 +75,19 @@ public class ListerProduitAdminController {
                 boolTri = null;
             }
         }
-        
+
         if (boolTri != null) {
             if (boolTri) {
-                modelAndView.getModelMap().addAttribute("tri", boolTri);
+                modelAndView.getModelMap().addAttribute("tri", tri);
                 modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
-                System.out.println("booltri" + boolTri);
                 return modelAndView;
             }
-            modelAndView.getModelMap().addAttribute("tri", boolTri);
+            modelAndView.getModelMap().addAttribute("tri", tri);
             modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
-            System.out.println("booltri" + boolTri);
             return modelAndView;
         }
-        modelAndView.getModelMap().addAttribute("tri", boolTri);
+        modelAndView.getModelMap().addAttribute("tri", tri);
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
-        System.out.println("booltri" + boolTri);
         return modelAndView;
     }
 }
