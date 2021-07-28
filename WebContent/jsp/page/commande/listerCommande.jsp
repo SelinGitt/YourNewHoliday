@@ -51,7 +51,3 @@
         </c:choose>
     </div>
 </fieldset>
-<script>
-    document.title = document.getElementById('titrePage').textContent;
-    document.getElementById('titrePage').remove();
-</script>

@@ -7,6 +7,7 @@
 </p>
 <div class="body scroll">
     <%-- titre --%>
+
     <h1 class="text-align-center">
         <spring:message code="mlg.titre" />
     </h1>
@@ -31,5 +32,4 @@
 
 
 </div>
-
 <script type="text/javascript" src="js/mentionLegales/mentionLegales.js"></script>

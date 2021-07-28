@@ -14,6 +14,3 @@
     <%-- insertion du fichier html --%>
     <p>${fichierHtml}</p>
 </div>
-<script>
-
-</script>
