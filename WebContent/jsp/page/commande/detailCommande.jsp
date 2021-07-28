@@ -57,7 +57,8 @@
                                         <spring:message code="detailCommande.tiret"></spring:message>
                                         ${cmdProduit.produitAcheteDto.reference}
                                     </div>
-                                    <div class="CMD_04-text-align-justify CMD_04-description CMD_04-box-text">
+                                    <div class="CMD_04-text-align-justify CMD_04-description
+                                                CMD_04-padding-top CMD_04-box-text">
                                         ${cmdProduit.produitAcheteDto.description}</div>
                                 </div>
                             </div>

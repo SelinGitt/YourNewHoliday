@@ -385,3 +385,8 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 .CMD_04-price-width {
 	width: 100%;
 }
+
+/* padding pour le titre */
+.CMD_04-padding-top {
+	padding-top: 0.625em;
+}
