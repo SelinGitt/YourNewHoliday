@@ -105,7 +105,7 @@
 
             <%--  total avant remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
                 <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
@@ -114,7 +114,7 @@
             </div>
             <%-- remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
                 <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
@@ -123,7 +123,7 @@
             </div>
             <%--  total après remise --%>
             <div class="justify-content-space-between display-flex align-item-center">
-                <h3>
+                <h3 class="panier-div-prix">
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
                 <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
