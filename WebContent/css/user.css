@@ -60,7 +60,7 @@
 
 /* USR01 */
 .user01-message {
-	margin-left: 0.5em;	
+	margin-left: 0.5em;
 }
 
 .user01-searchMenu {
@@ -82,7 +82,7 @@
 
 .user01-table {
 	height: 64vh;
-	overflow-y: scroll; 	
+	overflow-y: scroll;
 }
 
 .user01-lister {
@@ -255,6 +255,11 @@
 	color: #FFFFFF;
 }
 
+.user05-placeholder {
+	width: 15em;
+	height: 15em;
+	background-color: red;
+}
 /* USR07 */
 .user07-body-general {
 	width: 100%;
