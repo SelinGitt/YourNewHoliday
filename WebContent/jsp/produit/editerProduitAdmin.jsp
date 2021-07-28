@@ -133,7 +133,7 @@
                 </table>
             </div>
             <div class="pdt02Grid-item text-align-center pdt02LogoService">
-                <form:hidden path="services" value="4" />
+<%--                 <form:hidden path="services" value="4" /> --%>
                 <table class="pdt02ListeService" aria-label="liste des services disponibles">
                     <tr>
                         <th colspan="3"><spring:message code="form.pdt02.service" /></th>
