@@ -8,7 +8,6 @@ import java.util.Map;
 
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeDto;
-import presentation.commande.dto.ProduitAcheteDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
@@ -62,5 +61,5 @@ public interface ICommandeService {
      * @param  version du prooduit
      * @return         le produitAchete
      */
-    ProduitAcheteDto findProduitAchete(final String id, final String version);
+    ProduitDto findProduitAchete(final String id, final String version);
 }
