@@ -42,6 +42,7 @@ public class UploadImageProduitController {
             modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
             modelAndView.getModelMap().addAttribute("imgError", "pdt03.erreur.image");
+            
         }
         return modelAndView;
 

@@ -283,14 +283,6 @@ th.pdt01 {
 	line-height: 1em;
 }
 
-.pdt03.left-side {
-	width: 75%;
-}
-
-.pdt03.right-side {
-	width: 25%;
-}
-
 /* PDT04 */
 .pdt04Flex-container {
 	text-align: left;
