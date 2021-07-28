@@ -20,3 +20,24 @@ function loadServices() {
 		}
 	}
 }
+
+// Permet de changer le status d'un service
+function changeServiceStatus(el, status) {
+	var label = document.getElementById(el.id[8]);
+
+	// La classe firstTime permet de syncro les valeurs du tableau avec l'input
+	if (label.classList.contains("firstTime")) {
+		el.value = status;
+		label.classList.remove("firstTime");
+	}
+
+	// Change le service en actif ou inactif et la valeur de l'input
+	if (label.classList.contains("pdt02ServiceActif")) {
+		label.classList.replace("pdt02ServiceActif", "pdt02ServiceInactif");
+		el.value = 'false';
+	} else {
+		label.classList.replace("pdt02ServiceInactif", "pdt02ServiceActif");
+		el.value = 'true';
+	}
+
+}
