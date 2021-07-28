@@ -18,6 +18,11 @@ import presentation.commande.dto.CommandeAdresseDto;
 @Component
 public class ListerPanierAdressesValidator implements Validator {
 
+    /**
+     * 
+     */
+    private static final String DEFAULT_ERROR = "Default error";
+
     @Override
     public boolean supports(final Class<?> clazz) {
         return CommandeAdresseDto.class.isAssignableFrom(clazz);
@@ -26,17 +31,17 @@ public class ListerPanierAdressesValidator implements Validator {
     @Override
     public void validate(final Object target, final Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.nom", "pan08.erreur.livraisonNom_vide",
-                "Default error");
+                DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.prenom", "pan08.erreur.livraisonPrenom_vide",
-                "Default error");
+                DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.adresse", "pan08.erreur.livraisonAdresse_vide",
-                "Default error");
+                DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseFacturation.nom", "pan08.erreur.facturationNom_vide",
-                "Default error");
+                DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseFacturation.prenom", "pan08.erreur.facturationPrenom_vide",
-                "Default error");
+                DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseFacturation.adresse", "pan08.erreur.facturationAdresse_vide",
-                "Default error");
+                DEFAULT_ERROR);
     }
 
 }
