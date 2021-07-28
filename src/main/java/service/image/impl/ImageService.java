@@ -105,7 +105,7 @@ public class ImageService implements IImageService {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
             return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(byteArray, size));
         } catch (final IOException ioe) {
-            logger.error("une exception {} a été levée pour le fichier", ioe);
+            logger.error("une exception a été levée pour le fichier : ", ioe);
             return false;
         }
     }
