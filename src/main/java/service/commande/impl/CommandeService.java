@@ -4,6 +4,7 @@
 package service.commande.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,7 @@ import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
+import presentation.utilisateur.dto.UtilisateurDto;
 import service.commande.CommandeMapper;
 import service.commande.ICommandeService;
 import service.util.IGenerateReferenceUtil;
@@ -78,15 +80,18 @@ public class CommandeService implements ICommandeService {
     }
 
     @Override
-    public String validerPanier(final PanierDto panier, final AdressesDto adresses, final Integer idUtilisateur) {
+    public String validerPanier(final PanierDto panier, final AdressesDto adresses, final UtilisateurDto utilisateur) {
         String reference = null;
+        Date dateCommande = null;
         do {
-            reference = this.referenceCommande.generateReference();
+            dateCommande = new Date();
+            reference = this.referenceCommande.generateReference(utilisateur, panier.getNombreDeReferences(), dateCommande);
+
             // Passer les adresses à la méthode
         } while (this.iCommandeDao.isCommandeExist(reference));
         // Passer les adresses à la méthode
         logger.info("Création de commande avec la réference {}", reference);
-        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panier, adresses, reference, idUtilisateur);
+        final var commandeDo = CommandeMapper.mapperPanierDtoToDo(panier, adresses, dateCommande, reference, utilisateur.getId());
         return this.iCommandeDao.create(this.recupereProduitAchetePourCommande(commandeDo)).getReference();
     }
 

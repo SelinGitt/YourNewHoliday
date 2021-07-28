@@ -34,7 +34,7 @@
                                     <spring:message code="listeCommande.prixTotal.text" />
                                 </div>
                                 <div class="CMD_00-commandePrixTotalValue">
-                                    ${commande.prixTotal}
+                                    ${commande.prixTotalApresRemise}
                                     <spring:message code="glb.devise" />
                                 </div>
                             </div>

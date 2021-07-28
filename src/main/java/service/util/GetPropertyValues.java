@@ -30,8 +30,7 @@ public class GetPropertyValues {
      */
     private static final Map<String, String> PROPERTIES_MAP             = new HashMap<>();
 
-    private static final Logger              LOGGER                     = LoggerFactory.getLogger(
-            GetPropertyValues.class);
+    private static final Logger              LOGGER                     = LoggerFactory.getLogger(GetPropertyValues.class);
 
     /**
      * Constructor
@@ -61,7 +60,10 @@ public class GetPropertyValues {
             getPropertiesMap().put("mentionsLegalesRepo", prop.getProperty("mentionsLegalesRepo"));
             getPropertiesMap().put("imagesProduitsRepo", prop.getProperty("imagesProduitsRepo"));
             getPropertiesMap().put("imagesUtilisateursRepo", prop.getProperty("imagesUtilisateursRepo"));
+            getPropertiesMap().put("tempsAvantDeconnection", prop.getProperty("tempsAvantDeconnection"));
+
             LOGGER.debug("GetPropertyValues : getPropValue()");
+
             // On catch les éventuelles exceptions générées par le stream
         } catch (final Exception e) {
             LOGGER.error("Le stream du fichier YNH-application.properties a généré une exception : ", e);

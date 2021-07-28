@@ -18,8 +18,12 @@ import service.util.DecimalFormatUtils;
  * @author Hanan Anghari
  */
 public class CommandeMapper {
+
+    /**
+     * Constructor
+     */
     private CommandeMapper() {
-        // emprty
+        // void
     }
 
     /**
@@ -35,16 +39,22 @@ public class CommandeMapper {
         final var commandeDto = new CommandeDto();
         commandeDto.setId(String.valueOf(commandeDo.getId()));
         commandeDto.setReference(commandeDo.getReference());
-        commandeDto.setPrixTotal(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotal()));
+        commandeDto.setPrixTotalAvantRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixSansRemise()));
         commandeDto.setDate(DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         commandeDto.setQuantiteTotale(String.valueOf(commandeDo.getQuantiteTotale()));
         commandeDto.setListCommandeProduitDto(CommandeProduitMapper.mapperSetDoToListDto(commandeDo.getCommandeProduitDoSet()));
+        commandeDto.setPrixTotalApresRemise(DecimalFormatUtils.decimalFormatUtil(commandeDo.getPrixTotalApresRemise()));
+        commandeDto.setRemise(calculerRemise(commandeDto));
 
         final var livraisonAdresse = new CommandeAdresseDto();
+        livraisonAdresse.setNom(commandeDo.getNomLivraison());
+        livraisonAdresse.setPrenom(commandeDo.getPrenomLivraison());
         livraisonAdresse.setAdresse(commandeDo.getAdresseLivraison());
         commandeDto.setAdresseLivraison(livraisonAdresse);
 
         final var facturationAdresse = new CommandeAdresseDto();
+        facturationAdresse.setNom(commandeDo.getNomFacturation());
+        facturationAdresse.setPrenom(commandeDo.getPrenomFacturation());
         facturationAdresse.setAdresse(commandeDo.getAdresseFacturation());
         commandeDto.setAdresseFacturation(facturationAdresse);
         return commandeDto;
@@ -61,28 +71,40 @@ public class CommandeMapper {
 
     }
 
+    private static String calculerRemise(final CommandeDto commande) {
+        return DecimalFormatUtils.decimalFormatUtil(DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalAvantRemise())
+                - DecimalFormatUtils.doubleFormatUtil(commande.getPrixTotalApresRemise()));
+    }
+
     /**
      * Permet de mapper un Panier en CommandeDo
      *
      * @param  panier        le panier en session
      * @param  adresses      les adresses entrées par l'utilisateur
+     * @param  dateCommande  la date à la quelle la commande sera enregistré
      * @param  reference     la reference de la commande qui a été généré en ammon
      * @param  idUtilisateur l'id de l'utilisateur en session
      * @return               CommandeDo la commande qui doit être enregistré en base de donnée
      */
-    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final String reference,
-            final Integer idUtilisateur) {
+    public static CommandeDo mapperPanierDtoToDo(final PanierDto panier, final AdressesDto adresses, final Date dateCommande,
+            final String reference, final Integer idUtilisateur) {
         final var commandeDo = new CommandeDo();
         commandeDo.setId(null);
         commandeDo.setReference(reference);
-        commandeDo.setDate(new Date());
+        commandeDo.setDate(dateCommande);
         commandeDo.setPrixSansRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixTotalAffichage()));
-        commandeDo.setPrixTotal(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
+        commandeDo.setPrixTotalApresRemise(DecimalFormatUtils.bigDecimalFormatUtil(panier.getPrixApresRemiseAffichage()));
         commandeDo.setQuantiteTotale(panier.getNombreDeReferences());
         commandeDo.setIdUtilisateur(idUtilisateur);
         commandeDo.setCommandeProduitDoSet(CommandeProduitMapper.mapperMapDtoToSetDo(panier.getMapPanier(), commandeDo));
-        commandeDo.setAdresseFacturation(adresses.getCommandeAdresseFacturation().getAdresse());
-        commandeDo.setAdresseLivraison(adresses.getCommandeAdresseLivraison().getAdresse());
+        final var facturationAdresse = adresses.getCommandeAdresseFacturation();
+        commandeDo.setNomFacturation(facturationAdresse.getNom());
+        commandeDo.setPrenomFacturation(facturationAdresse.getPrenom());
+        commandeDo.setAdresseFacturation(facturationAdresse.getAdresse());
+        final var livraisonAdresse = adresses.getCommandeAdresseLivraison();
+        commandeDo.setNomLivraison(livraisonAdresse.getNom());
+        commandeDo.setPrenomLivraison(livraisonAdresse.getPrenom());
+        commandeDo.setAdresseLivraison(livraisonAdresse.getAdresse());
         return commandeDo;
     }
 }

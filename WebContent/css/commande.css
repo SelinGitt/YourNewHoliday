@@ -29,7 +29,7 @@ fieldset.CMD_00-commandeFieldset, div.CMD_00-commandeWrapper, div.CMD_00-command
 
 /* hauteur field set */
 fieldset.CMD_00-commandeFieldset {
-	width: 90%;
+	width: 92%;
 	height: 80%;
 }
 
@@ -316,4 +316,17 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 /* couleur du titre pour la liste des produits */
 .CMD_04-title-text-color {
 	color: #66C5EB;
+}
+
+/* la grille pour commande adresse */
+.CMD_04-adresse-grid {
+	display: grid;
+	/* pas d'espacement entre les grilles */
+	grid-gap: 0;
+	grid-template-columns: 1fr 2fr;
+}
+
+/* marge pour les champs des adresses */
+.CMD_04-adresse-margin {
+	margin: 2%;
 }
