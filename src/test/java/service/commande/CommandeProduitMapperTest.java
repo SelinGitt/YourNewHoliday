@@ -197,7 +197,7 @@ class CommandeProduitMapperTest {
      * {@link service.commande.CommandeProduitMapper#maptoDto(java.util.Map, persistance.commande.entity.CommandeDo)}.
      */
     @Test
-    void TestMapToDto() {
+    void testMapToDto() {
         final ProduitAcheteDo produitAchete = initProduitAcheterDo();
         final ProduitDto produitDto = CommandeProduitMapper.mapToDto(produitAchete);
         assertNotNull(produitDto);
