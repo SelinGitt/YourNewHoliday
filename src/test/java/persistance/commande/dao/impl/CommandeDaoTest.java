@@ -71,16 +71,23 @@ class CommandeDaoTest {
      */
     @Test
     void testFindByRef() {
-        final CommandeDo commandeDo = this.iCommandeDao.findByRef("ABC1");
+        final var commandeDo = this.iCommandeDao.findByRef("ABC5");
         assertNotNull(commandeDo);
-        assertEquals(1, commandeDo.getId());
-        assertEquals("ABC1", commandeDo.getReference());
-        assertEquals(0, BigDecimal.valueOf(1200.00).compareTo(commandeDo.getPrixSansRemise()));
-        assertEquals(2, commandeDo.getIdUtilisateur());
-        assertEquals("09/02/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
+        assertEquals(5, commandeDo.getId());
+        assertEquals("ABC5", commandeDo.getReference());
+        assertEquals("Maimai", commandeDo.getNomFacturation());
+        assertEquals("Maiko", commandeDo.getPrenomFacturation());
+        assertEquals("124, rue du petit chemin, 59000, Lille", commandeDo.getAdresseFacturation());
+        assertEquals("LeForestier", commandeDo.getNomLivraison());
+        assertEquals("Maxime", commandeDo.getPrenomLivraison());
+        assertEquals("221, rue de léglise 59790, Ronchin", commandeDo.getAdresseLivraison());
+        assertEquals(0, BigDecimal.valueOf(900.00).compareTo(commandeDo.getPrixSansRemise()));
+        assertEquals(0, BigDecimal.valueOf(900.00).compareTo(commandeDo.getPrixTotalApresRemise()));
+        assertEquals(5, commandeDo.getIdUtilisateur());
+        assertEquals("17/03/2021", DateFormatUtil.formaterDateToString(commandeDo.getDate()));
         final Set<CommandeProduitDo> commandeProduitSet = commandeDo.getCommandeProduitDoSet();
         assertNotNull(commandeProduitSet);
-        assertEquals(2, commandeProduitSet.size());
+        assertEquals(1, commandeProduitSet.size());
     }
 
     /**

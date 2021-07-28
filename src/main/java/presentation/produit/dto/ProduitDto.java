@@ -60,6 +60,12 @@ public class ProduitDto implements Serializable {
         return Objects.equals(idProduitOriginal, other.idProduitOriginal);
     }
 
+    @Override
+    public String toString() {
+        return idProduitOriginal + version + reference + nom + description + destination + prixUnitaire + hebergement + miseEnVente
+                + cheminImage + services;
+    }
+
     /**
      * Getter for idProduitOriginal
      *
