@@ -15,7 +15,7 @@ public class ProduitAcheteDto implements Serializable {
     /**
      * Générer Automatiquement pour la sérialisation
      */
-    private static final long serialVersionUID = -8379767613213161374L;
+    private static final long serialVersionUID = -7586129720647525713L;
 
     private String            idDeLOriginal;
 
@@ -32,26 +32,6 @@ public class ProduitAcheteDto implements Serializable {
     private String            prixUnitaire;
 
     private String            cheminDeLImage;
-
-    private Boolean[]         services;
-
-    /**
-     * Getter for services
-     *
-     * @return the services
-     */
-    public Boolean[] getServices() {
-        return services;
-    }
-
-    /**
-     * Setter for services
-     *
-     * @param services the services to set
-     */
-    public void setServices(final Boolean[] services) {
-        this.services = services;
-    }
 
     /**
      * Getter for idDeLOriginal
