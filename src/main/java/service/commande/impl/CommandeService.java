@@ -28,6 +28,7 @@ import presentation.panier.dto.PanierDto;
 import presentation.produit.dto.ProduitDto;
 import presentation.utilisateur.dto.UtilisateurDto;
 import service.commande.CommandeMapper;
+import service.commande.CommandeProduitMapper;
 import service.commande.ICommandeService;
 import service.util.IGenerateReferenceUtil;
 
@@ -117,7 +118,7 @@ public class CommandeService implements ICommandeService {
 
     @Override
     public ProduitDto findProduitAchete(final String id, final String version) {
-        return CommandeMapper.mapToDto(iProduitAchete.recupererProduitAcheteDo(Integer.valueOf(id), Integer.valueOf(version)));
+        return CommandeProduitMapper.mapToDto(iProduitAchete.recupererProduitAcheteDo(Integer.valueOf(id), Integer.valueOf(version)));
     }
 
 }

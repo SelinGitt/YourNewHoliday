@@ -5,13 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import persistance.commande.entity.CommandeDo;
-import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
 import presentation.panier.dto.PanierDto;
-import presentation.produit.dto.ProduitDto;
-import service.produit.ProduitMapper;
 import service.util.DateFormatUtil;
 import service.util.DecimalFormatUtils;
 
@@ -111,29 +108,4 @@ public class CommandeMapper {
         return commandeDo;
     }
 
-    /**
-     * Allows to map to ProduitDto a produitAcheteDO
-     *
-     * @param  produitAchete to map
-     * @return               mapped ProduitDto
-     */
-    public static ProduitDto mapToDto(final ProduitAcheteDo produitAchete) {
-        if (produitAchete == null) {
-            return null;
-        }
-        final var produitDto = new ProduitDto();
-        produitDto.setIdProduitOriginal(String.valueOf(produitAchete.getIdDeLOriginal()));
-        produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
-        produitDto.setReference(produitAchete.getReference());
-        produitDto.setNom(produitAchete.getNom());
-        produitDto.setDescription(produitAchete.getDescription());
-        produitDto.setDestination(produitAchete.getDestination());
-        produitDto.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(produitAchete.getPrixUnitaire()));
-        produitDto.setHebergement(produitAchete.getHebergement());
-        produitDto.setMiseEnVente(String.valueOf(produitAchete.getMiseEnVente()));
-        produitDto.setCheminImage(produitAchete.getCheminImage());
-        produitDto.setServices(ProduitMapper.genererServices((produitAchete.getServices())));
-        produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
-        return produitDto;
-    }
 }
