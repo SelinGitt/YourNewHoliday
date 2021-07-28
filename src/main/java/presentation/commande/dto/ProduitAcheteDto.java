@@ -19,6 +19,8 @@ public class ProduitAcheteDto implements Serializable {
 
     private String            idDeLOriginal;
 
+    private String            version;
+
     private String            reference;
 
     private String            nom;
@@ -175,6 +177,24 @@ public class ProduitAcheteDto implements Serializable {
      */
     public void setCheminDeLImage(final String cheminDeLImage) {
         this.cheminDeLImage = cheminDeLImage;
+    }
+
+    /**
+     * Getter for version
+     *
+     * @return the version
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * Setter for version
+     *
+     * @param version the version to set
+     */
+    public void setVersion(final String version) {
+        this.version = version;
     }
 
 }
