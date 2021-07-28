@@ -94,6 +94,7 @@
 .user01-lister {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
+	width: 100%;
 }
 
 .user01-colonne {
