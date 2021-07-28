@@ -36,7 +36,7 @@
                     <tr>
                         <td><spring:message code="form.pdt03.reference" /></td>
                         <td><div>
-                                <form:input path="reference"/>
+                                <form:input path="reference" />
                             </div>
                             <div class="pdt03formError">
                                 <form:errors path="reference" cssClass="text-color-rouge" />
@@ -121,8 +121,8 @@
                         <th><spring:message code="form.pdt03.image" /></th>
                     </tr>
                     <tr>
-                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png" 
-                        alt="Image du produit à ajouter"  /></td>
+                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png"
+                            alt="Image du produit à ajouter" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
@@ -154,5 +154,22 @@
                 </table>
             </div>
         </div>
+    </form:form>
+    <form:form action="uploadImageProduit.do" enctype="multipart/form-data" method="post"
+        class="display-flex justify-content-space-around">
+
+        <label for="file"><spring:message code="form.pdt03.image"></spring:message></label>
+
+        <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
+        <input type="submit" value="submit" />
+        <c:if test="${not empty image}">
+                        ${cheminImage}
+                        </c:if>
+        <c:if test="${not empty imgError}">
+            <div class="text-color-rouge">
+                <spring:message code="${imgError}" />
+            </div>
+        </c:if>
+
     </form:form>
 </div>

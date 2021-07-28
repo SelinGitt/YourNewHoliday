@@ -46,8 +46,7 @@ public class CreerProduitAdminController {
      * Permet de traiter une requête de type GET<br>
      * et de mettre un ProduitDto vide dans la modelMap
      * 
-     * @param  cheminImage le chemin de image à appliquer
-     * @return             le model et la vue associée
+     * @return le model et la vue associée
      */
     @GetMapping
     public ModelAndView voirFormulaireCreerProduit(final @ModelAttribute(value = "image") String cheminImage) {
