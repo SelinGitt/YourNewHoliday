@@ -261,8 +261,9 @@ class ProduitDaoTest {
     void testDelete() {
 
         assertEquals(6, iProduitDao.findAll().size());
-        assertNotNull(iProduitDao.findById(1));
-        iProduitDao.delete(iProduitDao.findById(1));
+        final var produit = iProduitDao.findById(1);
+        assertNotNull(produit);
+        iProduitDao.delete(produit);
         assertEquals(5, iProduitDao.findAll().size());
         assertNull(iProduitDao.findById(1));
     }
