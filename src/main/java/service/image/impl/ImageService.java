@@ -39,7 +39,7 @@ public class ImageService implements IImageService {
     private static final int    LIMIT_SIZE_USER   = 512_000;
     private static final int    LIMIT_WIDTH_PDT   = 1920;
     private static final int    LIMIT_HEIGHT_PDT  = 1080;
-    private static final int    LIMIT_SIZE_PDT    = 5_000_000;
+    private static final int    LIMIT_SIZE_PDT    = 5_242_880;
 
     @Autowired
     private IImageDao           imageDao;
