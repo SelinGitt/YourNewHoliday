@@ -32,11 +32,11 @@ function changeServiceStatus(el, status) {
 	}
 
 	// Change le service en actif ou inactif et la valeur de l'input
-	if (label.classList.contains("pdt04ServiceActif")) {
-		label.classList.replace("pdt04ServiceActif", "pdt04ServiceInactif");
+	if (label.classList.contains("pdt02ServiceActif")) {
+		label.classList.replace("pdt02ServiceActif", "pdt02ServiceInactif");
 		el.value = 'false';
 	} else {
-		label.classList.replace("pdt04ServiceInactif", "pdt04ServiceActif");
+		label.classList.replace("pdt02ServiceInactif", "pdt02ServiceActif");
 		el.value = 'true';
 	}
 }
