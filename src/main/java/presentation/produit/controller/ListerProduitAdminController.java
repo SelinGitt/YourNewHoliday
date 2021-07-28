@@ -72,8 +72,8 @@ public class ListerProduitAdminController {
                 filtre = 2;
                 modelAndView.getModelMap().addAttribute("tri", filtre);
             }
+            modelAndView.getModelMap().addAttribute("tri", filtre);
         }
-        modelAndView.getModelMap().addAttribute("tri", filtre);
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, tri));
         return modelAndView;
     }
