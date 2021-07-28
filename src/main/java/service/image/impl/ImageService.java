@@ -36,7 +36,7 @@ public class ImageService implements IImageService {
     private static final Logger logger            = LoggerFactory.getLogger(ImageService.class);
     private static final int    LIMIT_WIDTH_USER  = 200;
     private static final int    LIMIT_HEIGHT_USER = 200;
-    private static final int    LIMIT_SIZE_USER   = 500_000;
+    private static final int    LIMIT_SIZE_USER   = 512_000;
 
     @Autowired
     private IImageDao           imageDao;
