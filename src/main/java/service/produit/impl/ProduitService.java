@@ -149,14 +149,17 @@ public class ProduitService implements IProduitService {
 
     @Override
     public boolean deleteProduit(final Integer id) {
+        if (produitDao.findById(id) == null) {
+            return false;
+        }
         produitDao.delete(id);
         return true;
     }
 
     @Override
     public PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite) {
-        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(),
-                beanQuantite.getQuantite(), beanQuantite.getId());
+        logger.debug("ProduitService {} updatePanier, quantite: {}, id: {}", PanierDto.class.getSimpleName(), beanQuantite.getQuantite(),
+                beanQuantite.getId());
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);

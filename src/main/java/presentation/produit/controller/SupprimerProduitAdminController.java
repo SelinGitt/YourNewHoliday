@@ -35,8 +35,10 @@ public class SupprimerProduitAdminController {
         final var modelAndView = new ModelAndView();
         if (iProduitService.deleteProduit(idProduit)) {
             modelAndView.getModelMap().addAttribute("anySuccess", "pdt01.supprimer.success");
+        } else {
+            modelAndView.getModelMap().addAttribute("anyError", "pdt01.supprimer.error");
         }
-        modelAndView.setViewName("redirect:/listerProduitsAdmin.do");
+        modelAndView.setViewName("forward:/listerProduitsAdmin.do");
         return modelAndView;
     }
 }
