@@ -39,10 +39,9 @@ public class UploadImageProduitController {
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
         if (imageService.saveImage(byteArray, "pdt", fileName)) {
-            modelAndView.getModelMap().addAttribute("avatar", fileName);
+            modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
-            modelAndView.getModelMap().addAttribute("imgError", "usr05.erreur.image");
-
+            modelAndView.getModelMap().addAttribute("imgError", "pdt03.erreur.image");
         }
         return modelAndView;
 

@@ -45,13 +45,17 @@ public class CreerProduitAdminController {
     /**
      * Permet de traiter une requête de type GET<br>
      * et de mettre un ProduitDto vide dans la modelMap
-     *
-     * @return le model et la vue associée
+     * 
+     * @param  cheminImage le chemin de image à appliquer
+     * @return             le model et la vue associée
      */
     @GetMapping
-    public ModelAndView voirFormulaireCreerProduit() {
+    public ModelAndView voirFormulaireCreerProduit(final @ModelAttribute(value = "image") String cheminImage) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("creerProduitAdmin");
+        if (cheminImage != null) {
+            modelAndView.getModelMap().addAttribute("image", cheminImage);
+        }
         modelAndView.getModelMap().addAttribute("produitDto", new ProduitDto());
         return modelAndView;
     }
