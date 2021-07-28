@@ -12,7 +12,6 @@
 </p>
 
 <h1 class="title title-responsive text-align-center">
-
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
 <div class="CMD_04-bouton-retour-margin">
