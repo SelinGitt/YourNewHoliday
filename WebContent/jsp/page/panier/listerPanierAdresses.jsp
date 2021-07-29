@@ -15,7 +15,7 @@
 </div>
 
 <%-- lien Retour --%>
-<a class="panier-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
+<a class="lien-retour" href="listerPanierProduits.do"><spring:message code="pan08.lien.retour" /></a>
 
 <form:form method="POST" action="validerPanier.do" modelAttribute="adresses"
     class="display-flex flex-direction-row panier-100">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <%-- boutton reset formulaire --%>
-                    <button class="panier-margin-left-10" onclick="informationsLivraison()">
+                    <button type="button" class="panier-margin-left-10" onclick="informationsLivraison()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
@@ -89,7 +89,7 @@
                                 path="commandeAdresseFacturation.adresse" rows="12" id="facturationAdresse" />
                         </div>
                     </div>
-                    <button class="panier-margin-left-15" onclick="informationsFacturation()">
+                    <button type="button" class="panier-margin-left-15" onclick="informationsFacturation()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
