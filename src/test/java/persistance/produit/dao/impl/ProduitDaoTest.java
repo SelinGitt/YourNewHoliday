@@ -3,6 +3,7 @@
  */
 package persistance.produit.dao.impl;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -295,5 +296,29 @@ class ProduitDaoTest {
         assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EV).size());
         //test produits non en vente avec la recherche de référence ""
         assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NEV).size());
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#trouverProduitsFiltre(TypeFiltre)}.
+     */
+    @Test
+    void testTrouverProduitsFiltre() {
+        //Test produits en vente
+        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.EV).size());
+        //Test produits non en vente
+        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NEV).size());
+    }
+
+    /**
+     * Test method for {@link presentation.produit.controller.TypeFiltre#findValue(String)}.
+     */
+    @Test
+    void testFindValue() {
+        //Value 1
+        assertTrue(TypeFiltre.EV.getTypeDao());
+        //Value 2
+        assertFalse(TypeFiltre.NEV.getTypeDao());
+        //Value null
+        assertNull(TypeFiltre.findValue(null));
     }
 }

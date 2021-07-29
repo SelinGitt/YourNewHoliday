@@ -6,7 +6,7 @@ package presentation.produit.controller;
 import java.util.stream.Stream;
 
 /**
- * Enum représentant des méthodes de filtre.
+ * Enum représentant les options du filtre.
  *
  * @author Léo
  */
