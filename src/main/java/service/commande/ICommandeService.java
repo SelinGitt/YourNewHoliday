@@ -53,4 +53,13 @@ public interface ICommandeService {
      * @return             String la référence de la commande
      */
     String validerPanier(final PanierDto panier, final AdressesDto adresses, final UtilisateurDto utilisateur);
+
+    /**
+     * Permets de récupérer une produitAchete via son id
+     *
+     * @param  id      du produitAchete
+     * @param  version du prooduit
+     * @return         le produit acheté sous forme de Dto
+     */
+    ProduitDto findProduitAchete(final String id, final String version);
 }
