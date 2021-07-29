@@ -2,6 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.consulterProduit" />
+</p>
+
 <div class="conteneur-ascenseur">
     <div>
         <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
@@ -32,7 +38,7 @@
                             </spring:message>${consulterProduitDto.prixUnitaire}&nbsp€</td>
                     </tr>
                     <%-- conformement au sfd afficher les elements suivant seulement si un utilisateur est creer  --%>
-                    <c:if test="${not empty utilisateur}">
+                    <c:if test="${isAchetable}">
                         <tr>
                             <td>
                                 <div class="display-flex">
@@ -90,11 +96,13 @@
                 <th colspan="9" class="pdt04SousTitre"><spring:message code="pdt04.description"></spring:message></th>
             </tr>
             <tr>
-                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly" 
-                class="pdt04TextArea textarea">${consulterProduitDto.description}</textarea></td>
+                <td><textarea maxlength="250" rows="20" cols="60" readonly="readonly"
+                        class="pdt04TextArea textarea">${consulterProduitDto.description}</textarea></td>
             </tr>
         </table>
 
     </div>
 </div>
-<script> loadServices()</script>
+<script>
+	loadServices()
+</script>
