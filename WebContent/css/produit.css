@@ -209,6 +209,10 @@ th.pdt01 {
 	display: none;
 }
 
+.pdt02Form-imageProduit {
+	width: 18.750em; 
+}
+
 /* PDT03 */
 .pdt03Grid-container {
 	display: grid;

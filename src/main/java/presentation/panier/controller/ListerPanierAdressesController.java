@@ -37,7 +37,6 @@ public class ListerPanierAdressesController {
     public ModelAndView listerAdresses(final @SessionAttribute("utilisateur") UtilisateurConnecteDto utilisateurDto) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("listerPanierAdresses");
-
         //on cherche l'utilisateur Connecter grace a l'id
         final var id = Integer.valueOf(utilisateurDto.getIdUtilisateur());
         final var utilisateur = utilisateurService.findUtilisateurById(id);

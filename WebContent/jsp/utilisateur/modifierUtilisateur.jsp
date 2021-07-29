@@ -127,8 +127,7 @@
 
                 <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
                 <div class="user02-rightSide-avatar">
-                    <%-- Sonar releve un code smell mineur, on peut ignorer il sera retire a la gestion de l'image --%>
-                    <div style="width: 15em; height: 15em; background-color: red;"></div>
+                    <img alt="" src="displayImage.do?id=${utilisateurDto.id}&type=usr" class="user02-avatar">
                 </div>
 
                 <c:choose>

@@ -3,10 +3,20 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<c:if test="${not empty error}">
+    <div class="background-error-block block-message-commun">
+        <span class="fa fa-exclamation"></span> <span class="message"><spring:message
+                code="pan08.erreur.validation_failed" /></span>
+    </div>
+</c:if>
+
+
 <%-- Permet de Gerer l'internationalisation du titre de la page --%>
 <p id="titrePage">
     <spring:message code="glb.titre.page.listerPanierAdresses" />
 </p>
+
 <%-- Titre de la Page --%>
 <div class="panier-title">
     <h1>
@@ -41,21 +51,30 @@
                             <label for="livraisonNom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="commandeAdresseLivraison.nom"
                                 id="livraisonNom" />
+                            <div>
+                                <form:errors path="commandeAdresseLivraison.nom" cssClass="text-color-rouge" />
+                            </div>
                         </div>
 
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="livraisonPrenom"><spring:message code="pan08.label.prenom" /></label>
                             <form:input class="panier-formulaire-input" path="commandeAdresseLivraison.prenom"
                                 id="livraisonPrenom" />
+                            <div>
+                                <form:errors path="commandeAdresseLivraison.prenom" cssClass="text-color-rouge" />
+                            </div>
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="livraisonAdresse"><spring:message code="pan08.label.adresse" /></label>
                             <form:textarea class="panier-formulaire-textarea textarea"
                                 path="commandeAdresseLivraison.adresse" rows="12" id="livraisonAdresse" />
+                            <div>
+                                <form:errors path="commandeAdresseLivraison.adresse" cssClass="text-color-rouge" />
+                            </div>
                         </div>
                     </div>
                     <%-- boutton reset formulaire --%>
-                    <button class="panier-margin-left-10" onclick="informationsLivraison()">
+                    <button type="button" class="panier-margin-left-10" onclick="informationsLivraison()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
@@ -76,20 +95,29 @@
                             <label for="facturationNom"><spring:message code="pan08.label.nom" /></label>
                             <form:input class="panier-formulaire-input" path="commandeAdresseFacturation.nom"
                                 id="facturationNom" />
+                            <div>
+                                <form:errors path="commandeAdresseFacturation.nom" cssClass="text-color-rouge" />
+                            </div>
                         </div>
 
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="facturationPrenom"><spring:message code="pan08.label.prenom" /></label>
                             <form:input class="panier-formulaire-input" path="commandeAdresseFacturation.prenom"
                                 id="facturationPrenom" />
+                            <div>
+                                <form:errors path="commandeAdresseFacturation.prenom" cssClass="text-color-rouge" />
+                            </div>
                         </div>
                         <div class="panier-formulaire-div display-flex flex-direction-column">
                             <label for="facturationAdresse"><spring:message code="pan08.label.adresse" /></label>
                             <form:textarea class="panier-formulaire-textarea textarea"
                                 path="commandeAdresseFacturation.adresse" rows="12" id="facturationAdresse" />
+                            <div>
+                                <form:errors path="commandeAdresseFacturation.adresse" cssClass="text-color-rouge" />
+                            </div>
                         </div>
                     </div>
-                    <button class="panier-margin-left-15" onclick="informationsFacturation()">
+                    <button type="button" class="panier-margin-left-15" onclick="informationsFacturation()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
