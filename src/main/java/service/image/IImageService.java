@@ -14,7 +14,7 @@ import service.image.impl.ImageService;
  */
 public interface IImageService {
     /**
-     * Permet de récupérer une image en fonction de son chemin absolu
+     * Permet de récupérer une image en fonction de son id et de son type
      *
      * @param  type le type d'image a recuperer
      * @param  id   l'id a recuperer
@@ -31,4 +31,13 @@ public interface IImageService {
      * @return           vrai si sauvegardé
      */
     boolean saveImage(final byte[] byteArray, final String type, final String fileName);
+
+    /**
+     * Permet de récupérer une image en fonction de son chemin absolu et de son type
+     *
+     * @param  path le chemin de l'image
+     * @param  type le type de l'image
+     * @return      l'image dans un type file
+     */
+    File getImageFromDiskWithPath(final String path, final String type);
 }

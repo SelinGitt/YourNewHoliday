@@ -12,6 +12,12 @@
 	cursor: pointer;
 }
 
+.pdt-img {
+	margin-left: 5%;
+}
+.pdtImgWidth{
+	width:40%;	
+}
 /* PDT00 */
 .pdt00ContainerVoyage {
 	margin: 0.625em;
@@ -183,8 +189,8 @@ th.pdt01 {
 }
 
 .pdt02formError {
-	line-height:1em;
- }
+	line-height: 1em;
+}
 
 .pdt02ServiceActif {
 	color: green;
@@ -200,7 +206,7 @@ th.pdt01 {
 }
 
 .pdt02Checkbox {
-	display: none;	
+	display: none;
 }
 
 /* PDT03 */
@@ -275,7 +281,7 @@ th.pdt01 {
 	width: 100%;
 }
 
-.pdt03Form-imageProduit img{
+.pdt03Form-imageProduit img {
 	width: 50%;
 }
 
@@ -297,7 +303,7 @@ th.pdt01 {
 }
 
 .pdt03Checkbox {
-	display: none;	
+	display: none;
 }
 
 /* PDT04 */
