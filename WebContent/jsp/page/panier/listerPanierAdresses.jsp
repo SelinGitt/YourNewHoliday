@@ -7,7 +7,6 @@
 <p id="titrePage">
     <spring:message code="glb.titre.page.listerPanierAdresses" />
 </p>
-
 <%-- Titre de la Page --%>
 <div class="panier-title">
     <h1>
@@ -144,3 +143,4 @@
         </div>
     </div>
 </form:form>
+

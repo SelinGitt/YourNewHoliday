@@ -1,16 +1,16 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:if test="${not empty confirmationMesssage}">
-    <div class="background-validation-block block-message-commun">
-        <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
-    </div>
-</c:if>
 
 <%-- Permet de Gerer l'internationalisation du titre de la page --%>
 <p id="titrePage">
     <spring:message code="glb.titre.page.detailCommande" />
 </p>
 
+<c:if test="${not empty confirmationMesssage}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
+    </div>
+</c:if>
 <h1 class="title title-responsive text-align-center">
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
@@ -63,8 +63,7 @@
                                         <spring:message code="detailCommande.tiret"></spring:message>
                                         ${cmdProduit.produitAcheteDto.reference}
                                     </div>
-                                    <div
-                                        class="CMD_04-text-align-justify CMD_04-description
+                                    <div class="CMD_04-text-align-justify CMD_04-description
                                                 CMD_04-padding-top CMD_04-box-text">
                                         ${cmdProduit.produitAcheteDto.description}</div>
                                 </div>
@@ -73,8 +72,7 @@
                             <div
                                 class="CMD_04-grid-cel CMD_04-col-2 CMD_04-border-right
                                        CMD_04-height CMD_04-box-sizing">
-                                <div
-                                    class="CMD_04-bold CMD_04-text-align-center
+                                <div class="CMD_04-bold CMD_04-text-align-center
                                             CMD_04-box-title CMD_04-text-overflow">
                                     <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                                 </div>
@@ -164,36 +162,33 @@
                 <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </div>
-                <div
-                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                <div class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
                             CMD_04-price-text-padding CMD_04-box-sizing">
                     <div class="CMD_04-text-align-right">
                         ${commande.prixTotalAvantRemise}
                         <spring:message code="glb.devise" />
                     </div>
                 </div>
+            
 
-
-                <%-- remise --%>
+            <%-- remise --%>
                 <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </div>
-                <div
-                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                <div class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
                             CMD_04-price-text-padding CMD_04-box-sizing">
                     <div class="CMD_04-text-align-right">
-                        ${remise}
-                        <spring:message code="glb.devise" />
+                       ${remise}
+                       <spring:message code="glb.devise" />
                     </div>
                 </div>
+            
 
-
-                <%--  total après remise --%>
+            <%--  total après remise --%>
                 <div class="CMD_04-col-1 CMD_04-bold CMD_04-price-text-padding">
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </div>
-                <div
-                    class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
+                <div class="CMD_04-col-2 CMD_04-border-prix-avant-remise CMD_04-price-width
                             CMD_04-price-text-padding CMD_04-box-sizing">
                     <div class="CMD_04-text-align-right">
                         ${commande.prixTotalApresRemise}

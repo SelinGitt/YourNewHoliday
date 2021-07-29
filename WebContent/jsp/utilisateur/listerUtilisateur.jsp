@@ -84,7 +84,6 @@
 
                     <th class="user01-colonne"><spring:message code="usr01.th.supprimer" /></th>
                 </tr>
-
             </thead>
 
             <tbody class="user01-body">

@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.pan_00" />
+</p>
+
 <c:if test="${fn:length(listIdError) gt 0 }">
     <div class="background-error-block block-message-commun">
         <span class="fa fa-exclamation"></span> <span class="message"><spring:message
@@ -10,17 +15,13 @@
     </div>
 </c:if>
 
-<%-- Permet de Gerer l'internationalisation du titre de la page --%>
-<p id="titrePage">
-    <spring:message code="glb.titre.page.pan_00" />
-</p>
-
 <div class="panier-title">
     <h1>
         <%-- Titre de la page fr/en : "Panier"/"Shopping cart" --%>
         <spring:message code="pan00.titre" />
     </h1>
 </div>
+
 <div class="display-flex">
     <div>
 
