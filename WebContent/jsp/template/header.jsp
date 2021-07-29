@@ -3,7 +3,8 @@
 <div class="header-global">
     <%-- Dans le headeur, on affiche le logo, cliquable, qui renvoie à la page PDT_00 --%>
     <div class="headerCell headerLogo">
-        <a href="/Projet_YNH/listerProduits.do"> <img src="img/template/header/logoYNH.png" class="logoHeader-ynh"
+        <a href="/Projet_YNH/listerProduits.do"> 
+        <img src="img/template/header/logoYNH.png" class="logoHeader-ynh"
             alt="logo">
         </a>
     </div>
@@ -16,11 +17,13 @@
     <%--     de l'identité de l'utilisateur s'il est connecté --%>
     <div class="headerCell headerStatut">
         <div>
-            <strong><spring:message code="header.id" /></strong>${utilisateur.prenom } ${utilisateur.nom }
+            <strong><spring:message code="header.id" /></strong>
+            ${utilisateur.prenom } ${utilisateur.nom }
         </div>
         <%--         de son statut (visiteur, client, administrateur) --%>
         <div>
-            <strong><spring:message code="header.statut" /></strong> ${utilisateur.role.libelle }
+            <strong><spring:message code="header.statut" /></strong> 
+            ${utilisateur.role.libelle }
         </div>
     </div>
 
@@ -29,31 +32,29 @@
         <div class="headerSousCell">
 
             <c:if test="${!empty sessionScope.utilisateur}">
-                <a href="deconnecter.do"> <img src="img/template/header/deconnexion.png" class="logoHeader"
+                <img onclick="chargerlienDeconnexion()" 
+                src="img/template/header/deconnexion.png" class="logoHeader"
                     alt="icône déconnexion">
-                </a>
             </c:if>
 
             <c:if test="${empty sessionScope.utilisateur}">
-                <a href="connecter.do"> <img src="img/template/header/connexion.png" class="logoHeader"
+                <img onclick="chargerlienConnexion()" 
+                src="img/template/header/connexion.png" class="logoHeader"
                     alt="icône connexion">
-                </a>
             </c:if>
         </div>
         <%--  suivi du texte "Connexion" ou "Déconnexion" en fonction --%>
         <div class="headerSousCell">
-            <h3>
-                <c:if test="${!empty sessionScope.utilisateur}">
-                    <a href="deconnecter.do" class ="text-decoration-none"> <spring:message code="header.deconnexion" />
-                    </a>
-
-                </c:if>
-                <c:if test="${empty sessionScope.utilisateur}">
-                    <a href="connecter.do" class ="text-decoration-none"> <spring:message code="header.connexion" />
-                    </a>
-                </c:if>
-
-            </h3>
+            <c:if test="${!empty sessionScope.utilisateur}">
+                <h3 onclick="chargerlienDeconnexion()">
+                    <spring:message code="header.deconnexion" />
+                </h3>
+            </c:if>
+            <c:if test="${empty sessionScope.utilisateur}">
+                <h3 onclick="chargerlienConnexion()">
+                    <spring:message code="header.connexion" />
+                </h3>
+            </c:if>
         </div>
     </div>
     <%--  et enfin d'une icône cliquable pour créer un compte si on n'est pas connecté --%>
@@ -62,38 +63,39 @@
     <c:if test="${!empty sessionScope.utilisateur}">
 
         <div class="headerCell headerPanier">
-            <div class="headerSousCell" onclick="chargerlien()">
+            <div class="headerSousCell" onclick="chargerlienPanier()">
                 <c:if test="${sessionScope.panierDto.nombreDeReferences < 1}">
-                    <img onclick="chargerlien()" src="img/template/header/panierVide.png" class="logoHeader"
+                    <img onclick="chargerlienPanier()" 
+                    src="img/template/header/panierVide.png" class="logoHeader"
                         alt="icône panier vide">
 
                 </c:if>
                 <c:if test="${sessionScope.panierDto.nombreDeReferences > 0 }">
-                    <div onclick="chargerlien()">
-                        <img onclick="chargerlien()" src="img/template/header/panierRempli.png" class="logoHeader"
+                    <div onclick="chargerlienPanier()">
+                        <img onclick="chargerlienPanier()" 
+                        src="img/template/header/panierRempli.png" class="logoHeader"
                             alt="icône panier rempli">
 
                         <div class="headerSousCellNbrPdtContainer">
-                            <a class="headerSousCellNbrPdt">${sessionScope.panierDto.nombreDeReferences }</a>
+                            <a class="headerSousCellNbrPdt">
+                            ${sessionScope.panierDto.nombreDeReferences }</a>
                         </div>
                     </div>
                 </c:if>
             </div>
             <%--"Panier" --%>
-            <div class="headerSousCell">
+            <div class="headerSousCell" onclick="chargerlienPanier()">
                 <h3>
-                    <a href="listerPanierProduits.do" class ="text-decoration-none"> 
                     <spring:message code="header.panier" />
-                    </a>
                 </h3>
             </div>
         </div>
     </c:if>
 
     <c:if test="${empty sessionScope.utilisateur}">
-        <div class="headerCell headerPanier">
+        <div class="headerCell headerPanier" onclick="chargerlienCreerUtilisateur()">
             <div class="headerSousCell">
-                <a href="creerUtilisateur.do" class ="text-decoration-none"> 
+                <a class="text-decoration-none"> 
                 <img src="img/template/header/creerCompte.png" class="logoHeader"
                     alt="icône créer compte">
                 </a>
@@ -101,9 +103,7 @@
             <%--"Créer un compte"--%>
             <div class="headerSousCell">
                 <h3>
-                    <a href="creerUtilisateur.do" class ="text-decoration-none"> 
                     <spring:message code="header.creer.compte" />
-                    </a>
                 </h3>
             </div>
         </div>
