@@ -15,9 +15,11 @@ public class ProduitAcheteDto implements Serializable {
     /**
      * Générer Automatiquement pour la sérialisation
      */
-    private static final long serialVersionUID = -732280963573819257L;
+    private static final long serialVersionUID = -7586129720647525713L;
 
     private String            idDeLOriginal;
+
+    private String            version;
 
     private String            reference;
 
@@ -155,6 +157,24 @@ public class ProduitAcheteDto implements Serializable {
      */
     public void setCheminDeLImage(final String cheminDeLImage) {
         this.cheminDeLImage = cheminDeLImage;
+    }
+
+    /**
+     * Getter for version
+     *
+     * @return the version
+     */
+    public String getVersion() {
+        return version;
+    }
+
+    /**
+     * Setter for version
+     *
+     * @param version the version to set
+     */
+    public void setVersion(final String version) {
+        this.version = version;
     }
 
 }
