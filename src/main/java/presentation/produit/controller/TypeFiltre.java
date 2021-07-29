@@ -22,27 +22,27 @@ public enum TypeFiltre {
     NEV(false, "2");
 
     private Boolean typeDao;
-    private String  typeFiltre;
+    private String  type;
 
     /**
      * Constructor
      *
-     * @param typeFiltre le type de filtre, 0 en vente 1 non en vente
-     * @param typeDao    le type à utiliser dans le DAO
+     * @param type    le type de filtre, 0 en vente 1 non en vente
+     * @param typeDao le type à utiliser dans le DAO
      */
-    TypeFiltre(final Boolean typeDao, final String typeFiltre) {
+    TypeFiltre(final Boolean typeDao, final String type) {
         this.typeDao = typeDao;
-        this.typeFiltre = typeFiltre;
+        this.type = type;
     }
 
     /**
      * Permet de retrouver un type en fonction d'un string
      *
      * @param  type le type à trouver
-     * @return      le triFiltre trouvé, null si le type est inexsistant
+     * @return      le typeFiltre trouvé, null si le type est inexsistant
      */
     public static TypeFiltre findValue(final String type) {
-        return Stream.of(TypeFiltre.values()).filter(typeFiltre -> typeFiltre.typeFiltre.equals(type)).findFirst().orElse(null);
+        return Stream.of(TypeFiltre.values()).filter(typeFiltre -> typeFiltre.type.equals(type)).findFirst().orElse(null);
     }
 
     /**

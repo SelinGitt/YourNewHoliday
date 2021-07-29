@@ -161,8 +161,7 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                 .createQuery("FROM ProduitDo WHERE reference like :searchTerm AND mise_en_vente = :filtre", ProduitDo.class);
         query.setParameter("searchTerm", "%" + searchTerm + "%");
         query.setParameter("filtre", filtre.getTypeDao());
-        logger.debug("ProduitDao / méthode : trouverProduitsRechercheFiltre; searchTerm : {}", searchTerm + " filtre : {}",
-                filtre.getTypeDao());
+        logger.debug("ProduitDao / méthode : trouverProduitsRechercheFiltre; searchTerm : {} filtre : {}", searchTerm, filtre.getTypeDao());
         return query.getResultList();
     }
 

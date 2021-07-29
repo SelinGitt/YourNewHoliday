@@ -25,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
@@ -287,8 +288,8 @@ class ProduitDaoTest {
     @Test
     void testTrouverProduitsRechercheFiltre() {
         //test produits en vente avec la recherche de référence 9
-        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", true).size());
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EV).size());
         //test produits non en vente avec la recherche de référence 9
-        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", false).size());
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NEV).size());
     }
 }
