@@ -34,7 +34,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="nom"><spring:message code="usr05.creer.nom" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="nom" class="user05-inputs" />
+                        <form:input path="nom" class="user05-inputs" maxlength="50" />
                         <form:errors path="nom" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="prenom"><spring:message code="usr05.creer.prenom" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="prenom" class="user05-inputs" />
+                        <form:input path="prenom" class="user05-inputs" maxlength="50" />
                         <form:errors path="prenom" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
                     <div class="user05-form-inputs">
-                        <form:textarea path="adresse" class="user05-inputs user05-textarea textarea" />
+                        <form:textarea path="adresse" class="user05-inputs user05-textarea textarea" maxlength="255" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" />
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <%-- Le readonly pemet le blocage de l'autocompletion 
                         par le navigateur si des identifiants sont enregister --%>
                         <form:input path="email" class="user05-inputs" readonly="true"
-                            onfocus="this.removeAttribute('readonly')" />
+                            onfocus="this.removeAttribute('readonly')" maxlength="320" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="password"><spring:message code="usr05.creer.password" /></label>
                     <div class="user05-form-inputs">
-                        <form:password path="password" class="user05-inputs" />
+                        <form:password path="password" class="user05-inputs" maxlength="255" />
                         <form:errors path="password" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="confirmPassword"><spring:message code="usr05.creer.confirmPassword" /></label>
                     <div class="user05-form-inputs">
-                        <form:password path="confirmPassword" class="user05-inputs" />
+                        <form:password path="confirmPassword" class="user05-inputs" maxlength="255" />
                         <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                     </div>
                 </div>

@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <%-- boutton reset formulaire --%>
-                    <button class="panier-margin-left-10" onclick="informationsLivraison()">
+                    <button type="button" class="panier-margin-left-10" onclick="informationsLivraison()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="panier-margin-left-15" onclick="informationsFacturation()">
+                    <button type="button" class="panier-margin-left-15" onclick="informationsFacturation()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
