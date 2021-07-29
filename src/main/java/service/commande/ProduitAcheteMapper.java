@@ -31,6 +31,7 @@ public class ProduitAcheteMapper {
             return null;
         }
         final var produitAcheteDto = new ProduitAcheteDto();
+        produitAcheteDto.setVersion(String.valueOf(produitAcheteDo.getVersion()));
         produitAcheteDto.setIdDeLOriginal(String.valueOf(produitAcheteDo.getIdDeLOriginal()));
         produitAcheteDto.setReference(produitAcheteDo.getReference());
         produitAcheteDto.setNom(produitAcheteDo.getNom());

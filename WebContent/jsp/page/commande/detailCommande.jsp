@@ -1,5 +1,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.detailCommande" />
+</p>
+
 <c:if test="${not empty confirmationMesssage}">
     <div class="background-validation-block block-message-commun">
         <span class="fa fa-check"></span> <span><spring:message code="${confirmationMesssage}" /> </span>
@@ -8,11 +14,9 @@
 <h1 class="title title-responsive text-align-center">
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
-<div class="CMD_04-bouton-retour-margin">
-    <a href="listerCommande.do">
-        <button class="CMD_04-bouton-retour">
-            <spring:message code="detailCommande.btn.retour" />
-        </button>
+<div class="CMD_04-lien-margin-bottom">
+    <a href="${retour}" class="lien-retour">
+        <spring:message code="detailCommande.lien.retour" />
     </a>
 </div>
 <div class="CMD_04-grid CMD_04-container CMD_04-box-sizing CMD_04-overflow">
@@ -34,11 +38,13 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-                                    <c:url value="consulterProduit.do" var="destination">
+                                    <c:url value="consulterProduitAchete.do" var="destination">
                                         <c:param name="idProduit" 
-                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
-                                        <c:param name="from" value="detail" />
-                                        <c:param name="paramValue" value="${commande.reference}" />
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
+                                        <c:param name="version" 
+                                        value="${cmdProduit.produitAcheteDto.version}"/>                             
+                                        <c:param name="from" value="detail"/>
+                                        <c:param name="paramValue" value="${commande.reference}"/>
                                     </c:url>
                                     <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"

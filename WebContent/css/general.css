@@ -119,3 +119,22 @@ section {
 .text-center {
 	text-align: center;
 }
+
+/* css pour le lien retour */
+.lien-retour {
+	color: #000000;
+	font-size: 1.15em;
+	/* pour s'assurer qu'il n'y a pas de bordure autour du lien */
+	border: 0;
+	border-radius: 0.313em;
+	text-align: center;
+	padding: 0.15em;
+	cursor: pointer;
+	opacity: 0.7;
+	text-decoration: none;
+}
+
+/* css lors du passage sur le lien */
+.lien-retour:hover {
+	opacity: 1;
+}

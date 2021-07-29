@@ -186,6 +186,23 @@ th.pdt01 {
 	line-height:1em;
  }
 
+.pdt02ServiceActif {
+	color: green;
+	font-size: xx-large !important;
+	cursor: pointer;
+	border: 0.02em solid green;
+}
+
+.pdt02ServiceInactif {
+	color: black;
+	font-size: xx-large !important;
+	cursor: pointer;
+}
+
+.pdt02Checkbox {
+	display: none;	
+}
+
 /* PDT03 */
 .pdt03Grid-container {
 	display: grid;
@@ -264,6 +281,23 @@ th.pdt01 {
 
 .pdt03formError {
 	line-height: 1em;
+}
+
+.pdt03ServiceActif {
+	color: green;
+	font-size: xx-large !important;
+	cursor: pointer;
+	border: 0.02em solid green;
+}
+
+.pdt03ServiceInactif {
+	color: black;
+	font-size: xx-large !important;
+	cursor: pointer;
+}
+
+.pdt03Checkbox {
+	display: none;	
 }
 
 /* PDT04 */

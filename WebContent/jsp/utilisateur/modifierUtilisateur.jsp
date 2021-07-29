@@ -3,6 +3,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.modifierUtilisateur" />
+</p>
+
 <div class="conteneur-ascenseur">
 
     <div class="user02-body-general">
@@ -15,15 +20,15 @@
         <c:choose>
             <c:when test="${origin=='2'}">
                 <div class="display-flex align-item-center">
-                    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" /></a>
+                    <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
                     <h1 class="user02-title">
                         <spring:message code="usr02.titre.admin" />
                     </h1>
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="user02-title">
-                    <h1>
+                <div class="display-flex align-item-center">
+                    <h1 class="user02-title">
                         <spring:message code="usr02.titre.client" />
                     </h1>
                 </div>

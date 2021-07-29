@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,10 +42,13 @@ public class CreerUtilisateurController {
      * Permet de traiter les requêtes GET<br>
      * et de mettre un UtilisateurDto vide dans le modèle
      * 
-     * @return le Model and View
+     * @param  cheminAvatar le chemin de l'avatar à appliquer
+     * @param  codeError    le code d'erreur appliqué
+     * @return              le Model and View
      */
     @GetMapping
-    public ModelAndView afficher() {
+    public ModelAndView afficher(final @ModelAttribute(value = "avatar") String cheminAvatar,
+            final @ModelAttribute("imgError") String codeError) {
         final var modelAndView = new ModelAndView("creerUtilisateur");
 
         // On creer l'utilisateur ici et lui affecte un role pour avoir une valeur par defaut dans le formulaire
@@ -57,7 +61,9 @@ public class CreerUtilisateurController {
         roleDto.setIdRole(UtilisateurRoleEnum.CLIENT.getId());
 
         utilisateurDto.setRole(roleDto);
-
+        if (cheminAvatar != null) {
+            modelAndView.getModelMap().addAttribute("avatar", cheminAvatar);
+        }
         modelAndView.getModelMap().addAttribute("utilisateurDto", utilisateurDto);
 
         return modelAndView;
@@ -84,7 +90,6 @@ public class CreerUtilisateurController {
             modelAndView.getModelMap().addAttribute("error", "usr05.erreur.creation");
             return modelAndView;
         }
-
         // Si utilisateur == null, l'email est deja pris
         if (this.service.createUtilisateur(utilisateurDto) == null) {
             result.rejectValue("email", "usr05.erreur.email_taken", "Default Errror");

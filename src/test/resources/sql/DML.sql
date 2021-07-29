@@ -69,6 +69,10 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (23, 'validerPanierProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (24, 'ajouterProduitPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (25, 'validerPanier.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (26, 'supprimerProduitAdmin.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (27, 'uploadImageUser.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (28, 'uploadImageProduit.do');
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (29, 'consulterProduitAchete.do');
 
 --
 -- Déchargement des données de la table `role`
@@ -179,4 +183,10 @@ INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (47, 24, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (48, 24, 3);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (49, 25, 2);
 INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (50, 25, 3);
-
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (51, 26, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (52, 27, 1);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (53, 27, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (54, 27, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (55, 28, 3);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (56, 29, 2);
+INSERT INTO `possede` (`idPossede`, `idDroit`, `idRole`) VALUES (57, 29, 3);

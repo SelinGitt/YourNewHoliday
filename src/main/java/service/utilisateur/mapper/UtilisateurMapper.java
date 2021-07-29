@@ -72,11 +72,12 @@ public class UtilisateurMapper {
         utilisateurDo.setRole(RoleMapper.mapperToDo(utilisateurDto.getRole()));
         utilisateurDo.setDateNaissance(DateFormatUtil.formaterStringToDate(utilisateurDto.getDateNaissance()));
         utilisateurDo.setAdresse(utilisateurDto.getAdresse());
-        utilisateurDo.setCheminAvatar(utilisateurDto.getCheminAvatar() == null ? "" : utilisateurDto.getCheminAvatar());
-
         utilisateurDo.setMdpHash(MDPCrypter.crypterMDPV1(utilisateurDto.getPassword()));
-        // TODO : Quand upload img ok, gérer le chemin de l'avatar ici 
-
+        if (utilisateurDto.getCheminAvatar() == null) {
+            utilisateurDo.setCheminAvatar("default_avatar.jpg");
+        } else {
+            utilisateurDo.setCheminAvatar(utilisateurDto.getCheminAvatar());
+        }
         return utilisateurDo;
     }
 
