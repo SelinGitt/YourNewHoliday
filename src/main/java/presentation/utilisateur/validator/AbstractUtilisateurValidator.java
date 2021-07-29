@@ -22,6 +22,16 @@ import service.util.DateFormatUtil;
 @Component
 public abstract class AbstractUtilisateurValidator implements Validator {
 
+    private static final HashMap<String, Integer> MAP_LENGTH = new HashMap<>();
+
+    /**
+     * Constructor
+     */
+    protected AbstractUtilisateurValidator() {
+        super();
+        initMap(MAP_LENGTH);
+    }
+
     @Override
     public boolean supports(final Class<?> clazz) {
         return UtilisateurDto.class.isAssignableFrom(clazz);
@@ -64,10 +74,7 @@ public abstract class AbstractUtilisateurValidator implements Validator {
     }
 
     protected void validateLength(final Errors errors, final String field, final String errorCode, final String defaultCode) {
-        final var mapLength = new HashMap<String, Integer>();
-        initMap(mapLength);
-
-        final var length = mapLength.get(field);
+        final var length = MAP_LENGTH.get(field);
 
         if (length != null) {
             final String value = (String) errors.getFieldValue(field);
