@@ -31,5 +31,9 @@
 </div>
 <script type="text/javascript" src="js/footer/langues.js"></script>
 <script>
+	//appelle la function ce trouvant dans global.js 
+	//permet de modifier le titre de la page(pour l'internationalisation)
+	//et de suprimer les paragraphes contenant les properties avec les titres des pages
+	modifierTitre(document);
 	selectLG();
 </script>

@@ -4,6 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="conteneur-ascenseur">
 
+    <%-- Permet de Gerer l'internationalisation du titre de la page --%>
+    <p id="titrePage">
+        <spring:message code="glb.titre.page.editerProduitAdmin" />
+    </p>
+
     <c:if test="${not empty error}">
         <div class="background-error-block block-message-commun">
             <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
