@@ -128,8 +128,8 @@
                         <th><spring:message code="form.pdt02.image" /></th>
                     </tr>
                     <tr>
-                        <td><img src="" alt="<spring:message code="form.pdt02.altImage" />"
-                            class="pdt02Form-imageProduit" /></td>
+                        <td><img src="displayImage.do?id=${produitDto.idProduitOriginal}&type=pdt"
+                            alt="<spring:message code="form.pdt02.altImage" />" class="pdt02Form-imageProduit" /></td>
                     </tr>
                     <tr>
                         <td><input type="file" name="imageUpload"
