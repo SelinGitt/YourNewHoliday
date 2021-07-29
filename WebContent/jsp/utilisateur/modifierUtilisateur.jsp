@@ -22,7 +22,7 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="user02-title">
+                <div class="user02-title display-flex justify-content-center">
                     <h1>
                         <spring:message code="usr02.titre.client" />
                     </h1>
