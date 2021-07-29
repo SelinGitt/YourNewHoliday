@@ -33,13 +33,7 @@ import service.util.GetPropertyValues;
 @Transactional(propagation = Propagation.REQUIRED)
 public class ImageService implements IImageService {
 
-    private static final Logger logger            = LoggerFactory.getLogger(ImageService.class);
-    private static final int    LIMIT_WIDTH_USER  = 200;
-    private static final int    LIMIT_HEIGHT_USER = 200;
-    private static final int    LIMIT_SIZE_USER   = 512_000;
-    private static final int    LIMIT_WIDTH_PDT   = 1920;
-    private static final int    LIMIT_HEIGHT_PDT  = 1080;
-    private static final int    LIMIT_SIZE_PDT    = 5_242_880;
+    private static final Logger logger = LoggerFactory.getLogger(ImageService.class);
 
     @Autowired
     private IImageDao           imageDao;
@@ -75,7 +69,8 @@ public class ImageService implements IImageService {
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
             //on vérifie que l'image correspond bien, puis on l'enregistre
-            final var imageValid = verifyFile(LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER, byteArray);
+            final var imageValid = verifyFile(TypeImage.UTILISATEUR.getWidth(), TypeImage.UTILISATEUR.getHeight(),
+                    TypeImage.UTILISATEUR.getSize(), byteArray);
             if (imageValid) {
                 logger.debug("Service - Avatar nom:{} sauvegardé à : {}.", fileName, cheminComplet);
                 return imageDao.saveImage(cheminComplet, byteArray);
@@ -84,7 +79,8 @@ public class ImageService implements IImageService {
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
             //on vérifie que l'image correspond bien, puis on l'enregistre
-            final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
+            final var imageValid = verifyFile(TypeImage.PRODUIT.getWidth(), TypeImage.PRODUIT.getHeight(), TypeImage.PRODUIT.getSize(),
+                    byteArray);
             if (imageValid) {
                 logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
                 return imageDao.saveImage(cheminComplet, byteArray);
