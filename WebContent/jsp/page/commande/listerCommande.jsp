@@ -3,6 +3,10 @@
 <h2 class="CMD_00-commande">
     <spring:message code="listeCommande.titre.text" />
 </h2>
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.listerCommande" />
+</p>
 <fieldset class="CMD_00-commandeFieldset conteneur-ascenseur">
     <legend class="CMD_00-commandeLegend">
         <spring:message code="listeCommande.soustitre.text" />

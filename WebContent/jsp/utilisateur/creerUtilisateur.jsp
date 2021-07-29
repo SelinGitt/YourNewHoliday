@@ -2,6 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.creerUtilisateur" />
+</p>
+
 <div class="conteneur-ascenseur">
     <div class="user05-body-general">
 
@@ -10,6 +16,7 @@
                 <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
             </div>
         </c:if>
+
         <div class="display-flex align-item-center">
             <c:if test="${utilisateur.role.id == '3'}">
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />
