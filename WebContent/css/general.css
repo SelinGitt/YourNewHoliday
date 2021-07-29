@@ -46,9 +46,8 @@
 }
 
 /* Boutons */
-
 button:active {
-  transform: translateY(0.125em);
+	transform: translateY(0.125em);
 }
 
 .bouton-impact-BD {
