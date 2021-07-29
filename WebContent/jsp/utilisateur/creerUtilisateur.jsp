@@ -10,6 +10,7 @@
                 <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
             </div>
         </c:if>
+
         <div class="display-flex align-item-center">
             <c:if test="${utilisateur.role.id == '3'}">
                 <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" />

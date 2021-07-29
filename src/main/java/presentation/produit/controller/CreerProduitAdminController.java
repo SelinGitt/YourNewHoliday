@@ -6,10 +6,7 @@ package presentation.produit.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,26 +27,22 @@ import service.produit.IProduitService;
 public class CreerProduitAdminController {
 
     @Autowired
-    private IProduitService iProduitService;
+    private IProduitService       iProduitService;
 
-    /**
-     * Permet de binder le produitValidator
-     *
-     * @param binder binder de type ProduitValidator
-     */
-    @InitBinder
-    public void initBinder(final WebDataBinder binder) {
-        binder.setValidator(new ProduitValidatorPDT03());
-    }
+    @Autowired
+    private ProduitValidatorPDT03 validateur;
 
     /**
      * Permet de traiter une requête de type GET<br>
      * et de mettre un ProduitDto vide dans la modelMap
-     *
-     * @return le model et la vue associée
+     * 
+     * @param  cheminImage : chemin de l'image
+     * @param  codeError   : code d'erreur
+     * @return             le model et la vue associée
      */
     @GetMapping
-    public ModelAndView voirFormulaireCreerProduit() {
+    public ModelAndView voirFormulaireCreerProduit(final @ModelAttribute(value = "image") String cheminImage,
+            final @ModelAttribute("imgError") String codeError) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("creerProduitAdmin");
 
@@ -72,8 +65,11 @@ public class CreerProduitAdminController {
      * @return                    vers une creerProduitAdmin.jsp
      */
     @PostMapping
-    public ModelAndView creerProduit(final @Validated @ModelAttribute("produitDto") ProduitDto produitDto, final BindingResult result,
+    public ModelAndView creerProduit(final @ModelAttribute("produitDto") ProduitDto produitDto, final BindingResult result,
             final RedirectAttributes redirectAttributes) {
+
+        validateur.validate(produitDto, result);
+
         final var services = produitDto.getServices();
         // TODO : Amelioration possible par la suite
         final var newServices = new Boolean[] {false, false, false, false, false, false, false, false, false};

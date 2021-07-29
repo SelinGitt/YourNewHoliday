@@ -3,6 +3,7 @@
  */
 package presentation.produit.validator;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.validation.Errors;
  *
  * @author Administrateur
  */
+@Component
 public class ProduitValidatorPDT03 extends AbstractProduitValidator {
 
     @Override

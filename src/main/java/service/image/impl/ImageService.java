@@ -37,6 +37,9 @@ public class ImageService implements IImageService {
     private static final int    LIMIT_WIDTH_USER  = 200;
     private static final int    LIMIT_HEIGHT_USER = 200;
     private static final int    LIMIT_SIZE_USER   = 512_000;
+    private static final int    LIMIT_WIDTH_PDT   = 1920;
+    private static final int    LIMIT_HEIGHT_PDT  = 1080;
+    private static final int    LIMIT_SIZE_PDT    = 5_242_880;
 
     @Autowired
     private IImageDao           imageDao;
@@ -75,6 +78,14 @@ public class ImageService implements IImageService {
                 return imageDao.saveImage(cheminComplet, byteArray);
             }
         }
+        if (TypeImage.PRODUIT.getType().equals(type)) {
+            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
+            //on vérifie que l'image correspond bien, puis on l'enregistre
+            final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
+            if (imageValid) {
+                return imageDao.saveImage(cheminComplet, byteArray);
+            }
+        }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
         return false;
     }
@@ -94,7 +105,7 @@ public class ImageService implements IImageService {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
             return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(byteArray, size));
         } catch (final IOException ioe) {
-            logger.error("une exception {} a été levée pour le fichier", ioe);
+            logger.error("une exception a été levée pour le fichier : ", ioe);
             return false;
         }
     }
