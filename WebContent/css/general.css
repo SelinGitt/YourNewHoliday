@@ -1,14 +1,19 @@
 @charset "UTF-8";
 /* Couleur */
 
-/* Le vert*/
-.background-color-green {
+/* Le vert modification pas en base*/
+.background-color-green-dark {
 	background-color: #008000;
+}
+
+/* Le vert modification en BD*/
+.background-color-green {
+	background-color: #6AA84F;
 }
 
 /* Le background rouge */
 .background-color-rouge {
-	background-color: #F00000;
+	background-color: #E06666;
 }
 
 /* Le texte rouge */
@@ -38,6 +43,45 @@
 	margin-right: 1%;
 	margin-left: 1%;
 	padding-left: 1em;
+}
+
+/* Boutons */
+
+button:active {
+  transform: translateY(0.125em);
+}
+
+.bouton-impact-BD {
+	background-color: #6AA84F;
+	border: 0.125em solid #000000;
+	color: #ffffff;
+	padding: 0.5em 2em;
+	text-align: center;
+	font-size: 1em;
+	margin: 0.25em 0.125em;
+	cursor: pointer;
+}
+
+.bouton-sans-impact-BD {
+	background-color: #008000;
+	border: 0.125em solid #000000;
+	color: #ffffff;
+	padding: 0.5em 2em;
+	text-align: center;
+	font-size: 1em;
+	margin: 0.25em 0.125em;
+	cursor: pointer;
+}
+
+.bouton-rouge {
+	background-color: #E06666;
+	border: 0.125em solid #000000;
+	color: #ffffff;
+	padding: 0.5em 2em;
+	text-align: center;
+	font-size: 1em;
+	margin: 0.25em 0.125em;
+	cursor: pointer;
 }
 
 /* titre */

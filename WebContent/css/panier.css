@@ -77,18 +77,6 @@
 	width: 55%;
 }
 
-.panier-valider {
-	background-color: #6AA84F;
-	color: #FFFFFF;
-	margin: auto;
-}
-
-.panier-vider {
-	background-color: #E06666;
-	color: #FFFFFF;
-	margin: auto;
-}
-
 .panier-image-responsive {
 	width: 3.125em;
 	height: auto;

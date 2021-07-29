@@ -14,14 +14,14 @@
         <form:form methode="POST" modelAttribute="utilisateurDto" action="connecter.do" autocomplete="one-time-code">
 
             <div class="user07-title">
-                <h1>
+                <h1 class="text-center">
                     <span><spring:message code="usr07.titre" /></span>
                 </h1>
             </div>
 
             <div class="user07-lib-champ display-flex">
                 <span><spring:message code="usr07.label.email" /></span>
-                <div class="user07-lib-champ-email">
+                <div class="user07-lib-champ-email align-items-flex-end ">
                     <form:input path="email" />
                     <div>
                         <form:errors path="email" cssClass="text-color-rouge" />
@@ -39,11 +39,11 @@
                 </div>
             </div>
 
-            <div class="user07-button display-flex">
-                <button class="user07-boutonValider" onclick="submit">
+            <div class="user07-button display-flex justify-content-space-around">
+                <button class="bouton-sans-impact-BD" onclick="submit">
                     <spring:message code="usr07.label.valider" />
                 </button>
-                <button class="user07-boutonReset" type="reset">
+                <button class="bouton-rouge" type="reset">
                     <spring:message code="usr07.label.reset" />
                 </button>
             </div>

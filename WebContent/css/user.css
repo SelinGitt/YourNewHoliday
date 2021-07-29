@@ -69,6 +69,7 @@
 	height: 100%;
 	width: 98%;
 }
+
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 98%;
@@ -266,12 +267,6 @@
 	width: 100%;
 }
 
-.user07-title {
-	text-align: center;
-	margin-right: 6.25em;
-	margin-bottom: 3.125em;
-}
-
 .user07-form {
 	align-items: center;
 	justify-content: center;
@@ -286,27 +281,14 @@
 
 .user07-lib-champ-email {
 	margin-left: 3.125em;
-	width: 18.75em;
 }
 
 .user07-lib-champ-password {
 	margin-left: 3.125em;
-	width: 18.75em;
 }
 
 .user07-lib-champ {
 	justify-content: space-between;
 	margin-bottom: 3.125em;
-}
-
-.user07-boutonValider {
-	background-color: #008000;
-	margin-left: 4.375em;
-	margin-right: 20%;
-	Color: #FFFFFF;
-}
-
-.user07-boutonReset {
-	background-color: #FF0000;
-	Color: #FFFFFF;
+	margin-top: 4em;
 }
