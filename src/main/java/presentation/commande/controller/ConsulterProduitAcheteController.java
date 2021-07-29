@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import presentation.produit.controller.PageRedirection;
 import service.commande.ICommandeService;
 
 /**
@@ -35,8 +34,7 @@ public class ConsulterProduitAcheteController {
      */
     @GetMapping
     public ModelAndView consulterProduitAchete(final @RequestParam(value = "idProduit") String idProduit,
-            final @RequestParam(value = "version") String version, final @RequestParam(value = "from", required = false) String location,
-            final @RequestParam(value = "paramValue", required = false) String param) {
+            final @RequestParam(value = "version") String version, final @RequestParam(value = "paramValue") String param) {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("consulterProduit");
         final var produitAchete = iCommandeService.findProduitAchete(idProduit, version);
@@ -44,13 +42,8 @@ public class ConsulterProduitAcheteController {
             return new ModelAndView("redirect:404.do");
         }
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitAchete);
-        final var pageOrigine = PageRedirection.findValue(location);
-        final var urlToBuild = new StringBuilder();
-        urlToBuild.append(pageOrigine.getPageConcrete());
-        if (PageRedirection.DETAIL_COMMANDE == pageOrigine) {
-            urlToBuild.append("?ref=" + param);
-        }
-        modelAndView.getModelMap().addAttribute("retour", urlToBuild);
+        final var urlRetour = new String("detailCommande.do?ref=" + param);
+        modelAndView.getModelMap().addAttribute("retour", urlRetour);
         modelAndView.getModelMap().addAttribute("isAchetable", false);
         return modelAndView;
     }
