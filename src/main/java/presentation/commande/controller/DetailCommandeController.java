@@ -48,16 +48,17 @@ public class DetailCommandeController {
         this.logger.debug("detailler la commande {} de l'utilisateur : {} ", reference, utilisateurConnecte.getIdUtilisateur());
         final var commandeDto = this.iCommandeService.chercherCommandeParReference(reference);
         modelAndView.setViewName("detailCommande");
-        modelAndView.getModelMap().addAttribute("commande", commandeDto);
-        modelAndView.getModelMap().addAttribute("remise", commandeDto.getRemise());
+        final var modelMap = modelAndView.getModelMap();
+        modelMap.addAttribute("commande", commandeDto);
+        modelMap.addAttribute("remise", commandeDto.getRemise());
         // S'il s'agit d'une redirection depuis validerPanierCommande 
         // on affiche le message de confirmation de la validation de la commande
         // rq : les échecs de validation sont tarité par PAN_00        
         if ("validerPanierCommande".equals(from)) {
-            modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
-            modelAndView.getModelMap().addAttribute("retour", "listerProduits.do");
+            modelMap.addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
+            modelMap.addAttribute("retour", "listerProduits.do");
         } else {
-            modelAndView.getModelMap().addAttribute("retour", "listerCommande.do");
+            modelMap.addAttribute("retour", "listerCommande.do");
         }
         return modelAndView;
     }
