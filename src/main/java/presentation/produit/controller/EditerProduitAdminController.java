@@ -75,6 +75,18 @@ public class EditerProduitAdminController {
     public ModelAndView soumissionFormulaire(final @Validated @ModelAttribute ProduitDto produitDto, final BindingResult result,
             final RedirectAttributes redirectAttributes) {
 
+        final var services = produitDto.getServices();
+        // TODO : Amelioration possible par la suite
+        final var newServices = new Boolean[] {false, false, false, false, false, false, false, false, false};
+
+        for (var i = 0; i < services.length; i++) {
+            if (services[i] != null) {
+                newServices[i] = true;
+            }
+        }
+
+        produitDto.setServices(newServices);
+
         final var modelAndView = new ModelAndView();
         // Si le formulaire possède des erreurs : Ajout de l'attribut "errorEdition" utilisé dans la jsp en cas d'erreur d'édition
         if (result.hasErrors()) {
