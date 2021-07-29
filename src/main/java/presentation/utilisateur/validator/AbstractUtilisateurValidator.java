@@ -20,6 +20,8 @@ import service.util.DateFormatUtil;
 @Component
 public abstract class AbstractUtilisateurValidator implements Validator {
 
+    private static final String DEFAULT_ERROR = "Default Error";
+
     @Override
     public boolean supports(final Class<?> clazz) {
         return UtilisateurDto.class.isAssignableFrom(clazz);
@@ -33,25 +35,51 @@ public abstract class AbstractUtilisateurValidator implements Validator {
      * @param page   Radical permetant la gestion des messages d'erreur
      */
     protected void validateUser(final Object target, final Errors errors, final String page) {
-        final var defaultError = "Default Error";
 
         // Check si champs empty ou blank
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nom", page + ".erreur.nom_required", defaultError);
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "prenom", page + ".erreur.prenom_required", defaultError);
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adresse", page + ".erreur.adresse_required", defaultError);
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dateNaissance", page + ".erreur.dateNaissance_required", defaultError);
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", page + ".erreur.email_required", defaultError);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nom", page + ".erreur.nom_required", DEFAULT_ERROR);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "prenom", page + ".erreur.prenom_required", DEFAULT_ERROR);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "adresse", page + ".erreur.adresse_required", DEFAULT_ERROR);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dateNaissance", page + ".erreur.dateNaissance_required", DEFAULT_ERROR);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", page + ".erreur.email_required", DEFAULT_ERROR);
 
         final var user = (UtilisateurDto) target;
 
         //Si email n'est pas valide
         if (!EmailUtil.isValidEmail(user.getEmail())) {
-            errors.rejectValue("email", page + ".erreur.email_format", defaultError);
+            errors.rejectValue("email", page + ".erreur.email_format", DEFAULT_ERROR);
         }
 
         // Check si la date est valide
         if (!user.getDateNaissance().isEmpty() && !DateFormatUtil.checkDate(user.getDateNaissance())) {
-            errors.rejectValue("dateNaissance", page + ".erreur.date_format", defaultError);
+            errors.rejectValue("dateNaissance", page + ".erreur.date_format", DEFAULT_ERROR);
+        }
+    }
+
+    /**
+     * Permet de valider la taille des inputs
+     *
+     * @param target Target a valider
+     * @param errors Errors
+     * @param page   Radical permetant la gestion des messages d'erreur
+     */
+    protected void validateLength(final Object target, final Errors errors, final String page) {
+        final var user = (UtilisateurDto) target;
+
+        if (user.getNom().length() > 50) {
+            errors.rejectValue("nom", page + ".erreur.nom_length", DEFAULT_ERROR);
+        }
+
+        if (user.getPrenom().length() > 50) {
+            errors.rejectValue("prenom", page + ".erreur.prenom_length", DEFAULT_ERROR);
+        }
+
+        if (user.getAdresse().length() > 255) {
+            errors.rejectValue("adresse", page + ".erreur.adresse_length", DEFAULT_ERROR);
+        }
+
+        if (user.getEmail().length() > 320) {
+            errors.rejectValue("email", page + ".erreur.email_length", DEFAULT_ERROR);
         }
     }
 }

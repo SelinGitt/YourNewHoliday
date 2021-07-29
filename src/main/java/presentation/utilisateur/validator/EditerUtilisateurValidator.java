@@ -23,6 +23,9 @@ public class EditerUtilisateurValidator extends AbstractUtilisateurValidator {
         // Validation des champs commun
         this.validateUser(target, errors, "usr02");
 
+        // Validation de la taille des champs commun
+        this.validateLength(target, errors, "usr02");
+
         final var defaultError = "Default Error";
 
         final var user = (UtilisateurDto) target;
@@ -41,6 +44,15 @@ public class EditerUtilisateurValidator extends AbstractUtilisateurValidator {
             // Check si password et confirm password sont egaux
             if (!(user.getPassword().equals(user.getConfirmPassword()))) {
                 errors.rejectValue("confirmPassword", "usr02.erreur.password_match", defaultError);
+            }
+
+            // Check de la taille des champs
+            if (user.getPassword().length() > 255) {
+                errors.rejectValue("password", "usr02.erreur.password_length", defaultError);
+            }
+
+            if (user.getConfirmPassword().length() > 255) {
+                errors.rejectValue("confirmPassword", "usr02.erreur.confirm_password_length", defaultError);
             }
         }
     }
