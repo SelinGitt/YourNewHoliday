@@ -13,11 +13,7 @@
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt02.titre" />
     </h1>
-    <a href="editerProduitAdmin.do">
-        <button class="bouton-retour">
-            <spring:message code="pdt02.retour" />
-        </button>
-    </a>
+    <a href="editerProduitAdmin.do" class="lien-retour"><spring:message code="pdt02.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="editerProduitAdmin.do">
         <div class="pdt02Grid-container">
             <div class="pdt02Grid-item text-align-center pdt02FormlaireCreerProduit">

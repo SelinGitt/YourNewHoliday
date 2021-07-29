@@ -120,7 +120,7 @@ section {
 	text-align: center;
 }
 
-/* css pour le bouton retour */
+/* css pour le lien retour */
 .lien-retour {
 	color: #000000;
 	font-size: 1.15em;
@@ -134,6 +134,7 @@ section {
 	text-decoration: none;
 }
 
+/* css lors du passage sur le lien */
 .lien-retour:hover {
 	opacity: 1;
 }
