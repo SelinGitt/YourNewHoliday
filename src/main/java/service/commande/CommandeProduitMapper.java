@@ -15,9 +15,11 @@ import org.springframework.util.CollectionUtils;
 
 import persistance.commande.entity.CommandeDo;
 import persistance.commande.entity.CommandeProduitDo;
+import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.CommandeProduitDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.produit.dto.ProduitDto;
+import service.produit.ProduitMapper;
 import service.util.DecimalFormatUtils;
 
 /**
@@ -44,8 +46,8 @@ public class CommandeProduitMapper {
         commandeProduitDto.setIdListeCommande(String.valueOf(commandeProduitDo.getIdCommandeProduit()));
         commandeProduitDto.setProduitAcheteDto(ProduitAcheteMapper.mapperToDto(commandeProduitDo.getProduitAcheteDo()));
         commandeProduitDto.setQuantite(String.valueOf(commandeProduitDo.getQuantite()));
-        commandeProduitDto.setPrixTotal(calculerPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo
-                .getQuantite()));
+        commandeProduitDto
+                .setPrixTotal(calculerPrixTotal(commandeProduitDo.getProduitAcheteDo().getPrixUnitaire(), commandeProduitDo.getQuantite()));
         return commandeProduitDto;
 
     }
@@ -94,6 +96,32 @@ public class CommandeProduitMapper {
         commandeProduitDo.setProduitAcheteDo(ProduitAcheteMapper.mapperToDo(produit));
         commandeProduitDo.setQuantite(ligne.getQuantite());
         return commandeProduitDo;
+    }
+
+    /**
+     * Allows to map to ProduitDto a produitAcheteDO
+     *
+     * @param  produitAchete to map
+     * @return               mapped ProduitDto
+     */
+    public static ProduitDto mapToDto(final ProduitAcheteDo produitAchete) {
+        if (produitAchete == null) {
+            return null;
+        }
+        final var produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal(String.valueOf(produitAchete.getIdDeLOriginal()));
+        produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
+        produitDto.setReference(produitAchete.getReference());
+        produitDto.setNom(produitAchete.getNom());
+        produitDto.setDescription(produitAchete.getDescription());
+        produitDto.setDestination(produitAchete.getDestination());
+        produitDto.setPrixUnitaire(DecimalFormatUtils.decimalFormatUtil(produitAchete.getPrixUnitaire()));
+        produitDto.setHebergement(produitAchete.getHebergement());
+        produitDto.setMiseEnVente(String.valueOf(produitAchete.getMiseEnVente()));
+        produitDto.setCheminImage(produitAchete.getCheminImage());
+        produitDto.setServices(ProduitMapper.genererServices((produitAchete.getServices())));
+        produitDto.setVersion(String.valueOf(produitAchete.getVersion()));
+        return produitDto;
     }
 
 }

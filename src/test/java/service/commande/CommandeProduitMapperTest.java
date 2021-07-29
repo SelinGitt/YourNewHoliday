@@ -74,6 +74,7 @@ class CommandeProduitMapperTest {
         produitAcheteDo.setNom("produit");
         produitAcheteDo.setPrixUnitaire(new BigDecimal(300.00));
         produitAcheteDo.setReference("135699");
+        produitAcheteDo.setVersion(42);
 
         return produitAcheteDo;
     }
@@ -189,6 +190,24 @@ class CommandeProduitMapperTest {
         final var commandeProduitDo = CommandeProduitMapper.mapperMapDtoToSetDo(panierDto.getMapPanier(), commande);
         assertNotNull(commandeProduitDo);
         assertEquals(3, commandeProduitDo.size());
+    }
+
+    /**
+     * Test method for
+     * {@link service.commande.CommandeProduitMapper#maptoDto(java.util.Map, persistance.commande.entity.CommandeDo)}.
+     */
+    @Test
+    void testMapToDto() {
+        final ProduitAcheteDo produitAchete = initProduitAcheterDo();
+        final ProduitDto produitDto = CommandeProduitMapper.mapToDto(produitAchete);
+        assertNotNull(produitDto);
+        assertEquals("cheminImage", produitDto.getCheminImage());
+        assertEquals("description", produitDto.getDescription());
+        assertEquals("produit", produitDto.getNom());
+        assertEquals("destination", produitDto.getDestination());
+        assertEquals("135699", produitDto.getReference());
+        assertEquals("300,00", produitDto.getPrixUnitaire());
+        assertEquals("42", produitDto.getVersion());
     }
 
 }

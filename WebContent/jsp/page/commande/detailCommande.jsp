@@ -15,7 +15,7 @@
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
 <div class="CMD_04-bouton-retour-margin">
-    <a href="listerCommande.do" class="lien-retour">
+    <a href="${retour}" class="lien-retour">
         <spring:message code="detailCommande.btn.retour" />
     </a>
 </div>
@@ -38,11 +38,13 @@
                                        CMD_04-img-grid CMD_04-height CMD_04-box-sizing">
                                 <%-- image --%>
                                 <div class="CMD_04-col-1 CMD_04-height CMD_04-grid">
-                                    <c:url value="consulterProduit.do" var="destination">
+                                    <c:url value="consulterProduitAchete.do" var="destination">
                                         <c:param name="idProduit" 
-                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}" />
-                                        <c:param name="from" value="detail" />
-                                        <c:param name="paramValue" value="${commande.reference}" />
+                                        value="${cmdProduit.produitAcheteDto.idDeLOriginal}"/>
+                                        <c:param name="version" 
+                                        value="${cmdProduit.produitAcheteDto.version}"/>                             
+                                        <c:param name="from" value="detail"/>
+                                        <c:param name="paramValue" value="${commande.reference}"/>
                                     </c:url>
                                     <a href="${destination}"> <img
                                         src="displayImage.do?id=${cmdProduit.produitAcheteDto.idDeLOriginal}&type=pdt"
