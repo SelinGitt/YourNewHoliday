@@ -144,33 +144,47 @@
 }
 
 .user02-form-inputs {
-	width: 70%;
+	width: 55%;
 }
 
 .user02-inputs {
 	width: 100%;
 }
 
+.user02-infos {
+	margin-left: 3em;
+	margin-bottom: 2em;
+	justify-content: space-between;
+	display: flex;
+}
+
 .user02-textarea {
 	resize: none;
-	height: 5em;
 }
 
 .user02-buttons {
-	width: 70%;
 	float: right;
+	display: flex;
+	justify-content: space-between;
+	width: 52%;
 }
 
 .user02-valider {
+	background-color: #6AA84F;
 	color: #FFFFFF;
 }
 
 .user02-reset {
+	background-color: #E06666;
 	color: #FFFFFF;
 }
 
 .user02-rightSide-avatar {
 	margin-bottom: 1em;
+}
+
+.user02-avatar {
+	width: 15.625em;
 }
 
 .user02-admin-options {
