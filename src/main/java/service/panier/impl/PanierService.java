@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.produit.dao.IProduitDao;
+import persistance.produit.entity.ProduitDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -58,6 +60,9 @@ public class PanierService implements IPanierService {
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
+
+    @Autowired
+    private IProduitDao         produitDao;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
@@ -189,16 +194,19 @@ public class PanierService implements IPanierService {
     }
 
     /**
-     * <Pre>
-     * Permets de déterminer si le produit peut être modifié, Pour cela il doit : - toujours être en vente - ne pas avoir
-     * été modifié par un admin (controle du numéro de version
+     * <pre>
+     * Permets de déterminer si le produit peut être modifié, Pour cela il doit : 
+     * - toujours être en vente 
+     * - ne pas avoir
+     * été modifié par un admin (controle du numéro de version)
+     * </pre>
      *
      * @param  id du produit à vérifier
      * @return    true si le produit est conforme, false sinon.
      */
     private boolean isProduitConforme(final Integer id) {
-        final ProduitDto produitEnvente = iProduitService.trouverProduitEnVente(id);
-        if (produitEnvente == null) {
+        final ProduitDo produitEnVente = produitDao.findProduitEnVente(id);
+        if (produitEnVente == null) {
             return false;
         }
         // TODO : controle de la version. (ISSUES 295)
