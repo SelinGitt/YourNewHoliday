@@ -6,6 +6,7 @@ package service.produit;
 import java.util.List;
 
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
@@ -122,7 +123,7 @@ public interface IProduitService {
      * @param  tri        tri effectué
      * @return            liste triée
      */
-    List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri);
+    List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre tri);
 
     /**
      * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
@@ -155,7 +156,7 @@ public class ProduitService implements IProduitService {
         if (produitDo == null) {
             this.logger.warn("Le produit d'id  {} n'existe pas en BdD.", id);
             return false;
-        }      
+        }
         produitDao.delete(produitDo);
         this.logger.debug("Le produit d'id  {} a été supprimé.", id);
         return true;
@@ -171,34 +172,24 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public List<ProduitDto> filtrerEnVente(final String searchTerm, final Boolean tri) {
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre tri) {
         if (searchTerm.isBlank()) {
-            if ("".equals(setTypeFiltre(tri))) {
+            if (tri == null) {
                 return listerAllProduit();
             }
             return trouverProduitsFiltre(tri);
         }
-        if ("".equals(setTypeFiltre(tri))) {
-            return rechercherProduits(searchTerm);
+        if (tri == null) {
+            return rechercherAllProduits(searchTerm);
         }
         return trouverProduitsFiltreRecherche(searchTerm, tri);
     }
 
-    private String setTypeFiltre(final Boolean filtre) {
-        if (filtre == null) {
-            return "";
-        }
-        if (filtre) {
-            return "0";
-        }
-        return "1";
-    }
-
-    private List<ProduitDto> trouverProduitsFiltre(final Boolean filtre) {
+    private List<ProduitDto> trouverProduitsFiltre(final TypeFiltre filtre) {
         return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
     }
 
-    private List<ProduitDto> trouverProduitsFiltreRecherche(final String filtre, final Boolean tri) {
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String filtre, final TypeFiltre tri) {
         return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(filtre, tri));
     }
 
