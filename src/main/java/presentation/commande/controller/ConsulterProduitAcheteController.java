@@ -28,7 +28,6 @@ public class ConsulterProduitAcheteController {
      * 
      * @param  idProduit id produit
      * @param  version   du produit
-     * @param  location  page d'origine
      * @param  param     le potentiel paramètre à récupérer
      * @return           le produit à consulter dans le model et la vue associée
      */
@@ -42,7 +41,7 @@ public class ConsulterProduitAcheteController {
             return new ModelAndView("redirect:404.do");
         }
         modelAndView.getModelMap().addAttribute("consulterProduitDto", produitAchete);
-        final var urlRetour = new String("detailCommande.do?ref=" + param);
+        final var urlRetour = "detailCommande.do?ref=" + param;
         modelAndView.getModelMap().addAttribute("retour", urlRetour);
         modelAndView.getModelMap().addAttribute("isAchetable", false);
         return modelAndView;
