@@ -46,18 +46,6 @@
 	width: 53%;
 }
 
-.user00-modifier {
-	background-color: #6AA84F;
-	color: #FFFFFF;
-	margin: auto;
-}
-
-.user00-supprimer {
-	background-color: #E06666;
-	color: #FFFFFF;
-	margin: auto;
-}
-
 /* USR01 */
 .user01-message {
 	margin-left: 0.5em;
@@ -121,11 +109,6 @@
 	height: auto;
 }
 
-.user01-newUserBouton {
-	background-color: #22B14C;
-	color: #FFFFFF;
-}
-
 /* USR02 */
 .user02-retour {
 	text-decoration: none;
@@ -165,14 +148,6 @@
 .user02-buttons {
 	width: 70%;
 	float: right;
-}
-
-.user02-valider {
-	color: #FFFFFF;
-}
-
-.user02-reset {
-	color: #FFFFFF;
 }
 
 .user02-rightSide-avatar {
@@ -252,14 +227,6 @@
 .user05-buttons {
 	width: 70%;
 	float: right;
-}
-
-.user05-creer {
-	color: #FFFFFF;
-}
-
-.user05-reset {
-	color: #FFFFFF;
 }
 
 /* USR07 */

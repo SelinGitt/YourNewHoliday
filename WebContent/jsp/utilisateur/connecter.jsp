@@ -21,7 +21,7 @@
 
             <div class="user07-lib-champ display-flex">
                 <span><spring:message code="usr07.label.email" /></span>
-                <div class="user07-lib-champ-email align-items-flex-end ">
+                <div class="user07-lib-champ-email">
                     <form:input path="email" />
                     <div>
                         <form:errors path="email" cssClass="text-color-rouge" />

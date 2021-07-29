@@ -108,10 +108,10 @@
                 </div>
 
                 <div class="display-flex justify-content-space-around user05-buttons">
-                    <button class="user02-valider background-color-green" onclick="submit">
+                    <button class="bouton-impact-BD" onclick="submit">
                         <spring:message code="usr02.edit.valider" />
                     </button>
-                    <button class="user02-reset background-color-rouge" type="reset">
+                    <button class="bouton-rouge" type="reset">
                         <spring:message code="usr02.edit.reset" />
                     </button>
                 </div>
