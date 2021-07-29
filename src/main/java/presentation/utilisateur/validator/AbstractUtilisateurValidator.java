@@ -81,5 +81,9 @@ public abstract class AbstractUtilisateurValidator implements Validator {
         if (user.getEmail().length() > 320) {
             errors.rejectValue("email", page + ".erreur.email_length", DEFAULT_ERROR);
         }
+
+        if (user.getDateNaissance().length() > 10) {
+            errors.rejectValue("dateNaissance", page + ".erreur.date_niassance_length", DEFAULT_ERROR);
+        }
     }
 }
