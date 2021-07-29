@@ -39,10 +39,10 @@ public class ModifierQuantiteController {
     /**
      * Permets de modifier la quantité d'une produit du panier
      *
-     * @param  panierDto le panier
-     * @param  request   envoyée
-     * @param redirectAttributes pour ajouter la liste d'erreur si besoin
-     * @return           le model and view
+     * @param  panierDto          le panier
+     * @param  request            envoyée
+     * @param  redirectAttributes pour ajouter la liste d'erreur si besoin
+     * @return                    le model and view
      */
     @GetMapping
     public ModelAndView modifierQuantite(final @SessionAttribute("panierDto") PanierDto panierDto, final HttpServletRequest request,
@@ -68,7 +68,7 @@ public class ModifierQuantiteController {
         if (produitEnvente == null) {
             return false;
         }
-        // TODO : controle de la version.
+        // TODO : controle de la version. (ISSUES 295)
         return true;
     }
 
