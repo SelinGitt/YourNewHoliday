@@ -12,7 +12,7 @@
     <div>
         <h1 class="title title-responsive text-align-center">${consulterProduitDto.nom}</h1>
     </div>
-    <a href="${retour}"><spring:message code="pdt04.retour"></spring:message></a>
+    <a href="${retour}" class="lien-retour"><spring:message code="pdt04.retour"></spring:message></a>
     <div class="display-flex pdt04Flex-container flex-wrap-wrap justify-content-space-around">
         <div>
             <%--  formulaire pour ajouter un produit au panier --%>
