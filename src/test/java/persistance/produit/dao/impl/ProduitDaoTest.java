@@ -291,5 +291,9 @@ class ProduitDaoTest {
         assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EV).size());
         //test produits non en vente avec la recherche de référence 9
         assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NEV).size());
+        //test produits en vente avec la recherche de référence ""
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EV).size());
+        //test produits non en vente avec la recherche de référence ""
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NEV).size());
     }
 }
