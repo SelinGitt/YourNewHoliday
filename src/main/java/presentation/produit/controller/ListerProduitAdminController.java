@@ -79,7 +79,7 @@ public class ListerProduitAdminController {
         if (boolTri != null) {
             if (boolTri) {
                 modelAndView.getModelMap().addAttribute("tri", tri);
-                modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, boolTri));
+                modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.filtrerEnVente(searchInput, TypeFiltre.findValue(boolTri)));
                 return modelAndView;
             }
             modelAndView.getModelMap().addAttribute("tri", tri);
