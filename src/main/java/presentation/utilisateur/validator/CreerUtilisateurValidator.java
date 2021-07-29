@@ -23,9 +23,6 @@ public class CreerUtilisateurValidator extends AbstractUtilisateurValidator {
         // Validation des champs commun
         this.validateUser(target, errors, "usr05");
 
-        // Validation de la taille des champs commun
-        this.validateLength(target, errors, "usr05");
-
         final var defaultError = "Default Error";
 
         // Check si champs empty ou blank
@@ -44,13 +41,7 @@ public class CreerUtilisateurValidator extends AbstractUtilisateurValidator {
             errors.rejectValue("confirmPassword", "usr05.erreur.password_match", defaultError);
         }
 
-        // Check de la taille des champs
-        if (user.getPassword().length() > 255) {
-            errors.rejectValue("password", "usr05.erreur.password_length", defaultError);
-        }
-
-        if (user.getConfirmPassword().length() > 255) {
-            errors.rejectValue("confirmPassword", "usr05.erreur.password_length", defaultError);
-        }
+        this.validateLength(errors, "password", "usr05.erreur.password_length", defaultError);
+        this.validateLength(errors, "confirmPassword", "usr05.erreur.confirm_password_length", defaultError);
     }
 }

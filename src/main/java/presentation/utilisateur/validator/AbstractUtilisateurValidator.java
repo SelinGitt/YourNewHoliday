@@ -3,6 +3,8 @@
  */
 package presentation.utilisateur.validator;
 
+import java.util.HashMap;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -43,6 +45,12 @@ public abstract class AbstractUtilisateurValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dateNaissance", page + ".erreur.dateNaissance_required", DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", page + ".erreur.email_required", DEFAULT_ERROR);
 
+        this.validateLength(errors, "nom", page + ".erreur.nom_length", DEFAULT_ERROR);
+        this.validateLength(errors, "prenom", page + ".erreur.prenom_length", DEFAULT_ERROR);
+        this.validateLength(errors, "adresse", page + ".erreur.adresse_length", DEFAULT_ERROR);
+        this.validateLength(errors, "dateNaissance", page + ".erreur.dateNaissance_length", DEFAULT_ERROR);
+        this.validateLength(errors, "email", page + ".erreur.email_length", DEFAULT_ERROR);
+
         final var user = (UtilisateurDto) target;
 
         //Si email n'est pas valide
@@ -56,34 +64,30 @@ public abstract class AbstractUtilisateurValidator implements Validator {
         }
     }
 
+    protected void validateLength(final Errors errors, final String field, final String errorCode, final String defaultCode) {
+        final var mapLength = new HashMap<String, Integer>();
+        this.initMap(mapLength);
+
+        if (mapLength.containsKey(field)) {
+            final String value = (String) errors.getFieldValue(field);
+            if (value.length() > mapLength.get(field)) {
+                errors.rejectValue(field, errorCode, defaultCode);
+            }
+        }
+    }
+
     /**
-     * Permet de valider la taille des inputs
+     * Permet d'initialiser une map pour check la taille des champs
      *
-     * @param target Target a valider
-     * @param errors Errors
-     * @param page   Radical permetant la gestion des messages d'erreur
+     * @param map Map ou l'on stock des donnees
      */
-    protected void validateLength(final Object target, final Errors errors, final String page) {
-        final var user = (UtilisateurDto) target;
-
-        if (user.getNom().length() > 50) {
-            errors.rejectValue("nom", page + ".erreur.nom_length", DEFAULT_ERROR);
-        }
-
-        if (user.getPrenom().length() > 50) {
-            errors.rejectValue("prenom", page + ".erreur.prenom_length", DEFAULT_ERROR);
-        }
-
-        if (user.getAdresse().length() > 255) {
-            errors.rejectValue("adresse", page + ".erreur.adresse_length", DEFAULT_ERROR);
-        }
-
-        if (user.getEmail().length() > 320) {
-            errors.rejectValue("email", page + ".erreur.email_length", DEFAULT_ERROR);
-        }
-
-        if (user.getDateNaissance().length() > 10) {
-            errors.rejectValue("dateNaissance", page + ".erreur.date_niassance_length", DEFAULT_ERROR);
-        }
+    private void initMap(final HashMap<String, Integer> map) {
+        map.put("nom", 50);
+        map.put("prenom", 50);
+        map.put("adresse", 255);
+        map.put("email", 320);
+        map.put("dateNaissance", 10);
+        map.put("password", 255);
+        map.put("confirmPassword", 255);
     }
 }
