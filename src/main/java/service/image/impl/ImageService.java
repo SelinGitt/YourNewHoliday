@@ -55,11 +55,13 @@ public class ImageService implements IImageService {
         String path;
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
+            logger.debug("Service - Récupération de l'image de produit d'id : {}.", id);
             path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
             return imageDao.getImage(path);
         }
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
+            logger.debug("Service - Récupération de l'avatar de l'utilisateur d'id : {}.", id);
             path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
             return imageDao.getImage(path);
         }
@@ -75,6 +77,7 @@ public class ImageService implements IImageService {
             //on vérifie que l'image correspond bien, puis on l'enregistre
             final var imageValid = verifyFile(LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER, byteArray);
             if (imageValid) {
+                logger.debug("Service - Avatar nom:{} sauvegardé à : {}.", fileName, cheminComplet);
                 return imageDao.saveImage(cheminComplet, byteArray);
             }
         }
@@ -83,6 +86,7 @@ public class ImageService implements IImageService {
             //on vérifie que l'image correspond bien, puis on l'enregistre
             final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
             if (imageValid) {
+                logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
                 return imageDao.saveImage(cheminComplet, byteArray);
             }
         }

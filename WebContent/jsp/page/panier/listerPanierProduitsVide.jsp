@@ -2,6 +2,11 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.pan_00_vide" />
+</p>
+
 <div class="background-error-block block-message-commun">
     <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${errorPanVide}" /></span>
 </div>
