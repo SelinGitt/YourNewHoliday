@@ -40,6 +40,7 @@ public class ValiderPanierController {
      * @param  panierDto          le panier de l'utilisateur
      * @param  utilisateur        l'utilisateur connecté
      * @param  adresses           liste des adresses récupérer du formulaire
+     * @param  result             le resultat du formulaire
      * @param  redirectAttributes signalement de redirection au controlleur ciblé
      * @return                    String l'url vers lequel on doit se rendre
      */

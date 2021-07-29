@@ -19,7 +19,7 @@ import presentation.commande.dto.CommandeAdresseDto;
 public class ListerPanierAdressesValidator implements Validator {
 
     /**
-     * 
+     * Constante default error indiquant le style que l'on souhaite appliquer aux erreurs.
      */
     private static final String DEFAULT_ERROR = "Default error";
 
@@ -30,8 +30,7 @@ public class ListerPanierAdressesValidator implements Validator {
 
     @Override
     public void validate(final Object target, final Errors errors) {
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.nom", "pan08.erreur.livraisonNom_vide",
-                DEFAULT_ERROR);
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.nom", "pan08.erreur.livraisonNom_vide", DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.prenom", "pan08.erreur.livraisonPrenom_vide",
                 DEFAULT_ERROR);
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "commandeAdresseLivraison.adresse", "pan08.erreur.livraisonAdresse_vide",
