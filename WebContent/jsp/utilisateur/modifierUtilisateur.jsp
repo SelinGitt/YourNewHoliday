@@ -20,7 +20,7 @@
         <c:choose>
             <c:when test="${origin=='2'}">
                 <div class="display-flex align-item-center">
-                    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" /></a>
+                    <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
                     <h1 class="user02-title">
                         <spring:message code="usr02.titre.admin" />
                     </h1>
