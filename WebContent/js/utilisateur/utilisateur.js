@@ -17,3 +17,11 @@ function setImg(status, img) {
 		img.className = "fa fa-square-o user02-admin-desactive";
 	}
 }
+
+function convertDateString(date) {
+	date.valueAsDate = new Date('2021-03-31'); // set using Date objects
+
+	input.addEventListener('input', () => {
+		console.log(input.valueAsDate); // Tue Mar 16 2021 19:00:00 GMT-0500 (Central Daylight Time)
+	});
+}
