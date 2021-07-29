@@ -40,5 +40,9 @@ public class CreerUtilisateurValidator extends AbstractUtilisateurValidator {
         if (!(user.getPassword().equals(user.getConfirmPassword()))) {
             errors.rejectValue("confirmPassword", "usr05.erreur.password_match", defaultError);
         }
+
+        // Check la taille des champs password & confirm password
+        this.validateLength(errors, "password", "usr05.erreur.password_length", defaultError);
+        this.validateLength(errors, "confirmPassword", "usr05.erreur.confirm_password_length", defaultError);
     }
 }

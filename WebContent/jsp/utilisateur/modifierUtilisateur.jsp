@@ -20,7 +20,7 @@
         <c:choose>
             <c:when test="${origin=='2'}">
                 <div class="display-flex align-item-center">
-                    <a href="listerUtilisateur.do" class="user02-retour">&lt; <spring:message code="usr02.retour" /></a>
+                    <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
                     <h1 class="user02-title">
                         <spring:message code="usr02.titre.admin" />
                     </h1>
@@ -47,7 +47,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="nom"><spring:message code="usr02.edit.nom" /></label>
                     <div class="user02-form-inputs">
-                        <form:input path="nom" class="user02-inputs" />
+                        <form:input path="nom" class="user02-inputs" maxlength="50" />
                         <form:errors path="nom" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="prenom"><spring:message code="usr02.edit.prenom" /></label>
                     <div class="user02-form-inputs">
-                        <form:input path="prenom" class="user02-inputs" />
+                        <form:input path="prenom" class="user02-inputs" maxlength="50" />
                         <form:errors path="prenom" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="adresse"><spring:message code="usr02.edit.adresse" /></label>
                     <div class="user02-form-inputs">
-                        <form:textarea path="adresse" class="user02-inputs user02-textarea textarea" />
+                        <form:textarea path="adresse" class="user02-inputs user02-textarea textarea" maxlength="255" />
                         <form:errors path="adresse" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 <div class="user02-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr02.edit.dateNaissance" /></label>
                     <div class="user02-form-inputs">
-                        <form:input path="dateNaissance" class="user02-inputs" />
+                        <form:input path="dateNaissance" class="user02-inputs" maxlength="10" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         <%-- Le readonly pemet le blocage de l'autocompletion 
                         par le navigateur si des identifiants sont enregister --%>
                         <form:input path="email" class="user02-inputs" readonly="true"
-                            onfocus="this.removeAttribute('readonly')" />
+                            onfocus="this.removeAttribute('readonly')" maxlength="320" />
                         <form:errors path="email" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                             <label for="password"><spring:message code="usr02.edit.password" /></label>
                             <div class="user02-form-inputs">
                                 <form:password path="password" class="user02-inputs" readonly="true"
-                                    onfocus="this.removeAttribute('readonly')" />
+                                    onfocus="this.removeAttribute('readonly')" maxlength="255" />
                                 <form:errors path="password" cssClass="text-color-rouge" />
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                         <div class="user02-form-field display-flex justify-content-space-between">
                             <label for="confirmPassword"><spring:message code="usr02.edit.confirmPassword" /></label>
                             <div class="user02-form-inputs">
-                                <form:password path="confirmPassword" class="user02-inputs" />
+                                <form:password path="confirmPassword" class="user02-inputs" maxlength="255" />
                                 <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                             </div>
                         </div>

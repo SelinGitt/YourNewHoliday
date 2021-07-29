@@ -7,7 +7,7 @@
 <p id="titrePage">
     <spring:message code="glb.titre.page.creerProduitAdmin" />
 </p>
-    
+
 <div class="conteneur-ascenseur">
 
     <c:if test="${not empty error}">
@@ -19,7 +19,7 @@
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt03.titre" />
     </h1>
-    <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
+    <a href="listerProduitsAdmin.do" class="lien-retour"><spring:message code="pdt03.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="pdt03Grid-container">
             <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
@@ -127,37 +127,32 @@
                         <th colspan="3"><spring:message code="form.pdt03.service" /></th>
                     </tr>
 
-                    <c:forEach items="${produitDto.services}" var="service" varStatus="loop">
-                        <%-- Permet d'afficher 3 elements par lignes --%>
-                        <c:if test="${loop.index == 0}">
-                            <tr>
-                        </c:if>
+                    <%-- Boucle pour tout les services --%>
+                    <c:forEach items="${produitDto.services}" var="service" varStatus="loop" step="3">
+                        <tr>
+                            <%-- Boucle qui affiche 3 services --%>
+                            <c:forEach begin="${loop.index}" end="${loop.index + 2}" step="1" varStatus="cpt">
+                                <c:choose>
+                                    <%-- Si le produit est actif --%>
+                                    <c:when test="${produitDto.services[cpt.index]}">
+                                        <form:checkbox path="services[${cpt.index}]"
+                                            onchange="changeServiceStatus(this, ${produitDto.services[cpt.index]}, 3)"
+                                            class="pdt03Checkbox" />
+                                        <td><label for="services${cpt.index}1" class="firstTime pdt03ServiceActif "
+                                            id="${cpt.index}"></label></td>
+                                    </c:when>
 
-                        <%-- Permet de fermer la balise tr et en ouvrir une autre après 3 elements --%>
-                        <c:if test="${loop.index != 0 && loop.index % 3 == 0}">
-                            </tr>
-                            <tr>
-                        </c:if>
-
-                        <c:choose>
-                            <%-- Si le produit est actif --%>
-                            <c:when test="${produitDto.services[loop.index]}">
-                                <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 3)"
-                                    class="pdt03Checkbox" />
-                                <td><label for="services${loop.index}1" class="firstTime pdt03ServiceActif "
-                                    id="${loop.index}"></label></td>
-                            </c:when>
-
-                            <%-- Sinon --%>
-                            <c:otherwise>
-                                <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 3)"
-                                    class="pdt03Checkbox" />
-                                <td><label for="services${loop.index}1" class="firstTime pdt03ServiceInactif "
-                                    id="${loop.index}"></label></td>
-                            </c:otherwise>
-                        </c:choose>
+                                    <%-- Sinon --%>
+                                    <c:otherwise>
+                                        <form:checkbox path="services[${cpt.index}]"
+                                            onchange="changeServiceStatus(this, ${produitDto.services[cpt.index]}, 3)"
+                                            class="pdt03Checkbox" />
+                                        <td><label for="services${cpt.index}1"
+                                            class="firstTime pdt03ServiceInactif " id="${cpt.index}"></label></td>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </tr>
                     </c:forEach>
                 </table>
             </div>
