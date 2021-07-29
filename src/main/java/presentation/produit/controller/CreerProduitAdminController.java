@@ -52,7 +52,13 @@ public class CreerProduitAdminController {
     public ModelAndView voirFormulaireCreerProduit() {
         final var modelAndView = new ModelAndView();
         modelAndView.setViewName("creerProduitAdmin");
-        modelAndView.getModelMap().addAttribute("produitDto", new ProduitDto());
+
+        final var produit = new ProduitDto();
+
+        // TODO : Amelioration possible par la suite
+        produit.setServices(new Boolean[] {false, false, false, false, false, false, false, false, false});
+
+        modelAndView.getModelMap().addAttribute("produitDto", produit);
         return modelAndView;
     }
 
@@ -68,11 +74,25 @@ public class CreerProduitAdminController {
     @PostMapping
     public ModelAndView creerProduit(final @Validated @ModelAttribute("produitDto") ProduitDto produitDto, final BindingResult result,
             final RedirectAttributes redirectAttributes) {
+        final var services = produitDto.getServices();
+        // TODO : Amelioration possible par la suite
+        final var newServices = new Boolean[] {false, false, false, false, false, false, false, false, false};
+
+        for (var i = 0; i < services.length; i++) {
+            if (services[i] != null) {
+                newServices[i] = true;
+            }
+        }
+
+        produitDto.setServices(newServices);
+
         final var modelAndView = new ModelAndView();
+
         // Si le formulaire possède des erreurs : Ajout de l'attribut "errorCreationProduit" utilisé dans la jsp en cas d'erreur de création
         if (result.hasErrors()) {
             modelAndView.setViewName("creerProduitAdmin");
             modelAndView.getModelMap().addAttribute("error", "pdt03.erreurCreation");
+
             return modelAndView;
         }
 
@@ -81,6 +101,7 @@ public class CreerProduitAdminController {
             redirectAttributes.addFlashAttribute("anySuccess", "pdt03.creationOK");
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
+
         result.rejectValue("reference", "pdt03.reference.dejaExistant");
         modelAndView.setViewName("creerProduitAdmin");
         return modelAndView;

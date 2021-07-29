@@ -287,6 +287,23 @@ th.pdt01 {
 	line-height: 1em;
 }
 
+.pdt03ServiceActif {
+	color: green;
+	font-size: xx-large !important;
+	cursor: pointer;
+	border: 0.02em solid green;
+}
+
+.pdt03ServiceInactif {
+	color: black;
+	font-size: xx-large !important;
+	cursor: pointer;
+}
+
+.pdt03Checkbox {
+	display: none;	
+}
+
 /* PDT04 */
 .pdt04Flex-container {
 	text-align: left;
