@@ -55,6 +55,9 @@ public class DetailCommandeController {
         // rq : les échecs de validation sont tarité par PAN_00        
         if ("validerPanierCommande".equals(from)) {
             modelAndView.getModelMap().addAttribute("confirmationMesssage", "PAN_08.message.Confirmation");
+            modelAndView.getModelMap().addAttribute("retour", "listerProduits.do");
+        } else {
+            modelAndView.getModelMap().addAttribute("retour", "listerCommande.do");
         }
         return modelAndView;
     }
