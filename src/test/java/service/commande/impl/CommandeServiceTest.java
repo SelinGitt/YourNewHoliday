@@ -3,21 +3,30 @@
  */
 package service.commande.impl;
 
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import persistance.commande.dao.IProduitAcheteDao;
+import persistance.commande.entity.ProduitAcheteDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.CommandeAdresseDto;
 import presentation.commande.dto.CommandeDto;
@@ -43,8 +52,18 @@ import service.util.DecimalFormatUtils;
 @WebAppConfiguration("WebContent")
 class CommandeServiceTest {
 
+    @InjectMocks
+    private CommandeService   commandeServiceMock;
+    @Mock
+    private IProduitAcheteDao iProduitAcheteMock;
+
     @Autowired
-    private ICommandeService commandeService;
+    private ICommandeService  commandeService;
+
+    @BeforeEach
+    void initMock() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     /**
      * Test method for {@link service.commande.impl.CommandeService}
@@ -216,6 +235,30 @@ class CommandeServiceTest {
         final var commandeDtoReference = this.commandeService.validerPanier(panierDto, adresses, utilisateur);
         assertNotNull(commandeDtoReference);
         assertTrue(commandeDtoReference.matches("[A-Z0-9]{15}"));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#findProduitAchete(java.lang.Integer)}.
+     */
+    @Test
+    void testFindProduitAchete() {
+        final var produitAcheteDo = new ProduitAcheteDo();
+        produitAcheteDo.setCheminImage("cheminImage");
+        produitAcheteDo.setDescription("description");
+        produitAcheteDo.setDestination("destination");
+        produitAcheteDo.setIdProduit(2);
+        produitAcheteDo.setNom("produit");
+        produitAcheteDo.setPrixUnitaire(new BigDecimal(300.00));
+        produitAcheteDo.setReference("135699");
+        produitAcheteDo.setIdDeLOriginal(425);
+        produitAcheteDo.setVersion(12);
+        System.out.println(produitAcheteDo.getIdDeLOriginal() + " " + produitAcheteDo.getVersion());
+        Mockito.when(this.iProduitAcheteMock.recupererProduitAcheteDo(425, 12)).thenReturn(produitAcheteDo);
+        Mockito.when(this.iProduitAcheteMock.recupererProduitAcheteDo(12, 425)).thenReturn(null);
+        // On récupère un produitAcheté 
+        assertNotNull(commandeServiceMock.findProduitAchete("425", "12"));
+        // On essaie de récupérer un produit qui n'a pas été acheté
+        assertNull(commandeServiceMock.findProduitAchete("12", "425"));
     }
 
 }
