@@ -150,7 +150,7 @@
             </table>
 
             <%--  bouton vider le panier  --%>
-            <div class="panier-buttons ">
+            <div class="panier-buttons">
                 <a href="viderPanier.do"><button type="button" class="bouton-rouge">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
