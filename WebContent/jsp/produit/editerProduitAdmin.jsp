@@ -158,7 +158,7 @@
                             <%-- Si le produit est actif --%>
                             <c:when test="${produitDto.services[loop.index]}">
                                 <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]})"
+                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 2)"
                                     class="pdt02Checkbox" />
                                 <td><label for="services${loop.index}1" class="firstTime pdt02ServiceActif "
                                     id="${loop.index}"></label></td>
@@ -167,7 +167,7 @@
                             <%-- Sinon --%>
                             <c:otherwise>
                                 <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]})"
+                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 2)"
                                     class="pdt02Checkbox" />
                                 <td><label for="services${loop.index}1" class="firstTime pdt02ServiceInactif "
                                     id="${loop.index}"></label></td>
