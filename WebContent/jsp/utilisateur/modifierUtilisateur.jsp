@@ -22,8 +22,8 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="user02-title">
-                    <h1>
+                <div class="display-flex align-item-center">
+                    <h1 class="user02-title">
                         <spring:message code="usr02.titre.client" />
                     </h1>
                 </div>
