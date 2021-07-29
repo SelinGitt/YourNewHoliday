@@ -42,6 +42,10 @@ public class EditerUtilisateurValidator extends AbstractUtilisateurValidator {
             if (!(user.getPassword().equals(user.getConfirmPassword()))) {
                 errors.rejectValue("confirmPassword", "usr02.erreur.password_match", defaultError);
             }
+
+            // Check la taille des champs password & confirm password
+            this.validateLength(errors, "password", "usr02.erreur.password_length", defaultError);
+            this.validateLength(errors, "confirmPassword", "usr02.erreur.confirm_password_length", defaultError);
         }
     }
 

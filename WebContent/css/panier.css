@@ -55,7 +55,7 @@
 /* PAN_00 */
 .prix {
 	text-align: right;
-	width: 10em;
+	width: 6em;
 }
 
 .panier-prix-unitaire-center {
@@ -177,12 +177,6 @@
 }
 
 /* PAN08 */
-.panier-retour {
-	font-size: 1.5em;
-	color: #000000;
-	text-decoration: none;
-}
-
 .panier-container-Adresse {
 	width: 95%;
 }

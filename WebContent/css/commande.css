@@ -122,24 +122,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 }
 
 /* CMD04 */
-/* définition de l'affichage d'un bouton retour */
-.CMD_04-bouton-retour {
-	color: #000000;
-	font-size: 1.15em;
-	/* enlève la bordure du bouton */
-	border: 0;
-	border-radius: 0.313em;
-	text-align: center;
-	padding: 0.5em;
-	cursor: pointer;
-	opacity: 0.7;
-}
-
-/* définition de l'affichage d'un bouton retour lorsqu'on le survole */
-.CMD_04-bouton-retour:hover {
-	opacity: 1;
-}
-
 /* la grille pour commande */
 .CMD_04-grid {
 	display: grid;
@@ -317,11 +299,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	color: #66C5EB;
 }
 
-/* margin pour le bouton de retour */
-.CMD_04-bouton-retour-margin {
-	margin-bottom: 1.563em;
-}
-
 .CMD_04-border-prix-avant-remise {
 	border: 0.19em solid #000000;
 }
@@ -345,8 +322,8 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
-	max-height: 1em;
-	line-height: 1em;
+	max-height: inherit;
+	line-height: inherit;
 }
 
 /* la grille pour commande adresse */
@@ -389,4 +366,9 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 /* padding pour le titre */
 .CMD_04-padding-top {
 	padding-top: 1em;
+}
+
+/* marge sous le lien retour */
+.CMD_04-lien-margin-bottom {
+	margin-bottom: 1em;
 }

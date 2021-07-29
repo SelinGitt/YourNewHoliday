@@ -3,6 +3,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.pan_00" />
+</p>
+
 <c:if test="${fn:length(listIdError) gt 0 }">
     <div class="background-error-block block-message-commun">
         <span class="fa fa-exclamation"></span> <span class="message"><spring:message
@@ -89,7 +94,9 @@
                                     </c:if>
                                     <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
                                         <a
-                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1">
+                                            href="
+                                            modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=-1
+                                        ">
                                             <button type="button">-</button>
                                         </a>
                                     </c:if>
@@ -105,7 +112,9 @@
                                     </c:if>
                                     <c:if test="${!listIdError.contains(entry.key.idProduitOriginal) }">
                                         <a
-                                            href="modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1">
+                                            href="
+                                            modifierQuantite.do?idProduit=${entry.key.idProduitOriginal}&quantite=1
+                                        ">
                                             <button type="button">+</button>
                                         </a>
                                     </c:if>

@@ -2,6 +2,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%-- Permet de Gerer l'internationalisation du titre de la page --%>
+<p id="titrePage">
+    <spring:message code="glb.titre.page.creerProduitAdmin" />
+</p>
+
 <div class="conteneur-ascenseur">
 
     <c:if test="${not empty error}">
@@ -13,15 +19,14 @@
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt03.titre" />
     </h1>
-    <a href="listerProduitsAdmin.do"><spring:message code="pdt03.retour" /></a>
+    <a href="listerProduitsAdmin.do" class="lien-retour"><spring:message code="pdt03.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="pdt03Grid-container">
             <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
 
                 <table class="pdt03FormulaireProduit" aria-label="Formulaire de création d'un produit">
                     <tr>
-                        <th><form:hidden path="version" value="1" /> <form:hidden path="cheminImage"
-                                value="D:/Test" /></th>
+                        <th><form:hidden path="version" value="1" /></th>
                         <th></th>
                     </tr>
                     <tr>
@@ -115,63 +120,63 @@
                     </tr>
                 </table>
             </div>
-            <div class="pdt03Grid-item pdt03ImageProduit">
-                <table class="pdt03ImageCreationProduit" aria-label="ajout image produit">
-                    <tr>
-                        <th><spring:message code="form.pdt03.image" /></th>
-                    </tr>
-                    <tr>
-                        <td class="pdt03Form-imageProduit"><img src="img/produit/DefaultProductImage.png"
-                            alt="Image du produit à ajouter" /></td>
-                    </tr>
-                    <tr>
-                        <td><input type="file" name="imageUpload"
-                            value="<spring:message code="form.pdt03.parcourir" />"></td>
-                    </tr>
-                </table>
-            </div>
+
             <div class="pdt03Grid-item pdt03LogoService">
                 <table class="pdt03ListeService" aria-label="liste des services disponibles">
                     <tr>
                         <th colspan="3"><spring:message code="form.pdt03.service" /></th>
                     </tr>
 
-                    <c:forEach items="${produitDto.services}" var="service" varStatus="loop">
-                        <%-- Permet d'afficher 3 elements par lignes --%>
-                        <c:if test="${loop.index == 0}">
-                            <tr>
-                        </c:if>
+                    <%-- Boucle pour tout les services --%>
+                    <c:forEach items="${produitDto.services}" var="service" varStatus="loop" step="3">
+                        <tr>
+                            <%-- Boucle qui affiche 3 services --%>
+                            <c:forEach begin="${loop.index}" end="${loop.index + 2}" step="1" varStatus="cpt">
+                                <c:choose>
+                                    <%-- Si le produit est actif --%>
+                                    <c:when test="${produitDto.services[cpt.index]}">
+                                        <form:checkbox path="services[${cpt.index}]"
+                                            onchange="changeServiceStatus(this, ${produitDto.services[cpt.index]}, 3)"
+                                            class="pdt03Checkbox" />
+                                        <td><label for="services${cpt.index}1" class="firstTime pdt03ServiceActif "
+                                            id="${cpt.index}"></label></td>
+                                    </c:when>
 
-                        <%-- Permet de fermer la balise tr et en ouvrir une autre après 3 elements --%>
-                        <c:if test="${loop.index != 0 && loop.index % 3 == 0}">
-                            </tr>
-                            <tr>
-                        </c:if>
-
-                        <c:choose>
-                            <%-- Si le produit est actif --%>
-                            <c:when test="${produitDto.services[loop.index]}">
-                                <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 3)"
-                                    class="pdt03Checkbox" />
-                                <td><label for="services${loop.index}1" class="firstTime pdt03ServiceActif "
-                                    id="${loop.index}"></label></td>
-                            </c:when>
-
-                            <%-- Sinon --%>
-                            <c:otherwise>
-                                <form:checkbox path="services[${loop.index}]"
-                                    onchange="changeServiceStatus(this, ${produitDto.services[loop.index]}, 3)"
-                                    class="pdt03Checkbox" />
-                                <td><label for="services${loop.index}1" class="firstTime pdt03ServiceInactif "
-                                    id="${loop.index}"></label></td>
-                            </c:otherwise>
-                        </c:choose>
+                                    <%-- Sinon --%>
+                                    <c:otherwise>
+                                        <form:checkbox path="services[${cpt.index}]"
+                                            onchange="changeServiceStatus(this, ${produitDto.services[cpt.index]}, 3)"
+                                            class="pdt03Checkbox" />
+                                        <td><label for="services${cpt.index}1"
+                                            class="firstTime pdt03ServiceInactif " id="${cpt.index}"></label></td>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </tr>
                     </c:forEach>
                 </table>
             </div>
+
+            <c:if test="${not empty image}">
+                <div>-> ${image}</div>
+                <form:hidden path="cheminImage" value="${image}" />
+            </c:if>
         </div>
     </form:form>
+
+    <form:form action="uploadImageProduit.do" enctype="multipart/form-data" method="post"
+        class="display-flex justify-content-space-around">
+        <div class="display-flex justify-content-space-around">
+            <label for="file"><spring:message code="form.pdt03.image" /></label> <input type="file" name="file"
+                accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
+            <c:if test="${not empty imgError}">
+                <div class="text-color-rouge">
+                    <spring:message code="${imgError}" />
+                </div>
+            </c:if>
+        </div>
+    </form:form>
+
 </div>
 
 <script>
