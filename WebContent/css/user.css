@@ -173,6 +173,10 @@
 	margin-bottom: 1em;
 }
 
+.user02-avatar {
+	width: 15.625em;
+}
+
 .user02-admin-options {
 	border: 0.09375em solid black;
 }
