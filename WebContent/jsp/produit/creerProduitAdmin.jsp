@@ -13,9 +13,7 @@
     <h1 class="title title-responsive text-align-center">
         <spring:message code="pdt03.titre" />
     </h1>
-    <a href="listerProduitsAdmin.do" class="lien-retour">
-        <spring:message code="pdt03.retour" />
-    </a>
+    <a href="listerProduitsAdmin.do" class="lien-retour"><spring:message code="pdt03.retour" /></a>
     <form:form method="POST" modelAttribute="produitDto" action="creerProduitAdmin.do">
         <div class="pdt03Grid-container">
             <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
