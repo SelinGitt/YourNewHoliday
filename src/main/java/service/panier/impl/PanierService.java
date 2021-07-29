@@ -179,7 +179,7 @@ public class PanierService implements IPanierService {
             // On récupère la quantité avant modification
             final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
 
-            // On teste les valeurs à modifier
+            // On teste aussi les valeurs à modifier avant de modifier
             if (isModificationAutorisee(modif, quantiteInitiale)) {
                 updatePanier(panier, idProduit, modif);
             }
@@ -189,10 +189,12 @@ public class PanierService implements IPanierService {
     }
 
     /**
-     * Allows to
+     * <Pre>
+     * Permets de déterminer si le produit peut être modifié, Pour cela il doit : - toujours être en vente - ne pas avoir
+     * été modifié par un admin (controle du numéro de version
      *
-     * @param  id
-     * @return
+     * @param  id du produit à vérifier
+     * @return    true si le produit est conforme, false sinon.
      */
     private boolean isProduitConforme(final Integer id) {
         final ProduitDto produitEnvente = iProduitService.trouverProduitEnVente(id);
