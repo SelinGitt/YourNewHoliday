@@ -79,7 +79,7 @@ public interface IPanierService {
      * @param idProduit du produit à modifier
      * @param quantite  +1/-1 pour incrémenter/décrémenter la quantité
      */
-    void modifierQuantite(final PanierDto panier, final Integer idProduit, final int quantite);
+    boolean modifierQuantite(final PanierDto panier, final Integer idProduit, final int quantite);
 
     /**
      * Permet d'enregistrer le panier en une commande

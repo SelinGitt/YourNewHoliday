@@ -3,7 +3,6 @@
  */
 package presentation.panier.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
-import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 
@@ -51,25 +49,13 @@ public class ModifierQuantiteController {
         // quoiqu'il arrive on redirige vers le panier
         modelAndView.setViewName("redirect:listerPanierProduits.do");
         final var id = Integer.valueOf(request.getParameter("idProduit"));
-        // test de conformité
-        if (!isConforme(id)) {
-            final List<Integer> listIdError = new ArrayList<>();
-            listIdError.add(id);
-            redirectAttributes.addFlashAttribute("listIdError", listIdError);
-            return modelAndView;
+        final boolean traitementOk = panierService.modifierQuantite(panierDto, id, Integer.valueOf(request.getParameter("quantite")));
+
+        if (!traitementOk) {
+            redirectAttributes.addFlashAttribute("listIdError", List.of(id));
         }
-        panierService.modifierQuantite(panierDto, id, Integer.valueOf(request.getParameter("quantite")));
+
         return modelAndView;
-
-    }
-
-    private boolean isConforme(final Integer id) {
-        final ProduitDto produitEnvente = produitService.trouverProduitEnVente(id);
-        if (produitEnvente == null) {
-            return false;
-        }
-        // TODO : controle de la version. (ISSUES 295)
-        return true;
     }
 
 }
