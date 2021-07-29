@@ -69,12 +69,9 @@ INSERT INTO `droit` (`idDroit`, `url`) VALUES (22, 'modifierQuantite.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (23, 'validerPanierProduits.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (24, 'ajouterProduitPanier.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (25, 'validerPanier.do');
-<<<<<<< HEAD
-INSERT INTO `droit` (`idDroit`, `url`) VALUES (28, 'uploadImageProduit.do');
-=======
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (26, 'supprimerProduitAdmin.do');
 INSERT INTO `droit` (`idDroit`, `url`) VALUES (27, 'uploadImageUser.do');
->>>>>>> develop
+INSERT INTO `droit` (`idDroit`, `url`) VALUES (28, 'uploadImageProduit.do');
 
 --
 -- Déchargement des données de la table `role`
