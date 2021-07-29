@@ -77,7 +77,6 @@
                     <button class="panier-margin-left-25" onclick="informationsLivraison()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
-
                 </fieldset>
             </div>
         </div>
@@ -121,7 +120,6 @@
                     <button class="panier-margin-left-25" onclick="informationsFacturation()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
-
                 </fieldset>
             </div>
         </div>
