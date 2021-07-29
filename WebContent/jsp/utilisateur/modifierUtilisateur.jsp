@@ -112,7 +112,7 @@
                     </details>
                 </div>
 
-                <div class="display-flex justify-content-space-around user05-buttons">
+                <div class="display-flex justify-content-space-around">
                     <div class="user02-buttons">
                         <button class="bouton-impact-BD" onclick="submit">
                             <spring:message code="usr02.edit.valider" />
