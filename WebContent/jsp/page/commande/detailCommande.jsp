@@ -14,11 +14,9 @@
 <h1 class="title title-responsive text-align-center">
     <spring:message code="detailCommande.titre.text" />${commande.reference}
 </h1>
-<div class="CMD_04-bouton-retour-margin">
-    <a href="${retour}" class="lien-retour">
-        <spring:message code="detailCommande.btn.retour" />
-    </a>
-</div>
+<a href="${retour}" class="lien-retour">
+    <spring:message code="detailCommande.lien.retour" />
+</a>
 <div class="CMD_04-grid CMD_04-container CMD_04-box-sizing CMD_04-overflow">
     <div class="CMD_04-produits CMD_04-height CMD_04-box-sizing CMD_04-overflow">
         <fieldset class="CMD_04-border CMD_04-fieldset CMD_04-height CMD_04-box-sizing CMD_04-overflow">

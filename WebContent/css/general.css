@@ -124,7 +124,7 @@ section {
 .lien-retour {
 	color: #000000;
 	font-size: 1.15em;
-	/* enlève la bordure du bouton */
+	/* pour s'assurer qu'il n'y a pas de bordure autour du lien */
 	border: 0;
 	border-radius: 0.313em;
 	text-align: center;

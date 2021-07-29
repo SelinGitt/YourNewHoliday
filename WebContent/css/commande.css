@@ -122,24 +122,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 }
 
 /* CMD04 */
-/* définition de l'affichage d'un bouton retour */
-.CMD_04-bouton-retour {
-	color: #000000;
-	font-size: 1.15em;
-	/* enlève la bordure du bouton */
-	border: 0;
-	border-radius: 0.313em;
-	text-align: center;
-	padding: 0.5em;
-	cursor: pointer;
-	opacity: 0.7;
-}
-
-/* définition de l'affichage d'un bouton retour lorsqu'on le survole */
-.CMD_04-bouton-retour:hover {
-	opacity: 1;
-}
-
 /* la grille pour commande */
 .CMD_04-grid {
 	display: grid;
@@ -315,11 +297,6 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 /* couleur du titre pour la liste des produits */
 .CMD_04-title-text-color {
 	color: #66C5EB;
-}
-
-/* margin pour le bouton de retour */
-.CMD_04-bouton-retour-margin {
-	margin-bottom: 1.563em;
 }
 
 .CMD_04-border-prix-avant-remise {
