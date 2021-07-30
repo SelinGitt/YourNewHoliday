@@ -158,15 +158,7 @@
                             </div>
 
                             <div class="display-flex align-item-center">
-                                <c:choose>
-                                    <c:when test="${utilisateurDto.estDesactive}">
-                                        <spring:message code="usr02.client.desactive" />
-                                    </c:when>
-
-                                    <c:otherwise>
-                                        <spring:message code="usr02.client.active" />
-                                    </c:otherwise>
-                                </c:choose>
+                                <spring:message code="usr02.client.active" />
 
                                 <form:checkbox path="estDesactive"
                                     onchange="changeStatusImg(document.getElementById('usr02.status.img'), this)"
