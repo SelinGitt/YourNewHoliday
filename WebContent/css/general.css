@@ -175,6 +175,14 @@ section {
 	cursor: pointer;
 	opacity: 0.7;
 	text-decoration: none;
+	/*Style du bouton*/
+	background-color: #66C5EB;
+	color: white;
+	padding: 0.25em 0.8em;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 0.5em;
 }
 
 /* css lors du passage sur le lien */
