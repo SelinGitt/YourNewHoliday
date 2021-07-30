@@ -113,11 +113,6 @@ th.pdt01 {
 	margin-left: auto;
 }
 
-.pdt01-newProduitButton {
-	background-color: #22B14C;
-	color: #FFFFFF;
-}
-
 /* PDT02 */
 .pdt02Grid-container {
 	display: grid;
@@ -329,6 +324,7 @@ th.pdt01 {
 
 .pdt03ErrorMessage {
 	margin-left: 11em;
+
 }
 
 /* PDT04 */
