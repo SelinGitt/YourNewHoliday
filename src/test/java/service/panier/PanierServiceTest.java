@@ -385,7 +385,7 @@ class PanierServiceTest {
      * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
      */
     @Test
-    void testConformitéProduitAModifierOk() {
+    void testConformiteProduitAModifierOk() {
         final var panier = new PanierDto();
         final var produitDoEnVente = new ProduitDo();
         produitDoEnVente.setIdProduitOriginal(42);
@@ -406,12 +406,12 @@ class PanierServiceTest {
      * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
      */
     @Test
-    void testConformitéProduitAModifierKO() {
+    void testConformiteProduitAModifierKO() {
         final var panier = new PanierDto();
         final ProduitDto produitDtoPlusEnVente = new ProduitDto();
         produitDtoPlusEnVente.setIdProduitOriginal("42");
         produitDtoPlusEnVente.setPrixUnitaire("10");
-        LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
+        final LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
         ligne.setPrix("50");
         ligne.setQuantite(44);
         panier.getMapPanier().put(produitDtoPlusEnVente, ligne);
