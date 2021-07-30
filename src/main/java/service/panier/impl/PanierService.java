@@ -212,7 +212,7 @@ public class PanierService implements IPanierService {
         // On récupère le produit
         final var produitDto = findProduitMap(panier, id);
         // il faut que le produit en vente soit de la même version que le produit du panier
-        if (produitEnVente.getVersion() == Integer.valueOf(produitDto.getVersion())) {
+        if (produitEnVente.getVersion().toString().equals(produitDto.getVersion())) {
             return produitDto;
         }
         return null;

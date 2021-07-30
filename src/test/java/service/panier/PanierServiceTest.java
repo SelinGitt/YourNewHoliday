@@ -387,7 +387,7 @@ class PanierServiceTest {
      * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
      */
     @Test
-    void testConformitéProduitAModifier() {
+    void testConformiteProduitAModifier() {
         final var panier = new PanierDto();
         final var produitDoEnVente = new ProduitDo();
         produitDoEnVente.setIdProduitOriginal(42);
