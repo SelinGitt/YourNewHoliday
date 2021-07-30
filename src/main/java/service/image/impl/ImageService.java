@@ -48,6 +48,9 @@ public class ImageService implements IImageService {
     public File getImage(final String id, final String type) {
         final var idInteger = Integer.valueOf(id);
         final var typeImage = TypeImage.getTypeImage(type);
+        if (typeImage == null) {
+            return null;
+        }
         String cheminImage = null;
         switch (typeImage) {
             case PRODUIT:
