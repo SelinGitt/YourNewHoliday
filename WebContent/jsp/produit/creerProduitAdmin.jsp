@@ -177,7 +177,8 @@
 
             <c:if test="${not empty image}">
                 <div>
-                    <img src="displayImage.do?avatar=${image}&type=pdt" class="pdt03ImgWidth" alt="imageProduitUpload">
+                    <img src="displayImage.do?imageToShow=${image}&type=pdt" 
+                    class="pdt03ImgWidth" alt="imageProduitUpload">
                 </div>
                 <form:hidden path="cheminImage" value="${image}" />
             </c:if>
