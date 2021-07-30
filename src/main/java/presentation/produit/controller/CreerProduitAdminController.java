@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.produit.dto.ProduitDto;
+import presentation.produit.util.ServiceProduitUtil;
 import presentation.produit.validator.ProduitValidatorPDT03;
 import service.produit.IProduitService;
 
@@ -24,7 +25,7 @@ import service.produit.IProduitService;
  */
 @Controller
 @RequestMapping(value = "/creerProduitAdmin.do")
-public class CreerProduitAdminController {
+public class CreerProduitAdminController extends ServiceProduitUtil {
 
     @Autowired
     private IProduitService       iProduitService;
@@ -48,8 +49,7 @@ public class CreerProduitAdminController {
 
         final var produit = new ProduitDto();
 
-        // TODO : Amelioration possible par la suite
-        produit.setServices(new Boolean[] {false, false, false, false, false, false, false, false, false});
+        produit.setServices(this.generateArray());
 
         modelAndView.getModelMap().addAttribute("produitDto", produit);
         return modelAndView;
@@ -70,17 +70,7 @@ public class CreerProduitAdminController {
 
         validateur.validate(produitDto, result);
 
-        final var services = produitDto.getServices();
-        // TODO : Amelioration possible par la suite
-        final var newServices = new Boolean[] {false, false, false, false, false, false, false, false, false};
-
-        for (var i = 0; i < services.length; i++) {
-            if (services[i] != null) {
-                newServices[i] = true;
-            }
-        }
-
-        produitDto.setServices(newServices);
+        produitDto.setServices(this.fillServiceArray(produitDto.getServices()));
 
         final var modelAndView = new ModelAndView();
 
