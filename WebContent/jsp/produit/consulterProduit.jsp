@@ -60,7 +60,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="pdt04Design">
+                            <td>
                                 <div>
                                     <%--  Bouton ajouter au panier --%>
                                     <button value="submit"
