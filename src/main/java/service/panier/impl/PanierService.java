@@ -207,6 +207,7 @@ public class PanierService implements IPanierService {
      */
     private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
         final ProduitDo produitEnVente = produitDao.findProduitEnVente(id);
+        System.out.println(produitEnVente);
         if (produitEnVente == null) {
             return null;
         }

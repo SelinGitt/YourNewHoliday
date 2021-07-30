@@ -348,6 +348,9 @@ class PanierServiceTest {
      */
     @Test
     void testModifierQuantite() {
+        final var produitDoEnVente = new ProduitDo();
+        produitDoEnVente.setIdProduitOriginal(42);
+        produitDoEnVente.setMiseEnVente(true);
         final var panierTest = new PanierDto();
         final var produitTest4 = new ProduitDto();
         produitTest4.setIdProduitOriginal("4");
@@ -356,6 +359,7 @@ class PanierServiceTest {
         panierTest.getMapPanier().put(produitTest4, ligne4);
         panierTest.setNombreDeReferences(1);
         ligne4.setQuantite(44);
+        Mockito.when(this.produitDao.findProduitEnVente(4)).thenReturn(produitDoEnVente);
         Mockito.when(this.iProduitService.trouverProduitEnVente(4)).thenReturn(produitTest4);
         // On teste l'incrémentation entre 1 et 100,
         panierService.modifierQuantite(panierTest, 4, 1);
@@ -382,11 +386,11 @@ class PanierServiceTest {
      */
     @Test
     void TestConformitéProduitAModifierOk() {
-        final PanierDto panier = new PanierDto();
-        final ProduitDo produitDoEnVente = new ProduitDo();
+        final var panier = new PanierDto();
+        final var produitDoEnVente = new ProduitDo();
         produitDoEnVente.setIdProduitOriginal(42);
         produitDoEnVente.setMiseEnVente(true);
-        final ProduitDto produitDtoEnVente = new ProduitDto();
+        final var produitDtoEnVente = new ProduitDto();
         produitDtoEnVente.setIdProduitOriginal("42");
         produitDtoEnVente.setPrixUnitaire("10");
         final LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
@@ -403,19 +407,36 @@ class PanierServiceTest {
      */
     @Test
     void TestConformitéProduitAModifierKO() {
-        final PanierDto panier = new PanierDto();
-        final ProduitDo produitDoPlusEnVente = new ProduitDo();
+        final var panier = new PanierDto();
+        final var produitDoPlusEnVente = new ProduitDo();
         produitDoPlusEnVente.setIdProduitOriginal(42);
         produitDoPlusEnVente.setMiseEnVente(false);
         final ProduitDto produitDtoPlusEnVente = new ProduitDto();
         produitDtoPlusEnVente.setIdProduitOriginal("42");
         produitDtoPlusEnVente.setPrixUnitaire("10");
-        final LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
+        LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
         ligne.setPrix("50");
-        ligne.setQuantite(5);
+        ligne.setQuantite(44);
         panier.getMapPanier().put(produitDtoPlusEnVente, ligne);
         Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(null);
         assertFalse(panierService.modifierQuantite(panier, 42, 1));
+        panierService.modifierQuantite(panier, 42, 1);
+        // On teste l'incrémentation entre 1 et 100,
+        assertEquals(45, ligne.getQuantite());
+        // Puis la décrémentation entre 1 et 100.
+        panierService.modifierQuantite(panier, 42, -1);
+        assertEquals(44, ligne.getQuantite());
+        // On teste qu'on ne peut pas incrémenter lorsque la quantité est égale à 100.
+        ligne.setQuantite(100);
+        panierService.modifierQuantite(panier, 42, 1);
+        assertEquals(100, ligne.getQuantite());
+        // On teste qu'on ne peut pas décrémenter lorsque la quantité est égale à 1.
+        ligne.setQuantite(1);
+        panierService.modifierQuantite(panier, 42, -1);
+        assertEquals(1, ligne.getQuantite());
+        // On teste qu'on ne peut pas incrémenter ou décrémenter un nombre autre que 1.
+        panierService.modifierQuantite(panier, 42, 50);
+        assertEquals(1, ligne.getQuantite());
     }
 
 }
