@@ -74,14 +74,13 @@ td.pdt00Description {
 .pdt01-conteneur-ascenseur {
 	box-sizing: border-box;
 	overflow-y: auto;
-	height: 75%;
+	height: 70%;
 	width: 98%;
 }
 
 .pdtListeProduit {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
-	overflow-y: scroll;
 	width: 100%;
 }
 
