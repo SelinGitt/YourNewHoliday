@@ -77,6 +77,7 @@
 
 .searchBarInside {
 	border-radius: 6.25em;
+	border: 0.125em solid #808080;
 }
 
 .userSearchBarOk {

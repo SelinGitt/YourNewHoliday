@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.image.IImageService;
+import service.image.TypeImage;
 
 /**
  * Classe représentant le controlleur d'upload d'image
@@ -38,12 +39,11 @@ public class UploadImageProduitController {
         final var modelAndView = new ModelAndView("redirect:creerProduitAdmin.do");
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        final var imageResponse = imageService.saveImage(byteArray, "pdt", fileName);
+        final var imageResponse = imageService.saveImage(byteArray, TypeImage.PRODUIT.getType(), fileName);
         if (imageResponse.getError() == null) {
             modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
             modelAndView.getModelMap().addAttribute("imgError", imageResponse.getError());
-
         }
         return modelAndView;
 

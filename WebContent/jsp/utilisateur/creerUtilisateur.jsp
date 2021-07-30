@@ -18,13 +18,15 @@
         </c:if>
 
         <div class="display-flex align-item-center">
-            <c:if test="${utilisateur.role.id == '3'}">
-                <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
-            </c:if>
             <h1 class="user05-titre">
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
+
+        <c:if test="${utilisateur.role.id == '3'}">
+            <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
+        </c:if>
+
         <div class="display-flex user05-FormImage">
             <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
                 <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
@@ -72,7 +74,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10"/>
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
