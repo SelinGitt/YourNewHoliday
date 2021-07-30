@@ -120,10 +120,10 @@ public interface IProduitService {
      * Permet de filtrer la liste des produits en fonction du statut de vente
      * 
      * @param  searchTerm terme recherché
-     * @param  tri        tri effectué
+     * @param  filtre     filtre effectué
      * @return            liste triée
      */
-    List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre tri);
+    List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre filtre);
 
     /**
      * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role

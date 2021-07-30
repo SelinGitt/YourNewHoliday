@@ -384,16 +384,16 @@ class ProduitServiceTest {
         produitDo.setMiseEnVente(false);
         final List<ProduitDo> liste = List.of(produitDo, produitDo2);
         Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("", null)).thenReturn(liste);
-        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.ENVENTE)).thenReturn(List.of(produitDo));
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE)).thenReturn(List.of(produitDo));
         Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", null)).thenReturn(liste);
-        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.ENVENTE)).thenReturn(List.of(produitDo));
-        //searchterm blank et tri null
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.EN_VENTE)).thenReturn(List.of(produitDo));
+        //searchterm blank et filtre null
         assertEquals(2, iProduitDaoMock.trouverProduitsRechercheFiltre("", null).size());
-        //searchterm est blank et tri en vente
-        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.ENVENTE).size());
-        //searchterm non vide et tri null
+        //searchterm est blank et filtre en vente
+        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE).size());
+        //searchterm non vide et filtre null
         assertEquals(2, iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", null).size());
-        //searchterm non vide et tri en vente
-        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.ENVENTE).size());
+        //searchterm non vide et filtre en vente
+        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.EN_VENTE).size());
     }
 }

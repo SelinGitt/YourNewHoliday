@@ -95,7 +95,7 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      *
      * @param  searchTerm référence recherchée
      * @param  filtre     de type TypeFiltre
-     * @return            liste de produits recherchée et/ou triée selon le filtre
+     * @return            liste de produits recherchée et filtrée
      */
     List<ProduitDo> trouverProduitsRechercheFiltre(final String searchTerm, final TypeFiltre filtre);
 

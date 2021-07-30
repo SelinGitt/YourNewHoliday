@@ -289,13 +289,13 @@ class ProduitDaoTest {
     @Test
     void testTrouverProduitsRechercheFiltre() {
         //test produits en vente avec la recherche de référence 9
-        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.ENVENTE).size());
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EN_VENTE).size());
         //test produits non en vente avec la recherche de référence 9
-        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NONENVENTE).size());
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NON_EN_VENTE).size());
         //test produits en vente avec la recherche de référence ""
-        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.ENVENTE).size());
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE).size());
         //test produits non en vente avec la recherche de référence ""
-        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NONENVENTE).size());
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NON_EN_VENTE).size());
     }
 
     /**
@@ -304,9 +304,9 @@ class ProduitDaoTest {
     @Test
     void testTrouverProduitsFiltre() {
         //Test produits en vente
-        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.ENVENTE).size());
+        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.EN_VENTE).size());
         //Test produits non en vente
-        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NONENVENTE).size());
+        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NON_EN_VENTE).size());
     }
 
     /**
@@ -315,9 +315,9 @@ class ProduitDaoTest {
     @Test
     void testFindValue() {
         //Value 1
-        assertTrue(TypeFiltre.ENVENTE.getTypeDao());
+        assertTrue(TypeFiltre.EN_VENTE.getTypeDao());
         //Value 2
-        assertFalse(TypeFiltre.NONENVENTE.getTypeDao());
+        assertFalse(TypeFiltre.NON_EN_VENTE.getTypeDao());
         //Value null
         assertNull(TypeFiltre.findValue(null));
     }
