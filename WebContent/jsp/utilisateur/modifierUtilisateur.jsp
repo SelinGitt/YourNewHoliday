@@ -159,7 +159,7 @@
                             <div class="display-flex align-item-center">
                                 <c:choose>
                                     <c:when test="${utilisateurDto.estDesactive}">
-                                        <spring:message code="usr02.client.desactive" />
+                                        <spring:message code="usr02.client.active" />
                                     </c:when>
 
                                     <c:otherwise>
