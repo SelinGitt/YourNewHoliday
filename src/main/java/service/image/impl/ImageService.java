@@ -45,7 +45,7 @@ public class ImageService implements IImageService {
     private IUtilisateurDao     utilisateurDao;
 
     @Override
-    public File getImage(final String id, final String type) {      
+    public File getImage(final String id, final String type) {
         final var typeImage = TypeImage.getTypeImage(type);
         if (typeImage == null) {
             return null;
@@ -128,18 +128,11 @@ public class ImageService implements IImageService {
 
     @Override
     public File getImageFromDiskWithPath(final String path, final String type) {
-        var property = "";
-        if (TypeImage.PRODUIT.getType().equals(type)) {
-            property = TypeImage.PRODUIT.getImageRepo();
-        } else
-            if (TypeImage.UTILISATEUR.getType().equals(type)) {
-                property = TypeImage.UTILISATEUR.getImageRepo();
-
-            } else {
-                return null;
-            }
-        final var cheminComplet = GetPropertyValues.getPropertiesMap().get(property) + File.separator + path;
-
+        final var typeImage = TypeImage.getTypeImage(type);
+        if (typeImage == null) {
+            return null;
+        }
+        final var cheminComplet = GetPropertyValues.getPropertiesMap().get(typeImage.getImageRepo()) + File.separator + path;
         return imageDao.getImage(cheminComplet);
     }
 
