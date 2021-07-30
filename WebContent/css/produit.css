@@ -187,7 +187,7 @@ th.pdt01 {
 	line-height: 4em;
 }
 
-.pdt02ListeService th{
+.pdt02ListeService th {
 	line-height: 2em;
 }
 
@@ -351,13 +351,44 @@ th.pdt01 {
 	align-items: baseline
 }
 
-.pdt04Display {
-	min-width: 50%;
+.pdt04-right-side {
+	margin-top: 3em;
+	margin-left: 0.5em;
+}
+
+.pdt04-form {
+	display: flex;
+}
+
+.pdt04-reference {
+	padding-bottom: 3em;
+	font-weight: bold;
+	font-size: 1.250em;
+}
+
+.pdt04-prix {
+	padding-bottom: 5em;
+	font-weight: bold;
+	font-size: 1.250em;
+}
+
+.pdt04-quantite {
+	margin-left: 3.3em;
+	padding-bottom: 1em;
+}
+
+.pdt04-pan-quantite {
+	width: 1.7em;
+	font-size: 1.250em;
+}
+
+.pdt04-ajouter {
+	margin-left: 3em;
 }
 
 .pdt04Image {
-	width: 25em;
-	height: 15em;
+	width: 31em;
+	height: 18em;
 }
 
 .pdt04Hebergement {
@@ -379,4 +410,8 @@ th.pdt01 {
 
 .pdt04IconeSpace {
 	padding: 0.3em;
+}
+
+.pdt04-bouton {
+	color: #FFFFFF;
 }
