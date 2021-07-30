@@ -206,14 +206,16 @@ public class PanierService implements IPanierService {
      */
     private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
         final var produitEnVente = produitDao.findProduitEnVente(id);
-        if (produitEnVente == null) {
+        if (produitEnVente == null || !produitEnVente.getMiseEnVente()) {
             return null;
         }
         // On récupère le produit
         final var produitDto = findProduitMap(panier, id);
-
-        // TODO : controle de la version. (ISSUES 295)
-        return produitDto;
+        // il faut que le produit en vente soit de la même version que le produit du panier
+        if (produitEnVente.getVersion().toString().equals(produitDto.getVersion())) {
+            return produitDto;
+        }
+        return null;
     }
 
     /**
