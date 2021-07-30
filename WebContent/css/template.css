@@ -59,6 +59,16 @@ header, footer {
 	vertical-align: middle;
 }
 
+.headerCell a {
+	display: block;
+	color: #000000;
+	text-decoration: none;
+}
+
+.headerCell a:hover {
+	color: #818181;
+}
+
 .headerSousCellNbrPdtContainer {
 	position: absolute;
 	display: inline-block;
@@ -97,11 +107,6 @@ aside {
 .link-container {
 	width: 90%;
 	margin: auto;
-}
-
-.link-container.underline {
-	border-bottom: 0.188em solid #000000;
-	padding-bottom: 1.25em;
 }
 
 .link-container.admin {
