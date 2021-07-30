@@ -408,9 +408,6 @@ class PanierServiceTest {
     @Test
     void testConformitéProduitAModifierKO() {
         final var panier = new PanierDto();
-        final var produitDoPlusEnVente = new ProduitDo();
-        produitDoPlusEnVente.setIdProduitOriginal(42);
-        produitDoPlusEnVente.setMiseEnVente(false);
         final ProduitDto produitDtoPlusEnVente = new ProduitDto();
         produitDtoPlusEnVente.setIdProduitOriginal("42");
         produitDtoPlusEnVente.setPrixUnitaire("10");
