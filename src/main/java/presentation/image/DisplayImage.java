@@ -5,6 +5,7 @@ package presentation.image;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -44,15 +45,23 @@ public class DisplayImage {
      * ex: {@code <<i>img src="DisplayImage.do?id=1&type=pdt"</i>>}
      * </pre>
      * 
-     * @param response permet d'écrire dans une servlet
-     * @param id       l'id à rechercher
-     * @param type     le type d'image
+     * @param response    permet d'écrire dans une servlet
+     * @param id          l'id à rechercher
+     * @param type        le type d'image
+     * @param imageToShow nom du fichier à afficher
      */
     @GetMapping
-    public void showImage(final HttpServletResponse response, final @RequestParam("id") String id,
-            final @RequestParam("type") String type) {
+    public void showImage(final HttpServletResponse response, final @RequestParam(value = "id", required = false) String id,
+            final @RequestParam(value = "type") String type,
+            final @RequestParam(value = "imageToShow", required = false) String imageToShow) {
+        File file;
+        if (id == null) {
+            file = imageService.getImageFromDiskWithPath(imageToShow, type);
+        } else {
+            file = imageService.getImage(id, type);
+        }
         try (final var servletOutputStream = response.getOutputStream();
-                final var fileInputStream = new FileInputStream(imageService.getImage(id, type));
+                final var fileInputStream = new FileInputStream(file);
                 final var bufferedInputStream = new BufferedInputStream(fileInputStream);
                 final var bufferedOutputStream = new BufferedOutputStream(servletOutputStream)) {
 
@@ -64,4 +73,5 @@ public class DisplayImage {
             logger.warn(ioe.getMessage(), ioe);
         }
     }
+
 }

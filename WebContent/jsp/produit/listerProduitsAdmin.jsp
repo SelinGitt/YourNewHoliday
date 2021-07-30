@@ -8,54 +8,55 @@
     <spring:message code="glb.titre.page.listerProduitsAdmin" />
 </p>
 
-<div class="conteneur-ascenseur">
-    <c:if test="${not empty anyError}">
-        <div class="background-error-block block-message-commun">
-            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
-        </div>
-    </c:if>
-    <c:if test="${not empty anySuccess}">
-        <div class="background-validation-block block-message-commun">
-            <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
-        </div>
-    </c:if>
-    <h1 class="text-align-center">
-        <spring:message code="pdt01.titre" />
-    </h1>
-    <div class="display-flex align-items-flex-end">
-        <div class="searchBar display-flex pdt01Search align-content-flex-end ">
-            <form:form action="listerProduitsAdmin.do" method="POST">
-                <input type="hidden" name="tri" value="${tri}" />
-                <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
-                    placeholder="<spring:message code='pdt01.searchbar'/>">
-                <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
-            </form:form>
-        </div>
-        <div class="pdt01-searchBarSpace">
-            <form:form action="listerProduitsAdmin.do" method="POST">
-                <input type="hidden" name="searchInput" value="${searchTerm}" />
-                <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
-                <select id="triSelect" name="tri">
-                    <option selected value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
-                    <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                    <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
-                </select>
-                <script>
+<c:if test="${not empty anyError}">
+    <div class="background-error-block block-message-commun">
+        <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
+    </div>
+</c:if>
+<c:if test="${not empty anySuccess}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
+    </div>
+</c:if>
+<h1 class="text-align-center">
+    <spring:message code="pdt01.titre" />
+</h1>
+
+<div class="display-flex align-items-flex-end">
+    <div class="searchBar display-flex pdt01Search align-content-flex-end ">
+        <form:form action="listerProduitsAdmin.do" method="POST">
+            <input type="hidden" name="tri" value="${tri}" />
+            <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
+                placeholder="<spring:message code='pdt01.searchbar'/>">
+            <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
+        </form:form>
+    </div>
+    <div class="pdt01-searchBarSpace">
+        <form:form action="listerProduitsAdmin.do" method="POST">
+            <input type="hidden" name="searchInput" value="${searchTerm}" />
+            <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
+            <select id="triSelect" name="tri">
+                <option selected value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
+                <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
+                <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+            </select>
+            <script>
                      document.getElementById("triSelect").options[${tri}].selected=true;
 				</script>
-                <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
-            </form:form>
-        </div>
-        <div class="pdt01AddProduit">
-            <a href="creerProduitAdmin.do">
-                <button type="button" class="bouton-sans-impact-BD">
-                    <span class="fa fa-plus-square-o" aria-hidden="true"></span>
-                    <spring:message code="pdt01.creer.nouveau" />
-                </button>
-            </a>
-        </div>
+            <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
+        </form:form>
     </div>
-    <br>
+    <div class="pdt01AddProduit">
+        <a href="creerProduitAdmin.do">
+            <button type="button" class="bouton-sans-impact-BD">
+                <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                <spring:message code="pdt01.creer.nouveau" />
+            </button>
+        </a>
+    </div>
+</div>
+<div class="pdt01-conteneur-ascenseur">
+
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
         <thead>
             <tr>
