@@ -46,18 +46,6 @@
 	width: 53%;
 }
 
-.user00-modifier {
-	background-color: #6AA84F;
-	color: #FFFFFF;
-	margin: auto;
-}
-
-.user00-supprimer {
-	background-color: #E06666;
-	color: #FFFFFF;
-	margin: auto;
-}
-
 /* USR01 */
 .user01-message {
 	margin-left: 0.5em;
@@ -66,9 +54,10 @@
 .user01-conteneur-ascenseur {
 	box-sizing: border-box;
 	overflow-y: auto;
-	height: 100%;
+	height: 75%;
 	width: 98%;
 }
+
 .user01-searchMenu {
 	margin-bottom: 0.938em;
 	width: 98%;
@@ -88,7 +77,6 @@
 
 .user01-table {
 	height: 64vh;
-	overflow-y: scroll;
 }
 
 .user01-lister {
@@ -120,11 +108,6 @@
 	height: auto;
 }
 
-.user01-newUserBouton {
-	background-color: #22B14C;
-	color: #FFFFFF;
-}
-
 /* USR02 */
 .user02-body-general {
 	width: 100%;
@@ -144,33 +127,37 @@
 }
 
 .user02-form-inputs {
-	width: 70%;
+	width: 55%;
 }
 
 .user02-inputs {
 	width: 100%;
 }
 
+.user02-infos {
+	margin-left: 3em;
+	margin-bottom: 2em;
+	justify-content: space-between;
+	display: flex;
+}
+
 .user02-textarea {
 	resize: none;
-	height: 5em;
 }
 
 .user02-buttons {
-	width: 70%;
 	float: right;
-}
-
-.user02-valider {
-	color: #FFFFFF;
-}
-
-.user02-reset {
-	color: #FFFFFF;
+	display: flex;
+	justify-content: space-between;
+	width: 52%;
 }
 
 .user02-rightSide-avatar {
 	margin-bottom: 1em;
+}
+
+.user02-avatar {
+	width: 15.625em;
 }
 
 .user02-admin-options {
@@ -243,28 +230,31 @@
 	height: 5em;
 }
 
-.user05-buttons {
-	width: 70%;
-	float: right;
+.user05-label-file {
+	padding-left: 3em;
 }
 
-.user05-creer {
-	color: #FFFFFF;
+.user05-input-file {
+	padding-left: 22em;
 }
 
-.user05-reset {
-	color: #FFFFFF;
+.user05-ErrorMessage {
+	margin-left: 25em;
 }
 
+.user05-FormImage {
+	padding: 0 0.313em 0 0.313em;
+	padding-left: 5.5em;
+	margin-bottom: 1em;
+}
+
+.user05-image {
+	height: 20em;
+	width: 23em;
+}
 /* USR07 */
 .user07-body-general {
 	width: 100%;
-}
-
-.user07-title {
-	text-align: center;
-	margin-right: 6.25em;
-	margin-bottom: 3.125em;
 }
 
 .user07-form {
@@ -281,27 +271,14 @@
 
 .user07-lib-champ-email {
 	margin-left: 3.125em;
-	width: 18.75em;
 }
 
 .user07-lib-champ-password {
 	margin-left: 3.125em;
-	width: 18.75em;
 }
 
 .user07-lib-champ {
 	justify-content: space-between;
 	margin-bottom: 3.125em;
-}
-
-.user07-boutonValider {
-	background-color: #008000;
-	margin-left: 4.375em;
-	margin-right: 20%;
-	Color: #FFFFFF;
-}
-
-.user07-boutonReset {
-	background-color: #FF0000;
-	Color: #FFFFFF;
+	margin-top: 4em;
 }

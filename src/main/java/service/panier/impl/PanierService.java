@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import persistance.produit.dao.IProduitDao;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -58,6 +59,9 @@ public class PanierService implements IPanierService {
 
     @Autowired
     private IUtilisateurService iUtilisateurService;
+
+    @Autowired
+    private IProduitDao         produitDao;
 
     @Override
     public PanierDto updatePanier(final PanierDto panier, final Integer idProduit, final Integer quantite) {
@@ -140,8 +144,8 @@ public class PanierService implements IPanierService {
     public boolean isRemiseExpected(final PanierDto panier) {
         // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
         // au minimum imposé, alors la remise est applicable.
-        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && DecimalFormatUtils.doubleFormatUtil(panier
-                .getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
+        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE
+                && DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
     }
 
     @Override
@@ -159,8 +163,8 @@ public class PanierService implements IPanierService {
             // (il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
             // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus)
             // on actualise aussi de fait le prix après remise
-            panier.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils
-                    .doubleFormatUtil(panier.getRemiseAffichage())));
+            panier.setPrixApresRemiseAffichage(DecimalFormatUtils
+                    .decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
             // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
         } else {
             panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
@@ -170,16 +174,46 @@ public class PanierService implements IPanierService {
     }
 
     @Override
-    public void modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
-        // On récupère le produit
-        final ProduitDto produit = findProduitMap(panier, idProduit);
-
+    public boolean modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
+        // S'il est conforme, on récupère le produit du panier.
+        final var produitDto = isProduitConforme(panier, idProduit);
+        // Si le produit n'était pas conforme pour la modification :
+        // car plus en vente ou modifié.
+        if (produitDto == null) {
+            // On ne fait pas de traitement.
+            return false;
+        }
         // On récupère la quantité avant modification
-        final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
+        final Integer quantiteInitiale = panier.getMapPanier().get(produitDto).getQuantite();
 
+        // On teste aussi les valeurs à modifier avant de modifier
         if (isModificationAutorisee(modif, quantiteInitiale)) {
             updatePanier(panier, idProduit, modif);
         }
+        return true;
+    }
+
+    /**
+     * <pre>
+     * Permets de déterminer si le produit peut être modifié, Pour cela il doit : 
+     * - toujours être en vente 
+     * - ne pas avoir été modifié par un admin (controle du numéro de version)
+     * </pre>
+     *
+     * @param  id du produit à vérifier
+     * @param  le panier
+     * @return    le produitdto du panier s'il est conforme, null sinon.
+     */
+    private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
+        final var produitEnVente = produitDao.findProduitEnVente(id);
+        if (produitEnVente == null) {
+            return null;
+        }
+        // On récupère le produit
+        final var produitDto = findProduitMap(panier, id);
+
+        // TODO : controle de la version. (ISSUES 295)
+        return produitDto;
     }
 
     /**
@@ -226,8 +260,8 @@ public class PanierService implements IPanierService {
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDoReference);
         }
-        logger.info("Fin de validation Commande avec {} produits non concordant.", retourValiderPanier.getListIdProduitNonConcordant()
-                .size());
+        logger.info("Fin de validation Commande avec {} produits non concordant.",
+                retourValiderPanier.getListIdProduitNonConcordant().size());
         return retourValiderPanier;
     }
 }

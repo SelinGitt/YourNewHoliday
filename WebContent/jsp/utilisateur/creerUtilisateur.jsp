@@ -25,7 +25,21 @@
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
+        <div class="display-flex user05-FormImage">
+            <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
+                <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
+                            code="usr05.label.avatar"></spring:message></label></span>
+                <span class="user05-form-inputs user05-input-file"> <input type="file" name="file"
+                    accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
+                </span>
 
+                <c:if test="${not empty imgError}">
+                    <div class="text-color-rouge user05-ErrorMessage">
+                        <spring:message code="${imgError}" />
+                    </div>
+                </c:if>
+            </form:form>
+        </div>
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
             class="display-flex justify-content-space-around">
 
@@ -91,10 +105,10 @@
                 </div>
 
                 <div class="display-flex justify-content-space-around user05-buttons">
-                    <button class="user05-creer background-color-green" type="submit">
+                    <button class="bouton-impact-BD" type="submit">
                         <spring:message code="usr05.creer.valider" />
                     </button>
-                    <button class="user05-reset background-color-rouge" type="reset">
+                    <button class="bouton-rouge" type="reset">
                         <spring:message code="usr05.creer.reset" />
                     </button>
                 </div>
@@ -122,34 +136,24 @@
             </div>
             <c:if test="${not empty avatar}">
                 <div class="display-flex justify-content-space-between">
-                    <div>
-                        <spring:message code="usr05.label.avatarChosen" />
-                        : ${avatar}
+                    <div class="user05-image">
+                        <img src="displayImage.do?imageToShow=${avatar}&type=usr" alt="Image Utilisateur"
+                            class="pdt03ImgWidth">
                     </div>
                 </div>
                 <form:hidden path="cheminAvatar" value="${avatar}" />
+            </c:if>
+            <c:if test="${empty avatar}">
+                <div class="display-flex justify-content-space-between">
+                    <div class="user05-image">
+                        <spring:message code="usr05.label.avatarChosen" />
+                    </div>
+                </div>
             </c:if>
             <%-- On ne peut pas placer ce formulaire dans le form d'inscription, c'est invalide.--%>
             <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
             <%-- cf : https://imgur.com/a/KoUx67i --%>
             <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-        </form:form>
-        <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post"
-            class="display-flex justify-content-space-around">
-            <div class="user05-leftSide">
-                <div class="display-flex justify-content-space-around">
-                    <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
-                    <div class="user05-form-inputs">
-                        <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit"
-                            value="submit" />
-                        <c:if test="${not empty imgError}">
-                            <div class="text-color-rouge">
-                                <spring:message code="${imgError}" />
-                            </div>
-                        </c:if>
-                    </div>
-                </div>
-            </div>
         </form:form>
     </div>
 </div>

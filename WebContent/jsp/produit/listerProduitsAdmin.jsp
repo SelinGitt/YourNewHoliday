@@ -8,39 +8,42 @@
     <spring:message code="glb.titre.page.listerProduitsAdmin" />
 </p>
 
-<div class="conteneur-ascenseur">
-    <c:if test="${not empty anyError}">
-        <div class="background-error-block block-message-commun">
-            <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
-        </div>
-    </c:if>
-    <c:if test="${not empty anySuccess}">
-        <div class="background-validation-block block-message-commun">
-            <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
-        </div>
-    </c:if>
-    <h1 class="text-align-center">
-        <spring:message code="pdt01.titre" />
-    </h1>
-    <div class="display-flex">
-        <div class="searchBar display-flex pdt01Search align-content-flex-end ">
-            <form:form action="listerProduitsAdmin.do" method="POST">
-                <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
-                    placeholder="<spring:message code='pdt01.searchbar'/>">
-                <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
-            </form:form>
-        </div>
 
-        <div class="pdt01AddProduit">
-            <a href="creerProduitAdmin.do">
-                <button type="button" class="pdt01-newProduitButton">
-                    <span class="fa fa-plus-square-o" aria-hidden="true"></span>
-                    <spring:message code="pdt01.creer.nouveau" />
-                </button>
-            </a>
-        </div>
+<c:if test="${not empty anyError}">
+    <div class="background-error-block block-message-commun">
+        <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
     </div>
-    <br>
+</c:if>
+<c:if test="${not empty anySuccess}">
+    <div class="background-validation-block block-message-commun">
+        <span class="fa fa-check"></span> <span><spring:message code="${anySuccess}" /></span>
+    </div>
+</c:if>
+<h1 class="text-align-center">
+    <spring:message code="pdt01.titre" />
+</h1>
+<div class="display-flex align-items-flex-end">
+    <div class="searchBar display-flex pdt01Search align-content-flex-end ">
+        <form:form action="listerProduitsAdmin.do" method="POST">
+            <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
+                placeholder="<spring:message code='pdt01.searchbar'/>">
+            <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
+        </form:form>
+    </div>
+
+    <div class="pdt01AddProduit">
+        <a href="creerProduitAdmin.do">
+            <button type="button" class="bouton-sans-impact-BD">
+                <span class="fa fa-plus-square-o" aria-hidden="true"></span>
+                <spring:message code="pdt01.creer.nouveau" />
+            </button>
+        </a>
+    </div>
+</div>
+<br>
+
+<div class="pdt01-conteneur-ascenseur">
+
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
         <thead>
             <tr>
@@ -64,8 +67,8 @@
         <tbody class="pdt01Body">
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
-                    <td class="pdt01Body">
-                    <a href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                    <td class="pdt01Body"><a
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
                             ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
@@ -91,9 +94,10 @@
                     <td class="pdt01Body"><a href="editerProduitAdmin.do?ref=${produitDto.reference}"> <img
                             alt="" src="img/commun/editer.png" class="pdt01Image">
                     </a></td>
-                    <td class="pdt01Body"><a href="supprimerProduitAdmin.do?idProduit=${produitDto.idProduitOriginal}"
-                    onclick="return confirm('<spring:message code="pdt01.confirmDelete" />')"> 
-                    <img alt="" src="img/commun/poubelle.jpg" class="pdt01Image">
+                    <td class="pdt01Body"><a
+                        href="supprimerProduitAdmin.do?idProduit=${produitDto.idProduitOriginal}"
+                        onclick="return confirm('<spring:message code="pdt01.confirmDelete" />')"> <img alt=""
+                            src="img/commun/poubelle.jpg" class="pdt01Image">
                     </a></td>
                 </tr>
             </c:forEach>

@@ -93,18 +93,6 @@
 	width: 55%;
 }
 
-.panier-valider {
-	background-color: #6AA84F;
-	color: #FFFFFF;
-	margin: auto;
-}
-
-.panier-vider {
-	background-color: #E06666;
-	color: #FFFFFF;
-	margin: auto;
-}
-
 .panier-image-responsive {
 	width: 3.125em;
 	height: auto;
@@ -220,12 +208,8 @@
 	margin-right: 1em;
 }
 
-.panier-margin-left-15 {
-	margin-left: 15%;
-}
-
-.panier-margin-left-10 {
-	margin-left: 10%;
+.panier-margin-left-25 {
+	margin-left: 25%;
 }
 
 .panier-formulaire {
