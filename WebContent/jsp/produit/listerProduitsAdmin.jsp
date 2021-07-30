@@ -22,17 +22,17 @@
     <spring:message code="pdt01.titre" />
 </h1>
 
-<div class="display-flex align-items-flex-end">
+<div class="display-flex align-items-flex-end pdtDesignRechercheFiltre">
     <div class="searchBar display-flex pdt01Search align-content-flex-end ">
-        <form:form action="listerProduitsAdmin.do" method="POST">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduitsAdmin.do" method="POST">
             <input type="hidden" name="filtre" value="${filtre}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt01.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
         </form:form>
     </div>
-    <div class="pdt01-searchBarSpace">
-        <form:form action="listerProduitsAdmin.do" method="POST">
+    <div class="pdtDesignRechercheFiltre">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduitsAdmin.do" method="POST">
             <input type="hidden" name="searchInput" value="${searchTerm}" />
             <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
             <select id="filtreSelect" name="filtre">
@@ -43,7 +43,7 @@
             <script>
                      document.getElementById("filtreSelect").options[${filtre}].selected=true;
 				</script>
-            <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
+            <input class="pdtSearchBarOk" type="submit" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
     <div class="pdt01AddProduit">
