@@ -3,6 +3,7 @@
  */
 package persistance.produit.dao.impl;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -25,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
@@ -279,5 +281,44 @@ class ProduitDaoTest {
         // On essaie de récupérer un produit qui n'est pas en vente
         final ProduitDo produitDoPasEnVente = iProduitDao.findProduitEnVenteAvecVersion(1, 1);
         assertNull(produitDoPasEnVente);
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#trouverProduitsRechercheFiltre(String, String)}.
+     */
+    @Test
+    void testTrouverProduitsRechercheFiltre() {
+        //test produits en vente avec la recherche de référence 9
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EN_VENTE).size());
+        //test produits non en vente avec la recherche de référence 9
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NON_EN_VENTE).size());
+        //test produits en vente avec la recherche de référence ""
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE).size());
+        //test produits non en vente avec la recherche de référence ""
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NON_EN_VENTE).size());
+    }
+
+    /**
+     * Test method for {@link persistance.produit.dao.impl.ProduitDao#trouverProduitsFiltre(TypeFiltre)}.
+     */
+    @Test
+    void testTrouverProduitsFiltre() {
+        //Test produits en vente
+        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.EN_VENTE).size());
+        //Test produits non en vente
+        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NON_EN_VENTE).size());
+    }
+
+    /**
+     * Test method for {@link presentation.produit.controller.TypeFiltre#findValue(String)}.
+     */
+    @Test
+    void testFindValue() {
+        //Value 1
+        assertTrue(TypeFiltre.EN_VENTE.getTypeDao());
+        //Value 2
+        assertFalse(TypeFiltre.NON_EN_VENTE.getTypeDao());
+        //Value null
+        assertNull(TypeFiltre.findValue(null));
     }
 }
