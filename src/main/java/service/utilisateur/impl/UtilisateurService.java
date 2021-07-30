@@ -182,8 +182,17 @@ public class UtilisateurService implements IUtilisateurService {
             return null;
         }
 
+        final var userDo = UtilisateurMapper.mapperToDo(utilisateurDto);
+
+        // Si l'utilisateur ne change pas son mdp, on recup son ancien mdp hash
+        // Obligatoire car le mappeur hash le mdp
+        // On n'utilise pas findByEmail car l'utilisateur peut modifier l'email
+        if (utilisateurDto.getPassword().isEmpty()) {
+            userDo.setMdpHash(this.iUtilisateurDao.findById(utilisateurDto.getId()).getMdpHash());
+        }
+
         logger.info("L'utilisateur ref : {} a été mis à jour", utilisateurDto.getReference());
-        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(UtilisateurMapper.mapperToDo(utilisateurDto)));
+        return UtilisateurMapper.mapperToDto(this.iUtilisateurDao.update(userDo));
     }
 
     @Override
