@@ -105,13 +105,13 @@
                         <td></td>
                         <td class="justify-content-space-around display-flex">
                             <div>
-                                <form:button value="submit" class="background-color-green">
+                                <form:button value="submit" class="bouton-impact-BD">
                                     <spring:message code="form.pdt03.valider" />
                                 </form:button>
                             </div>
                             <div>
 
-                                <form:button type="reset" class="background-color-rouge">
+                                <form:button type="reset" class="bouton-rouge">
                                     <spring:message code="form.pdt03.reset" />
                                 </form:button>
                             </div>

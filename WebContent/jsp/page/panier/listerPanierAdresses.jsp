@@ -74,7 +74,7 @@
                         </div>
                     </div>
                     <%-- boutton reset formulaire --%>
-                    <button type="button" class="panier-margin-left-10" onclick="informationsLivraison()">
+                    <button class="panier-margin-left-25" onclick="informationsLivraison()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
@@ -117,7 +117,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="panier-margin-left-15" onclick="informationsFacturation()">
+                    <button class="panier-margin-left-25" onclick="informationsFacturation()">
                         <spring:message code="pan08.boutton.information" />
                     </button>
                 </fieldset>
@@ -164,7 +164,7 @@
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
-                <button type="submit" class="panier-valider">
+                <button type="submit" class="bouton-impact-BD">
                     <spring:message code="pan00.valider.panier" />
                 </button>
             </div>
