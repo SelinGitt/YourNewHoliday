@@ -40,7 +40,8 @@
 
 	<!-- Configuration du multipartconfig resolver -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" >
-		<property name="maxUploadSize" value="5000000" />
+	<!-- modification pour autoriser des plus gros fichiers, pour les tests. -->
+		<property name="maxUploadSize" value="25000000" />
 		<property name="maxInMemorySize" value="1048576" />
 	</bean>
 	

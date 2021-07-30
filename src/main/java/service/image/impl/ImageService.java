@@ -122,4 +122,13 @@ public class ImageService implements IImageService {
         return byteArray.length > size;
     }
 
+    @Override
+    public File getImageFromDiskWithPath(final String path, final String type) {
+        if (TypeImage.PRODUIT.getType().equals(type)) {
+            final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + path;
+            return imageDao.getImage(cheminComplet);
+        }
+        return null;
+    }
+
 }
