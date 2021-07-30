@@ -27,13 +27,13 @@
     </div>
     <br />
     <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
-        <form:form class="pdt00Align" action="listerProduits.do" method="POST">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduits.do" method="POST">
             <input type="hidden" name="tri" value="${tri}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
         </form:form>
-        <form:form class="pdt00Align" action="listerProduits.do" method="POST" id="tri">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduits.do" method="POST" id="tri">
             <input type="hidden" name="searchInput" value="${searchTerm}" />
             <select id="triSelect" name="tri">
                 <option disabled><spring:message code="pdt00.tri.default" /></option>
@@ -46,7 +46,6 @@
             <input class="pdtSearchBarOk" type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
-    <br />
     <div class="display-flex flex-wrap-wrap justify-content-center">
         <c:forEach items="${listeProduitDto}" var="produitDto">
             <table class="pdt00ContainerVoyage display-inline-flex justify-content-center flex-wrap-wrap"
@@ -64,7 +63,7 @@
                         ${produitDto.prixUnitaire} €</td>
                 </tr>
                 <tr>
-                    <td class="text-responsive"><spring:message code="pdt00.reference"/>${produitDto.reference}</td>
+                    <td class="text-responsive"><spring:message code="pdt00.reference" />${produitDto.reference}</td>
                 </tr>
                 <tr>
                     <td class="pdt00Description display-flex text-responsive">${produitDto.description}</td>

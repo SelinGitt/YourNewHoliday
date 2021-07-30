@@ -71,8 +71,9 @@ td.pdt00Description {
 	width: 1.7em;
 }
 
-.pdt00Align {
+.pdtDesignRechercheFiltre {
 	display: contents;
+	margin-bottom: 0.938em;
 }
 
 /* PDT01 */
@@ -124,10 +125,6 @@ th.pdt01 {
 .pdt01AddProduit {
 	margin-left: auto;
 	margin-right: 2%;
-}
-
-.pdt01-searchBarSpace {
-	margin-left: 1em;
 }
 
 /* PDT02 */
