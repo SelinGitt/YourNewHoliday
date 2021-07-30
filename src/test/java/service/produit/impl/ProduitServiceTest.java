@@ -25,11 +25,13 @@ import org.mockito.MockitoAnnotations;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.ProduitMapper;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -256,6 +258,51 @@ class ProduitServiceTest {
     }
 
     /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduitKO() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(null);
+
+        final ProduitEditerResponse response = this.produitServiceMock.editerProduit(produitDto);
+
+        assertNotNull(response);
+        assertEquals("deleted", response.getError());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduitKO2() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setVersion("2");
+
+        final ProduitDo produitFound = new ProduitDo();
+        produitFound.setVersion(3);
+        produitFound.setIdProduitOriginal(99);
+        produitFound.setNom("Test Edition");
+        produitFound.setReference("TEST00000");
+        produitFound.setPrixUnitaire(10d);
+        produitFound.setServices(345);
+        produitFound.setMiseEnVente(true);
+        produitFound.setHebergement("Hotel Test");
+        produitFound.setDestination("Testmanie");
+        produitFound.setDescription("Test moi");
+        produitFound.setCheminImage("C:/temp/img/test.png");
+
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(produitFound);
+
+        final ProduitEditerResponse response = this.produitServiceMock.editerProduit(produitDto);
+
+        assertNotNull(response);
+        assertEquals("updated", response.getError());
+    }
+
+    /**
      * Test method for {@link service.produit.impl.ProduitService#trouverProduitById(Integer)}.
      */
     @Test
@@ -363,5 +410,36 @@ class ProduitServiceTest {
         assertNotNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.ADMINISTRATEUR, 1));
         assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.VISITEUR, 1));
         assertNull(produitServiceMock.consulterProduitWithRole(UtilisateurRoleEnum.CLIENT, 1));
+    }
+
+    /**
+     * Test method for
+     * {@link service.produit.impl.ProduitService#filtrerEnVente(String, presentation.produit.controller.TypeFiltre)}.
+     */
+    @Test
+    void testFilterEnVente() {
+        final var produitDo = new ProduitDo();
+        produitDo.setPrixUnitaire(1274d);
+        produitDo.setIdProduitOriginal(10);
+        produitDo.setReference("ZZZ1234567");
+        produitDo.setMiseEnVente(true);
+        final var produitDo2 = new ProduitDo();
+        produitDo2.setPrixUnitaire(126d);
+        produitDo2.setIdProduitOriginal(11);
+        produitDo2.setReference("ZZZ9876543");
+        produitDo.setMiseEnVente(false);
+        final List<ProduitDo> liste = List.of(produitDo, produitDo2);
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("", null)).thenReturn(liste);
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE)).thenReturn(List.of(produitDo));
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", null)).thenReturn(liste);
+        Mockito.when(iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.EN_VENTE)).thenReturn(List.of(produitDo));
+        //searchterm blank et filtre null
+        assertEquals(2, iProduitDaoMock.trouverProduitsRechercheFiltre("", null).size());
+        //searchterm est blank et filtre en vente
+        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("", TypeFiltre.EN_VENTE).size());
+        //searchterm non vide et filtre null
+        assertEquals(2, iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", null).size());
+        //searchterm non vide et filtre en vente
+        assertEquals(1, iProduitDaoMock.trouverProduitsRechercheFiltre("ZZZ", TypeFiltre.EN_VENTE).size());
     }
 }

@@ -6,9 +6,11 @@ package service.produit;
 import java.util.List;
 
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -61,9 +63,9 @@ public interface IProduitService {
      * Permet de maj un produit
      * 
      * @param  produitDto le produit à éditer
-     * @return            le produit édité, null sinon
+     * @return            ProduitEditerResponse
      */
-    ProduitDto editerProduit(final ProduitDto produitDto);
+    ProduitEditerResponse editerProduit(final ProduitDto produitDto);
 
     /**
      * Permet de trouver un produit via sa référence
@@ -114,6 +116,15 @@ public interface IProduitService {
      *                      <code>false</code> dans le cas contraire
      */
     PanierDto updatePanier(final PanierDto panierDto, final BeanQuantite beanQuantite);
+
+    /**
+     * Permet de filtrer la liste des produits en fonction du statut de vente
+     * 
+     * @param  searchTerm terme recherché
+     * @param  filtre     filtre effectué
+     * @return            liste triée
+     */
+    List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre filtre);
 
     /**
      * Permet de choisir la méthode utlisée pour la consultation d'un produit selon le role

@@ -14,12 +14,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -74,7 +76,10 @@ public class ProduitService implements IProduitService {
         }
 
         if (tri == null) {
-            return rechercherProduits(searchTerm);
+            if (searchTerm.isBlank()) {
+                return listerAllProduit();
+            }
+            return rechercherProduitsEnVente(searchTerm);
         }
         return listerFiltreTri(tri, searchTerm);
     }
@@ -89,15 +94,22 @@ public class ProduitService implements IProduitService {
         return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
     }
 
-    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        logger.debug("Produit Service / méthode rechercherProduits, pSearchTerm : {}", pSearchTerm);
-        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
-
-    }
-
     @Override
-    public ProduitDto editerProduit(final ProduitDto produitDto) {
+    public ProduitEditerResponse editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
+
+        final var builder = new ProduitEditerResponse.ProduitEditerResponseBuilder();
+
+        if (produitFound == null) {
+            this.logger.error("Produit Service / editerProduit - Produit introuvable avec id {}", produitDto.getIdProduitOriginal());
+            return builder.withError("deleted").build();
+        }
+
+        if (!produitFound.getVersion().equals(produitDto.getVersion())) {
+            this.logger.error("Produit Service / editerProduit - Le produit edite n'est pas a jour {}", produitDto.getIdProduitOriginal());
+            return builder.withError("updated").build();
+        }
+
         this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
                 produitDto.getIdProduitOriginal(), produitFound.getReference());
         // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
@@ -105,10 +117,10 @@ public class ProduitService implements IProduitService {
             final var produitDoWithChanges = ProduitMapper.mapToDo(produitDto);
             this.logger.debug("Produit Service / editerProduit - Les produits sont différents");
             produitDoWithChanges.setVersion(produitDoWithChanges.getVersion() + 1);
-            return ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges));
+            return builder.withPdt(ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges))).build();
         }
         this.logger.debug("Produit Service / editerProduit - Les produits sont identiques");
-        return produitFound;
+        return builder.withPdt(produitFound).build();
     }
 
     @Override
@@ -153,7 +165,7 @@ public class ProduitService implements IProduitService {
         if (produitDo == null) {
             this.logger.warn("Le produit d'id  {} n'existe pas en BdD.", id);
             return false;
-        }      
+        }
         produitDao.delete(produitDo);
         this.logger.debug("Le produit d'id  {} a été supprimé.", id);
         return true;
@@ -166,6 +178,28 @@ public class ProduitService implements IProduitService {
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre filtre) {
+        if (searchTerm.isBlank()) {
+            if (filtre == null) {
+                return listerAllProduit();
+            }
+            return trouverProduitsFiltre(filtre);
+        }
+        if (filtre == null) {
+            return rechercherAllProduits(searchTerm);
+        }
+        return trouverProduitsFiltreRecherche(searchTerm, filtre);
+    }
+
+    private List<ProduitDto> trouverProduitsFiltre(final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
+    }
+
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String searchTerm, final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(searchTerm, filtre));
     }
 
     @Override

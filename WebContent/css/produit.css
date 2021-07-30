@@ -74,7 +74,7 @@ td.pdt00Description {
 .pdt01-conteneur-ascenseur {
 	box-sizing: border-box;
 	overflow-y: auto;
-	height: 100%;
+	height: 75%;
 	width: 98%;
 }
 
@@ -119,6 +119,10 @@ th.pdt01 {
 .pdt01AddProduit {
 	margin-left: auto;
 	margin-right: 2%;
+}
+
+.pdt01-searchBarSpace {
+	margin-left: 1em;
 }
 
 /* PDT02 */
@@ -182,6 +186,10 @@ th.pdt01 {
 .pdt02ListeService {
 	width: 100%;
 	line-height: 4em;
+}
+
+.pdt02ListeService th{
+	line-height: 2em;
 }
 
 .pdt02ImageCreationProduit {

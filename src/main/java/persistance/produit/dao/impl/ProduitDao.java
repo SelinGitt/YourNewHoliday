@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import persistance.commun.dao.impl.AbstractGenericDao;
 import persistance.produit.dao.IProduitDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
@@ -144,6 +145,24 @@ public class ProduitDao extends AbstractGenericDao<ProduitDo> implements IProdui
                     noResultException);
             return null;
         }
+    }
+
+    @Override
+    public List<ProduitDo> trouverProduitsFiltre(final TypeFiltre filtre) {
+        final TypedQuery<ProduitDo> query = entityManager.createQuery("FROM ProduitDo WHERE mise_en_vente = :filtre", ProduitDo.class);
+        query.setParameter("filtre", filtre.getTypeDao());
+        logger.debug("ProduitDao trouverProduitFiltre; filtre ; {}", filtre.getTypeDao());
+        return query.getResultList();
+    }
+
+    @Override
+    public List<ProduitDo> trouverProduitsRechercheFiltre(final String searchTerm, final TypeFiltre filtre) {
+        final TypedQuery<ProduitDo> query = entityManager
+                .createQuery("FROM ProduitDo WHERE reference like :searchTerm AND mise_en_vente = :filtre", ProduitDo.class);
+        query.setParameter("searchTerm", "%" + searchTerm + "%");
+        query.setParameter("filtre", filtre.getTypeDao());
+        logger.debug("ProduitDao / méthode : trouverProduitsRechercheFiltre; searchTerm : {} filtre : {}", searchTerm, filtre.getTypeDao());
+        return query.getResultList();
     }
 
     @Override
