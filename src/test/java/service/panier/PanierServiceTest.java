@@ -20,6 +20,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import persistance.produit.dao.IProduitDao;
+import persistance.produit.entity.ProduitDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
 import presentation.panier.dto.PanierDto;
@@ -50,6 +52,9 @@ class PanierServiceTest {
 
     @Mock
     private IUtilisateurService iUtilisateurService;
+
+    @Mock
+    private IProduitDao         produitDao;
 
     @BeforeEach
     private void setup() {
@@ -343,6 +348,9 @@ class PanierServiceTest {
      */
     @Test
     void testModifierQuantite() {
+        final var produitDoEnVente = new ProduitDo();
+        produitDoEnVente.setIdProduitOriginal(42);
+        produitDoEnVente.setMiseEnVente(true);
         final var panierTest = new PanierDto();
         final var produitTest4 = new ProduitDto();
         produitTest4.setIdProduitOriginal("4");
@@ -351,6 +359,7 @@ class PanierServiceTest {
         panierTest.getMapPanier().put(produitTest4, ligne4);
         panierTest.setNombreDeReferences(1);
         ligne4.setQuantite(44);
+        Mockito.when(this.produitDao.findProduitEnVente(4)).thenReturn(produitDoEnVente);
         Mockito.when(this.iProduitService.trouverProduitEnVente(4)).thenReturn(produitTest4);
         // On teste l'incrémentation entre 1 et 100,
         panierService.modifierQuantite(panierTest, 4, 1);
@@ -369,6 +378,45 @@ class PanierServiceTest {
         // On teste qu'on ne peut pas incrémenter ou décrémenter un nombre autre que 1.
         panierService.modifierQuantite(panierTest, 4, 50);
         assertEquals(1, ligne4.getQuantite());
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
+     */
+    @Test
+    void testConformitéProduitAModifierOk() {
+        final var panier = new PanierDto();
+        final var produitDoEnVente = new ProduitDo();
+        produitDoEnVente.setIdProduitOriginal(42);
+        produitDoEnVente.setMiseEnVente(true);
+        final var produitDtoEnVente = new ProduitDto();
+        produitDtoEnVente.setIdProduitOriginal("42");
+        produitDtoEnVente.setPrixUnitaire("10");
+        final LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("50");
+        ligne.setQuantite(5);
+        panier.getMapPanier().put(produitDtoEnVente, ligne);
+        Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(produitDoEnVente);
+        assertTrue(panierService.modifierQuantite(panier, 42, 1));
+    }
+
+    /**
+     * Test method for
+     * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
+     */
+    @Test
+    void testConformitéProduitAModifierKO() {
+        final var panier = new PanierDto();
+        final ProduitDto produitDtoPlusEnVente = new ProduitDto();
+        produitDtoPlusEnVente.setIdProduitOriginal("42");
+        produitDtoPlusEnVente.setPrixUnitaire("10");
+        LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
+        ligne.setPrix("50");
+        ligne.setQuantite(44);
+        panier.getMapPanier().put(produitDtoPlusEnVente, ligne);
+        Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(null);
+        assertFalse(panierService.modifierQuantite(panier, 42, 1));
     }
 
 }
