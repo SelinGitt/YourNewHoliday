@@ -100,14 +100,23 @@ public class ProduitService implements IProduitService {
 
         final var builder = new ProduitEditerResponse.ProduitEditerResponseBuilder();
 
+        // Check si le produit existe
         if (produitFound == null) {
             this.logger.error("Produit Service / editerProduit - Produit introuvable avec id {}", produitDto.getIdProduitOriginal());
             return builder.withError("deleted").build();
         }
 
+        // Check si le produit est a jour
         if (!produitFound.getVersion().equals(produitDto.getVersion())) {
             this.logger.error("Produit Service / editerProduit - Le produit edite n'est pas a jour {}", produitDto.getIdProduitOriginal());
             return builder.withError("updated").build();
+        }
+
+        // Check si la reference est libre
+        final var produitRef = this.trouverParReference(produitDto.getReference());
+        if ((produitRef != null) && (!produitRef.getIdProduitOriginal().equals(produitDto.getIdProduitOriginal()))) {
+            this.logger.error("Produit Service / editerProduit - Reference deja prise {}", produitDto.getReference());
+            return builder.withError("reference").build();
         }
 
         this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
