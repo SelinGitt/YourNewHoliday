@@ -25,7 +25,19 @@
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
+        <div class="pdt03FormImage">
+            <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
+                <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
+                <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
+                <input type="submit" value="submit" />
+                <c:if test="${not empty imgError}">
+                    <div class="text-color-rouge">
+                        <spring:message code="${imgError}" />
+                    </div>
+                </c:if>
 
+            </form:form>
+        </div>
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
             class="display-flex justify-content-space-around">
 
@@ -133,23 +145,6 @@
             <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
             <%-- cf : https://imgur.com/a/KoUx67i --%>
             <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-        </form:form>
-        <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post"
-            class="display-flex justify-content-space-around">
-            <div class="user05-leftSide">
-                <div class="display-flex justify-content-space-around">
-                    <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
-                    <div class="user05-form-inputs">
-                        <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit"
-                            value="submit" />
-                        <c:if test="${not empty imgError}">
-                            <div class="text-color-rouge">
-                                <spring:message code="${imgError}" />
-                            </div>
-                        </c:if>
-                    </div>
-                </div>
-            </div>
         </form:form>
     </div>
 </div>
