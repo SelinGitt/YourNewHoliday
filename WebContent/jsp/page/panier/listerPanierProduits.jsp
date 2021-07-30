@@ -151,7 +151,7 @@
 
             <%--  bouton vider le panier  --%>
             <div class="panier-buttons">
-                <a href="viderPanier.do"><button type="button" class="panier-vider">
+                <a href="viderPanier.do"><button type="button" class="bouton-rouge">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
             </div>
@@ -199,7 +199,7 @@
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
                 <a href="validerPanierProduits.do">
-                    <button type="button" class="panier-valider">
+                    <button type="button" class="bouton-impact-BD">
                         <spring:message code="pan00.valider.panier" />
                     </button>
                 </a>

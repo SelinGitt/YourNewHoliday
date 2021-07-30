@@ -30,6 +30,7 @@ import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.ProduitMapper;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -253,6 +254,51 @@ class ProduitServiceTest {
         Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(ProduitMapper.mapToDo(produitDto));
         Mockito.when(this.iProduitDaoMock.update(Mockito.any(ProduitDo.class))).thenReturn(ProduitMapper.mapToDo(produitDto));
         assertNotNull(this.produitServiceMock.editerProduit(produitDto));
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduitKO() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(null);
+
+        final ProduitEditerResponse response = this.produitServiceMock.editerProduit(produitDto);
+
+        assertNotNull(response);
+        assertEquals("deleted", response.getError());
+    }
+
+    /**
+     * Test method for {@link service.produit.impl.ProduitService#editerProduit(java.lang.Integer)}.
+     */
+    @Test
+    void testEditerProduitKO2() {
+        final ProduitDto produitDto = new ProduitDto();
+        produitDto.setIdProduitOriginal("99");
+        produitDto.setVersion("2");
+
+        final ProduitDo produitFound = new ProduitDo();
+        produitFound.setVersion(3);
+        produitFound.setIdProduitOriginal(99);
+        produitFound.setNom("Test Edition");
+        produitFound.setReference("TEST00000");
+        produitFound.setPrixUnitaire(10d);
+        produitFound.setServices(345);
+        produitFound.setMiseEnVente(true);
+        produitFound.setHebergement("Hotel Test");
+        produitFound.setDestination("Testmanie");
+        produitFound.setDescription("Test moi");
+        produitFound.setCheminImage("C:/temp/img/test.png");
+
+        Mockito.when(this.iProduitDaoMock.findById(99)).thenReturn(produitFound);
+
+        final ProduitEditerResponse response = this.produitServiceMock.editerProduit(produitDto);
+
+        assertNotNull(response);
+        assertEquals("updated", response.getError());
     }
 
     /**

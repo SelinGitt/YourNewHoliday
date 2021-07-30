@@ -21,8 +21,8 @@
 
             <c:if test="${not empty userSuccess}">
                 <div class="background-validation-block block-message-commun">
-                    <span class="fa fa-exclamation"></span> 
-                    <span><spring:message code="${userSuccess}" /></span>
+                    <span class="fa fa-check"></span>
+                    <span class="message"><spring:message code="${userSuccess}" /></span>
                 </div>
             </c:if>
             <div class="user00-title">
@@ -76,7 +76,7 @@
                 <div class="user00-buttons">
                     <div>
                         <a href="modifierUtilisateur.do?origin=1&ref=${utilisateurDto.reference}">
-                            <button class="user00-modifier">
+                            <button class="bouton-impact-BD">
                                 <spring:message code="usr00.consulter.modifier" />
                             </button>
                         </a>
@@ -84,7 +84,7 @@
                     <div>
                         <a href="supprimerUtilisateur.do?origin=1&ref=${utilisateurDto.reference}"
                             onclick="return confirm('<spring:message code="usr00.consulter.confirmer_suppression" />')">
-                            <button class="user00-supprimer">
+                            <button class="bouton-rouge">
                                 <spring:message code="usr00.consulter.supprimer" />
                             </button>
                         </a>
