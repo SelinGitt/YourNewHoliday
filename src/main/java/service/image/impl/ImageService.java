@@ -46,13 +46,14 @@ public class ImageService implements IImageService {
 
     @Override
     public File getImage(final String id, final String type) {
+        final var idInteger = Integer.valueOf(id);
         if (TypeImage.PRODUIT.getType().equals(type)) {
-            final var produitDo = produitDao.findById(Integer.valueOf(id));
+            final var produitDo = produitDao.findById(idInteger);
             logger.debug("Service - Récupération de l'image de produit d'id : {}.", id);
             return this.constructPath(TypeImage.PRODUIT, produitDo.getCheminImage());
         }
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
-            final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
+            final var utilisateurDo = utilisateurDao.findById(idInteger);
             logger.debug("Service - Récupération de l'avatar de l'utilisateur d'id : {}.", id);
             return this.constructPath(TypeImage.UTILISATEUR, utilisateurDo.getCheminAvatar());
         }
