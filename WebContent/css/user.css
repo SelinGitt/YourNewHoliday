@@ -230,6 +230,28 @@
 	height: 5em;
 }
 
+.user05-label-file {
+	padding-left: 3em;
+}
+
+.user05-input-file {
+	padding-left: 22em;
+}
+
+.user05-ErrorMessage {
+	margin-left: 25em;
+}
+
+.user05-FormImage {
+	padding: 0 0.313em 0 0.313em;
+	padding-left: 5.5em;
+	margin-bottom: 1em;
+}
+
+.user05-image {
+	height: 20em;
+	width: 23em;
+}
 /* USR07 */
 .user07-body-general {
 	width: 100%;
