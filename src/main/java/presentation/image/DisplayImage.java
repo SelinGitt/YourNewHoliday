@@ -45,17 +45,18 @@ public class DisplayImage {
      * ex: {@code <<i>img src="DisplayImage.do?id=1&type=pdt"</i>>}
      * </pre>
      * 
-     * @param response permet d'écrire dans une servlet
-     * @param id       l'id à rechercher
-     * @param type     le type d'image
-     * @param avatar   nom du fichier à afficher
+     * @param response    permet d'écrire dans une servlet
+     * @param id          l'id à rechercher
+     * @param type        le type d'image
+     * @param imageToShow nom du fichier à afficher
      */
     @GetMapping
     public void showImage(final HttpServletResponse response, final @RequestParam(value = "id", required = false) String id,
-            final @RequestParam(value = "type") String type, final @RequestParam(value = "avatar", required = false) String avatar) {
+            final @RequestParam(value = "type") String type,
+            final @RequestParam(value = "imageToShow", required = false) String imageToShow) {
         File file;
         if (id == null) {
-            file = imageService.getImageFromDiskWithPath(avatar, type);
+            file = imageService.getImageFromDiskWithPath(imageToShow, type);
         } else {
             file = imageService.getImage(id, type);
         }
