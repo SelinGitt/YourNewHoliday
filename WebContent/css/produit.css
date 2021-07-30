@@ -68,6 +68,13 @@ td.pdt00Description {
 }
 
 /* PDT01 */
+.pdt01-conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+	height: 100%;
+	width: 98%;
+}
+
 .pdtListeProduit {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
@@ -108,6 +115,7 @@ th.pdt01 {
 
 .pdt01AddProduit {
 	margin-left: auto;
+	margin-right: 2%;
 }
 
 /* PDT02 */
