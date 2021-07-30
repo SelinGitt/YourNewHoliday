@@ -338,3 +338,8 @@ th.pdt01 {
 .pdt04IconeSpace {
 	padding: 0.3em;
 }
+
+.pdt04Design {
+	justify-content: center;
+	text-align: center;
+}

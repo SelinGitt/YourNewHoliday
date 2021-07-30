@@ -60,13 +60,15 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                <%--  Bouton ajouter au panier --%>
-                                <button value="submit"
-                                    class="background-color-green display-flex 
+                            <td class="pdt04Design">
+                                <div>
+                                    <%--  Bouton ajouter au panier --%>
+                                    <button value="submit"
+                                        class="background-color-green display-flex 
                                                justify-content-flex-end pdt00Bouton">
-                                    <spring:message code="pdt.addCart" />
-                                </button>
+                                        <spring:message code="pdt.addCart" />
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </c:if>
