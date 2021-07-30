@@ -332,7 +332,6 @@ th.pdt01 {
 
 .pdt03ErrorMessage {
 	margin-left: 11em;
-
 }
 
 /* PDT04 */
@@ -345,13 +344,43 @@ th.pdt01 {
 	align-items: baseline
 }
 
-.pdt04Display {
-	min-width: 50%;
+.pdt04-left-side {
+	width: 75%;
+}
+
+.pdt04-right-side {
+	margin-top: 3em;
+	margin-left: 1em;
+	width: 25%;
+	align-content: space-between;
+}
+
+.pdt04-form {
+	display: flex;
+}
+
+.pdt04-reference {
+	padding-bottom: 3em;
+	font-weight: bold;
+}
+
+.pdt04-prix {
+	padding-bottom: 5em;
+	font-weight: bold;
+}
+
+.pdt04-quantite {
+	margin-left: 2.5em;
+	padding-bottom: 1em;
+}
+
+.pdt04-ajouter {
+	margin-left: 3em;
 }
 
 .pdt04Image {
-	width: 25em;
-	height: 15em;
+	width: 31em;
+	height: 18em;
 }
 
 .pdt04Hebergement {
@@ -375,7 +404,6 @@ th.pdt01 {
 	padding: 0.3em;
 }
 
-.pdt04Design {
-	justify-content: center;
-	text-align: center;
+.pdt04-bouton {
+	color: #FFFFFF;
 }
