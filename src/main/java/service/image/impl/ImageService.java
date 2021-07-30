@@ -45,13 +45,13 @@ public class ImageService implements IImageService {
     private IUtilisateurDao     utilisateurDao;
 
     @Override
-    public File getImage(final String id, final String type) {
-        final var idInteger = Integer.valueOf(id);
+    public File getImage(final String id, final String type) {      
         final var typeImage = TypeImage.getTypeImage(type);
         if (typeImage == null) {
             return null;
         }
         String cheminImage = null;
+        final var idInteger = Integer.valueOf(id);
         switch (typeImage) {
             case PRODUIT:
                 final var produitDo = produitDao.findById(idInteger);
