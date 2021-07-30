@@ -176,41 +176,45 @@ public class PanierService implements IPanierService {
 
     @Override
     public boolean modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
-        // On teste si le produit est conforme à la modification
-        if (isProduitConforme(idProduit)) {
-            // On récupère le produit
-            final ProduitDto produit = findProduitMap(panier, idProduit);
-
-            // On récupère la quantité avant modification
-            final Integer quantiteInitiale = panier.getMapPanier().get(produit).getQuantite();
-
-            // On teste aussi les valeurs à modifier avant de modifier
-            if (isModificationAutorisee(modif, quantiteInitiale)) {
-                updatePanier(panier, idProduit, modif);
-            }
-            return true;
+        // S'il est conforme, on récupère le produit du panier.
+        final ProduitDto produitDto = isProduitConforme(panier, idProduit);
+        // Si le produit n'était pas conforme pour la modification :
+        // car plus en vente ou modifié.
+        if (produitDto == null) {
+            // On ne fait pas de traitement.
+            return false;
         }
-        return false;
+        // On récupère la quantité avant modification
+        final Integer quantiteInitiale = panier.getMapPanier().get(produitDto).getQuantite();
+
+        // On teste aussi les valeurs à modifier avant de modifier
+        if (isModificationAutorisee(modif, quantiteInitiale)) {
+            updatePanier(panier, idProduit, modif);
+        }
+        return true;
     }
 
     /**
      * <pre>
      * Permets de déterminer si le produit peut être modifié, Pour cela il doit : 
      * - toujours être en vente 
-     * - ne pas avoir
-     * été modifié par un admin (controle du numéro de version)
+     * - ne pas avoir été modifié par un admin (controle du numéro de version)
      * </pre>
      *
      * @param  id du produit à vérifier
-     * @return    true si le produit est conforme, false sinon.
+     * @param  le panier
+     * @return    le produitdto du panier s'il est conforme, null sinon.
      */
-    private boolean isProduitConforme(final Integer id) {
+    private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
         final ProduitDo produitEnVente = produitDao.findProduitEnVente(id);
         if (produitEnVente == null) {
-            return false;
+            return null;
         }
+        // On récupère le produit
+        final ProduitDto produitDto = findProduitMap(panier, id);
+
         // TODO : controle de la version. (ISSUES 295)
-        return true;
+        return produitDto;
     }
 
     /**
