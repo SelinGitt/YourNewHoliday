@@ -3,6 +3,8 @@
  */
 package service.image;
 
+import java.util.stream.Stream;
+
 /**
  * Enum des types utilisés pour récupérer les types d'images
  *
@@ -36,6 +38,16 @@ public enum TypeImage {
         this.size = size;
         this.height = height;
         this.imageRepo = imageRepo;
+    }
+
+    /**
+     * Permet de retourner le TypeImage correspondant à la chaîne de caractère entré en paramètre
+     *
+     * @param  types la chaîne de caratère dont on cherche le type image
+     * @return       TypeImage le type de l'image
+     */
+    public static TypeImage getTypeImage(final String types) {
+        return Stream.of(TypeImage.values()).filter(typeImgage -> typeImgage.getType().equals(types)).findFirst().orElse(null);
     }
 
     /**

@@ -47,18 +47,24 @@ public class ImageService implements IImageService {
     @Override
     public File getImage(final String id, final String type) {
         final var idInteger = Integer.valueOf(id);
-        if (TypeImage.PRODUIT.getType().equals(type)) {
-            final var produitDo = produitDao.findById(idInteger);
-            logger.debug("Service - Récupération de l'image de produit d'id : {}.", id);
-            return this.constructPath(TypeImage.PRODUIT, produitDo.getCheminImage());
+        final var typeImage = TypeImage.getTypeImage(type);
+        String cheminImage = null;
+        switch (typeImage) {
+            case PRODUIT:
+                final var produitDo = produitDao.findById(idInteger);
+                logger.debug("Service - Récupération de l'image de produit d'id : {}.", id);
+                cheminImage = produitDo.getCheminImage();
+                break;
+            case UTILISATEUR:
+                final var utilisateurDo = utilisateurDao.findById(idInteger);
+                logger.debug("Service - Récupération de l'avatar de l'utilisateur d'id : {}.", id);
+                cheminImage = utilisateurDo.getCheminAvatar();
+                break;
+            //ajouter le produitAcheteDao, indisponible à l'heure actuelle
+            default:
+                return null;
         }
-        if (TypeImage.UTILISATEUR.getType().equals(type)) {
-            final var utilisateurDo = utilisateurDao.findById(idInteger);
-            logger.debug("Service - Récupération de l'avatar de l'utilisateur d'id : {}.", id);
-            return this.constructPath(TypeImage.UTILISATEUR, utilisateurDo.getCheminAvatar());
-        }
-        //ajouter le produitAcheteDao, indisponible à l'heure actuelle
-        return null;
+        return this.constructPath(typeImage, cheminImage);
     }
 
     private File constructPath(final TypeImage type, final String cheminImage) {
@@ -69,14 +75,12 @@ public class ImageService implements IImageService {
     @Override
     public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
         //on test dans la couche présentation si image est null
-        if (TypeImage.UTILISATEUR.getType().equals(type)) {
-            return this.saveImage(byteArray, TypeImage.UTILISATEUR, fileName);
+        final var typeImage = TypeImage.getTypeImage(type);
+        if (typeImage == null) {
+            logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
+            return false;
         }
-        if (TypeImage.PRODUIT.getType().equals(type)) {
-            return this.saveImage(byteArray, TypeImage.PRODUIT, fileName);
-        }
-        logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
-        return false;
+        return this.saveImage(byteArray, typeImage, fileName);
     }
 
     private boolean saveImage(final byte[] byteArray, final TypeImage type, final String fileName) {
