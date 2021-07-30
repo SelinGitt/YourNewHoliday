@@ -29,7 +29,6 @@ public class DroitAccesFilter implements Filter {
     private static final String INIT_QUERY      = "?";
     private static final String QUERY_SEPARATOR = "&";
     private static final String LANGUAGE        = "language";
-    private static final String EMPTY_STRING    = "";
 
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse resp, final FilterChain chain)
@@ -58,12 +57,14 @@ public class DroitAccesFilter implements Filter {
         // Si user null = visiteur; sinon check rang
         if (user == null) {
             if (listRole.contains(UtilisateurRoleEnum.VISITEUR.getLibelle())) {
-                chain.doFilter(this.constructQueryForLanguage(request), resp);
+                this.constructQueryForLanguage(request);
+                chain.doFilter(req, resp);
                 return;
             }
         } else {
             if (listRole.contains(user.getRole().getLibelle())) {
-                chain.doFilter(this.constructQueryForLanguage(request), resp);
+                this.constructQueryForLanguage(request);
+                chain.doFilter(req, resp);
                 return;
             }
         }
@@ -71,7 +72,7 @@ public class DroitAccesFilter implements Filter {
         response.sendRedirect(request.getContextPath() + "/404.do");
     }
 
-    private ServletRequest constructQueryForLanguage(final HttpServletRequest request) {
+    private void constructQueryForLanguage(final HttpServletRequest request) {
         final var uri = request.getRequestURI();
         final var queryBase = request.getQueryString();
         if (request.getParameter(LANGUAGE) == null) {
@@ -79,7 +80,6 @@ public class DroitAccesFilter implements Filter {
         } else {
             request.setAttribute("urlLanguage", this.constructQuery(uri, this.cutQuery(queryBase)));
         }
-        return request;
     }
 
     private String constructQuery(final String uri, final String query) {
@@ -92,7 +92,7 @@ public class DroitAccesFilter implements Filter {
 
     private String cutQuery(final String query) {
         final var queryWithoutLanguage = query.substring(0, query.indexOf(LANGUAGE));
-        if (EMPTY_STRING.equals(queryWithoutLanguage)) {
+        if (queryWithoutLanguage.isEmpty()) {
             return null;
         }
         return queryWithoutLanguage.substring(0, queryWithoutLanguage.length() - 1);
