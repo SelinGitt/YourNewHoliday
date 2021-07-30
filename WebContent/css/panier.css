@@ -62,8 +62,24 @@
 	text-align: center;
 }
 
+.panier-bordure {
+	border-collapse: collapse;
+}
+
 .panier-bordure-1px {
+	border: 0.19em solid #000000;
+}
+
+.panier-width-espacement {
+	height: 1vh;
+}
+
+.panier-bordure-063em {
 	border: 0.063em solid black;
+}
+
+.panier-bordure-right {
+	border-right: 0.19em solid #000000;
 }
 
 .panier-titre-produit {
@@ -92,7 +108,6 @@
 .panier-image-responsive {
 	width: 3.125em;
 	height: auto;
-	margin-top: -1em;
 }
 
 .panier-format {
@@ -106,10 +121,13 @@
 
 .panier-div-image {
 	width: 28.41vh;
+	height: auto;
 }
 
 .panier-description-produit {
 	width: 57vh;
+	text-align: left;
+	padding: 1em;
 }
 
 .panier-description-produit-paragraphe {
@@ -123,7 +141,7 @@
 	max-width: 50vh;
 	line-height: 1em;
 	padding-right: 1em;
-	padding: 1em;
+	padding-bottom: 1em;
 }
 
 .panier-div-prix {

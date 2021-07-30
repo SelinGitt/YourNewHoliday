@@ -33,36 +33,39 @@
             </legend>
 
             <%--  tableau --%>
-            <table class="panier-bordure-1px" aria-label="tableau panier">
+            <table class="panier-bordure" aria-label="tableau panier">
                 <tbody>
                     <c:forEach items="${panierDto.mapPanier}" var="entry">
 
-                        <tr>
+                        <tr class="panier-bordure-margin">
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-bordure-1px display-flex panier-th">
-                                <div class="panier-div-image">
-                                    <div class="panier-image-produit-container">
-                                        <%--  photo --%>
-                                        <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
-                                            <img class="panier-image-produit"
-                                            src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                            alt="${entry.key.destination}" />
-                                        </a>
+                            <th class="panier-bordure-1px  panier-th ">
+                                <div class="display-flex">
+                                    <div class="panier-div-image">
+                                        <div class="panier-image-produit-container">
+                                            <%--  photo --%>
+                                            <a
+                                                href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                                <img class="panier-image-produit"
+                                                src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
+                                                alt="${entry.key.destination}" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="panier-description-produit">
-                                    <div>
-                                        <%--  nom et référence --%>
-                                        <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
+                                    <div class="panier-description-produit">
+                                        <div>
+                                            <%--  nom et référence --%>
+                                            <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
+                                        </div>
+                                        <%--  description --%>
+                                        <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
                                     </div>
-                                    <%--  description --%>
-                                    <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
                                 </div>
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
-                            <td class="panier-bordure-1px panier-td text-align-center">
+                            <td class="panier-bordure-1px panier-td panier-bordure-margin text-align-center">
                                 <%--  label --%>
                                 <div class="panier-label display-flex justify-content-center">
                                     <h3 class="panier-antimarge-prix-unitaire">
@@ -138,11 +141,11 @@
                                 </div></td>
                         </tr>
                         <tr>
-                            <c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
-                                <td><div class="text-color-rouge">
-                                        <spring:message code="pan00.erreur.produit_indisponible" />
-                                    </div></td>
-                            </c:if>
+                            <td class ="panier-width-espacement"><c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                    <td><div class="text-color-rouge">
+                                            <spring:message code="pan00.erreur.produit_indisponible" />
+                                        </div></td>
+                                </c:if>
                         </tr>
 
                     </c:forEach>
@@ -151,7 +154,7 @@
 
             <%--  bouton vider le panier  --%>
             <div class="panier-buttons">
-                <a href="viderPanier.do"><button type="button" class="panier-vider">
+                <a href="viderPanier.do"><button type="button" class="bouton-rouge">
                         <spring:message code="pan00.vider.panier" />
                     </button></a>
             </div>
@@ -174,7 +177,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
+                <div id="total_avant_remise" class="prix panier-bordure-063em ">${panierDto.prixTotalAffichage}
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -183,7 +186,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
-                <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
+                <div id="remise" class="prix panier-bordure-063em ">${panierDto.remiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -192,14 +195,14 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
+                <div id="total_apres_remise" class="prix panier-bordure-063em ">${panierDto.prixApresRemiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>
             <%--  bouton valider le panier --%>
             <div class="justify-content-center display-flex align-item-center">
                 <a href="validerPanierProduits.do">
-                    <button type="button" class="panier-valider">
+                    <button type="button" class="bouton-impact-BD">
                         <spring:message code="pan00.valider.panier" />
                     </button>
                 </a>
