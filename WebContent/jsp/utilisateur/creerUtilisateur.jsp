@@ -25,17 +25,19 @@
                 <spring:message code="usr05.titre" />
             </h1>
         </div>
-        <div class="pdt03FormImage">
+        <div class="display-flex user05-FormImage">
             <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
-                <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label>
-                <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
-                <input type="submit" value="submit" />
+                <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
+                            code="usr05.label.avatar"></spring:message></label></span>
+                <span class="user05-form-inputs"> <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
+                    <input type="submit" value="submit" />
+                </span>
+
                 <c:if test="${not empty imgError}">
-                    <div class="text-color-rouge">
+                    <div class="text-color-rouge user05-ErrorMessage">
                         <spring:message code="${imgError}" />
                     </div>
                 </c:if>
-
             </form:form>
         </div>
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
@@ -70,7 +72,8 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
+                        <form:input path="dateNaissance" class="user05-inputs" 
+                        value="${dateNaissance}" maxlength="10" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -134,12 +137,19 @@
             </div>
             <c:if test="${not empty avatar}">
                 <div class="display-flex justify-content-space-between">
-                    <div>
-                        <spring:message code="usr05.label.avatarChosen" />
-                        : ${avatar}
+                    <div class="user05-image">
+                        <img src="displayImage.do?imageToShow=${avatar}&type=usr" alt="Image Utilisateur"
+                            class="pdt03ImgWidth">
                     </div>
                 </div>
                 <form:hidden path="cheminAvatar" value="${avatar}" />
+            </c:if>
+            <c:if test="${empty avatar}">
+                <div class="display-flex justify-content-space-between">
+                    <div class="user05-image">
+                        <spring:message code="usr05.label.avatarChosen" />
+                    </div>
+                </div>
             </c:if>
             <%-- On ne peut pas placer ce formulaire dans le form d'inscription, c'est invalide.--%>
             <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>

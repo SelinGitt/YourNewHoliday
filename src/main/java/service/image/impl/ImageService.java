@@ -128,6 +128,10 @@ public class ImageService implements IImageService {
             final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + path;
             return imageDao.getImage(cheminComplet);
         }
+        if (TypeImage.UTILISATEUR.getType().equals(type)) {
+            final var cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + path;
+            return imageDao.getImage(cheminComplet);
+        }
         return null;
     }
 
