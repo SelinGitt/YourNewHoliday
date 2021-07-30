@@ -26,6 +26,11 @@ import service.utilisateur.util.UtilisateurRoleEnum;
 @WebFilter(filterName = "DroitAccesFilter", urlPatterns = "*.do")
 public class DroitAccesFilter implements Filter {
 
+    private static final String INIT_QUERY      = "?";
+    private static final String QUERY_SEPARATOR = "&";
+    private static final String LANGUAGE        = "language";
+    private static final String EMPTY_STRING    = "";
+
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse resp, final FilterChain chain)
             throws IOException, ServletException {
@@ -53,17 +58,44 @@ public class DroitAccesFilter implements Filter {
         // Si user null = visiteur; sinon check rang
         if (user == null) {
             if (listRole.contains(UtilisateurRoleEnum.VISITEUR.getLibelle())) {
-                chain.doFilter(req, resp);
+                chain.doFilter(this.constructQueryForLanguage(request), resp);
                 return;
             }
         } else {
             if (listRole.contains(user.getRole().getLibelle())) {
-                chain.doFilter(req, resp);
+                chain.doFilter(this.constructQueryForLanguage(request), resp);
                 return;
             }
         }
 
         response.sendRedirect(request.getContextPath() + "/404.do");
+    }
+
+    private ServletRequest constructQueryForLanguage(final HttpServletRequest request) {
+        final String uri = request.getRequestURI();
+        final String queryBase = request.getQueryString();
+        if (request.getParameter(LANGUAGE) == null) {
+            request.setAttribute("urlLanguage", this.constructQuery(uri, queryBase));
+        } else {
+            request.setAttribute("urlLanguage", this.constructQuery(uri, this.cutQuery(queryBase)));
+        }
+        return request;
+    }
+
+    private String constructQuery(final String uri, final String query) {
+        final String uriStart = uri + INIT_QUERY;
+        if (query == null) {
+            return uriStart;
+        }
+        return uriStart + query + QUERY_SEPARATOR;
+    }
+
+    private String cutQuery(final String query) {
+        final String queryWithoutLanguage = query.substring(0, query.indexOf(LANGUAGE));
+        if (EMPTY_STRING.equals(queryWithoutLanguage)) {
+            return null;
+        }
+        return queryWithoutLanguage.substring(0, queryWithoutLanguage.length() - 1);
     }
 
 }
