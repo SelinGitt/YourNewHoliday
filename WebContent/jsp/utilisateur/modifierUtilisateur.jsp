@@ -105,7 +105,8 @@
                         <div class="user02-form-field display-flex justify-content-space-between">
                             <label for="confirmPassword"><spring:message code="usr02.edit.confirmPassword" /></label>
                             <div class="user02-form-inputs">
-                                <form:password path="confirmPassword" class="user02-inputs" maxlength="255" />
+                                <form:password path="confirmPassword" class="user02-inputs" readonly="true"
+                                    onfocus="this.removeAttribute('readonly')" maxlength="255" />
                                 <form:errors path="confirmPassword" cssClass="text-color-rouge" />
                             </div>
                         </div>
