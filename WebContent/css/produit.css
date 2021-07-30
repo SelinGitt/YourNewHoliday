@@ -10,6 +10,7 @@
 
 .pdtSearchBarOk {
 	cursor: pointer;
+	margin-right: 3.3em;
 }
 
 .pdt-img {
@@ -70,6 +71,11 @@ td.pdt00Description {
 	width: 1.7em;
 }
 
+.pdtDesignRechercheFiltre {
+	display: contents;
+	margin-bottom: 0.938em;
+}
+
 /* PDT01 */
 .pdt01-conteneur-ascenseur {
 	box-sizing: border-box;
@@ -118,10 +124,6 @@ th.pdt01 {
 .pdt01AddProduit {
 	margin-left: auto;
 	margin-right: 2%;
-}
-
-.pdt01-searchBarSpace {
-	margin-left: 1em;
 }
 
 /* PDT02 */
