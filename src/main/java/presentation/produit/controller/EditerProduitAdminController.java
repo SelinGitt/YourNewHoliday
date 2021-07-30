@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.produit.dto.ProduitDto;
+import presentation.produit.util.ServiceProduitUtil;
 import presentation.produit.validator.ProduitValidatorPDT02;
 import service.produit.IProduitService;
 
@@ -28,7 +29,7 @@ import service.produit.IProduitService;
  */
 @Controller
 @RequestMapping(value = "/editerProduitAdmin.do")
-public class EditerProduitAdminController {
+public class EditerProduitAdminController extends ServiceProduitUtil {
 
     @Autowired
     private IProduitService iProduitService;
@@ -75,17 +76,7 @@ public class EditerProduitAdminController {
     public ModelAndView soumissionFormulaire(final @Validated @ModelAttribute ProduitDto produitDto, final BindingResult result,
             final RedirectAttributes redirectAttributes) {
 
-        final var services = produitDto.getServices();
-        // TODO : Amelioration possible par la suite
-        final var newServices = new Boolean[] {false, false, false, false, false, false, false, false, false};
-
-        for (var i = 0; i < services.length; i++) {
-            if (services[i] != null) {
-                newServices[i] = true;
-            }
-        }
-
-        produitDto.setServices(newServices);
+        produitDto.setServices(this.fillServiceArray(produitDto.getServices()));
 
         final var modelAndView = new ModelAndView();
         // Si le formulaire possède des erreurs : Ajout de l'attribut "errorEdition" utilisé dans la jsp en cas d'erreur d'édition
