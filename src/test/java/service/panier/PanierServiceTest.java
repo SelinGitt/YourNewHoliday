@@ -351,10 +351,12 @@ class PanierServiceTest {
         final var produitDoEnVente = new ProduitDo();
         produitDoEnVente.setIdProduitOriginal(42);
         produitDoEnVente.setMiseEnVente(true);
+        produitDoEnVente.setVersion(99);
         final var panierTest = new PanierDto();
         final var produitTest4 = new ProduitDto();
         produitTest4.setIdProduitOriginal("4");
         produitTest4.setPrixUnitaire("105");
+        produitTest4.setVersion("99");
         final var ligne4 = new LigneCommandeProduitDto();
         panierTest.getMapPanier().put(produitTest4, ligne4);
         panierTest.setNombreDeReferences(1);
@@ -385,37 +387,27 @@ class PanierServiceTest {
      * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
      */
     @Test
-    void testConformitéProduitAModifierOk() {
+    void testConformitéProduitAModifier() {
         final var panier = new PanierDto();
         final var produitDoEnVente = new ProduitDo();
         produitDoEnVente.setIdProduitOriginal(42);
         produitDoEnVente.setMiseEnVente(true);
+        produitDoEnVente.setVersion(66);
         final var produitDtoEnVente = new ProduitDto();
         produitDtoEnVente.setIdProduitOriginal("42");
         produitDtoEnVente.setPrixUnitaire("10");
+        produitDtoEnVente.setVersion("99");
         final LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
         ligne.setPrix("50");
         ligne.setQuantite(5);
         panier.getMapPanier().put(produitDtoEnVente, ligne);
         Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(produitDoEnVente);
+        assertFalse(panierService.modifierQuantite(panier, 42, 1));
+        produitDoEnVente.setVersion(99);
+        Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(produitDoEnVente);
         assertTrue(panierService.modifierQuantite(panier, 42, 1));
-    }
-
-    /**
-     * Test method for
-     * {@link service.panier.impl.PanierService#modifierQuantite(presentation.panier.dto.PanierDto, java.lang.Integer, int)}.
-     */
-    @Test
-    void testConformitéProduitAModifierKO() {
-        final var panier = new PanierDto();
-        final ProduitDto produitDtoPlusEnVente = new ProduitDto();
-        produitDtoPlusEnVente.setIdProduitOriginal("42");
-        produitDtoPlusEnVente.setPrixUnitaire("10");
-        LigneCommandeProduitDto ligne = new LigneCommandeProduitDto();
-        ligne.setPrix("50");
-        ligne.setQuantite(44);
-        panier.getMapPanier().put(produitDtoPlusEnVente, ligne);
-        Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(null);
+        produitDoEnVente.setMiseEnVente(false);
+        Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(produitDoEnVente);
         assertFalse(panierService.modifierQuantite(panier, 42, 1));
     }
 

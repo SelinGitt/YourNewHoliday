@@ -144,8 +144,8 @@ public class PanierService implements IPanierService {
     public boolean isRemiseExpected(final PanierDto panier) {
         // s'il y a sufisamment de références dans le panier et que le prix total est supérieur ou égal
         // au minimum imposé, alors la remise est applicable.
-        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE
-                && DecimalFormatUtils.doubleFormatUtil(panier.getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
+        return panier.getNombreDeReferences() >= NOMBRE_REFERENCES_MINIMUM_POUR_REMISE && DecimalFormatUtils.doubleFormatUtil(panier
+                .getPrixTotalAffichage()) >= PRIX_TOTAL_MINIMUM_POUR_REMISE;
     }
 
     @Override
@@ -163,8 +163,8 @@ public class PanierService implements IPanierService {
             // (il est nécessaire de reformater le prix pour qu'il n'y ait plus d'espace ni de virgule
             // afin qu'il corresponde au format Double et qu'on puisse faire des opérations dessus)
             // on actualise aussi de fait le prix après remise
-            panier.setPrixApresRemiseAffichage(DecimalFormatUtils
-                    .decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils.doubleFormatUtil(panier.getRemiseAffichage())));
+            panier.setPrixApresRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(prixTotalAffichage - DecimalFormatUtils
+                    .doubleFormatUtil(panier.getRemiseAffichage())));
             // sinon, la remise vaut 0 et le prix après remise est le prix total du panier
         } else {
             panier.setRemiseAffichage(DecimalFormatUtils.decimalFormatUtil(0.00));
@@ -206,14 +206,16 @@ public class PanierService implements IPanierService {
      */
     private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
         final var produitEnVente = produitDao.findProduitEnVente(id);
-        if (produitEnVente == null) {
+        if (produitEnVente == null || !produitEnVente.getMiseEnVente()) {
             return null;
         }
         // On récupère le produit
         final var produitDto = findProduitMap(panier, id);
-
-        // TODO : controle de la version. (ISSUES 295)
-        return produitDto;
+        // il faut que le produit en vente soit de la même version que le produit du panier
+        if (produitEnVente.getVersion() == Integer.valueOf(produitDto.getVersion())) {
+            return produitDto;
+        }
+        return null;
     }
 
     /**
@@ -260,8 +262,8 @@ public class PanierService implements IPanierService {
             this.viderPanier(panier);
             logger.info("Commande de référence {} passée avec succès.", commandeDoReference);
         }
-        logger.info("Fin de validation Commande avec {} produits non concordant.",
-                retourValiderPanier.getListIdProduitNonConcordant().size());
+        logger.info("Fin de validation Commande avec {} produits non concordant.", retourValiderPanier.getListIdProduitNonConcordant()
+                .size());
         return retourValiderPanier;
     }
 }
