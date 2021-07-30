@@ -420,23 +420,6 @@ class PanierServiceTest {
         panier.getMapPanier().put(produitDtoPlusEnVente, ligne);
         Mockito.when(this.produitDao.findProduitEnVente(42)).thenReturn(null);
         assertFalse(panierService.modifierQuantite(panier, 42, 1));
-        panierService.modifierQuantite(panier, 42, 1);
-        // On teste l'incrémentation entre 1 et 100,
-        assertEquals(45, ligne.getQuantite());
-        // Puis la décrémentation entre 1 et 100.
-        panierService.modifierQuantite(panier, 42, -1);
-        assertEquals(44, ligne.getQuantite());
-        // On teste qu'on ne peut pas incrémenter lorsque la quantité est égale à 100.
-        ligne.setQuantite(100);
-        panierService.modifierQuantite(panier, 42, 1);
-        assertEquals(100, ligne.getQuantite());
-        // On teste qu'on ne peut pas décrémenter lorsque la quantité est égale à 1.
-        ligne.setQuantite(1);
-        panierService.modifierQuantite(panier, 42, -1);
-        assertEquals(1, ligne.getQuantite());
-        // On teste qu'on ne peut pas incrémenter ou décrémenter un nombre autre que 1.
-        panierService.modifierQuantite(panier, 42, 50);
-        assertEquals(1, ligne.getQuantite());
     }
 
 }
