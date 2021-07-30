@@ -72,7 +72,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10"/>
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
