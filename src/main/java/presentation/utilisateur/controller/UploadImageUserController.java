@@ -38,7 +38,8 @@ public class UploadImageUserController {
         final var modelAndView = new ModelAndView("redirect:creerUtilisateur.do");
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        if (imageService.saveImage(byteArray, "usr", fileName)) {
+        final var imageError = imageService.saveImage(byteArray, "usr", fileName);
+        if (imageError.getError() != null) {
             modelAndView.getModelMap().addAttribute("avatar", fileName);
         } else {
             modelAndView.getModelMap().addAttribute("imgError", "usr05.erreur.image");

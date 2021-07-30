@@ -42,7 +42,6 @@ public class UploadImageProduitController {
         if (imageResponse.getError() == null) {
             modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
-            System.out.println(imageResponse.getError());
             modelAndView.getModelMap().addAttribute("imgError", imageResponse.getError());
 
         }

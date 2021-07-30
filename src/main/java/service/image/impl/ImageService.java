@@ -92,8 +92,9 @@ public class ImageService implements IImageService {
                 if (imageDao.saveImage(cheminComplet, byteArray)) {
                     return imageValid;
                 }
-                return imageValid;
+                return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.image").build();
             }
+            return imageValid;
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
         return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.image").build();
@@ -113,10 +114,10 @@ public class ImageService implements IImageService {
     private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
-            if (!isImageValid(bufferImage, height, width)) {
+            if (isImageValid(bufferImage, height, width)) {
                 return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.ImageTooBig").build();
             }
-            if (!isFileValid(byteArray, size)) {
+            if (isFileValid(byteArray, size)) {
                 return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.ImageTooLarge").build();
             }
         } catch (final IOException ioe) {
