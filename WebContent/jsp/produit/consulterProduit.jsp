@@ -57,7 +57,8 @@
 
                             <%--  saisie valeur produit  --%>
                             <input class="pdt04-pan-quantite text-align-center" type="text" readonly="readonly"
-                                id="quantite${consulterProduitDto.idProduitOriginal}" name="quantite" value="1" size="1">
+                                id="quantite${consulterProduitDto.idProduitOriginal}" 
+                                name="quantite" value="1" size="1">
 
                             <%--  bouton + < 100 --%>
                             <a onclick="increment('${consulterProduitDto.idProduitOriginal}')">
