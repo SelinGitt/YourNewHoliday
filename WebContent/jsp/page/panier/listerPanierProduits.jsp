@@ -46,7 +46,8 @@
                                         <div class="panier-image-produit-container">
                                             <%--  photo --%>
                                             <a
-                                                href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
+                                                href="consulterProduit.do?idProduit=
+                                                ${entry.key.idProduitOriginal}&from=pan">
                                                 <img class="panier-image-produit"
                                                 src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
                                                 alt="${entry.key.destination}" />
@@ -59,30 +60,34 @@
                                             <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
                                         </div>
                                         <%--  description --%>
-                                        <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
+                                        <div class="panier-description-produit-paragraphe">
+                                        ${entry.key.description}</div>
                                     </div>
                                 </div>
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
-                            <td class="panier-bordure-1px panier-td panier-bordure-margin text-align-center">
+                            <td
+                                class="panier-bordure-1px panier-td-prix-unitaire
+                                 panier-bordure-margin text-align-center ">
                                 <%--  label --%>
-                                <div class="panier-label display-flex justify-content-center">
+                                <div class="panier-label justy-content-center panier-label-margin">
                                     <h3 class="panier-antimarge-prix-unitaire">
                                         <spring:message code="pan00.prix.unitaire" />
                                     </h3>
                                 </div> <%--  valeur --%>
-                                <div class="panier-td-component justify-content-center display-flex">
+                                <div class="panier-td-component justy-content-center">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
                                 </div>
+
                             </td>
 
                             <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <td class="panier-bordure-1px panier-td text-align-center"><div>
+                            <td class="panier-bordure-1px panier-td-quantiter text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
                                         <h3>
                                             <spring:message code="pan00.quantite" />
                                         </h3>
@@ -127,7 +132,7 @@
                             <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
                                         <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
@@ -141,11 +146,12 @@
                                 </div></td>
                         </tr>
                         <tr>
-                            <td class ="panier-width-espacement"><c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
-                                    <td><div class="text-color-rouge">
-                                            <spring:message code="pan00.erreur.produit_indisponible" />
-                                        </div></td>
-                                </c:if>
+                            <td class="panier-width-espacement"><c:if
+                                    test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                    <div class="text-color-rouge">
+                                        <spring:message code="pan00.erreur.produit_indisponible" />
+                                    </div>
+                                </c:if></td>
                         </tr>
 
                     </c:forEach>

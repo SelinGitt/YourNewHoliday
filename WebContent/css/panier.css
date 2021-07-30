@@ -71,7 +71,7 @@
 }
 
 .panier-width-espacement {
-	height: 1vh;
+	height: 1.6vh;
 }
 
 .panier-bordure-063em {
@@ -113,7 +113,7 @@
 }
 
 .panier-description-produit {
-	width: 57vh;
+	width: 40vh;
 	text-align: left;
 	padding: 1em;
 }
@@ -126,7 +126,7 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 4;
 	max-height: 3em;
-	max-width: 50vh;
+	max-width: 35vh;
 	line-height: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
@@ -161,7 +161,21 @@
 }
 
 .panier-td {
-	width: 6em;
+
+	width: 100%;
+}
+.panier-td-quantiter {
+
+	width: 30%;
+}
+.panier-label-margin{
+	margin-top: 1.9em;
+}
+.panier-td-prix-unitaire{
+	width: 50%;
+}
+.panier-td-padding{
+	padding: 1em;
 }
 
 .panier-th {
