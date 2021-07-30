@@ -22,7 +22,7 @@
     <h1 class="text-align-center">
         <spring:message code="pdt01.titre" />
     </h1>
-    <div class="display-flex">
+    <div class="display-flex align-items-flex-end">
         <div class="searchBar display-flex pdt01Search align-content-flex-end ">
             <form:form action="listerProduitsAdmin.do" method="POST">
                 <input type="hidden" name="tri" value="${tri}" />
@@ -48,7 +48,7 @@
         </div>
         <div class="pdt01AddProduit">
             <a href="creerProduitAdmin.do">
-                <button type="button" class="pdt01-newProduitButton">
+                <button type="button" class="bouton-sans-impact-BD">
                     <span class="fa fa-plus-square-o" aria-hidden="true"></span>
                     <spring:message code="pdt01.creer.nouveau" />
                 </button>

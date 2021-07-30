@@ -204,7 +204,11 @@ th.pdt01 {
 }
 
 .pdt02Checkbox {
-	display: none;	
+	display: none;
+}
+
+.pdt02Form-imageProduit {
+	width: 18.750em;
 }
 
 /* PDT03 */
@@ -301,7 +305,7 @@ th.pdt01 {
 }
 
 .pdt03Checkbox {
-	display: none;	
+	display: none;
 }
 
 /* PDT04 */
