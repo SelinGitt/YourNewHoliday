@@ -43,7 +43,7 @@ class PanierServiceTest {
     @InjectMocks
     private PanierService       panierService;
 
-    // Mock  injecter
+    // Mock à injecter
     @Mock
     private IProduitService     iProduitService;
 
@@ -88,26 +88,26 @@ class PanierServiceTest {
         panierService.updatePanier(panierTest, 1, 5);
         panierService.updatePanier(panierTest, 2, 7);
         assertEquals(2, panierTest.getNombreDeReferences());
-        // On teste que l'ajout d'un nouveau produit au panier n'incrmente pas le nombre de rfrence
-        // si la quantit est infrieure  1.
+        // On teste que l'ajout d'un nouveau produit au panier n'incrémente pas le nombre de référence
+        // si la quantité est inférieure à 1.
         panierService.updatePanier(panierTest, 3, 0);
         assertEquals(2, panierTest.getNombreDeReferences());
-        // On teste que l'ajout d'un nouveau produit au panier incrmente bien le nombre de rfrence.
+        // On teste que l'ajout d'un nouveau produit au panier incrémente bien le nombre de référence.
         panierService.updatePanier(panierTest, 3, 7);
         assertEquals(3, panierTest.getNombreDeReferences());
-        // On verifie que le prix de la ligne a bien t calcul.
+        // On verifie que le prix de la ligne a bien été calculé.
         assertEquals("703,50", panierTest.getMapPanier().get(produitTest3).getPrix());
-        // On teste que l'ajout d'un produit dj prsent au panier n'incrmente pas le nombre de rfrence.
+        // On teste que l'ajout d'un produit déjà présent au panier n'incrémente pas le nombre de référence.
         panierService.updatePanier(panierTest, 2, 2);
         assertEquals(3, panierTest.getNombreDeReferences());
-        // On s'assure que la quantit du produit a bien t mise  jour.
+        // On s'assure que la quantité du produit a bien été mise à jour.
         assertEquals(9, panierTest.getMapPanier().get(produitTest2).getQuantite());
         // On teste le calcul correct des prix
         assertEquals("904,50", panierTest.getMapPanier().get(produitTest2).getPrix());
-        // On teste que l'ajout d'un produit null n'incrmente pas le nombre de rfrence.
+        // On teste que l'ajout d'un produit null n'incrémente pas le nombre de référence.
         panierService.updatePanier(panierTest, 99, 12);
         assertEquals(3, panierTest.getNombreDeReferences());
-        // On teste que si la quantit d'un produit devient infrieure  1, il est alors supprim du panier.
+        // On teste que si la quantité d'un produit devient inférieure à 1, il est alors supprimé du panier.
         panierService.updatePanier(panierTest, 2, -9);
         assertEquals(2, panierTest.getNombreDeReferences());
     }
@@ -241,7 +241,7 @@ class PanierServiceTest {
         produitTest4.setIdProduitOriginal("4");
         final var ligne4 = new LigneCommandeProduitDto();
         panierTest.getMapPanier().put(produitTest4, ligne4);
-        // On teste que la mthode trouve bien un produit lorsqu'il est dans la map.
+        // On teste que la méthode trouve bien un produit lorsqu'il est dans la map.
         assertEquals(produitTest4, panierService.findProduitMap(panierTest, 4));
         // Et qu'elle retourne null lorsque le produit n'est pas dans la map.
         assertNull(panierService.findProduitMap(panierTest, 2));
@@ -312,11 +312,11 @@ class PanierServiceTest {
         final var ligne4 = new LigneCommandeProduitDto();
         panierTest.getMapPanier().put(produitTest4, ligne4);
         panierTest.setNombreDeReferences(1);
-        // On teste que le nombre de rfrence du panier ne change pas lorsqu'on
+        // On teste que le nombre de référence du panier ne change pas lorsqu'on
         // essaie de supprimer un produit qui n'est pas dans la map.
         panierService.deleteProduitPanier(panierTest, 1);
         assertEquals(1, panierTest.getNombreDeReferences());
-        // Et qu'il est bien dcrment le cas chant.
+        // Et qu'il est bien décrémenté le cas échant.
         panierService.deleteProduitPanier(panierTest, 4);
         assertEquals(0, panierTest.getNombreDeReferences());
 
@@ -333,11 +333,11 @@ class PanierServiceTest {
         final var ligne4 = new LigneCommandeProduitDto();
         panierTest.getMapPanier().put(produitTest4, ligne4);
         panierTest.setNombreDeReferences(1);
-        // On teste la valeur des attribut nombreDeReferences et mapPanier avant l'appel de la mthode.
+        // On teste la valeur des attribut nombreDeReferences et mapPanier avant l'appel de la méthode.
         assertNotNull(panierTest.getMapPanier());
         assertEquals(1, panierTest.getNombreDeReferences());
         panierService.viderPanier(panierTest);
-        // On teste que la mapPanier est dsormais vide et le nombreDeReference nul.
+        // On teste que la mapPanier est désormais vide et le nombreDeReference nul.
         assertEquals(new HashMap<ProduitDto, LigneCommandeProduitDto>(), panierTest.getMapPanier());
         assertEquals(0, panierTest.getNombreDeReferences());
     }
@@ -363,21 +363,21 @@ class PanierServiceTest {
         ligne4.setQuantite(44);
         Mockito.when(this.produitDao.findProduitEnVente(4)).thenReturn(produitDoEnVente);
         Mockito.when(this.iProduitService.trouverProduitEnVente(4)).thenReturn(produitTest4);
-        // On teste l'incrmentation entre 1 et 100,
+        // On teste l'incrémentation entre 1 et 100,
         panierService.modifierQuantite(panierTest, 4, 1);
         assertEquals(45, ligne4.getQuantite());
-        // Puis la dcrmentation entre 1 et 100.
+        // Puis la décrmentation entre 1 et 100.
         panierService.modifierQuantite(panierTest, 4, -1);
         assertEquals(44, ligne4.getQuantite());
-        // On teste qu'on ne peut pas incrmenter lorsque la quantit est gale  100.
+        // On teste qu'on ne peut pas incrémenter lorsque la quantité est gale  100.
         ligne4.setQuantite(100);
         panierService.modifierQuantite(panierTest, 4, 1);
         assertEquals(100, ligne4.getQuantite());
-        // On teste qu'on ne peut pas dcrmenter lorsque la quantit est gale  1.
+        // On teste qu'on ne peut pas décrémenter lorsque la quantité est égale  1.
         ligne4.setQuantite(1);
         panierService.modifierQuantite(panierTest, 4, -1);
         assertEquals(1, ligne4.getQuantite());
-        // On teste qu'on ne peut pas incrmenter ou dcrmenter un nombre autre que 1.
+        // On teste qu'on ne peut pas incrémenter ou décrémenter un nombre autre que 1.
         panierService.modifierQuantite(panierTest, 4, 50);
         assertEquals(1, ligne4.getQuantite());
     }
