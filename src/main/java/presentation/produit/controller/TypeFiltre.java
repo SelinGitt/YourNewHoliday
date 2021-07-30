@@ -15,11 +15,11 @@ public enum TypeFiltre {
     /**
      * En vente
      */
-    EnVente(true, "1"),
+    ENVENTE(true, "1"),
     /**
      * Non en vente
      */
-    NonEnVente(false, "2");
+    NONENVENTE(false, "2");
 
     private Boolean typeDao;
     private String  type;
