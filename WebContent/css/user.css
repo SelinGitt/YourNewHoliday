@@ -54,13 +54,17 @@
 .user01-conteneur-ascenseur {
 	box-sizing: border-box;
 	overflow-y: auto;
-	height: 75%;
+	height: 70%;
 	width: 98%;
 }
 
 .user01-searchMenu {
-	margin-bottom: 0.938em;
 	width: 98%;
+}
+
+.userDesignRechercheFiltre {
+	display: contents;
+	margin-bottom: 0.938em;
 }
 
 .user01-filter-bar {
@@ -73,6 +77,11 @@
 
 .searchBarInside {
 	border-radius: 6.25em;
+}
+
+.userSearchBarOk {
+	cursor: pointer;
+	margin-right: 3.3em;
 }
 
 .user01-table {

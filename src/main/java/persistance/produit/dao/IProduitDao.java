@@ -7,6 +7,7 @@ import java.util.List;
 
 import persistance.commun.dao.IGenericDao;
 import persistance.produit.entity.ProduitDo;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 
 /**
@@ -80,6 +81,23 @@ public interface IProduitDao extends IGenericDao<ProduitDo> {
      * @return            liste de tous les produits trouvés en vente ou non
      */
     List<ProduitDo> rechercherAllProduits(final String searchTerm);
+
+    /**
+     * Permet de filtrer les produits selon le filtre effectué
+     * 
+     * @param  filtre de type TypeFiltre 1 true en vente / 2 false non en vente sinon null
+     * @return        liste de produits filtrée
+     */
+    List<ProduitDo> trouverProduitsFiltre(final TypeFiltre filtre);
+
+    /**
+     * Permet de trouver les produits en fonction de la recherche et du filtre
+     *
+     * @param  searchTerm référence recherchée
+     * @param  filtre     de type TypeFiltre
+     * @return            liste de produits recherchée et filtrée
+     */
+    List<ProduitDo> trouverProduitsRechercheFiltre(final String searchTerm, final TypeFiltre filtre);
 
     /**
      * Permet de trier la liste des produits par reference dans l'ordre alphabétique.

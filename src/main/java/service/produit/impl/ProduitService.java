@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
@@ -75,6 +76,9 @@ public class ProduitService implements IProduitService {
         }
 
         if (tri == null) {
+            if (searchTerm.isBlank()) {
+                return listerAllProduit();
+            }
             return rechercherProduitsEnVente(searchTerm);
         }
         return listerFiltreTri(tri, searchTerm);
@@ -96,14 +100,23 @@ public class ProduitService implements IProduitService {
 
         final var builder = new ProduitEditerResponse.ProduitEditerResponseBuilder();
 
+        // Check si le produit existe
         if (produitFound == null) {
             this.logger.error("Produit Service / editerProduit - Produit introuvable avec id {}", produitDto.getIdProduitOriginal());
             return builder.withError("deleted").build();
         }
 
+        // Check si le produit est a jour
         if (!produitFound.getVersion().equals(produitDto.getVersion())) {
             this.logger.error("Produit Service / editerProduit - Le produit edite n'est pas a jour {}", produitDto.getIdProduitOriginal());
             return builder.withError("updated").build();
+        }
+
+        // Check si la reference est libre
+        final var produitRef = this.trouverParReference(produitDto.getReference());
+        if ((produitRef != null) && (!produitRef.getIdProduitOriginal().equals(produitDto.getIdProduitOriginal()))) {
+            this.logger.error("Produit Service / editerProduit - Reference deja prise {}", produitDto.getReference());
+            return builder.withError("reference").build();
         }
 
         this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
@@ -174,6 +187,28 @@ public class ProduitService implements IProduitService {
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre filtre) {
+        if (searchTerm.isBlank()) {
+            if (filtre == null) {
+                return listerAllProduit();
+            }
+            return trouverProduitsFiltre(filtre);
+        }
+        if (filtre == null) {
+            return rechercherAllProduits(searchTerm);
+        }
+        return trouverProduitsFiltreRecherche(searchTerm, filtre);
+    }
+
+    private List<ProduitDto> trouverProduitsFiltre(final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
+    }
+
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String searchTerm, final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(searchTerm, filtre));
     }
 
     @Override

@@ -8,7 +8,6 @@
     <spring:message code="glb.titre.page.listerProduitsAdmin" />
 </p>
 
-
 <c:if test="${not empty anyError}">
     <div class="background-error-block block-message-commun">
         <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${anyError}" /></span>
@@ -22,15 +21,31 @@
 <h1 class="text-align-center">
     <spring:message code="pdt01.titre" />
 </h1>
-<div class="display-flex align-items-flex-end">
+
+<div class="display-flex align-items-flex-end pdtDesignRechercheFiltre">
     <div class="searchBar display-flex pdt01Search align-content-flex-end ">
-        <form:form action="listerProduitsAdmin.do" method="POST">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduitsAdmin.do" method="POST">
+            <input type="hidden" name="filtre" value="${filtre}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt01.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
         </form:form>
     </div>
-
+    <div class="pdtDesignRechercheFiltre">
+        <form:form class="pdtDesignRechercheFiltre" action="listerProduitsAdmin.do" method="POST">
+            <input type="hidden" name="searchInput" value="${searchTerm}" />
+            <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
+            <select id="filtreSelect" name="filtre">
+                <option selected value=""><spring:message code="pdt01.filtre.tous"></spring:message></option>
+                <option value="1"><spring:message code="pdt01.filtre.enVente"></spring:message></option>
+                <option value="2"><spring:message code="pdt01.filtre.horsVente"></spring:message></option>
+            </select>
+            <script>
+                     document.getElementById("filtreSelect").options[${filtre}].selected=true;
+				</script>
+            <input class="pdtSearchBarOk" type="submit" value="<spring:message code='pdt.recherche.OK'/>">
+        </form:form>
+    </div>
     <div class="pdt01AddProduit">
         <a href="creerProduitAdmin.do">
             <button type="button" class="bouton-sans-impact-BD">
@@ -40,8 +55,6 @@
         </a>
     </div>
 </div>
-<br>
-
 <div class="pdt01-conteneur-ascenseur">
 
     <table class="pdtListeProduit" aria-describedby="GestionProduit">
@@ -68,7 +81,7 @@
             <c:forEach items="${listeAllProduitDto}" var="produitDto">
                 <tr>
                     <td class="pdt01Body"><a
-                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listerAdmin">
+                        href="consulterProduit.do?idProduit=${produitDto.idProduitOriginal}&from=listeAdmin">
                             ${produitDto.reference}</a></td>
 
                     <td class="pdt01Body">${produitDto.nom}</td>
