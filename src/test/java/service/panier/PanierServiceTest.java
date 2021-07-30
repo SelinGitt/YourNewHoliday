@@ -316,7 +316,7 @@ class PanierServiceTest {
         // essaie de supprimer un produit qui n'est pas dans la map.
         panierService.deleteProduitPanier(panierTest, 1);
         assertEquals(1, panierTest.getNombreDeReferences());
-        // Et qu'il est bien décrémenté le cas échant.
+        // Et qu'il est bien décrément le cas échant.
         panierService.deleteProduitPanier(panierTest, 4);
         assertEquals(0, panierTest.getNombreDeReferences());
 
