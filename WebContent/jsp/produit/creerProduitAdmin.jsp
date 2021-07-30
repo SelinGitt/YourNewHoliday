@@ -20,12 +20,11 @@
         <spring:message code="pdt03.titre" />
     </h1>
     <a href="listerProduitsAdmin.do" class="lien-retour"><spring:message code="pdt03.retour" /></a>
-    <div class="display-flex pdt03FormImage">
+    <div class="display-flex pdt03Grid-item pdt03FormImage">
         <form:form action="uploadImageProduit.do" enctype="multipart/form-data" method="post">
             <span class="pdt03-label-file"> <label for="file"><spring:message code="form.pdt03.image" /></label>
             </span>
-            <span class="pdt03-input-file"> <input type="file" name="file" 
-            accept=".jpeg, .jpg, .png, .bmp" /> <input
+            <span class="pdt03-input-file"> <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input
                 type="submit" value="submit" />
             </span>
 
@@ -177,8 +176,8 @@
 
             <c:if test="${not empty image}">
                 <div>
-                    <img src="displayImage.do?imageToShow=${image}&type=pdt" 
-                    class="pdt03ImgWidth" alt="imageProduitUpload">
+                    <img src="displayImage.do?imageToShow=${image}&type=pdt" class="pdt03ImgWidth"
+                        alt="imageProduitUpload">
                 </div>
                 <form:hidden path="cheminImage" value="${image}" />
             </c:if>

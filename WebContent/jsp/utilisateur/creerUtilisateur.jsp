@@ -29,8 +29,8 @@
             <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
                 <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
                             code="usr05.label.avatar"></spring:message></label></span>
-                <span class="user05-form-inputs"> <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
-                    <input type="submit" value="submit" />
+                <span class="user05-form-inputs user05-input-file"> <input type="file" name="file"
+                    accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
                 </span>
 
                 <c:if test="${not empty imgError}">
@@ -72,8 +72,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" 
-                        value="${dateNaissance}" maxlength="10" />
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
