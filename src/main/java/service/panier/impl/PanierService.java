@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
-import persistance.produit.entity.ProduitDo;
 import presentation.commande.dto.AdressesDto;
 import presentation.commande.dto.RetourValiderPanierDto;
 import presentation.panier.dto.LigneCommandeProduitDto;
@@ -177,7 +176,7 @@ public class PanierService implements IPanierService {
     @Override
     public boolean modifierQuantite(final PanierDto panier, final Integer idProduit, final int modif) {
         // S'il est conforme, on récupère le produit du panier.
-        final ProduitDto produitDto = isProduitConforme(panier, idProduit);
+        final var produitDto = isProduitConforme(panier, idProduit);
         // Si le produit n'était pas conforme pour la modification :
         // car plus en vente ou modifié.
         if (produitDto == null) {
@@ -206,13 +205,12 @@ public class PanierService implements IPanierService {
      * @return    le produitdto du panier s'il est conforme, null sinon.
      */
     private ProduitDto isProduitConforme(final PanierDto panier, final Integer id) {
-        final ProduitDo produitEnVente = produitDao.findProduitEnVente(id);
-        System.out.println(produitEnVente);
+        final var produitEnVente = produitDao.findProduitEnVente(id);
         if (produitEnVente == null) {
             return null;
         }
         // On récupère le produit
-        final ProduitDto produitDto = findProduitMap(panier, id);
+        final var produitDto = findProduitMap(panier, id);
 
         // TODO : controle de la version. (ISSUES 295)
         return produitDto;
