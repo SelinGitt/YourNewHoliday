@@ -24,7 +24,7 @@
             <form:form class="pdt04-form" action="ajouterProduitPanier.do" modelAttribute="beanQuantite" method="POST">
 
                 <%-- Pour la partie gauche du côté gauche de la vue - Image+Hebergement --%>
-                <div class="pdt04-left-side">
+                <div>
 
                     <div class="pdt04Hebergement">${consulterProduitDto.hebergement}</div>
 
@@ -52,22 +52,22 @@
                         <div class="display-flex pdt04-quantite">
                             <%--  bouton - > 0 --%>
                             <a onclick="decrement('${consulterProduitDto.idProduitOriginal}')">
-                                <button type="button">-</button>
+                                <button type="button" class="pdt04-pan-quantite text-align-center">-</button>
                             </a>
 
                             <%--  saisie valeur produit  --%>
-                            <input class="pdt00-pan-quantite text-align-center" type="text" readonly="readonly"
+                            <input class="pdt04-pan-quantite text-align-center" type="text" readonly="readonly"
                                 id="quantite${consulterProduitDto.idProduitOriginal}" name="quantite" value="1" size="1">
 
                             <%--  bouton + < 100 --%>
                             <a onclick="increment('${consulterProduitDto.idProduitOriginal}')">
-                                <button type="button">+</button>
+                                <button type="button" class="pdt04-pan-quantite text-align-center">+</button>
                             </a>
                         </div>
 
                         <%--  Bouton ajouter au panier --%>
                         <div class="pdt04-ajouter">
-                            <button value="submit" class="background-color-green pdt04-bouton">
+                            <button value="submit" class="bouton-sans-impact-BD">
                                 <spring:message code="pdt.addCart" />
                             </button>
                         </div>

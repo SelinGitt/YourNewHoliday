@@ -352,15 +352,9 @@ th.pdt01 {
 	align-items: baseline
 }
 
-.pdt04-left-side {
-	width: 75%;
-}
-
 .pdt04-right-side {
 	margin-top: 3em;
-	margin-left: 1em;
-	width: 25%;
-	align-content: space-between;
+	margin-left: 0.5em;
 }
 
 .pdt04-form {
@@ -370,16 +364,23 @@ th.pdt01 {
 .pdt04-reference {
 	padding-bottom: 3em;
 	font-weight: bold;
+	font-size: 1.250em;
 }
 
 .pdt04-prix {
 	padding-bottom: 5em;
 	font-weight: bold;
+	font-size: 1.250em;
 }
 
 .pdt04-quantite {
-	margin-left: 2.5em;
+	margin-left: 3.3em;
 	padding-bottom: 1em;
+}
+
+.pdt04-pan-quantite {
+	width: 1.7em;
+	font-size: 1.250em;
 }
 
 .pdt04-ajouter {
