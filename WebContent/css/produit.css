@@ -15,9 +15,6 @@
 .pdt-img {
 	margin-left: 5%;
 }
-.pdtImgWidth{
-	width:40%;	
-}
 /* PDT00 */
 .pdt00ContainerVoyage {
 	margin: 0.625em;
@@ -210,7 +207,7 @@ th.pdt01 {
 }
 
 .pdt02Form-imageProduit {
-	width: 18.750em; 
+	width: 18.750em;
 }
 
 /* PDT03 */
@@ -308,6 +305,30 @@ th.pdt01 {
 
 .pdt03Checkbox {
 	display: none;
+}
+
+.pdt03FormImage {
+	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
+	padding-left: 5.5em;
+	max-width: 50%;
+}
+
+.pdt03-label-file {
+	width: 10em;
+}
+
+.pdt03-input-file {
+	margin-left: 9em;
+}
+
+.pdt03ImgWidth {
+	padding-left: 6em;
+	width: 75%
+}
+
+.pdt03ErrorMessage {
+	margin-left: 11em;
 }
 
 /* PDT04 */
