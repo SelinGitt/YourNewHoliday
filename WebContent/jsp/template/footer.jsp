@@ -27,7 +27,8 @@
             <c:set var="queryString" scope="request" value="${requestScope['javax.servlet.forward.query_string']}" />
             <c:set var="queryStringLength" scope="request" value="${fn:length(queryString)}" />
             <c:set var="indexOfLanguage" scope="request" value="${fn:indexOf(queryString, 'language=')}" />
-            <%-- reconstruit les paramètres d'url sans language= lorsque l'on a déjà choisit une langue au moins une fois --%>
+            <%-- reconstruit les paramètres d'url sans language= --%>
+            <%-- lorsque l'on a déjà choisit une langue au moins une fois --%>
             <c:choose>
                 <c:when test="${indexOfLanguage ge 0}">
                     <c:set var="queryStringBase" scope="request"
@@ -38,7 +39,8 @@
                 </c:otherwise>
             </c:choose>
             <c:set var="queryStringBaseLength" scope="request" value="${fn:length(queryStringBase)}" />
-            <%-- ce if est utile à cause du bug de f:endsWith qui ne détecte pas le dernier caractère si celui ci est déjà présent avant --%>
+            <%-- ce choose est utile à cause du bug de f:endsWith qui ne détecte pas --%>
+            <%-- le dernier caractère si celui ci est déjà présent avant --%>
             <c:choose>
                 <c:when test="${queryStringBaseLength ge 1}">
                     <c:set var="queryLastChar" scope="request"
