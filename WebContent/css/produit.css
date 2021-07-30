@@ -12,6 +12,9 @@
 	cursor: pointer;
 }
 
+.pdt-img {
+	margin-left: 5%;
+}
 /* PDT00 */
 .pdt00ContainerVoyage {
 	margin: 0.625em;
@@ -68,6 +71,13 @@ td.pdt00Description {
 }
 
 /* PDT01 */
+.pdt01-conteneur-ascenseur {
+	box-sizing: border-box;
+	overflow-y: auto;
+	height: 75%;
+	width: 98%;
+}
+
 .pdtListeProduit {
 	border-collapse: collapse;
 	border: 0.063em solid #000000;
@@ -108,6 +118,7 @@ th.pdt01 {
 
 .pdt01AddProduit {
 	margin-left: auto;
+	margin-right: 2%;
 }
 
 /* PDT02 */
@@ -171,6 +182,10 @@ th.pdt01 {
 .pdt02ListeService {
 	width: 100%;
 	line-height: 4em;
+}
+
+.pdt02ListeService th{
+	line-height: 2em;
 }
 
 .pdt02ImageCreationProduit {
@@ -297,6 +312,31 @@ th.pdt01 {
 
 .pdt03Checkbox {
 	display: none;
+}
+
+.pdt03FormImage {
+	padding: 0 0.313em 0 0.313em;
+	vertical-align: top;
+	padding-left: 5.5em;
+	max-width: 50%;
+}
+
+.pdt03-label-file {
+	width: 10em;
+}
+
+.pdt03-input-file {
+	margin-left: 9em;
+}
+
+.pdt03ImgWidth {
+	padding-left: 6em;
+	width: 75%
+}
+
+.pdt03ErrorMessage {
+	margin-left: 11em;
+
 }
 
 /* PDT04 */

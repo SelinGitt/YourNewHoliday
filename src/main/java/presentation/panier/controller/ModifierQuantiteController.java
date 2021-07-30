@@ -3,6 +3,8 @@
  */
 package presentation.panier.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
 import service.panier.IPanierService;
+import service.produit.IProduitService;
 
 /**
  * Class represents controller pour les boutons modifiant la quantité d'une produit du panier
@@ -25,22 +29,32 @@ import service.panier.IPanierService;
 @RequestMapping("/modifierQuantite.do")
 public class ModifierQuantiteController {
     @Autowired
-    private IPanierService panierService;
+    private IPanierService  panierService;
+
+    @Autowired
+    private IProduitService produitService;
 
     /**
      * Permets de modifier la quantité d'une produit du panier
      *
-     * @param  panierDto le panier
-     * @param  request   envoyée
-     * @return           le model and view
+     * @param  panierDto          le panier
+     * @param  request            envoyée
+     * @param  redirectAttributes pour ajouter la liste d'erreur si besoin
+     * @return                    le model and view
      */
     @GetMapping
-    public ModelAndView modifierQuantite(final @SessionAttribute("panierDto") PanierDto panierDto, final HttpServletRequest request) {
+    public ModelAndView modifierQuantite(final @SessionAttribute("panierDto") PanierDto panierDto, final HttpServletRequest request,
+            final RedirectAttributes redirectAttributes) {
         final var modelAndView = new ModelAndView();
-        panierService.modifierQuantite(panierDto, Integer.valueOf(request.getParameter("idProduit")),
-                Integer.valueOf(request.getParameter("quantite")));
-        //renvoyer vers listerPanierProduitController
+        // quoiqu'il arrive on redirige vers le panier
         modelAndView.setViewName("redirect:listerPanierProduits.do");
+        final var id = Integer.valueOf(request.getParameter("idProduit"));
+        final boolean traitementOk = panierService.modifierQuantite(panierDto, id, Integer.valueOf(request.getParameter("quantite")));
+
+        if (!traitementOk) {
+            redirectAttributes.addFlashAttribute("listIdError", List.of(id));
+        }
+
         return modelAndView;
     }
 
