@@ -20,6 +20,7 @@ import presentation.produit.dto.ProduitDto;
 import service.panier.IPanierService;
 import service.produit.IProduitService;
 import service.produit.ProduitMapper;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -96,8 +97,16 @@ public class ProduitService implements IProduitService {
     }
 
     @Override
-    public ProduitDto editerProduit(final ProduitDto produitDto) {
+    public ProduitEditerResponse editerProduit(final ProduitDto produitDto) {
         final var produitFound = trouverProduitById(Integer.valueOf(produitDto.getIdProduitOriginal()));
+
+        final var builder = new ProduitEditerResponse.ProduitEditerResponseBuilder();
+
+        if (produitFound == null) {
+            this.logger.error("Produit Service / editerProduit - Produit introuvable avec id {}", produitDto.getIdProduitOriginal());
+            return builder.withError("deleted").build();
+        }
+
         this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
                 produitDto.getIdProduitOriginal(), produitFound.getReference());
         // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
@@ -105,10 +114,10 @@ public class ProduitService implements IProduitService {
             final var produitDoWithChanges = ProduitMapper.mapToDo(produitDto);
             this.logger.debug("Produit Service / editerProduit - Les produits sont différents");
             produitDoWithChanges.setVersion(produitDoWithChanges.getVersion() + 1);
-            return ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges));
+            return builder.withPdt(ProduitMapper.mapToDto(produitDao.update(produitDoWithChanges))).build();
         }
         this.logger.debug("Produit Service / editerProduit - Les produits sont identiques");
-        return produitFound;
+        return builder.withPdt(produitFound).build();
     }
 
     @Override
@@ -153,7 +162,7 @@ public class ProduitService implements IProduitService {
         if (produitDo == null) {
             this.logger.warn("Le produit d'id  {} n'existe pas en BdD.", id);
             return false;
-        }      
+        }
         produitDao.delete(produitDo);
         this.logger.debug("Le produit d'id  {} a été supprimé.", id);
         return true;
