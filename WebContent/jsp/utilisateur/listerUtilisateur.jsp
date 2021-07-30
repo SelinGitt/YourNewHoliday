@@ -23,7 +23,7 @@
 <h1 id="titreGestion" class="text-align-center">
     <spring:message code="usr01.titre" />
 </h1>
-<div class="user01-searchMenu display-flex">
+<div class="user01-searchMenu display-flex align-items-flex-end">
     <div>
         <form:form action="listerUtilisateur.do" method="POST">
             <input type="hidden" name="searchFilter" value="${searchFilter}" />
@@ -58,7 +58,7 @@
 
     <div class="user01AddUser">
         <a href="creerUtilisateur.do">
-            <button type="button" class="user01-newUserBouton">
+            <button type="button" class="bouton-sans-impact-BD ">
                 <span class="fa fa-plus-square-o" aria-hidden="true"></span>
                 <spring:message code="usr01.creer.nouveau" />
             </button>

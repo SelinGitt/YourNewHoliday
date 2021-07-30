@@ -112,16 +112,17 @@
                     </details>
                 </div>
 
-                <div class="user02-buttons">
-                    <button class="user02-valider" onclick="submit">
-                        <spring:message code="usr02.edit.valider" />
-                    </button>
-                    <button class="user02-reset" type="reset">
-                        <spring:message code="usr02.edit.reset" />
-                    </button>
+                <div class="display-flex justify-content-space-around">
+                    <div class="user02-buttons">
+                        <button class="bouton-impact-BD" onclick="submit">
+                            <spring:message code="usr02.edit.valider" />
+                        </button>
+                        <button class="bouton-rouge" type="reset">
+                            <spring:message code="usr02.edit.reset" />
+                        </button>
+                    </div>
                 </div>
             </div>
-
 
             <div class="user02-rightSide">
 
@@ -165,12 +166,11 @@
                                         <spring:message code="usr02.client.active" />
                                     </c:otherwise>
                                 </c:choose>
-                                
+
                                 <form:checkbox path="estDesactive"
                                     onchange="changeStatusImg(document.getElementById('usr02.status.img'), this)"
                                     cssClass="user02-status-checkbox" />
-                                <label for="estDesactive1"> 
-                                    <span class="fa fa-square-o" id="usr02.status.img"></span>
+                                <label for="estDesactive1"> <span class="fa fa-square-o" id="usr02.status.img"></span>
                                 </label>
 
                                 <script>

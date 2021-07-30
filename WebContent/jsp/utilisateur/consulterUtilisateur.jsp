@@ -76,7 +76,7 @@
                 <div class="user00-buttons">
                     <div>
                         <a href="modifierUtilisateur.do?origin=1&ref=${utilisateurDto.reference}">
-                            <button class="user00-modifier">
+                            <button class="bouton-impact-BD">
                                 <spring:message code="usr00.consulter.modifier" />
                             </button>
                         </a>
@@ -84,7 +84,7 @@
                     <div>
                         <a href="supprimerUtilisateur.do?origin=1&ref=${utilisateurDto.reference}"
                             onclick="return confirm('<spring:message code="usr00.consulter.confirmer_suppression" />')">
-                            <button class="user00-supprimer">
+                            <button class="bouton-rouge">
                                 <spring:message code="usr00.consulter.supprimer" />
                             </button>
                         </a>
