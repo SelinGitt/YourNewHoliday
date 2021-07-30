@@ -97,20 +97,31 @@ public class EditerProduitAdminController {
 
         final var response = iProduitService.editerProduit(produitDto);
 
+        // Mise a jour OK
         if (response.getProduit() != null) {
             //Ajout d'un FlashAttribute pour le bandeau de validation sur PDT_01
             redirectAttributes.addFlashAttribute("anySuccess", "pdt02.editionOK");
             return new ModelAndView("redirect:/listerProduitsAdmin.do");
         }
 
-        if ("reference".equals(response.getError())) {
-            result.rejectValue("reference", "pdt02.reference.dejaExistant");
-            modelAndView.setViewName("editerProduitAdmin");
-            return modelAndView;
+        // Mise a jour KO
+        // Code erreur renvoyer par le service
+        final var error = response.getError();
+
+        modelAndView.setViewName("editerProduitAdmin");
+
+        switch (error) {
+            case "deleted":
+                modelAndView.getModelMap().addAttribute("error", "pdt02.erreurEdition.supprimer");
+                break;
+            case "updated":
+                modelAndView.getModelMap().addAttribute("error", "pdt02.erreurEdition.outdated");
+                break;
+            default:
+                result.rejectValue("reference", "pdt02.reference.dejaExistant");
+                break;
         }
 
-        modelAndView.getModelMap().addAttribute("error", "pdt02.erreurEdition");
-        modelAndView.setViewName("editerProduitAdmin");
         return modelAndView;
     }
 }
