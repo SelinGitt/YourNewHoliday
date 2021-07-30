@@ -370,5 +370,5 @@ div.CMD_00-commandeReference, div.CMD_00-commandeQuantiteTotale, div.CMD_00-comm
 
 /* marge sous le lien retour */
 .CMD_04-lien-margin-bottom {
-	margin-bottom: 1em;
+	margin-bottom: 0em;
 }
