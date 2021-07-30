@@ -107,6 +107,11 @@ public class ProduitService implements IProduitService {
             return builder.withError("deleted").build();
         }
 
+        if (!produitFound.getVersion().equals(produitDto.getVersion())) {
+            this.logger.error("Produit Service / editerProduit - Le produit edite n'est pas a jour {}", produitDto.getIdProduitOriginal());
+            return builder.withError("updated").build();
+        }
+
         this.logger.debug("Produit Service / editerProduit - méthode trouverById avec id : {} -> ref produit trouvé : {} ",
                 produitDto.getIdProduitOriginal(), produitFound.getReference());
         // Incrementation de la version du produit si les DTO sont différents, sinon la version actuelle du produitDto est retorunée
