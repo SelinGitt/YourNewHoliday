@@ -23,10 +23,12 @@
         <span class="text-responsive"><spring:message code="glb.footer.texte.langue" /></span>
         <%-- image du drapeau français permettant de basculer le site en français. --%>
         <a id="lienLangueFr" href="${requestScope.urlLanguage}language=fr"><img id="FR-button"
-            class="footer-lang footer-responsive" src="img/template/footer/france.svg" alt="drapeau français" /></a>
+            class="footer-lang footer-responsive"
+            src="img/template/footer/france.svg" alt="drapeau français" /></a>
         <%-- image du drapeau anglais permettant de basculer le site en anglais.--%>
         <a id="lienLangueEn" href="${requestScope.urlLanguage}language=en"><img id="EN-button"
-            class="footer-lang footer-responsive" src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /></a>
+            class="footer-lang footer-responsive"
+            src="img/template/footer/united-kingdom.svg" alt="drapeau anglais" /></a>
     </div>
 </div>
 <script type="text/javascript" src="js/footer/langues.js"></script>

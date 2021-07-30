@@ -72,8 +72,8 @@ public class DroitAccesFilter implements Filter {
     }
 
     private ServletRequest constructQueryForLanguage(final HttpServletRequest request) {
-        final String uri = request.getRequestURI();
-        final String queryBase = request.getQueryString();
+        final var uri = request.getRequestURI();
+        final var queryBase = request.getQueryString();
         if (request.getParameter(LANGUAGE) == null) {
             request.setAttribute("urlLanguage", this.constructQuery(uri, queryBase));
         } else {
@@ -83,7 +83,7 @@ public class DroitAccesFilter implements Filter {
     }
 
     private String constructQuery(final String uri, final String query) {
-        final String uriStart = uri + INIT_QUERY;
+        final var uriStart = uri + INIT_QUERY;
         if (query == null) {
             return uriStart;
         }
@@ -91,7 +91,7 @@ public class DroitAccesFilter implements Filter {
     }
 
     private String cutQuery(final String query) {
-        final String queryWithoutLanguage = query.substring(0, query.indexOf(LANGUAGE));
+        final var queryWithoutLanguage = query.substring(0, query.indexOf(LANGUAGE));
         if (EMPTY_STRING.equals(queryWithoutLanguage)) {
             return null;
         }
