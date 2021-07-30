@@ -74,7 +74,7 @@ public class ProduitService implements IProduitService {
         }
 
         if (tri == null) {
-            return rechercherProduits(searchTerm);
+            return rechercherProduitsEnVente(searchTerm);
         }
         return listerFiltreTri(tri, searchTerm);
     }
@@ -87,12 +87,6 @@ public class ProduitService implements IProduitService {
     private List<ProduitDto> trierListe(final TypeTriAlphanumerique typeFiltre) {
         logger.debug("Produit Service / méthode trierListe, typeFiltre : {}", typeFiltre);
         return ProduitMapper.mapToListDto(produitDao.trierListe(typeFiltre));
-    }
-
-    private List<ProduitDto> rechercherProduits(final String pSearchTerm) {
-        logger.debug("Produit Service / méthode rechercherProduits, pSearchTerm : {}", pSearchTerm);
-        return ProduitMapper.mapToListDto(produitDao.rechercherAllProduits(pSearchTerm));
-
     }
 
     @Override
@@ -153,7 +147,7 @@ public class ProduitService implements IProduitService {
         if (produitDo == null) {
             this.logger.warn("Le produit d'id  {} n'existe pas en BdD.", id);
             return false;
-        }      
+        }
         produitDao.delete(produitDo);
         this.logger.debug("Le produit d'id  {} a été supprimé.", id);
         return true;
