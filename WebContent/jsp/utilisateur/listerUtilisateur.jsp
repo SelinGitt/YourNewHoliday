@@ -23,20 +23,20 @@
 <h1 id="titreGestion" class="text-align-center">
     <spring:message code="usr01.titre" />
 </h1>
-<div class="user01-searchMenu display-flex align-items-flex-end">
-    <div>
-        <form:form action="listerUtilisateur.do" method="POST">
+<div class="user01-searchMenu display-flex align-items-flex-end userDesignRechercheFiltre">
+    <div class="userDesignRechercheFiltre">
+        <form:form class="userDesignRechercheFiltre" action="listerUtilisateur.do" method="POST">
             <input type="hidden" name="searchFilter" value="${searchFilter}" />
 
             <input value="${searchTerm}" name="searchInput" class="searchBarInside" type="search"
                 placeholder="<spring:message code='usr01.searchbar'/>">
 
-            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="userSearchBarOk" />
         </form:form>
     </div>
 
-    <div class="user01-filter-bar">
-        <form:form action="listerUtilisateur.do" method="POST">
+    <div class="user01-filter-bar userDesignRechercheFiltre">
+        <form:form class="userDesignRechercheFiltre" action="listerUtilisateur.do" method="POST">
             <input type="hidden" name="searchInput" value="${searchTerm}" />
 
             <select name="searchFilter" id="filterBar">
@@ -52,7 +52,7 @@
                      document.getElementById("filterBar").options[${searchFilter}-1].selected = true;
                 </script>
 
-            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="searchBarOk" />
+            <input type="submit" value="<spring:message code="usr01.recherche.OK"/>" class="userSearchBarOk" />
         </form:form>
     </div>
 

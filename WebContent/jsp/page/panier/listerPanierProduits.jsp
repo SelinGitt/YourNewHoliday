@@ -33,53 +33,61 @@
             </legend>
 
             <%--  tableau --%>
-            <table class="panier-bordure-1px" aria-label="tableau panier">
+            <table class="panier-bordure" aria-label="tableau panier">
                 <tbody>
                     <c:forEach items="${panierDto.mapPanier}" var="entry">
 
-                        <tr>
+                        <tr class="panier-bordure-margin">
 
                             <%-- encart produit : photo, nom, référence et description  --%>
-                            <th class="panier-bordure-1px display-flex panier-th">
-                                <div class="panier-div-image">
-                                    <div class="panier-image-produit-container">
-                                        <%--  photo --%>
-                                        <a href="consulterProduit.do?idProduit=${entry.key.idProduitOriginal}&from=pan">
-                                            <img class="panier-image-produit"
-                                            src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
-                                            alt="${entry.key.destination}" />
-                                        </a>
+                            <th class="panier-bordure-1px  panier-th ">
+                                <div class="display-flex">
+                                    <div class="panier-div-image">
+                                        <div class="panier-image-produit-container">
+                                            <%--  photo --%>
+                                            <a
+                                                href="consulterProduit.do?idProduit=
+                                                ${entry.key.idProduitOriginal}&from=pan">
+                                                <img class="panier-image-produit"
+                                                src="displayImage.do?id=${entry.key.idProduitOriginal}&type=pdt"
+                                                alt="${entry.key.destination}" />
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="panier-description-produit">
-                                    <div>
-                                        <%--  nom et référence --%>
-                                        <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
+                                    <div class="panier-description-produit">
+                                        <div>
+                                            <%--  nom et référence --%>
+                                            <p class="panier-titre-produit">${entry.key.nom}-${entry.key.reference}</p>
+                                        </div>
+                                        <%--  description --%>
+                                        <div class="panier-description-produit-paragraphe">
+                                        ${entry.key.description}</div>
                                     </div>
-                                    <%--  description --%>
-                                    <div class="panier-description-produit-paragraphe">${entry.key.description}</div>
                                 </div>
                             </th>
 
                             <%--  encart prix unitaire : label et valeur --%>
-                            <td class="panier-bordure-1px panier-td text-align-center">
+                            <td
+                                class="panier-bordure-1px panier-td-prix-unitaire
+                                 panier-bordure-margin text-align-center ">
                                 <%--  label --%>
-                                <div class="panier-label display-flex justify-content-center">
+                                <div class="panier-label justy-content-center panier-label-margin">
                                     <h3 class="panier-antimarge-prix-unitaire">
                                         <spring:message code="pan00.prix.unitaire" />
                                     </h3>
                                 </div> <%--  valeur --%>
-                                <div class="panier-td-component justify-content-center display-flex">
+                                <div class="panier-td-component justy-content-center">
                                     ${entry.key.prixUnitaire}
                                     <spring:message code="glb.devise" />
                                 </div>
+
                             </td>
 
                             <%--  encart quantité : label, bouton -, saisie valeur produit, bouton + --%>
-                            <td class="panier-bordure-1px panier-td text-align-center"><div>
+                            <td class="panier-bordure-1px panier-td-quantiter text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
                                         <h3>
                                             <spring:message code="pan00.quantite" />
                                         </h3>
@@ -124,7 +132,7 @@
                             <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center">
+                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
                                         <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
@@ -138,11 +146,12 @@
                                 </div></td>
                         </tr>
                         <tr>
-                            <c:if test="${listIdError.contains(entry.key.idProduitOriginal) }">
-                                <td><div class="text-color-rouge">
+                            <td class="panier-width-espacement"><c:if
+                                    test="${listIdError.contains(entry.key.idProduitOriginal) }">
+                                    <div class="text-color-rouge">
                                         <spring:message code="pan00.erreur.produit_indisponible" />
-                                    </div></td>
-                            </c:if>
+                                    </div>
+                                </c:if></td>
                         </tr>
 
                     </c:forEach>
@@ -174,7 +183,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.avant.remise" />
                 </h3>
-                <div id="total_avant_remise" class="prix panier-bordure-1px">${panierDto.prixTotalAffichage}
+                <div id="total_avant_remise" class="prix panier-bordure-063em ">${panierDto.prixTotalAffichage}
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -183,7 +192,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.remise" />
                 </h3>
-                <div id="remise" class="prix panier-bordure-1px">${panierDto.remiseAffichage }
+                <div id="remise" class="prix panier-bordure-063em ">${panierDto.remiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>
@@ -192,7 +201,7 @@
                 <h3>
                     <spring:message code="pan00.titre.fieldset.total.apres.remise" />
                 </h3>
-                <div id="total_apres_remise" class="prix panier-bordure-1px">${panierDto.prixApresRemiseAffichage }
+                <div id="total_apres_remise" class="prix panier-bordure-063em ">${panierDto.prixApresRemiseAffichage }
                     <spring:message code="glb.devise" />
                 </div>
             </div>

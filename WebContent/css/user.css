@@ -59,8 +59,12 @@
 }
 
 .user01-searchMenu {
-	margin-bottom: 0.938em;
 	width: 98%;
+}
+
+.userDesignRechercheFiltre {
+	display: contents;
+	margin-bottom: 0.938em;
 }
 
 .user01-filter-bar {
@@ -73,6 +77,12 @@
 
 .searchBarInside {
 	border-radius: 6.25em;
+	border: 0.125em solid #808080;
+}
+
+.userSearchBarOk {
+	cursor: pointer;
+	margin-right: 3.3em;
 }
 
 .user01-table {
