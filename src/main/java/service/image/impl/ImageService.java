@@ -107,8 +107,7 @@ public class ImageService implements IImageService {
      * @param  size   le poids du fichier a ne pas dépasser
      * @param  width  la largeur du fichier (doit être inférieur)
      * @param  height la hauteur du fichier (doit être inférieur)
-     * @return        <code>true</code> si le fichier envoye correspond a une image<br>
-     *                <code>false</code> dans le cas contraire
+     * @return        une imageValidResponse avec des infos concernant les succès/échecs de validation
      */
     private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
