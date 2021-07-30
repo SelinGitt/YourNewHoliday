@@ -25,7 +25,7 @@
 <div class="display-flex align-items-flex-end">
     <div class="searchBar display-flex pdt01Search align-content-flex-end ">
         <form:form action="listerProduitsAdmin.do" method="POST">
-            <input type="hidden" name="tri" value="${tri}" />
+            <input type="hidden" name="filtre" value="${filtre}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt01.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
@@ -35,13 +35,13 @@
         <form:form action="listerProduitsAdmin.do" method="POST">
             <input type="hidden" name="searchInput" value="${searchTerm}" />
             <input type="hidden" name="miseEnVente" value="${produitDto.miseEnVente}" />
-            <select id="triSelect" name="tri">
-                <option selected value=""><spring:message code="pdt01.tri.tous"></spring:message></option>
-                <option value="1"><spring:message code="pdt01.tri.enVente"></spring:message></option>
-                <option value="2"><spring:message code="pdt01.tri.horsVente"></spring:message></option>
+            <select id="filtreSelect" name="filtre">
+                <option selected value=""><spring:message code="pdt01.filtre.tous"></spring:message></option>
+                <option value="1"><spring:message code="pdt01.filtre.enVente"></spring:message></option>
+                <option value="2"><spring:message code="pdt01.filtre.horsVente"></spring:message></option>
             </select>
             <script>
-                     document.getElementById("triSelect").options[${tri}].selected=true;
+                     document.getElementById("filtreSelect").options[${filtre}].selected=true;
 				</script>
             <input type="submit" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>

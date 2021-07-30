@@ -3,7 +3,7 @@
  */
 package persistance.produit.dao.impl;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -289,13 +289,13 @@ class ProduitDaoTest {
     @Test
     void testTrouverProduitsRechercheFiltre() {
         //test produits en vente avec la recherche de référence 9
-        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EV).size());
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.EnVente).size());
         //test produits non en vente avec la recherche de référence 9
-        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NEV).size());
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("9", TypeFiltre.NonEnVente).size());
         //test produits en vente avec la recherche de référence ""
-        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EV).size());
+        assertEquals(4, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.EnVente).size());
         //test produits non en vente avec la recherche de référence ""
-        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NEV).size());
+        assertEquals(2, iProduitDao.trouverProduitsRechercheFiltre("", TypeFiltre.NonEnVente).size());
     }
 
     /**
@@ -304,9 +304,9 @@ class ProduitDaoTest {
     @Test
     void testTrouverProduitsFiltre() {
         //Test produits en vente
-        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.EV).size());
+        assertEquals(4, iProduitDao.trouverProduitsFiltre(TypeFiltre.EnVente).size());
         //Test produits non en vente
-        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NEV).size());
+        assertEquals(2, iProduitDao.trouverProduitsFiltre(TypeFiltre.NonEnVente).size());
     }
 
     /**
@@ -315,9 +315,9 @@ class ProduitDaoTest {
     @Test
     void testFindValue() {
         //Value 1
-        assertTrue(TypeFiltre.EV.getTypeDao());
+        assertTrue(TypeFiltre.EnVente.getTypeDao());
         //Value 2
-        assertFalse(TypeFiltre.NEV.getTypeDao());
+        assertFalse(TypeFiltre.NonEnVente.getTypeDao());
         //Value null
         assertNull(TypeFiltre.findValue(null));
     }
