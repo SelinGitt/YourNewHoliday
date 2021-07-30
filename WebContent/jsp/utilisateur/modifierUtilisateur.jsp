@@ -34,7 +34,7 @@
             </c:otherwise>
         </c:choose>
 
-        <c:if test="${utilisateur.role.id == '3'}">
+        <c:if test="${origin=='2'}">
             <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
         </c:if>
 
