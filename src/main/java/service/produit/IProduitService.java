@@ -10,6 +10,7 @@ import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
+import service.produit.util.ProduitEditerResponse;
 import service.utilisateur.util.UtilisateurRoleEnum;
 
 /**
@@ -62,9 +63,9 @@ public interface IProduitService {
      * Permet de maj un produit
      * 
      * @param  produitDto le produit à éditer
-     * @return            le produit édité, null sinon
+     * @return            ProduitEditerResponse
      */
-    ProduitDto editerProduit(final ProduitDto produitDto);
+    ProduitEditerResponse editerProduit(final ProduitDto produitDto);
 
     /**
      * Permet de trouver un produit via sa référence
