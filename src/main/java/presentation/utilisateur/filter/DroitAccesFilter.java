@@ -29,6 +29,7 @@ public class DroitAccesFilter implements Filter {
     private static final String INIT_QUERY      = "?";
     private static final String QUERY_SEPARATOR = "&";
     private static final String LANGUAGE        = "language";
+    private static final String URL_LANGUAGE    = "urlLanguage";
 
     @Override
     public void doFilter(final ServletRequest req, final ServletResponse resp, final FilterChain chain)
@@ -76,9 +77,9 @@ public class DroitAccesFilter implements Filter {
         final var uri = request.getRequestURI();
         final var queryBase = request.getQueryString();
         if (request.getParameter(LANGUAGE) == null) {
-            request.setAttribute("urlLanguage", this.constructQuery(uri, queryBase));
+            request.setAttribute(URL_LANGUAGE, this.constructQuery(uri, queryBase));
         } else {
-            request.setAttribute("urlLanguage", this.constructQuery(uri, this.cutQuery(queryBase)));
+            request.setAttribute(URL_LANGUAGE, this.constructQuery(uri, this.cutQuery(queryBase)));
         }
     }
 
