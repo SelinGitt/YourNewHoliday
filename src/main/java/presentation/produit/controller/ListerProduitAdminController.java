@@ -46,6 +46,7 @@ public class ListerProduitAdminController {
 
         }
         modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.listerAllProduit());
+        modelAndView.getModelMap().addAttribute("filtre", 0);
         return modelAndView;
     }
 
@@ -53,13 +54,18 @@ public class ListerProduitAdminController {
      * Permet de traiter une requete de type POST
      * 
      * @param  searchInput terme recherché
+     * @param  filtre      valeur du filtre appliqué
      * @return             liste de produits pour le model et la vue associée
      */
     @PostMapping
-    public ModelAndView rechercherProduits(final @RequestParam(value = "searchInput") String searchInput) {
+    public ModelAndView rechercherProduits(
+            final @RequestParam(value = "searchInput", required = false, defaultValue = "") String searchInput,
+            final @RequestParam(value = "filtre", required = false, defaultValue = "") String filtre) {
         final var modelAndView = new ModelAndView("listerProduitsAdmin");
         modelAndView.getModelMap().addAttribute("searchTerm", searchInput);
-        modelAndView.getModelMap().addAttribute("listeAllProduitDto", iProduitService.rechercherAllProduits(searchInput));
+        modelAndView.getModelMap().addAttribute("filtre", filtre);
+        modelAndView.getModelMap().addAttribute("listeAllProduitDto",
+                iProduitService.filtrerEnVente(searchInput, TypeFiltre.findValue(filtre)));
         return modelAndView;
     }
 }

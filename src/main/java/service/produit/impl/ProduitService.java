@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import persistance.produit.dao.IProduitDao;
 import presentation.panier.dto.PanierDto;
+import presentation.produit.controller.TypeFiltre;
 import presentation.produit.controller.TypeTriAlphanumerique;
 import presentation.produit.dto.BeanQuantite;
 import presentation.produit.dto.ProduitDto;
@@ -75,6 +76,9 @@ public class ProduitService implements IProduitService {
         }
 
         if (tri == null) {
+            if (searchTerm.isBlank()) {
+                return listerAllProduit();
+            }
             return rechercherProduitsEnVente(searchTerm);
         }
         return listerFiltreTri(tri, searchTerm);
@@ -183,6 +187,28 @@ public class ProduitService implements IProduitService {
         final var quantite = Integer.valueOf(beanQuantite.getQuantite());
         final var id = Integer.parseInt(beanQuantite.getId());
         return (quantite >= 100 || quantite <= 0) ? null : panierService.updatePanier(panierDto, id, quantite);
+    }
+
+    @Override
+    public List<ProduitDto> filtrerEnVente(final String searchTerm, final TypeFiltre filtre) {
+        if (searchTerm.isBlank()) {
+            if (filtre == null) {
+                return listerAllProduit();
+            }
+            return trouverProduitsFiltre(filtre);
+        }
+        if (filtre == null) {
+            return rechercherAllProduits(searchTerm);
+        }
+        return trouverProduitsFiltreRecherche(searchTerm, filtre);
+    }
+
+    private List<ProduitDto> trouverProduitsFiltre(final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsFiltre(filtre));
+    }
+
+    private List<ProduitDto> trouverProduitsFiltreRecherche(final String searchTerm, final TypeFiltre filtre) {
+        return ProduitMapper.mapToListDto(produitDao.trouverProduitsRechercheFiltre(searchTerm, filtre));
     }
 
     @Override
