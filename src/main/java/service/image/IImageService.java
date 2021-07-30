@@ -6,6 +6,7 @@ package service.image;
 import java.io.File;
 
 import service.image.impl.ImageService;
+import service.image.util.ImageValidResponse;
 
 /**
  * Interface métier de {@link ImageService}
@@ -30,7 +31,7 @@ public interface IImageService {
      * @param  fileName  le nom du fichier à importer
      * @return           vrai si sauvegardé
      */
-    boolean saveImage(final byte[] byteArray, final String type, final String fileName);
+    ImageValidResponse saveImage(final byte[] byteArray, final String type, final String fileName);
 
     /**
      * Permet de récupérer une image en fonction de son chemin absolu et de son type

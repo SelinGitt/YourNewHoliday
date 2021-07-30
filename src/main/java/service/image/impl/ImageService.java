@@ -22,6 +22,7 @@ import persistance.produit.dao.IProduitDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import service.image.IImageService;
 import service.image.TypeImage;
+import service.image.util.ImageValidResponse;
 import service.util.GetPropertyValues;
 
 /**
@@ -40,7 +41,6 @@ public class ImageService implements IImageService {
     private static final int    LIMIT_WIDTH_PDT   = 1920;
     private static final int    LIMIT_HEIGHT_PDT  = 1080;
     private static final int    LIMIT_SIZE_PDT    = 5_242_880;
-
     @Autowired
     private IImageDao           imageDao;
 
@@ -70,28 +70,34 @@ public class ImageService implements IImageService {
     }
 
     @Override
-    public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
+    public ImageValidResponse saveImage(final byte[] byteArray, final String type, final String fileName) {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
             //on vérifie que l'image correspond bien, puis on l'enregistre
             final var imageValid = verifyFile(LIMIT_WIDTH_USER, LIMIT_HEIGHT_USER, LIMIT_SIZE_USER, byteArray);
-            if (imageValid) {
+            if (imageValid.getError() == null) {
                 logger.debug("Service - Avatar nom:{} sauvegardé à : {}.", fileName, cheminComplet);
-                return imageDao.saveImage(cheminComplet, byteArray);
+                if (imageDao.saveImage(cheminComplet, byteArray)) {
+                    return imageValid;
+                }
             }
         }
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
             //on vérifie que l'image correspond bien, puis on l'enregistre
             final var imageValid = verifyFile(LIMIT_WIDTH_PDT, LIMIT_HEIGHT_PDT, LIMIT_SIZE_PDT, byteArray);
-            if (imageValid) {
+            if (imageValid.getError() == null) {
                 logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
-                return imageDao.saveImage(cheminComplet, byteArray);
+                if (imageDao.saveImage(cheminComplet, byteArray)) {
+                    return imageValid;
+                }
+                return imageValid;
             }
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
-        return false;
+        return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.image").build();
+
     }
 
     /**
@@ -104,14 +110,19 @@ public class ImageService implements IImageService {
      * @return        <code>true</code> si le fichier envoye correspond a une image<br>
      *                <code>false</code> dans le cas contraire
      */
-    private boolean verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
+    private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
-            return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(byteArray, size));
+            if (!isImageValid(bufferImage, height, width)) {
+                return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.ImageTooBig").build();
+            }
+            if (!isFileValid(byteArray, size)) {
+                return new ImageValidResponse.ImageValidResponseBuilder().withError("pdt03.erreur.ImageTooLarge").build();
+            }
         } catch (final IOException ioe) {
             logger.error("une exception a été levée pour le fichier : ", ioe);
-            return false;
         }
+        return new ImageValidResponse.ImageValidResponseBuilder().withData(byteArray).build();
     }
 
     private boolean isImageValid(final BufferedImage bufferImage, final int height, final int width) {

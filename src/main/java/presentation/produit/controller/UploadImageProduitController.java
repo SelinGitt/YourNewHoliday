@@ -38,11 +38,13 @@ public class UploadImageProduitController {
         final var modelAndView = new ModelAndView("redirect:creerProduitAdmin.do");
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        if (imageService.saveImage(byteArray, "pdt", fileName)) {
+        final var imageResponse = imageService.saveImage(byteArray, "pdt", fileName);
+        if (imageResponse.getError() == null) {
             modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
-            modelAndView.getModelMap().addAttribute("imgError", "pdt03.erreur.image");
-            
+            System.out.println(imageResponse.getError());
+            modelAndView.getModelMap().addAttribute("imgError", imageResponse.getError());
+
         }
         return modelAndView;
 
