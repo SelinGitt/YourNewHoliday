@@ -10,6 +10,7 @@
 
 .pdtSearchBarOk {
 	cursor: pointer;
+	margin-right: 1em;
 }
 
 /* PDT00 */
@@ -65,6 +66,10 @@ td.pdt00Description {
 
 .pdt00-pan-quantite {
 	width: 1.7em;
+}
+
+.pdt00Align {
+	display: contents;
 }
 
 /* PDT01 */

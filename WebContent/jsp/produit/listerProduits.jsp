@@ -27,13 +27,13 @@
     </div>
     <br />
     <div class="searchBar display-flex justify-content-flex-end align-content-flex-end align-items-flex-end">
-        <form:form action="listerProduits.do" method="POST">
+        <form:form class="pdt00Align" action="listerProduits.do" method="POST">
             <input type="hidden" name="tri" value="${tri}" />
             <input value="${searchTerm}" name="searchInput" class="pdtSearchBarInside" type="search"
                 placeholder="<spring:message code='pdt00.searchbar'/>">
             <input type="submit" value="<spring:message code="pdt.recherche.OK"/>" class="pdtSearchBarOk" />
         </form:form>
-        <form:form action="listerProduits.do" method="POST" id="tri">
+        <form:form class="pdt00Align" action="listerProduits.do" method="POST" id="tri">
             <input type="hidden" name="searchInput" value="${searchTerm}" />
             <select id="triSelect" name="tri">
                 <option disabled><spring:message code="pdt00.tri.default" /></option>
@@ -43,7 +43,7 @@
             <script>
             		document.getElementById("triSelect").options[${tri}].selected=true;          	
             </script>
-            <input type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
+            <input class="pdtSearchBarOk" type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
     <br />
