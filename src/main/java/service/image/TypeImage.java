@@ -12,12 +12,12 @@ public enum TypeImage {
     /**
      * Type Produit
      */
-    PRODUIT("pdt", 1920, 1080, 5_242_880),
+    PRODUIT("pdt", 1920, 1080, 5_242_880, "imagesProduitsRepo"),
 
     /**
      * Type Utilisateur
      */
-    UTILISATEUR("usr", 200, 200, 512_000);
+    UTILISATEUR("usr", 200, 200, 512_000, "imagesUtilisateursRepo");
 
     /**
      * type stocké
@@ -28,11 +28,14 @@ public enum TypeImage {
     private final int    height;
     private final int    size;
 
-    TypeImage(final String type, final int width, final int height, final int size) {
+    private final String imageRepo;
+
+    TypeImage(final String type, final int width, final int height, final int size, final String imageRepo) {
         this.type = type;
         this.width = width;
         this.size = size;
         this.height = height;
+        this.imageRepo = imageRepo;
     }
 
     /**
@@ -69,6 +72,15 @@ public enum TypeImage {
      */
     public int getSize() {
         return size;
+    }
+
+    /**
+     * Getter for imageRepo
+     *
+     * @return the imageRepo
+     */
+    public String getImageRepo() {
+        return imageRepo;
     }
 
 }

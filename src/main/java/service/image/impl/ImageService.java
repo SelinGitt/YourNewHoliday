@@ -46,47 +46,47 @@ public class ImageService implements IImageService {
 
     @Override
     public File getImage(final String id, final String type) {
-        String path;
         if (TypeImage.PRODUIT.getType().equals(type)) {
             final var produitDo = produitDao.findById(Integer.valueOf(id));
             logger.debug("Service - Récupération de l'image de produit d'id : {}.", id);
-            path = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + produitDo.getCheminImage();
-            return imageDao.getImage(path);
+            return this.constructPath(TypeImage.PRODUIT, produitDo.getCheminImage());
         }
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
             final var utilisateurDo = utilisateurDao.findById(Integer.valueOf(id));
             logger.debug("Service - Récupération de l'avatar de l'utilisateur d'id : {}.", id);
-            path = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + utilisateurDo.getCheminAvatar();
-            return imageDao.getImage(path);
+            return this.constructPath(TypeImage.UTILISATEUR, utilisateurDo.getCheminAvatar());
         }
         //ajouter le produitAcheteDao, indisponible à l'heure actuelle
         return null;
+    }
+
+    private File constructPath(final TypeImage type, final String cheminImage) {
+        final var path = GetPropertyValues.getPropertiesMap().get(type.getImageRepo()) + cheminImage;
+        return imageDao.getImage(path);
     }
 
     @Override
     public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
         //on test dans la couche présentation si image est null
         if (TypeImage.UTILISATEUR.getType().equals(type)) {
-            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesUtilisateursRepo") + File.separator + fileName;
-            //on vérifie que l'image correspond bien, puis on l'enregistre
-            final var imageValid = verifyFile(TypeImage.UTILISATEUR.getWidth(), TypeImage.UTILISATEUR.getHeight(),
-                    TypeImage.UTILISATEUR.getSize(), byteArray);
-            if (imageValid) {
-                logger.debug("Service - Avatar nom:{} sauvegardé à : {}.", fileName, cheminComplet);
-                return imageDao.saveImage(cheminComplet, byteArray);
-            }
+            return this.saveImage(byteArray, TypeImage.UTILISATEUR, fileName);
         }
         if (TypeImage.PRODUIT.getType().equals(type)) {
-            final String cheminComplet = GetPropertyValues.getPropertiesMap().get("imagesProduitsRepo") + File.separator + fileName;
-            //on vérifie que l'image correspond bien, puis on l'enregistre
-            final var imageValid = verifyFile(TypeImage.PRODUIT.getWidth(), TypeImage.PRODUIT.getHeight(), TypeImage.PRODUIT.getSize(),
-                    byteArray);
-            if (imageValid) {
-                logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
-                return imageDao.saveImage(cheminComplet, byteArray);
-            }
+            return this.saveImage(byteArray, TypeImage.PRODUIT, fileName);
         }
         logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
+        return false;
+    }
+
+    private boolean saveImage(final byte[] byteArray, final TypeImage type, final String fileName) {
+        final var cheminComplet = GetPropertyValues.getPropertiesMap().get(type.getImageRepo()) + File.separator + fileName;
+        //on vérifie que l'image correspond bien, puis on l'enregistre
+        final var imageValid = verifyFile(type.getWidth(), type.getHeight(), type.getSize(), byteArray);
+        if (imageValid) {
+            logger.debug("Service - {} nom:{} sauvegardé à : {}.", type.getType(), fileName, cheminComplet);
+            return imageDao.saveImage(cheminComplet, byteArray);
+        }
+        logger.debug("L'image du fichier {} de type {} n'est pas valide.", fileName, type.getType());
         return false;
     }
 
@@ -122,10 +122,10 @@ public class ImageService implements IImageService {
     public File getImageFromDiskWithPath(final String path, final String type) {
         var property = "";
         if (TypeImage.PRODUIT.getType().equals(type)) {
-            property = "imagesProduitsRepo";
+            property = TypeImage.PRODUIT.getImageRepo();
         } else
             if (TypeImage.UTILISATEUR.getType().equals(type)) {
-                property = "imagesUtilisateursRepo";
+                property = TypeImage.UTILISATEUR.getImageRepo();
 
             } else {
                 return null;
