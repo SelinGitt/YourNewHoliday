@@ -187,7 +187,7 @@ class PanierServiceTest {
         panierService.actualiserPrix(panierTest);
         assertEquals(12345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
         assertEquals("617,25", panierTest.getRemiseAffichage());
-        assertEquals("11727,75", panierTest.getPrixApresRemiseAffichage());
+        assertEquals("11 727,75", panierTest.getPrixApresRemiseAffichage());
         ligne1.setPrix("0");
         panierService.actualiserPrix(panierTest);
         assertEquals(2345, DecimalFormatUtils.doubleFormatUtil(panierTest.getPrixTotalAffichage()));
@@ -316,7 +316,7 @@ class PanierServiceTest {
         // essaie de supprimer un produit qui n'est pas dans la map.
         panierService.deleteProduitPanier(panierTest, 1);
         assertEquals(1, panierTest.getNombreDeReferences());
-        // Et qu'il est bien décrément le cas échant.
+        // Et qu'il est bien décrémenté le cas échéant.
         panierService.deleteProduitPanier(panierTest, 4);
         assertEquals(0, panierTest.getNombreDeReferences());
 
