@@ -20,7 +20,6 @@
         <c:choose>
             <c:when test="${origin=='2'}">
                 <div class="display-flex align-item-center">
-                    <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
                     <h1 class="user02-title">
                         <spring:message code="usr02.titre.admin" />
                     </h1>
@@ -34,6 +33,10 @@
                 </div>
             </c:otherwise>
         </c:choose>
+
+        <c:if test="${utilisateur.role.id == '3'}">
+            <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
+        </c:if>
 
         <form:form methode="POST" modelAttribute="utilisateurDto" action="modifierUtilisateur.do?origin=${origin}"
             class="display-flex justify-content-space-around">
