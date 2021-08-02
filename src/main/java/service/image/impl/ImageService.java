@@ -125,11 +125,11 @@ public class ImageService implements IImageService {
     }
 
     private boolean isImageValid(final BufferedImage bufferImage, final int height, final int width) {
-        return bufferImage.getWidth() > width || bufferImage.getHeight() > height;
+        return bufferImage.getWidth() != width || bufferImage.getHeight() != height;
     }
 
     private boolean isFileValid(final byte[] byteArray, final int size) {
-        return byteArray.length > size;
+        return byteArray.length != size;
     }
 
     @Override
