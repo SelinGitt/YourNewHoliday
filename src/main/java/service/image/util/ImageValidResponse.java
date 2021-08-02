@@ -4,7 +4,7 @@
 package service.image.util;
 
 /**
- * Classe représentant XX
+ * Classe représentant ImageValidResponse
  *
  * @author Lucas
  */
