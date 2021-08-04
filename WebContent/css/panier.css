@@ -55,6 +55,11 @@
 /* PAN_00 */
 .prix {
 	text-align: right;
+	width: 8em;
+}
+
+.prix-adresse {
+	text-align: right;
 	width: 6em;
 }
 
@@ -247,4 +252,9 @@
 
 .panier-100 {
 	width: 100%;
+}
+
+.panier-padding-prix {
+	/* haut droit bas gauche */
+	padding: 2% 0.625em 2% 2%;
 }
