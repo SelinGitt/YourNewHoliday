@@ -43,6 +43,13 @@
             <div class="pdt03Grid-item pdt03FormlaireCreerProduit">
                 <table class="pdt03FormulaireProduit" aria-label="Formulaire de création d'un produit">
                     <tr>
+                        <c:if test="${empty image}">
+                            <div class="pdt03-error-image">
+                                <form:errors path="cheminImage" cssClass="text-color-rouge" />
+                            </div>
+                            <form:hidden path="cheminImage" value="${image}" />
+                        </c:if>
+
                         <th><form:hidden path="version" value="1" /></th>
                         <th></th>
                     </tr>
@@ -181,6 +188,7 @@
                 </div>
                 <form:hidden path="cheminImage" value="${image}" />
             </c:if>
+
         </div>
     </form:form>
 </div>
