@@ -51,7 +51,8 @@
                     <div class="user05-form-field display-flex justify-content-space-between">
                         <label for="adresse"><spring:message code="usr05.creer.adresse" /></label>
                         <div class="user05-form-inputs">
-                            <form:textarea path="adresse" class="user05-inputs user05-textarea textarea" maxlength="255" />
+                            <form:textarea path="adresse" 
+                            class="user05-inputs user05-textarea textarea" maxlength="255" />
                             <form:errors path="adresse" cssClass="text-color-rouge" />
                         </div>
                     </div>
