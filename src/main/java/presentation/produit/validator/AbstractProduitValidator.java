@@ -43,6 +43,7 @@ public abstract class AbstractProduitValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", page + ".description.vide", "Description is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "prixUnitaire", page + ".prix.vide", "Price is required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "reference", page + ".reference.vide", "Reference is required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cheminImage", page + ".cheminImage.vide", "CheminImage is required");
 
         //Cast pour vérification plus fine
         final var produitDto = (ProduitDto) target;

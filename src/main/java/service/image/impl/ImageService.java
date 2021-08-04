@@ -109,6 +109,11 @@ public class ImageService implements IImageService {
      * @return        une imageValidResponse avec des infos concernant les succès/échecs de validation
      */
     private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
+        if (byteArray.length == 0) {
+            return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.ImageNotSpecified")
+                    .build();
+        }
+
         try {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
             if (!isImageValid(bufferImage, height, width)) {

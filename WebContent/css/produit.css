@@ -228,6 +228,11 @@ th.pdt01 {
 }
 
 /* PDT03 */
+.pdt03-error-image {
+	text-align: left;
+	padding-left: 16.8em;
+}
+
 .pdt03Grid-container {
 	display: grid;
 	grid-gap: 0.3em;
@@ -345,7 +350,7 @@ th.pdt01 {
 }
 
 .pdt03ErrorMessage {
-	margin-left: 11em;
+	margin-left: 2em;
 }
 
 /* PDT04 */
