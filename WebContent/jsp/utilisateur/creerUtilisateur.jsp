@@ -9,8 +9,8 @@
 </p>
 
 <div class="conteneur-ascenseur">
-    <div class="user05-body-general">
 
+    <div class="user05-body-general">
         <c:if test="${not empty error}">
             <div class="background-error-block block-message-commun">
                 <span class="fa fa-exclamation"></span> <span class="message"><spring:message code="${error}" /></span>
@@ -24,7 +24,7 @@
         </div>
 
         <c:if test="${utilisateur.role.id == '3'}">
-            <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
+            <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr05.retour" /></a>
         </c:if>
 
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
