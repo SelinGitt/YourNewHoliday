@@ -118,7 +118,7 @@
 }
 
 .panier-description-produit {
-	width: 40vh;
+	width: 25.8em;
 	text-align: left;
 	padding: 1em;
 }
@@ -130,7 +130,7 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 4;
-	max-height: 3em;	
+	max-height: 3em;
 	line-height: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
@@ -157,10 +157,10 @@
 
 .panier-left {
 	height: 60vh;
-	width: 120vh;
+	width: 96.5%;
 }
 
-.panier-right{
+.panier-right {
 	min-width: 25%;
 }
 
@@ -170,21 +170,24 @@
 }
 
 .panier-td {
-
 	width: 100%;
 }
-.panier-td-quantiter {
 
+.panier-td-quantiter {
 	width: 30%;
 }
-.panier-label-margin{
+
+.panier-label-margin {
 	margin-top: 1.9em;
 }
-.panier-td-prix-unitaire{
+
+.panier-td-prix-unitaire {
 	width: 50%;
 }
-.panier-td-padding{
-	padding: 1em;
+
+.panier-td-width {
+	width: 7.5em;
+	height: 2em;
 }
 
 .panier-th {

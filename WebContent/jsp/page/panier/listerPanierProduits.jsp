@@ -71,7 +71,7 @@
                                 class="panier-bordure-1px panier-td-prix-unitaire
                                  panier-bordure-margin text-align-center ">
                                 <%--  label --%>
-                                <div class="panier-label justy-content-center panier-label-margin">
+                                <div class="panier-label justy-content-center panier-label-margin panier-td-width">
                                     <h3 class="panier-antimarge-prix-unitaire">
                                         <spring:message code="pan00.prix.unitaire" />
                                     </h3>
@@ -87,7 +87,7 @@
                             <td class="panier-bordure-1px panier-td-quantiter text-align-center"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
+                                    <div class="panier-label display-flex justify-content-center panier-td-width">
                                         <h3>
                                             <spring:message code="pan00.quantite" />
                                         </h3>
@@ -132,7 +132,7 @@
                             <td class="panier-bordure-1px panier-td"><div>
 
                                     <%--  label --%>
-                                    <div class="panier-label display-flex justify-content-center panier-td-padding">
+                                    <div class="panier-label display-flex justify-content-center panier-td-width">
                                         <h3>
                                             <spring:message code="pan00.supprimer" />
                                         </h3>
