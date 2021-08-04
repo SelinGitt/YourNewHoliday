@@ -149,7 +149,7 @@
 
                 <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
                     <div class="user05-label-image">
-                        <span><label for="file"><spring:message code="usr05.label.avatar"></spring:message></label></span>
+                        <span><label for="file"><spring:message code="usr05.label.avatar"/></label></span>
                     </div>
                     <div>
                         <div>
