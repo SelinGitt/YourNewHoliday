@@ -27,9 +27,9 @@
             <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr05.retour" /></a>
         </c:if>
         <div class="display-flex justify-content-space-around">
-        
+
             <div class="user02-leftSide">
-            
+
                 <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do">
 
                     <div class="user05-form-field display-flex justify-content-space-between">
@@ -121,16 +121,43 @@
                         </button>
                     </div>
 
+                    <c:if test="${not empty avatar}">
+                        <form:hidden path="cheminAvatar" value="${avatar}" />
+                    </c:if>
+
                 </form:form>
-                
+
             </div>
-            
+
             <div class="user05-rightSide">
+                <c:if test="${not empty avatar}">
+                    <div>
+                        <div>
+                            <img src="displayImage.do?imageToShow=${avatar}&type=usr" alt="Image Utilisateur"
+                                class="user05-avatar">
+                        </div>
+                    </div>
+                </c:if>
+                <c:if test="${empty avatar}">
+                    <div>
+                        <div>
+                            <spring:message code="usr05.label.avatarChosen" />
+                        </div>
+                    </div>
+                </c:if>
+
                 <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
-                    <span> <label for="file"><spring:message code="usr05.label.avatar"></spring:message></label></span>
-                    <span> <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" /> <input
-                        type="submit" value="submit" />
-                    </span>
+                    <div class="user05-label-image">
+                        <span><label for="file"><spring:message code="usr05.label.avatar"></spring:message></label></span>
+                    </div>
+                    <div>
+                        <div>
+                            <input type="file" name="file" accept=".jpeg, .jpg, .png, .bmp" />
+                        </div>
+                        <div class="user05-submit-image">
+                            <input type="submit" value="submit" />
+                        </div>
+                    </div>
 
                     <c:if test="${not empty imgError}">
                         <div class="text-color-rouge user05-ErrorMessage">
@@ -139,21 +166,7 @@
                     </c:if>
                 </form:form>
 
-                <c:if test="${not empty avatar}">
-                    <div>
-                        <div>
-                            <img src="displayImage.do?imageToShow=${avatar}&type=usr" alt="Image Utilisateur">
-                        </div>
-                    </div>
-                    <form:hidden path="cheminAvatar" value="${avatar}" />
-                </c:if>
-                <c:if test="${empty avatar}">
-                    <div>
-                        <div class="user05-image">
-                            <spring:message code="usr05.label.avatarChosen" />
-                        </div>
-                    </div>
-                </c:if>
+
                 <%-- On ne peut pas placer ce formulaire dans le form d'inscription, c'est invalide.--%>
                 <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
                 <%-- cf : https://imgur.com/a/KoUx67i --%>

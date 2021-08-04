@@ -267,10 +267,19 @@
 	margin-bottom: 1em;
 }
 
-.user05-image {
-	height: 20em;
-	width: 23em;
+.user05-avatar {
+	width: 15.625em;
 }
+
+.user05-label-image {
+	margin-top: 2em;
+}
+
+.user05-submit-image {
+	margin-top: 1em;
+	margin-left: 5.5em;
+}
+
 /* USR07 */
 .user07-body-general {
 	width: 100%;
