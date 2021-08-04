@@ -94,7 +94,7 @@
             </div>
             <div>
                 <img src="displayImage.do?id=${utilisateurDto.id}&type=usr"
-                    alt="avatar utilisateur ${utilisateurDto.reference}" />
+                    alt="avatar utilisateur ${utilisateurDto.reference}"  class="user02-avatar" />
             </div>
         </div>
     </div>
