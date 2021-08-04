@@ -69,8 +69,14 @@ public class DateFormatUtil {
         try {
             final DateFormat dateFormat = new SimpleDateFormat(PATTERN);
             dateFormat.setLenient(false);
-            dateFormat.parse(date);
-            valide = true;
+            final var dateToCompare = dateFormat.parse(date);
+            final var aujourdhui = new Date();
+            // on retourne false si la date est après celui d'aujourd'hui
+            // de ce fait si elle est avant la date d'aujourd'hui on passe
+            // la variable valide à true
+            if (aujourdhui.compareTo(dateToCompare) >= 0) {
+                valide = true;
+            }
         } catch (final ParseException e) {
             logger.warn(e.getMessage());
         }
