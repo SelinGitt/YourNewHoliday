@@ -76,7 +76,7 @@
                                             CMD_04-box-title CMD_04-text-overflow">
                                     <spring:message code="detailCommande.prd.pUnitaire"></spring:message>
                                 </div>
-                                <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">
+                                <div class="CMD_04-text-align-center CMD_04-box-text CMD_04-grid CMD_04-box-padding">
                                     ${cmdProduit.produitAcheteDto.prixUnitaire}
                                     <spring:message code="glb.devise"></spring:message>
                                 </div>
@@ -99,7 +99,7 @@
                                 <div class="CMD_04-bold CMD_04-text-align-center CMD_04-box-title">
                                     <spring:message code="detailCommande.prd.pTotal"></spring:message>
                                 </div>
-                                <div class="CMD_04-text-align-right CMD_04-box-text CMD_04-grid CMD_04-box-padding">
+                                <div class="CMD_04-text-align-center CMD_04-box-text CMD_04-grid CMD_04-box-padding">
                                     ${cmdProduit.prixTotal}
                                     <spring:message code="glb.devise"></spring:message>
                                 </div>
