@@ -13,6 +13,11 @@
 	margin-right: 3.3em;
 }
 
+.pdtSearchBarOkHome {
+	cursor: pointer;
+	margin-right: 5em;
+}
+
 .pdt-img {
 	margin-left: 5%;
 }
