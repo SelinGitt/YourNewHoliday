@@ -236,13 +236,21 @@
 	width: 100%;
 }
 
+.user05-buttons {
+	margin-top: 2em;
+	width: 52%;
+	float: right;
+	display: flex;
+	justify-content: space-between;
+}
+
 .user05-textarea {
 	resize: vertical;
 	height: 5em;
 }
 
 .margin-left-usr05 {
-	margin-left: 20em;
+	margin-left: 30em;
 }
 
 .margin-top-usr05 {
@@ -255,6 +263,7 @@
 
 .user05-label-image {
 	margin-top: 2em;
+	margin-bottom: 0.5em;
 }
 
 .user05-submit-image {

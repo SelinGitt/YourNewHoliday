@@ -113,7 +113,8 @@
                         </c:choose>
                     </div>
 
-                    <div class="display-flex justify-content-space-evenly margin-left-usr05 margin-top-usr05">
+<!--                     <div class="display-flex justify-content-space-between margin-left-usr05 margin-top-usr05"> -->
+                    <div class="user05-buttons">
                         <button class="bouton-impact-BD" type="submit">
                             <spring:message code="usr05.creer.valider" />
                         </button>
