@@ -159,6 +159,10 @@
 	width: 120vh;
 }
 
+.panier-right{
+	min-width: 25%;
+}
+
 .panier-vider {
 	margin-top: 1.5em;
 	margin-right: 1.5em;
