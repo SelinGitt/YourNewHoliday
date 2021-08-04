@@ -54,18 +54,20 @@ header, footer {
 	position: relative;
 }
 
-.headerSousCell {
-	display: inline-block;
+.header-fa-fa {
+	font-size: 2.5em;
+	vertical-align: middle;
+	padding-right: 0.5em;
+}
+
+.headerSousCell a {
+	cursor: pointer;
+	color: #123456;
+	text-decoration: none;
 	vertical-align: middle;
 }
 
-.headerCell a {
-	display: block;
-	color: #000000;
-	text-decoration: none;
-}
-
-.headerCell a:hover {
+.headerSousCell a:hover {
 	color: #818181;
 }
 
@@ -73,11 +75,13 @@ header, footer {
 	position: absolute;
 	display: inline-block;
 	text-align: center;
-	left: 1.65em;
+	left: 1.2em;
+	top: 0.5em;
 	width: 2em;
 	height: 1.8em;
 	background-color: #bd2ad2;
 	border-radius: 90%;
+	width: 2em;
 }
 
 .headerSousCellNbrPdt {
