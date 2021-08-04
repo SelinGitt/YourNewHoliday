@@ -17,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import presentation.panier.dto.PanierDto;
 import service.panier.IPanierService;
-import service.produit.IProduitService;
 
 /**
  * Class represents controller pour les boutons modifiant la quantité d'une produit du panier
@@ -28,11 +27,9 @@ import service.produit.IProduitService;
 @Controller
 @RequestMapping("/modifierQuantite.do")
 public class ModifierQuantiteController {
-    @Autowired
-    private IPanierService  panierService;
 
     @Autowired
-    private IProduitService produitService;
+    private IPanierService panierService;
 
     /**
      * Permets de modifier la quantité d'une produit du panier
