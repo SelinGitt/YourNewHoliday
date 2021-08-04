@@ -81,7 +81,7 @@ class DateFormatUtilTest {
     void testCheckPatternOK() {
         assertTrue(DateFormatUtil.checkDate("25/06/1995"));
         assertTrue(DateFormatUtil.checkDate("08/07/2021"));
-        assertTrue(DateFormatUtil.checkDate("25/12/2221"));
+        assertTrue(DateFormatUtil.checkDate("25/12/2020"));
     }
 
     /**
@@ -92,6 +92,7 @@ class DateFormatUtilTest {
         assertFalse(DateFormatUtil.checkDate("31/02/2000"));
         assertFalse(DateFormatUtil.checkDate("29/02/2001"));
         assertFalse(DateFormatUtil.checkDate("84/39/1995"));
+        assertFalse(DateFormatUtil.checkDate("25/12/2221"));
 
         assertFalse(DateFormatUtil.checkDate("2012/02/05"));
         assertFalse(DateFormatUtil.checkDate("09-07-2021"));
