@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import service.image.IImageService;
+import service.image.TypeImage;
 
 /**
  * Classe représentant le controlleur d'upload d'image
@@ -38,7 +39,7 @@ public class UploadImageUserController {
         final var modelAndView = new ModelAndView("redirect:creerUtilisateur.do");
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
-        if (imageService.saveImage(byteArray, "usr", fileName)) {
+        if (imageService.saveImage(byteArray, TypeImage.UTILISATEUR.getType(), fileName)) {
             modelAndView.getModelMap().addAttribute("avatar", fileName);
         } else {
             modelAndView.getModelMap().addAttribute("imgError", "usr05.erreur.image");
