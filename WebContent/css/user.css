@@ -224,15 +224,24 @@
 }
 
 .user05-form-field {
-	margin-bottom: 1em;
+	margin-left: 3em;
+	margin-bottom: 2em;
 }
 
 .user05-form-inputs {
-	width: 70%;
+	width: 55%;
 }
 
 .user05-inputs {
 	width: 100%;
+}
+
+.user05-buttons {
+	margin-top: 2em;
+	width: 52%;
+	float: right;
+	display: flex;
+	justify-content: space-between;
 }
 
 .user05-textarea {
@@ -240,36 +249,28 @@
 	height: 5em;
 }
 
-.user05-label-file {
-	padding-left: 3em;
-}
-
-.user05-input-file {
-	padding-left: 22em;
-}
-
-.user05-ErrorMessage {
-	margin-left: 25em;
-}
-
 .margin-left-usr05 {
-	margin-left: 20em;
+	margin-left: 30em;
 }
 
 .margin-top-usr05 {
 	margin-top: 1.5em;
 }
 
-.user05-FormImage {
-	padding: 0 0.313em 0 0.313em;
-	padding-left: 2.7em;
-	margin-bottom: 1em;
+.user05-avatar {
+	width: 15.625em;
 }
 
-.user05-image {
-	height: 20em;
-	width: 23em;
+.user05-label-image {
+	margin-top: 2em;
+	margin-bottom: 0.5em;
 }
+
+.user05-submit-image {
+	margin-top: 1em;
+	margin-left: 5.5em;
+}
+
 /* USR07 */
 .user07-body-general {
 	width: 100%;
