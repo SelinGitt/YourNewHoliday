@@ -27,21 +27,6 @@
             <a href="listerUtilisateur.do" class="lien-retour"><spring:message code="usr02.retour" /></a>
         </c:if>
 
-        <div class="display-flex user05-FormImage">
-            <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
-                <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
-                            code="usr05.label.avatar"></spring:message></label></span>
-                <span class="user05-form-inputs user05-input-file"> <input type="file" name="file"
-                    accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
-                </span>
-
-                <c:if test="${not empty imgError}">
-                    <div class="text-color-rouge user05-ErrorMessage">
-                        <spring:message code="${imgError}" />
-                    </div>
-                </c:if>
-            </form:form>
-        </div>
         <form:form method="POST" modelAttribute="utilisateurDto" action="creerUtilisateur.do"
             class="display-flex justify-content-space-around">
 
@@ -74,7 +59,7 @@
                 <div class="user05-form-field display-flex justify-content-space-between">
                     <label for="dateNaissance"><spring:message code="usr05.creer.dateNaissance" /></label>
                     <div class="user05-form-inputs">
-                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10"/>
+                        <form:input path="dateNaissance" class="user05-inputs" value="${dateNaissance}" maxlength="10" />
                         <form:errors path="dateNaissance" cssClass="text-color-rouge" />
                     </div>
                 </div>
@@ -136,6 +121,25 @@
                 </div>
 
             </div>
+        </form:form>
+
+        <div>
+            <div class="display-flex user05-FormImage">
+                <form:form action="uploadImageUser.do" enctype="multipart/form-data" method="post">
+                    <span class="user05-form-field justify-content-space-between"> <label for="file"><spring:message
+                                code="usr05.label.avatar"></spring:message></label></span>
+                    <span class="user05-form-inputs user05-input-file"> <input type="file" name="file"
+                        accept=".jpeg, .jpg, .png, .bmp" /> <input type="submit" value="submit" />
+                    </span>
+
+                    <c:if test="${not empty imgError}">
+                        <div class="text-color-rouge user05-ErrorMessage">
+                            <spring:message code="${imgError}" />
+                        </div>
+                    </c:if>
+                </form:form>
+            </div>
+
             <c:if test="${not empty avatar}">
                 <div class="display-flex justify-content-space-between">
                     <div class="user05-image">
@@ -156,7 +160,7 @@
             <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
             <%-- cf : https://imgur.com/a/KoUx67i --%>
             <%-- Preparation du code pour la partie image, pour eviter tout pb et refaire tout le css --%>
-        </form:form>
+
+        </div>
     </div>
 </div>
-
