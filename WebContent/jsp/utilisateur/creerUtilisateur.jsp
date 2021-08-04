@@ -91,19 +91,10 @@
                     </div>
                 </div>
 
-                <div class="display-flex justify-content-space-around user05-buttons">
-                    <button class="bouton-impact-BD" type="submit">
-                        <spring:message code="usr05.creer.valider" />
-                    </button>
-                    <button class="bouton-rouge" type="reset">
-                        <spring:message code="usr05.creer.reset" />
-                    </button>
-                </div>
-
-                <div class="display-flex justify-content-space-around">
+                <div class="display-flex justify-content-space-evenly">
                     <c:choose>
                         <c:when test="${utilisateur.role.id == '3'}">
-                            <div>
+                            <div class="margin-left-usr05">
                                 <form:radiobutton path="role.idRole" value="2" />
                                 <label for="role.idRole1"><spring:message code="usr05.label.client" /></label>
                             </div>
@@ -118,6 +109,15 @@
                             <form:hidden path="role.idRole" value="2" />
                         </c:otherwise>
                     </c:choose>
+                </div>
+
+                <div class="display-flex justify-content-space-evenly margin-left-usr05 margin-top-usr05">
+                    <button class="bouton-impact-BD" type="submit">
+                        <spring:message code="usr05.creer.valider" />
+                    </button>
+                    <button class="bouton-rouge" type="reset">
+                        <spring:message code="usr05.creer.reset" />
+                    </button>
                 </div>
 
             </div>
