@@ -5,7 +5,6 @@ package persistance.image.impl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.File;
 
@@ -39,13 +38,4 @@ class ImageDaoTest {
         assertEquals("C:\\YNH_Project\\external_files\\img\\produits\\maldives.jpg", imageDao.getImage(path).getAbsolutePath());
         assertTrue(file.exists());
     }
-
-    /**
-     * Test method for {@link persistance.image.impl.ImageDao#saveImage(java.lang.String, byte[])}.
-     */
-    @Test
-    void testSaveImage() {
-        fail("Not yet implemented");
-    }
-
 }
