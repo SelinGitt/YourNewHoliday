@@ -22,6 +22,7 @@ import persistance.produit.dao.IProduitDao;
 import persistance.utilisateur.dao.IUtilisateurDao;
 import service.image.IImageService;
 import service.image.TypeImage;
+import service.image.util.ImageValidResponse;
 import service.util.GetPropertyValues;
 
 /**
@@ -76,26 +77,26 @@ public class ImageService implements IImageService {
     }
 
     @Override
-    public boolean saveImage(final byte[] byteArray, final String type, final String fileName) {
-        //on test dans la couche présentation si image est null
+    public ImageValidResponse saveImage(final byte[] byteArray, final String type, final String fileName) {
         final var typeImage = TypeImage.getTypeImage(type);
         if (typeImage == null) {
             logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
-            return false;
+            return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.image").build();
         }
         return this.saveImage(byteArray, typeImage, fileName);
     }
 
-    private boolean saveImage(final byte[] byteArray, final TypeImage type, final String fileName) {
+    private ImageValidResponse saveImage(final byte[] byteArray, final TypeImage type, final String fileName) {
         final var cheminComplet = GetPropertyValues.getPropertiesMap().get(type.getImageRepo()) + File.separator + fileName;
-        //on vérifie que l'image correspond bien, puis on l'enregistre
         final var imageValid = verifyFile(type.getWidth(), type.getHeight(), type.getSize(), byteArray);
-        if (imageValid) {
-            logger.debug("Service - {} nom:{} sauvegardé à : {}.", type.getType(), fileName, cheminComplet);
-            return imageDao.saveImage(cheminComplet, byteArray);
+        if (imageValid.isValid()) {
+            logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
+            if (imageDao.saveImage(cheminComplet, byteArray)) {
+                return imageValid;
+            }
         }
-        logger.debug("L'image du fichier {} de type {} n'est pas valide.", fileName, type.getType());
-        return false;
+        return imageValid;
+
     }
 
     /**
@@ -105,25 +106,35 @@ public class ImageService implements IImageService {
      * @param  size   le poids du fichier a ne pas dépasser
      * @param  width  la largeur du fichier (doit être inférieur)
      * @param  height la hauteur du fichier (doit être inférieur)
-     * @return        <code>true</code> si le fichier envoye correspond a une image<br>
-     *                <code>false</code> dans le cas contraire
+     * @return        une imageValidResponse avec des infos concernant les succès/échecs de validation
      */
-    private boolean verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
+    private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
-            return !(bufferImage == null || isImageValid(bufferImage, height, width) || isFileValid(byteArray, size));
+            if (!isImageValid(bufferImage, height, width)) {
+                logger.debug("Les dimensions de l'image sont incorrectes, largeur : {} et hauteur : {}", bufferImage.getWidth(),
+                        bufferImage.getHeight());
+                return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.ImageTooBig")
+                        .build();
+            }
+            if (!isFileValid(byteArray, size)) {
+                logger.debug("Le poids de l'image est trop lourd : {} ", byteArray.length);
+                return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.ImageTooLarge")
+                        .build();
+            }
         } catch (final IOException ioe) {
             logger.error("une exception a été levée pour le fichier : ", ioe);
-            return false;
         }
+        logger.debug("L'image est valide");
+        return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(true).build();
     }
 
     private boolean isImageValid(final BufferedImage bufferImage, final int height, final int width) {
-        return bufferImage.getWidth() > width || bufferImage.getHeight() > height;
+        return (bufferImage.getWidth() == width && bufferImage.getHeight() == height);
     }
 
     private boolean isFileValid(final byte[] byteArray, final int size) {
-        return byteArray.length > size;
+        return byteArray.length < size;
     }
 
     @Override
