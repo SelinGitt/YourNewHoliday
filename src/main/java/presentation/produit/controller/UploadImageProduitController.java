@@ -40,7 +40,7 @@ public class UploadImageProduitController {
         final String fileName = part.getOriginalFilename();
         final byte[] byteArray = part.getBytes();
         final var imageResponse = imageService.saveImage(byteArray, TypeImage.PRODUIT.getType(), fileName);
-        if (imageResponse.getError() == null) {
+        if (imageResponse.isValid()) {
             modelAndView.getModelMap().addAttribute("image", fileName);
         } else {
             modelAndView.getModelMap().addAttribute("imgError", imageResponse.getError());

@@ -81,7 +81,7 @@ public class ImageService implements IImageService {
         final var typeImage = TypeImage.getTypeImage(type);
         if (typeImage == null) {
             logger.debug("Le type {} du fichier ne correspond pas à un type existant", type);
-            return new ImageValidResponse.ImageValidResponseBuilder().withError("glb.img.erreur.image").build();
+            return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.image").build();
         }
         return this.saveImage(byteArray, typeImage, fileName);
     }
@@ -89,12 +89,11 @@ public class ImageService implements IImageService {
     private ImageValidResponse saveImage(final byte[] byteArray, final TypeImage type, final String fileName) {
         final var cheminComplet = GetPropertyValues.getPropertiesMap().get(type.getImageRepo()) + File.separator + fileName;
         final var imageValid = verifyFile(type.getWidth(), type.getHeight(), type.getSize(), byteArray);
-        if (imageValid.getError() == null) {
+        if (imageValid.isValid()) {
             logger.debug("Service - Image produit nom:{} sauvegardée à : {}.", fileName, cheminComplet);
             if (imageDao.saveImage(cheminComplet, byteArray)) {
                 return imageValid;
             }
-            return new ImageValidResponse.ImageValidResponseBuilder().withError("glb.img.erreur.image").build();
         }
         return imageValid;
 
@@ -112,24 +111,30 @@ public class ImageService implements IImageService {
     private ImageValidResponse verifyFile(final int width, final int height, final int size, final byte[] byteArray) {
         try {
             final var bufferImage = ImageIO.read(new ByteArrayInputStream(byteArray));
-            if (isImageValid(bufferImage, height, width)) {
-                return new ImageValidResponse.ImageValidResponseBuilder().withError("glb.img.erreur.ImageTooBig").build();
+            if (!isImageValid(bufferImage, height, width)) {
+                logger.debug("Les dimensions de l'image sont incorrectes, largeur : {} et hauteur : {}", bufferImage.getWidth(),
+                        bufferImage.getHeight());
+                return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.ImageTooBig")
+                        .build();
             }
-            if (isFileValid(byteArray, size)) {
-                return new ImageValidResponse.ImageValidResponseBuilder().withError("glb.img.erreur.ImageTooLarge").build();
+            if (!isFileValid(byteArray, size)) {
+                logger.debug("Le poids de l'image est trop lourd : {} ", byteArray.length);
+                return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(false).withError("glb.img.erreur.ImageTooLarge")
+                        .build();
             }
         } catch (final IOException ioe) {
             logger.error("une exception a été levée pour le fichier : ", ioe);
         }
-        return new ImageValidResponse.ImageValidResponseBuilder().withData(byteArray).build();
+        logger.debug("L'image est valide");
+        return new ImageValidResponse.ImageValidResponseBuilder().withIsValid(true).build();
     }
 
     private boolean isImageValid(final BufferedImage bufferImage, final int height, final int width) {
-        return bufferImage.getWidth() != width || bufferImage.getHeight() != height;
+        return (bufferImage.getWidth() == width && bufferImage.getHeight() == height);
     }
 
     private boolean isFileValid(final byte[] byteArray, final int size) {
-        return byteArray.length != size;
+        return byteArray.length < size;
     }
 
     @Override

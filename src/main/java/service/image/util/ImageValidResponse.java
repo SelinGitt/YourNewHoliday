@@ -9,8 +9,8 @@ package service.image.util;
  * @author Lucas
  */
 public class ImageValidResponse {
-    private byte[] data;
-    private String error;
+    private boolean isValid;
+    private String  error;
 
     private ImageValidResponse() {
         //empty
@@ -25,13 +25,13 @@ public class ImageValidResponse {
         private ImageValidResponse response = new ImageValidResponse();
 
         /**
-         * Permet de renseigner l'image au builder
+         * Permet de renseigner si l'image est valide au builder
          *
-         * @param  image File
-         * @return       ImageValidResponseBuilder
+         * @param  isValid boolean true si l'image est valide, false sinon
+         * @return         ImageValidResponseBuilder
          */
-        public ImageValidResponseBuilder withData(final byte[] image) {
-            this.response.data = image;
+        public ImageValidResponseBuilder withIsValid(final boolean isValid) {
+            this.response.setValid(isValid);
             return this;
         }
 
@@ -57,24 +57,6 @@ public class ImageValidResponse {
     }
 
     /**
-     * Getter for imageToValidate
-     *
-     * @return the imageToValidate
-     */
-    public byte[] getData() {
-        return data;
-    }
-
-    /**
-     * Setter for imageToValidate
-     *
-     * @param data the data to set
-     */
-    public void setData(final byte[] data) {
-        this.data = data;
-    }
-
-    /**
      * Getter for error
      *
      * @return the error
@@ -90,6 +72,24 @@ public class ImageValidResponse {
      */
     public void setError(final String error) {
         this.error = error;
+    }
+
+    /**
+     * Getter for isValid
+     *
+     * @return the isValid
+     */
+    public boolean isValid() {
+        return isValid;
+    }
+
+    /**
+     * Setter for isValid
+     *
+     * @param isValid the isValid to set
+     */
+    public void setValid(final boolean isValid) {
+        this.isValid = isValid;
     }
 
 }

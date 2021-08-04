@@ -29,7 +29,8 @@ public interface IImageService {
      * @param  byteArray le fichier
      * @param  type      le type de fichier
      * @param  fileName  le nom du fichier à importer
-     * @return           vrai si sauvegardé
+     * @return           un objet retour avec un boolean si la sauvegarde de l'image a été réussie, false sinon, et un
+     *                   message d'erreur si l'image n'a pas été sauvegardée
      */
     ImageValidResponse saveImage(final byte[] byteArray, final String type, final String fileName);
 
