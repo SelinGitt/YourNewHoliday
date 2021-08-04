@@ -130,8 +130,7 @@
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 4;
-	max-height: 3em;
-	max-width: 35vh;
+	max-height: 3em;	
 	line-height: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
