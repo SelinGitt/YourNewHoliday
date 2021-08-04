@@ -31,7 +31,8 @@
             <div class="headerSousCell">
 
                 <h3>
-                    <a onclick="chargerlienDeconnexion()"><span class="fa fa-sign-out header-fa-fa"> </span> <span> <spring:message code="header.deconnexion" />
+                    <a onclick="chargerlienDeconnexion()"><span class="fa fa-sign-out header-fa-fa"> </span> <span>
+                            <spring:message code="header.deconnexion" />
                     </span> </a>
                 </h3>
 
@@ -75,8 +76,8 @@
             <%--"Créer un compte"--%>
             <div class="headerSousCell">
                 <h3>
-                    <a onclick="chargerlienCreerUtilisateur()"><span class="fa fa-user-plus header-fa-fa"> </span> <span>
-                            <spring:message code="header.creer.compte" />
+                    <a onclick="chargerlienCreerUtilisateur()"> <span class="fa fa-user-plus header-fa-fa"> </span>
+                        <span> <spring:message code="header.creer.compte" />
                     </span></a>
                 </h3>
             </div>
