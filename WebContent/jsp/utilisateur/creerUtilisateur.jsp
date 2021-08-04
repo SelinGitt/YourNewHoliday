@@ -113,7 +113,6 @@
                         </c:choose>
                     </div>
 
-<!--                     <div class="display-flex justify-content-space-between margin-left-usr05 margin-top-usr05"> -->
                     <div class="user05-buttons">
                         <button class="bouton-impact-BD" type="submit">
                             <spring:message code="usr05.creer.valider" />
@@ -167,8 +166,6 @@
                         </div>
                     </c:if>
                 </form:form>
-
-
                 <%-- On ne peut pas placer ce formulaire dans le form d'inscription, c'est invalide.--%>
                 <%-- Je le mets en dessous, je n'ai pas trop le choix, pas à ma connaissence du moins --%>
                 <%-- cf : https://imgur.com/a/KoUx67i --%>
