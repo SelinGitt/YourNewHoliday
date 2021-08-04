@@ -43,7 +43,7 @@
             <script>
             		document.getElementById("triSelect").options[${tri}].selected=true;          	
             </script>
-            <input class="pdtSearchBarOk" type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
+            <input class="pdtSearchBarOkHome" type="submit" form="tri" value="<spring:message code='pdt.recherche.OK'/>">
         </form:form>
     </div>
     <div class="display-flex flex-wrap-wrap justify-content-center">
